@@ -573,15 +573,6 @@ function applyPropertyPatch(
     if (patch.wireKey) {
       prop.wireKey = patch.wireKey;
     }
-    // `definition` replaces the property's type outright (not just when the
-    // property is missing). Used when the vendor SDK models a field with the
-    // wrong shape — e.g. a response field that reuses a request union — and the
-    // correct type can't be expressed by the narrower `type`/`nullable`/
-    // `appendUnion` ops. Applied before the other ops so `nullable` etc. can
-    // still compose on top of the replacement.
-    if (patch.definition) {
-      prop.type = JSON.parse(JSON.stringify(patch.definition)) as TypeInfo;
-    }
     applyPatchToTypeInfo(prop.type, patch);
   } else {
     // Need to descend further — unwrap the property type

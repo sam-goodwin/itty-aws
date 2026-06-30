@@ -4563,16 +4563,33 @@ export interface GetDispatchNamespaceScriptSettingResponse {
     } | null;
   } | null;
   /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
-  placement?: {
-    mode?: "smart" | null;
-    status?:
-      | "SUCCESS"
-      | "UNSUPPORTED_APPLICATION"
-      | "INSUFFICIENT_INVOCATIONS"
-      | (string & {})
-      | null;
-    lastAnalyzedAt?: string | null;
-  } | null;
+  placement?:
+    | { mode: "smart" }
+    | { region: string }
+    | { hostname: string }
+    | { host: string }
+    | { mode: "targeted"; region: string }
+    | { hostname: string; mode: "targeted" }
+    | { host: string; mode: "targeted" }
+    | {
+        mode: "targeted";
+        target: (
+          | { region: string }
+          | { hostname: string }
+          | { host: string }
+        )[];
+      }
+    | {
+        mode?: "smart" | null;
+        status?:
+          | "SUCCESS"
+          | "UNSUPPORTED_APPLICATION"
+          | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
+          | null;
+        lastAnalyzedAt?: string | null;
+      }
+    | null;
   /** Tags associated with the Worker. */
   tags?: string[] | null;
   /** List of Workers that will consume logs from the attached Worker. */
@@ -5103,33 +5120,75 @@ export const GetDispatchNamespaceScriptSettingResponse =
       ),
       placement: Schema.optional(
         Schema.Union([
-          Schema.Struct({
-            mode: Schema.optional(
-              Schema.Union([Schema.Literal("smart"), Schema.Null]),
-            ),
-            status: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals([
-                    "SUCCESS",
-                    "UNSUPPORTED_APPLICATION",
-                    "INSUFFICIENT_INVOCATIONS",
-                  ]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            lastAnalyzedAt: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              mode: "mode",
-              status: "status",
-              lastAnalyzedAt: "last_analyzed_at",
+          Schema.Union([
+            Schema.Struct({
+              mode: Schema.Literal("targeted"),
+              region: Schema.String,
             }),
-          ),
+            Schema.Struct({
+              hostname: Schema.String,
+              mode: Schema.Literal("targeted"),
+            }),
+            Schema.Struct({
+              host: Schema.String,
+              mode: Schema.Literal("targeted"),
+            }),
+            Schema.Struct({
+              mode: Schema.Literal("targeted"),
+              target: Schema.Array(
+                Schema.Union([
+                  Schema.Struct({
+                    region: Schema.String,
+                  }),
+                  Schema.Struct({
+                    hostname: Schema.String,
+                  }),
+                  Schema.Struct({
+                    host: Schema.String,
+                  }),
+                ]),
+              ),
+            }),
+            Schema.Struct({
+              mode: Schema.Literal("smart"),
+            }),
+            Schema.Struct({
+              region: Schema.String,
+            }),
+            Schema.Struct({
+              hostname: Schema.String,
+            }),
+            Schema.Struct({
+              host: Schema.String,
+            }),
+            Schema.Struct({
+              mode: Schema.optional(
+                Schema.Union([Schema.Literal("smart"), Schema.Null]),
+              ),
+              status: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals([
+                      "SUCCESS",
+                      "UNSUPPORTED_APPLICATION",
+                      "INSUFFICIENT_INVOCATIONS",
+                    ]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              lastAnalyzedAt: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                mode: "mode",
+                status: "status",
+                lastAnalyzedAt: "last_analyzed_at",
+              }),
+            ),
+          ]),
           Schema.Null,
         ]),
       ),
