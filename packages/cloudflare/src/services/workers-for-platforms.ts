@@ -4563,23 +4563,7 @@ export interface GetDispatchNamespaceScriptSettingResponse {
     } | null;
   } | null;
   /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
-  placement?:
-    | { mode: "smart" }
-    | { region: string }
-    | { hostname: string }
-    | { host: string }
-    | { mode: "targeted"; region: string }
-    | { hostname: string; mode: "targeted" }
-    | { host: string; mode: "targeted" }
-    | {
-        mode: "targeted";
-        target: (
-          | { region: string }
-          | { hostname: string }
-          | { host: string }
-        )[];
-      }
-    | null;
+  placement?: unknown | null;
   /** Tags associated with the Worker. */
   tags?: string[] | null;
   /** List of Workers that will consume logs from the attached Worker. */
@@ -5108,53 +5092,7 @@ export const GetDispatchNamespaceScriptSettingResponse =
           Schema.Null,
         ]),
       ),
-      placement: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Struct({
-              mode: Schema.Literal("targeted"),
-              region: Schema.String,
-            }),
-            Schema.Struct({
-              hostname: Schema.String,
-              mode: Schema.Literal("targeted"),
-            }),
-            Schema.Struct({
-              host: Schema.String,
-              mode: Schema.Literal("targeted"),
-            }),
-            Schema.Struct({
-              mode: Schema.Literal("targeted"),
-              target: Schema.Array(
-                Schema.Union([
-                  Schema.Struct({
-                    region: Schema.String,
-                  }),
-                  Schema.Struct({
-                    hostname: Schema.String,
-                  }),
-                  Schema.Struct({
-                    host: Schema.String,
-                  }),
-                ]),
-              ),
-            }),
-            Schema.Struct({
-              mode: Schema.Literal("smart"),
-            }),
-            Schema.Struct({
-              region: Schema.String,
-            }),
-            Schema.Struct({
-              hostname: Schema.String,
-            }),
-            Schema.Struct({
-              host: Schema.String,
-            }),
-          ]),
-          Schema.Null,
-        ]),
-      ),
+      placement: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
       tags: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
@@ -5201,7 +5139,11 @@ export const GetDispatchNamespaceScriptSettingResponse =
       .pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<GetDispatchNamespaceScriptSettingResponse>;
 
-export type GetDispatchNamespaceScriptSettingError = DefaultErrors;
+export type GetDispatchNamespaceScriptSettingError =
+  | DefaultErrors
+  | DispatchNamespaceNotFound
+  | DispatchNamespaceScriptNotFound
+  | Forbidden;
 
 export const getDispatchNamespaceScriptSetting: API.OperationMethod<
   GetDispatchNamespaceScriptSettingRequest,
@@ -5211,7 +5153,11 @@ export const getDispatchNamespaceScriptSetting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDispatchNamespaceScriptSettingRequest,
   output: GetDispatchNamespaceScriptSettingResponse,
-  errors: [],
+  errors: [
+    DispatchNamespaceNotFound,
+    DispatchNamespaceScriptNotFound,
+    Forbidden,
+  ],
 }));
 
 export interface PatchDispatchNamespaceScriptSettingRequest {

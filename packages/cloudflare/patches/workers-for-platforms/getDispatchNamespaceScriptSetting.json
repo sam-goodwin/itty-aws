@@ -1,0 +1,12 @@
+{
+  "errors": {
+    "DispatchNamespaceNotFound": [{ "code": 100119 }],
+    "DispatchNamespaceScriptNotFound": [{ "code": 10007 }],
+    "Forbidden": [{ "status": 403 }]
+  },
+  "response": {
+    "properties": {
+      "placement": { "type": "unknown" }
+    }
+  }
+}

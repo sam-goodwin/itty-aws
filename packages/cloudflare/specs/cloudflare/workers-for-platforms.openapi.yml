@@ -5037,113 +5037,6 @@ paths:
                       - enabled
                     description: Observability settings for the Worker.
                   placement:
-                    oneOf:
-                      - type: object
-                        properties:
-                          mode:
-                            type: string
-                            enum:
-                              - smart
-                            description: Enables [Smart
-                              Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-                        required:
-                          - mode
-                      - type: object
-                        properties:
-                          region:
-                            type: string
-                            description: Cloud region for targeted placement in format 'provider:region'.
-                        required:
-                          - region
-                      - type: object
-                        properties:
-                          hostname:
-                            type: string
-                            description: HTTP hostname for targeted placement.
-                        required:
-                          - hostname
-                      - type: object
-                        properties:
-                          host:
-                            type: string
-                            description: TCP host and port for targeted placement.
-                        required:
-                          - host
-                      - type: object
-                        properties:
-                          mode:
-                            type: string
-                            enum:
-                              - targeted
-                            description: Targeted placement mode.
-                          region:
-                            type: string
-                            description: Cloud region for targeted placement in format 'provider:region'.
-                        required:
-                          - mode
-                          - region
-                      - type: object
-                        properties:
-                          hostname:
-                            type: string
-                            description: HTTP hostname for targeted placement.
-                          mode:
-                            type: string
-                            enum:
-                              - targeted
-                            description: Targeted placement mode.
-                        required:
-                          - hostname
-                          - mode
-                      - type: object
-                        properties:
-                          host:
-                            type: string
-                            description: TCP host and port for targeted placement.
-                          mode:
-                            type: string
-                            enum:
-                              - targeted
-                            description: Targeted placement mode.
-                        required:
-                          - host
-                          - mode
-                      - type: object
-                        properties:
-                          mode:
-                            type: string
-                            enum:
-                              - targeted
-                            description: Targeted placement mode.
-                          target:
-                            type: array
-                            items:
-                              oneOf:
-                                - type: object
-                                  properties:
-                                    region:
-                                      type: string
-                                      description: Cloud region in format 'provider:region'.
-                                  required:
-                                    - region
-                                - type: object
-                                  properties:
-                                    hostname:
-                                      type: string
-                                      description: HTTP hostname for targeted placement.
-                                  required:
-                                    - hostname
-                                - type: object
-                                  properties:
-                                    host:
-                                      type: string
-                                      description: TCP host:port for targeted placement.
-                                  required:
-                                    - host
-                            description: Array of placement targets (currently limited to single target).
-                        required:
-                          - mode
-                          - target
                     description: Configuration for [Smart
                       Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
                       Specify mode='smart' for Smart Placement, or one of
@@ -5182,6 +5075,13 @@ paths:
                       - unbound
                     description: Usage model for the Worker invocations.
       x-distilled-response-path: result
+      x-distilled-errors:
+        DispatchNamespaceNotFound:
+          - code: 100119
+        DispatchNamespaceScriptNotFound:
+          - code: 10007
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchDispatchNamespaceScriptSetting
       description: "Patch script metadata, such as bindings.  @example ```ts const
