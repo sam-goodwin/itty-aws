@@ -287,9 +287,7 @@ const loadServicePatches = (
       return yield* Effect.die(
         `Orphaned patch file(s) in ${patchDir}: ${orphans
           .map((o) => `${o}.json`)
-          .join(
-            ", ",
-          )} — no matching operation in the regenerated '${serviceName}' service. ` +
+          .join(", ")} — no matching operation in the regenerated '${serviceName}' service. ` +
           `The upstream spec likely renamed or removed the operation; ` +
           `re-key the patch to the new operation name (available: ${[...opNames].sort().join(", ")}) ` +
           `or delete it, and migrate consumers in packages/alchemy.`,
