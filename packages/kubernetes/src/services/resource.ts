@@ -4,12 +4,57 @@
  * Generated from the Kubernetes OpenAPI spec.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface CreateResourceV1DeviceClassInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    config?: { opaque?: { driver: string; parameters: unknown } }[];
+    extendedResourceName?: string;
+    selectors?: { cel?: { expression: string } }[];
+  };
+}
 export const CreateResourceV1DeviceClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -92,11 +137,50 @@ export const CreateResourceV1DeviceClassInput =
     ),
   }).pipe(
     T.Http({ method: "POST", path: "/apis/resource.k8s.io/v1/deviceclasses" }),
-  );
-export type CreateResourceV1DeviceClassInput =
-  typeof CreateResourceV1DeviceClassInput.Type;
+  ) as unknown as Schema.Codec<CreateResourceV1DeviceClassInput>;
 
 // Output Schema
+export interface CreateResourceV1DeviceClassOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    config?: { opaque?: { driver: string; parameters: unknown } }[];
+    extendedResourceName?: string;
+    selectors?: { cel?: { expression: string } }[];
+  };
+}
 export const CreateResourceV1DeviceClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -173,9 +257,7 @@ export const CreateResourceV1DeviceClassOutput =
         ),
       }),
     ),
-  });
-export type CreateResourceV1DeviceClassOutput =
-  typeof CreateResourceV1DeviceClassOutput.Type;
+  }) as unknown as Schema.Codec<CreateResourceV1DeviceClassOutput>;
 
 // The operation
 /**
@@ -194,6 +276,159 @@ export const createResourceV1DeviceClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CreateResourceV1NamespacedResourceClaimInput {
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        exactly?: {
+          adminAccess?: boolean;
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        };
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const CreateResourceV1NamespacedResourceClaimInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -490,11 +725,157 @@ export const CreateResourceV1NamespacedResourceClaimInput =
       method: "POST",
       path: "/apis/resource.k8s.io/v1/namespaces/{namespace}/resourceclaims",
     }),
-  );
-export type CreateResourceV1NamespacedResourceClaimInput =
-  typeof CreateResourceV1NamespacedResourceClaimInput.Type;
+  ) as unknown as Schema.Codec<CreateResourceV1NamespacedResourceClaimInput>;
 
 // Output Schema
+export interface CreateResourceV1NamespacedResourceClaimOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        exactly?: {
+          adminAccess?: boolean;
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        };
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const CreateResourceV1NamespacedResourceClaimOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -781,9 +1162,7 @@ export const CreateResourceV1NamespacedResourceClaimOutput =
         ),
       }),
     ),
-  });
-export type CreateResourceV1NamespacedResourceClaimOutput =
-  typeof CreateResourceV1NamespacedResourceClaimOutput.Type;
+  }) as unknown as Schema.Codec<CreateResourceV1NamespacedResourceClaimOutput>;
 
 // The operation
 /**
@@ -802,6 +1181,127 @@ export const createResourceV1NamespacedResourceClaim =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateResourceV1NamespacedResourceClaimTemplateInput {
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+        }[];
+        constraints?: {
+          distinctAttribute?: string;
+          matchAttribute?: string;
+          requests?: string[];
+        }[];
+        requests?: {
+          exactly?: {
+            adminAccess?: boolean;
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          };
+          firstAvailable?: {
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            name: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+          name: string;
+        }[];
+      };
+    };
+  };
+}
 export const CreateResourceV1NamespacedResourceClaimTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -1027,11 +1527,125 @@ export const CreateResourceV1NamespacedResourceClaimTemplateInput =
       method: "POST",
       path: "/apis/resource.k8s.io/v1/namespaces/{namespace}/resourceclaimtemplates",
     }),
-  );
-export type CreateResourceV1NamespacedResourceClaimTemplateInput =
-  typeof CreateResourceV1NamespacedResourceClaimTemplateInput.Type;
+  ) as unknown as Schema.Codec<CreateResourceV1NamespacedResourceClaimTemplateInput>;
 
 // Output Schema
+export interface CreateResourceV1NamespacedResourceClaimTemplateOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+        }[];
+        constraints?: {
+          distinctAttribute?: string;
+          matchAttribute?: string;
+          requests?: string[];
+        }[];
+        requests?: {
+          exactly?: {
+            adminAccess?: boolean;
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          };
+          firstAvailable?: {
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            name: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+          name: string;
+        }[];
+      };
+    };
+  };
+}
 export const CreateResourceV1NamespacedResourceClaimTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1247,9 +1861,7 @@ export const CreateResourceV1NamespacedResourceClaimTemplateOutput =
         ),
       }),
     ),
-  });
-export type CreateResourceV1NamespacedResourceClaimTemplateOutput =
-  typeof CreateResourceV1NamespacedResourceClaimTemplateOutput.Type;
+  }) as unknown as Schema.Codec<CreateResourceV1NamespacedResourceClaimTemplateOutput>;
 
 // The operation
 /**
@@ -1268,6 +1880,124 @@ export const createResourceV1NamespacedResourceClaimTemplate =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateResourceV1ResourceSliceInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    allNodes?: boolean;
+    devices?: {
+      allNodes?: boolean;
+      allowMultipleAllocations?: boolean;
+      attributes?: Record<
+        string,
+        {
+          bool?: boolean;
+          bools?: boolean[];
+          int?: number;
+          ints?: number[];
+          string?: string;
+          strings?: string[];
+          version?: string;
+          versions?: string[];
+        }
+      >;
+      bindingConditions?: string[];
+      bindingFailureConditions?: string[];
+      bindsToNode?: boolean;
+      capacity?: Record<
+        string,
+        {
+          requestPolicy?: {
+            default?: string;
+            validRange?: { max?: string; min: string; step?: string };
+            validValues?: string[];
+          };
+          value: string;
+        }
+      >;
+      consumesCounters?: {
+        counterSet: string;
+        counters: Record<string, { value: string }>;
+      }[];
+      name: string;
+      nodeAllocatableResourceMappings?: Record<
+        string,
+        { allocationMultiplier?: string; capacityKey?: string }
+      >;
+      nodeName?: string;
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+      taints?: {
+        effect: string;
+        key: string;
+        timeAdded?: string;
+        value?: string;
+      }[];
+    }[];
+    driver: string;
+    nodeName?: string;
+    nodeSelector?: {
+      nodeSelectorTerms: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchFields?: { key: string; operator: string; values?: string[] }[];
+      }[];
+    };
+    perDeviceNodeSelection?: boolean;
+    pool: { generation: number; name: string; resourceSliceCount: number };
+    sharedCounters?: {
+      counters: Record<string, { value: string }>;
+      name: string;
+    }[];
+  };
+}
 export const CreateResourceV1ResourceSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -1481,11 +2211,123 @@ export const CreateResourceV1ResourceSliceInput =
     }),
   }).pipe(
     T.Http({ method: "POST", path: "/apis/resource.k8s.io/v1/resourceslices" }),
-  );
-export type CreateResourceV1ResourceSliceInput =
-  typeof CreateResourceV1ResourceSliceInput.Type;
+  ) as unknown as Schema.Codec<CreateResourceV1ResourceSliceInput>;
 
 // Output Schema
+export interface CreateResourceV1ResourceSliceOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    allNodes?: boolean;
+    devices?: {
+      allNodes?: boolean;
+      allowMultipleAllocations?: boolean;
+      attributes?: Record<
+        string,
+        {
+          bool?: boolean;
+          bools?: boolean[];
+          int?: number;
+          ints?: number[];
+          string?: string;
+          strings?: string[];
+          version?: string;
+          versions?: string[];
+        }
+      >;
+      bindingConditions?: string[];
+      bindingFailureConditions?: string[];
+      bindsToNode?: boolean;
+      capacity?: Record<
+        string,
+        {
+          requestPolicy?: {
+            default?: string;
+            validRange?: { max?: string; min: string; step?: string };
+            validValues?: string[];
+          };
+          value: string;
+        }
+      >;
+      consumesCounters?: {
+        counterSet: string;
+        counters: Record<string, { value: string }>;
+      }[];
+      name: string;
+      nodeAllocatableResourceMappings?: Record<
+        string,
+        { allocationMultiplier?: string; capacityKey?: string }
+      >;
+      nodeName?: string;
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+      taints?: {
+        effect: string;
+        key: string;
+        timeAdded?: string;
+        value?: string;
+      }[];
+    }[];
+    driver: string;
+    nodeName?: string;
+    nodeSelector?: {
+      nodeSelectorTerms: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchFields?: { key: string; operator: string; values?: string[] }[];
+      }[];
+    };
+    perDeviceNodeSelection?: boolean;
+    pool: { generation: number; name: string; resourceSliceCount: number };
+    sharedCounters?: {
+      counters: Record<string, { value: string }>;
+      name: string;
+    }[];
+  };
+}
 export const CreateResourceV1ResourceSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1693,9 +2535,7 @@ export const CreateResourceV1ResourceSliceOutput =
         ),
       ),
     }),
-  });
-export type CreateResourceV1ResourceSliceOutput =
-  typeof CreateResourceV1ResourceSliceOutput.Type;
+  }) as unknown as Schema.Codec<CreateResourceV1ResourceSliceOutput>;
 
 // The operation
 /**
@@ -1713,6 +2553,60 @@ export const createResourceV1ResourceSlice =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateResourceV1alpha3DeviceTaintRuleInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    deviceSelector?: { device?: string; driver?: string; pool?: string };
+    taint: { effect: string; key: string; timeAdded?: string; value?: string };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const CreateResourceV1alpha3DeviceTaintRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -1801,11 +2695,59 @@ export const CreateResourceV1alpha3DeviceTaintRuleInput =
       method: "POST",
       path: "/apis/resource.k8s.io/v1alpha3/devicetaintrules",
     }),
-  );
-export type CreateResourceV1alpha3DeviceTaintRuleInput =
-  typeof CreateResourceV1alpha3DeviceTaintRuleInput.Type;
+  ) as unknown as Schema.Codec<CreateResourceV1alpha3DeviceTaintRuleInput>;
 
 // Output Schema
+export interface CreateResourceV1alpha3DeviceTaintRuleOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    deviceSelector?: { device?: string; driver?: string; pool?: string };
+    taint: { effect: string; key: string; timeAdded?: string; value?: string };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const CreateResourceV1alpha3DeviceTaintRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1885,9 +2827,7 @@ export const CreateResourceV1alpha3DeviceTaintRuleOutput =
         ),
       }),
     ),
-  });
-export type CreateResourceV1alpha3DeviceTaintRuleOutput =
-  typeof CreateResourceV1alpha3DeviceTaintRuleOutput.Type;
+  }) as unknown as Schema.Codec<CreateResourceV1alpha3DeviceTaintRuleOutput>;
 
 // The operation
 /**
@@ -1905,6 +2845,70 @@ export const createResourceV1alpha3DeviceTaintRule =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateResourceV1alpha3ResourcePoolStatusRequestInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: { driver: string; limit?: number; poolName?: string };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    poolCount: number;
+    pools?: {
+      allocatedDevices?: number;
+      availableDevices?: number;
+      driver: string;
+      generation: number;
+      nodeName?: string;
+      poolName: string;
+      resourceSliceCount?: number;
+      totalDevices?: number;
+      unavailableDevices?: number;
+      validationError?: string;
+    }[];
+  };
+}
 export const CreateResourceV1alpha3ResourcePoolStatusRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -1996,11 +3000,69 @@ export const CreateResourceV1alpha3ResourcePoolStatusRequestInput =
       method: "POST",
       path: "/apis/resource.k8s.io/v1alpha3/resourcepoolstatusrequests",
     }),
-  );
-export type CreateResourceV1alpha3ResourcePoolStatusRequestInput =
-  typeof CreateResourceV1alpha3ResourcePoolStatusRequestInput.Type;
+  ) as unknown as Schema.Codec<CreateResourceV1alpha3ResourcePoolStatusRequestInput>;
 
 // Output Schema
+export interface CreateResourceV1alpha3ResourcePoolStatusRequestOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: { driver: string; limit?: number; poolName?: string };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    poolCount: number;
+    pools?: {
+      allocatedDevices?: number;
+      availableDevices?: number;
+      driver: string;
+      generation: number;
+      nodeName?: string;
+      poolName: string;
+      resourceSliceCount?: number;
+      totalDevices?: number;
+      unavailableDevices?: number;
+      validationError?: string;
+    }[];
+  };
+}
 export const CreateResourceV1alpha3ResourcePoolStatusRequestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2083,9 +3145,7 @@ export const CreateResourceV1alpha3ResourcePoolStatusRequestOutput =
         ),
       }),
     ),
-  });
-export type CreateResourceV1alpha3ResourcePoolStatusRequestOutput =
-  typeof CreateResourceV1alpha3ResourcePoolStatusRequestOutput.Type;
+  }) as unknown as Schema.Codec<CreateResourceV1alpha3ResourcePoolStatusRequestOutput>;
 
 // The operation
 /**
@@ -2102,6 +3162,51 @@ export const createResourceV1alpha3ResourcePoolStatusRequest =
     outputSchema: CreateResourceV1alpha3ResourcePoolStatusRequestOutput,
   }));
 // Input Schema
+export interface CreateResourceV1beta1DeviceClassInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    config?: { opaque?: { driver: string; parameters: unknown } }[];
+    extendedResourceName?: string;
+    selectors?: { cel?: { expression: string } }[];
+  };
+}
 export const CreateResourceV1beta1DeviceClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -2187,11 +3292,50 @@ export const CreateResourceV1beta1DeviceClassInput =
       method: "POST",
       path: "/apis/resource.k8s.io/v1beta1/deviceclasses",
     }),
-  );
-export type CreateResourceV1beta1DeviceClassInput =
-  typeof CreateResourceV1beta1DeviceClassInput.Type;
+  ) as unknown as Schema.Codec<CreateResourceV1beta1DeviceClassInput>;
 
 // Output Schema
+export interface CreateResourceV1beta1DeviceClassOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    config?: { opaque?: { driver: string; parameters: unknown } }[];
+    extendedResourceName?: string;
+    selectors?: { cel?: { expression: string } }[];
+  };
+}
 export const CreateResourceV1beta1DeviceClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2268,9 +3412,7 @@ export const CreateResourceV1beta1DeviceClassOutput =
         ),
       }),
     ),
-  });
-export type CreateResourceV1beta1DeviceClassOutput =
-  typeof CreateResourceV1beta1DeviceClassOutput.Type;
+  }) as unknown as Schema.Codec<CreateResourceV1beta1DeviceClassOutput>;
 
 // The operation
 /**
@@ -2288,6 +3430,157 @@ export const createResourceV1beta1DeviceClass =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateResourceV1beta1NamespacedResourceClaimInput {
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        adminAccess?: boolean;
+        allocationMode?: string;
+        capacity?: { requests?: Record<string, string> };
+        count?: number;
+        deviceClassName?: string;
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+        selectors?: { cel?: { expression: string } }[];
+        tolerations?: {
+          effect?: string;
+          key?: string;
+          operator?: string;
+          tolerationSeconds?: number;
+          value?: string;
+        }[];
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const CreateResourceV1beta1NamespacedResourceClaimInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -2580,11 +3873,155 @@ export const CreateResourceV1beta1NamespacedResourceClaimInput =
       method: "POST",
       path: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaims",
     }),
-  );
-export type CreateResourceV1beta1NamespacedResourceClaimInput =
-  typeof CreateResourceV1beta1NamespacedResourceClaimInput.Type;
+  ) as unknown as Schema.Codec<CreateResourceV1beta1NamespacedResourceClaimInput>;
 
 // Output Schema
+export interface CreateResourceV1beta1NamespacedResourceClaimOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        adminAccess?: boolean;
+        allocationMode?: string;
+        capacity?: { requests?: Record<string, string> };
+        count?: number;
+        deviceClassName?: string;
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+        selectors?: { cel?: { expression: string } }[];
+        tolerations?: {
+          effect?: string;
+          key?: string;
+          operator?: string;
+          tolerationSeconds?: number;
+          value?: string;
+        }[];
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const CreateResourceV1beta1NamespacedResourceClaimOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2867,9 +4304,7 @@ export const CreateResourceV1beta1NamespacedResourceClaimOutput =
         ),
       }),
     ),
-  });
-export type CreateResourceV1beta1NamespacedResourceClaimOutput =
-  typeof CreateResourceV1beta1NamespacedResourceClaimOutput.Type;
+  }) as unknown as Schema.Codec<CreateResourceV1beta1NamespacedResourceClaimOutput>;
 
 // The operation
 /**
@@ -2888,6 +4323,125 @@ export const createResourceV1beta1NamespacedResourceClaim =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateResourceV1beta1NamespacedResourceClaimTemplateInput {
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+        }[];
+        constraints?: {
+          distinctAttribute?: string;
+          matchAttribute?: string;
+          requests?: string[];
+        }[];
+        requests?: {
+          adminAccess?: boolean;
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName?: string;
+          firstAvailable?: {
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            name: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+    };
+  };
+}
 export const CreateResourceV1beta1NamespacedResourceClaimTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -3107,11 +4661,123 @@ export const CreateResourceV1beta1NamespacedResourceClaimTemplateInput =
       method: "POST",
       path: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaimtemplates",
     }),
-  );
-export type CreateResourceV1beta1NamespacedResourceClaimTemplateInput =
-  typeof CreateResourceV1beta1NamespacedResourceClaimTemplateInput.Type;
+  ) as unknown as Schema.Codec<CreateResourceV1beta1NamespacedResourceClaimTemplateInput>;
 
 // Output Schema
+export interface CreateResourceV1beta1NamespacedResourceClaimTemplateOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+        }[];
+        constraints?: {
+          distinctAttribute?: string;
+          matchAttribute?: string;
+          requests?: string[];
+        }[];
+        requests?: {
+          adminAccess?: boolean;
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName?: string;
+          firstAvailable?: {
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            name: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+    };
+  };
+}
 export const CreateResourceV1beta1NamespacedResourceClaimTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3321,9 +4987,7 @@ export const CreateResourceV1beta1NamespacedResourceClaimTemplateOutput =
         ),
       }),
     ),
-  });
-export type CreateResourceV1beta1NamespacedResourceClaimTemplateOutput =
-  typeof CreateResourceV1beta1NamespacedResourceClaimTemplateOutput.Type;
+  }) as unknown as Schema.Codec<CreateResourceV1beta1NamespacedResourceClaimTemplateOutput>;
 
 // The operation
 /**
@@ -3342,6 +5006,130 @@ export const createResourceV1beta1NamespacedResourceClaimTemplate =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateResourceV1beta1ResourceSliceInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    allNodes?: boolean;
+    devices?: {
+      basic?: {
+        allNodes?: boolean;
+        allowMultipleAllocations?: boolean;
+        attributes?: Record<
+          string,
+          {
+            bool?: boolean;
+            bools?: boolean[];
+            int?: number;
+            ints?: number[];
+            string?: string;
+            strings?: string[];
+            version?: string;
+            versions?: string[];
+          }
+        >;
+        bindingConditions?: string[];
+        bindingFailureConditions?: string[];
+        bindsToNode?: boolean;
+        capacity?: Record<
+          string,
+          {
+            requestPolicy?: {
+              default?: string;
+              validRange?: { max?: string; min: string; step?: string };
+              validValues?: string[];
+            };
+            value: string;
+          }
+        >;
+        consumesCounters?: {
+          counterSet: string;
+          counters: Record<string, { value: string }>;
+        }[];
+        nodeAllocatableResourceMappings?: Record<
+          string,
+          { allocationMultiplier?: string; capacityKey?: string }
+        >;
+        nodeName?: string;
+        nodeSelector?: {
+          nodeSelectorTerms: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchFields?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+          }[];
+        };
+        taints?: {
+          effect: string;
+          key: string;
+          timeAdded?: string;
+          value?: string;
+        }[];
+      };
+      name: string;
+    }[];
+    driver: string;
+    nodeName?: string;
+    nodeSelector?: {
+      nodeSelectorTerms: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchFields?: { key: string; operator: string; values?: string[] }[];
+      }[];
+    };
+    perDeviceNodeSelection?: boolean;
+    pool: { generation: number; name: string; resourceSliceCount: number };
+    sharedCounters?: {
+      counters: Record<string, { value: string }>;
+      name: string;
+    }[];
+  };
+}
 export const CreateResourceV1beta1ResourceSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -3568,11 +5356,129 @@ export const CreateResourceV1beta1ResourceSliceInput =
       method: "POST",
       path: "/apis/resource.k8s.io/v1beta1/resourceslices",
     }),
-  );
-export type CreateResourceV1beta1ResourceSliceInput =
-  typeof CreateResourceV1beta1ResourceSliceInput.Type;
+  ) as unknown as Schema.Codec<CreateResourceV1beta1ResourceSliceInput>;
 
 // Output Schema
+export interface CreateResourceV1beta1ResourceSliceOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    allNodes?: boolean;
+    devices?: {
+      basic?: {
+        allNodes?: boolean;
+        allowMultipleAllocations?: boolean;
+        attributes?: Record<
+          string,
+          {
+            bool?: boolean;
+            bools?: boolean[];
+            int?: number;
+            ints?: number[];
+            string?: string;
+            strings?: string[];
+            version?: string;
+            versions?: string[];
+          }
+        >;
+        bindingConditions?: string[];
+        bindingFailureConditions?: string[];
+        bindsToNode?: boolean;
+        capacity?: Record<
+          string,
+          {
+            requestPolicy?: {
+              default?: string;
+              validRange?: { max?: string; min: string; step?: string };
+              validValues?: string[];
+            };
+            value: string;
+          }
+        >;
+        consumesCounters?: {
+          counterSet: string;
+          counters: Record<string, { value: string }>;
+        }[];
+        nodeAllocatableResourceMappings?: Record<
+          string,
+          { allocationMultiplier?: string; capacityKey?: string }
+        >;
+        nodeName?: string;
+        nodeSelector?: {
+          nodeSelectorTerms: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchFields?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+          }[];
+        };
+        taints?: {
+          effect: string;
+          key: string;
+          timeAdded?: string;
+          value?: string;
+        }[];
+      };
+      name: string;
+    }[];
+    driver: string;
+    nodeName?: string;
+    nodeSelector?: {
+      nodeSelectorTerms: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchFields?: { key: string; operator: string; values?: string[] }[];
+      }[];
+    };
+    perDeviceNodeSelection?: boolean;
+    pool: { generation: number; name: string; resourceSliceCount: number };
+    sharedCounters?: {
+      counters: Record<string, { value: string }>;
+      name: string;
+    }[];
+  };
+}
 export const CreateResourceV1beta1ResourceSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3790,9 +5696,7 @@ export const CreateResourceV1beta1ResourceSliceOutput =
         ),
       ),
     }),
-  });
-export type CreateResourceV1beta1ResourceSliceOutput =
-  typeof CreateResourceV1beta1ResourceSliceOutput.Type;
+  }) as unknown as Schema.Codec<CreateResourceV1beta1ResourceSliceOutput>;
 
 // The operation
 /**
@@ -3810,6 +5714,51 @@ export const createResourceV1beta1ResourceSlice =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateResourceV1beta2DeviceClassInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    config?: { opaque?: { driver: string; parameters: unknown } }[];
+    extendedResourceName?: string;
+    selectors?: { cel?: { expression: string } }[];
+  };
+}
 export const CreateResourceV1beta2DeviceClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -3895,11 +5844,50 @@ export const CreateResourceV1beta2DeviceClassInput =
       method: "POST",
       path: "/apis/resource.k8s.io/v1beta2/deviceclasses",
     }),
-  );
-export type CreateResourceV1beta2DeviceClassInput =
-  typeof CreateResourceV1beta2DeviceClassInput.Type;
+  ) as unknown as Schema.Codec<CreateResourceV1beta2DeviceClassInput>;
 
 // Output Schema
+export interface CreateResourceV1beta2DeviceClassOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    config?: { opaque?: { driver: string; parameters: unknown } }[];
+    extendedResourceName?: string;
+    selectors?: { cel?: { expression: string } }[];
+  };
+}
 export const CreateResourceV1beta2DeviceClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3976,9 +5964,7 @@ export const CreateResourceV1beta2DeviceClassOutput =
         ),
       }),
     ),
-  });
-export type CreateResourceV1beta2DeviceClassOutput =
-  typeof CreateResourceV1beta2DeviceClassOutput.Type;
+  }) as unknown as Schema.Codec<CreateResourceV1beta2DeviceClassOutput>;
 
 // The operation
 /**
@@ -3996,6 +5982,60 @@ export const createResourceV1beta2DeviceClass =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateResourceV1beta2DeviceTaintRuleInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    deviceSelector?: { device?: string; driver?: string; pool?: string };
+    taint: { effect: string; key: string; timeAdded?: string; value?: string };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const CreateResourceV1beta2DeviceTaintRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -4084,11 +6124,59 @@ export const CreateResourceV1beta2DeviceTaintRuleInput =
       method: "POST",
       path: "/apis/resource.k8s.io/v1beta2/devicetaintrules",
     }),
-  );
-export type CreateResourceV1beta2DeviceTaintRuleInput =
-  typeof CreateResourceV1beta2DeviceTaintRuleInput.Type;
+  ) as unknown as Schema.Codec<CreateResourceV1beta2DeviceTaintRuleInput>;
 
 // Output Schema
+export interface CreateResourceV1beta2DeviceTaintRuleOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    deviceSelector?: { device?: string; driver?: string; pool?: string };
+    taint: { effect: string; key: string; timeAdded?: string; value?: string };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const CreateResourceV1beta2DeviceTaintRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4168,9 +6256,7 @@ export const CreateResourceV1beta2DeviceTaintRuleOutput =
         ),
       }),
     ),
-  });
-export type CreateResourceV1beta2DeviceTaintRuleOutput =
-  typeof CreateResourceV1beta2DeviceTaintRuleOutput.Type;
+  }) as unknown as Schema.Codec<CreateResourceV1beta2DeviceTaintRuleOutput>;
 
 // The operation
 /**
@@ -4188,6 +6274,159 @@ export const createResourceV1beta2DeviceTaintRule =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateResourceV1beta2NamespacedResourceClaimInput {
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        exactly?: {
+          adminAccess?: boolean;
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        };
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const CreateResourceV1beta2NamespacedResourceClaimInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -4484,11 +6723,157 @@ export const CreateResourceV1beta2NamespacedResourceClaimInput =
       method: "POST",
       path: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaims",
     }),
-  );
-export type CreateResourceV1beta2NamespacedResourceClaimInput =
-  typeof CreateResourceV1beta2NamespacedResourceClaimInput.Type;
+  ) as unknown as Schema.Codec<CreateResourceV1beta2NamespacedResourceClaimInput>;
 
 // Output Schema
+export interface CreateResourceV1beta2NamespacedResourceClaimOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        exactly?: {
+          adminAccess?: boolean;
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        };
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const CreateResourceV1beta2NamespacedResourceClaimOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4775,9 +7160,7 @@ export const CreateResourceV1beta2NamespacedResourceClaimOutput =
         ),
       }),
     ),
-  });
-export type CreateResourceV1beta2NamespacedResourceClaimOutput =
-  typeof CreateResourceV1beta2NamespacedResourceClaimOutput.Type;
+  }) as unknown as Schema.Codec<CreateResourceV1beta2NamespacedResourceClaimOutput>;
 
 // The operation
 /**
@@ -4796,6 +7179,127 @@ export const createResourceV1beta2NamespacedResourceClaim =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateResourceV1beta2NamespacedResourceClaimTemplateInput {
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+        }[];
+        constraints?: {
+          distinctAttribute?: string;
+          matchAttribute?: string;
+          requests?: string[];
+        }[];
+        requests?: {
+          exactly?: {
+            adminAccess?: boolean;
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          };
+          firstAvailable?: {
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            name: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+          name: string;
+        }[];
+      };
+    };
+  };
+}
 export const CreateResourceV1beta2NamespacedResourceClaimTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -5021,11 +7525,125 @@ export const CreateResourceV1beta2NamespacedResourceClaimTemplateInput =
       method: "POST",
       path: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaimtemplates",
     }),
-  );
-export type CreateResourceV1beta2NamespacedResourceClaimTemplateInput =
-  typeof CreateResourceV1beta2NamespacedResourceClaimTemplateInput.Type;
+  ) as unknown as Schema.Codec<CreateResourceV1beta2NamespacedResourceClaimTemplateInput>;
 
 // Output Schema
+export interface CreateResourceV1beta2NamespacedResourceClaimTemplateOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+        }[];
+        constraints?: {
+          distinctAttribute?: string;
+          matchAttribute?: string;
+          requests?: string[];
+        }[];
+        requests?: {
+          exactly?: {
+            adminAccess?: boolean;
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          };
+          firstAvailable?: {
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            name: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+          name: string;
+        }[];
+      };
+    };
+  };
+}
 export const CreateResourceV1beta2NamespacedResourceClaimTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -5241,9 +7859,7 @@ export const CreateResourceV1beta2NamespacedResourceClaimTemplateOutput =
         ),
       }),
     ),
-  });
-export type CreateResourceV1beta2NamespacedResourceClaimTemplateOutput =
-  typeof CreateResourceV1beta2NamespacedResourceClaimTemplateOutput.Type;
+  }) as unknown as Schema.Codec<CreateResourceV1beta2NamespacedResourceClaimTemplateOutput>;
 
 // The operation
 /**
@@ -5262,6 +7878,124 @@ export const createResourceV1beta2NamespacedResourceClaimTemplate =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateResourceV1beta2ResourceSliceInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    allNodes?: boolean;
+    devices?: {
+      allNodes?: boolean;
+      allowMultipleAllocations?: boolean;
+      attributes?: Record<
+        string,
+        {
+          bool?: boolean;
+          bools?: boolean[];
+          int?: number;
+          ints?: number[];
+          string?: string;
+          strings?: string[];
+          version?: string;
+          versions?: string[];
+        }
+      >;
+      bindingConditions?: string[];
+      bindingFailureConditions?: string[];
+      bindsToNode?: boolean;
+      capacity?: Record<
+        string,
+        {
+          requestPolicy?: {
+            default?: string;
+            validRange?: { max?: string; min: string; step?: string };
+            validValues?: string[];
+          };
+          value: string;
+        }
+      >;
+      consumesCounters?: {
+        counterSet: string;
+        counters: Record<string, { value: string }>;
+      }[];
+      name: string;
+      nodeAllocatableResourceMappings?: Record<
+        string,
+        { allocationMultiplier?: string; capacityKey?: string }
+      >;
+      nodeName?: string;
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+      taints?: {
+        effect: string;
+        key: string;
+        timeAdded?: string;
+        value?: string;
+      }[];
+    }[];
+    driver: string;
+    nodeName?: string;
+    nodeSelector?: {
+      nodeSelectorTerms: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchFields?: { key: string; operator: string; values?: string[] }[];
+      }[];
+    };
+    perDeviceNodeSelection?: boolean;
+    pool: { generation: number; name: string; resourceSliceCount: number };
+    sharedCounters?: {
+      counters: Record<string, { value: string }>;
+      name: string;
+    }[];
+  };
+}
 export const CreateResourceV1beta2ResourceSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -5478,11 +8212,123 @@ export const CreateResourceV1beta2ResourceSliceInput =
       method: "POST",
       path: "/apis/resource.k8s.io/v1beta2/resourceslices",
     }),
-  );
-export type CreateResourceV1beta2ResourceSliceInput =
-  typeof CreateResourceV1beta2ResourceSliceInput.Type;
+  ) as unknown as Schema.Codec<CreateResourceV1beta2ResourceSliceInput>;
 
 // Output Schema
+export interface CreateResourceV1beta2ResourceSliceOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    allNodes?: boolean;
+    devices?: {
+      allNodes?: boolean;
+      allowMultipleAllocations?: boolean;
+      attributes?: Record<
+        string,
+        {
+          bool?: boolean;
+          bools?: boolean[];
+          int?: number;
+          ints?: number[];
+          string?: string;
+          strings?: string[];
+          version?: string;
+          versions?: string[];
+        }
+      >;
+      bindingConditions?: string[];
+      bindingFailureConditions?: string[];
+      bindsToNode?: boolean;
+      capacity?: Record<
+        string,
+        {
+          requestPolicy?: {
+            default?: string;
+            validRange?: { max?: string; min: string; step?: string };
+            validValues?: string[];
+          };
+          value: string;
+        }
+      >;
+      consumesCounters?: {
+        counterSet: string;
+        counters: Record<string, { value: string }>;
+      }[];
+      name: string;
+      nodeAllocatableResourceMappings?: Record<
+        string,
+        { allocationMultiplier?: string; capacityKey?: string }
+      >;
+      nodeName?: string;
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+      taints?: {
+        effect: string;
+        key: string;
+        timeAdded?: string;
+        value?: string;
+      }[];
+    }[];
+    driver: string;
+    nodeName?: string;
+    nodeSelector?: {
+      nodeSelectorTerms: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchFields?: { key: string; operator: string; values?: string[] }[];
+      }[];
+    };
+    perDeviceNodeSelection?: boolean;
+    pool: { generation: number; name: string; resourceSliceCount: number };
+    sharedCounters?: {
+      counters: Record<string, { value: string }>;
+      name: string;
+    }[];
+  };
+}
 export const CreateResourceV1beta2ResourceSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -5690,9 +8536,7 @@ export const CreateResourceV1beta2ResourceSliceOutput =
         ),
       ),
     }),
-  });
-export type CreateResourceV1beta2ResourceSliceOutput =
-  typeof CreateResourceV1beta2ResourceSliceOutput.Type;
+  }) as unknown as Schema.Codec<CreateResourceV1beta2ResourceSliceOutput>;
 
 // The operation
 /**
@@ -5710,6 +8554,26 @@ export const createResourceV1beta2ResourceSlice =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface DeleteResourceV1CollectionDeviceClassInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteResourceV1CollectionDeviceClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -5742,11 +8606,32 @@ export const DeleteResourceV1CollectionDeviceClassInput =
       method: "DELETE",
       path: "/apis/resource.k8s.io/v1/deviceclasses",
     }),
-  );
-export type DeleteResourceV1CollectionDeviceClassInput =
-  typeof DeleteResourceV1CollectionDeviceClassInput.Type;
+  ) as unknown as Schema.Codec<DeleteResourceV1CollectionDeviceClassInput>;
 
 // Output Schema
+export interface DeleteResourceV1CollectionDeviceClassOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteResourceV1CollectionDeviceClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -5786,9 +8671,7 @@ export const DeleteResourceV1CollectionDeviceClassOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteResourceV1CollectionDeviceClassOutput =
-  typeof DeleteResourceV1CollectionDeviceClassOutput.Type;
+  }) as unknown as Schema.Codec<DeleteResourceV1CollectionDeviceClassOutput>;
 
 // The operation
 /**
@@ -5857,6 +8740,27 @@ export const deleteResourceV1CollectionDeviceClass =
     outputSchema: DeleteResourceV1CollectionDeviceClassOutput,
   }));
 // Input Schema
+export interface DeleteResourceV1CollectionNamespacedResourceClaimInput {
+  namespace: string;
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteResourceV1CollectionNamespacedResourceClaimInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -5890,11 +8794,32 @@ export const DeleteResourceV1CollectionNamespacedResourceClaimInput =
       method: "DELETE",
       path: "/apis/resource.k8s.io/v1/namespaces/{namespace}/resourceclaims",
     }),
-  );
-export type DeleteResourceV1CollectionNamespacedResourceClaimInput =
-  typeof DeleteResourceV1CollectionNamespacedResourceClaimInput.Type;
+  ) as unknown as Schema.Codec<DeleteResourceV1CollectionNamespacedResourceClaimInput>;
 
 // Output Schema
+export interface DeleteResourceV1CollectionNamespacedResourceClaimOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteResourceV1CollectionNamespacedResourceClaimOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -5934,9 +8859,7 @@ export const DeleteResourceV1CollectionNamespacedResourceClaimOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteResourceV1CollectionNamespacedResourceClaimOutput =
-  typeof DeleteResourceV1CollectionNamespacedResourceClaimOutput.Type;
+  }) as unknown as Schema.Codec<DeleteResourceV1CollectionNamespacedResourceClaimOutput>;
 
 // The operation
 /**
@@ -6006,6 +8929,27 @@ export const deleteResourceV1CollectionNamespacedResourceClaim =
     outputSchema: DeleteResourceV1CollectionNamespacedResourceClaimOutput,
   }));
 // Input Schema
+export interface DeleteResourceV1CollectionNamespacedResourceClaimTemplateInput {
+  namespace: string;
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteResourceV1CollectionNamespacedResourceClaimTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -6039,11 +8983,32 @@ export const DeleteResourceV1CollectionNamespacedResourceClaimTemplateInput =
       method: "DELETE",
       path: "/apis/resource.k8s.io/v1/namespaces/{namespace}/resourceclaimtemplates",
     }),
-  );
-export type DeleteResourceV1CollectionNamespacedResourceClaimTemplateInput =
-  typeof DeleteResourceV1CollectionNamespacedResourceClaimTemplateInput.Type;
+  ) as unknown as Schema.Codec<DeleteResourceV1CollectionNamespacedResourceClaimTemplateInput>;
 
 // Output Schema
+export interface DeleteResourceV1CollectionNamespacedResourceClaimTemplateOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteResourceV1CollectionNamespacedResourceClaimTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -6083,9 +9048,7 @@ export const DeleteResourceV1CollectionNamespacedResourceClaimTemplateOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteResourceV1CollectionNamespacedResourceClaimTemplateOutput =
-  typeof DeleteResourceV1CollectionNamespacedResourceClaimTemplateOutput.Type;
+  }) as unknown as Schema.Codec<DeleteResourceV1CollectionNamespacedResourceClaimTemplateOutput>;
 
 // The operation
 /**
@@ -6156,6 +9119,26 @@ export const deleteResourceV1CollectionNamespacedResourceClaimTemplate =
       DeleteResourceV1CollectionNamespacedResourceClaimTemplateOutput,
   }));
 // Input Schema
+export interface DeleteResourceV1CollectionResourceSliceInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteResourceV1CollectionResourceSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -6188,11 +9171,32 @@ export const DeleteResourceV1CollectionResourceSliceInput =
       method: "DELETE",
       path: "/apis/resource.k8s.io/v1/resourceslices",
     }),
-  );
-export type DeleteResourceV1CollectionResourceSliceInput =
-  typeof DeleteResourceV1CollectionResourceSliceInput.Type;
+  ) as unknown as Schema.Codec<DeleteResourceV1CollectionResourceSliceInput>;
 
 // Output Schema
+export interface DeleteResourceV1CollectionResourceSliceOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteResourceV1CollectionResourceSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -6232,9 +9236,7 @@ export const DeleteResourceV1CollectionResourceSliceOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteResourceV1CollectionResourceSliceOutput =
-  typeof DeleteResourceV1CollectionResourceSliceOutput.Type;
+  }) as unknown as Schema.Codec<DeleteResourceV1CollectionResourceSliceOutput>;
 
 // The operation
 /**
@@ -6303,6 +9305,18 @@ export const deleteResourceV1CollectionResourceSlice =
     outputSchema: DeleteResourceV1CollectionResourceSliceOutput,
   }));
 // Input Schema
+export interface DeleteResourceV1DeviceClassInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteResourceV1DeviceClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -6327,11 +9341,50 @@ export const DeleteResourceV1DeviceClassInput =
       method: "DELETE",
       path: "/apis/resource.k8s.io/v1/deviceclasses/{name}",
     }),
-  );
-export type DeleteResourceV1DeviceClassInput =
-  typeof DeleteResourceV1DeviceClassInput.Type;
+  ) as unknown as Schema.Codec<DeleteResourceV1DeviceClassInput>;
 
 // Output Schema
+export interface DeleteResourceV1DeviceClassOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    config?: { opaque?: { driver: string; parameters: unknown } }[];
+    extendedResourceName?: string;
+    selectors?: { cel?: { expression: string } }[];
+  };
+}
 export const DeleteResourceV1DeviceClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -6408,9 +9461,7 @@ export const DeleteResourceV1DeviceClassOutput =
         ),
       }),
     ),
-  });
-export type DeleteResourceV1DeviceClassOutput =
-  typeof DeleteResourceV1DeviceClassOutput.Type;
+  }) as unknown as Schema.Codec<DeleteResourceV1DeviceClassOutput>;
 
 // The operation
 /**
@@ -6432,6 +9483,19 @@ export const deleteResourceV1DeviceClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeleteResourceV1NamespacedResourceClaimInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteResourceV1NamespacedResourceClaimInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -6457,11 +9521,157 @@ export const DeleteResourceV1NamespacedResourceClaimInput =
       method: "DELETE",
       path: "/apis/resource.k8s.io/v1/namespaces/{namespace}/resourceclaims/{name}",
     }),
-  );
-export type DeleteResourceV1NamespacedResourceClaimInput =
-  typeof DeleteResourceV1NamespacedResourceClaimInput.Type;
+  ) as unknown as Schema.Codec<DeleteResourceV1NamespacedResourceClaimInput>;
 
 // Output Schema
+export interface DeleteResourceV1NamespacedResourceClaimOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        exactly?: {
+          adminAccess?: boolean;
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        };
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const DeleteResourceV1NamespacedResourceClaimOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -6748,9 +9958,7 @@ export const DeleteResourceV1NamespacedResourceClaimOutput =
         ),
       }),
     ),
-  });
-export type DeleteResourceV1NamespacedResourceClaimOutput =
-  typeof DeleteResourceV1NamespacedResourceClaimOutput.Type;
+  }) as unknown as Schema.Codec<DeleteResourceV1NamespacedResourceClaimOutput>;
 
 // The operation
 /**
@@ -6772,6 +9980,19 @@ export const deleteResourceV1NamespacedResourceClaim =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteResourceV1NamespacedResourceClaimTemplateInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteResourceV1NamespacedResourceClaimTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -6797,11 +10018,125 @@ export const DeleteResourceV1NamespacedResourceClaimTemplateInput =
       method: "DELETE",
       path: "/apis/resource.k8s.io/v1/namespaces/{namespace}/resourceclaimtemplates/{name}",
     }),
-  );
-export type DeleteResourceV1NamespacedResourceClaimTemplateInput =
-  typeof DeleteResourceV1NamespacedResourceClaimTemplateInput.Type;
+  ) as unknown as Schema.Codec<DeleteResourceV1NamespacedResourceClaimTemplateInput>;
 
 // Output Schema
+export interface DeleteResourceV1NamespacedResourceClaimTemplateOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+        }[];
+        constraints?: {
+          distinctAttribute?: string;
+          matchAttribute?: string;
+          requests?: string[];
+        }[];
+        requests?: {
+          exactly?: {
+            adminAccess?: boolean;
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          };
+          firstAvailable?: {
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            name: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+          name: string;
+        }[];
+      };
+    };
+  };
+}
 export const DeleteResourceV1NamespacedResourceClaimTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -7017,9 +10352,7 @@ export const DeleteResourceV1NamespacedResourceClaimTemplateOutput =
         ),
       }),
     ),
-  });
-export type DeleteResourceV1NamespacedResourceClaimTemplateOutput =
-  typeof DeleteResourceV1NamespacedResourceClaimTemplateOutput.Type;
+  }) as unknown as Schema.Codec<DeleteResourceV1NamespacedResourceClaimTemplateOutput>;
 
 // The operation
 /**
@@ -7041,6 +10374,18 @@ export const deleteResourceV1NamespacedResourceClaimTemplate =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteResourceV1ResourceSliceInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteResourceV1ResourceSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -7065,11 +10410,123 @@ export const DeleteResourceV1ResourceSliceInput =
       method: "DELETE",
       path: "/apis/resource.k8s.io/v1/resourceslices/{name}",
     }),
-  );
-export type DeleteResourceV1ResourceSliceInput =
-  typeof DeleteResourceV1ResourceSliceInput.Type;
+  ) as unknown as Schema.Codec<DeleteResourceV1ResourceSliceInput>;
 
 // Output Schema
+export interface DeleteResourceV1ResourceSliceOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    allNodes?: boolean;
+    devices?: {
+      allNodes?: boolean;
+      allowMultipleAllocations?: boolean;
+      attributes?: Record<
+        string,
+        {
+          bool?: boolean;
+          bools?: boolean[];
+          int?: number;
+          ints?: number[];
+          string?: string;
+          strings?: string[];
+          version?: string;
+          versions?: string[];
+        }
+      >;
+      bindingConditions?: string[];
+      bindingFailureConditions?: string[];
+      bindsToNode?: boolean;
+      capacity?: Record<
+        string,
+        {
+          requestPolicy?: {
+            default?: string;
+            validRange?: { max?: string; min: string; step?: string };
+            validValues?: string[];
+          };
+          value: string;
+        }
+      >;
+      consumesCounters?: {
+        counterSet: string;
+        counters: Record<string, { value: string }>;
+      }[];
+      name: string;
+      nodeAllocatableResourceMappings?: Record<
+        string,
+        { allocationMultiplier?: string; capacityKey?: string }
+      >;
+      nodeName?: string;
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+      taints?: {
+        effect: string;
+        key: string;
+        timeAdded?: string;
+        value?: string;
+      }[];
+    }[];
+    driver: string;
+    nodeName?: string;
+    nodeSelector?: {
+      nodeSelectorTerms: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchFields?: { key: string; operator: string; values?: string[] }[];
+      }[];
+    };
+    perDeviceNodeSelection?: boolean;
+    pool: { generation: number; name: string; resourceSliceCount: number };
+    sharedCounters?: {
+      counters: Record<string, { value: string }>;
+      name: string;
+    }[];
+  };
+}
 export const DeleteResourceV1ResourceSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -7277,9 +10734,7 @@ export const DeleteResourceV1ResourceSliceOutput =
         ),
       ),
     }),
-  });
-export type DeleteResourceV1ResourceSliceOutput =
-  typeof DeleteResourceV1ResourceSliceOutput.Type;
+  }) as unknown as Schema.Codec<DeleteResourceV1ResourceSliceOutput>;
 
 // The operation
 /**
@@ -7300,6 +10755,26 @@ export const deleteResourceV1ResourceSlice =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteResourceV1alpha3CollectionDeviceTaintRuleInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteResourceV1alpha3CollectionDeviceTaintRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -7332,11 +10807,32 @@ export const DeleteResourceV1alpha3CollectionDeviceTaintRuleInput =
       method: "DELETE",
       path: "/apis/resource.k8s.io/v1alpha3/devicetaintrules",
     }),
-  );
-export type DeleteResourceV1alpha3CollectionDeviceTaintRuleInput =
-  typeof DeleteResourceV1alpha3CollectionDeviceTaintRuleInput.Type;
+  ) as unknown as Schema.Codec<DeleteResourceV1alpha3CollectionDeviceTaintRuleInput>;
 
 // Output Schema
+export interface DeleteResourceV1alpha3CollectionDeviceTaintRuleOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteResourceV1alpha3CollectionDeviceTaintRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -7376,9 +10872,7 @@ export const DeleteResourceV1alpha3CollectionDeviceTaintRuleOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteResourceV1alpha3CollectionDeviceTaintRuleOutput =
-  typeof DeleteResourceV1alpha3CollectionDeviceTaintRuleOutput.Type;
+  }) as unknown as Schema.Codec<DeleteResourceV1alpha3CollectionDeviceTaintRuleOutput>;
 
 // The operation
 /**
@@ -7447,6 +10941,26 @@ export const deleteResourceV1alpha3CollectionDeviceTaintRule =
     outputSchema: DeleteResourceV1alpha3CollectionDeviceTaintRuleOutput,
   }));
 // Input Schema
+export interface DeleteResourceV1alpha3CollectionResourcePoolStatusRequestInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteResourceV1alpha3CollectionResourcePoolStatusRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -7479,11 +10993,32 @@ export const DeleteResourceV1alpha3CollectionResourcePoolStatusRequestInput =
       method: "DELETE",
       path: "/apis/resource.k8s.io/v1alpha3/resourcepoolstatusrequests",
     }),
-  );
-export type DeleteResourceV1alpha3CollectionResourcePoolStatusRequestInput =
-  typeof DeleteResourceV1alpha3CollectionResourcePoolStatusRequestInput.Type;
+  ) as unknown as Schema.Codec<DeleteResourceV1alpha3CollectionResourcePoolStatusRequestInput>;
 
 // Output Schema
+export interface DeleteResourceV1alpha3CollectionResourcePoolStatusRequestOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteResourceV1alpha3CollectionResourcePoolStatusRequestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -7523,9 +11058,7 @@ export const DeleteResourceV1alpha3CollectionResourcePoolStatusRequestOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteResourceV1alpha3CollectionResourcePoolStatusRequestOutput =
-  typeof DeleteResourceV1alpha3CollectionResourcePoolStatusRequestOutput.Type;
+  }) as unknown as Schema.Codec<DeleteResourceV1alpha3CollectionResourcePoolStatusRequestOutput>;
 
 // The operation
 /**
@@ -7595,6 +11128,18 @@ export const deleteResourceV1alpha3CollectionResourcePoolStatusRequest =
       DeleteResourceV1alpha3CollectionResourcePoolStatusRequestOutput,
   }));
 // Input Schema
+export interface DeleteResourceV1alpha3DeviceTaintRuleInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteResourceV1alpha3DeviceTaintRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -7619,11 +11164,59 @@ export const DeleteResourceV1alpha3DeviceTaintRuleInput =
       method: "DELETE",
       path: "/apis/resource.k8s.io/v1alpha3/devicetaintrules/{name}",
     }),
-  );
-export type DeleteResourceV1alpha3DeviceTaintRuleInput =
-  typeof DeleteResourceV1alpha3DeviceTaintRuleInput.Type;
+  ) as unknown as Schema.Codec<DeleteResourceV1alpha3DeviceTaintRuleInput>;
 
 // Output Schema
+export interface DeleteResourceV1alpha3DeviceTaintRuleOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    deviceSelector?: { device?: string; driver?: string; pool?: string };
+    taint: { effect: string; key: string; timeAdded?: string; value?: string };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const DeleteResourceV1alpha3DeviceTaintRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -7703,9 +11296,7 @@ export const DeleteResourceV1alpha3DeviceTaintRuleOutput =
         ),
       }),
     ),
-  });
-export type DeleteResourceV1alpha3DeviceTaintRuleOutput =
-  typeof DeleteResourceV1alpha3DeviceTaintRuleOutput.Type;
+  }) as unknown as Schema.Codec<DeleteResourceV1alpha3DeviceTaintRuleOutput>;
 
 // The operation
 /**
@@ -7726,6 +11317,18 @@ export const deleteResourceV1alpha3DeviceTaintRule =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteResourceV1alpha3ResourcePoolStatusRequestInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteResourceV1alpha3ResourcePoolStatusRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -7750,11 +11353,69 @@ export const DeleteResourceV1alpha3ResourcePoolStatusRequestInput =
       method: "DELETE",
       path: "/apis/resource.k8s.io/v1alpha3/resourcepoolstatusrequests/{name}",
     }),
-  );
-export type DeleteResourceV1alpha3ResourcePoolStatusRequestInput =
-  typeof DeleteResourceV1alpha3ResourcePoolStatusRequestInput.Type;
+  ) as unknown as Schema.Codec<DeleteResourceV1alpha3ResourcePoolStatusRequestInput>;
 
 // Output Schema
+export interface DeleteResourceV1alpha3ResourcePoolStatusRequestOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: { driver: string; limit?: number; poolName?: string };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    poolCount: number;
+    pools?: {
+      allocatedDevices?: number;
+      availableDevices?: number;
+      driver: string;
+      generation: number;
+      nodeName?: string;
+      poolName: string;
+      resourceSliceCount?: number;
+      totalDevices?: number;
+      unavailableDevices?: number;
+      validationError?: string;
+    }[];
+  };
+}
 export const DeleteResourceV1alpha3ResourcePoolStatusRequestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -7837,9 +11498,7 @@ export const DeleteResourceV1alpha3ResourcePoolStatusRequestOutput =
         ),
       }),
     ),
-  });
-export type DeleteResourceV1alpha3ResourcePoolStatusRequestOutput =
-  typeof DeleteResourceV1alpha3ResourcePoolStatusRequestOutput.Type;
+  }) as unknown as Schema.Codec<DeleteResourceV1alpha3ResourcePoolStatusRequestOutput>;
 
 // The operation
 /**
@@ -7859,6 +11518,26 @@ export const deleteResourceV1alpha3ResourcePoolStatusRequest =
     outputSchema: DeleteResourceV1alpha3ResourcePoolStatusRequestOutput,
   }));
 // Input Schema
+export interface DeleteResourceV1beta1CollectionDeviceClassInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteResourceV1beta1CollectionDeviceClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -7891,11 +11570,32 @@ export const DeleteResourceV1beta1CollectionDeviceClassInput =
       method: "DELETE",
       path: "/apis/resource.k8s.io/v1beta1/deviceclasses",
     }),
-  );
-export type DeleteResourceV1beta1CollectionDeviceClassInput =
-  typeof DeleteResourceV1beta1CollectionDeviceClassInput.Type;
+  ) as unknown as Schema.Codec<DeleteResourceV1beta1CollectionDeviceClassInput>;
 
 // Output Schema
+export interface DeleteResourceV1beta1CollectionDeviceClassOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteResourceV1beta1CollectionDeviceClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -7935,9 +11635,7 @@ export const DeleteResourceV1beta1CollectionDeviceClassOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteResourceV1beta1CollectionDeviceClassOutput =
-  typeof DeleteResourceV1beta1CollectionDeviceClassOutput.Type;
+  }) as unknown as Schema.Codec<DeleteResourceV1beta1CollectionDeviceClassOutput>;
 
 // The operation
 /**
@@ -8006,6 +11704,27 @@ export const deleteResourceV1beta1CollectionDeviceClass =
     outputSchema: DeleteResourceV1beta1CollectionDeviceClassOutput,
   }));
 // Input Schema
+export interface DeleteResourceV1beta1CollectionNamespacedResourceClaimInput {
+  namespace: string;
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteResourceV1beta1CollectionNamespacedResourceClaimInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -8039,11 +11758,32 @@ export const DeleteResourceV1beta1CollectionNamespacedResourceClaimInput =
       method: "DELETE",
       path: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaims",
     }),
-  );
-export type DeleteResourceV1beta1CollectionNamespacedResourceClaimInput =
-  typeof DeleteResourceV1beta1CollectionNamespacedResourceClaimInput.Type;
+  ) as unknown as Schema.Codec<DeleteResourceV1beta1CollectionNamespacedResourceClaimInput>;
 
 // Output Schema
+export interface DeleteResourceV1beta1CollectionNamespacedResourceClaimOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteResourceV1beta1CollectionNamespacedResourceClaimOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -8083,9 +11823,7 @@ export const DeleteResourceV1beta1CollectionNamespacedResourceClaimOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteResourceV1beta1CollectionNamespacedResourceClaimOutput =
-  typeof DeleteResourceV1beta1CollectionNamespacedResourceClaimOutput.Type;
+  }) as unknown as Schema.Codec<DeleteResourceV1beta1CollectionNamespacedResourceClaimOutput>;
 
 // The operation
 /**
@@ -8155,6 +11893,27 @@ export const deleteResourceV1beta1CollectionNamespacedResourceClaim =
     outputSchema: DeleteResourceV1beta1CollectionNamespacedResourceClaimOutput,
   }));
 // Input Schema
+export interface DeleteResourceV1beta1CollectionNamespacedResourceClaimTemplateInput {
+  namespace: string;
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteResourceV1beta1CollectionNamespacedResourceClaimTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -8188,11 +11947,32 @@ export const DeleteResourceV1beta1CollectionNamespacedResourceClaimTemplateInput
       method: "DELETE",
       path: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaimtemplates",
     }),
-  );
-export type DeleteResourceV1beta1CollectionNamespacedResourceClaimTemplateInput =
-  typeof DeleteResourceV1beta1CollectionNamespacedResourceClaimTemplateInput.Type;
+  ) as unknown as Schema.Codec<DeleteResourceV1beta1CollectionNamespacedResourceClaimTemplateInput>;
 
 // Output Schema
+export interface DeleteResourceV1beta1CollectionNamespacedResourceClaimTemplateOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteResourceV1beta1CollectionNamespacedResourceClaimTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -8232,9 +12012,7 @@ export const DeleteResourceV1beta1CollectionNamespacedResourceClaimTemplateOutpu
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteResourceV1beta1CollectionNamespacedResourceClaimTemplateOutput =
-  typeof DeleteResourceV1beta1CollectionNamespacedResourceClaimTemplateOutput.Type;
+  }) as unknown as Schema.Codec<DeleteResourceV1beta1CollectionNamespacedResourceClaimTemplateOutput>;
 
 // The operation
 /**
@@ -8306,6 +12084,26 @@ export const deleteResourceV1beta1CollectionNamespacedResourceClaimTemplate =
       DeleteResourceV1beta1CollectionNamespacedResourceClaimTemplateOutput,
   }));
 // Input Schema
+export interface DeleteResourceV1beta1CollectionResourceSliceInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteResourceV1beta1CollectionResourceSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -8338,11 +12136,32 @@ export const DeleteResourceV1beta1CollectionResourceSliceInput =
       method: "DELETE",
       path: "/apis/resource.k8s.io/v1beta1/resourceslices",
     }),
-  );
-export type DeleteResourceV1beta1CollectionResourceSliceInput =
-  typeof DeleteResourceV1beta1CollectionResourceSliceInput.Type;
+  ) as unknown as Schema.Codec<DeleteResourceV1beta1CollectionResourceSliceInput>;
 
 // Output Schema
+export interface DeleteResourceV1beta1CollectionResourceSliceOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteResourceV1beta1CollectionResourceSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -8382,9 +12201,7 @@ export const DeleteResourceV1beta1CollectionResourceSliceOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteResourceV1beta1CollectionResourceSliceOutput =
-  typeof DeleteResourceV1beta1CollectionResourceSliceOutput.Type;
+  }) as unknown as Schema.Codec<DeleteResourceV1beta1CollectionResourceSliceOutput>;
 
 // The operation
 /**
@@ -8453,6 +12270,18 @@ export const deleteResourceV1beta1CollectionResourceSlice =
     outputSchema: DeleteResourceV1beta1CollectionResourceSliceOutput,
   }));
 // Input Schema
+export interface DeleteResourceV1beta1DeviceClassInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteResourceV1beta1DeviceClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -8477,11 +12306,50 @@ export const DeleteResourceV1beta1DeviceClassInput =
       method: "DELETE",
       path: "/apis/resource.k8s.io/v1beta1/deviceclasses/{name}",
     }),
-  );
-export type DeleteResourceV1beta1DeviceClassInput =
-  typeof DeleteResourceV1beta1DeviceClassInput.Type;
+  ) as unknown as Schema.Codec<DeleteResourceV1beta1DeviceClassInput>;
 
 // Output Schema
+export interface DeleteResourceV1beta1DeviceClassOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    config?: { opaque?: { driver: string; parameters: unknown } }[];
+    extendedResourceName?: string;
+    selectors?: { cel?: { expression: string } }[];
+  };
+}
 export const DeleteResourceV1beta1DeviceClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -8558,9 +12426,7 @@ export const DeleteResourceV1beta1DeviceClassOutput =
         ),
       }),
     ),
-  });
-export type DeleteResourceV1beta1DeviceClassOutput =
-  typeof DeleteResourceV1beta1DeviceClassOutput.Type;
+  }) as unknown as Schema.Codec<DeleteResourceV1beta1DeviceClassOutput>;
 
 // The operation
 /**
@@ -8581,6 +12447,19 @@ export const deleteResourceV1beta1DeviceClass =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteResourceV1beta1NamespacedResourceClaimInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteResourceV1beta1NamespacedResourceClaimInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -8606,11 +12485,155 @@ export const DeleteResourceV1beta1NamespacedResourceClaimInput =
       method: "DELETE",
       path: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaims/{name}",
     }),
-  );
-export type DeleteResourceV1beta1NamespacedResourceClaimInput =
-  typeof DeleteResourceV1beta1NamespacedResourceClaimInput.Type;
+  ) as unknown as Schema.Codec<DeleteResourceV1beta1NamespacedResourceClaimInput>;
 
 // Output Schema
+export interface DeleteResourceV1beta1NamespacedResourceClaimOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        adminAccess?: boolean;
+        allocationMode?: string;
+        capacity?: { requests?: Record<string, string> };
+        count?: number;
+        deviceClassName?: string;
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+        selectors?: { cel?: { expression: string } }[];
+        tolerations?: {
+          effect?: string;
+          key?: string;
+          operator?: string;
+          tolerationSeconds?: number;
+          value?: string;
+        }[];
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const DeleteResourceV1beta1NamespacedResourceClaimOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -8893,9 +12916,7 @@ export const DeleteResourceV1beta1NamespacedResourceClaimOutput =
         ),
       }),
     ),
-  });
-export type DeleteResourceV1beta1NamespacedResourceClaimOutput =
-  typeof DeleteResourceV1beta1NamespacedResourceClaimOutput.Type;
+  }) as unknown as Schema.Codec<DeleteResourceV1beta1NamespacedResourceClaimOutput>;
 
 // The operation
 /**
@@ -8917,6 +12938,19 @@ export const deleteResourceV1beta1NamespacedResourceClaim =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteResourceV1beta1NamespacedResourceClaimTemplateInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteResourceV1beta1NamespacedResourceClaimTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -8942,11 +12976,123 @@ export const DeleteResourceV1beta1NamespacedResourceClaimTemplateInput =
       method: "DELETE",
       path: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaimtemplates/{name}",
     }),
-  );
-export type DeleteResourceV1beta1NamespacedResourceClaimTemplateInput =
-  typeof DeleteResourceV1beta1NamespacedResourceClaimTemplateInput.Type;
+  ) as unknown as Schema.Codec<DeleteResourceV1beta1NamespacedResourceClaimTemplateInput>;
 
 // Output Schema
+export interface DeleteResourceV1beta1NamespacedResourceClaimTemplateOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+        }[];
+        constraints?: {
+          distinctAttribute?: string;
+          matchAttribute?: string;
+          requests?: string[];
+        }[];
+        requests?: {
+          adminAccess?: boolean;
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName?: string;
+          firstAvailable?: {
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            name: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+    };
+  };
+}
 export const DeleteResourceV1beta1NamespacedResourceClaimTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -9156,9 +13302,7 @@ export const DeleteResourceV1beta1NamespacedResourceClaimTemplateOutput =
         ),
       }),
     ),
-  });
-export type DeleteResourceV1beta1NamespacedResourceClaimTemplateOutput =
-  typeof DeleteResourceV1beta1NamespacedResourceClaimTemplateOutput.Type;
+  }) as unknown as Schema.Codec<DeleteResourceV1beta1NamespacedResourceClaimTemplateOutput>;
 
 // The operation
 /**
@@ -9180,6 +13324,18 @@ export const deleteResourceV1beta1NamespacedResourceClaimTemplate =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteResourceV1beta1ResourceSliceInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteResourceV1beta1ResourceSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -9204,11 +13360,129 @@ export const DeleteResourceV1beta1ResourceSliceInput =
       method: "DELETE",
       path: "/apis/resource.k8s.io/v1beta1/resourceslices/{name}",
     }),
-  );
-export type DeleteResourceV1beta1ResourceSliceInput =
-  typeof DeleteResourceV1beta1ResourceSliceInput.Type;
+  ) as unknown as Schema.Codec<DeleteResourceV1beta1ResourceSliceInput>;
 
 // Output Schema
+export interface DeleteResourceV1beta1ResourceSliceOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    allNodes?: boolean;
+    devices?: {
+      basic?: {
+        allNodes?: boolean;
+        allowMultipleAllocations?: boolean;
+        attributes?: Record<
+          string,
+          {
+            bool?: boolean;
+            bools?: boolean[];
+            int?: number;
+            ints?: number[];
+            string?: string;
+            strings?: string[];
+            version?: string;
+            versions?: string[];
+          }
+        >;
+        bindingConditions?: string[];
+        bindingFailureConditions?: string[];
+        bindsToNode?: boolean;
+        capacity?: Record<
+          string,
+          {
+            requestPolicy?: {
+              default?: string;
+              validRange?: { max?: string; min: string; step?: string };
+              validValues?: string[];
+            };
+            value: string;
+          }
+        >;
+        consumesCounters?: {
+          counterSet: string;
+          counters: Record<string, { value: string }>;
+        }[];
+        nodeAllocatableResourceMappings?: Record<
+          string,
+          { allocationMultiplier?: string; capacityKey?: string }
+        >;
+        nodeName?: string;
+        nodeSelector?: {
+          nodeSelectorTerms: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchFields?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+          }[];
+        };
+        taints?: {
+          effect: string;
+          key: string;
+          timeAdded?: string;
+          value?: string;
+        }[];
+      };
+      name: string;
+    }[];
+    driver: string;
+    nodeName?: string;
+    nodeSelector?: {
+      nodeSelectorTerms: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchFields?: { key: string; operator: string; values?: string[] }[];
+      }[];
+    };
+    perDeviceNodeSelection?: boolean;
+    pool: { generation: number; name: string; resourceSliceCount: number };
+    sharedCounters?: {
+      counters: Record<string, { value: string }>;
+      name: string;
+    }[];
+  };
+}
 export const DeleteResourceV1beta1ResourceSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -9426,9 +13700,7 @@ export const DeleteResourceV1beta1ResourceSliceOutput =
         ),
       ),
     }),
-  });
-export type DeleteResourceV1beta1ResourceSliceOutput =
-  typeof DeleteResourceV1beta1ResourceSliceOutput.Type;
+  }) as unknown as Schema.Codec<DeleteResourceV1beta1ResourceSliceOutput>;
 
 // The operation
 /**
@@ -9449,6 +13721,26 @@ export const deleteResourceV1beta1ResourceSlice =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteResourceV1beta2CollectionDeviceClassInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteResourceV1beta2CollectionDeviceClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -9481,11 +13773,32 @@ export const DeleteResourceV1beta2CollectionDeviceClassInput =
       method: "DELETE",
       path: "/apis/resource.k8s.io/v1beta2/deviceclasses",
     }),
-  );
-export type DeleteResourceV1beta2CollectionDeviceClassInput =
-  typeof DeleteResourceV1beta2CollectionDeviceClassInput.Type;
+  ) as unknown as Schema.Codec<DeleteResourceV1beta2CollectionDeviceClassInput>;
 
 // Output Schema
+export interface DeleteResourceV1beta2CollectionDeviceClassOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteResourceV1beta2CollectionDeviceClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -9525,9 +13838,7 @@ export const DeleteResourceV1beta2CollectionDeviceClassOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteResourceV1beta2CollectionDeviceClassOutput =
-  typeof DeleteResourceV1beta2CollectionDeviceClassOutput.Type;
+  }) as unknown as Schema.Codec<DeleteResourceV1beta2CollectionDeviceClassOutput>;
 
 // The operation
 /**
@@ -9596,6 +13907,26 @@ export const deleteResourceV1beta2CollectionDeviceClass =
     outputSchema: DeleteResourceV1beta2CollectionDeviceClassOutput,
   }));
 // Input Schema
+export interface DeleteResourceV1beta2CollectionDeviceTaintRuleInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteResourceV1beta2CollectionDeviceTaintRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -9628,11 +13959,32 @@ export const DeleteResourceV1beta2CollectionDeviceTaintRuleInput =
       method: "DELETE",
       path: "/apis/resource.k8s.io/v1beta2/devicetaintrules",
     }),
-  );
-export type DeleteResourceV1beta2CollectionDeviceTaintRuleInput =
-  typeof DeleteResourceV1beta2CollectionDeviceTaintRuleInput.Type;
+  ) as unknown as Schema.Codec<DeleteResourceV1beta2CollectionDeviceTaintRuleInput>;
 
 // Output Schema
+export interface DeleteResourceV1beta2CollectionDeviceTaintRuleOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteResourceV1beta2CollectionDeviceTaintRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -9672,9 +14024,7 @@ export const DeleteResourceV1beta2CollectionDeviceTaintRuleOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteResourceV1beta2CollectionDeviceTaintRuleOutput =
-  typeof DeleteResourceV1beta2CollectionDeviceTaintRuleOutput.Type;
+  }) as unknown as Schema.Codec<DeleteResourceV1beta2CollectionDeviceTaintRuleOutput>;
 
 // The operation
 /**
@@ -9743,6 +14093,27 @@ export const deleteResourceV1beta2CollectionDeviceTaintRule =
     outputSchema: DeleteResourceV1beta2CollectionDeviceTaintRuleOutput,
   }));
 // Input Schema
+export interface DeleteResourceV1beta2CollectionNamespacedResourceClaimInput {
+  namespace: string;
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteResourceV1beta2CollectionNamespacedResourceClaimInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -9776,11 +14147,32 @@ export const DeleteResourceV1beta2CollectionNamespacedResourceClaimInput =
       method: "DELETE",
       path: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaims",
     }),
-  );
-export type DeleteResourceV1beta2CollectionNamespacedResourceClaimInput =
-  typeof DeleteResourceV1beta2CollectionNamespacedResourceClaimInput.Type;
+  ) as unknown as Schema.Codec<DeleteResourceV1beta2CollectionNamespacedResourceClaimInput>;
 
 // Output Schema
+export interface DeleteResourceV1beta2CollectionNamespacedResourceClaimOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteResourceV1beta2CollectionNamespacedResourceClaimOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -9820,9 +14212,7 @@ export const DeleteResourceV1beta2CollectionNamespacedResourceClaimOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteResourceV1beta2CollectionNamespacedResourceClaimOutput =
-  typeof DeleteResourceV1beta2CollectionNamespacedResourceClaimOutput.Type;
+  }) as unknown as Schema.Codec<DeleteResourceV1beta2CollectionNamespacedResourceClaimOutput>;
 
 // The operation
 /**
@@ -9892,6 +14282,27 @@ export const deleteResourceV1beta2CollectionNamespacedResourceClaim =
     outputSchema: DeleteResourceV1beta2CollectionNamespacedResourceClaimOutput,
   }));
 // Input Schema
+export interface DeleteResourceV1beta2CollectionNamespacedResourceClaimTemplateInput {
+  namespace: string;
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteResourceV1beta2CollectionNamespacedResourceClaimTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -9925,11 +14336,32 @@ export const DeleteResourceV1beta2CollectionNamespacedResourceClaimTemplateInput
       method: "DELETE",
       path: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaimtemplates",
     }),
-  );
-export type DeleteResourceV1beta2CollectionNamespacedResourceClaimTemplateInput =
-  typeof DeleteResourceV1beta2CollectionNamespacedResourceClaimTemplateInput.Type;
+  ) as unknown as Schema.Codec<DeleteResourceV1beta2CollectionNamespacedResourceClaimTemplateInput>;
 
 // Output Schema
+export interface DeleteResourceV1beta2CollectionNamespacedResourceClaimTemplateOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteResourceV1beta2CollectionNamespacedResourceClaimTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -9969,9 +14401,7 @@ export const DeleteResourceV1beta2CollectionNamespacedResourceClaimTemplateOutpu
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteResourceV1beta2CollectionNamespacedResourceClaimTemplateOutput =
-  typeof DeleteResourceV1beta2CollectionNamespacedResourceClaimTemplateOutput.Type;
+  }) as unknown as Schema.Codec<DeleteResourceV1beta2CollectionNamespacedResourceClaimTemplateOutput>;
 
 // The operation
 /**
@@ -10043,6 +14473,26 @@ export const deleteResourceV1beta2CollectionNamespacedResourceClaimTemplate =
       DeleteResourceV1beta2CollectionNamespacedResourceClaimTemplateOutput,
   }));
 // Input Schema
+export interface DeleteResourceV1beta2CollectionResourceSliceInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteResourceV1beta2CollectionResourceSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -10075,11 +14525,32 @@ export const DeleteResourceV1beta2CollectionResourceSliceInput =
       method: "DELETE",
       path: "/apis/resource.k8s.io/v1beta2/resourceslices",
     }),
-  );
-export type DeleteResourceV1beta2CollectionResourceSliceInput =
-  typeof DeleteResourceV1beta2CollectionResourceSliceInput.Type;
+  ) as unknown as Schema.Codec<DeleteResourceV1beta2CollectionResourceSliceInput>;
 
 // Output Schema
+export interface DeleteResourceV1beta2CollectionResourceSliceOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteResourceV1beta2CollectionResourceSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -10119,9 +14590,7 @@ export const DeleteResourceV1beta2CollectionResourceSliceOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteResourceV1beta2CollectionResourceSliceOutput =
-  typeof DeleteResourceV1beta2CollectionResourceSliceOutput.Type;
+  }) as unknown as Schema.Codec<DeleteResourceV1beta2CollectionResourceSliceOutput>;
 
 // The operation
 /**
@@ -10190,6 +14659,18 @@ export const deleteResourceV1beta2CollectionResourceSlice =
     outputSchema: DeleteResourceV1beta2CollectionResourceSliceOutput,
   }));
 // Input Schema
+export interface DeleteResourceV1beta2DeviceClassInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteResourceV1beta2DeviceClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -10214,11 +14695,50 @@ export const DeleteResourceV1beta2DeviceClassInput =
       method: "DELETE",
       path: "/apis/resource.k8s.io/v1beta2/deviceclasses/{name}",
     }),
-  );
-export type DeleteResourceV1beta2DeviceClassInput =
-  typeof DeleteResourceV1beta2DeviceClassInput.Type;
+  ) as unknown as Schema.Codec<DeleteResourceV1beta2DeviceClassInput>;
 
 // Output Schema
+export interface DeleteResourceV1beta2DeviceClassOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    config?: { opaque?: { driver: string; parameters: unknown } }[];
+    extendedResourceName?: string;
+    selectors?: { cel?: { expression: string } }[];
+  };
+}
 export const DeleteResourceV1beta2DeviceClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -10295,9 +14815,7 @@ export const DeleteResourceV1beta2DeviceClassOutput =
         ),
       }),
     ),
-  });
-export type DeleteResourceV1beta2DeviceClassOutput =
-  typeof DeleteResourceV1beta2DeviceClassOutput.Type;
+  }) as unknown as Schema.Codec<DeleteResourceV1beta2DeviceClassOutput>;
 
 // The operation
 /**
@@ -10318,6 +14836,18 @@ export const deleteResourceV1beta2DeviceClass =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteResourceV1beta2DeviceTaintRuleInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteResourceV1beta2DeviceTaintRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -10342,11 +14872,59 @@ export const DeleteResourceV1beta2DeviceTaintRuleInput =
       method: "DELETE",
       path: "/apis/resource.k8s.io/v1beta2/devicetaintrules/{name}",
     }),
-  );
-export type DeleteResourceV1beta2DeviceTaintRuleInput =
-  typeof DeleteResourceV1beta2DeviceTaintRuleInput.Type;
+  ) as unknown as Schema.Codec<DeleteResourceV1beta2DeviceTaintRuleInput>;
 
 // Output Schema
+export interface DeleteResourceV1beta2DeviceTaintRuleOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    deviceSelector?: { device?: string; driver?: string; pool?: string };
+    taint: { effect: string; key: string; timeAdded?: string; value?: string };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const DeleteResourceV1beta2DeviceTaintRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -10426,9 +15004,7 @@ export const DeleteResourceV1beta2DeviceTaintRuleOutput =
         ),
       }),
     ),
-  });
-export type DeleteResourceV1beta2DeviceTaintRuleOutput =
-  typeof DeleteResourceV1beta2DeviceTaintRuleOutput.Type;
+  }) as unknown as Schema.Codec<DeleteResourceV1beta2DeviceTaintRuleOutput>;
 
 // The operation
 /**
@@ -10449,6 +15025,19 @@ export const deleteResourceV1beta2DeviceTaintRule =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteResourceV1beta2NamespacedResourceClaimInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteResourceV1beta2NamespacedResourceClaimInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -10474,11 +15063,157 @@ export const DeleteResourceV1beta2NamespacedResourceClaimInput =
       method: "DELETE",
       path: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaims/{name}",
     }),
-  );
-export type DeleteResourceV1beta2NamespacedResourceClaimInput =
-  typeof DeleteResourceV1beta2NamespacedResourceClaimInput.Type;
+  ) as unknown as Schema.Codec<DeleteResourceV1beta2NamespacedResourceClaimInput>;
 
 // Output Schema
+export interface DeleteResourceV1beta2NamespacedResourceClaimOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        exactly?: {
+          adminAccess?: boolean;
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        };
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const DeleteResourceV1beta2NamespacedResourceClaimOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -10765,9 +15500,7 @@ export const DeleteResourceV1beta2NamespacedResourceClaimOutput =
         ),
       }),
     ),
-  });
-export type DeleteResourceV1beta2NamespacedResourceClaimOutput =
-  typeof DeleteResourceV1beta2NamespacedResourceClaimOutput.Type;
+  }) as unknown as Schema.Codec<DeleteResourceV1beta2NamespacedResourceClaimOutput>;
 
 // The operation
 /**
@@ -10789,6 +15522,19 @@ export const deleteResourceV1beta2NamespacedResourceClaim =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteResourceV1beta2NamespacedResourceClaimTemplateInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteResourceV1beta2NamespacedResourceClaimTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -10814,11 +15560,125 @@ export const DeleteResourceV1beta2NamespacedResourceClaimTemplateInput =
       method: "DELETE",
       path: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaimtemplates/{name}",
     }),
-  );
-export type DeleteResourceV1beta2NamespacedResourceClaimTemplateInput =
-  typeof DeleteResourceV1beta2NamespacedResourceClaimTemplateInput.Type;
+  ) as unknown as Schema.Codec<DeleteResourceV1beta2NamespacedResourceClaimTemplateInput>;
 
 // Output Schema
+export interface DeleteResourceV1beta2NamespacedResourceClaimTemplateOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+        }[];
+        constraints?: {
+          distinctAttribute?: string;
+          matchAttribute?: string;
+          requests?: string[];
+        }[];
+        requests?: {
+          exactly?: {
+            adminAccess?: boolean;
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          };
+          firstAvailable?: {
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            name: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+          name: string;
+        }[];
+      };
+    };
+  };
+}
 export const DeleteResourceV1beta2NamespacedResourceClaimTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -11034,9 +15894,7 @@ export const DeleteResourceV1beta2NamespacedResourceClaimTemplateOutput =
         ),
       }),
     ),
-  });
-export type DeleteResourceV1beta2NamespacedResourceClaimTemplateOutput =
-  typeof DeleteResourceV1beta2NamespacedResourceClaimTemplateOutput.Type;
+  }) as unknown as Schema.Codec<DeleteResourceV1beta2NamespacedResourceClaimTemplateOutput>;
 
 // The operation
 /**
@@ -11058,6 +15916,18 @@ export const deleteResourceV1beta2NamespacedResourceClaimTemplate =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteResourceV1beta2ResourceSliceInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteResourceV1beta2ResourceSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -11082,11 +15952,123 @@ export const DeleteResourceV1beta2ResourceSliceInput =
       method: "DELETE",
       path: "/apis/resource.k8s.io/v1beta2/resourceslices/{name}",
     }),
-  );
-export type DeleteResourceV1beta2ResourceSliceInput =
-  typeof DeleteResourceV1beta2ResourceSliceInput.Type;
+  ) as unknown as Schema.Codec<DeleteResourceV1beta2ResourceSliceInput>;
 
 // Output Schema
+export interface DeleteResourceV1beta2ResourceSliceOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    allNodes?: boolean;
+    devices?: {
+      allNodes?: boolean;
+      allowMultipleAllocations?: boolean;
+      attributes?: Record<
+        string,
+        {
+          bool?: boolean;
+          bools?: boolean[];
+          int?: number;
+          ints?: number[];
+          string?: string;
+          strings?: string[];
+          version?: string;
+          versions?: string[];
+        }
+      >;
+      bindingConditions?: string[];
+      bindingFailureConditions?: string[];
+      bindsToNode?: boolean;
+      capacity?: Record<
+        string,
+        {
+          requestPolicy?: {
+            default?: string;
+            validRange?: { max?: string; min: string; step?: string };
+            validValues?: string[];
+          };
+          value: string;
+        }
+      >;
+      consumesCounters?: {
+        counterSet: string;
+        counters: Record<string, { value: string }>;
+      }[];
+      name: string;
+      nodeAllocatableResourceMappings?: Record<
+        string,
+        { allocationMultiplier?: string; capacityKey?: string }
+      >;
+      nodeName?: string;
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+      taints?: {
+        effect: string;
+        key: string;
+        timeAdded?: string;
+        value?: string;
+      }[];
+    }[];
+    driver: string;
+    nodeName?: string;
+    nodeSelector?: {
+      nodeSelectorTerms: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchFields?: { key: string; operator: string; values?: string[] }[];
+      }[];
+    };
+    perDeviceNodeSelection?: boolean;
+    pool: { generation: number; name: string; resourceSliceCount: number };
+    sharedCounters?: {
+      counters: Record<string, { value: string }>;
+      name: string;
+    }[];
+  };
+}
 export const DeleteResourceV1beta2ResourceSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -11294,9 +16276,7 @@ export const DeleteResourceV1beta2ResourceSliceOutput =
         ),
       ),
     }),
-  });
-export type DeleteResourceV1beta2ResourceSliceOutput =
-  typeof DeleteResourceV1beta2ResourceSliceOutput.Type;
+  }) as unknown as Schema.Codec<DeleteResourceV1beta2ResourceSliceOutput>;
 
 // The operation
 /**
@@ -11317,13 +16297,21 @@ export const deleteResourceV1beta2ResourceSlice =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface GetResourceAPIGroupInput {}
 export const GetResourceAPIGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/resource.k8s.io/" }),
-  );
-export type GetResourceAPIGroupInput = typeof GetResourceAPIGroupInput.Type;
+  ) as unknown as Schema.Codec<GetResourceAPIGroupInput>;
 
 // Output Schema
+export interface GetResourceAPIGroupOutput {
+  apiVersion?: string;
+  kind?: string;
+  name: string;
+  preferredVersion?: { groupVersion: string; version: string };
+  serverAddressByClientCIDRs?: { clientCIDR: string; serverAddress: string }[];
+  versions: { groupVersion: string; version: string }[];
+}
 export const GetResourceAPIGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -11349,8 +16337,7 @@ export const GetResourceAPIGroupOutput =
         version: Schema.String,
       }),
     ),
-  });
-export type GetResourceAPIGroupOutput = typeof GetResourceAPIGroupOutput.Type;
+  }) as unknown as Schema.Codec<GetResourceAPIGroupOutput>;
 
 // The operation
 /**
@@ -11361,14 +16348,30 @@ export const getResourceAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GetResourceAPIGroupOutput,
 }));
 // Input Schema
+export interface GetResourceV1APIResourcesInput {}
 export const GetResourceV1APIResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/resource.k8s.io/v1/" }),
-  );
-export type GetResourceV1APIResourcesInput =
-  typeof GetResourceV1APIResourcesInput.Type;
+  ) as unknown as Schema.Codec<GetResourceV1APIResourcesInput>;
 
 // Output Schema
+export interface GetResourceV1APIResourcesOutput {
+  apiVersion?: string;
+  groupVersion: string;
+  kind?: string;
+  resources: {
+    categories?: string[];
+    group?: string;
+    kind: string;
+    name: string;
+    namespaced: boolean;
+    shortNames?: string[];
+    singularName: string;
+    storageVersionHash?: string;
+    verbs: string[];
+    version?: string;
+  }[];
+}
 export const GetResourceV1APIResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -11388,9 +16391,7 @@ export const GetResourceV1APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetResourceV1APIResourcesOutput =
-  typeof GetResourceV1APIResourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetResourceV1APIResourcesOutput>;
 
 // The operation
 /**
@@ -11403,14 +16404,30 @@ export const getResourceV1APIResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GetResourceV1alpha3APIResourcesInput {}
 export const GetResourceV1alpha3APIResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/resource.k8s.io/v1alpha3/" }),
-  );
-export type GetResourceV1alpha3APIResourcesInput =
-  typeof GetResourceV1alpha3APIResourcesInput.Type;
+  ) as unknown as Schema.Codec<GetResourceV1alpha3APIResourcesInput>;
 
 // Output Schema
+export interface GetResourceV1alpha3APIResourcesOutput {
+  apiVersion?: string;
+  groupVersion: string;
+  kind?: string;
+  resources: {
+    categories?: string[];
+    group?: string;
+    kind: string;
+    name: string;
+    namespaced: boolean;
+    shortNames?: string[];
+    singularName: string;
+    storageVersionHash?: string;
+    verbs: string[];
+    version?: string;
+  }[];
+}
 export const GetResourceV1alpha3APIResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -11430,9 +16447,7 @@ export const GetResourceV1alpha3APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetResourceV1alpha3APIResourcesOutput =
-  typeof GetResourceV1alpha3APIResourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetResourceV1alpha3APIResourcesOutput>;
 
 // The operation
 /**
@@ -11444,14 +16459,30 @@ export const getResourceV1alpha3APIResources =
     outputSchema: GetResourceV1alpha3APIResourcesOutput,
   }));
 // Input Schema
+export interface GetResourceV1beta1APIResourcesInput {}
 export const GetResourceV1beta1APIResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/resource.k8s.io/v1beta1/" }),
-  );
-export type GetResourceV1beta1APIResourcesInput =
-  typeof GetResourceV1beta1APIResourcesInput.Type;
+  ) as unknown as Schema.Codec<GetResourceV1beta1APIResourcesInput>;
 
 // Output Schema
+export interface GetResourceV1beta1APIResourcesOutput {
+  apiVersion?: string;
+  groupVersion: string;
+  kind?: string;
+  resources: {
+    categories?: string[];
+    group?: string;
+    kind: string;
+    name: string;
+    namespaced: boolean;
+    shortNames?: string[];
+    singularName: string;
+    storageVersionHash?: string;
+    verbs: string[];
+    version?: string;
+  }[];
+}
 export const GetResourceV1beta1APIResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -11471,9 +16502,7 @@ export const GetResourceV1beta1APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetResourceV1beta1APIResourcesOutput =
-  typeof GetResourceV1beta1APIResourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetResourceV1beta1APIResourcesOutput>;
 
 // The operation
 /**
@@ -11485,14 +16514,30 @@ export const getResourceV1beta1APIResources =
     outputSchema: GetResourceV1beta1APIResourcesOutput,
   }));
 // Input Schema
+export interface GetResourceV1beta2APIResourcesInput {}
 export const GetResourceV1beta2APIResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/resource.k8s.io/v1beta2/" }),
-  );
-export type GetResourceV1beta2APIResourcesInput =
-  typeof GetResourceV1beta2APIResourcesInput.Type;
+  ) as unknown as Schema.Codec<GetResourceV1beta2APIResourcesInput>;
 
 // Output Schema
+export interface GetResourceV1beta2APIResourcesOutput {
+  apiVersion?: string;
+  groupVersion: string;
+  kind?: string;
+  resources: {
+    categories?: string[];
+    group?: string;
+    kind: string;
+    name: string;
+    namespaced: boolean;
+    shortNames?: string[];
+    singularName: string;
+    storageVersionHash?: string;
+    verbs: string[];
+    version?: string;
+  }[];
+}
 export const GetResourceV1beta2APIResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -11512,9 +16557,7 @@ export const GetResourceV1beta2APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetResourceV1beta2APIResourcesOutput =
-  typeof GetResourceV1beta2APIResourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetResourceV1beta2APIResourcesOutput>;
 
 // The operation
 /**
@@ -11526,6 +16569,20 @@ export const getResourceV1beta2APIResources =
     outputSchema: GetResourceV1beta2APIResourcesOutput,
   }));
 // Input Schema
+export interface ListResourceV1DeviceClassInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListResourceV1DeviceClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -11542,11 +16599,61 @@ export const ListResourceV1DeviceClassInput =
     watch: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({ method: "GET", path: "/apis/resource.k8s.io/v1/deviceclasses" }),
-  );
-export type ListResourceV1DeviceClassInput =
-  typeof ListResourceV1DeviceClassInput.Type;
+  ) as unknown as Schema.Codec<ListResourceV1DeviceClassInput>;
 
 // Output Schema
+export interface ListResourceV1DeviceClassOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      config?: { opaque?: { driver: string; parameters: unknown } }[];
+      extendedResourceName?: string;
+      selectors?: { cel?: { expression: string } }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListResourceV1DeviceClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -11644,9 +16751,7 @@ export const ListResourceV1DeviceClassOutput =
         ),
       }),
     ),
-  });
-export type ListResourceV1DeviceClassOutput =
-  typeof ListResourceV1DeviceClassOutput.Type;
+  }) as unknown as Schema.Codec<ListResourceV1DeviceClassOutput>;
 
 // The operation
 /**
@@ -11713,6 +16818,21 @@ export const listResourceV1DeviceClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ListResourceV1NamespacedResourceClaimInput {
+  namespace: string;
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListResourceV1NamespacedResourceClaimInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -11733,11 +16853,172 @@ export const ListResourceV1NamespacedResourceClaimInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1/namespaces/{namespace}/resourceclaims",
     }),
-  );
-export type ListResourceV1NamespacedResourceClaimInput =
-  typeof ListResourceV1NamespacedResourceClaimInput.Type;
+  ) as unknown as Schema.Codec<ListResourceV1NamespacedResourceClaimInput>;
 
 // Output Schema
+export interface ListResourceV1NamespacedResourceClaimOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+        }[];
+        constraints?: {
+          distinctAttribute?: string;
+          matchAttribute?: string;
+          requests?: string[];
+        }[];
+        requests?: {
+          exactly?: {
+            adminAccess?: boolean;
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          };
+          firstAvailable?: {
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            name: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+          name: string;
+        }[];
+      };
+    };
+    status?: {
+      allocation?: {
+        allocationTimestamp?: string;
+        devices?: {
+          config?: {
+            opaque?: { driver: string; parameters: unknown };
+            requests?: string[];
+            source: string;
+          }[];
+          results?: {
+            adminAccess?: boolean;
+            bindingConditions?: string[];
+            bindingFailureConditions?: string[];
+            consumedCapacity?: Record<string, string>;
+            device: string;
+            driver: string;
+            pool: string;
+            request: string;
+            shareID?: string;
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+        };
+        nodeSelector?: {
+          nodeSelectorTerms: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchFields?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+          }[];
+        };
+      };
+      devices?: {
+        conditions?: {
+          lastTransitionTime: string;
+          message: string;
+          observedGeneration?: number;
+          reason: string;
+          status: string;
+          type: string;
+        }[];
+        data?: unknown;
+        device: string;
+        driver: string;
+        networkData?: {
+          hardwareAddress?: string;
+          interfaceName?: string;
+          ips?: string[];
+        };
+        pool: string;
+        shareID?: string;
+      }[];
+      reservedFor?: {
+        apiGroup?: string;
+        name: string;
+        resource: string;
+        uid: string;
+      }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListResourceV1NamespacedResourceClaimOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -12057,9 +17338,7 @@ export const ListResourceV1NamespacedResourceClaimOutput =
         ),
       }),
     ),
-  });
-export type ListResourceV1NamespacedResourceClaimOutput =
-  typeof ListResourceV1NamespacedResourceClaimOutput.Type;
+  }) as unknown as Schema.Codec<ListResourceV1NamespacedResourceClaimOutput>;
 
 // The operation
 /**
@@ -12126,6 +17405,21 @@ export const listResourceV1NamespacedResourceClaim =
     outputSchema: ListResourceV1NamespacedResourceClaimOutput,
   }));
 // Input Schema
+export interface ListResourceV1NamespacedResourceClaimTemplateInput {
+  namespace: string;
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListResourceV1NamespacedResourceClaimTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -12146,11 +17440,136 @@ export const ListResourceV1NamespacedResourceClaimTemplateInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1/namespaces/{namespace}/resourceclaimtemplates",
     }),
-  );
-export type ListResourceV1NamespacedResourceClaimTemplateInput =
-  typeof ListResourceV1NamespacedResourceClaimTemplateInput.Type;
+  ) as unknown as Schema.Codec<ListResourceV1NamespacedResourceClaimTemplateInput>;
 
 // Output Schema
+export interface ListResourceV1NamespacedResourceClaimTemplateOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      metadata?: {
+        annotations?: Record<string, string>;
+        creationTimestamp?: string;
+        deletionGracePeriodSeconds?: number;
+        deletionTimestamp?: string;
+        finalizers?: string[];
+        generateName?: string;
+        generation?: number;
+        labels?: Record<string, string>;
+        managedFields?: {
+          apiVersion?: string;
+          fieldsType?: string;
+          fieldsV1?: unknown;
+          manager?: string;
+          operation?: string;
+          subresource?: string;
+          time?: string;
+        }[];
+        name?: string;
+        namespace?: string;
+        ownerReferences?: {
+          apiVersion: string;
+          blockOwnerDeletion?: boolean;
+          controller?: boolean;
+          kind: string;
+          name: string;
+          uid: string;
+        }[];
+        resourceVersion?: string;
+        selfLink?: string;
+        uid?: string;
+      };
+      spec?: {
+        devices?: {
+          config?: {
+            opaque?: { driver: string; parameters: unknown };
+            requests?: string[];
+          }[];
+          constraints?: {
+            distinctAttribute?: string;
+            matchAttribute?: string;
+            requests?: string[];
+          }[];
+          requests?: {
+            exactly?: {
+              adminAccess?: boolean;
+              allocationMode?: string;
+              capacity?: { requests?: Record<string, string> };
+              count?: number;
+              deviceClassName: string;
+              selectors?: { cel?: { expression: string } }[];
+              tolerations?: {
+                effect?: string;
+                key?: string;
+                operator?: string;
+                tolerationSeconds?: number;
+                value?: string;
+              }[];
+            };
+            firstAvailable?: {
+              allocationMode?: string;
+              capacity?: { requests?: Record<string, string> };
+              count?: number;
+              deviceClassName: string;
+              name: string;
+              selectors?: { cel?: { expression: string } }[];
+              tolerations?: {
+                effect?: string;
+                key?: string;
+                operator?: string;
+                tolerationSeconds?: number;
+                value?: string;
+              }[];
+            }[];
+            name: string;
+          }[];
+        };
+      };
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListResourceV1NamespacedResourceClaimTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -12394,9 +17813,7 @@ export const ListResourceV1NamespacedResourceClaimTemplateOutput =
         ),
       }),
     ),
-  });
-export type ListResourceV1NamespacedResourceClaimTemplateOutput =
-  typeof ListResourceV1NamespacedResourceClaimTemplateOutput.Type;
+  }) as unknown as Schema.Codec<ListResourceV1NamespacedResourceClaimTemplateOutput>;
 
 // The operation
 /**
@@ -12463,6 +17880,20 @@ export const listResourceV1NamespacedResourceClaimTemplate =
     outputSchema: ListResourceV1NamespacedResourceClaimTemplateOutput,
   }));
 // Input Schema
+export interface ListResourceV1ResourceClaimForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListResourceV1ResourceClaimForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -12479,11 +17910,172 @@ export const ListResourceV1ResourceClaimForAllNamespacesInput =
     watch: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({ method: "GET", path: "/apis/resource.k8s.io/v1/resourceclaims" }),
-  );
-export type ListResourceV1ResourceClaimForAllNamespacesInput =
-  typeof ListResourceV1ResourceClaimForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<ListResourceV1ResourceClaimForAllNamespacesInput>;
 
 // Output Schema
+export interface ListResourceV1ResourceClaimForAllNamespacesOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+        }[];
+        constraints?: {
+          distinctAttribute?: string;
+          matchAttribute?: string;
+          requests?: string[];
+        }[];
+        requests?: {
+          exactly?: {
+            adminAccess?: boolean;
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          };
+          firstAvailable?: {
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            name: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+          name: string;
+        }[];
+      };
+    };
+    status?: {
+      allocation?: {
+        allocationTimestamp?: string;
+        devices?: {
+          config?: {
+            opaque?: { driver: string; parameters: unknown };
+            requests?: string[];
+            source: string;
+          }[];
+          results?: {
+            adminAccess?: boolean;
+            bindingConditions?: string[];
+            bindingFailureConditions?: string[];
+            consumedCapacity?: Record<string, string>;
+            device: string;
+            driver: string;
+            pool: string;
+            request: string;
+            shareID?: string;
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+        };
+        nodeSelector?: {
+          nodeSelectorTerms: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchFields?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+          }[];
+        };
+      };
+      devices?: {
+        conditions?: {
+          lastTransitionTime: string;
+          message: string;
+          observedGeneration?: number;
+          reason: string;
+          status: string;
+          type: string;
+        }[];
+        data?: unknown;
+        device: string;
+        driver: string;
+        networkData?: {
+          hardwareAddress?: string;
+          interfaceName?: string;
+          ips?: string[];
+        };
+        pool: string;
+        shareID?: string;
+      }[];
+      reservedFor?: {
+        apiGroup?: string;
+        name: string;
+        resource: string;
+        uid: string;
+      }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListResourceV1ResourceClaimForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -12803,9 +18395,7 @@ export const ListResourceV1ResourceClaimForAllNamespacesOutput =
         ),
       }),
     ),
-  });
-export type ListResourceV1ResourceClaimForAllNamespacesOutput =
-  typeof ListResourceV1ResourceClaimForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<ListResourceV1ResourceClaimForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -12871,6 +18461,20 @@ export const listResourceV1ResourceClaimForAllNamespaces =
     outputSchema: ListResourceV1ResourceClaimForAllNamespacesOutput,
   }));
 // Input Schema
+export interface ListResourceV1ResourceClaimTemplateForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListResourceV1ResourceClaimTemplateForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -12890,11 +18494,136 @@ export const ListResourceV1ResourceClaimTemplateForAllNamespacesInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1/resourceclaimtemplates",
     }),
-  );
-export type ListResourceV1ResourceClaimTemplateForAllNamespacesInput =
-  typeof ListResourceV1ResourceClaimTemplateForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<ListResourceV1ResourceClaimTemplateForAllNamespacesInput>;
 
 // Output Schema
+export interface ListResourceV1ResourceClaimTemplateForAllNamespacesOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      metadata?: {
+        annotations?: Record<string, string>;
+        creationTimestamp?: string;
+        deletionGracePeriodSeconds?: number;
+        deletionTimestamp?: string;
+        finalizers?: string[];
+        generateName?: string;
+        generation?: number;
+        labels?: Record<string, string>;
+        managedFields?: {
+          apiVersion?: string;
+          fieldsType?: string;
+          fieldsV1?: unknown;
+          manager?: string;
+          operation?: string;
+          subresource?: string;
+          time?: string;
+        }[];
+        name?: string;
+        namespace?: string;
+        ownerReferences?: {
+          apiVersion: string;
+          blockOwnerDeletion?: boolean;
+          controller?: boolean;
+          kind: string;
+          name: string;
+          uid: string;
+        }[];
+        resourceVersion?: string;
+        selfLink?: string;
+        uid?: string;
+      };
+      spec?: {
+        devices?: {
+          config?: {
+            opaque?: { driver: string; parameters: unknown };
+            requests?: string[];
+          }[];
+          constraints?: {
+            distinctAttribute?: string;
+            matchAttribute?: string;
+            requests?: string[];
+          }[];
+          requests?: {
+            exactly?: {
+              adminAccess?: boolean;
+              allocationMode?: string;
+              capacity?: { requests?: Record<string, string> };
+              count?: number;
+              deviceClassName: string;
+              selectors?: { cel?: { expression: string } }[];
+              tolerations?: {
+                effect?: string;
+                key?: string;
+                operator?: string;
+                tolerationSeconds?: number;
+                value?: string;
+              }[];
+            };
+            firstAvailable?: {
+              allocationMode?: string;
+              capacity?: { requests?: Record<string, string> };
+              count?: number;
+              deviceClassName: string;
+              name: string;
+              selectors?: { cel?: { expression: string } }[];
+              tolerations?: {
+                effect?: string;
+                key?: string;
+                operator?: string;
+                tolerationSeconds?: number;
+                value?: string;
+              }[];
+            }[];
+            name: string;
+          }[];
+        };
+      };
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListResourceV1ResourceClaimTemplateForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -13138,9 +18867,7 @@ export const ListResourceV1ResourceClaimTemplateForAllNamespacesOutput =
         ),
       }),
     ),
-  });
-export type ListResourceV1ResourceClaimTemplateForAllNamespacesOutput =
-  typeof ListResourceV1ResourceClaimTemplateForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<ListResourceV1ResourceClaimTemplateForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -13206,6 +18933,20 @@ export const listResourceV1ResourceClaimTemplateForAllNamespaces =
     outputSchema: ListResourceV1ResourceClaimTemplateForAllNamespacesOutput,
   }));
 // Input Schema
+export interface ListResourceV1ResourceSliceInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListResourceV1ResourceSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -13222,11 +18963,138 @@ export const ListResourceV1ResourceSliceInput =
     watch: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({ method: "GET", path: "/apis/resource.k8s.io/v1/resourceslices" }),
-  );
-export type ListResourceV1ResourceSliceInput =
-  typeof ListResourceV1ResourceSliceInput.Type;
+  ) as unknown as Schema.Codec<ListResourceV1ResourceSliceInput>;
 
 // Output Schema
+export interface ListResourceV1ResourceSliceOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec: {
+      allNodes?: boolean;
+      devices?: {
+        allNodes?: boolean;
+        allowMultipleAllocations?: boolean;
+        attributes?: Record<
+          string,
+          {
+            bool?: boolean;
+            bools?: boolean[];
+            int?: number;
+            ints?: number[];
+            string?: string;
+            strings?: string[];
+            version?: string;
+            versions?: string[];
+          }
+        >;
+        bindingConditions?: string[];
+        bindingFailureConditions?: string[];
+        bindsToNode?: boolean;
+        capacity?: Record<
+          string,
+          {
+            requestPolicy?: {
+              default?: string;
+              validRange?: { max?: string; min: string; step?: string };
+              validValues?: string[];
+            };
+            value: string;
+          }
+        >;
+        consumesCounters?: {
+          counterSet: string;
+          counters: Record<string, { value: string }>;
+        }[];
+        name: string;
+        nodeAllocatableResourceMappings?: Record<
+          string,
+          { allocationMultiplier?: string; capacityKey?: string }
+        >;
+        nodeName?: string;
+        nodeSelector?: {
+          nodeSelectorTerms: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchFields?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+          }[];
+        };
+        taints?: {
+          effect: string;
+          key: string;
+          timeAdded?: string;
+          value?: string;
+        }[];
+      }[];
+      driver: string;
+      nodeName?: string;
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+      perDeviceNodeSelection?: boolean;
+      pool: { generation: number; name: string; resourceSliceCount: number };
+      sharedCounters?: {
+        counters: Record<string, { value: string }>;
+        name: string;
+      }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListResourceV1ResourceSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -13461,9 +19329,7 @@ export const ListResourceV1ResourceSliceOutput =
         ),
       }),
     ),
-  });
-export type ListResourceV1ResourceSliceOutput =
-  typeof ListResourceV1ResourceSliceOutput.Type;
+  }) as unknown as Schema.Codec<ListResourceV1ResourceSliceOutput>;
 
 // The operation
 /**
@@ -13530,6 +19396,20 @@ export const listResourceV1ResourceSlice = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ListResourceV1alpha3DeviceTaintRuleInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListResourceV1alpha3DeviceTaintRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -13549,11 +19429,75 @@ export const ListResourceV1alpha3DeviceTaintRuleInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1alpha3/devicetaintrules",
     }),
-  );
-export type ListResourceV1alpha3DeviceTaintRuleInput =
-  typeof ListResourceV1alpha3DeviceTaintRuleInput.Type;
+  ) as unknown as Schema.Codec<ListResourceV1alpha3DeviceTaintRuleInput>;
 
 // Output Schema
+export interface ListResourceV1alpha3DeviceTaintRuleOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec: {
+      deviceSelector?: { device?: string; driver?: string; pool?: string };
+      taint: {
+        effect: string;
+        key: string;
+        timeAdded?: string;
+        value?: string;
+      };
+    };
+    status?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListResourceV1alpha3DeviceTaintRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -13654,9 +19598,7 @@ export const ListResourceV1alpha3DeviceTaintRuleOutput =
         ),
       }),
     ),
-  });
-export type ListResourceV1alpha3DeviceTaintRuleOutput =
-  typeof ListResourceV1alpha3DeviceTaintRuleOutput.Type;
+  }) as unknown as Schema.Codec<ListResourceV1alpha3DeviceTaintRuleOutput>;
 
 // The operation
 /**
@@ -13722,6 +19664,20 @@ export const listResourceV1alpha3DeviceTaintRule =
     outputSchema: ListResourceV1alpha3DeviceTaintRuleOutput,
   }));
 // Input Schema
+export interface ListResourceV1alpha3ResourcePoolStatusRequestInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListResourceV1alpha3ResourcePoolStatusRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -13741,11 +19697,80 @@ export const ListResourceV1alpha3ResourcePoolStatusRequestInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1alpha3/resourcepoolstatusrequests",
     }),
-  );
-export type ListResourceV1alpha3ResourcePoolStatusRequestInput =
-  typeof ListResourceV1alpha3ResourcePoolStatusRequestInput.Type;
+  ) as unknown as Schema.Codec<ListResourceV1alpha3ResourcePoolStatusRequestInput>;
 
 // Output Schema
+export interface ListResourceV1alpha3ResourcePoolStatusRequestOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec: { driver: string; limit?: number; poolName?: string };
+    status?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      poolCount: number;
+      pools?: {
+        allocatedDevices?: number;
+        availableDevices?: number;
+        driver: string;
+        generation: number;
+        nodeName?: string;
+        poolName: string;
+        resourceSliceCount?: number;
+        totalDevices?: number;
+        unavailableDevices?: number;
+        validationError?: string;
+      }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListResourceV1alpha3ResourcePoolStatusRequestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -13849,9 +19874,7 @@ export const ListResourceV1alpha3ResourcePoolStatusRequestOutput =
         ),
       }),
     ),
-  });
-export type ListResourceV1alpha3ResourcePoolStatusRequestOutput =
-  typeof ListResourceV1alpha3ResourcePoolStatusRequestOutput.Type;
+  }) as unknown as Schema.Codec<ListResourceV1alpha3ResourcePoolStatusRequestOutput>;
 
 // The operation
 /**
@@ -13917,6 +19940,20 @@ export const listResourceV1alpha3ResourcePoolStatusRequest =
     outputSchema: ListResourceV1alpha3ResourcePoolStatusRequestOutput,
   }));
 // Input Schema
+export interface ListResourceV1beta1DeviceClassInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListResourceV1beta1DeviceClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -13936,11 +19973,61 @@ export const ListResourceV1beta1DeviceClassInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/deviceclasses",
     }),
-  );
-export type ListResourceV1beta1DeviceClassInput =
-  typeof ListResourceV1beta1DeviceClassInput.Type;
+  ) as unknown as Schema.Codec<ListResourceV1beta1DeviceClassInput>;
 
 // Output Schema
+export interface ListResourceV1beta1DeviceClassOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      config?: { opaque?: { driver: string; parameters: unknown } }[];
+      extendedResourceName?: string;
+      selectors?: { cel?: { expression: string } }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListResourceV1beta1DeviceClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -14038,9 +20125,7 @@ export const ListResourceV1beta1DeviceClassOutput =
         ),
       }),
     ),
-  });
-export type ListResourceV1beta1DeviceClassOutput =
-  typeof ListResourceV1beta1DeviceClassOutput.Type;
+  }) as unknown as Schema.Codec<ListResourceV1beta1DeviceClassOutput>;
 
 // The operation
 /**
@@ -14106,6 +20191,21 @@ export const listResourceV1beta1DeviceClass =
     outputSchema: ListResourceV1beta1DeviceClassOutput,
   }));
 // Input Schema
+export interface ListResourceV1beta1NamespacedResourceClaimInput {
+  namespace: string;
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListResourceV1beta1NamespacedResourceClaimInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -14126,11 +20226,170 @@ export const ListResourceV1beta1NamespacedResourceClaimInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaims",
     }),
-  );
-export type ListResourceV1beta1NamespacedResourceClaimInput =
-  typeof ListResourceV1beta1NamespacedResourceClaimInput.Type;
+  ) as unknown as Schema.Codec<ListResourceV1beta1NamespacedResourceClaimInput>;
 
 // Output Schema
+export interface ListResourceV1beta1NamespacedResourceClaimOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+        }[];
+        constraints?: {
+          distinctAttribute?: string;
+          matchAttribute?: string;
+          requests?: string[];
+        }[];
+        requests?: {
+          adminAccess?: boolean;
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName?: string;
+          firstAvailable?: {
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            name: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+    };
+    status?: {
+      allocation?: {
+        allocationTimestamp?: string;
+        devices?: {
+          config?: {
+            opaque?: { driver: string; parameters: unknown };
+            requests?: string[];
+            source: string;
+          }[];
+          results?: {
+            adminAccess?: boolean;
+            bindingConditions?: string[];
+            bindingFailureConditions?: string[];
+            consumedCapacity?: Record<string, string>;
+            device: string;
+            driver: string;
+            pool: string;
+            request: string;
+            shareID?: string;
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+        };
+        nodeSelector?: {
+          nodeSelectorTerms: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchFields?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+          }[];
+        };
+      };
+      devices?: {
+        conditions?: {
+          lastTransitionTime: string;
+          message: string;
+          observedGeneration?: number;
+          reason: string;
+          status: string;
+          type: string;
+        }[];
+        data?: unknown;
+        device: string;
+        driver: string;
+        networkData?: {
+          hardwareAddress?: string;
+          interfaceName?: string;
+          ips?: string[];
+        };
+        pool: string;
+        shareID?: string;
+      }[];
+      reservedFor?: {
+        apiGroup?: string;
+        name: string;
+        resource: string;
+        uid: string;
+      }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListResourceV1beta1NamespacedResourceClaimOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -14444,9 +20703,7 @@ export const ListResourceV1beta1NamespacedResourceClaimOutput =
         ),
       }),
     ),
-  });
-export type ListResourceV1beta1NamespacedResourceClaimOutput =
-  typeof ListResourceV1beta1NamespacedResourceClaimOutput.Type;
+  }) as unknown as Schema.Codec<ListResourceV1beta1NamespacedResourceClaimOutput>;
 
 // The operation
 /**
@@ -14513,6 +20770,21 @@ export const listResourceV1beta1NamespacedResourceClaim =
     outputSchema: ListResourceV1beta1NamespacedResourceClaimOutput,
   }));
 // Input Schema
+export interface ListResourceV1beta1NamespacedResourceClaimTemplateInput {
+  namespace: string;
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListResourceV1beta1NamespacedResourceClaimTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -14533,11 +20805,134 @@ export const ListResourceV1beta1NamespacedResourceClaimTemplateInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaimtemplates",
     }),
-  );
-export type ListResourceV1beta1NamespacedResourceClaimTemplateInput =
-  typeof ListResourceV1beta1NamespacedResourceClaimTemplateInput.Type;
+  ) as unknown as Schema.Codec<ListResourceV1beta1NamespacedResourceClaimTemplateInput>;
 
 // Output Schema
+export interface ListResourceV1beta1NamespacedResourceClaimTemplateOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      metadata?: {
+        annotations?: Record<string, string>;
+        creationTimestamp?: string;
+        deletionGracePeriodSeconds?: number;
+        deletionTimestamp?: string;
+        finalizers?: string[];
+        generateName?: string;
+        generation?: number;
+        labels?: Record<string, string>;
+        managedFields?: {
+          apiVersion?: string;
+          fieldsType?: string;
+          fieldsV1?: unknown;
+          manager?: string;
+          operation?: string;
+          subresource?: string;
+          time?: string;
+        }[];
+        name?: string;
+        namespace?: string;
+        ownerReferences?: {
+          apiVersion: string;
+          blockOwnerDeletion?: boolean;
+          controller?: boolean;
+          kind: string;
+          name: string;
+          uid: string;
+        }[];
+        resourceVersion?: string;
+        selfLink?: string;
+        uid?: string;
+      };
+      spec?: {
+        devices?: {
+          config?: {
+            opaque?: { driver: string; parameters: unknown };
+            requests?: string[];
+          }[];
+          constraints?: {
+            distinctAttribute?: string;
+            matchAttribute?: string;
+            requests?: string[];
+          }[];
+          requests?: {
+            adminAccess?: boolean;
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName?: string;
+            firstAvailable?: {
+              allocationMode?: string;
+              capacity?: { requests?: Record<string, string> };
+              count?: number;
+              deviceClassName: string;
+              name: string;
+              selectors?: { cel?: { expression: string } }[];
+              tolerations?: {
+                effect?: string;
+                key?: string;
+                operator?: string;
+                tolerationSeconds?: number;
+                value?: string;
+              }[];
+            }[];
+            name: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+        };
+      };
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListResourceV1beta1NamespacedResourceClaimTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -14777,9 +21172,7 @@ export const ListResourceV1beta1NamespacedResourceClaimTemplateOutput =
         ),
       }),
     ),
-  });
-export type ListResourceV1beta1NamespacedResourceClaimTemplateOutput =
-  typeof ListResourceV1beta1NamespacedResourceClaimTemplateOutput.Type;
+  }) as unknown as Schema.Codec<ListResourceV1beta1NamespacedResourceClaimTemplateOutput>;
 
 // The operation
 /**
@@ -14846,6 +21239,20 @@ export const listResourceV1beta1NamespacedResourceClaimTemplate =
     outputSchema: ListResourceV1beta1NamespacedResourceClaimTemplateOutput,
   }));
 // Input Schema
+export interface ListResourceV1beta1ResourceClaimForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListResourceV1beta1ResourceClaimForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -14865,11 +21272,170 @@ export const ListResourceV1beta1ResourceClaimForAllNamespacesInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/resourceclaims",
     }),
-  );
-export type ListResourceV1beta1ResourceClaimForAllNamespacesInput =
-  typeof ListResourceV1beta1ResourceClaimForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<ListResourceV1beta1ResourceClaimForAllNamespacesInput>;
 
 // Output Schema
+export interface ListResourceV1beta1ResourceClaimForAllNamespacesOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+        }[];
+        constraints?: {
+          distinctAttribute?: string;
+          matchAttribute?: string;
+          requests?: string[];
+        }[];
+        requests?: {
+          adminAccess?: boolean;
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName?: string;
+          firstAvailable?: {
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            name: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+    };
+    status?: {
+      allocation?: {
+        allocationTimestamp?: string;
+        devices?: {
+          config?: {
+            opaque?: { driver: string; parameters: unknown };
+            requests?: string[];
+            source: string;
+          }[];
+          results?: {
+            adminAccess?: boolean;
+            bindingConditions?: string[];
+            bindingFailureConditions?: string[];
+            consumedCapacity?: Record<string, string>;
+            device: string;
+            driver: string;
+            pool: string;
+            request: string;
+            shareID?: string;
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+        };
+        nodeSelector?: {
+          nodeSelectorTerms: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchFields?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+          }[];
+        };
+      };
+      devices?: {
+        conditions?: {
+          lastTransitionTime: string;
+          message: string;
+          observedGeneration?: number;
+          reason: string;
+          status: string;
+          type: string;
+        }[];
+        data?: unknown;
+        device: string;
+        driver: string;
+        networkData?: {
+          hardwareAddress?: string;
+          interfaceName?: string;
+          ips?: string[];
+        };
+        pool: string;
+        shareID?: string;
+      }[];
+      reservedFor?: {
+        apiGroup?: string;
+        name: string;
+        resource: string;
+        uid: string;
+      }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListResourceV1beta1ResourceClaimForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -15183,9 +21749,7 @@ export const ListResourceV1beta1ResourceClaimForAllNamespacesOutput =
         ),
       }),
     ),
-  });
-export type ListResourceV1beta1ResourceClaimForAllNamespacesOutput =
-  typeof ListResourceV1beta1ResourceClaimForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<ListResourceV1beta1ResourceClaimForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -15251,6 +21815,20 @@ export const listResourceV1beta1ResourceClaimForAllNamespaces =
     outputSchema: ListResourceV1beta1ResourceClaimForAllNamespacesOutput,
   }));
 // Input Schema
+export interface ListResourceV1beta1ResourceClaimTemplateForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListResourceV1beta1ResourceClaimTemplateForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -15270,11 +21848,134 @@ export const ListResourceV1beta1ResourceClaimTemplateForAllNamespacesInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/resourceclaimtemplates",
     }),
-  );
-export type ListResourceV1beta1ResourceClaimTemplateForAllNamespacesInput =
-  typeof ListResourceV1beta1ResourceClaimTemplateForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<ListResourceV1beta1ResourceClaimTemplateForAllNamespacesInput>;
 
 // Output Schema
+export interface ListResourceV1beta1ResourceClaimTemplateForAllNamespacesOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      metadata?: {
+        annotations?: Record<string, string>;
+        creationTimestamp?: string;
+        deletionGracePeriodSeconds?: number;
+        deletionTimestamp?: string;
+        finalizers?: string[];
+        generateName?: string;
+        generation?: number;
+        labels?: Record<string, string>;
+        managedFields?: {
+          apiVersion?: string;
+          fieldsType?: string;
+          fieldsV1?: unknown;
+          manager?: string;
+          operation?: string;
+          subresource?: string;
+          time?: string;
+        }[];
+        name?: string;
+        namespace?: string;
+        ownerReferences?: {
+          apiVersion: string;
+          blockOwnerDeletion?: boolean;
+          controller?: boolean;
+          kind: string;
+          name: string;
+          uid: string;
+        }[];
+        resourceVersion?: string;
+        selfLink?: string;
+        uid?: string;
+      };
+      spec?: {
+        devices?: {
+          config?: {
+            opaque?: { driver: string; parameters: unknown };
+            requests?: string[];
+          }[];
+          constraints?: {
+            distinctAttribute?: string;
+            matchAttribute?: string;
+            requests?: string[];
+          }[];
+          requests?: {
+            adminAccess?: boolean;
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName?: string;
+            firstAvailable?: {
+              allocationMode?: string;
+              capacity?: { requests?: Record<string, string> };
+              count?: number;
+              deviceClassName: string;
+              name: string;
+              selectors?: { cel?: { expression: string } }[];
+              tolerations?: {
+                effect?: string;
+                key?: string;
+                operator?: string;
+                tolerationSeconds?: number;
+                value?: string;
+              }[];
+            }[];
+            name: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+        };
+      };
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListResourceV1beta1ResourceClaimTemplateForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -15514,9 +22215,7 @@ export const ListResourceV1beta1ResourceClaimTemplateForAllNamespacesOutput =
         ),
       }),
     ),
-  });
-export type ListResourceV1beta1ResourceClaimTemplateForAllNamespacesOutput =
-  typeof ListResourceV1beta1ResourceClaimTemplateForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<ListResourceV1beta1ResourceClaimTemplateForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -15583,6 +22282,20 @@ export const listResourceV1beta1ResourceClaimTemplateForAllNamespaces =
       ListResourceV1beta1ResourceClaimTemplateForAllNamespacesOutput,
   }));
 // Input Schema
+export interface ListResourceV1beta1ResourceSliceInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListResourceV1beta1ResourceSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -15602,11 +22315,140 @@ export const ListResourceV1beta1ResourceSliceInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/resourceslices",
     }),
-  );
-export type ListResourceV1beta1ResourceSliceInput =
-  typeof ListResourceV1beta1ResourceSliceInput.Type;
+  ) as unknown as Schema.Codec<ListResourceV1beta1ResourceSliceInput>;
 
 // Output Schema
+export interface ListResourceV1beta1ResourceSliceOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec: {
+      allNodes?: boolean;
+      devices?: {
+        basic?: {
+          allNodes?: boolean;
+          allowMultipleAllocations?: boolean;
+          attributes?: Record<
+            string,
+            {
+              bool?: boolean;
+              bools?: boolean[];
+              int?: number;
+              ints?: number[];
+              string?: string;
+              strings?: string[];
+              version?: string;
+              versions?: string[];
+            }
+          >;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          bindsToNode?: boolean;
+          capacity?: Record<
+            string,
+            {
+              requestPolicy?: {
+                default?: string;
+                validRange?: { max?: string; min: string; step?: string };
+                validValues?: string[];
+              };
+              value: string;
+            }
+          >;
+          consumesCounters?: {
+            counterSet: string;
+            counters: Record<string, { value: string }>;
+          }[];
+          nodeAllocatableResourceMappings?: Record<
+            string,
+            { allocationMultiplier?: string; capacityKey?: string }
+          >;
+          nodeName?: string;
+          nodeSelector?: {
+            nodeSelectorTerms: {
+              matchExpressions?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+              matchFields?: {
+                key: string;
+                operator: string;
+                values?: string[];
+              }[];
+            }[];
+          };
+          taints?: {
+            effect: string;
+            key: string;
+            timeAdded?: string;
+            value?: string;
+          }[];
+        };
+        name: string;
+      }[];
+      driver: string;
+      nodeName?: string;
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+      perDeviceNodeSelection?: boolean;
+      pool: { generation: number; name: string; resourceSliceCount: number };
+      sharedCounters?: {
+        counters: Record<string, { value: string }>;
+        name: string;
+      }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListResourceV1beta1ResourceSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -15849,9 +22691,7 @@ export const ListResourceV1beta1ResourceSliceOutput =
         ),
       }),
     ),
-  });
-export type ListResourceV1beta1ResourceSliceOutput =
-  typeof ListResourceV1beta1ResourceSliceOutput.Type;
+  }) as unknown as Schema.Codec<ListResourceV1beta1ResourceSliceOutput>;
 
 // The operation
 /**
@@ -15917,6 +22757,20 @@ export const listResourceV1beta1ResourceSlice =
     outputSchema: ListResourceV1beta1ResourceSliceOutput,
   }));
 // Input Schema
+export interface ListResourceV1beta2DeviceClassInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListResourceV1beta2DeviceClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -15936,11 +22790,61 @@ export const ListResourceV1beta2DeviceClassInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/deviceclasses",
     }),
-  );
-export type ListResourceV1beta2DeviceClassInput =
-  typeof ListResourceV1beta2DeviceClassInput.Type;
+  ) as unknown as Schema.Codec<ListResourceV1beta2DeviceClassInput>;
 
 // Output Schema
+export interface ListResourceV1beta2DeviceClassOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      config?: { opaque?: { driver: string; parameters: unknown } }[];
+      extendedResourceName?: string;
+      selectors?: { cel?: { expression: string } }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListResourceV1beta2DeviceClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -16038,9 +22942,7 @@ export const ListResourceV1beta2DeviceClassOutput =
         ),
       }),
     ),
-  });
-export type ListResourceV1beta2DeviceClassOutput =
-  typeof ListResourceV1beta2DeviceClassOutput.Type;
+  }) as unknown as Schema.Codec<ListResourceV1beta2DeviceClassOutput>;
 
 // The operation
 /**
@@ -16106,6 +23008,20 @@ export const listResourceV1beta2DeviceClass =
     outputSchema: ListResourceV1beta2DeviceClassOutput,
   }));
 // Input Schema
+export interface ListResourceV1beta2DeviceTaintRuleInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListResourceV1beta2DeviceTaintRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -16125,11 +23041,75 @@ export const ListResourceV1beta2DeviceTaintRuleInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/devicetaintrules",
     }),
-  );
-export type ListResourceV1beta2DeviceTaintRuleInput =
-  typeof ListResourceV1beta2DeviceTaintRuleInput.Type;
+  ) as unknown as Schema.Codec<ListResourceV1beta2DeviceTaintRuleInput>;
 
 // Output Schema
+export interface ListResourceV1beta2DeviceTaintRuleOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec: {
+      deviceSelector?: { device?: string; driver?: string; pool?: string };
+      taint: {
+        effect: string;
+        key: string;
+        timeAdded?: string;
+        value?: string;
+      };
+    };
+    status?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListResourceV1beta2DeviceTaintRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -16230,9 +23210,7 @@ export const ListResourceV1beta2DeviceTaintRuleOutput =
         ),
       }),
     ),
-  });
-export type ListResourceV1beta2DeviceTaintRuleOutput =
-  typeof ListResourceV1beta2DeviceTaintRuleOutput.Type;
+  }) as unknown as Schema.Codec<ListResourceV1beta2DeviceTaintRuleOutput>;
 
 // The operation
 /**
@@ -16298,6 +23276,21 @@ export const listResourceV1beta2DeviceTaintRule =
     outputSchema: ListResourceV1beta2DeviceTaintRuleOutput,
   }));
 // Input Schema
+export interface ListResourceV1beta2NamespacedResourceClaimInput {
+  namespace: string;
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListResourceV1beta2NamespacedResourceClaimInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -16318,11 +23311,172 @@ export const ListResourceV1beta2NamespacedResourceClaimInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaims",
     }),
-  );
-export type ListResourceV1beta2NamespacedResourceClaimInput =
-  typeof ListResourceV1beta2NamespacedResourceClaimInput.Type;
+  ) as unknown as Schema.Codec<ListResourceV1beta2NamespacedResourceClaimInput>;
 
 // Output Schema
+export interface ListResourceV1beta2NamespacedResourceClaimOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+        }[];
+        constraints?: {
+          distinctAttribute?: string;
+          matchAttribute?: string;
+          requests?: string[];
+        }[];
+        requests?: {
+          exactly?: {
+            adminAccess?: boolean;
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          };
+          firstAvailable?: {
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            name: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+          name: string;
+        }[];
+      };
+    };
+    status?: {
+      allocation?: {
+        allocationTimestamp?: string;
+        devices?: {
+          config?: {
+            opaque?: { driver: string; parameters: unknown };
+            requests?: string[];
+            source: string;
+          }[];
+          results?: {
+            adminAccess?: boolean;
+            bindingConditions?: string[];
+            bindingFailureConditions?: string[];
+            consumedCapacity?: Record<string, string>;
+            device: string;
+            driver: string;
+            pool: string;
+            request: string;
+            shareID?: string;
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+        };
+        nodeSelector?: {
+          nodeSelectorTerms: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchFields?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+          }[];
+        };
+      };
+      devices?: {
+        conditions?: {
+          lastTransitionTime: string;
+          message: string;
+          observedGeneration?: number;
+          reason: string;
+          status: string;
+          type: string;
+        }[];
+        data?: unknown;
+        device: string;
+        driver: string;
+        networkData?: {
+          hardwareAddress?: string;
+          interfaceName?: string;
+          ips?: string[];
+        };
+        pool: string;
+        shareID?: string;
+      }[];
+      reservedFor?: {
+        apiGroup?: string;
+        name: string;
+        resource: string;
+        uid: string;
+      }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListResourceV1beta2NamespacedResourceClaimOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -16642,9 +23796,7 @@ export const ListResourceV1beta2NamespacedResourceClaimOutput =
         ),
       }),
     ),
-  });
-export type ListResourceV1beta2NamespacedResourceClaimOutput =
-  typeof ListResourceV1beta2NamespacedResourceClaimOutput.Type;
+  }) as unknown as Schema.Codec<ListResourceV1beta2NamespacedResourceClaimOutput>;
 
 // The operation
 /**
@@ -16711,6 +23863,21 @@ export const listResourceV1beta2NamespacedResourceClaim =
     outputSchema: ListResourceV1beta2NamespacedResourceClaimOutput,
   }));
 // Input Schema
+export interface ListResourceV1beta2NamespacedResourceClaimTemplateInput {
+  namespace: string;
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListResourceV1beta2NamespacedResourceClaimTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -16731,11 +23898,136 @@ export const ListResourceV1beta2NamespacedResourceClaimTemplateInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaimtemplates",
     }),
-  );
-export type ListResourceV1beta2NamespacedResourceClaimTemplateInput =
-  typeof ListResourceV1beta2NamespacedResourceClaimTemplateInput.Type;
+  ) as unknown as Schema.Codec<ListResourceV1beta2NamespacedResourceClaimTemplateInput>;
 
 // Output Schema
+export interface ListResourceV1beta2NamespacedResourceClaimTemplateOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      metadata?: {
+        annotations?: Record<string, string>;
+        creationTimestamp?: string;
+        deletionGracePeriodSeconds?: number;
+        deletionTimestamp?: string;
+        finalizers?: string[];
+        generateName?: string;
+        generation?: number;
+        labels?: Record<string, string>;
+        managedFields?: {
+          apiVersion?: string;
+          fieldsType?: string;
+          fieldsV1?: unknown;
+          manager?: string;
+          operation?: string;
+          subresource?: string;
+          time?: string;
+        }[];
+        name?: string;
+        namespace?: string;
+        ownerReferences?: {
+          apiVersion: string;
+          blockOwnerDeletion?: boolean;
+          controller?: boolean;
+          kind: string;
+          name: string;
+          uid: string;
+        }[];
+        resourceVersion?: string;
+        selfLink?: string;
+        uid?: string;
+      };
+      spec?: {
+        devices?: {
+          config?: {
+            opaque?: { driver: string; parameters: unknown };
+            requests?: string[];
+          }[];
+          constraints?: {
+            distinctAttribute?: string;
+            matchAttribute?: string;
+            requests?: string[];
+          }[];
+          requests?: {
+            exactly?: {
+              adminAccess?: boolean;
+              allocationMode?: string;
+              capacity?: { requests?: Record<string, string> };
+              count?: number;
+              deviceClassName: string;
+              selectors?: { cel?: { expression: string } }[];
+              tolerations?: {
+                effect?: string;
+                key?: string;
+                operator?: string;
+                tolerationSeconds?: number;
+                value?: string;
+              }[];
+            };
+            firstAvailable?: {
+              allocationMode?: string;
+              capacity?: { requests?: Record<string, string> };
+              count?: number;
+              deviceClassName: string;
+              name: string;
+              selectors?: { cel?: { expression: string } }[];
+              tolerations?: {
+                effect?: string;
+                key?: string;
+                operator?: string;
+                tolerationSeconds?: number;
+                value?: string;
+              }[];
+            }[];
+            name: string;
+          }[];
+        };
+      };
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListResourceV1beta2NamespacedResourceClaimTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -16979,9 +24271,7 @@ export const ListResourceV1beta2NamespacedResourceClaimTemplateOutput =
         ),
       }),
     ),
-  });
-export type ListResourceV1beta2NamespacedResourceClaimTemplateOutput =
-  typeof ListResourceV1beta2NamespacedResourceClaimTemplateOutput.Type;
+  }) as unknown as Schema.Codec<ListResourceV1beta2NamespacedResourceClaimTemplateOutput>;
 
 // The operation
 /**
@@ -17048,6 +24338,20 @@ export const listResourceV1beta2NamespacedResourceClaimTemplate =
     outputSchema: ListResourceV1beta2NamespacedResourceClaimTemplateOutput,
   }));
 // Input Schema
+export interface ListResourceV1beta2ResourceClaimForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListResourceV1beta2ResourceClaimForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -17067,11 +24371,172 @@ export const ListResourceV1beta2ResourceClaimForAllNamespacesInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/resourceclaims",
     }),
-  );
-export type ListResourceV1beta2ResourceClaimForAllNamespacesInput =
-  typeof ListResourceV1beta2ResourceClaimForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<ListResourceV1beta2ResourceClaimForAllNamespacesInput>;
 
 // Output Schema
+export interface ListResourceV1beta2ResourceClaimForAllNamespacesOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+        }[];
+        constraints?: {
+          distinctAttribute?: string;
+          matchAttribute?: string;
+          requests?: string[];
+        }[];
+        requests?: {
+          exactly?: {
+            adminAccess?: boolean;
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          };
+          firstAvailable?: {
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            name: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+          name: string;
+        }[];
+      };
+    };
+    status?: {
+      allocation?: {
+        allocationTimestamp?: string;
+        devices?: {
+          config?: {
+            opaque?: { driver: string; parameters: unknown };
+            requests?: string[];
+            source: string;
+          }[];
+          results?: {
+            adminAccess?: boolean;
+            bindingConditions?: string[];
+            bindingFailureConditions?: string[];
+            consumedCapacity?: Record<string, string>;
+            device: string;
+            driver: string;
+            pool: string;
+            request: string;
+            shareID?: string;
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+        };
+        nodeSelector?: {
+          nodeSelectorTerms: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchFields?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+          }[];
+        };
+      };
+      devices?: {
+        conditions?: {
+          lastTransitionTime: string;
+          message: string;
+          observedGeneration?: number;
+          reason: string;
+          status: string;
+          type: string;
+        }[];
+        data?: unknown;
+        device: string;
+        driver: string;
+        networkData?: {
+          hardwareAddress?: string;
+          interfaceName?: string;
+          ips?: string[];
+        };
+        pool: string;
+        shareID?: string;
+      }[];
+      reservedFor?: {
+        apiGroup?: string;
+        name: string;
+        resource: string;
+        uid: string;
+      }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListResourceV1beta2ResourceClaimForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -17391,9 +24856,7 @@ export const ListResourceV1beta2ResourceClaimForAllNamespacesOutput =
         ),
       }),
     ),
-  });
-export type ListResourceV1beta2ResourceClaimForAllNamespacesOutput =
-  typeof ListResourceV1beta2ResourceClaimForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<ListResourceV1beta2ResourceClaimForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -17459,6 +24922,20 @@ export const listResourceV1beta2ResourceClaimForAllNamespaces =
     outputSchema: ListResourceV1beta2ResourceClaimForAllNamespacesOutput,
   }));
 // Input Schema
+export interface ListResourceV1beta2ResourceClaimTemplateForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListResourceV1beta2ResourceClaimTemplateForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -17478,11 +24955,136 @@ export const ListResourceV1beta2ResourceClaimTemplateForAllNamespacesInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/resourceclaimtemplates",
     }),
-  );
-export type ListResourceV1beta2ResourceClaimTemplateForAllNamespacesInput =
-  typeof ListResourceV1beta2ResourceClaimTemplateForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<ListResourceV1beta2ResourceClaimTemplateForAllNamespacesInput>;
 
 // Output Schema
+export interface ListResourceV1beta2ResourceClaimTemplateForAllNamespacesOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      metadata?: {
+        annotations?: Record<string, string>;
+        creationTimestamp?: string;
+        deletionGracePeriodSeconds?: number;
+        deletionTimestamp?: string;
+        finalizers?: string[];
+        generateName?: string;
+        generation?: number;
+        labels?: Record<string, string>;
+        managedFields?: {
+          apiVersion?: string;
+          fieldsType?: string;
+          fieldsV1?: unknown;
+          manager?: string;
+          operation?: string;
+          subresource?: string;
+          time?: string;
+        }[];
+        name?: string;
+        namespace?: string;
+        ownerReferences?: {
+          apiVersion: string;
+          blockOwnerDeletion?: boolean;
+          controller?: boolean;
+          kind: string;
+          name: string;
+          uid: string;
+        }[];
+        resourceVersion?: string;
+        selfLink?: string;
+        uid?: string;
+      };
+      spec?: {
+        devices?: {
+          config?: {
+            opaque?: { driver: string; parameters: unknown };
+            requests?: string[];
+          }[];
+          constraints?: {
+            distinctAttribute?: string;
+            matchAttribute?: string;
+            requests?: string[];
+          }[];
+          requests?: {
+            exactly?: {
+              adminAccess?: boolean;
+              allocationMode?: string;
+              capacity?: { requests?: Record<string, string> };
+              count?: number;
+              deviceClassName: string;
+              selectors?: { cel?: { expression: string } }[];
+              tolerations?: {
+                effect?: string;
+                key?: string;
+                operator?: string;
+                tolerationSeconds?: number;
+                value?: string;
+              }[];
+            };
+            firstAvailable?: {
+              allocationMode?: string;
+              capacity?: { requests?: Record<string, string> };
+              count?: number;
+              deviceClassName: string;
+              name: string;
+              selectors?: { cel?: { expression: string } }[];
+              tolerations?: {
+                effect?: string;
+                key?: string;
+                operator?: string;
+                tolerationSeconds?: number;
+                value?: string;
+              }[];
+            }[];
+            name: string;
+          }[];
+        };
+      };
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListResourceV1beta2ResourceClaimTemplateForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -17726,9 +25328,7 @@ export const ListResourceV1beta2ResourceClaimTemplateForAllNamespacesOutput =
         ),
       }),
     ),
-  });
-export type ListResourceV1beta2ResourceClaimTemplateForAllNamespacesOutput =
-  typeof ListResourceV1beta2ResourceClaimTemplateForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<ListResourceV1beta2ResourceClaimTemplateForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -17795,6 +25395,20 @@ export const listResourceV1beta2ResourceClaimTemplateForAllNamespaces =
       ListResourceV1beta2ResourceClaimTemplateForAllNamespacesOutput,
   }));
 // Input Schema
+export interface ListResourceV1beta2ResourceSliceInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListResourceV1beta2ResourceSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -17814,11 +25428,138 @@ export const ListResourceV1beta2ResourceSliceInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/resourceslices",
     }),
-  );
-export type ListResourceV1beta2ResourceSliceInput =
-  typeof ListResourceV1beta2ResourceSliceInput.Type;
+  ) as unknown as Schema.Codec<ListResourceV1beta2ResourceSliceInput>;
 
 // Output Schema
+export interface ListResourceV1beta2ResourceSliceOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec: {
+      allNodes?: boolean;
+      devices?: {
+        allNodes?: boolean;
+        allowMultipleAllocations?: boolean;
+        attributes?: Record<
+          string,
+          {
+            bool?: boolean;
+            bools?: boolean[];
+            int?: number;
+            ints?: number[];
+            string?: string;
+            strings?: string[];
+            version?: string;
+            versions?: string[];
+          }
+        >;
+        bindingConditions?: string[];
+        bindingFailureConditions?: string[];
+        bindsToNode?: boolean;
+        capacity?: Record<
+          string,
+          {
+            requestPolicy?: {
+              default?: string;
+              validRange?: { max?: string; min: string; step?: string };
+              validValues?: string[];
+            };
+            value: string;
+          }
+        >;
+        consumesCounters?: {
+          counterSet: string;
+          counters: Record<string, { value: string }>;
+        }[];
+        name: string;
+        nodeAllocatableResourceMappings?: Record<
+          string,
+          { allocationMultiplier?: string; capacityKey?: string }
+        >;
+        nodeName?: string;
+        nodeSelector?: {
+          nodeSelectorTerms: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchFields?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+          }[];
+        };
+        taints?: {
+          effect: string;
+          key: string;
+          timeAdded?: string;
+          value?: string;
+        }[];
+      }[];
+      driver: string;
+      nodeName?: string;
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+      perDeviceNodeSelection?: boolean;
+      pool: { generation: number; name: string; resourceSliceCount: number };
+      sharedCounters?: {
+        counters: Record<string, { value: string }>;
+        name: string;
+      }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListResourceV1beta2ResourceSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -18053,9 +25794,7 @@ export const ListResourceV1beta2ResourceSliceOutput =
         ),
       }),
     ),
-  });
-export type ListResourceV1beta2ResourceSliceOutput =
-  typeof ListResourceV1beta2ResourceSliceOutput.Type;
+  }) as unknown as Schema.Codec<ListResourceV1beta2ResourceSliceOutput>;
 
 // The operation
 /**
@@ -18121,6 +25860,14 @@ export const listResourceV1beta2ResourceSlice =
     outputSchema: ListResourceV1beta2ResourceSliceOutput,
   }));
 // Input Schema
+export interface PatchResourceV1DeviceClassInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchResourceV1DeviceClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -18134,11 +25881,50 @@ export const PatchResourceV1DeviceClassInput =
       method: "PATCH",
       path: "/apis/resource.k8s.io/v1/deviceclasses/{name}",
     }),
-  );
-export type PatchResourceV1DeviceClassInput =
-  typeof PatchResourceV1DeviceClassInput.Type;
+  ) as unknown as Schema.Codec<PatchResourceV1DeviceClassInput>;
 
 // Output Schema
+export interface PatchResourceV1DeviceClassOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    config?: { opaque?: { driver: string; parameters: unknown } }[];
+    extendedResourceName?: string;
+    selectors?: { cel?: { expression: string } }[];
+  };
+}
 export const PatchResourceV1DeviceClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -18215,9 +26001,7 @@ export const PatchResourceV1DeviceClassOutput =
         ),
       }),
     ),
-  });
-export type PatchResourceV1DeviceClassOutput =
-  typeof PatchResourceV1DeviceClassOutput.Type;
+  }) as unknown as Schema.Codec<PatchResourceV1DeviceClassOutput>;
 
 // The operation
 /**
@@ -18238,6 +26022,15 @@ export const patchResourceV1DeviceClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PatchResourceV1NamespacedResourceClaimInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchResourceV1NamespacedResourceClaimInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -18252,11 +26045,157 @@ export const PatchResourceV1NamespacedResourceClaimInput =
       method: "PATCH",
       path: "/apis/resource.k8s.io/v1/namespaces/{namespace}/resourceclaims/{name}",
     }),
-  );
-export type PatchResourceV1NamespacedResourceClaimInput =
-  typeof PatchResourceV1NamespacedResourceClaimInput.Type;
+  ) as unknown as Schema.Codec<PatchResourceV1NamespacedResourceClaimInput>;
 
 // Output Schema
+export interface PatchResourceV1NamespacedResourceClaimOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        exactly?: {
+          adminAccess?: boolean;
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        };
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const PatchResourceV1NamespacedResourceClaimOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -18543,9 +26482,7 @@ export const PatchResourceV1NamespacedResourceClaimOutput =
         ),
       }),
     ),
-  });
-export type PatchResourceV1NamespacedResourceClaimOutput =
-  typeof PatchResourceV1NamespacedResourceClaimOutput.Type;
+  }) as unknown as Schema.Codec<PatchResourceV1NamespacedResourceClaimOutput>;
 
 // The operation
 /**
@@ -18566,6 +26503,15 @@ export const patchResourceV1NamespacedResourceClaim =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchResourceV1NamespacedResourceClaimStatusInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchResourceV1NamespacedResourceClaimStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -18580,11 +26526,157 @@ export const PatchResourceV1NamespacedResourceClaimStatusInput =
       method: "PATCH",
       path: "/apis/resource.k8s.io/v1/namespaces/{namespace}/resourceclaims/{name}/status",
     }),
-  );
-export type PatchResourceV1NamespacedResourceClaimStatusInput =
-  typeof PatchResourceV1NamespacedResourceClaimStatusInput.Type;
+  ) as unknown as Schema.Codec<PatchResourceV1NamespacedResourceClaimStatusInput>;
 
 // Output Schema
+export interface PatchResourceV1NamespacedResourceClaimStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        exactly?: {
+          adminAccess?: boolean;
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        };
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const PatchResourceV1NamespacedResourceClaimStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -18871,9 +26963,7 @@ export const PatchResourceV1NamespacedResourceClaimStatusOutput =
         ),
       }),
     ),
-  });
-export type PatchResourceV1NamespacedResourceClaimStatusOutput =
-  typeof PatchResourceV1NamespacedResourceClaimStatusOutput.Type;
+  }) as unknown as Schema.Codec<PatchResourceV1NamespacedResourceClaimStatusOutput>;
 
 // The operation
 /**
@@ -18894,6 +26984,15 @@ export const patchResourceV1NamespacedResourceClaimStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchResourceV1NamespacedResourceClaimTemplateInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchResourceV1NamespacedResourceClaimTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -18908,11 +27007,125 @@ export const PatchResourceV1NamespacedResourceClaimTemplateInput =
       method: "PATCH",
       path: "/apis/resource.k8s.io/v1/namespaces/{namespace}/resourceclaimtemplates/{name}",
     }),
-  );
-export type PatchResourceV1NamespacedResourceClaimTemplateInput =
-  typeof PatchResourceV1NamespacedResourceClaimTemplateInput.Type;
+  ) as unknown as Schema.Codec<PatchResourceV1NamespacedResourceClaimTemplateInput>;
 
 // Output Schema
+export interface PatchResourceV1NamespacedResourceClaimTemplateOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+        }[];
+        constraints?: {
+          distinctAttribute?: string;
+          matchAttribute?: string;
+          requests?: string[];
+        }[];
+        requests?: {
+          exactly?: {
+            adminAccess?: boolean;
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          };
+          firstAvailable?: {
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            name: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+          name: string;
+        }[];
+      };
+    };
+  };
+}
 export const PatchResourceV1NamespacedResourceClaimTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -19128,9 +27341,7 @@ export const PatchResourceV1NamespacedResourceClaimTemplateOutput =
         ),
       }),
     ),
-  });
-export type PatchResourceV1NamespacedResourceClaimTemplateOutput =
-  typeof PatchResourceV1NamespacedResourceClaimTemplateOutput.Type;
+  }) as unknown as Schema.Codec<PatchResourceV1NamespacedResourceClaimTemplateOutput>;
 
 // The operation
 /**
@@ -19151,6 +27362,14 @@ export const patchResourceV1NamespacedResourceClaimTemplate =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchResourceV1ResourceSliceInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchResourceV1ResourceSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -19164,11 +27383,123 @@ export const PatchResourceV1ResourceSliceInput =
       method: "PATCH",
       path: "/apis/resource.k8s.io/v1/resourceslices/{name}",
     }),
-  );
-export type PatchResourceV1ResourceSliceInput =
-  typeof PatchResourceV1ResourceSliceInput.Type;
+  ) as unknown as Schema.Codec<PatchResourceV1ResourceSliceInput>;
 
 // Output Schema
+export interface PatchResourceV1ResourceSliceOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    allNodes?: boolean;
+    devices?: {
+      allNodes?: boolean;
+      allowMultipleAllocations?: boolean;
+      attributes?: Record<
+        string,
+        {
+          bool?: boolean;
+          bools?: boolean[];
+          int?: number;
+          ints?: number[];
+          string?: string;
+          strings?: string[];
+          version?: string;
+          versions?: string[];
+        }
+      >;
+      bindingConditions?: string[];
+      bindingFailureConditions?: string[];
+      bindsToNode?: boolean;
+      capacity?: Record<
+        string,
+        {
+          requestPolicy?: {
+            default?: string;
+            validRange?: { max?: string; min: string; step?: string };
+            validValues?: string[];
+          };
+          value: string;
+        }
+      >;
+      consumesCounters?: {
+        counterSet: string;
+        counters: Record<string, { value: string }>;
+      }[];
+      name: string;
+      nodeAllocatableResourceMappings?: Record<
+        string,
+        { allocationMultiplier?: string; capacityKey?: string }
+      >;
+      nodeName?: string;
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+      taints?: {
+        effect: string;
+        key: string;
+        timeAdded?: string;
+        value?: string;
+      }[];
+    }[];
+    driver: string;
+    nodeName?: string;
+    nodeSelector?: {
+      nodeSelectorTerms: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchFields?: { key: string; operator: string; values?: string[] }[];
+      }[];
+    };
+    perDeviceNodeSelection?: boolean;
+    pool: { generation: number; name: string; resourceSliceCount: number };
+    sharedCounters?: {
+      counters: Record<string, { value: string }>;
+      name: string;
+    }[];
+  };
+}
 export const PatchResourceV1ResourceSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -19376,9 +27707,7 @@ export const PatchResourceV1ResourceSliceOutput =
         ),
       ),
     }),
-  });
-export type PatchResourceV1ResourceSliceOutput =
-  typeof PatchResourceV1ResourceSliceOutput.Type;
+  }) as unknown as Schema.Codec<PatchResourceV1ResourceSliceOutput>;
 
 // The operation
 /**
@@ -19398,6 +27727,14 @@ export const patchResourceV1ResourceSlice =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchResourceV1alpha3DeviceTaintRuleInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchResourceV1alpha3DeviceTaintRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -19411,11 +27748,59 @@ export const PatchResourceV1alpha3DeviceTaintRuleInput =
       method: "PATCH",
       path: "/apis/resource.k8s.io/v1alpha3/devicetaintrules/{name}",
     }),
-  );
-export type PatchResourceV1alpha3DeviceTaintRuleInput =
-  typeof PatchResourceV1alpha3DeviceTaintRuleInput.Type;
+  ) as unknown as Schema.Codec<PatchResourceV1alpha3DeviceTaintRuleInput>;
 
 // Output Schema
+export interface PatchResourceV1alpha3DeviceTaintRuleOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    deviceSelector?: { device?: string; driver?: string; pool?: string };
+    taint: { effect: string; key: string; timeAdded?: string; value?: string };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const PatchResourceV1alpha3DeviceTaintRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -19495,9 +27880,7 @@ export const PatchResourceV1alpha3DeviceTaintRuleOutput =
         ),
       }),
     ),
-  });
-export type PatchResourceV1alpha3DeviceTaintRuleOutput =
-  typeof PatchResourceV1alpha3DeviceTaintRuleOutput.Type;
+  }) as unknown as Schema.Codec<PatchResourceV1alpha3DeviceTaintRuleOutput>;
 
 // The operation
 /**
@@ -19517,6 +27900,14 @@ export const patchResourceV1alpha3DeviceTaintRule =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchResourceV1alpha3DeviceTaintRuleStatusInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchResourceV1alpha3DeviceTaintRuleStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -19530,11 +27921,59 @@ export const PatchResourceV1alpha3DeviceTaintRuleStatusInput =
       method: "PATCH",
       path: "/apis/resource.k8s.io/v1alpha3/devicetaintrules/{name}/status",
     }),
-  );
-export type PatchResourceV1alpha3DeviceTaintRuleStatusInput =
-  typeof PatchResourceV1alpha3DeviceTaintRuleStatusInput.Type;
+  ) as unknown as Schema.Codec<PatchResourceV1alpha3DeviceTaintRuleStatusInput>;
 
 // Output Schema
+export interface PatchResourceV1alpha3DeviceTaintRuleStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    deviceSelector?: { device?: string; driver?: string; pool?: string };
+    taint: { effect: string; key: string; timeAdded?: string; value?: string };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const PatchResourceV1alpha3DeviceTaintRuleStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -19614,9 +28053,7 @@ export const PatchResourceV1alpha3DeviceTaintRuleStatusOutput =
         ),
       }),
     ),
-  });
-export type PatchResourceV1alpha3DeviceTaintRuleStatusOutput =
-  typeof PatchResourceV1alpha3DeviceTaintRuleStatusOutput.Type;
+  }) as unknown as Schema.Codec<PatchResourceV1alpha3DeviceTaintRuleStatusOutput>;
 
 // The operation
 /**
@@ -19636,6 +28073,14 @@ export const patchResourceV1alpha3DeviceTaintRuleStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchResourceV1alpha3ResourcePoolStatusRequestInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchResourceV1alpha3ResourcePoolStatusRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -19649,11 +28094,69 @@ export const PatchResourceV1alpha3ResourcePoolStatusRequestInput =
       method: "PATCH",
       path: "/apis/resource.k8s.io/v1alpha3/resourcepoolstatusrequests/{name}",
     }),
-  );
-export type PatchResourceV1alpha3ResourcePoolStatusRequestInput =
-  typeof PatchResourceV1alpha3ResourcePoolStatusRequestInput.Type;
+  ) as unknown as Schema.Codec<PatchResourceV1alpha3ResourcePoolStatusRequestInput>;
 
 // Output Schema
+export interface PatchResourceV1alpha3ResourcePoolStatusRequestOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: { driver: string; limit?: number; poolName?: string };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    poolCount: number;
+    pools?: {
+      allocatedDevices?: number;
+      availableDevices?: number;
+      driver: string;
+      generation: number;
+      nodeName?: string;
+      poolName: string;
+      resourceSliceCount?: number;
+      totalDevices?: number;
+      unavailableDevices?: number;
+      validationError?: string;
+    }[];
+  };
+}
 export const PatchResourceV1alpha3ResourcePoolStatusRequestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -19736,9 +28239,7 @@ export const PatchResourceV1alpha3ResourcePoolStatusRequestOutput =
         ),
       }),
     ),
-  });
-export type PatchResourceV1alpha3ResourcePoolStatusRequestOutput =
-  typeof PatchResourceV1alpha3ResourcePoolStatusRequestOutput.Type;
+  }) as unknown as Schema.Codec<PatchResourceV1alpha3ResourcePoolStatusRequestOutput>;
 
 // The operation
 /**
@@ -19757,6 +28258,14 @@ export const patchResourceV1alpha3ResourcePoolStatusRequest =
     outputSchema: PatchResourceV1alpha3ResourcePoolStatusRequestOutput,
   }));
 // Input Schema
+export interface PatchResourceV1alpha3ResourcePoolStatusRequestStatusInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchResourceV1alpha3ResourcePoolStatusRequestStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -19770,11 +28279,69 @@ export const PatchResourceV1alpha3ResourcePoolStatusRequestStatusInput =
       method: "PATCH",
       path: "/apis/resource.k8s.io/v1alpha3/resourcepoolstatusrequests/{name}/status",
     }),
-  );
-export type PatchResourceV1alpha3ResourcePoolStatusRequestStatusInput =
-  typeof PatchResourceV1alpha3ResourcePoolStatusRequestStatusInput.Type;
+  ) as unknown as Schema.Codec<PatchResourceV1alpha3ResourcePoolStatusRequestStatusInput>;
 
 // Output Schema
+export interface PatchResourceV1alpha3ResourcePoolStatusRequestStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: { driver: string; limit?: number; poolName?: string };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    poolCount: number;
+    pools?: {
+      allocatedDevices?: number;
+      availableDevices?: number;
+      driver: string;
+      generation: number;
+      nodeName?: string;
+      poolName: string;
+      resourceSliceCount?: number;
+      totalDevices?: number;
+      unavailableDevices?: number;
+      validationError?: string;
+    }[];
+  };
+}
 export const PatchResourceV1alpha3ResourcePoolStatusRequestStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -19857,9 +28424,7 @@ export const PatchResourceV1alpha3ResourcePoolStatusRequestStatusOutput =
         ),
       }),
     ),
-  });
-export type PatchResourceV1alpha3ResourcePoolStatusRequestStatusOutput =
-  typeof PatchResourceV1alpha3ResourcePoolStatusRequestStatusOutput.Type;
+  }) as unknown as Schema.Codec<PatchResourceV1alpha3ResourcePoolStatusRequestStatusOutput>;
 
 // The operation
 /**
@@ -19878,6 +28443,14 @@ export const patchResourceV1alpha3ResourcePoolStatusRequestStatus =
     outputSchema: PatchResourceV1alpha3ResourcePoolStatusRequestStatusOutput,
   }));
 // Input Schema
+export interface PatchResourceV1beta1DeviceClassInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchResourceV1beta1DeviceClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -19891,11 +28464,50 @@ export const PatchResourceV1beta1DeviceClassInput =
       method: "PATCH",
       path: "/apis/resource.k8s.io/v1beta1/deviceclasses/{name}",
     }),
-  );
-export type PatchResourceV1beta1DeviceClassInput =
-  typeof PatchResourceV1beta1DeviceClassInput.Type;
+  ) as unknown as Schema.Codec<PatchResourceV1beta1DeviceClassInput>;
 
 // Output Schema
+export interface PatchResourceV1beta1DeviceClassOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    config?: { opaque?: { driver: string; parameters: unknown } }[];
+    extendedResourceName?: string;
+    selectors?: { cel?: { expression: string } }[];
+  };
+}
 export const PatchResourceV1beta1DeviceClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -19972,9 +28584,7 @@ export const PatchResourceV1beta1DeviceClassOutput =
         ),
       }),
     ),
-  });
-export type PatchResourceV1beta1DeviceClassOutput =
-  typeof PatchResourceV1beta1DeviceClassOutput.Type;
+  }) as unknown as Schema.Codec<PatchResourceV1beta1DeviceClassOutput>;
 
 // The operation
 /**
@@ -19994,6 +28604,15 @@ export const patchResourceV1beta1DeviceClass =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchResourceV1beta1NamespacedResourceClaimInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchResourceV1beta1NamespacedResourceClaimInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -20008,11 +28627,155 @@ export const PatchResourceV1beta1NamespacedResourceClaimInput =
       method: "PATCH",
       path: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaims/{name}",
     }),
-  );
-export type PatchResourceV1beta1NamespacedResourceClaimInput =
-  typeof PatchResourceV1beta1NamespacedResourceClaimInput.Type;
+  ) as unknown as Schema.Codec<PatchResourceV1beta1NamespacedResourceClaimInput>;
 
 // Output Schema
+export interface PatchResourceV1beta1NamespacedResourceClaimOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        adminAccess?: boolean;
+        allocationMode?: string;
+        capacity?: { requests?: Record<string, string> };
+        count?: number;
+        deviceClassName?: string;
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+        selectors?: { cel?: { expression: string } }[];
+        tolerations?: {
+          effect?: string;
+          key?: string;
+          operator?: string;
+          tolerationSeconds?: number;
+          value?: string;
+        }[];
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const PatchResourceV1beta1NamespacedResourceClaimOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -20295,9 +29058,7 @@ export const PatchResourceV1beta1NamespacedResourceClaimOutput =
         ),
       }),
     ),
-  });
-export type PatchResourceV1beta1NamespacedResourceClaimOutput =
-  typeof PatchResourceV1beta1NamespacedResourceClaimOutput.Type;
+  }) as unknown as Schema.Codec<PatchResourceV1beta1NamespacedResourceClaimOutput>;
 
 // The operation
 /**
@@ -20318,6 +29079,15 @@ export const patchResourceV1beta1NamespacedResourceClaim =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchResourceV1beta1NamespacedResourceClaimStatusInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchResourceV1beta1NamespacedResourceClaimStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -20332,11 +29102,155 @@ export const PatchResourceV1beta1NamespacedResourceClaimStatusInput =
       method: "PATCH",
       path: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaims/{name}/status",
     }),
-  );
-export type PatchResourceV1beta1NamespacedResourceClaimStatusInput =
-  typeof PatchResourceV1beta1NamespacedResourceClaimStatusInput.Type;
+  ) as unknown as Schema.Codec<PatchResourceV1beta1NamespacedResourceClaimStatusInput>;
 
 // Output Schema
+export interface PatchResourceV1beta1NamespacedResourceClaimStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        adminAccess?: boolean;
+        allocationMode?: string;
+        capacity?: { requests?: Record<string, string> };
+        count?: number;
+        deviceClassName?: string;
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+        selectors?: { cel?: { expression: string } }[];
+        tolerations?: {
+          effect?: string;
+          key?: string;
+          operator?: string;
+          tolerationSeconds?: number;
+          value?: string;
+        }[];
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const PatchResourceV1beta1NamespacedResourceClaimStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -20619,9 +29533,7 @@ export const PatchResourceV1beta1NamespacedResourceClaimStatusOutput =
         ),
       }),
     ),
-  });
-export type PatchResourceV1beta1NamespacedResourceClaimStatusOutput =
-  typeof PatchResourceV1beta1NamespacedResourceClaimStatusOutput.Type;
+  }) as unknown as Schema.Codec<PatchResourceV1beta1NamespacedResourceClaimStatusOutput>;
 
 // The operation
 /**
@@ -20642,6 +29554,15 @@ export const patchResourceV1beta1NamespacedResourceClaimStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchResourceV1beta1NamespacedResourceClaimTemplateInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchResourceV1beta1NamespacedResourceClaimTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -20656,11 +29577,123 @@ export const PatchResourceV1beta1NamespacedResourceClaimTemplateInput =
       method: "PATCH",
       path: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaimtemplates/{name}",
     }),
-  );
-export type PatchResourceV1beta1NamespacedResourceClaimTemplateInput =
-  typeof PatchResourceV1beta1NamespacedResourceClaimTemplateInput.Type;
+  ) as unknown as Schema.Codec<PatchResourceV1beta1NamespacedResourceClaimTemplateInput>;
 
 // Output Schema
+export interface PatchResourceV1beta1NamespacedResourceClaimTemplateOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+        }[];
+        constraints?: {
+          distinctAttribute?: string;
+          matchAttribute?: string;
+          requests?: string[];
+        }[];
+        requests?: {
+          adminAccess?: boolean;
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName?: string;
+          firstAvailable?: {
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            name: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+    };
+  };
+}
 export const PatchResourceV1beta1NamespacedResourceClaimTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -20870,9 +29903,7 @@ export const PatchResourceV1beta1NamespacedResourceClaimTemplateOutput =
         ),
       }),
     ),
-  });
-export type PatchResourceV1beta1NamespacedResourceClaimTemplateOutput =
-  typeof PatchResourceV1beta1NamespacedResourceClaimTemplateOutput.Type;
+  }) as unknown as Schema.Codec<PatchResourceV1beta1NamespacedResourceClaimTemplateOutput>;
 
 // The operation
 /**
@@ -20893,6 +29924,14 @@ export const patchResourceV1beta1NamespacedResourceClaimTemplate =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchResourceV1beta1ResourceSliceInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchResourceV1beta1ResourceSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -20906,11 +29945,129 @@ export const PatchResourceV1beta1ResourceSliceInput =
       method: "PATCH",
       path: "/apis/resource.k8s.io/v1beta1/resourceslices/{name}",
     }),
-  );
-export type PatchResourceV1beta1ResourceSliceInput =
-  typeof PatchResourceV1beta1ResourceSliceInput.Type;
+  ) as unknown as Schema.Codec<PatchResourceV1beta1ResourceSliceInput>;
 
 // Output Schema
+export interface PatchResourceV1beta1ResourceSliceOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    allNodes?: boolean;
+    devices?: {
+      basic?: {
+        allNodes?: boolean;
+        allowMultipleAllocations?: boolean;
+        attributes?: Record<
+          string,
+          {
+            bool?: boolean;
+            bools?: boolean[];
+            int?: number;
+            ints?: number[];
+            string?: string;
+            strings?: string[];
+            version?: string;
+            versions?: string[];
+          }
+        >;
+        bindingConditions?: string[];
+        bindingFailureConditions?: string[];
+        bindsToNode?: boolean;
+        capacity?: Record<
+          string,
+          {
+            requestPolicy?: {
+              default?: string;
+              validRange?: { max?: string; min: string; step?: string };
+              validValues?: string[];
+            };
+            value: string;
+          }
+        >;
+        consumesCounters?: {
+          counterSet: string;
+          counters: Record<string, { value: string }>;
+        }[];
+        nodeAllocatableResourceMappings?: Record<
+          string,
+          { allocationMultiplier?: string; capacityKey?: string }
+        >;
+        nodeName?: string;
+        nodeSelector?: {
+          nodeSelectorTerms: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchFields?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+          }[];
+        };
+        taints?: {
+          effect: string;
+          key: string;
+          timeAdded?: string;
+          value?: string;
+        }[];
+      };
+      name: string;
+    }[];
+    driver: string;
+    nodeName?: string;
+    nodeSelector?: {
+      nodeSelectorTerms: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchFields?: { key: string; operator: string; values?: string[] }[];
+      }[];
+    };
+    perDeviceNodeSelection?: boolean;
+    pool: { generation: number; name: string; resourceSliceCount: number };
+    sharedCounters?: {
+      counters: Record<string, { value: string }>;
+      name: string;
+    }[];
+  };
+}
 export const PatchResourceV1beta1ResourceSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -21128,9 +30285,7 @@ export const PatchResourceV1beta1ResourceSliceOutput =
         ),
       ),
     }),
-  });
-export type PatchResourceV1beta1ResourceSliceOutput =
-  typeof PatchResourceV1beta1ResourceSliceOutput.Type;
+  }) as unknown as Schema.Codec<PatchResourceV1beta1ResourceSliceOutput>;
 
 // The operation
 /**
@@ -21150,6 +30305,14 @@ export const patchResourceV1beta1ResourceSlice =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchResourceV1beta2DeviceClassInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchResourceV1beta2DeviceClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -21163,11 +30326,50 @@ export const PatchResourceV1beta2DeviceClassInput =
       method: "PATCH",
       path: "/apis/resource.k8s.io/v1beta2/deviceclasses/{name}",
     }),
-  );
-export type PatchResourceV1beta2DeviceClassInput =
-  typeof PatchResourceV1beta2DeviceClassInput.Type;
+  ) as unknown as Schema.Codec<PatchResourceV1beta2DeviceClassInput>;
 
 // Output Schema
+export interface PatchResourceV1beta2DeviceClassOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    config?: { opaque?: { driver: string; parameters: unknown } }[];
+    extendedResourceName?: string;
+    selectors?: { cel?: { expression: string } }[];
+  };
+}
 export const PatchResourceV1beta2DeviceClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -21244,9 +30446,7 @@ export const PatchResourceV1beta2DeviceClassOutput =
         ),
       }),
     ),
-  });
-export type PatchResourceV1beta2DeviceClassOutput =
-  typeof PatchResourceV1beta2DeviceClassOutput.Type;
+  }) as unknown as Schema.Codec<PatchResourceV1beta2DeviceClassOutput>;
 
 // The operation
 /**
@@ -21266,6 +30466,14 @@ export const patchResourceV1beta2DeviceClass =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchResourceV1beta2DeviceTaintRuleInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchResourceV1beta2DeviceTaintRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -21279,11 +30487,59 @@ export const PatchResourceV1beta2DeviceTaintRuleInput =
       method: "PATCH",
       path: "/apis/resource.k8s.io/v1beta2/devicetaintrules/{name}",
     }),
-  );
-export type PatchResourceV1beta2DeviceTaintRuleInput =
-  typeof PatchResourceV1beta2DeviceTaintRuleInput.Type;
+  ) as unknown as Schema.Codec<PatchResourceV1beta2DeviceTaintRuleInput>;
 
 // Output Schema
+export interface PatchResourceV1beta2DeviceTaintRuleOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    deviceSelector?: { device?: string; driver?: string; pool?: string };
+    taint: { effect: string; key: string; timeAdded?: string; value?: string };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const PatchResourceV1beta2DeviceTaintRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -21363,9 +30619,7 @@ export const PatchResourceV1beta2DeviceTaintRuleOutput =
         ),
       }),
     ),
-  });
-export type PatchResourceV1beta2DeviceTaintRuleOutput =
-  typeof PatchResourceV1beta2DeviceTaintRuleOutput.Type;
+  }) as unknown as Schema.Codec<PatchResourceV1beta2DeviceTaintRuleOutput>;
 
 // The operation
 /**
@@ -21385,6 +30639,14 @@ export const patchResourceV1beta2DeviceTaintRule =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchResourceV1beta2DeviceTaintRuleStatusInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchResourceV1beta2DeviceTaintRuleStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -21398,11 +30660,59 @@ export const PatchResourceV1beta2DeviceTaintRuleStatusInput =
       method: "PATCH",
       path: "/apis/resource.k8s.io/v1beta2/devicetaintrules/{name}/status",
     }),
-  );
-export type PatchResourceV1beta2DeviceTaintRuleStatusInput =
-  typeof PatchResourceV1beta2DeviceTaintRuleStatusInput.Type;
+  ) as unknown as Schema.Codec<PatchResourceV1beta2DeviceTaintRuleStatusInput>;
 
 // Output Schema
+export interface PatchResourceV1beta2DeviceTaintRuleStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    deviceSelector?: { device?: string; driver?: string; pool?: string };
+    taint: { effect: string; key: string; timeAdded?: string; value?: string };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const PatchResourceV1beta2DeviceTaintRuleStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -21482,9 +30792,7 @@ export const PatchResourceV1beta2DeviceTaintRuleStatusOutput =
         ),
       }),
     ),
-  });
-export type PatchResourceV1beta2DeviceTaintRuleStatusOutput =
-  typeof PatchResourceV1beta2DeviceTaintRuleStatusOutput.Type;
+  }) as unknown as Schema.Codec<PatchResourceV1beta2DeviceTaintRuleStatusOutput>;
 
 // The operation
 /**
@@ -21504,6 +30812,15 @@ export const patchResourceV1beta2DeviceTaintRuleStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchResourceV1beta2NamespacedResourceClaimInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchResourceV1beta2NamespacedResourceClaimInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -21518,11 +30835,157 @@ export const PatchResourceV1beta2NamespacedResourceClaimInput =
       method: "PATCH",
       path: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaims/{name}",
     }),
-  );
-export type PatchResourceV1beta2NamespacedResourceClaimInput =
-  typeof PatchResourceV1beta2NamespacedResourceClaimInput.Type;
+  ) as unknown as Schema.Codec<PatchResourceV1beta2NamespacedResourceClaimInput>;
 
 // Output Schema
+export interface PatchResourceV1beta2NamespacedResourceClaimOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        exactly?: {
+          adminAccess?: boolean;
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        };
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const PatchResourceV1beta2NamespacedResourceClaimOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -21809,9 +31272,7 @@ export const PatchResourceV1beta2NamespacedResourceClaimOutput =
         ),
       }),
     ),
-  });
-export type PatchResourceV1beta2NamespacedResourceClaimOutput =
-  typeof PatchResourceV1beta2NamespacedResourceClaimOutput.Type;
+  }) as unknown as Schema.Codec<PatchResourceV1beta2NamespacedResourceClaimOutput>;
 
 // The operation
 /**
@@ -21832,6 +31293,15 @@ export const patchResourceV1beta2NamespacedResourceClaim =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchResourceV1beta2NamespacedResourceClaimStatusInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchResourceV1beta2NamespacedResourceClaimStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -21846,11 +31316,157 @@ export const PatchResourceV1beta2NamespacedResourceClaimStatusInput =
       method: "PATCH",
       path: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaims/{name}/status",
     }),
-  );
-export type PatchResourceV1beta2NamespacedResourceClaimStatusInput =
-  typeof PatchResourceV1beta2NamespacedResourceClaimStatusInput.Type;
+  ) as unknown as Schema.Codec<PatchResourceV1beta2NamespacedResourceClaimStatusInput>;
 
 // Output Schema
+export interface PatchResourceV1beta2NamespacedResourceClaimStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        exactly?: {
+          adminAccess?: boolean;
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        };
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const PatchResourceV1beta2NamespacedResourceClaimStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -22137,9 +31753,7 @@ export const PatchResourceV1beta2NamespacedResourceClaimStatusOutput =
         ),
       }),
     ),
-  });
-export type PatchResourceV1beta2NamespacedResourceClaimStatusOutput =
-  typeof PatchResourceV1beta2NamespacedResourceClaimStatusOutput.Type;
+  }) as unknown as Schema.Codec<PatchResourceV1beta2NamespacedResourceClaimStatusOutput>;
 
 // The operation
 /**
@@ -22160,6 +31774,15 @@ export const patchResourceV1beta2NamespacedResourceClaimStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchResourceV1beta2NamespacedResourceClaimTemplateInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchResourceV1beta2NamespacedResourceClaimTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -22174,11 +31797,125 @@ export const PatchResourceV1beta2NamespacedResourceClaimTemplateInput =
       method: "PATCH",
       path: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaimtemplates/{name}",
     }),
-  );
-export type PatchResourceV1beta2NamespacedResourceClaimTemplateInput =
-  typeof PatchResourceV1beta2NamespacedResourceClaimTemplateInput.Type;
+  ) as unknown as Schema.Codec<PatchResourceV1beta2NamespacedResourceClaimTemplateInput>;
 
 // Output Schema
+export interface PatchResourceV1beta2NamespacedResourceClaimTemplateOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+        }[];
+        constraints?: {
+          distinctAttribute?: string;
+          matchAttribute?: string;
+          requests?: string[];
+        }[];
+        requests?: {
+          exactly?: {
+            adminAccess?: boolean;
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          };
+          firstAvailable?: {
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            name: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+          name: string;
+        }[];
+      };
+    };
+  };
+}
 export const PatchResourceV1beta2NamespacedResourceClaimTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -22394,9 +32131,7 @@ export const PatchResourceV1beta2NamespacedResourceClaimTemplateOutput =
         ),
       }),
     ),
-  });
-export type PatchResourceV1beta2NamespacedResourceClaimTemplateOutput =
-  typeof PatchResourceV1beta2NamespacedResourceClaimTemplateOutput.Type;
+  }) as unknown as Schema.Codec<PatchResourceV1beta2NamespacedResourceClaimTemplateOutput>;
 
 // The operation
 /**
@@ -22417,6 +32152,14 @@ export const patchResourceV1beta2NamespacedResourceClaimTemplate =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchResourceV1beta2ResourceSliceInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchResourceV1beta2ResourceSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -22430,11 +32173,123 @@ export const PatchResourceV1beta2ResourceSliceInput =
       method: "PATCH",
       path: "/apis/resource.k8s.io/v1beta2/resourceslices/{name}",
     }),
-  );
-export type PatchResourceV1beta2ResourceSliceInput =
-  typeof PatchResourceV1beta2ResourceSliceInput.Type;
+  ) as unknown as Schema.Codec<PatchResourceV1beta2ResourceSliceInput>;
 
 // Output Schema
+export interface PatchResourceV1beta2ResourceSliceOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    allNodes?: boolean;
+    devices?: {
+      allNodes?: boolean;
+      allowMultipleAllocations?: boolean;
+      attributes?: Record<
+        string,
+        {
+          bool?: boolean;
+          bools?: boolean[];
+          int?: number;
+          ints?: number[];
+          string?: string;
+          strings?: string[];
+          version?: string;
+          versions?: string[];
+        }
+      >;
+      bindingConditions?: string[];
+      bindingFailureConditions?: string[];
+      bindsToNode?: boolean;
+      capacity?: Record<
+        string,
+        {
+          requestPolicy?: {
+            default?: string;
+            validRange?: { max?: string; min: string; step?: string };
+            validValues?: string[];
+          };
+          value: string;
+        }
+      >;
+      consumesCounters?: {
+        counterSet: string;
+        counters: Record<string, { value: string }>;
+      }[];
+      name: string;
+      nodeAllocatableResourceMappings?: Record<
+        string,
+        { allocationMultiplier?: string; capacityKey?: string }
+      >;
+      nodeName?: string;
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+      taints?: {
+        effect: string;
+        key: string;
+        timeAdded?: string;
+        value?: string;
+      }[];
+    }[];
+    driver: string;
+    nodeName?: string;
+    nodeSelector?: {
+      nodeSelectorTerms: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchFields?: { key: string; operator: string; values?: string[] }[];
+      }[];
+    };
+    perDeviceNodeSelection?: boolean;
+    pool: { generation: number; name: string; resourceSliceCount: number };
+    sharedCounters?: {
+      counters: Record<string, { value: string }>;
+      name: string;
+    }[];
+  };
+}
 export const PatchResourceV1beta2ResourceSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -22642,9 +32497,7 @@ export const PatchResourceV1beta2ResourceSliceOutput =
         ),
       ),
     }),
-  });
-export type PatchResourceV1beta2ResourceSliceOutput =
-  typeof PatchResourceV1beta2ResourceSliceOutput.Type;
+  }) as unknown as Schema.Codec<PatchResourceV1beta2ResourceSliceOutput>;
 
 // The operation
 /**
@@ -22664,6 +32517,10 @@ export const patchResourceV1beta2ResourceSlice =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReadResourceV1DeviceClassInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadResourceV1DeviceClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -22673,11 +32530,50 @@ export const ReadResourceV1DeviceClassInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1/deviceclasses/{name}",
     }),
-  );
-export type ReadResourceV1DeviceClassInput =
-  typeof ReadResourceV1DeviceClassInput.Type;
+  ) as unknown as Schema.Codec<ReadResourceV1DeviceClassInput>;
 
 // Output Schema
+export interface ReadResourceV1DeviceClassOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    config?: { opaque?: { driver: string; parameters: unknown } }[];
+    extendedResourceName?: string;
+    selectors?: { cel?: { expression: string } }[];
+  };
+}
 export const ReadResourceV1DeviceClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -22754,9 +32650,7 @@ export const ReadResourceV1DeviceClassOutput =
         ),
       }),
     ),
-  });
-export type ReadResourceV1DeviceClassOutput =
-  typeof ReadResourceV1DeviceClassOutput.Type;
+  }) as unknown as Schema.Codec<ReadResourceV1DeviceClassOutput>;
 
 // The operation
 /**
@@ -22773,6 +32667,11 @@ export const readResourceV1DeviceClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ReadResourceV1NamespacedResourceClaimInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
 export const ReadResourceV1NamespacedResourceClaimInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -22783,11 +32682,157 @@ export const ReadResourceV1NamespacedResourceClaimInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1/namespaces/{namespace}/resourceclaims/{name}",
     }),
-  );
-export type ReadResourceV1NamespacedResourceClaimInput =
-  typeof ReadResourceV1NamespacedResourceClaimInput.Type;
+  ) as unknown as Schema.Codec<ReadResourceV1NamespacedResourceClaimInput>;
 
 // Output Schema
+export interface ReadResourceV1NamespacedResourceClaimOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        exactly?: {
+          adminAccess?: boolean;
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        };
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const ReadResourceV1NamespacedResourceClaimOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -23074,9 +33119,7 @@ export const ReadResourceV1NamespacedResourceClaimOutput =
         ),
       }),
     ),
-  });
-export type ReadResourceV1NamespacedResourceClaimOutput =
-  typeof ReadResourceV1NamespacedResourceClaimOutput.Type;
+  }) as unknown as Schema.Codec<ReadResourceV1NamespacedResourceClaimOutput>;
 
 // The operation
 /**
@@ -23093,6 +33136,11 @@ export const readResourceV1NamespacedResourceClaim =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadResourceV1NamespacedResourceClaimStatusInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
 export const ReadResourceV1NamespacedResourceClaimStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -23103,11 +33151,157 @@ export const ReadResourceV1NamespacedResourceClaimStatusInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1/namespaces/{namespace}/resourceclaims/{name}/status",
     }),
-  );
-export type ReadResourceV1NamespacedResourceClaimStatusInput =
-  typeof ReadResourceV1NamespacedResourceClaimStatusInput.Type;
+  ) as unknown as Schema.Codec<ReadResourceV1NamespacedResourceClaimStatusInput>;
 
 // Output Schema
+export interface ReadResourceV1NamespacedResourceClaimStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        exactly?: {
+          adminAccess?: boolean;
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        };
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const ReadResourceV1NamespacedResourceClaimStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -23394,9 +33588,7 @@ export const ReadResourceV1NamespacedResourceClaimStatusOutput =
         ),
       }),
     ),
-  });
-export type ReadResourceV1NamespacedResourceClaimStatusOutput =
-  typeof ReadResourceV1NamespacedResourceClaimStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReadResourceV1NamespacedResourceClaimStatusOutput>;
 
 // The operation
 /**
@@ -23413,6 +33605,11 @@ export const readResourceV1NamespacedResourceClaimStatus =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadResourceV1NamespacedResourceClaimTemplateInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
 export const ReadResourceV1NamespacedResourceClaimTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -23423,11 +33620,125 @@ export const ReadResourceV1NamespacedResourceClaimTemplateInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1/namespaces/{namespace}/resourceclaimtemplates/{name}",
     }),
-  );
-export type ReadResourceV1NamespacedResourceClaimTemplateInput =
-  typeof ReadResourceV1NamespacedResourceClaimTemplateInput.Type;
+  ) as unknown as Schema.Codec<ReadResourceV1NamespacedResourceClaimTemplateInput>;
 
 // Output Schema
+export interface ReadResourceV1NamespacedResourceClaimTemplateOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+        }[];
+        constraints?: {
+          distinctAttribute?: string;
+          matchAttribute?: string;
+          requests?: string[];
+        }[];
+        requests?: {
+          exactly?: {
+            adminAccess?: boolean;
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          };
+          firstAvailable?: {
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            name: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+          name: string;
+        }[];
+      };
+    };
+  };
+}
 export const ReadResourceV1NamespacedResourceClaimTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -23643,9 +33954,7 @@ export const ReadResourceV1NamespacedResourceClaimTemplateOutput =
         ),
       }),
     ),
-  });
-export type ReadResourceV1NamespacedResourceClaimTemplateOutput =
-  typeof ReadResourceV1NamespacedResourceClaimTemplateOutput.Type;
+  }) as unknown as Schema.Codec<ReadResourceV1NamespacedResourceClaimTemplateOutput>;
 
 // The operation
 /**
@@ -23662,6 +33971,10 @@ export const readResourceV1NamespacedResourceClaimTemplate =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadResourceV1ResourceSliceInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadResourceV1ResourceSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -23671,11 +33984,123 @@ export const ReadResourceV1ResourceSliceInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1/resourceslices/{name}",
     }),
-  );
-export type ReadResourceV1ResourceSliceInput =
-  typeof ReadResourceV1ResourceSliceInput.Type;
+  ) as unknown as Schema.Codec<ReadResourceV1ResourceSliceInput>;
 
 // Output Schema
+export interface ReadResourceV1ResourceSliceOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    allNodes?: boolean;
+    devices?: {
+      allNodes?: boolean;
+      allowMultipleAllocations?: boolean;
+      attributes?: Record<
+        string,
+        {
+          bool?: boolean;
+          bools?: boolean[];
+          int?: number;
+          ints?: number[];
+          string?: string;
+          strings?: string[];
+          version?: string;
+          versions?: string[];
+        }
+      >;
+      bindingConditions?: string[];
+      bindingFailureConditions?: string[];
+      bindsToNode?: boolean;
+      capacity?: Record<
+        string,
+        {
+          requestPolicy?: {
+            default?: string;
+            validRange?: { max?: string; min: string; step?: string };
+            validValues?: string[];
+          };
+          value: string;
+        }
+      >;
+      consumesCounters?: {
+        counterSet: string;
+        counters: Record<string, { value: string }>;
+      }[];
+      name: string;
+      nodeAllocatableResourceMappings?: Record<
+        string,
+        { allocationMultiplier?: string; capacityKey?: string }
+      >;
+      nodeName?: string;
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+      taints?: {
+        effect: string;
+        key: string;
+        timeAdded?: string;
+        value?: string;
+      }[];
+    }[];
+    driver: string;
+    nodeName?: string;
+    nodeSelector?: {
+      nodeSelectorTerms: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchFields?: { key: string; operator: string; values?: string[] }[];
+      }[];
+    };
+    perDeviceNodeSelection?: boolean;
+    pool: { generation: number; name: string; resourceSliceCount: number };
+    sharedCounters?: {
+      counters: Record<string, { value: string }>;
+      name: string;
+    }[];
+  };
+}
 export const ReadResourceV1ResourceSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -23883,9 +34308,7 @@ export const ReadResourceV1ResourceSliceOutput =
         ),
       ),
     }),
-  });
-export type ReadResourceV1ResourceSliceOutput =
-  typeof ReadResourceV1ResourceSliceOutput.Type;
+  }) as unknown as Schema.Codec<ReadResourceV1ResourceSliceOutput>;
 
 // The operation
 /**
@@ -23902,6 +34325,10 @@ export const readResourceV1ResourceSlice = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ReadResourceV1alpha3DeviceTaintRuleInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadResourceV1alpha3DeviceTaintRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -23911,11 +34338,59 @@ export const ReadResourceV1alpha3DeviceTaintRuleInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1alpha3/devicetaintrules/{name}",
     }),
-  );
-export type ReadResourceV1alpha3DeviceTaintRuleInput =
-  typeof ReadResourceV1alpha3DeviceTaintRuleInput.Type;
+  ) as unknown as Schema.Codec<ReadResourceV1alpha3DeviceTaintRuleInput>;
 
 // Output Schema
+export interface ReadResourceV1alpha3DeviceTaintRuleOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    deviceSelector?: { device?: string; driver?: string; pool?: string };
+    taint: { effect: string; key: string; timeAdded?: string; value?: string };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReadResourceV1alpha3DeviceTaintRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -23995,9 +34470,7 @@ export const ReadResourceV1alpha3DeviceTaintRuleOutput =
         ),
       }),
     ),
-  });
-export type ReadResourceV1alpha3DeviceTaintRuleOutput =
-  typeof ReadResourceV1alpha3DeviceTaintRuleOutput.Type;
+  }) as unknown as Schema.Codec<ReadResourceV1alpha3DeviceTaintRuleOutput>;
 
 // The operation
 /**
@@ -24013,6 +34486,10 @@ export const readResourceV1alpha3DeviceTaintRule =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadResourceV1alpha3DeviceTaintRuleStatusInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadResourceV1alpha3DeviceTaintRuleStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -24022,11 +34499,59 @@ export const ReadResourceV1alpha3DeviceTaintRuleStatusInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1alpha3/devicetaintrules/{name}/status",
     }),
-  );
-export type ReadResourceV1alpha3DeviceTaintRuleStatusInput =
-  typeof ReadResourceV1alpha3DeviceTaintRuleStatusInput.Type;
+  ) as unknown as Schema.Codec<ReadResourceV1alpha3DeviceTaintRuleStatusInput>;
 
 // Output Schema
+export interface ReadResourceV1alpha3DeviceTaintRuleStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    deviceSelector?: { device?: string; driver?: string; pool?: string };
+    taint: { effect: string; key: string; timeAdded?: string; value?: string };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReadResourceV1alpha3DeviceTaintRuleStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -24106,9 +34631,7 @@ export const ReadResourceV1alpha3DeviceTaintRuleStatusOutput =
         ),
       }),
     ),
-  });
-export type ReadResourceV1alpha3DeviceTaintRuleStatusOutput =
-  typeof ReadResourceV1alpha3DeviceTaintRuleStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReadResourceV1alpha3DeviceTaintRuleStatusOutput>;
 
 // The operation
 /**
@@ -24124,6 +34647,10 @@ export const readResourceV1alpha3DeviceTaintRuleStatus =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadResourceV1alpha3ResourcePoolStatusRequestInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadResourceV1alpha3ResourcePoolStatusRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -24133,11 +34660,69 @@ export const ReadResourceV1alpha3ResourcePoolStatusRequestInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1alpha3/resourcepoolstatusrequests/{name}",
     }),
-  );
-export type ReadResourceV1alpha3ResourcePoolStatusRequestInput =
-  typeof ReadResourceV1alpha3ResourcePoolStatusRequestInput.Type;
+  ) as unknown as Schema.Codec<ReadResourceV1alpha3ResourcePoolStatusRequestInput>;
 
 // Output Schema
+export interface ReadResourceV1alpha3ResourcePoolStatusRequestOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: { driver: string; limit?: number; poolName?: string };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    poolCount: number;
+    pools?: {
+      allocatedDevices?: number;
+      availableDevices?: number;
+      driver: string;
+      generation: number;
+      nodeName?: string;
+      poolName: string;
+      resourceSliceCount?: number;
+      totalDevices?: number;
+      unavailableDevices?: number;
+      validationError?: string;
+    }[];
+  };
+}
 export const ReadResourceV1alpha3ResourcePoolStatusRequestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -24220,9 +34805,7 @@ export const ReadResourceV1alpha3ResourcePoolStatusRequestOutput =
         ),
       }),
     ),
-  });
-export type ReadResourceV1alpha3ResourcePoolStatusRequestOutput =
-  typeof ReadResourceV1alpha3ResourcePoolStatusRequestOutput.Type;
+  }) as unknown as Schema.Codec<ReadResourceV1alpha3ResourcePoolStatusRequestOutput>;
 
 // The operation
 /**
@@ -24237,6 +34820,10 @@ export const readResourceV1alpha3ResourcePoolStatusRequest =
     outputSchema: ReadResourceV1alpha3ResourcePoolStatusRequestOutput,
   }));
 // Input Schema
+export interface ReadResourceV1alpha3ResourcePoolStatusRequestStatusInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadResourceV1alpha3ResourcePoolStatusRequestStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -24246,11 +34833,69 @@ export const ReadResourceV1alpha3ResourcePoolStatusRequestStatusInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1alpha3/resourcepoolstatusrequests/{name}/status",
     }),
-  );
-export type ReadResourceV1alpha3ResourcePoolStatusRequestStatusInput =
-  typeof ReadResourceV1alpha3ResourcePoolStatusRequestStatusInput.Type;
+  ) as unknown as Schema.Codec<ReadResourceV1alpha3ResourcePoolStatusRequestStatusInput>;
 
 // Output Schema
+export interface ReadResourceV1alpha3ResourcePoolStatusRequestStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: { driver: string; limit?: number; poolName?: string };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    poolCount: number;
+    pools?: {
+      allocatedDevices?: number;
+      availableDevices?: number;
+      driver: string;
+      generation: number;
+      nodeName?: string;
+      poolName: string;
+      resourceSliceCount?: number;
+      totalDevices?: number;
+      unavailableDevices?: number;
+      validationError?: string;
+    }[];
+  };
+}
 export const ReadResourceV1alpha3ResourcePoolStatusRequestStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -24333,9 +34978,7 @@ export const ReadResourceV1alpha3ResourcePoolStatusRequestStatusOutput =
         ),
       }),
     ),
-  });
-export type ReadResourceV1alpha3ResourcePoolStatusRequestStatusOutput =
-  typeof ReadResourceV1alpha3ResourcePoolStatusRequestStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReadResourceV1alpha3ResourcePoolStatusRequestStatusOutput>;
 
 // The operation
 /**
@@ -24350,6 +34993,10 @@ export const readResourceV1alpha3ResourcePoolStatusRequestStatus =
     outputSchema: ReadResourceV1alpha3ResourcePoolStatusRequestStatusOutput,
   }));
 // Input Schema
+export interface ReadResourceV1beta1DeviceClassInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadResourceV1beta1DeviceClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -24359,11 +35006,50 @@ export const ReadResourceV1beta1DeviceClassInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/deviceclasses/{name}",
     }),
-  );
-export type ReadResourceV1beta1DeviceClassInput =
-  typeof ReadResourceV1beta1DeviceClassInput.Type;
+  ) as unknown as Schema.Codec<ReadResourceV1beta1DeviceClassInput>;
 
 // Output Schema
+export interface ReadResourceV1beta1DeviceClassOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    config?: { opaque?: { driver: string; parameters: unknown } }[];
+    extendedResourceName?: string;
+    selectors?: { cel?: { expression: string } }[];
+  };
+}
 export const ReadResourceV1beta1DeviceClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -24440,9 +35126,7 @@ export const ReadResourceV1beta1DeviceClassOutput =
         ),
       }),
     ),
-  });
-export type ReadResourceV1beta1DeviceClassOutput =
-  typeof ReadResourceV1beta1DeviceClassOutput.Type;
+  }) as unknown as Schema.Codec<ReadResourceV1beta1DeviceClassOutput>;
 
 // The operation
 /**
@@ -24458,6 +35142,11 @@ export const readResourceV1beta1DeviceClass =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadResourceV1beta1NamespacedResourceClaimInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
 export const ReadResourceV1beta1NamespacedResourceClaimInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -24468,11 +35157,155 @@ export const ReadResourceV1beta1NamespacedResourceClaimInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaims/{name}",
     }),
-  );
-export type ReadResourceV1beta1NamespacedResourceClaimInput =
-  typeof ReadResourceV1beta1NamespacedResourceClaimInput.Type;
+  ) as unknown as Schema.Codec<ReadResourceV1beta1NamespacedResourceClaimInput>;
 
 // Output Schema
+export interface ReadResourceV1beta1NamespacedResourceClaimOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        adminAccess?: boolean;
+        allocationMode?: string;
+        capacity?: { requests?: Record<string, string> };
+        count?: number;
+        deviceClassName?: string;
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+        selectors?: { cel?: { expression: string } }[];
+        tolerations?: {
+          effect?: string;
+          key?: string;
+          operator?: string;
+          tolerationSeconds?: number;
+          value?: string;
+        }[];
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const ReadResourceV1beta1NamespacedResourceClaimOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -24755,9 +35588,7 @@ export const ReadResourceV1beta1NamespacedResourceClaimOutput =
         ),
       }),
     ),
-  });
-export type ReadResourceV1beta1NamespacedResourceClaimOutput =
-  typeof ReadResourceV1beta1NamespacedResourceClaimOutput.Type;
+  }) as unknown as Schema.Codec<ReadResourceV1beta1NamespacedResourceClaimOutput>;
 
 // The operation
 /**
@@ -24774,6 +35605,11 @@ export const readResourceV1beta1NamespacedResourceClaim =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadResourceV1beta1NamespacedResourceClaimStatusInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
 export const ReadResourceV1beta1NamespacedResourceClaimStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -24784,11 +35620,155 @@ export const ReadResourceV1beta1NamespacedResourceClaimStatusInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaims/{name}/status",
     }),
-  );
-export type ReadResourceV1beta1NamespacedResourceClaimStatusInput =
-  typeof ReadResourceV1beta1NamespacedResourceClaimStatusInput.Type;
+  ) as unknown as Schema.Codec<ReadResourceV1beta1NamespacedResourceClaimStatusInput>;
 
 // Output Schema
+export interface ReadResourceV1beta1NamespacedResourceClaimStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        adminAccess?: boolean;
+        allocationMode?: string;
+        capacity?: { requests?: Record<string, string> };
+        count?: number;
+        deviceClassName?: string;
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+        selectors?: { cel?: { expression: string } }[];
+        tolerations?: {
+          effect?: string;
+          key?: string;
+          operator?: string;
+          tolerationSeconds?: number;
+          value?: string;
+        }[];
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const ReadResourceV1beta1NamespacedResourceClaimStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -25071,9 +36051,7 @@ export const ReadResourceV1beta1NamespacedResourceClaimStatusOutput =
         ),
       }),
     ),
-  });
-export type ReadResourceV1beta1NamespacedResourceClaimStatusOutput =
-  typeof ReadResourceV1beta1NamespacedResourceClaimStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReadResourceV1beta1NamespacedResourceClaimStatusOutput>;
 
 // The operation
 /**
@@ -25090,6 +36068,11 @@ export const readResourceV1beta1NamespacedResourceClaimStatus =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadResourceV1beta1NamespacedResourceClaimTemplateInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
 export const ReadResourceV1beta1NamespacedResourceClaimTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -25100,11 +36083,123 @@ export const ReadResourceV1beta1NamespacedResourceClaimTemplateInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaimtemplates/{name}",
     }),
-  );
-export type ReadResourceV1beta1NamespacedResourceClaimTemplateInput =
-  typeof ReadResourceV1beta1NamespacedResourceClaimTemplateInput.Type;
+  ) as unknown as Schema.Codec<ReadResourceV1beta1NamespacedResourceClaimTemplateInput>;
 
 // Output Schema
+export interface ReadResourceV1beta1NamespacedResourceClaimTemplateOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+        }[];
+        constraints?: {
+          distinctAttribute?: string;
+          matchAttribute?: string;
+          requests?: string[];
+        }[];
+        requests?: {
+          adminAccess?: boolean;
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName?: string;
+          firstAvailable?: {
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            name: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+    };
+  };
+}
 export const ReadResourceV1beta1NamespacedResourceClaimTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -25314,9 +36409,7 @@ export const ReadResourceV1beta1NamespacedResourceClaimTemplateOutput =
         ),
       }),
     ),
-  });
-export type ReadResourceV1beta1NamespacedResourceClaimTemplateOutput =
-  typeof ReadResourceV1beta1NamespacedResourceClaimTemplateOutput.Type;
+  }) as unknown as Schema.Codec<ReadResourceV1beta1NamespacedResourceClaimTemplateOutput>;
 
 // The operation
 /**
@@ -25333,6 +36426,10 @@ export const readResourceV1beta1NamespacedResourceClaimTemplate =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadResourceV1beta1ResourceSliceInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadResourceV1beta1ResourceSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -25342,11 +36439,129 @@ export const ReadResourceV1beta1ResourceSliceInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/resourceslices/{name}",
     }),
-  );
-export type ReadResourceV1beta1ResourceSliceInput =
-  typeof ReadResourceV1beta1ResourceSliceInput.Type;
+  ) as unknown as Schema.Codec<ReadResourceV1beta1ResourceSliceInput>;
 
 // Output Schema
+export interface ReadResourceV1beta1ResourceSliceOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    allNodes?: boolean;
+    devices?: {
+      basic?: {
+        allNodes?: boolean;
+        allowMultipleAllocations?: boolean;
+        attributes?: Record<
+          string,
+          {
+            bool?: boolean;
+            bools?: boolean[];
+            int?: number;
+            ints?: number[];
+            string?: string;
+            strings?: string[];
+            version?: string;
+            versions?: string[];
+          }
+        >;
+        bindingConditions?: string[];
+        bindingFailureConditions?: string[];
+        bindsToNode?: boolean;
+        capacity?: Record<
+          string,
+          {
+            requestPolicy?: {
+              default?: string;
+              validRange?: { max?: string; min: string; step?: string };
+              validValues?: string[];
+            };
+            value: string;
+          }
+        >;
+        consumesCounters?: {
+          counterSet: string;
+          counters: Record<string, { value: string }>;
+        }[];
+        nodeAllocatableResourceMappings?: Record<
+          string,
+          { allocationMultiplier?: string; capacityKey?: string }
+        >;
+        nodeName?: string;
+        nodeSelector?: {
+          nodeSelectorTerms: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchFields?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+          }[];
+        };
+        taints?: {
+          effect: string;
+          key: string;
+          timeAdded?: string;
+          value?: string;
+        }[];
+      };
+      name: string;
+    }[];
+    driver: string;
+    nodeName?: string;
+    nodeSelector?: {
+      nodeSelectorTerms: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchFields?: { key: string; operator: string; values?: string[] }[];
+      }[];
+    };
+    perDeviceNodeSelection?: boolean;
+    pool: { generation: number; name: string; resourceSliceCount: number };
+    sharedCounters?: {
+      counters: Record<string, { value: string }>;
+      name: string;
+    }[];
+  };
+}
 export const ReadResourceV1beta1ResourceSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -25564,9 +36779,7 @@ export const ReadResourceV1beta1ResourceSliceOutput =
         ),
       ),
     }),
-  });
-export type ReadResourceV1beta1ResourceSliceOutput =
-  typeof ReadResourceV1beta1ResourceSliceOutput.Type;
+  }) as unknown as Schema.Codec<ReadResourceV1beta1ResourceSliceOutput>;
 
 // The operation
 /**
@@ -25582,6 +36795,10 @@ export const readResourceV1beta1ResourceSlice =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadResourceV1beta2DeviceClassInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadResourceV1beta2DeviceClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -25591,11 +36808,50 @@ export const ReadResourceV1beta2DeviceClassInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/deviceclasses/{name}",
     }),
-  );
-export type ReadResourceV1beta2DeviceClassInput =
-  typeof ReadResourceV1beta2DeviceClassInput.Type;
+  ) as unknown as Schema.Codec<ReadResourceV1beta2DeviceClassInput>;
 
 // Output Schema
+export interface ReadResourceV1beta2DeviceClassOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    config?: { opaque?: { driver: string; parameters: unknown } }[];
+    extendedResourceName?: string;
+    selectors?: { cel?: { expression: string } }[];
+  };
+}
 export const ReadResourceV1beta2DeviceClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -25672,9 +36928,7 @@ export const ReadResourceV1beta2DeviceClassOutput =
         ),
       }),
     ),
-  });
-export type ReadResourceV1beta2DeviceClassOutput =
-  typeof ReadResourceV1beta2DeviceClassOutput.Type;
+  }) as unknown as Schema.Codec<ReadResourceV1beta2DeviceClassOutput>;
 
 // The operation
 /**
@@ -25690,6 +36944,10 @@ export const readResourceV1beta2DeviceClass =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadResourceV1beta2DeviceTaintRuleInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadResourceV1beta2DeviceTaintRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -25699,11 +36957,59 @@ export const ReadResourceV1beta2DeviceTaintRuleInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/devicetaintrules/{name}",
     }),
-  );
-export type ReadResourceV1beta2DeviceTaintRuleInput =
-  typeof ReadResourceV1beta2DeviceTaintRuleInput.Type;
+  ) as unknown as Schema.Codec<ReadResourceV1beta2DeviceTaintRuleInput>;
 
 // Output Schema
+export interface ReadResourceV1beta2DeviceTaintRuleOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    deviceSelector?: { device?: string; driver?: string; pool?: string };
+    taint: { effect: string; key: string; timeAdded?: string; value?: string };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReadResourceV1beta2DeviceTaintRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -25783,9 +37089,7 @@ export const ReadResourceV1beta2DeviceTaintRuleOutput =
         ),
       }),
     ),
-  });
-export type ReadResourceV1beta2DeviceTaintRuleOutput =
-  typeof ReadResourceV1beta2DeviceTaintRuleOutput.Type;
+  }) as unknown as Schema.Codec<ReadResourceV1beta2DeviceTaintRuleOutput>;
 
 // The operation
 /**
@@ -25801,6 +37105,10 @@ export const readResourceV1beta2DeviceTaintRule =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadResourceV1beta2DeviceTaintRuleStatusInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadResourceV1beta2DeviceTaintRuleStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -25810,11 +37118,59 @@ export const ReadResourceV1beta2DeviceTaintRuleStatusInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/devicetaintrules/{name}/status",
     }),
-  );
-export type ReadResourceV1beta2DeviceTaintRuleStatusInput =
-  typeof ReadResourceV1beta2DeviceTaintRuleStatusInput.Type;
+  ) as unknown as Schema.Codec<ReadResourceV1beta2DeviceTaintRuleStatusInput>;
 
 // Output Schema
+export interface ReadResourceV1beta2DeviceTaintRuleStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    deviceSelector?: { device?: string; driver?: string; pool?: string };
+    taint: { effect: string; key: string; timeAdded?: string; value?: string };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReadResourceV1beta2DeviceTaintRuleStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -25894,9 +37250,7 @@ export const ReadResourceV1beta2DeviceTaintRuleStatusOutput =
         ),
       }),
     ),
-  });
-export type ReadResourceV1beta2DeviceTaintRuleStatusOutput =
-  typeof ReadResourceV1beta2DeviceTaintRuleStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReadResourceV1beta2DeviceTaintRuleStatusOutput>;
 
 // The operation
 /**
@@ -25912,6 +37266,11 @@ export const readResourceV1beta2DeviceTaintRuleStatus =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadResourceV1beta2NamespacedResourceClaimInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
 export const ReadResourceV1beta2NamespacedResourceClaimInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -25922,11 +37281,157 @@ export const ReadResourceV1beta2NamespacedResourceClaimInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaims/{name}",
     }),
-  );
-export type ReadResourceV1beta2NamespacedResourceClaimInput =
-  typeof ReadResourceV1beta2NamespacedResourceClaimInput.Type;
+  ) as unknown as Schema.Codec<ReadResourceV1beta2NamespacedResourceClaimInput>;
 
 // Output Schema
+export interface ReadResourceV1beta2NamespacedResourceClaimOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        exactly?: {
+          adminAccess?: boolean;
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        };
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const ReadResourceV1beta2NamespacedResourceClaimOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -26213,9 +37718,7 @@ export const ReadResourceV1beta2NamespacedResourceClaimOutput =
         ),
       }),
     ),
-  });
-export type ReadResourceV1beta2NamespacedResourceClaimOutput =
-  typeof ReadResourceV1beta2NamespacedResourceClaimOutput.Type;
+  }) as unknown as Schema.Codec<ReadResourceV1beta2NamespacedResourceClaimOutput>;
 
 // The operation
 /**
@@ -26232,6 +37735,11 @@ export const readResourceV1beta2NamespacedResourceClaim =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadResourceV1beta2NamespacedResourceClaimStatusInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
 export const ReadResourceV1beta2NamespacedResourceClaimStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -26242,11 +37750,157 @@ export const ReadResourceV1beta2NamespacedResourceClaimStatusInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaims/{name}/status",
     }),
-  );
-export type ReadResourceV1beta2NamespacedResourceClaimStatusInput =
-  typeof ReadResourceV1beta2NamespacedResourceClaimStatusInput.Type;
+  ) as unknown as Schema.Codec<ReadResourceV1beta2NamespacedResourceClaimStatusInput>;
 
 // Output Schema
+export interface ReadResourceV1beta2NamespacedResourceClaimStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        exactly?: {
+          adminAccess?: boolean;
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        };
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const ReadResourceV1beta2NamespacedResourceClaimStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -26533,9 +38187,7 @@ export const ReadResourceV1beta2NamespacedResourceClaimStatusOutput =
         ),
       }),
     ),
-  });
-export type ReadResourceV1beta2NamespacedResourceClaimStatusOutput =
-  typeof ReadResourceV1beta2NamespacedResourceClaimStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReadResourceV1beta2NamespacedResourceClaimStatusOutput>;
 
 // The operation
 /**
@@ -26552,6 +38204,11 @@ export const readResourceV1beta2NamespacedResourceClaimStatus =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadResourceV1beta2NamespacedResourceClaimTemplateInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
 export const ReadResourceV1beta2NamespacedResourceClaimTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -26562,11 +38219,125 @@ export const ReadResourceV1beta2NamespacedResourceClaimTemplateInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaimtemplates/{name}",
     }),
-  );
-export type ReadResourceV1beta2NamespacedResourceClaimTemplateInput =
-  typeof ReadResourceV1beta2NamespacedResourceClaimTemplateInput.Type;
+  ) as unknown as Schema.Codec<ReadResourceV1beta2NamespacedResourceClaimTemplateInput>;
 
 // Output Schema
+export interface ReadResourceV1beta2NamespacedResourceClaimTemplateOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+        }[];
+        constraints?: {
+          distinctAttribute?: string;
+          matchAttribute?: string;
+          requests?: string[];
+        }[];
+        requests?: {
+          exactly?: {
+            adminAccess?: boolean;
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          };
+          firstAvailable?: {
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            name: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+          name: string;
+        }[];
+      };
+    };
+  };
+}
 export const ReadResourceV1beta2NamespacedResourceClaimTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -26782,9 +38553,7 @@ export const ReadResourceV1beta2NamespacedResourceClaimTemplateOutput =
         ),
       }),
     ),
-  });
-export type ReadResourceV1beta2NamespacedResourceClaimTemplateOutput =
-  typeof ReadResourceV1beta2NamespacedResourceClaimTemplateOutput.Type;
+  }) as unknown as Schema.Codec<ReadResourceV1beta2NamespacedResourceClaimTemplateOutput>;
 
 // The operation
 /**
@@ -26801,6 +38570,10 @@ export const readResourceV1beta2NamespacedResourceClaimTemplate =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadResourceV1beta2ResourceSliceInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadResourceV1beta2ResourceSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -26810,11 +38583,123 @@ export const ReadResourceV1beta2ResourceSliceInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/resourceslices/{name}",
     }),
-  );
-export type ReadResourceV1beta2ResourceSliceInput =
-  typeof ReadResourceV1beta2ResourceSliceInput.Type;
+  ) as unknown as Schema.Codec<ReadResourceV1beta2ResourceSliceInput>;
 
 // Output Schema
+export interface ReadResourceV1beta2ResourceSliceOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    allNodes?: boolean;
+    devices?: {
+      allNodes?: boolean;
+      allowMultipleAllocations?: boolean;
+      attributes?: Record<
+        string,
+        {
+          bool?: boolean;
+          bools?: boolean[];
+          int?: number;
+          ints?: number[];
+          string?: string;
+          strings?: string[];
+          version?: string;
+          versions?: string[];
+        }
+      >;
+      bindingConditions?: string[];
+      bindingFailureConditions?: string[];
+      bindsToNode?: boolean;
+      capacity?: Record<
+        string,
+        {
+          requestPolicy?: {
+            default?: string;
+            validRange?: { max?: string; min: string; step?: string };
+            validValues?: string[];
+          };
+          value: string;
+        }
+      >;
+      consumesCounters?: {
+        counterSet: string;
+        counters: Record<string, { value: string }>;
+      }[];
+      name: string;
+      nodeAllocatableResourceMappings?: Record<
+        string,
+        { allocationMultiplier?: string; capacityKey?: string }
+      >;
+      nodeName?: string;
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+      taints?: {
+        effect: string;
+        key: string;
+        timeAdded?: string;
+        value?: string;
+      }[];
+    }[];
+    driver: string;
+    nodeName?: string;
+    nodeSelector?: {
+      nodeSelectorTerms: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchFields?: { key: string; operator: string; values?: string[] }[];
+      }[];
+    };
+    perDeviceNodeSelection?: boolean;
+    pool: { generation: number; name: string; resourceSliceCount: number };
+    sharedCounters?: {
+      counters: Record<string, { value: string }>;
+      name: string;
+    }[];
+  };
+}
 export const ReadResourceV1beta2ResourceSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -27022,9 +38907,7 @@ export const ReadResourceV1beta2ResourceSliceOutput =
         ),
       ),
     }),
-  });
-export type ReadResourceV1beta2ResourceSliceOutput =
-  typeof ReadResourceV1beta2ResourceSliceOutput.Type;
+  }) as unknown as Schema.Codec<ReadResourceV1beta2ResourceSliceOutput>;
 
 // The operation
 /**
@@ -27040,6 +38923,52 @@ export const readResourceV1beta2ResourceSlice =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReplaceResourceV1DeviceClassInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    config?: { opaque?: { driver: string; parameters: unknown } }[];
+    extendedResourceName?: string;
+    selectors?: { cel?: { expression: string } }[];
+  };
+}
 export const ReplaceResourceV1DeviceClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -27126,11 +39055,50 @@ export const ReplaceResourceV1DeviceClassInput =
       method: "PUT",
       path: "/apis/resource.k8s.io/v1/deviceclasses/{name}",
     }),
-  );
-export type ReplaceResourceV1DeviceClassInput =
-  typeof ReplaceResourceV1DeviceClassInput.Type;
+  ) as unknown as Schema.Codec<ReplaceResourceV1DeviceClassInput>;
 
 // Output Schema
+export interface ReplaceResourceV1DeviceClassOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    config?: { opaque?: { driver: string; parameters: unknown } }[];
+    extendedResourceName?: string;
+    selectors?: { cel?: { expression: string } }[];
+  };
+}
 export const ReplaceResourceV1DeviceClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -27207,9 +39175,7 @@ export const ReplaceResourceV1DeviceClassOutput =
         ),
       }),
     ),
-  });
-export type ReplaceResourceV1DeviceClassOutput =
-  typeof ReplaceResourceV1DeviceClassOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceResourceV1DeviceClassOutput>;
 
 // The operation
 /**
@@ -27228,6 +39194,160 @@ export const replaceResourceV1DeviceClass =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceResourceV1NamespacedResourceClaimInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        exactly?: {
+          adminAccess?: boolean;
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        };
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const ReplaceResourceV1NamespacedResourceClaimInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -27525,11 +39645,157 @@ export const ReplaceResourceV1NamespacedResourceClaimInput =
       method: "PUT",
       path: "/apis/resource.k8s.io/v1/namespaces/{namespace}/resourceclaims/{name}",
     }),
-  );
-export type ReplaceResourceV1NamespacedResourceClaimInput =
-  typeof ReplaceResourceV1NamespacedResourceClaimInput.Type;
+  ) as unknown as Schema.Codec<ReplaceResourceV1NamespacedResourceClaimInput>;
 
 // Output Schema
+export interface ReplaceResourceV1NamespacedResourceClaimOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        exactly?: {
+          adminAccess?: boolean;
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        };
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const ReplaceResourceV1NamespacedResourceClaimOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -27816,9 +40082,7 @@ export const ReplaceResourceV1NamespacedResourceClaimOutput =
         ),
       }),
     ),
-  });
-export type ReplaceResourceV1NamespacedResourceClaimOutput =
-  typeof ReplaceResourceV1NamespacedResourceClaimOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceResourceV1NamespacedResourceClaimOutput>;
 
 // The operation
 /**
@@ -27838,6 +40102,160 @@ export const replaceResourceV1NamespacedResourceClaim =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceResourceV1NamespacedResourceClaimStatusInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        exactly?: {
+          adminAccess?: boolean;
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        };
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const ReplaceResourceV1NamespacedResourceClaimStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -28135,11 +40553,157 @@ export const ReplaceResourceV1NamespacedResourceClaimStatusInput =
       method: "PUT",
       path: "/apis/resource.k8s.io/v1/namespaces/{namespace}/resourceclaims/{name}/status",
     }),
-  );
-export type ReplaceResourceV1NamespacedResourceClaimStatusInput =
-  typeof ReplaceResourceV1NamespacedResourceClaimStatusInput.Type;
+  ) as unknown as Schema.Codec<ReplaceResourceV1NamespacedResourceClaimStatusInput>;
 
 // Output Schema
+export interface ReplaceResourceV1NamespacedResourceClaimStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        exactly?: {
+          adminAccess?: boolean;
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        };
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const ReplaceResourceV1NamespacedResourceClaimStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -28426,9 +40990,7 @@ export const ReplaceResourceV1NamespacedResourceClaimStatusOutput =
         ),
       }),
     ),
-  });
-export type ReplaceResourceV1NamespacedResourceClaimStatusOutput =
-  typeof ReplaceResourceV1NamespacedResourceClaimStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceResourceV1NamespacedResourceClaimStatusOutput>;
 
 // The operation
 /**
@@ -28448,6 +41010,128 @@ export const replaceResourceV1NamespacedResourceClaimStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceResourceV1NamespacedResourceClaimTemplateInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+        }[];
+        constraints?: {
+          distinctAttribute?: string;
+          matchAttribute?: string;
+          requests?: string[];
+        }[];
+        requests?: {
+          exactly?: {
+            adminAccess?: boolean;
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          };
+          firstAvailable?: {
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            name: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+          name: string;
+        }[];
+      };
+    };
+  };
+}
 export const ReplaceResourceV1NamespacedResourceClaimTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -28674,11 +41358,125 @@ export const ReplaceResourceV1NamespacedResourceClaimTemplateInput =
       method: "PUT",
       path: "/apis/resource.k8s.io/v1/namespaces/{namespace}/resourceclaimtemplates/{name}",
     }),
-  );
-export type ReplaceResourceV1NamespacedResourceClaimTemplateInput =
-  typeof ReplaceResourceV1NamespacedResourceClaimTemplateInput.Type;
+  ) as unknown as Schema.Codec<ReplaceResourceV1NamespacedResourceClaimTemplateInput>;
 
 // Output Schema
+export interface ReplaceResourceV1NamespacedResourceClaimTemplateOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+        }[];
+        constraints?: {
+          distinctAttribute?: string;
+          matchAttribute?: string;
+          requests?: string[];
+        }[];
+        requests?: {
+          exactly?: {
+            adminAccess?: boolean;
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          };
+          firstAvailable?: {
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            name: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+          name: string;
+        }[];
+      };
+    };
+  };
+}
 export const ReplaceResourceV1NamespacedResourceClaimTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -28894,9 +41692,7 @@ export const ReplaceResourceV1NamespacedResourceClaimTemplateOutput =
         ),
       }),
     ),
-  });
-export type ReplaceResourceV1NamespacedResourceClaimTemplateOutput =
-  typeof ReplaceResourceV1NamespacedResourceClaimTemplateOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceResourceV1NamespacedResourceClaimTemplateOutput>;
 
 // The operation
 /**
@@ -28916,6 +41712,125 @@ export const replaceResourceV1NamespacedResourceClaimTemplate =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceResourceV1ResourceSliceInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    allNodes?: boolean;
+    devices?: {
+      allNodes?: boolean;
+      allowMultipleAllocations?: boolean;
+      attributes?: Record<
+        string,
+        {
+          bool?: boolean;
+          bools?: boolean[];
+          int?: number;
+          ints?: number[];
+          string?: string;
+          strings?: string[];
+          version?: string;
+          versions?: string[];
+        }
+      >;
+      bindingConditions?: string[];
+      bindingFailureConditions?: string[];
+      bindsToNode?: boolean;
+      capacity?: Record<
+        string,
+        {
+          requestPolicy?: {
+            default?: string;
+            validRange?: { max?: string; min: string; step?: string };
+            validValues?: string[];
+          };
+          value: string;
+        }
+      >;
+      consumesCounters?: {
+        counterSet: string;
+        counters: Record<string, { value: string }>;
+      }[];
+      name: string;
+      nodeAllocatableResourceMappings?: Record<
+        string,
+        { allocationMultiplier?: string; capacityKey?: string }
+      >;
+      nodeName?: string;
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+      taints?: {
+        effect: string;
+        key: string;
+        timeAdded?: string;
+        value?: string;
+      }[];
+    }[];
+    driver: string;
+    nodeName?: string;
+    nodeSelector?: {
+      nodeSelectorTerms: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchFields?: { key: string; operator: string; values?: string[] }[];
+      }[];
+    };
+    perDeviceNodeSelection?: boolean;
+    pool: { generation: number; name: string; resourceSliceCount: number };
+    sharedCounters?: {
+      counters: Record<string, { value: string }>;
+      name: string;
+    }[];
+  };
+}
 export const ReplaceResourceV1ResourceSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -29133,11 +42048,123 @@ export const ReplaceResourceV1ResourceSliceInput =
       method: "PUT",
       path: "/apis/resource.k8s.io/v1/resourceslices/{name}",
     }),
-  );
-export type ReplaceResourceV1ResourceSliceInput =
-  typeof ReplaceResourceV1ResourceSliceInput.Type;
+  ) as unknown as Schema.Codec<ReplaceResourceV1ResourceSliceInput>;
 
 // Output Schema
+export interface ReplaceResourceV1ResourceSliceOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    allNodes?: boolean;
+    devices?: {
+      allNodes?: boolean;
+      allowMultipleAllocations?: boolean;
+      attributes?: Record<
+        string,
+        {
+          bool?: boolean;
+          bools?: boolean[];
+          int?: number;
+          ints?: number[];
+          string?: string;
+          strings?: string[];
+          version?: string;
+          versions?: string[];
+        }
+      >;
+      bindingConditions?: string[];
+      bindingFailureConditions?: string[];
+      bindsToNode?: boolean;
+      capacity?: Record<
+        string,
+        {
+          requestPolicy?: {
+            default?: string;
+            validRange?: { max?: string; min: string; step?: string };
+            validValues?: string[];
+          };
+          value: string;
+        }
+      >;
+      consumesCounters?: {
+        counterSet: string;
+        counters: Record<string, { value: string }>;
+      }[];
+      name: string;
+      nodeAllocatableResourceMappings?: Record<
+        string,
+        { allocationMultiplier?: string; capacityKey?: string }
+      >;
+      nodeName?: string;
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+      taints?: {
+        effect: string;
+        key: string;
+        timeAdded?: string;
+        value?: string;
+      }[];
+    }[];
+    driver: string;
+    nodeName?: string;
+    nodeSelector?: {
+      nodeSelectorTerms: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchFields?: { key: string; operator: string; values?: string[] }[];
+      }[];
+    };
+    perDeviceNodeSelection?: boolean;
+    pool: { generation: number; name: string; resourceSliceCount: number };
+    sharedCounters?: {
+      counters: Record<string, { value: string }>;
+      name: string;
+    }[];
+  };
+}
 export const ReplaceResourceV1ResourceSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -29345,9 +42372,7 @@ export const ReplaceResourceV1ResourceSliceOutput =
         ),
       ),
     }),
-  });
-export type ReplaceResourceV1ResourceSliceOutput =
-  typeof ReplaceResourceV1ResourceSliceOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceResourceV1ResourceSliceOutput>;
 
 // The operation
 /**
@@ -29366,6 +42391,61 @@ export const replaceResourceV1ResourceSlice =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceResourceV1alpha3DeviceTaintRuleInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    deviceSelector?: { device?: string; driver?: string; pool?: string };
+    taint: { effect: string; key: string; timeAdded?: string; value?: string };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReplaceResourceV1alpha3DeviceTaintRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -29455,11 +42535,59 @@ export const ReplaceResourceV1alpha3DeviceTaintRuleInput =
       method: "PUT",
       path: "/apis/resource.k8s.io/v1alpha3/devicetaintrules/{name}",
     }),
-  );
-export type ReplaceResourceV1alpha3DeviceTaintRuleInput =
-  typeof ReplaceResourceV1alpha3DeviceTaintRuleInput.Type;
+  ) as unknown as Schema.Codec<ReplaceResourceV1alpha3DeviceTaintRuleInput>;
 
 // Output Schema
+export interface ReplaceResourceV1alpha3DeviceTaintRuleOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    deviceSelector?: { device?: string; driver?: string; pool?: string };
+    taint: { effect: string; key: string; timeAdded?: string; value?: string };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReplaceResourceV1alpha3DeviceTaintRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -29539,9 +42667,7 @@ export const ReplaceResourceV1alpha3DeviceTaintRuleOutput =
         ),
       }),
     ),
-  });
-export type ReplaceResourceV1alpha3DeviceTaintRuleOutput =
-  typeof ReplaceResourceV1alpha3DeviceTaintRuleOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceResourceV1alpha3DeviceTaintRuleOutput>;
 
 // The operation
 /**
@@ -29560,6 +42686,61 @@ export const replaceResourceV1alpha3DeviceTaintRule =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceResourceV1alpha3DeviceTaintRuleStatusInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    deviceSelector?: { device?: string; driver?: string; pool?: string };
+    taint: { effect: string; key: string; timeAdded?: string; value?: string };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReplaceResourceV1alpha3DeviceTaintRuleStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -29649,11 +42830,59 @@ export const ReplaceResourceV1alpha3DeviceTaintRuleStatusInput =
       method: "PUT",
       path: "/apis/resource.k8s.io/v1alpha3/devicetaintrules/{name}/status",
     }),
-  );
-export type ReplaceResourceV1alpha3DeviceTaintRuleStatusInput =
-  typeof ReplaceResourceV1alpha3DeviceTaintRuleStatusInput.Type;
+  ) as unknown as Schema.Codec<ReplaceResourceV1alpha3DeviceTaintRuleStatusInput>;
 
 // Output Schema
+export interface ReplaceResourceV1alpha3DeviceTaintRuleStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    deviceSelector?: { device?: string; driver?: string; pool?: string };
+    taint: { effect: string; key: string; timeAdded?: string; value?: string };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReplaceResourceV1alpha3DeviceTaintRuleStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -29733,9 +42962,7 @@ export const ReplaceResourceV1alpha3DeviceTaintRuleStatusOutput =
         ),
       }),
     ),
-  });
-export type ReplaceResourceV1alpha3DeviceTaintRuleStatusOutput =
-  typeof ReplaceResourceV1alpha3DeviceTaintRuleStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceResourceV1alpha3DeviceTaintRuleStatusOutput>;
 
 // The operation
 /**
@@ -29754,6 +42981,71 @@ export const replaceResourceV1alpha3DeviceTaintRuleStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceResourceV1alpha3ResourcePoolStatusRequestInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: { driver: string; limit?: number; poolName?: string };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    poolCount: number;
+    pools?: {
+      allocatedDevices?: number;
+      availableDevices?: number;
+      driver: string;
+      generation: number;
+      nodeName?: string;
+      poolName: string;
+      resourceSliceCount?: number;
+      totalDevices?: number;
+      unavailableDevices?: number;
+      validationError?: string;
+    }[];
+  };
+}
 export const ReplaceResourceV1alpha3ResourcePoolStatusRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -29846,11 +43138,69 @@ export const ReplaceResourceV1alpha3ResourcePoolStatusRequestInput =
       method: "PUT",
       path: "/apis/resource.k8s.io/v1alpha3/resourcepoolstatusrequests/{name}",
     }),
-  );
-export type ReplaceResourceV1alpha3ResourcePoolStatusRequestInput =
-  typeof ReplaceResourceV1alpha3ResourcePoolStatusRequestInput.Type;
+  ) as unknown as Schema.Codec<ReplaceResourceV1alpha3ResourcePoolStatusRequestInput>;
 
 // Output Schema
+export interface ReplaceResourceV1alpha3ResourcePoolStatusRequestOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: { driver: string; limit?: number; poolName?: string };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    poolCount: number;
+    pools?: {
+      allocatedDevices?: number;
+      availableDevices?: number;
+      driver: string;
+      generation: number;
+      nodeName?: string;
+      poolName: string;
+      resourceSliceCount?: number;
+      totalDevices?: number;
+      unavailableDevices?: number;
+      validationError?: string;
+    }[];
+  };
+}
 export const ReplaceResourceV1alpha3ResourcePoolStatusRequestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -29933,9 +43283,7 @@ export const ReplaceResourceV1alpha3ResourcePoolStatusRequestOutput =
         ),
       }),
     ),
-  });
-export type ReplaceResourceV1alpha3ResourcePoolStatusRequestOutput =
-  typeof ReplaceResourceV1alpha3ResourcePoolStatusRequestOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceResourceV1alpha3ResourcePoolStatusRequestOutput>;
 
 // The operation
 /**
@@ -29953,6 +43301,71 @@ export const replaceResourceV1alpha3ResourcePoolStatusRequest =
     outputSchema: ReplaceResourceV1alpha3ResourcePoolStatusRequestOutput,
   }));
 // Input Schema
+export interface ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: { driver: string; limit?: number; poolName?: string };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    poolCount: number;
+    pools?: {
+      allocatedDevices?: number;
+      availableDevices?: number;
+      driver: string;
+      generation: number;
+      nodeName?: string;
+      poolName: string;
+      resourceSliceCount?: number;
+      totalDevices?: number;
+      unavailableDevices?: number;
+      validationError?: string;
+    }[];
+  };
+}
 export const ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -30045,11 +43458,69 @@ export const ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusInput =
       method: "PUT",
       path: "/apis/resource.k8s.io/v1alpha3/resourcepoolstatusrequests/{name}/status",
     }),
-  );
-export type ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusInput =
-  typeof ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusInput.Type;
+  ) as unknown as Schema.Codec<ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusInput>;
 
 // Output Schema
+export interface ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: { driver: string; limit?: number; poolName?: string };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    poolCount: number;
+    pools?: {
+      allocatedDevices?: number;
+      availableDevices?: number;
+      driver: string;
+      generation: number;
+      nodeName?: string;
+      poolName: string;
+      resourceSliceCount?: number;
+      totalDevices?: number;
+      unavailableDevices?: number;
+      validationError?: string;
+    }[];
+  };
+}
 export const ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -30132,9 +43603,7 @@ export const ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusOutput =
         ),
       }),
     ),
-  });
-export type ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusOutput =
-  typeof ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusOutput>;
 
 // The operation
 /**
@@ -30152,6 +43621,52 @@ export const replaceResourceV1alpha3ResourcePoolStatusRequestStatus =
     outputSchema: ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusOutput,
   }));
 // Input Schema
+export interface ReplaceResourceV1beta1DeviceClassInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    config?: { opaque?: { driver: string; parameters: unknown } }[];
+    extendedResourceName?: string;
+    selectors?: { cel?: { expression: string } }[];
+  };
+}
 export const ReplaceResourceV1beta1DeviceClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -30238,11 +43753,50 @@ export const ReplaceResourceV1beta1DeviceClassInput =
       method: "PUT",
       path: "/apis/resource.k8s.io/v1beta1/deviceclasses/{name}",
     }),
-  );
-export type ReplaceResourceV1beta1DeviceClassInput =
-  typeof ReplaceResourceV1beta1DeviceClassInput.Type;
+  ) as unknown as Schema.Codec<ReplaceResourceV1beta1DeviceClassInput>;
 
 // Output Schema
+export interface ReplaceResourceV1beta1DeviceClassOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    config?: { opaque?: { driver: string; parameters: unknown } }[];
+    extendedResourceName?: string;
+    selectors?: { cel?: { expression: string } }[];
+  };
+}
 export const ReplaceResourceV1beta1DeviceClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -30319,9 +43873,7 @@ export const ReplaceResourceV1beta1DeviceClassOutput =
         ),
       }),
     ),
-  });
-export type ReplaceResourceV1beta1DeviceClassOutput =
-  typeof ReplaceResourceV1beta1DeviceClassOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceResourceV1beta1DeviceClassOutput>;
 
 // The operation
 /**
@@ -30340,6 +43892,158 @@ export const replaceResourceV1beta1DeviceClass =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceResourceV1beta1NamespacedResourceClaimInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        adminAccess?: boolean;
+        allocationMode?: string;
+        capacity?: { requests?: Record<string, string> };
+        count?: number;
+        deviceClassName?: string;
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+        selectors?: { cel?: { expression: string } }[];
+        tolerations?: {
+          effect?: string;
+          key?: string;
+          operator?: string;
+          tolerationSeconds?: number;
+          value?: string;
+        }[];
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const ReplaceResourceV1beta1NamespacedResourceClaimInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -30633,11 +44337,155 @@ export const ReplaceResourceV1beta1NamespacedResourceClaimInput =
       method: "PUT",
       path: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaims/{name}",
     }),
-  );
-export type ReplaceResourceV1beta1NamespacedResourceClaimInput =
-  typeof ReplaceResourceV1beta1NamespacedResourceClaimInput.Type;
+  ) as unknown as Schema.Codec<ReplaceResourceV1beta1NamespacedResourceClaimInput>;
 
 // Output Schema
+export interface ReplaceResourceV1beta1NamespacedResourceClaimOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        adminAccess?: boolean;
+        allocationMode?: string;
+        capacity?: { requests?: Record<string, string> };
+        count?: number;
+        deviceClassName?: string;
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+        selectors?: { cel?: { expression: string } }[];
+        tolerations?: {
+          effect?: string;
+          key?: string;
+          operator?: string;
+          tolerationSeconds?: number;
+          value?: string;
+        }[];
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const ReplaceResourceV1beta1NamespacedResourceClaimOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -30920,9 +44768,7 @@ export const ReplaceResourceV1beta1NamespacedResourceClaimOutput =
         ),
       }),
     ),
-  });
-export type ReplaceResourceV1beta1NamespacedResourceClaimOutput =
-  typeof ReplaceResourceV1beta1NamespacedResourceClaimOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceResourceV1beta1NamespacedResourceClaimOutput>;
 
 // The operation
 /**
@@ -30942,6 +44788,158 @@ export const replaceResourceV1beta1NamespacedResourceClaim =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceResourceV1beta1NamespacedResourceClaimStatusInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        adminAccess?: boolean;
+        allocationMode?: string;
+        capacity?: { requests?: Record<string, string> };
+        count?: number;
+        deviceClassName?: string;
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+        selectors?: { cel?: { expression: string } }[];
+        tolerations?: {
+          effect?: string;
+          key?: string;
+          operator?: string;
+          tolerationSeconds?: number;
+          value?: string;
+        }[];
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const ReplaceResourceV1beta1NamespacedResourceClaimStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -31235,11 +45233,155 @@ export const ReplaceResourceV1beta1NamespacedResourceClaimStatusInput =
       method: "PUT",
       path: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaims/{name}/status",
     }),
-  );
-export type ReplaceResourceV1beta1NamespacedResourceClaimStatusInput =
-  typeof ReplaceResourceV1beta1NamespacedResourceClaimStatusInput.Type;
+  ) as unknown as Schema.Codec<ReplaceResourceV1beta1NamespacedResourceClaimStatusInput>;
 
 // Output Schema
+export interface ReplaceResourceV1beta1NamespacedResourceClaimStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        adminAccess?: boolean;
+        allocationMode?: string;
+        capacity?: { requests?: Record<string, string> };
+        count?: number;
+        deviceClassName?: string;
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+        selectors?: { cel?: { expression: string } }[];
+        tolerations?: {
+          effect?: string;
+          key?: string;
+          operator?: string;
+          tolerationSeconds?: number;
+          value?: string;
+        }[];
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const ReplaceResourceV1beta1NamespacedResourceClaimStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -31522,9 +45664,7 @@ export const ReplaceResourceV1beta1NamespacedResourceClaimStatusOutput =
         ),
       }),
     ),
-  });
-export type ReplaceResourceV1beta1NamespacedResourceClaimStatusOutput =
-  typeof ReplaceResourceV1beta1NamespacedResourceClaimStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceResourceV1beta1NamespacedResourceClaimStatusOutput>;
 
 // The operation
 /**
@@ -31544,6 +45684,126 @@ export const replaceResourceV1beta1NamespacedResourceClaimStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceResourceV1beta1NamespacedResourceClaimTemplateInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+        }[];
+        constraints?: {
+          distinctAttribute?: string;
+          matchAttribute?: string;
+          requests?: string[];
+        }[];
+        requests?: {
+          adminAccess?: boolean;
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName?: string;
+          firstAvailable?: {
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            name: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+    };
+  };
+}
 export const ReplaceResourceV1beta1NamespacedResourceClaimTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -31764,11 +46024,123 @@ export const ReplaceResourceV1beta1NamespacedResourceClaimTemplateInput =
       method: "PUT",
       path: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaimtemplates/{name}",
     }),
-  );
-export type ReplaceResourceV1beta1NamespacedResourceClaimTemplateInput =
-  typeof ReplaceResourceV1beta1NamespacedResourceClaimTemplateInput.Type;
+  ) as unknown as Schema.Codec<ReplaceResourceV1beta1NamespacedResourceClaimTemplateInput>;
 
 // Output Schema
+export interface ReplaceResourceV1beta1NamespacedResourceClaimTemplateOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+        }[];
+        constraints?: {
+          distinctAttribute?: string;
+          matchAttribute?: string;
+          requests?: string[];
+        }[];
+        requests?: {
+          adminAccess?: boolean;
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName?: string;
+          firstAvailable?: {
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            name: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+    };
+  };
+}
 export const ReplaceResourceV1beta1NamespacedResourceClaimTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -31978,9 +46350,7 @@ export const ReplaceResourceV1beta1NamespacedResourceClaimTemplateOutput =
         ),
       }),
     ),
-  });
-export type ReplaceResourceV1beta1NamespacedResourceClaimTemplateOutput =
-  typeof ReplaceResourceV1beta1NamespacedResourceClaimTemplateOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceResourceV1beta1NamespacedResourceClaimTemplateOutput>;
 
 // The operation
 /**
@@ -32000,6 +46370,131 @@ export const replaceResourceV1beta1NamespacedResourceClaimTemplate =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceResourceV1beta1ResourceSliceInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    allNodes?: boolean;
+    devices?: {
+      basic?: {
+        allNodes?: boolean;
+        allowMultipleAllocations?: boolean;
+        attributes?: Record<
+          string,
+          {
+            bool?: boolean;
+            bools?: boolean[];
+            int?: number;
+            ints?: number[];
+            string?: string;
+            strings?: string[];
+            version?: string;
+            versions?: string[];
+          }
+        >;
+        bindingConditions?: string[];
+        bindingFailureConditions?: string[];
+        bindsToNode?: boolean;
+        capacity?: Record<
+          string,
+          {
+            requestPolicy?: {
+              default?: string;
+              validRange?: { max?: string; min: string; step?: string };
+              validValues?: string[];
+            };
+            value: string;
+          }
+        >;
+        consumesCounters?: {
+          counterSet: string;
+          counters: Record<string, { value: string }>;
+        }[];
+        nodeAllocatableResourceMappings?: Record<
+          string,
+          { allocationMultiplier?: string; capacityKey?: string }
+        >;
+        nodeName?: string;
+        nodeSelector?: {
+          nodeSelectorTerms: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchFields?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+          }[];
+        };
+        taints?: {
+          effect: string;
+          key: string;
+          timeAdded?: string;
+          value?: string;
+        }[];
+      };
+      name: string;
+    }[];
+    driver: string;
+    nodeName?: string;
+    nodeSelector?: {
+      nodeSelectorTerms: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchFields?: { key: string; operator: string; values?: string[] }[];
+      }[];
+    };
+    perDeviceNodeSelection?: boolean;
+    pool: { generation: number; name: string; resourceSliceCount: number };
+    sharedCounters?: {
+      counters: Record<string, { value: string }>;
+      name: string;
+    }[];
+  };
+}
 export const ReplaceResourceV1beta1ResourceSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -32227,11 +46722,129 @@ export const ReplaceResourceV1beta1ResourceSliceInput =
       method: "PUT",
       path: "/apis/resource.k8s.io/v1beta1/resourceslices/{name}",
     }),
-  );
-export type ReplaceResourceV1beta1ResourceSliceInput =
-  typeof ReplaceResourceV1beta1ResourceSliceInput.Type;
+  ) as unknown as Schema.Codec<ReplaceResourceV1beta1ResourceSliceInput>;
 
 // Output Schema
+export interface ReplaceResourceV1beta1ResourceSliceOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    allNodes?: boolean;
+    devices?: {
+      basic?: {
+        allNodes?: boolean;
+        allowMultipleAllocations?: boolean;
+        attributes?: Record<
+          string,
+          {
+            bool?: boolean;
+            bools?: boolean[];
+            int?: number;
+            ints?: number[];
+            string?: string;
+            strings?: string[];
+            version?: string;
+            versions?: string[];
+          }
+        >;
+        bindingConditions?: string[];
+        bindingFailureConditions?: string[];
+        bindsToNode?: boolean;
+        capacity?: Record<
+          string,
+          {
+            requestPolicy?: {
+              default?: string;
+              validRange?: { max?: string; min: string; step?: string };
+              validValues?: string[];
+            };
+            value: string;
+          }
+        >;
+        consumesCounters?: {
+          counterSet: string;
+          counters: Record<string, { value: string }>;
+        }[];
+        nodeAllocatableResourceMappings?: Record<
+          string,
+          { allocationMultiplier?: string; capacityKey?: string }
+        >;
+        nodeName?: string;
+        nodeSelector?: {
+          nodeSelectorTerms: {
+            matchExpressions?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+            matchFields?: {
+              key: string;
+              operator: string;
+              values?: string[];
+            }[];
+          }[];
+        };
+        taints?: {
+          effect: string;
+          key: string;
+          timeAdded?: string;
+          value?: string;
+        }[];
+      };
+      name: string;
+    }[];
+    driver: string;
+    nodeName?: string;
+    nodeSelector?: {
+      nodeSelectorTerms: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchFields?: { key: string; operator: string; values?: string[] }[];
+      }[];
+    };
+    perDeviceNodeSelection?: boolean;
+    pool: { generation: number; name: string; resourceSliceCount: number };
+    sharedCounters?: {
+      counters: Record<string, { value: string }>;
+      name: string;
+    }[];
+  };
+}
 export const ReplaceResourceV1beta1ResourceSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -32449,9 +47062,7 @@ export const ReplaceResourceV1beta1ResourceSliceOutput =
         ),
       ),
     }),
-  });
-export type ReplaceResourceV1beta1ResourceSliceOutput =
-  typeof ReplaceResourceV1beta1ResourceSliceOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceResourceV1beta1ResourceSliceOutput>;
 
 // The operation
 /**
@@ -32470,6 +47081,52 @@ export const replaceResourceV1beta1ResourceSlice =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceResourceV1beta2DeviceClassInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    config?: { opaque?: { driver: string; parameters: unknown } }[];
+    extendedResourceName?: string;
+    selectors?: { cel?: { expression: string } }[];
+  };
+}
 export const ReplaceResourceV1beta2DeviceClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -32556,11 +47213,50 @@ export const ReplaceResourceV1beta2DeviceClassInput =
       method: "PUT",
       path: "/apis/resource.k8s.io/v1beta2/deviceclasses/{name}",
     }),
-  );
-export type ReplaceResourceV1beta2DeviceClassInput =
-  typeof ReplaceResourceV1beta2DeviceClassInput.Type;
+  ) as unknown as Schema.Codec<ReplaceResourceV1beta2DeviceClassInput>;
 
 // Output Schema
+export interface ReplaceResourceV1beta2DeviceClassOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    config?: { opaque?: { driver: string; parameters: unknown } }[];
+    extendedResourceName?: string;
+    selectors?: { cel?: { expression: string } }[];
+  };
+}
 export const ReplaceResourceV1beta2DeviceClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -32637,9 +47333,7 @@ export const ReplaceResourceV1beta2DeviceClassOutput =
         ),
       }),
     ),
-  });
-export type ReplaceResourceV1beta2DeviceClassOutput =
-  typeof ReplaceResourceV1beta2DeviceClassOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceResourceV1beta2DeviceClassOutput>;
 
 // The operation
 /**
@@ -32658,6 +47352,61 @@ export const replaceResourceV1beta2DeviceClass =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceResourceV1beta2DeviceTaintRuleInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    deviceSelector?: { device?: string; driver?: string; pool?: string };
+    taint: { effect: string; key: string; timeAdded?: string; value?: string };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReplaceResourceV1beta2DeviceTaintRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -32747,11 +47496,59 @@ export const ReplaceResourceV1beta2DeviceTaintRuleInput =
       method: "PUT",
       path: "/apis/resource.k8s.io/v1beta2/devicetaintrules/{name}",
     }),
-  );
-export type ReplaceResourceV1beta2DeviceTaintRuleInput =
-  typeof ReplaceResourceV1beta2DeviceTaintRuleInput.Type;
+  ) as unknown as Schema.Codec<ReplaceResourceV1beta2DeviceTaintRuleInput>;
 
 // Output Schema
+export interface ReplaceResourceV1beta2DeviceTaintRuleOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    deviceSelector?: { device?: string; driver?: string; pool?: string };
+    taint: { effect: string; key: string; timeAdded?: string; value?: string };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReplaceResourceV1beta2DeviceTaintRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -32831,9 +47628,7 @@ export const ReplaceResourceV1beta2DeviceTaintRuleOutput =
         ),
       }),
     ),
-  });
-export type ReplaceResourceV1beta2DeviceTaintRuleOutput =
-  typeof ReplaceResourceV1beta2DeviceTaintRuleOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceResourceV1beta2DeviceTaintRuleOutput>;
 
 // The operation
 /**
@@ -32852,6 +47647,61 @@ export const replaceResourceV1beta2DeviceTaintRule =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceResourceV1beta2DeviceTaintRuleStatusInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    deviceSelector?: { device?: string; driver?: string; pool?: string };
+    taint: { effect: string; key: string; timeAdded?: string; value?: string };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReplaceResourceV1beta2DeviceTaintRuleStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -32941,11 +47791,59 @@ export const ReplaceResourceV1beta2DeviceTaintRuleStatusInput =
       method: "PUT",
       path: "/apis/resource.k8s.io/v1beta2/devicetaintrules/{name}/status",
     }),
-  );
-export type ReplaceResourceV1beta2DeviceTaintRuleStatusInput =
-  typeof ReplaceResourceV1beta2DeviceTaintRuleStatusInput.Type;
+  ) as unknown as Schema.Codec<ReplaceResourceV1beta2DeviceTaintRuleStatusInput>;
 
 // Output Schema
+export interface ReplaceResourceV1beta2DeviceTaintRuleStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    deviceSelector?: { device?: string; driver?: string; pool?: string };
+    taint: { effect: string; key: string; timeAdded?: string; value?: string };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReplaceResourceV1beta2DeviceTaintRuleStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -33025,9 +47923,7 @@ export const ReplaceResourceV1beta2DeviceTaintRuleStatusOutput =
         ),
       }),
     ),
-  });
-export type ReplaceResourceV1beta2DeviceTaintRuleStatusOutput =
-  typeof ReplaceResourceV1beta2DeviceTaintRuleStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceResourceV1beta2DeviceTaintRuleStatusOutput>;
 
 // The operation
 /**
@@ -33046,6 +47942,160 @@ export const replaceResourceV1beta2DeviceTaintRuleStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceResourceV1beta2NamespacedResourceClaimInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        exactly?: {
+          adminAccess?: boolean;
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        };
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const ReplaceResourceV1beta2NamespacedResourceClaimInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -33343,11 +48393,157 @@ export const ReplaceResourceV1beta2NamespacedResourceClaimInput =
       method: "PUT",
       path: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaims/{name}",
     }),
-  );
-export type ReplaceResourceV1beta2NamespacedResourceClaimInput =
-  typeof ReplaceResourceV1beta2NamespacedResourceClaimInput.Type;
+  ) as unknown as Schema.Codec<ReplaceResourceV1beta2NamespacedResourceClaimInput>;
 
 // Output Schema
+export interface ReplaceResourceV1beta2NamespacedResourceClaimOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        exactly?: {
+          adminAccess?: boolean;
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        };
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const ReplaceResourceV1beta2NamespacedResourceClaimOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -33634,9 +48830,7 @@ export const ReplaceResourceV1beta2NamespacedResourceClaimOutput =
         ),
       }),
     ),
-  });
-export type ReplaceResourceV1beta2NamespacedResourceClaimOutput =
-  typeof ReplaceResourceV1beta2NamespacedResourceClaimOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceResourceV1beta2NamespacedResourceClaimOutput>;
 
 // The operation
 /**
@@ -33656,6 +48850,160 @@ export const replaceResourceV1beta2NamespacedResourceClaim =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceResourceV1beta2NamespacedResourceClaimStatusInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        exactly?: {
+          adminAccess?: boolean;
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        };
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const ReplaceResourceV1beta2NamespacedResourceClaimStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -33953,11 +49301,157 @@ export const ReplaceResourceV1beta2NamespacedResourceClaimStatusInput =
       method: "PUT",
       path: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaims/{name}/status",
     }),
-  );
-export type ReplaceResourceV1beta2NamespacedResourceClaimStatusInput =
-  typeof ReplaceResourceV1beta2NamespacedResourceClaimStatusInput.Type;
+  ) as unknown as Schema.Codec<ReplaceResourceV1beta2NamespacedResourceClaimStatusInput>;
 
 // Output Schema
+export interface ReplaceResourceV1beta2NamespacedResourceClaimStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    devices?: {
+      config?: {
+        opaque?: { driver: string; parameters: unknown };
+        requests?: string[];
+      }[];
+      constraints?: {
+        distinctAttribute?: string;
+        matchAttribute?: string;
+        requests?: string[];
+      }[];
+      requests?: {
+        exactly?: {
+          adminAccess?: boolean;
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        };
+        firstAvailable?: {
+          allocationMode?: string;
+          capacity?: { requests?: Record<string, string> };
+          count?: number;
+          deviceClassName: string;
+          name: string;
+          selectors?: { cel?: { expression: string } }[];
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+        name: string;
+      }[];
+    };
+  };
+  status?: {
+    allocation?: {
+      allocationTimestamp?: string;
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+          source: string;
+        }[];
+        results?: {
+          adminAccess?: boolean;
+          bindingConditions?: string[];
+          bindingFailureConditions?: string[];
+          consumedCapacity?: Record<string, string>;
+          device: string;
+          driver: string;
+          pool: string;
+          request: string;
+          shareID?: string;
+          tolerations?: {
+            effect?: string;
+            key?: string;
+            operator?: string;
+            tolerationSeconds?: number;
+            value?: string;
+          }[];
+        }[];
+      };
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+    };
+    devices?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      data?: unknown;
+      device: string;
+      driver: string;
+      networkData?: {
+        hardwareAddress?: string;
+        interfaceName?: string;
+        ips?: string[];
+      };
+      pool: string;
+      shareID?: string;
+    }[];
+    reservedFor?: {
+      apiGroup?: string;
+      name: string;
+      resource: string;
+      uid: string;
+    }[];
+  };
+}
 export const ReplaceResourceV1beta2NamespacedResourceClaimStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -34244,9 +49738,7 @@ export const ReplaceResourceV1beta2NamespacedResourceClaimStatusOutput =
         ),
       }),
     ),
-  });
-export type ReplaceResourceV1beta2NamespacedResourceClaimStatusOutput =
-  typeof ReplaceResourceV1beta2NamespacedResourceClaimStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceResourceV1beta2NamespacedResourceClaimStatusOutput>;
 
 // The operation
 /**
@@ -34266,6 +49758,128 @@ export const replaceResourceV1beta2NamespacedResourceClaimStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceResourceV1beta2NamespacedResourceClaimTemplateInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+        }[];
+        constraints?: {
+          distinctAttribute?: string;
+          matchAttribute?: string;
+          requests?: string[];
+        }[];
+        requests?: {
+          exactly?: {
+            adminAccess?: boolean;
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          };
+          firstAvailable?: {
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            name: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+          name: string;
+        }[];
+      };
+    };
+  };
+}
 export const ReplaceResourceV1beta2NamespacedResourceClaimTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -34492,11 +50106,125 @@ export const ReplaceResourceV1beta2NamespacedResourceClaimTemplateInput =
       method: "PUT",
       path: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaimtemplates/{name}",
     }),
-  );
-export type ReplaceResourceV1beta2NamespacedResourceClaimTemplateInput =
-  typeof ReplaceResourceV1beta2NamespacedResourceClaimTemplateInput.Type;
+  ) as unknown as Schema.Codec<ReplaceResourceV1beta2NamespacedResourceClaimTemplateInput>;
 
 // Output Schema
+export interface ReplaceResourceV1beta2NamespacedResourceClaimTemplateOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      devices?: {
+        config?: {
+          opaque?: { driver: string; parameters: unknown };
+          requests?: string[];
+        }[];
+        constraints?: {
+          distinctAttribute?: string;
+          matchAttribute?: string;
+          requests?: string[];
+        }[];
+        requests?: {
+          exactly?: {
+            adminAccess?: boolean;
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          };
+          firstAvailable?: {
+            allocationMode?: string;
+            capacity?: { requests?: Record<string, string> };
+            count?: number;
+            deviceClassName: string;
+            name: string;
+            selectors?: { cel?: { expression: string } }[];
+            tolerations?: {
+              effect?: string;
+              key?: string;
+              operator?: string;
+              tolerationSeconds?: number;
+              value?: string;
+            }[];
+          }[];
+          name: string;
+        }[];
+      };
+    };
+  };
+}
 export const ReplaceResourceV1beta2NamespacedResourceClaimTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -34712,9 +50440,7 @@ export const ReplaceResourceV1beta2NamespacedResourceClaimTemplateOutput =
         ),
       }),
     ),
-  });
-export type ReplaceResourceV1beta2NamespacedResourceClaimTemplateOutput =
-  typeof ReplaceResourceV1beta2NamespacedResourceClaimTemplateOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceResourceV1beta2NamespacedResourceClaimTemplateOutput>;
 
 // The operation
 /**
@@ -34734,6 +50460,125 @@ export const replaceResourceV1beta2NamespacedResourceClaimTemplate =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceResourceV1beta2ResourceSliceInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    allNodes?: boolean;
+    devices?: {
+      allNodes?: boolean;
+      allowMultipleAllocations?: boolean;
+      attributes?: Record<
+        string,
+        {
+          bool?: boolean;
+          bools?: boolean[];
+          int?: number;
+          ints?: number[];
+          string?: string;
+          strings?: string[];
+          version?: string;
+          versions?: string[];
+        }
+      >;
+      bindingConditions?: string[];
+      bindingFailureConditions?: string[];
+      bindsToNode?: boolean;
+      capacity?: Record<
+        string,
+        {
+          requestPolicy?: {
+            default?: string;
+            validRange?: { max?: string; min: string; step?: string };
+            validValues?: string[];
+          };
+          value: string;
+        }
+      >;
+      consumesCounters?: {
+        counterSet: string;
+        counters: Record<string, { value: string }>;
+      }[];
+      name: string;
+      nodeAllocatableResourceMappings?: Record<
+        string,
+        { allocationMultiplier?: string; capacityKey?: string }
+      >;
+      nodeName?: string;
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+      taints?: {
+        effect: string;
+        key: string;
+        timeAdded?: string;
+        value?: string;
+      }[];
+    }[];
+    driver: string;
+    nodeName?: string;
+    nodeSelector?: {
+      nodeSelectorTerms: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchFields?: { key: string; operator: string; values?: string[] }[];
+      }[];
+    };
+    perDeviceNodeSelection?: boolean;
+    pool: { generation: number; name: string; resourceSliceCount: number };
+    sharedCounters?: {
+      counters: Record<string, { value: string }>;
+      name: string;
+    }[];
+  };
+}
 export const ReplaceResourceV1beta2ResourceSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -34951,11 +50796,123 @@ export const ReplaceResourceV1beta2ResourceSliceInput =
       method: "PUT",
       path: "/apis/resource.k8s.io/v1beta2/resourceslices/{name}",
     }),
-  );
-export type ReplaceResourceV1beta2ResourceSliceInput =
-  typeof ReplaceResourceV1beta2ResourceSliceInput.Type;
+  ) as unknown as Schema.Codec<ReplaceResourceV1beta2ResourceSliceInput>;
 
 // Output Schema
+export interface ReplaceResourceV1beta2ResourceSliceOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    allNodes?: boolean;
+    devices?: {
+      allNodes?: boolean;
+      allowMultipleAllocations?: boolean;
+      attributes?: Record<
+        string,
+        {
+          bool?: boolean;
+          bools?: boolean[];
+          int?: number;
+          ints?: number[];
+          string?: string;
+          strings?: string[];
+          version?: string;
+          versions?: string[];
+        }
+      >;
+      bindingConditions?: string[];
+      bindingFailureConditions?: string[];
+      bindsToNode?: boolean;
+      capacity?: Record<
+        string,
+        {
+          requestPolicy?: {
+            default?: string;
+            validRange?: { max?: string; min: string; step?: string };
+            validValues?: string[];
+          };
+          value: string;
+        }
+      >;
+      consumesCounters?: {
+        counterSet: string;
+        counters: Record<string, { value: string }>;
+      }[];
+      name: string;
+      nodeAllocatableResourceMappings?: Record<
+        string,
+        { allocationMultiplier?: string; capacityKey?: string }
+      >;
+      nodeName?: string;
+      nodeSelector?: {
+        nodeSelectorTerms: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchFields?: { key: string; operator: string; values?: string[] }[];
+        }[];
+      };
+      taints?: {
+        effect: string;
+        key: string;
+        timeAdded?: string;
+        value?: string;
+      }[];
+    }[];
+    driver: string;
+    nodeName?: string;
+    nodeSelector?: {
+      nodeSelectorTerms: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchFields?: { key: string; operator: string; values?: string[] }[];
+      }[];
+    };
+    perDeviceNodeSelection?: boolean;
+    pool: { generation: number; name: string; resourceSliceCount: number };
+    sharedCounters?: {
+      counters: Record<string, { value: string }>;
+      name: string;
+    }[];
+  };
+}
 export const ReplaceResourceV1beta2ResourceSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -35163,9 +51120,7 @@ export const ReplaceResourceV1beta2ResourceSliceOutput =
         ),
       ),
     }),
-  });
-export type ReplaceResourceV1beta2ResourceSliceOutput =
-  typeof ReplaceResourceV1beta2ResourceSliceOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceResourceV1beta2ResourceSliceOutput>;
 
 // The operation
 /**
@@ -35184,6 +51139,21 @@ export const replaceResourceV1beta2ResourceSlice =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface WatchResourceV1DeviceClassInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1DeviceClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -35204,18 +51174,18 @@ export const WatchResourceV1DeviceClassInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1/watch/deviceclasses/{name}",
     }),
-  );
-export type WatchResourceV1DeviceClassInput =
-  typeof WatchResourceV1DeviceClassInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1DeviceClassInput>;
 
 // Output Schema
+export interface WatchResourceV1DeviceClassOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1DeviceClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1DeviceClassOutput =
-  typeof WatchResourceV1DeviceClassOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1DeviceClassOutput>;
 
 // The operation
 /**
@@ -35283,6 +51253,20 @@ export const watchResourceV1DeviceClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WatchResourceV1DeviceClassListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1DeviceClassListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -35302,18 +51286,18 @@ export const WatchResourceV1DeviceClassListInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1/watch/deviceclasses",
     }),
-  );
-export type WatchResourceV1DeviceClassListInput =
-  typeof WatchResourceV1DeviceClassListInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1DeviceClassListInput>;
 
 // Output Schema
+export interface WatchResourceV1DeviceClassListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1DeviceClassListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1DeviceClassListOutput =
-  typeof WatchResourceV1DeviceClassListOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1DeviceClassListOutput>;
 
 // The operation
 /**
@@ -35379,6 +51363,22 @@ export const watchResourceV1DeviceClassList =
     outputSchema: WatchResourceV1DeviceClassListOutput,
   }));
 // Input Schema
+export interface WatchResourceV1NamespacedResourceClaimInput {
+  name: string;
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1NamespacedResourceClaimInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -35400,18 +51400,18 @@ export const WatchResourceV1NamespacedResourceClaimInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1/watch/namespaces/{namespace}/resourceclaims/{name}",
     }),
-  );
-export type WatchResourceV1NamespacedResourceClaimInput =
-  typeof WatchResourceV1NamespacedResourceClaimInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1NamespacedResourceClaimInput>;
 
 // Output Schema
+export interface WatchResourceV1NamespacedResourceClaimOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1NamespacedResourceClaimOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1NamespacedResourceClaimOutput =
-  typeof WatchResourceV1NamespacedResourceClaimOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1NamespacedResourceClaimOutput>;
 
 // The operation
 /**
@@ -35479,6 +51479,21 @@ export const watchResourceV1NamespacedResourceClaim =
     outputSchema: WatchResourceV1NamespacedResourceClaimOutput,
   }));
 // Input Schema
+export interface WatchResourceV1NamespacedResourceClaimListInput {
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1NamespacedResourceClaimListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -35499,18 +51514,18 @@ export const WatchResourceV1NamespacedResourceClaimListInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1/watch/namespaces/{namespace}/resourceclaims",
     }),
-  );
-export type WatchResourceV1NamespacedResourceClaimListInput =
-  typeof WatchResourceV1NamespacedResourceClaimListInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1NamespacedResourceClaimListInput>;
 
 // Output Schema
+export interface WatchResourceV1NamespacedResourceClaimListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1NamespacedResourceClaimListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1NamespacedResourceClaimListOutput =
-  typeof WatchResourceV1NamespacedResourceClaimListOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1NamespacedResourceClaimListOutput>;
 
 // The operation
 /**
@@ -35577,6 +51592,22 @@ export const watchResourceV1NamespacedResourceClaimList =
     outputSchema: WatchResourceV1NamespacedResourceClaimListOutput,
   }));
 // Input Schema
+export interface WatchResourceV1NamespacedResourceClaimTemplateInput {
+  name: string;
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1NamespacedResourceClaimTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -35598,18 +51629,18 @@ export const WatchResourceV1NamespacedResourceClaimTemplateInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1/watch/namespaces/{namespace}/resourceclaimtemplates/{name}",
     }),
-  );
-export type WatchResourceV1NamespacedResourceClaimTemplateInput =
-  typeof WatchResourceV1NamespacedResourceClaimTemplateInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1NamespacedResourceClaimTemplateInput>;
 
 // Output Schema
+export interface WatchResourceV1NamespacedResourceClaimTemplateOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1NamespacedResourceClaimTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1NamespacedResourceClaimTemplateOutput =
-  typeof WatchResourceV1NamespacedResourceClaimTemplateOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1NamespacedResourceClaimTemplateOutput>;
 
 // The operation
 /**
@@ -35677,6 +51708,21 @@ export const watchResourceV1NamespacedResourceClaimTemplate =
     outputSchema: WatchResourceV1NamespacedResourceClaimTemplateOutput,
   }));
 // Input Schema
+export interface WatchResourceV1NamespacedResourceClaimTemplateListInput {
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1NamespacedResourceClaimTemplateListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -35697,18 +51743,18 @@ export const WatchResourceV1NamespacedResourceClaimTemplateListInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1/watch/namespaces/{namespace}/resourceclaimtemplates",
     }),
-  );
-export type WatchResourceV1NamespacedResourceClaimTemplateListInput =
-  typeof WatchResourceV1NamespacedResourceClaimTemplateListInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1NamespacedResourceClaimTemplateListInput>;
 
 // Output Schema
+export interface WatchResourceV1NamespacedResourceClaimTemplateListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1NamespacedResourceClaimTemplateListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1NamespacedResourceClaimTemplateListOutput =
-  typeof WatchResourceV1NamespacedResourceClaimTemplateListOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1NamespacedResourceClaimTemplateListOutput>;
 
 // The operation
 /**
@@ -35775,6 +51821,20 @@ export const watchResourceV1NamespacedResourceClaimTemplateList =
     outputSchema: WatchResourceV1NamespacedResourceClaimTemplateListOutput,
   }));
 // Input Schema
+export interface WatchResourceV1ResourceClaimListForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1ResourceClaimListForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -35794,18 +51854,18 @@ export const WatchResourceV1ResourceClaimListForAllNamespacesInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1/watch/resourceclaims",
     }),
-  );
-export type WatchResourceV1ResourceClaimListForAllNamespacesInput =
-  typeof WatchResourceV1ResourceClaimListForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1ResourceClaimListForAllNamespacesInput>;
 
 // Output Schema
+export interface WatchResourceV1ResourceClaimListForAllNamespacesOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1ResourceClaimListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1ResourceClaimListForAllNamespacesOutput =
-  typeof WatchResourceV1ResourceClaimListForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1ResourceClaimListForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -35871,6 +51931,20 @@ export const watchResourceV1ResourceClaimListForAllNamespaces =
     outputSchema: WatchResourceV1ResourceClaimListForAllNamespacesOutput,
   }));
 // Input Schema
+export interface WatchResourceV1ResourceClaimTemplateListForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1ResourceClaimTemplateListForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -35890,18 +51964,18 @@ export const WatchResourceV1ResourceClaimTemplateListForAllNamespacesInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1/watch/resourceclaimtemplates",
     }),
-  );
-export type WatchResourceV1ResourceClaimTemplateListForAllNamespacesInput =
-  typeof WatchResourceV1ResourceClaimTemplateListForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1ResourceClaimTemplateListForAllNamespacesInput>;
 
 // Output Schema
+export interface WatchResourceV1ResourceClaimTemplateListForAllNamespacesOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1ResourceClaimTemplateListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1ResourceClaimTemplateListForAllNamespacesOutput =
-  typeof WatchResourceV1ResourceClaimTemplateListForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1ResourceClaimTemplateListForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -35968,6 +52042,21 @@ export const watchResourceV1ResourceClaimTemplateListForAllNamespaces =
       WatchResourceV1ResourceClaimTemplateListForAllNamespacesOutput,
   }));
 // Input Schema
+export interface WatchResourceV1ResourceSliceInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1ResourceSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -35988,18 +52077,18 @@ export const WatchResourceV1ResourceSliceInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1/watch/resourceslices/{name}",
     }),
-  );
-export type WatchResourceV1ResourceSliceInput =
-  typeof WatchResourceV1ResourceSliceInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1ResourceSliceInput>;
 
 // Output Schema
+export interface WatchResourceV1ResourceSliceOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1ResourceSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1ResourceSliceOutput =
-  typeof WatchResourceV1ResourceSliceOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1ResourceSliceOutput>;
 
 // The operation
 /**
@@ -36066,6 +52155,20 @@ export const watchResourceV1ResourceSlice =
     outputSchema: WatchResourceV1ResourceSliceOutput,
   }));
 // Input Schema
+export interface WatchResourceV1ResourceSliceListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1ResourceSliceListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -36085,18 +52188,18 @@ export const WatchResourceV1ResourceSliceListInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1/watch/resourceslices",
     }),
-  );
-export type WatchResourceV1ResourceSliceListInput =
-  typeof WatchResourceV1ResourceSliceListInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1ResourceSliceListInput>;
 
 // Output Schema
+export interface WatchResourceV1ResourceSliceListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1ResourceSliceListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1ResourceSliceListOutput =
-  typeof WatchResourceV1ResourceSliceListOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1ResourceSliceListOutput>;
 
 // The operation
 /**
@@ -36162,6 +52265,21 @@ export const watchResourceV1ResourceSliceList =
     outputSchema: WatchResourceV1ResourceSliceListOutput,
   }));
 // Input Schema
+export interface WatchResourceV1alpha3DeviceTaintRuleInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1alpha3DeviceTaintRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -36182,18 +52300,18 @@ export const WatchResourceV1alpha3DeviceTaintRuleInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1alpha3/watch/devicetaintrules/{name}",
     }),
-  );
-export type WatchResourceV1alpha3DeviceTaintRuleInput =
-  typeof WatchResourceV1alpha3DeviceTaintRuleInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1alpha3DeviceTaintRuleInput>;
 
 // Output Schema
+export interface WatchResourceV1alpha3DeviceTaintRuleOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1alpha3DeviceTaintRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1alpha3DeviceTaintRuleOutput =
-  typeof WatchResourceV1alpha3DeviceTaintRuleOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1alpha3DeviceTaintRuleOutput>;
 
 // The operation
 /**
@@ -36260,6 +52378,20 @@ export const watchResourceV1alpha3DeviceTaintRule =
     outputSchema: WatchResourceV1alpha3DeviceTaintRuleOutput,
   }));
 // Input Schema
+export interface WatchResourceV1alpha3DeviceTaintRuleListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1alpha3DeviceTaintRuleListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -36279,18 +52411,18 @@ export const WatchResourceV1alpha3DeviceTaintRuleListInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1alpha3/watch/devicetaintrules",
     }),
-  );
-export type WatchResourceV1alpha3DeviceTaintRuleListInput =
-  typeof WatchResourceV1alpha3DeviceTaintRuleListInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1alpha3DeviceTaintRuleListInput>;
 
 // Output Schema
+export interface WatchResourceV1alpha3DeviceTaintRuleListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1alpha3DeviceTaintRuleListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1alpha3DeviceTaintRuleListOutput =
-  typeof WatchResourceV1alpha3DeviceTaintRuleListOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1alpha3DeviceTaintRuleListOutput>;
 
 // The operation
 /**
@@ -36356,6 +52488,21 @@ export const watchResourceV1alpha3DeviceTaintRuleList =
     outputSchema: WatchResourceV1alpha3DeviceTaintRuleListOutput,
   }));
 // Input Schema
+export interface WatchResourceV1alpha3ResourcePoolStatusRequestInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1alpha3ResourcePoolStatusRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -36376,18 +52523,18 @@ export const WatchResourceV1alpha3ResourcePoolStatusRequestInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1alpha3/watch/resourcepoolstatusrequests/{name}",
     }),
-  );
-export type WatchResourceV1alpha3ResourcePoolStatusRequestInput =
-  typeof WatchResourceV1alpha3ResourcePoolStatusRequestInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1alpha3ResourcePoolStatusRequestInput>;
 
 // Output Schema
+export interface WatchResourceV1alpha3ResourcePoolStatusRequestOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1alpha3ResourcePoolStatusRequestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1alpha3ResourcePoolStatusRequestOutput =
-  typeof WatchResourceV1alpha3ResourcePoolStatusRequestOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1alpha3ResourcePoolStatusRequestOutput>;
 
 // The operation
 /**
@@ -36454,6 +52601,20 @@ export const watchResourceV1alpha3ResourcePoolStatusRequest =
     outputSchema: WatchResourceV1alpha3ResourcePoolStatusRequestOutput,
   }));
 // Input Schema
+export interface WatchResourceV1alpha3ResourcePoolStatusRequestListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1alpha3ResourcePoolStatusRequestListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -36473,18 +52634,18 @@ export const WatchResourceV1alpha3ResourcePoolStatusRequestListInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1alpha3/watch/resourcepoolstatusrequests",
     }),
-  );
-export type WatchResourceV1alpha3ResourcePoolStatusRequestListInput =
-  typeof WatchResourceV1alpha3ResourcePoolStatusRequestListInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1alpha3ResourcePoolStatusRequestListInput>;
 
 // Output Schema
+export interface WatchResourceV1alpha3ResourcePoolStatusRequestListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1alpha3ResourcePoolStatusRequestListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1alpha3ResourcePoolStatusRequestListOutput =
-  typeof WatchResourceV1alpha3ResourcePoolStatusRequestListOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1alpha3ResourcePoolStatusRequestListOutput>;
 
 // The operation
 /**
@@ -36550,6 +52711,21 @@ export const watchResourceV1alpha3ResourcePoolStatusRequestList =
     outputSchema: WatchResourceV1alpha3ResourcePoolStatusRequestListOutput,
   }));
 // Input Schema
+export interface WatchResourceV1beta1DeviceClassInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1beta1DeviceClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -36570,18 +52746,18 @@ export const WatchResourceV1beta1DeviceClassInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/watch/deviceclasses/{name}",
     }),
-  );
-export type WatchResourceV1beta1DeviceClassInput =
-  typeof WatchResourceV1beta1DeviceClassInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1beta1DeviceClassInput>;
 
 // Output Schema
+export interface WatchResourceV1beta1DeviceClassOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1beta1DeviceClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1beta1DeviceClassOutput =
-  typeof WatchResourceV1beta1DeviceClassOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1beta1DeviceClassOutput>;
 
 // The operation
 /**
@@ -36648,6 +52824,20 @@ export const watchResourceV1beta1DeviceClass =
     outputSchema: WatchResourceV1beta1DeviceClassOutput,
   }));
 // Input Schema
+export interface WatchResourceV1beta1DeviceClassListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1beta1DeviceClassListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -36667,18 +52857,18 @@ export const WatchResourceV1beta1DeviceClassListInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/watch/deviceclasses",
     }),
-  );
-export type WatchResourceV1beta1DeviceClassListInput =
-  typeof WatchResourceV1beta1DeviceClassListInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1beta1DeviceClassListInput>;
 
 // Output Schema
+export interface WatchResourceV1beta1DeviceClassListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1beta1DeviceClassListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1beta1DeviceClassListOutput =
-  typeof WatchResourceV1beta1DeviceClassListOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1beta1DeviceClassListOutput>;
 
 // The operation
 /**
@@ -36744,6 +52934,22 @@ export const watchResourceV1beta1DeviceClassList =
     outputSchema: WatchResourceV1beta1DeviceClassListOutput,
   }));
 // Input Schema
+export interface WatchResourceV1beta1NamespacedResourceClaimInput {
+  name: string;
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1beta1NamespacedResourceClaimInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -36765,18 +52971,18 @@ export const WatchResourceV1beta1NamespacedResourceClaimInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/watch/namespaces/{namespace}/resourceclaims/{name}",
     }),
-  );
-export type WatchResourceV1beta1NamespacedResourceClaimInput =
-  typeof WatchResourceV1beta1NamespacedResourceClaimInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1beta1NamespacedResourceClaimInput>;
 
 // Output Schema
+export interface WatchResourceV1beta1NamespacedResourceClaimOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1beta1NamespacedResourceClaimOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1beta1NamespacedResourceClaimOutput =
-  typeof WatchResourceV1beta1NamespacedResourceClaimOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1beta1NamespacedResourceClaimOutput>;
 
 // The operation
 /**
@@ -36844,6 +53050,21 @@ export const watchResourceV1beta1NamespacedResourceClaim =
     outputSchema: WatchResourceV1beta1NamespacedResourceClaimOutput,
   }));
 // Input Schema
+export interface WatchResourceV1beta1NamespacedResourceClaimListInput {
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1beta1NamespacedResourceClaimListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -36864,18 +53085,18 @@ export const WatchResourceV1beta1NamespacedResourceClaimListInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/watch/namespaces/{namespace}/resourceclaims",
     }),
-  );
-export type WatchResourceV1beta1NamespacedResourceClaimListInput =
-  typeof WatchResourceV1beta1NamespacedResourceClaimListInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1beta1NamespacedResourceClaimListInput>;
 
 // Output Schema
+export interface WatchResourceV1beta1NamespacedResourceClaimListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1beta1NamespacedResourceClaimListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1beta1NamespacedResourceClaimListOutput =
-  typeof WatchResourceV1beta1NamespacedResourceClaimListOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1beta1NamespacedResourceClaimListOutput>;
 
 // The operation
 /**
@@ -36942,6 +53163,22 @@ export const watchResourceV1beta1NamespacedResourceClaimList =
     outputSchema: WatchResourceV1beta1NamespacedResourceClaimListOutput,
   }));
 // Input Schema
+export interface WatchResourceV1beta1NamespacedResourceClaimTemplateInput {
+  name: string;
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1beta1NamespacedResourceClaimTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -36963,18 +53200,18 @@ export const WatchResourceV1beta1NamespacedResourceClaimTemplateInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/watch/namespaces/{namespace}/resourceclaimtemplates/{name}",
     }),
-  );
-export type WatchResourceV1beta1NamespacedResourceClaimTemplateInput =
-  typeof WatchResourceV1beta1NamespacedResourceClaimTemplateInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1beta1NamespacedResourceClaimTemplateInput>;
 
 // Output Schema
+export interface WatchResourceV1beta1NamespacedResourceClaimTemplateOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1beta1NamespacedResourceClaimTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1beta1NamespacedResourceClaimTemplateOutput =
-  typeof WatchResourceV1beta1NamespacedResourceClaimTemplateOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1beta1NamespacedResourceClaimTemplateOutput>;
 
 // The operation
 /**
@@ -37042,6 +53279,21 @@ export const watchResourceV1beta1NamespacedResourceClaimTemplate =
     outputSchema: WatchResourceV1beta1NamespacedResourceClaimTemplateOutput,
   }));
 // Input Schema
+export interface WatchResourceV1beta1NamespacedResourceClaimTemplateListInput {
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1beta1NamespacedResourceClaimTemplateListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -37062,18 +53314,18 @@ export const WatchResourceV1beta1NamespacedResourceClaimTemplateListInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/watch/namespaces/{namespace}/resourceclaimtemplates",
     }),
-  );
-export type WatchResourceV1beta1NamespacedResourceClaimTemplateListInput =
-  typeof WatchResourceV1beta1NamespacedResourceClaimTemplateListInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1beta1NamespacedResourceClaimTemplateListInput>;
 
 // Output Schema
+export interface WatchResourceV1beta1NamespacedResourceClaimTemplateListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1beta1NamespacedResourceClaimTemplateListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1beta1NamespacedResourceClaimTemplateListOutput =
-  typeof WatchResourceV1beta1NamespacedResourceClaimTemplateListOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1beta1NamespacedResourceClaimTemplateListOutput>;
 
 // The operation
 /**
@@ -37140,6 +53392,20 @@ export const watchResourceV1beta1NamespacedResourceClaimTemplateList =
     outputSchema: WatchResourceV1beta1NamespacedResourceClaimTemplateListOutput,
   }));
 // Input Schema
+export interface WatchResourceV1beta1ResourceClaimListForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1beta1ResourceClaimListForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -37159,18 +53425,18 @@ export const WatchResourceV1beta1ResourceClaimListForAllNamespacesInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/watch/resourceclaims",
     }),
-  );
-export type WatchResourceV1beta1ResourceClaimListForAllNamespacesInput =
-  typeof WatchResourceV1beta1ResourceClaimListForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1beta1ResourceClaimListForAllNamespacesInput>;
 
 // Output Schema
+export interface WatchResourceV1beta1ResourceClaimListForAllNamespacesOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1beta1ResourceClaimListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1beta1ResourceClaimListForAllNamespacesOutput =
-  typeof WatchResourceV1beta1ResourceClaimListForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1beta1ResourceClaimListForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -37236,6 +53502,20 @@ export const watchResourceV1beta1ResourceClaimListForAllNamespaces =
     outputSchema: WatchResourceV1beta1ResourceClaimListForAllNamespacesOutput,
   }));
 // Input Schema
+export interface WatchResourceV1beta1ResourceClaimTemplateListForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1beta1ResourceClaimTemplateListForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -37255,18 +53535,18 @@ export const WatchResourceV1beta1ResourceClaimTemplateListForAllNamespacesInput 
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/watch/resourceclaimtemplates",
     }),
-  );
-export type WatchResourceV1beta1ResourceClaimTemplateListForAllNamespacesInput =
-  typeof WatchResourceV1beta1ResourceClaimTemplateListForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1beta1ResourceClaimTemplateListForAllNamespacesInput>;
 
 // Output Schema
+export interface WatchResourceV1beta1ResourceClaimTemplateListForAllNamespacesOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1beta1ResourceClaimTemplateListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1beta1ResourceClaimTemplateListForAllNamespacesOutput =
-  typeof WatchResourceV1beta1ResourceClaimTemplateListForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1beta1ResourceClaimTemplateListForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -37334,6 +53614,21 @@ export const watchResourceV1beta1ResourceClaimTemplateListForAllNamespaces =
       WatchResourceV1beta1ResourceClaimTemplateListForAllNamespacesOutput,
   }));
 // Input Schema
+export interface WatchResourceV1beta1ResourceSliceInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1beta1ResourceSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -37354,18 +53649,18 @@ export const WatchResourceV1beta1ResourceSliceInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/watch/resourceslices/{name}",
     }),
-  );
-export type WatchResourceV1beta1ResourceSliceInput =
-  typeof WatchResourceV1beta1ResourceSliceInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1beta1ResourceSliceInput>;
 
 // Output Schema
+export interface WatchResourceV1beta1ResourceSliceOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1beta1ResourceSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1beta1ResourceSliceOutput =
-  typeof WatchResourceV1beta1ResourceSliceOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1beta1ResourceSliceOutput>;
 
 // The operation
 /**
@@ -37432,6 +53727,20 @@ export const watchResourceV1beta1ResourceSlice =
     outputSchema: WatchResourceV1beta1ResourceSliceOutput,
   }));
 // Input Schema
+export interface WatchResourceV1beta1ResourceSliceListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1beta1ResourceSliceListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -37451,18 +53760,18 @@ export const WatchResourceV1beta1ResourceSliceListInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta1/watch/resourceslices",
     }),
-  );
-export type WatchResourceV1beta1ResourceSliceListInput =
-  typeof WatchResourceV1beta1ResourceSliceListInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1beta1ResourceSliceListInput>;
 
 // Output Schema
+export interface WatchResourceV1beta1ResourceSliceListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1beta1ResourceSliceListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1beta1ResourceSliceListOutput =
-  typeof WatchResourceV1beta1ResourceSliceListOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1beta1ResourceSliceListOutput>;
 
 // The operation
 /**
@@ -37528,6 +53837,21 @@ export const watchResourceV1beta1ResourceSliceList =
     outputSchema: WatchResourceV1beta1ResourceSliceListOutput,
   }));
 // Input Schema
+export interface WatchResourceV1beta2DeviceClassInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1beta2DeviceClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -37548,18 +53872,18 @@ export const WatchResourceV1beta2DeviceClassInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/watch/deviceclasses/{name}",
     }),
-  );
-export type WatchResourceV1beta2DeviceClassInput =
-  typeof WatchResourceV1beta2DeviceClassInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1beta2DeviceClassInput>;
 
 // Output Schema
+export interface WatchResourceV1beta2DeviceClassOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1beta2DeviceClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1beta2DeviceClassOutput =
-  typeof WatchResourceV1beta2DeviceClassOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1beta2DeviceClassOutput>;
 
 // The operation
 /**
@@ -37626,6 +53950,20 @@ export const watchResourceV1beta2DeviceClass =
     outputSchema: WatchResourceV1beta2DeviceClassOutput,
   }));
 // Input Schema
+export interface WatchResourceV1beta2DeviceClassListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1beta2DeviceClassListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -37645,18 +53983,18 @@ export const WatchResourceV1beta2DeviceClassListInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/watch/deviceclasses",
     }),
-  );
-export type WatchResourceV1beta2DeviceClassListInput =
-  typeof WatchResourceV1beta2DeviceClassListInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1beta2DeviceClassListInput>;
 
 // Output Schema
+export interface WatchResourceV1beta2DeviceClassListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1beta2DeviceClassListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1beta2DeviceClassListOutput =
-  typeof WatchResourceV1beta2DeviceClassListOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1beta2DeviceClassListOutput>;
 
 // The operation
 /**
@@ -37722,6 +54060,21 @@ export const watchResourceV1beta2DeviceClassList =
     outputSchema: WatchResourceV1beta2DeviceClassListOutput,
   }));
 // Input Schema
+export interface WatchResourceV1beta2DeviceTaintRuleInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1beta2DeviceTaintRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -37742,18 +54095,18 @@ export const WatchResourceV1beta2DeviceTaintRuleInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/watch/devicetaintrules/{name}",
     }),
-  );
-export type WatchResourceV1beta2DeviceTaintRuleInput =
-  typeof WatchResourceV1beta2DeviceTaintRuleInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1beta2DeviceTaintRuleInput>;
 
 // Output Schema
+export interface WatchResourceV1beta2DeviceTaintRuleOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1beta2DeviceTaintRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1beta2DeviceTaintRuleOutput =
-  typeof WatchResourceV1beta2DeviceTaintRuleOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1beta2DeviceTaintRuleOutput>;
 
 // The operation
 /**
@@ -37820,6 +54173,20 @@ export const watchResourceV1beta2DeviceTaintRule =
     outputSchema: WatchResourceV1beta2DeviceTaintRuleOutput,
   }));
 // Input Schema
+export interface WatchResourceV1beta2DeviceTaintRuleListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1beta2DeviceTaintRuleListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -37839,18 +54206,18 @@ export const WatchResourceV1beta2DeviceTaintRuleListInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/watch/devicetaintrules",
     }),
-  );
-export type WatchResourceV1beta2DeviceTaintRuleListInput =
-  typeof WatchResourceV1beta2DeviceTaintRuleListInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1beta2DeviceTaintRuleListInput>;
 
 // Output Schema
+export interface WatchResourceV1beta2DeviceTaintRuleListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1beta2DeviceTaintRuleListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1beta2DeviceTaintRuleListOutput =
-  typeof WatchResourceV1beta2DeviceTaintRuleListOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1beta2DeviceTaintRuleListOutput>;
 
 // The operation
 /**
@@ -37916,6 +54283,22 @@ export const watchResourceV1beta2DeviceTaintRuleList =
     outputSchema: WatchResourceV1beta2DeviceTaintRuleListOutput,
   }));
 // Input Schema
+export interface WatchResourceV1beta2NamespacedResourceClaimInput {
+  name: string;
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1beta2NamespacedResourceClaimInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -37937,18 +54320,18 @@ export const WatchResourceV1beta2NamespacedResourceClaimInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/watch/namespaces/{namespace}/resourceclaims/{name}",
     }),
-  );
-export type WatchResourceV1beta2NamespacedResourceClaimInput =
-  typeof WatchResourceV1beta2NamespacedResourceClaimInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1beta2NamespacedResourceClaimInput>;
 
 // Output Schema
+export interface WatchResourceV1beta2NamespacedResourceClaimOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1beta2NamespacedResourceClaimOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1beta2NamespacedResourceClaimOutput =
-  typeof WatchResourceV1beta2NamespacedResourceClaimOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1beta2NamespacedResourceClaimOutput>;
 
 // The operation
 /**
@@ -38016,6 +54399,21 @@ export const watchResourceV1beta2NamespacedResourceClaim =
     outputSchema: WatchResourceV1beta2NamespacedResourceClaimOutput,
   }));
 // Input Schema
+export interface WatchResourceV1beta2NamespacedResourceClaimListInput {
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1beta2NamespacedResourceClaimListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -38036,18 +54434,18 @@ export const WatchResourceV1beta2NamespacedResourceClaimListInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/watch/namespaces/{namespace}/resourceclaims",
     }),
-  );
-export type WatchResourceV1beta2NamespacedResourceClaimListInput =
-  typeof WatchResourceV1beta2NamespacedResourceClaimListInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1beta2NamespacedResourceClaimListInput>;
 
 // Output Schema
+export interface WatchResourceV1beta2NamespacedResourceClaimListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1beta2NamespacedResourceClaimListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1beta2NamespacedResourceClaimListOutput =
-  typeof WatchResourceV1beta2NamespacedResourceClaimListOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1beta2NamespacedResourceClaimListOutput>;
 
 // The operation
 /**
@@ -38114,6 +54512,22 @@ export const watchResourceV1beta2NamespacedResourceClaimList =
     outputSchema: WatchResourceV1beta2NamespacedResourceClaimListOutput,
   }));
 // Input Schema
+export interface WatchResourceV1beta2NamespacedResourceClaimTemplateInput {
+  name: string;
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1beta2NamespacedResourceClaimTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -38135,18 +54549,18 @@ export const WatchResourceV1beta2NamespacedResourceClaimTemplateInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/watch/namespaces/{namespace}/resourceclaimtemplates/{name}",
     }),
-  );
-export type WatchResourceV1beta2NamespacedResourceClaimTemplateInput =
-  typeof WatchResourceV1beta2NamespacedResourceClaimTemplateInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1beta2NamespacedResourceClaimTemplateInput>;
 
 // Output Schema
+export interface WatchResourceV1beta2NamespacedResourceClaimTemplateOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1beta2NamespacedResourceClaimTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1beta2NamespacedResourceClaimTemplateOutput =
-  typeof WatchResourceV1beta2NamespacedResourceClaimTemplateOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1beta2NamespacedResourceClaimTemplateOutput>;
 
 // The operation
 /**
@@ -38214,6 +54628,21 @@ export const watchResourceV1beta2NamespacedResourceClaimTemplate =
     outputSchema: WatchResourceV1beta2NamespacedResourceClaimTemplateOutput,
   }));
 // Input Schema
+export interface WatchResourceV1beta2NamespacedResourceClaimTemplateListInput {
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1beta2NamespacedResourceClaimTemplateListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -38234,18 +54663,18 @@ export const WatchResourceV1beta2NamespacedResourceClaimTemplateListInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/watch/namespaces/{namespace}/resourceclaimtemplates",
     }),
-  );
-export type WatchResourceV1beta2NamespacedResourceClaimTemplateListInput =
-  typeof WatchResourceV1beta2NamespacedResourceClaimTemplateListInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1beta2NamespacedResourceClaimTemplateListInput>;
 
 // Output Schema
+export interface WatchResourceV1beta2NamespacedResourceClaimTemplateListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1beta2NamespacedResourceClaimTemplateListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1beta2NamespacedResourceClaimTemplateListOutput =
-  typeof WatchResourceV1beta2NamespacedResourceClaimTemplateListOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1beta2NamespacedResourceClaimTemplateListOutput>;
 
 // The operation
 /**
@@ -38312,6 +54741,20 @@ export const watchResourceV1beta2NamespacedResourceClaimTemplateList =
     outputSchema: WatchResourceV1beta2NamespacedResourceClaimTemplateListOutput,
   }));
 // Input Schema
+export interface WatchResourceV1beta2ResourceClaimListForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1beta2ResourceClaimListForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -38331,18 +54774,18 @@ export const WatchResourceV1beta2ResourceClaimListForAllNamespacesInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/watch/resourceclaims",
     }),
-  );
-export type WatchResourceV1beta2ResourceClaimListForAllNamespacesInput =
-  typeof WatchResourceV1beta2ResourceClaimListForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1beta2ResourceClaimListForAllNamespacesInput>;
 
 // Output Schema
+export interface WatchResourceV1beta2ResourceClaimListForAllNamespacesOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1beta2ResourceClaimListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1beta2ResourceClaimListForAllNamespacesOutput =
-  typeof WatchResourceV1beta2ResourceClaimListForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1beta2ResourceClaimListForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -38408,6 +54851,20 @@ export const watchResourceV1beta2ResourceClaimListForAllNamespaces =
     outputSchema: WatchResourceV1beta2ResourceClaimListForAllNamespacesOutput,
   }));
 // Input Schema
+export interface WatchResourceV1beta2ResourceClaimTemplateListForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1beta2ResourceClaimTemplateListForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -38427,18 +54884,18 @@ export const WatchResourceV1beta2ResourceClaimTemplateListForAllNamespacesInput 
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/watch/resourceclaimtemplates",
     }),
-  );
-export type WatchResourceV1beta2ResourceClaimTemplateListForAllNamespacesInput =
-  typeof WatchResourceV1beta2ResourceClaimTemplateListForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1beta2ResourceClaimTemplateListForAllNamespacesInput>;
 
 // Output Schema
+export interface WatchResourceV1beta2ResourceClaimTemplateListForAllNamespacesOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1beta2ResourceClaimTemplateListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1beta2ResourceClaimTemplateListForAllNamespacesOutput =
-  typeof WatchResourceV1beta2ResourceClaimTemplateListForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1beta2ResourceClaimTemplateListForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -38506,6 +54963,21 @@ export const watchResourceV1beta2ResourceClaimTemplateListForAllNamespaces =
       WatchResourceV1beta2ResourceClaimTemplateListForAllNamespacesOutput,
   }));
 // Input Schema
+export interface WatchResourceV1beta2ResourceSliceInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1beta2ResourceSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -38526,18 +54998,18 @@ export const WatchResourceV1beta2ResourceSliceInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/watch/resourceslices/{name}",
     }),
-  );
-export type WatchResourceV1beta2ResourceSliceInput =
-  typeof WatchResourceV1beta2ResourceSliceInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1beta2ResourceSliceInput>;
 
 // Output Schema
+export interface WatchResourceV1beta2ResourceSliceOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1beta2ResourceSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1beta2ResourceSliceOutput =
-  typeof WatchResourceV1beta2ResourceSliceOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1beta2ResourceSliceOutput>;
 
 // The operation
 /**
@@ -38604,6 +55076,20 @@ export const watchResourceV1beta2ResourceSlice =
     outputSchema: WatchResourceV1beta2ResourceSliceOutput,
   }));
 // Input Schema
+export interface WatchResourceV1beta2ResourceSliceListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchResourceV1beta2ResourceSliceListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -38623,18 +55109,18 @@ export const WatchResourceV1beta2ResourceSliceListInput =
       method: "GET",
       path: "/apis/resource.k8s.io/v1beta2/watch/resourceslices",
     }),
-  );
-export type WatchResourceV1beta2ResourceSliceListInput =
-  typeof WatchResourceV1beta2ResourceSliceListInput.Type;
+  ) as unknown as Schema.Codec<WatchResourceV1beta2ResourceSliceListInput>;
 
 // Output Schema
+export interface WatchResourceV1beta2ResourceSliceListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchResourceV1beta2ResourceSliceListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchResourceV1beta2ResourceSliceListOutput =
-  typeof WatchResourceV1beta2ResourceSliceListOutput.Type;
+  }) as unknown as Schema.Codec<WatchResourceV1beta2ResourceSliceListOutput>;
 
 // The operation
 /**

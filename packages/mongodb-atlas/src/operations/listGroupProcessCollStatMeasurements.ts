@@ -4,6 +4,17 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupProcessCollStatMeasurementsInput {
+  groupId: string;
+  processId: string;
+  databaseName: string;
+  collectionName: string;
+  envelope?: boolean;
+  metrics?: string;
+  start?: string;
+  end?: string;
+  period?: string;
+}
 export const ListGroupProcessCollStatMeasurementsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -20,15 +31,12 @@ export const ListGroupProcessCollStatMeasurementsInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/processes/{processId}/{databaseName}/{collectionName}/collStats/measurements",
     }),
-  );
-export type ListGroupProcessCollStatMeasurementsInput =
-  typeof ListGroupProcessCollStatMeasurementsInput.Type;
+  ) as unknown as Schema.Codec<ListGroupProcessCollStatMeasurementsInput>;
 
 // Output Schema
+export type ListGroupProcessCollStatMeasurementsOutput = void;
 export const ListGroupProcessCollStatMeasurementsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupProcessCollStatMeasurementsOutput =
-  typeof ListGroupProcessCollStatMeasurementsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupProcessCollStatMeasurementsOutput>;
 
 // The operation
 /**

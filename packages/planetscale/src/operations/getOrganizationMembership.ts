@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetOrganizationMembershipInput {
+  organization: string;
+  id: string;
+}
 export const GetOrganizationMembershipInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,36 @@ export const GetOrganizationMembershipInput =
       method: "GET",
       path: "/organizations/{organization}/members/{id}",
     }),
-  );
-export type GetOrganizationMembershipInput =
-  typeof GetOrganizationMembershipInput.Type;
+  ) as unknown as Schema.Codec<GetOrganizationMembershipInput>;
 
 // Output Schema
+export interface GetOrganizationMembershipOutput {
+  id: string;
+  user: {
+    id: string;
+    display_name: string;
+    name?: string | null;
+    email: string;
+    avatar_url: string;
+    created_at: string;
+    updated_at: string;
+    two_factor_auth_configured: boolean;
+    default_organization?: {
+      id: string;
+      name: string;
+      created_at: string;
+      updated_at: string;
+      deleted_at: string | null;
+    } | null;
+    sso?: boolean | null;
+    managed?: boolean | null;
+    directory_managed?: boolean | null;
+    email_verified?: boolean | null;
+  };
+  role: "member" | "admin";
+  created_at: string;
+  updated_at: string;
+}
 export const GetOrganizationMembershipOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -49,9 +78,7 @@ export const GetOrganizationMembershipOutput =
     role: Schema.Literals(["member", "admin"]),
     created_at: Schema.String,
     updated_at: Schema.String,
-  });
-export type GetOrganizationMembershipOutput =
-  typeof GetOrganizationMembershipOutput.Type;
+  }) as unknown as Schema.Codec<GetOrganizationMembershipOutput>;
 
 // The operation
 /**

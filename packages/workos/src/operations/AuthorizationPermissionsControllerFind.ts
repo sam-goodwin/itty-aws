@@ -4,14 +4,28 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationPermissionsControllerFindInput {
+  slug: string;
+}
 export const AuthorizationPermissionsControllerFindInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     slug: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/authorization/permissions/{slug}" }));
-export type AuthorizationPermissionsControllerFindInput =
-  typeof AuthorizationPermissionsControllerFindInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/authorization/permissions/{slug}" }),
+  ) as unknown as Schema.Codec<AuthorizationPermissionsControllerFindInput>;
 
 // Output Schema
+export interface AuthorizationPermissionsControllerFindOutput {
+  object?: string;
+  id?: string;
+  slug?: string;
+  name?: string;
+  description?: string | null;
+  system?: boolean;
+  resource_type_slug?: string;
+  created_at?: string;
+  updated_at?: string;
+}
 export const AuthorizationPermissionsControllerFindOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -23,9 +37,7 @@ export const AuthorizationPermissionsControllerFindOutput =
     resource_type_slug: Schema.optional(Schema.String),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type AuthorizationPermissionsControllerFindOutput =
-  typeof AuthorizationPermissionsControllerFindOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizationPermissionsControllerFindOutput>;
 
 // The operation
 /**

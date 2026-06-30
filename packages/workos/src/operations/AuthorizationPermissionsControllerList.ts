@@ -4,17 +4,38 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationPermissionsControllerListInput {
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+}
 export const AuthorizationPermissionsControllerListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
     order: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/authorization/permissions" }));
-export type AuthorizationPermissionsControllerListInput =
-  typeof AuthorizationPermissionsControllerListInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/authorization/permissions" }),
+  ) as unknown as Schema.Codec<AuthorizationPermissionsControllerListInput>;
 
 // Output Schema
+export interface AuthorizationPermissionsControllerListOutput {
+  object?: string;
+  data?: {
+    object?: string;
+    id?: string;
+    slug?: string;
+    name?: string;
+    description?: string | null;
+    system?: boolean;
+    resource_type_slug?: string;
+    created_at?: string;
+    updated_at?: string;
+  }[];
+  list_metadata?: { before: string | null; after: string | null };
+}
 export const AuthorizationPermissionsControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -39,9 +60,7 @@ export const AuthorizationPermissionsControllerListOutput =
         after: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type AuthorizationPermissionsControllerListOutput =
-  typeof AuthorizationPermissionsControllerListOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizationPermissionsControllerListOutput>;
 
 // The operation
 /**

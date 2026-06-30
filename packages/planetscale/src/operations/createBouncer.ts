@@ -4,6 +4,15 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface CreateBouncerInput {
+  organization: string;
+  database: string;
+  branch: string;
+  name?: string;
+  target?: string;
+  bouncer_size?: string;
+  replicas_per_cell?: number;
+}
 export const CreateBouncerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
@@ -17,10 +26,55 @@ export const CreateBouncerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/organizations/{organization}/databases/{database}/branches/{branch}/bouncers",
   }),
-);
-export type CreateBouncerInput = typeof CreateBouncerInput.Type;
+) as unknown as Schema.Codec<CreateBouncerInput>;
 
 // Output Schema
+export interface CreateBouncerOutput {
+  id: string;
+  name: string;
+  sku: {
+    name: string;
+    display_name: string;
+    cpu: string;
+    ram: number;
+    sort_order: number;
+  };
+  target: "primary" | "replica" | "replica_az_affinity";
+  replicas_per_cell: number;
+  created_at: string;
+  updated_at: string;
+  deleted_at: string | null;
+  actor: { id: string; display_name: string; avatar_url: string };
+  branch: {
+    id: string;
+    name: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: string | null;
+  };
+  parameters: {
+    id: string;
+    namespace: "pgbouncer";
+    name: string;
+    display_name: string;
+    category: string;
+    description: string;
+    immutable: boolean;
+    parameter_type: "array" | "integer" | "seconds" | "select" | "string";
+    default_value: string;
+    value: string;
+    required: boolean;
+    created_at: string;
+    updated_at: string;
+    restart: boolean;
+    max: number;
+    min: number;
+    step: number;
+    url: string;
+    options: string[];
+    actor: { id: string; display_name: string; avatar_url: string };
+  }[];
+}
 export const CreateBouncerOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
@@ -82,8 +136,7 @@ export const CreateBouncerOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     }),
   ),
-});
-export type CreateBouncerOutput = typeof CreateBouncerOutput.Type;
+}) as unknown as Schema.Codec<CreateBouncerOutput>;
 
 // The operation
 /**

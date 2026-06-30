@@ -3,6 +3,12 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ListSolanaTokenBalancesInput {
+  address: string;
+  network: string;
+  pageSize?: number;
+  pageToken?: string;
+}
 export const ListSolanaTokenBalancesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     address: Schema.String.pipe(T.PathParam()),
@@ -14,11 +20,16 @@ export const ListSolanaTokenBalancesInput =
       method: "GET",
       path: "/v2/solana/token-balances/{network}/{address}",
     }),
-  );
-export type ListSolanaTokenBalancesInput =
-  typeof ListSolanaTokenBalancesInput.Type;
+  ) as unknown as Schema.Codec<ListSolanaTokenBalancesInput>;
 
 // Output Schema
+export interface ListSolanaTokenBalancesOutput {
+  balances: {
+    amount: { amount: string; decimals: number };
+    token: { symbol?: string; name?: string; mintAddress: string };
+  }[];
+  nextPageToken?: string;
+}
 export const ListSolanaTokenBalancesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     balances: Schema.Array(
@@ -35,9 +46,7 @@ export const ListSolanaTokenBalancesOutput =
       }),
     ),
     nextPageToken: Schema.optional(Schema.String),
-  });
-export type ListSolanaTokenBalancesOutput =
-  typeof ListSolanaTokenBalancesOutput.Type;
+  }) as unknown as Schema.Codec<ListSolanaTokenBalancesOutput>;
 
 // The operation
 /**

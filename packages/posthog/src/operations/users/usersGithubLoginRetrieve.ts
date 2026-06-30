@@ -4,18 +4,20 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface UsersGithubLoginRetrieveInput {
+  uuid: string;
+}
 export const UsersGithubLoginRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/api/users/{uuid}/github_login/" }));
-export type UsersGithubLoginRetrieveInput =
-  typeof UsersGithubLoginRetrieveInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/api/users/{uuid}/github_login/" }),
+  ) as unknown as Schema.Codec<UsersGithubLoginRetrieveInput>;
 
 // Output Schema
+export type UsersGithubLoginRetrieveOutput = void;
 export const UsersGithubLoginRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UsersGithubLoginRetrieveOutput =
-  typeof UsersGithubLoginRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersGithubLoginRetrieveOutput>;
 
 // The operation
 export const usersGithubLoginRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(

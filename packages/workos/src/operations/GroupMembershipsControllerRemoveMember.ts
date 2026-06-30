@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GroupMembershipsControllerRemoveMemberInput {
+  organizationId: string;
+  groupId: string;
+  omId: string;
+}
 export const GroupMembershipsControllerRemoveMemberInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const GroupMembershipsControllerRemoveMemberInput =
       method: "DELETE",
       path: "/organizations/{organizationId}/groups/{groupId}/organization-memberships/{omId}",
     }),
-  );
-export type GroupMembershipsControllerRemoveMemberInput =
-  typeof GroupMembershipsControllerRemoveMemberInput.Type;
+  ) as unknown as Schema.Codec<GroupMembershipsControllerRemoveMemberInput>;
 
 // Output Schema
+export type GroupMembershipsControllerRemoveMemberOutput = void;
 export const GroupMembershipsControllerRemoveMemberOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GroupMembershipsControllerRemoveMemberOutput =
-  typeof GroupMembershipsControllerRemoveMemberOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupMembershipsControllerRemoveMemberOutput>;
 
 // The operation
 /**

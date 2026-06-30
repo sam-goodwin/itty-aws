@@ -4,6 +4,18 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface V1UpdateAFunctionInput {
+  ref: string;
+  function_slug: string;
+  slug?: string;
+  name?: string;
+  verify_jwt?: boolean;
+  import_map?: boolean;
+  entrypoint_path?: string;
+  import_map_path?: string;
+  ezbr_sha256?: string;
+  body?: string;
+}
 export const V1UpdateAFunctionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     ref: Schema.String.pipe(T.PathParam()),
@@ -22,10 +34,23 @@ export const V1UpdateAFunctionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PATCH",
     path: "/v1/projects/{ref}/functions/{function_slug}",
   }),
-);
-export type V1UpdateAFunctionInput = typeof V1UpdateAFunctionInput.Type;
+) as unknown as Schema.Codec<V1UpdateAFunctionInput>;
 
 // Output Schema
+export interface V1UpdateAFunctionOutput {
+  id: string;
+  slug: string;
+  name: string;
+  status: "ACTIVE" | "REMOVED" | "THROTTLED";
+  version: number;
+  created_at: number;
+  updated_at: number;
+  verify_jwt?: boolean;
+  import_map?: boolean;
+  entrypoint_path?: string;
+  import_map_path?: string;
+  ezbr_sha256?: string;
+}
 export const V1UpdateAFunctionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -40,8 +65,7 @@ export const V1UpdateAFunctionOutput =
     entrypoint_path: Schema.optional(Schema.String),
     import_map_path: Schema.optional(Schema.String),
     ezbr_sha256: Schema.optional(Schema.String),
-  });
-export type V1UpdateAFunctionOutput = typeof V1UpdateAFunctionOutput.Type;
+  }) as unknown as Schema.Codec<V1UpdateAFunctionOutput>;
 
 // The operation
 /**

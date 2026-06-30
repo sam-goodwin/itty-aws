@@ -4,20 +4,20 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface UsersStart2faSetupRetrieveInput {
+  uuid: string;
+}
 export const UsersStart2faSetupRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/api/users/{uuid}/start_2fa_setup/" }),
-  );
-export type UsersStart2faSetupRetrieveInput =
-  typeof UsersStart2faSetupRetrieveInput.Type;
+  ) as unknown as Schema.Codec<UsersStart2faSetupRetrieveInput>;
 
 // Output Schema
+export type UsersStart2faSetupRetrieveOutput = void;
 export const UsersStart2faSetupRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UsersStart2faSetupRetrieveOutput =
-  typeof UsersStart2faSetupRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersStart2faSetupRetrieveOutput>;
 
 // The operation
 export const usersStart2faSetupRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(

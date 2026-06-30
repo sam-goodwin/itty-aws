@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface LiveDebuggerBreakpointsBreakpointHitsRetrieveInput {
+  project_id: string;
+  breakpoint_ids?: string;
+  limit?: number;
+  offset?: number;
+}
 export const LiveDebuggerBreakpointsBreakpointHitsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -15,11 +21,23 @@ export const LiveDebuggerBreakpointsBreakpointHitsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/live_debugger_breakpoints/breakpoint_hits/",
     }),
-  );
-export type LiveDebuggerBreakpointsBreakpointHitsRetrieveInput =
-  typeof LiveDebuggerBreakpointsBreakpointHitsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<LiveDebuggerBreakpointsBreakpointHitsRetrieveInput>;
 
 // Output Schema
+export interface LiveDebuggerBreakpointsBreakpointHitsRetrieveOutput {
+  results?: {
+    id?: string;
+    lineNumber?: number;
+    functionName?: string;
+    timestamp?: string;
+    variables?: Record<string, unknown>;
+    stackTrace?: unknown[];
+    breakpoint_id?: string;
+    filename?: string;
+  }[];
+  count?: number;
+  has_more?: boolean;
+}
 export const LiveDebuggerBreakpointsBreakpointHitsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(
@@ -40,9 +58,7 @@ export const LiveDebuggerBreakpointsBreakpointHitsRetrieveOutput =
     ),
     count: Schema.optional(Schema.Number),
     has_more: Schema.optional(Schema.Boolean),
-  });
-export type LiveDebuggerBreakpointsBreakpointHitsRetrieveOutput =
-  typeof LiveDebuggerBreakpointsBreakpointHitsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<LiveDebuggerBreakpointsBreakpointHitsRetrieveOutput>;
 
 // The operation
 /**

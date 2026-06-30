@@ -9,12 +9,7 @@
     "lib": [
       "ESNext",
       "DOM"
-    ],
-    "paths": {
-      "~/*": [
-        "./src/*"
-      ]
-    }
+    ]
   },
   "references": [
     {

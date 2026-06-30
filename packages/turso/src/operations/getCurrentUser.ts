@@ -3,12 +3,25 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetCurrentUserInput {}
 export const GetCurrentUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
-).pipe(T.Http({ method: "GET", path: "/v1/user" }));
-export type GetCurrentUserInput = typeof GetCurrentUserInput.Type;
+).pipe(
+  T.Http({ method: "GET", path: "/v1/user" }),
+) as unknown as Schema.Codec<GetCurrentUserInput>;
 
 // Output Schema
+export interface GetCurrentUserOutput {
+  user?: {
+    username?: string;
+    name?: string;
+    email?: string;
+    avatarUrl?: string;
+    plan?: string;
+    mfa?: boolean;
+    has_pending_invites?: boolean;
+  };
+}
 export const GetCurrentUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   user: Schema.optional(
     Schema.Struct({
@@ -21,8 +34,7 @@ export const GetCurrentUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       has_pending_invites: Schema.optional(Schema.Boolean),
     }),
   ),
-});
-export type GetCurrentUserOutput = typeof GetCurrentUserOutput.Type;
+}) as unknown as Schema.Codec<GetCurrentUserOutput>;
 
 // The operation
 /**

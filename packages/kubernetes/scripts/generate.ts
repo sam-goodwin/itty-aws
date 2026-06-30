@@ -242,7 +242,7 @@ for (const [group, ops] of groups) {
  * Generated from the Kubernetes OpenAPI spec.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";`;
 
@@ -251,6 +251,9 @@ import * as T from "../traits.ts";`;
   }
   if (sensitive.size > 0) {
     imports += `\nimport { ${[...sensitive].sort().join(", ")} } from "../sensitive.ts";`;
+    // Explicit Input/Output type aliases reference `Redacted.Redacted<...>`
+    // for sensitive fields; the merged service header must import it.
+    imports += `\nimport * as Redacted from "effect/Redacted";`;
   }
 
   // Concatenate all operation bodies

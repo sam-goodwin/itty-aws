@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SignalsScoutProjectProfileGetInput {
+  project_id: string;
+  force_refresh?: boolean;
+}
 export const SignalsScoutProjectProfileGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,161 @@ export const SignalsScoutProjectProfileGetInput =
       method: "GET",
       path: "/api/projects/{project_id}/signals/scout/project_profile/current/",
     }),
-  );
-export type SignalsScoutProjectProfileGetInput =
-  typeof SignalsScoutProjectProfileGetInput.Type;
+  ) as unknown as Schema.Codec<SignalsScoutProjectProfileGetInput>;
 
 // Output Schema
+export interface SignalsScoutProjectProfileGetOutput {
+  profile_id: string;
+  computed_at: string;
+  expires_at: string;
+  source_version: string;
+  payload: {
+    inventory: {
+      project_context: {
+        product_description: string | null;
+        app_urls: string[];
+      };
+      products_in_use: string[];
+      product_intents: {
+        product_type: string;
+        activated_at: string | null;
+        created_at: string | null;
+      }[];
+      integrations: { kind: string; created_at: string | null }[];
+      external_data_sources: {
+        source_type: string;
+        status: string;
+        prefix: string;
+        created_at: string | null;
+      }[];
+      signal_source_configs: {
+        enabled: { source_product: string; source_type: string }[];
+        disabled: { source_product: string; source_type: string }[];
+      };
+      existing_inbox_reports: {
+        total: number;
+        by_status: { status: string; count: number }[];
+      };
+      recent_activity: {
+        window_days: number;
+        by_scope: {
+          scope: string;
+          edits: number;
+          users: number;
+          last_edit: string | null;
+        }[];
+      };
+      recent_dashboards: {
+        id: number;
+        name: string;
+        last_accessed_at: string | null;
+        last_refresh: string | null;
+        created_at: string | null;
+      }[];
+      recent_surveys: {
+        total_count: number;
+        active_count: number;
+        recent: {
+          id: string;
+          name: string;
+          type: string;
+          status: string;
+          updated_at: string | null;
+        }[];
+      };
+      recent_feature_flags: {
+        total_count: number;
+        active_count: number;
+        recent: {
+          id: number;
+          key: string;
+          name: string;
+          active: boolean;
+          updated_at: string | null;
+        }[];
+      };
+      recent_experiments: {
+        total_count: number;
+        running_count: number;
+        recent: {
+          id: number;
+          name: string;
+          status: string;
+          feature_flag_key: string | null;
+          updated_at: string | null;
+        }[];
+      };
+      recent_alerts: {
+        total_count: number;
+        enabled_count: number;
+        recent: {
+          id: string;
+          name: string;
+          enabled: boolean;
+          state: string;
+          calculation_interval: string | null;
+          insight_id: number | null;
+          created_at: string | null;
+        }[];
+      };
+      recent_hog_functions: {
+        total_count: number;
+        enabled_count: number;
+        recent: {
+          id: string;
+          name: string;
+          type: string | null;
+          kind: string | null;
+          enabled: boolean;
+          updated_at: string | null;
+        }[];
+      };
+      recent_hog_flows: {
+        total_count: number;
+        active_count: number;
+        recent: {
+          id: string;
+          name: string;
+          status: string;
+          updated_at: string | null;
+        }[];
+      };
+      recent_notebooks: {
+        total_count: number;
+        recent: {
+          short_id: string;
+          title: string;
+          last_modified_at: string | null;
+        }[];
+      };
+      recent_cohorts: {
+        total_count: number;
+        recent: {
+          id: number;
+          name: string;
+          is_static: boolean;
+          count: number | null;
+          created_at: string | null;
+        }[];
+      };
+      recent_actions: {
+        total_count: number;
+        recent: { id: number; name: string; updated_at: string | null }[];
+      };
+      top_events:
+        | {
+            event: string;
+            count: number;
+            distinct_users: number;
+            recent_24h_count: number;
+            recent_24h_users: number;
+            first_seen: string | null;
+            last_seen: string | null;
+          }[]
+        | null;
+    };
+  };
+}
 export const SignalsScoutProjectProfileGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     profile_id: Schema.String,
@@ -222,9 +376,7 @@ export const SignalsScoutProjectProfileGetOutput =
         ),
       }),
     }),
-  });
-export type SignalsScoutProjectProfileGetOutput =
-  typeof SignalsScoutProjectProfileGetOutput.Type;
+  }) as unknown as Schema.Codec<SignalsScoutProjectProfileGetOutput>;
 
 // The operation
 /**

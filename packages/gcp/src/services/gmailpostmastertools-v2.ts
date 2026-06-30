@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface ComplianceStatus {
   status?: "STATE_UNSPECIFIED" | "COMPLIANT" | "NEEDS_WORK" | (string & {});
 }
 
-export const ComplianceStatus: Schema.Schema<ComplianceStatus> =
+export const ComplianceStatus: Schema.Codec<ComplianceStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
   }).annotate({ identifier: "ComplianceStatus" });
@@ -52,7 +52,7 @@ export interface ComplianceRowData {
   status?: ComplianceStatus;
 }
 
-export const ComplianceRowData: Schema.Schema<ComplianceRowData> =
+export const ComplianceRowData: Schema.Codec<ComplianceRowData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requirement: Schema.optional(Schema.String),
     status: Schema.optional(ComplianceStatus),
@@ -74,7 +74,7 @@ export interface DeliverabilityStatusVerdict {
     | (string & {});
 }
 
-export const DeliverabilityStatusVerdict: Schema.Schema<DeliverabilityStatusVerdict> =
+export const DeliverabilityStatusVerdict: Schema.Codec<DeliverabilityStatusVerdict> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(ComplianceStatus),
     reason: Schema.optional(Schema.String),
@@ -92,7 +92,7 @@ export interface HonorUnsubscribeVerdict {
     | (string & {});
 }
 
-export const HonorUnsubscribeVerdict: Schema.Schema<HonorUnsubscribeVerdict> =
+export const HonorUnsubscribeVerdict: Schema.Codec<HonorUnsubscribeVerdict> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(ComplianceStatus),
     reason: Schema.optional(Schema.String),
@@ -110,7 +110,7 @@ export interface OneClickUnsubscribeVerdict {
     | (string & {});
 }
 
-export const OneClickUnsubscribeVerdict: Schema.Schema<OneClickUnsubscribeVerdict> =
+export const OneClickUnsubscribeVerdict: Schema.Codec<OneClickUnsubscribeVerdict> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(ComplianceStatus),
     reason: Schema.optional(Schema.String),
@@ -129,7 +129,7 @@ export interface DomainComplianceData {
   oneClickUnsubscribeVerdict?: OneClickUnsubscribeVerdict;
 }
 
-export const DomainComplianceData: Schema.Schema<DomainComplianceData> =
+export const DomainComplianceData: Schema.Codec<DomainComplianceData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rowData: Schema.optional(Schema.Array(ComplianceRowData)),
     deliverabilityStatusVerdict: Schema.optional(DeliverabilityStatusVerdict),
@@ -161,7 +161,7 @@ export interface Domain {
     | (string & {});
 }
 
-export const Domain: Schema.Schema<Domain> =
+export const Domain: Schema.Codec<Domain> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permission: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -177,7 +177,7 @@ export interface ListDomainsResponse {
   nextPageToken?: string;
 }
 
-export const ListDomainsResponse: Schema.Schema<ListDomainsResponse> =
+export const ListDomainsResponse: Schema.Codec<ListDomainsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     domains: Schema.optional(Schema.Array(Domain)),
     nextPageToken: Schema.optional(Schema.String),
@@ -192,7 +192,7 @@ export interface Gmailpostmastertools_Date {
   month?: number;
 }
 
-export const Gmailpostmastertools_Date: Schema.Schema<Gmailpostmastertools_Date> =
+export const Gmailpostmastertools_Date: Schema.Codec<Gmailpostmastertools_Date> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     day: Schema.optional(Schema.Number),
     year: Schema.optional(Schema.Number),
@@ -206,7 +206,7 @@ export interface DateRange {
   start?: Gmailpostmastertools_Date;
 }
 
-export const DateRange: Schema.Schema<DateRange> =
+export const DateRange: Schema.Codec<DateRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     end: Schema.optional(Gmailpostmastertools_Date),
     start: Schema.optional(Gmailpostmastertools_Date),
@@ -217,7 +217,7 @@ export interface DateRanges {
   dateRanges?: ReadonlyArray<DateRange>;
 }
 
-export const DateRanges: Schema.Schema<DateRanges> =
+export const DateRanges: Schema.Codec<DateRanges> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dateRanges: Schema.optional(Schema.Array(DateRange)),
   }).annotate({ identifier: "DateRanges" });
@@ -227,7 +227,7 @@ export interface DateList {
   dates?: ReadonlyArray<Gmailpostmastertools_Date>;
 }
 
-export const DateList: Schema.Schema<DateList> =
+export const DateList: Schema.Codec<DateList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dates: Schema.optional(Schema.Array(Gmailpostmastertools_Date)),
   }).annotate({ identifier: "DateList" });
@@ -239,7 +239,7 @@ export interface TimeQuery {
   dateList?: DateList;
 }
 
-export const TimeQuery: Schema.Schema<TimeQuery> =
+export const TimeQuery: Schema.Codec<TimeQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dateRanges: Schema.optional(DateRanges),
     dateList: Schema.optional(DateList),
@@ -250,7 +250,7 @@ export interface StringList {
   values?: ReadonlyArray<string>;
 }
 
-export const StringList: Schema.Schema<StringList> =
+export const StringList: Schema.Codec<StringList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "StringList" });
@@ -268,7 +268,7 @@ export interface StatisticValue {
   intValue?: string;
 }
 
-export const StatisticValue: Schema.Schema<StatisticValue> =
+export const StatisticValue: Schema.Codec<StatisticValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     doubleValue: Schema.optional(Schema.Number),
     stringList: Schema.optional(StringList),
@@ -288,7 +288,7 @@ export interface DomainStat {
   metric?: string;
 }
 
-export const DomainStat: Schema.Schema<DomainStat> =
+export const DomainStat: Schema.Codec<DomainStat> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     date: Schema.optional(Gmailpostmastertools_Date),
@@ -303,7 +303,7 @@ export interface QueryDomainStatsResponse {
   domainStats?: ReadonlyArray<DomainStat>;
 }
 
-export const QueryDomainStatsResponse: Schema.Schema<QueryDomainStatsResponse> =
+export const QueryDomainStatsResponse: Schema.Codec<QueryDomainStatsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     domainStats: Schema.optional(Schema.Array(DomainStat)),
@@ -318,7 +318,7 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
@@ -334,7 +334,7 @@ export interface BatchQueryDomainStatsResult {
   error?: Status;
 }
 
-export const BatchQueryDomainStatsResult: Schema.Schema<BatchQueryDomainStatsResult> =
+export const BatchQueryDomainStatsResult: Schema.Codec<BatchQueryDomainStatsResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     response: Schema.optional(QueryDomainStatsResponse),
     error: Schema.optional(Status),
@@ -345,7 +345,7 @@ export interface BatchQueryDomainStatsResponse {
   results?: ReadonlyArray<BatchQueryDomainStatsResult>;
 }
 
-export const BatchQueryDomainStatsResponse: Schema.Schema<BatchQueryDomainStatsResponse> =
+export const BatchQueryDomainStatsResponse: Schema.Codec<BatchQueryDomainStatsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(Schema.Array(BatchQueryDomainStatsResult)),
   }).annotate({ identifier: "BatchQueryDomainStatsResponse" });
@@ -359,7 +359,7 @@ export interface DomainComplianceStatus {
   subdomainComplianceData?: DomainComplianceData;
 }
 
-export const DomainComplianceStatus: Schema.Schema<DomainComplianceStatus> =
+export const DomainComplianceStatus: Schema.Codec<DomainComplianceStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     complianceData: Schema.optional(DomainComplianceData),
@@ -368,7 +368,7 @@ export const DomainComplianceStatus: Schema.Schema<DomainComplianceStatus> =
 
 export interface VerifyDomainResponse {}
 
-export const VerifyDomainResponse: Schema.Schema<VerifyDomainResponse> =
+export const VerifyDomainResponse: Schema.Codec<VerifyDomainResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "VerifyDomainResponse",
   });
@@ -386,7 +386,7 @@ export interface CreateUserRequest {
   userId?: string;
 }
 
-export const CreateUserRequest: Schema.Schema<CreateUserRequest> =
+export const CreateUserRequest: Schema.Codec<CreateUserRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permission: Schema.optional(Schema.String),
     userId: Schema.optional(Schema.String),
@@ -411,7 +411,7 @@ export interface User {
   accessGranter?: string;
 }
 
-export const User: Schema.Schema<User> =
+export const User: Schema.Codec<User> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     user: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -427,7 +427,7 @@ export interface ListUsersResponse {
   nextPageToken?: string;
 }
 
-export const ListUsersResponse: Schema.Schema<ListUsersResponse> =
+export const ListUsersResponse: Schema.Codec<ListUsersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     users: Schema.optional(Schema.Array(User)),
     nextPageToken: Schema.optional(Schema.String),
@@ -435,7 +435,7 @@ export const ListUsersResponse: Schema.Schema<ListUsersResponse> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -455,7 +455,7 @@ export interface BaseMetric {
     | (string & {});
 }
 
-export const BaseMetric: Schema.Schema<BaseMetric> =
+export const BaseMetric: Schema.Codec<BaseMetric> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     standardMetric: Schema.optional(Schema.String),
   }).annotate({ identifier: "BaseMetric" });
@@ -469,7 +469,7 @@ export interface MetricDefinition {
   filter?: string;
 }
 
-export const MetricDefinition: Schema.Schema<MetricDefinition> =
+export const MetricDefinition: Schema.Codec<MetricDefinition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     baseMetric: Schema.optional(BaseMetric),
@@ -495,7 +495,7 @@ export interface QueryDomainStatsRequest {
     | (string & {});
 }
 
-export const QueryDomainStatsRequest: Schema.Schema<QueryDomainStatsRequest> =
+export const QueryDomainStatsRequest: Schema.Codec<QueryDomainStatsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     pageSize: Schema.optional(Schema.Number),
@@ -510,7 +510,7 @@ export interface BatchQueryDomainStatsRequest {
   requests?: ReadonlyArray<QueryDomainStatsRequest>;
 }
 
-export const BatchQueryDomainStatsRequest: Schema.Schema<BatchQueryDomainStatsRequest> =
+export const BatchQueryDomainStatsRequest: Schema.Codec<BatchQueryDomainStatsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(Schema.Array(QueryDomainStatsRequest)),
   }).annotate({ identifier: "BatchQueryDomainStatsRequest" });
@@ -524,7 +524,7 @@ export interface VerifyDomainRequest {
     | (string & {});
 }
 
-export const VerifyDomainRequest: Schema.Schema<VerifyDomainRequest> =
+export const VerifyDomainRequest: Schema.Codec<VerifyDomainRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verificationMethod: Schema.optional(Schema.String),
   }).annotate({ identifier: "VerifyDomainRequest" });
@@ -534,7 +534,7 @@ export interface CreateDomainRequest {
   domainId?: string;
 }
 
-export const CreateDomainRequest: Schema.Schema<CreateDomainRequest> =
+export const CreateDomainRequest: Schema.Codec<CreateDomainRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     domainId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateDomainRequest" });
@@ -552,7 +552,7 @@ export interface DomainVerificationToken {
   name?: string;
 }
 
-export const DomainVerificationToken: Schema.Schema<DomainVerificationToken> =
+export const DomainVerificationToken: Schema.Codec<DomainVerificationToken> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     token: Schema.optional(Schema.String),
     verificationMethod: Schema.optional(Schema.String),
@@ -628,7 +628,7 @@ export const BatchQueryDomainStatsRequest_Op =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchQueryDomainStatsRequest_Op>;
+  ) as unknown as Schema.Codec<BatchQueryDomainStatsRequest_Op>;
 
 export type BatchQueryDomainStatsResponse_Op = BatchQueryDomainStatsResponse;
 export const BatchQueryDomainStatsResponse_Op =
@@ -663,7 +663,7 @@ export const GetDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v2/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetDomainsRequest>;
+) as unknown as Schema.Codec<GetDomainsRequest>;
 
 export type GetDomainsResponse = Domain;
 export const GetDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Domain;
@@ -695,7 +695,7 @@ export const ListDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v2/domains" }),
   svc,
-) as unknown as Schema.Schema<ListDomainsRequest>;
+) as unknown as Schema.Codec<ListDomainsRequest>;
 
 export type ListDomainsResponse_Op = ListDomainsResponse;
 export const ListDomainsResponse_Op =
@@ -739,7 +739,7 @@ export const GetVerificationTokenDomainsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetVerificationTokenDomainsRequest>;
+  ) as unknown as Schema.Codec<GetVerificationTokenDomainsRequest>;
 
 export type GetVerificationTokenDomainsResponse = DomainVerificationToken;
 export const GetVerificationTokenDomainsResponse =
@@ -773,7 +773,7 @@ export const GetComplianceStatusDomainsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetComplianceStatusDomainsRequest>;
+  ) as unknown as Schema.Codec<GetComplianceStatusDomainsRequest>;
 
 export type GetComplianceStatusDomainsResponse = DomainComplianceStatus;
 export const GetComplianceStatusDomainsResponse =
@@ -806,7 +806,7 @@ export const DeleteDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "v2/{+name}" }),
   svc,
-) as unknown as Schema.Schema<DeleteDomainsRequest>;
+) as unknown as Schema.Codec<DeleteDomainsRequest>;
 
 export type DeleteDomainsResponse = Empty;
 export const DeleteDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -840,7 +840,7 @@ export const CreateDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v2/domains", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<CreateDomainsRequest>;
+) as unknown as Schema.Codec<CreateDomainsRequest>;
 
 export type CreateDomainsResponse = Domain;
 export const CreateDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Domain;
@@ -877,7 +877,7 @@ export const VerifyDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v2/{+name}:verify", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<VerifyDomainsRequest>;
+) as unknown as Schema.Codec<VerifyDomainsRequest>;
 
 export type VerifyDomainsResponse = VerifyDomainResponse;
 export const VerifyDomainsResponse =
@@ -920,7 +920,7 @@ export const QueryDomainsDomainStatsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<QueryDomainsDomainStatsRequest>;
+  ) as unknown as Schema.Codec<QueryDomainsDomainStatsRequest>;
 
 export type QueryDomainsDomainStatsResponse = QueryDomainStatsResponse;
 export const QueryDomainsDomainStatsResponse =
@@ -956,7 +956,7 @@ export const DeleteDomainsUsersRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteDomainsUsersRequest>;
+  ) as unknown as Schema.Codec<DeleteDomainsUsersRequest>;
 
 export type DeleteDomainsUsersResponse = Empty;
 export const DeleteDomainsUsersResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -994,7 +994,7 @@ export const CreateDomainsUsersRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+parent}/users", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateDomainsUsersRequest>;
+  ) as unknown as Schema.Codec<CreateDomainsUsersRequest>;
 
 export type CreateDomainsUsersResponse = User;
 export const CreateDomainsUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
@@ -1035,7 +1035,7 @@ export const PatchDomainsUsersRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchDomainsUsersRequest>;
+  ) as unknown as Schema.Codec<PatchDomainsUsersRequest>;
 
 export type PatchDomainsUsersResponse = User;
 export const PatchDomainsUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
@@ -1071,7 +1071,7 @@ export const GetDomainsUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "v2/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetDomainsUsersRequest>;
+) as unknown as Schema.Codec<GetDomainsUsersRequest>;
 
 export type GetDomainsUsersResponse = User;
 export const GetDomainsUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
@@ -1107,7 +1107,7 @@ export const ListDomainsUsersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/users" }),
     svc,
-  ) as unknown as Schema.Schema<ListDomainsUsersRequest>;
+  ) as unknown as Schema.Codec<ListDomainsUsersRequest>;
 
 export type ListDomainsUsersResponse = ListUsersResponse;
 export const ListDomainsUsersResponse =

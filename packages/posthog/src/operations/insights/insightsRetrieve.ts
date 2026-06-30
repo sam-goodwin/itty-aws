@@ -4,6 +4,22 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface InsightsRetrieveInput {
+  id: string;
+  project_id: string;
+  filters_override?: string;
+  format?: "csv" | "json";
+  from_dashboard?: number;
+  refresh?:
+    | "async"
+    | "async_except_on_cache_miss"
+    | "blocking"
+    | "force_async"
+    | "force_blocking"
+    | "force_cache"
+    | "lazy_async";
+  variables_override?: string;
+}
 export const InsightsRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
@@ -24,17 +40,99 @@ export const InsightsRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   variables_override: Schema.optional(Schema.String),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/insights/{id}/" }),
-);
-export type InsightsRetrieveInput = typeof InsightsRetrieveInput.Type;
+) as unknown as Schema.Codec<InsightsRetrieveInput>;
 
 // Output Schema
+export interface InsightsRetrieveOutput {
+  id?: number;
+  short_id?: string;
+  name?: string | null;
+  derived_name?: string | null;
+  query?: unknown | null;
+  order?: number | null;
+  deleted?: boolean;
+  dashboards?: number[];
+  dashboard_tiles?: {
+    id?: number;
+    dashboard_id?: number;
+    deleted?: boolean | null;
+  }[];
+  last_refresh?: string | null;
+  cache_target_age?: string | null;
+  next_allowed_client_refresh?: string | null;
+  result?: unknown;
+  hasMore?: boolean | null;
+  columns?: string[] | null;
+  created_at?: string | null;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  description?: string | null;
+  updated_at?: string;
+  tags?: unknown[];
+  favorited?: boolean;
+  last_modified_at?: string;
+  last_modified_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  is_sample?: boolean;
+  effective_restriction_level?: 21 | 37;
+  effective_privilege_level?: 21 | 37;
+  user_access_level?: string | null;
+  timezone?: string | null;
+  is_cached?: boolean;
+  query_status?: unknown;
+  hogql?: string | null;
+  types?: unknown[] | null;
+  resolved_date_range?: { date_from?: string; date_to?: string } | null;
+  _create_in_folder?: string;
+  alerts?: unknown[];
+  last_viewed_at?: string | null;
+  search_match_type?: "exact" | "similar" | null;
+}
 export const InsightsRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.Number),
     short_id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.NullOr(Schema.String)),
     derived_name: Schema.optional(Schema.NullOr(Schema.String)),
-    query: Schema.optional(Schema.Unknown),
+    query: Schema.optional(Schema.NullOr(Schema.Unknown)),
     order: Schema.optional(Schema.NullOr(Schema.Number)),
     deleted: Schema.optional(Schema.Boolean),
     dashboards: Schema.optional(Schema.Array(Schema.Number)),
@@ -67,7 +165,23 @@ export const InsightsRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -89,7 +203,23 @@ export const InsightsRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -113,10 +243,11 @@ export const InsightsRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     _create_in_folder: Schema.optional(Schema.String),
     alerts: Schema.optional(Schema.Array(Schema.Unknown)),
     last_viewed_at: Schema.optional(Schema.NullOr(Schema.String)),
-    search_match_type: Schema.optional(Schema.Unknown),
+    search_match_type: Schema.optional(
+      Schema.NullOr(Schema.Literals(["exact", "similar"])),
+    ),
   },
-);
-export type InsightsRetrieveOutput = typeof InsightsRetrieveOutput.Type;
+) as unknown as Schema.Codec<InsightsRetrieveOutput>;
 
 // The operation
 /**

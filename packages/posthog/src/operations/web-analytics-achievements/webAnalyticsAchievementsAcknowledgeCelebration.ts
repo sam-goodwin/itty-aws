@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface WebAnalyticsAchievementsAcknowledgeCelebrationInput {
+  project_id: string;
+  track_key: string;
+  stage: number;
+}
 export const WebAnalyticsAchievementsAcknowledgeCelebrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,17 +18,16 @@ export const WebAnalyticsAchievementsAcknowledgeCelebrationInput =
       method: "POST",
       path: "/api/projects/{project_id}/web_analytics_achievements/acknowledge_celebration/",
     }),
-  );
-export type WebAnalyticsAchievementsAcknowledgeCelebrationInput =
-  typeof WebAnalyticsAchievementsAcknowledgeCelebrationInput.Type;
+  ) as unknown as Schema.Codec<WebAnalyticsAchievementsAcknowledgeCelebrationInput>;
 
 // Output Schema
+export interface WebAnalyticsAchievementsAcknowledgeCelebrationOutput {
+  acknowledged: boolean;
+}
 export const WebAnalyticsAchievementsAcknowledgeCelebrationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     acknowledged: Schema.Boolean,
-  });
-export type WebAnalyticsAchievementsAcknowledgeCelebrationOutput =
-  typeof WebAnalyticsAchievementsAcknowledgeCelebrationOutput.Type;
+  }) as unknown as Schema.Codec<WebAnalyticsAchievementsAcknowledgeCelebrationOutput>;
 
 // The operation
 /**

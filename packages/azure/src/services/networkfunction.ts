@@ -4,11 +4,15 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AzureTrafficCollectorsByResourceGroupListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const AzureTrafficCollectorsByResourceGroupListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -19,11 +23,25 @@ export const AzureTrafficCollectorsByResourceGroupListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors",
       apiVersion: "2022-11-01",
     }),
-  );
-export type AzureTrafficCollectorsByResourceGroupListInput =
-  typeof AzureTrafficCollectorsByResourceGroupListInput.Type;
+  ) as unknown as Schema.Codec<AzureTrafficCollectorsByResourceGroupListInput>;
 
 // Output Schema
+export interface AzureTrafficCollectorsByResourceGroupListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AzureTrafficCollectorsByResourceGroupListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -58,9 +76,7 @@ export const AzureTrafficCollectorsByResourceGroupListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AzureTrafficCollectorsByResourceGroupListOutput =
-  typeof AzureTrafficCollectorsByResourceGroupListOutput.Type;
+  }) as unknown as Schema.Codec<AzureTrafficCollectorsByResourceGroupListOutput>;
 
 // The operation
 /**
@@ -76,6 +92,9 @@ export const AzureTrafficCollectorsByResourceGroupList =
     outputSchema: AzureTrafficCollectorsByResourceGroupListOutput,
   }));
 // Input Schema
+export interface AzureTrafficCollectorsBySubscriptionListInput {
+  subscriptionId: string;
+}
 export const AzureTrafficCollectorsBySubscriptionListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -85,11 +104,25 @@ export const AzureTrafficCollectorsBySubscriptionListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkFunction/azureTrafficCollectors",
       apiVersion: "2022-11-01",
     }),
-  );
-export type AzureTrafficCollectorsBySubscriptionListInput =
-  typeof AzureTrafficCollectorsBySubscriptionListInput.Type;
+  ) as unknown as Schema.Codec<AzureTrafficCollectorsBySubscriptionListInput>;
 
 // Output Schema
+export interface AzureTrafficCollectorsBySubscriptionListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AzureTrafficCollectorsBySubscriptionListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -124,9 +157,7 @@ export const AzureTrafficCollectorsBySubscriptionListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AzureTrafficCollectorsBySubscriptionListOutput =
-  typeof AzureTrafficCollectorsBySubscriptionListOutput.Type;
+  }) as unknown as Schema.Codec<AzureTrafficCollectorsBySubscriptionListOutput>;
 
 // The operation
 /**
@@ -141,6 +172,19 @@ export const AzureTrafficCollectorsBySubscriptionList =
     outputSchema: AzureTrafficCollectorsBySubscriptionListOutput,
   }));
 // Input Schema
+export interface AzureTrafficCollectorsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureTrafficCollectorName: string;
+  properties?: {
+    collectorPolicies?: { id?: string }[];
+    virtualHub?: { id?: string };
+    provisioningState?: "Succeeded" | "Updating" | "Deleting" | "Failed";
+  };
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+}
 export const AzureTrafficCollectorsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -174,11 +218,22 @@ export const AzureTrafficCollectorsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}",
       apiVersion: "2022-11-01",
     }),
-  );
-export type AzureTrafficCollectorsCreateOrUpdateInput =
-  typeof AzureTrafficCollectorsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<AzureTrafficCollectorsCreateOrUpdateInput>;
 
 // Output Schema
+export interface AzureTrafficCollectorsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AzureTrafficCollectorsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -198,9 +253,7 @@ export const AzureTrafficCollectorsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AzureTrafficCollectorsCreateOrUpdateOutput =
-  typeof AzureTrafficCollectorsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AzureTrafficCollectorsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -217,6 +270,11 @@ export const AzureTrafficCollectorsCreateOrUpdate =
     outputSchema: AzureTrafficCollectorsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface AzureTrafficCollectorsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureTrafficCollectorName: string;
+}
 export const AzureTrafficCollectorsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -228,15 +286,12 @@ export const AzureTrafficCollectorsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}",
       apiVersion: "2022-11-01",
     }),
-  );
-export type AzureTrafficCollectorsDeleteInput =
-  typeof AzureTrafficCollectorsDeleteInput.Type;
+  ) as unknown as Schema.Codec<AzureTrafficCollectorsDeleteInput>;
 
 // Output Schema
+export type AzureTrafficCollectorsDeleteOutput = void;
 export const AzureTrafficCollectorsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AzureTrafficCollectorsDeleteOutput =
-  typeof AzureTrafficCollectorsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AzureTrafficCollectorsDeleteOutput>;
 
 // The operation
 /**
@@ -253,6 +308,11 @@ export const AzureTrafficCollectorsDelete =
     outputSchema: AzureTrafficCollectorsDeleteOutput,
   }));
 // Input Schema
+export interface AzureTrafficCollectorsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureTrafficCollectorName: string;
+}
 export const AzureTrafficCollectorsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -264,11 +324,22 @@ export const AzureTrafficCollectorsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}",
       apiVersion: "2022-11-01",
     }),
-  );
-export type AzureTrafficCollectorsGetInput =
-  typeof AzureTrafficCollectorsGetInput.Type;
+  ) as unknown as Schema.Codec<AzureTrafficCollectorsGetInput>;
 
 // Output Schema
+export interface AzureTrafficCollectorsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AzureTrafficCollectorsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -288,9 +359,7 @@ export const AzureTrafficCollectorsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AzureTrafficCollectorsGetOutput =
-  typeof AzureTrafficCollectorsGetOutput.Type;
+  }) as unknown as Schema.Codec<AzureTrafficCollectorsGetOutput>;
 
 // The operation
 /**
@@ -308,6 +377,12 @@ export const AzureTrafficCollectorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AzureTrafficCollectorsUpdateTagsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureTrafficCollectorName: string;
+  tags?: Record<string, string>;
+}
 export const AzureTrafficCollectorsUpdateTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -320,11 +395,22 @@ export const AzureTrafficCollectorsUpdateTagsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}",
       apiVersion: "2022-11-01",
     }),
-  );
-export type AzureTrafficCollectorsUpdateTagsInput =
-  typeof AzureTrafficCollectorsUpdateTagsInput.Type;
+  ) as unknown as Schema.Codec<AzureTrafficCollectorsUpdateTagsInput>;
 
 // Output Schema
+export interface AzureTrafficCollectorsUpdateTagsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AzureTrafficCollectorsUpdateTagsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -344,9 +430,7 @@ export const AzureTrafficCollectorsUpdateTagsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AzureTrafficCollectorsUpdateTagsOutput =
-  typeof AzureTrafficCollectorsUpdateTagsOutput.Type;
+  }) as unknown as Schema.Codec<AzureTrafficCollectorsUpdateTagsOutput>;
 
 // The operation
 /**
@@ -363,6 +447,26 @@ export const AzureTrafficCollectorsUpdateTags =
     outputSchema: AzureTrafficCollectorsUpdateTagsOutput,
   }));
 // Input Schema
+export interface CollectorPoliciesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureTrafficCollectorName: string;
+  collectorPolicyName: string;
+  properties?: {
+    ingestionPolicy?: {
+      ingestionType?: "IPFIX";
+      ingestionSources?: { sourceType?: "Resource"; resourceId?: string }[];
+    };
+    emissionPolicies?: {
+      emissionType?: "IPFIX";
+      emissionDestinations?: { destinationType?: "AzureMonitor" }[];
+    }[];
+    provisioningState?: "Succeeded" | "Updating" | "Deleting" | "Failed";
+  };
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+}
 export const CollectorPoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -414,11 +518,22 @@ export const CollectorPoliciesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies/{collectorPolicyName}",
       apiVersion: "2022-11-01",
     }),
-  );
-export type CollectorPoliciesCreateOrUpdateInput =
-  typeof CollectorPoliciesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<CollectorPoliciesCreateOrUpdateInput>;
 
 // Output Schema
+export interface CollectorPoliciesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CollectorPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -438,9 +553,7 @@ export const CollectorPoliciesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CollectorPoliciesCreateOrUpdateOutput =
-  typeof CollectorPoliciesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CollectorPoliciesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -458,6 +571,12 @@ export const CollectorPoliciesCreateOrUpdate =
     outputSchema: CollectorPoliciesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface CollectorPoliciesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureTrafficCollectorName: string;
+  collectorPolicyName: string;
+}
 export const CollectorPoliciesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -470,15 +589,12 @@ export const CollectorPoliciesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies/{collectorPolicyName}",
       apiVersion: "2022-11-01",
     }),
-  );
-export type CollectorPoliciesDeleteInput =
-  typeof CollectorPoliciesDeleteInput.Type;
+  ) as unknown as Schema.Codec<CollectorPoliciesDeleteInput>;
 
 // Output Schema
+export type CollectorPoliciesDeleteOutput = void;
 export const CollectorPoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CollectorPoliciesDeleteOutput =
-  typeof CollectorPoliciesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CollectorPoliciesDeleteOutput>;
 
 // The operation
 /**
@@ -497,6 +613,12 @@ export const CollectorPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CollectorPoliciesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureTrafficCollectorName: string;
+  collectorPolicyName: string;
+}
 export const CollectorPoliciesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -509,10 +631,22 @@ export const CollectorPoliciesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies/{collectorPolicyName}",
       apiVersion: "2022-11-01",
     }),
-  );
-export type CollectorPoliciesGetInput = typeof CollectorPoliciesGetInput.Type;
+  ) as unknown as Schema.Codec<CollectorPoliciesGetInput>;
 
 // Output Schema
+export interface CollectorPoliciesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CollectorPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -532,8 +666,7 @@ export const CollectorPoliciesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CollectorPoliciesGetOutput = typeof CollectorPoliciesGetOutput.Type;
+  }) as unknown as Schema.Codec<CollectorPoliciesGetOutput>;
 
 // The operation
 /**
@@ -552,6 +685,11 @@ export const CollectorPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CollectorPoliciesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureTrafficCollectorName: string;
+}
 export const CollectorPoliciesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -563,10 +701,25 @@ export const CollectorPoliciesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies",
       apiVersion: "2022-11-01",
     }),
-  );
-export type CollectorPoliciesListInput = typeof CollectorPoliciesListInput.Type;
+  ) as unknown as Schema.Codec<CollectorPoliciesListInput>;
 
 // Output Schema
+export interface CollectorPoliciesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CollectorPoliciesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -601,9 +754,7 @@ export const CollectorPoliciesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CollectorPoliciesListOutput =
-  typeof CollectorPoliciesListOutput.Type;
+  }) as unknown as Schema.Codec<CollectorPoliciesListOutput>;
 
 // The operation
 /**
@@ -621,6 +772,13 @@ export const CollectorPoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CollectorPoliciesUpdateTagsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  azureTrafficCollectorName: string;
+  collectorPolicyName: string;
+  tags?: Record<string, string>;
+}
 export const CollectorPoliciesUpdateTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -634,11 +792,22 @@ export const CollectorPoliciesUpdateTagsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies/{collectorPolicyName}",
       apiVersion: "2022-11-01",
     }),
-  );
-export type CollectorPoliciesUpdateTagsInput =
-  typeof CollectorPoliciesUpdateTagsInput.Type;
+  ) as unknown as Schema.Codec<CollectorPoliciesUpdateTagsInput>;
 
 // Output Schema
+export interface CollectorPoliciesUpdateTagsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CollectorPoliciesUpdateTagsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -658,9 +827,7 @@ export const CollectorPoliciesUpdateTagsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CollectorPoliciesUpdateTagsOutput =
-  typeof CollectorPoliciesUpdateTagsOutput.Type;
+  }) as unknown as Schema.Codec<CollectorPoliciesUpdateTagsOutput>;
 
 // The operation
 /**
@@ -679,6 +846,7 @@ export const CollectorPoliciesUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkFunctionListOperationsInput {}
 export const NetworkFunctionListOperationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
@@ -686,11 +854,23 @@ export const NetworkFunctionListOperationsInput =
       path: "/providers/Microsoft.NetworkFunction/operations",
       apiVersion: "2022-11-01",
     }),
-  );
-export type NetworkFunctionListOperationsInput =
-  typeof NetworkFunctionListOperationsInput.Type;
+  ) as unknown as Schema.Codec<NetworkFunctionListOperationsInput>;
 
 // Output Schema
+export interface NetworkFunctionListOperationsOutput {
+  value: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: string;
+  }[];
+  nextLink?: string;
+}
 export const NetworkFunctionListOperationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -709,9 +889,7 @@ export const NetworkFunctionListOperationsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkFunctionListOperationsOutput =
-  typeof NetworkFunctionListOperationsOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFunctionListOperationsOutput>;
 
 // The operation
 /**

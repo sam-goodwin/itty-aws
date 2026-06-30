@@ -3,6 +3,9 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface DeleteOrganizationSpendingLimitInput {
+  org_id: string;
+}
 export const DeleteOrganizationSpendingLimitInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     org_id: Schema.String.pipe(T.PathParam()),
@@ -11,15 +14,14 @@ export const DeleteOrganizationSpendingLimitInput =
       method: "DELETE",
       path: "/organizations/{org_id}/billing/spending_limit",
     }),
-  );
-export type DeleteOrganizationSpendingLimitInput =
-  typeof DeleteOrganizationSpendingLimitInput.Type;
+  ) as unknown as Schema.Codec<DeleteOrganizationSpendingLimitInput>;
 
 // Output Schema
+export interface DeleteOrganizationSpendingLimitOutput {}
 export const DeleteOrganizationSpendingLimitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
-export type DeleteOrganizationSpendingLimitOutput =
-  typeof DeleteOrganizationSpendingLimitOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as unknown as Schema.Codec<DeleteOrganizationSpendingLimitOutput>;
 
 // The operation
 /**

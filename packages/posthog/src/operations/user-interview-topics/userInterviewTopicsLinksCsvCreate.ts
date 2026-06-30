@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface UserInterviewTopicsLinksCsvCreateInput {
+  id: string;
+  project_id: string;
+}
 export const UserInterviewTopicsLinksCsvCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,15 +16,12 @@ export const UserInterviewTopicsLinksCsvCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/user_interview_topics/{id}/links_csv/",
     }),
-  );
-export type UserInterviewTopicsLinksCsvCreateInput =
-  typeof UserInterviewTopicsLinksCsvCreateInput.Type;
+  ) as unknown as Schema.Codec<UserInterviewTopicsLinksCsvCreateInput>;
 
 // Output Schema
+export type UserInterviewTopicsLinksCsvCreateOutput = void;
 export const UserInterviewTopicsLinksCsvCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UserInterviewTopicsLinksCsvCreateOutput =
-  typeof UserInterviewTopicsLinksCsvCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UserInterviewTopicsLinksCsvCreateOutput>;
 
 // The operation
 /**

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
@@ -53,7 +53,7 @@ export interface HttpUpdate {
   path?: string;
 }
 
-export const HttpUpdate: Schema.Schema<HttpUpdate> =
+export const HttpUpdate: Schema.Codec<HttpUpdate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     desired: Schema.optional(Schema.String),
     discovered: Schema.optional(Schema.String),
@@ -80,7 +80,7 @@ export interface DnsRecord {
   requiredAction?: "NONE" | "ADD" | "REMOVE" | (string & {});
 }
 
-export const DnsRecord: Schema.Schema<DnsRecord> =
+export const DnsRecord: Schema.Codec<DnsRecord> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     domainName: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -97,7 +97,7 @@ export interface DnsRecordSet {
   records?: ReadonlyArray<DnsRecord>;
 }
 
-export const DnsRecordSet: Schema.Schema<DnsRecordSet> =
+export const DnsRecordSet: Schema.Codec<DnsRecordSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     checkError: Schema.optional(Status),
     domainName: Schema.optional(Schema.String),
@@ -113,7 +113,7 @@ export interface DnsUpdates {
   desired?: ReadonlyArray<DnsRecordSet>;
 }
 
-export const DnsUpdates: Schema.Schema<DnsUpdates> =
+export const DnsUpdates: Schema.Codec<DnsUpdates> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     checkTime: Schema.optional(Schema.String),
     discovered: Schema.optional(Schema.Array(DnsRecordSet)),
@@ -127,7 +127,7 @@ export interface CertVerification {
   dns?: DnsUpdates;
 }
 
-export const CertVerification: Schema.Schema<CertVerification> =
+export const CertVerification: Schema.Codec<CertVerification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     http: Schema.optional(HttpUpdate),
     dns: Schema.optional(DnsUpdates),
@@ -151,7 +151,7 @@ export interface LiveMigrationStep {
     | (string & {});
 }
 
-export const LiveMigrationStep: Schema.Schema<LiveMigrationStep> =
+export const LiveMigrationStep: Schema.Codec<LiveMigrationStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dnsUpdates: Schema.optional(DnsUpdates),
     issues: Schema.optional(Schema.Array(Status)),
@@ -161,7 +161,7 @@ export const LiveMigrationStep: Schema.Schema<LiveMigrationStep> =
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
+export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
@@ -179,7 +179,7 @@ export interface Operation {
   error?: Status;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     done: Schema.optional(Schema.Boolean),
@@ -190,7 +190,7 @@ export const Operation: Schema.Schema<Operation> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -233,7 +233,7 @@ export interface CustomDomainMetadata {
   liveMigrationSteps?: ReadonlyArray<LiveMigrationStep>;
 }
 
-export const CustomDomainMetadata: Schema.Schema<CustomDomainMetadata> =
+export const CustomDomainMetadata: Schema.Codec<CustomDomainMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hostState: Schema.optional(Schema.String),
     issues: Schema.optional(Schema.Array(Status)),
@@ -252,7 +252,7 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     operations: Schema.optional(Schema.Array(Operation)),
@@ -337,7 +337,7 @@ export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<ListOperationsRequest>;
+) as unknown as Schema.Codec<ListOperationsRequest>;
 
 export type ListOperationsResponse_Op = ListOperationsResponse;
 export const ListOperationsResponse_Op =
@@ -375,7 +375,7 @@ export const CancelOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelOperationsRequest>;
 
 export type CancelOperationsResponse = Empty;
 export const CancelOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -410,7 +410,7 @@ export const DeleteOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteOperationsRequest>;
 
 export type DeleteOperationsResponse = Empty;
 export const DeleteOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -445,7 +445,7 @@ export const DeleteProjectsSitesCustomDomainsOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsSitesCustomDomainsOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsSitesCustomDomainsOperationsRequest>;
 
 export type DeleteProjectsSitesCustomDomainsOperationsResponse = Empty;
 export const DeleteProjectsSitesCustomDomainsOperationsResponse =
@@ -484,7 +484,7 @@ export const CancelProjectsSitesCustomDomainsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsSitesCustomDomainsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsSitesCustomDomainsOperationsRequest>;
 
 export type CancelProjectsSitesCustomDomainsOperationsResponse = Empty;
 export const CancelProjectsSitesCustomDomainsOperationsResponse =

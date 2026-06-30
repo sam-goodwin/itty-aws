@@ -4,6 +4,18 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface ListOrgTeamUsersInput {
+  orgId: string;
+  teamId: string;
+  envelope?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+  username?: string;
+  orgMembershipStatus?: string;
+  orgMembershipStatuses?: string;
+  userId?: string;
+}
 export const ListOrgTeamUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   teamId: Schema.String.pipe(T.PathParam()),
@@ -20,12 +32,12 @@ export const ListOrgTeamUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/api/atlas/v2/orgs/{orgId}/teams/{teamId}/users",
   }),
-);
-export type ListOrgTeamUsersInput = typeof ListOrgTeamUsersInput.Type;
+) as unknown as Schema.Codec<ListOrgTeamUsersInput>;
 
 // Output Schema
-export const ListOrgTeamUsersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListOrgTeamUsersOutput = typeof ListOrgTeamUsersOutput.Type;
+export type ListOrgTeamUsersOutput = void;
+export const ListOrgTeamUsersOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListOrgTeamUsersOutput>;
 
 // The operation
 /**

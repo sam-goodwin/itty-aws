@@ -3,6 +3,12 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface MarketingAnalyticsExplainConversionGoalRetrieveInput {
+  project_id: string;
+  date_from?: string;
+  date_to?: string;
+  goal_id: string;
+}
 export const MarketingAnalyticsExplainConversionGoalRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,11 +20,32 @@ export const MarketingAnalyticsExplainConversionGoalRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/marketing_analytics/explain_conversion_goal/",
     }),
-  );
-export type MarketingAnalyticsExplainConversionGoalRetrieveInput =
-  typeof MarketingAnalyticsExplainConversionGoalRetrieveInput.Type;
+  ) as unknown as Schema.Codec<MarketingAnalyticsExplainConversionGoalRetrieveInput>;
 
 // Output Schema
+export interface MarketingAnalyticsExplainConversionGoalRetrieveOutput {
+  goal_id: string;
+  goal_name: string;
+  kind: string;
+  period: { date_from: string | null; date_to: string | null };
+  total_count: number;
+  integrated_count: number | null;
+  events_without_utm_source: number | null;
+  events_with_unmatched_utm_source: number | null;
+  non_integrated_count: number | null;
+  by_event: unknown[][];
+  by_utm_source: unknown[][];
+  by_matched_integration: unknown[][];
+  samples: {
+    event_uuid: string;
+    timestamp: string;
+    distinct_id: string;
+    utm_source: string | null;
+    utm_campaign: string | null;
+    matched_integration: string | null;
+  }[];
+  notes: string[];
+}
 export const MarketingAnalyticsExplainConversionGoalRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     goal_id: Schema.String,
@@ -47,9 +74,7 @@ export const MarketingAnalyticsExplainConversionGoalRetrieveOutput =
       }),
     ),
     notes: Schema.Array(Schema.String),
-  });
-export type MarketingAnalyticsExplainConversionGoalRetrieveOutput =
-  typeof MarketingAnalyticsExplainConversionGoalRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<MarketingAnalyticsExplainConversionGoalRetrieveOutput>;
 
 // The operation
 /**

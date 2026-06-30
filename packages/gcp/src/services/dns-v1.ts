@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -34,7 +34,7 @@ export interface ManagedZoneForwardingConfigNameServerTarget {
   domainName?: string;
 }
 
-export const ManagedZoneForwardingConfigNameServerTarget: Schema.Schema<ManagedZoneForwardingConfigNameServerTarget> =
+export const ManagedZoneForwardingConfigNameServerTarget: Schema.Codec<ManagedZoneForwardingConfigNameServerTarget> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     forwardingPath: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -66,7 +66,7 @@ export interface RRSetRoutingPolicyLoadBalancerTarget {
   project?: string;
 }
 
-export const RRSetRoutingPolicyLoadBalancerTarget: Schema.Schema<RRSetRoutingPolicyLoadBalancerTarget> =
+export const RRSetRoutingPolicyLoadBalancerTarget: Schema.Codec<RRSetRoutingPolicyLoadBalancerTarget> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipAddress: Schema.optional(Schema.String),
     loadBalancerType: Schema.optional(Schema.String),
@@ -85,7 +85,7 @@ export interface RRSetRoutingPolicyHealthCheckTargets {
   externalEndpoints?: ReadonlyArray<string>;
 }
 
-export const RRSetRoutingPolicyHealthCheckTargets: Schema.Schema<RRSetRoutingPolicyHealthCheckTargets> =
+export const RRSetRoutingPolicyHealthCheckTargets: Schema.Codec<RRSetRoutingPolicyHealthCheckTargets> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     internalLoadBalancers: Schema.optional(
       Schema.Array(RRSetRoutingPolicyLoadBalancerTarget),
@@ -104,7 +104,7 @@ export interface RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
   location?: string;
 }
 
-export const RRSetRoutingPolicyGeoPolicyGeoPolicyItem: Schema.Schema<RRSetRoutingPolicyGeoPolicyGeoPolicyItem> =
+export const RRSetRoutingPolicyGeoPolicyGeoPolicyItem: Schema.Codec<RRSetRoutingPolicyGeoPolicyGeoPolicyItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rrdatas: Schema.optional(Schema.Array(Schema.String)),
     healthCheckedTargets: Schema.optional(RRSetRoutingPolicyHealthCheckTargets),
@@ -121,7 +121,7 @@ export interface RRSetRoutingPolicyGeoPolicy {
   enableFencing?: boolean;
 }
 
-export const RRSetRoutingPolicyGeoPolicy: Schema.Schema<RRSetRoutingPolicyGeoPolicy> =
+export const RRSetRoutingPolicyGeoPolicy: Schema.Codec<RRSetRoutingPolicyGeoPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     items: Schema.optional(
@@ -141,7 +141,7 @@ export interface RRSetRoutingPolicyWrrPolicyWrrPolicyItem {
   kind?: string;
 }
 
-export const RRSetRoutingPolicyWrrPolicyWrrPolicyItem: Schema.Schema<RRSetRoutingPolicyWrrPolicyWrrPolicyItem> =
+export const RRSetRoutingPolicyWrrPolicyWrrPolicyItem: Schema.Codec<RRSetRoutingPolicyWrrPolicyWrrPolicyItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     weight: Schema.optional(Schema.Number),
     rrdatas: Schema.optional(Schema.Array(Schema.String)),
@@ -155,7 +155,7 @@ export interface RRSetRoutingPolicyWrrPolicy {
   kind?: string;
 }
 
-export const RRSetRoutingPolicyWrrPolicy: Schema.Schema<RRSetRoutingPolicyWrrPolicy> =
+export const RRSetRoutingPolicyWrrPolicy: Schema.Codec<RRSetRoutingPolicyWrrPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(
       Schema.Array(RRSetRoutingPolicyWrrPolicyWrrPolicyItem),
@@ -173,7 +173,7 @@ export interface RRSetRoutingPolicyPrimaryBackupPolicy {
   trickleTraffic?: number;
 }
 
-export const RRSetRoutingPolicyPrimaryBackupPolicy: Schema.Schema<RRSetRoutingPolicyPrimaryBackupPolicy> =
+export const RRSetRoutingPolicyPrimaryBackupPolicy: Schema.Codec<RRSetRoutingPolicyPrimaryBackupPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryTargets: Schema.optional(RRSetRoutingPolicyHealthCheckTargets),
     kind: Schema.optional(Schema.String),
@@ -190,7 +190,7 @@ export interface RRSetRoutingPolicy {
   healthCheck?: string;
 }
 
-export const RRSetRoutingPolicy: Schema.Schema<RRSetRoutingPolicy> =
+export const RRSetRoutingPolicy: Schema.Codec<RRSetRoutingPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     geo: Schema.optional(RRSetRoutingPolicyGeoPolicy),
     kind: Schema.optional(Schema.String),
@@ -215,7 +215,7 @@ export interface ResourceRecordSet {
   rrdatas?: ReadonlyArray<string>;
 }
 
-export const ResourceRecordSet: Schema.Schema<ResourceRecordSet> =
+export const ResourceRecordSet: Schema.Codec<ResourceRecordSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     ttl: Schema.optional(Schema.Number),
@@ -242,7 +242,7 @@ export interface Change {
   kind?: string;
 }
 
-export const Change: Schema.Schema<Change> =
+export const Change: Schema.Codec<Change> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isServing: Schema.optional(Schema.Boolean),
     additions: Schema.optional(Schema.Array(ResourceRecordSet)),
@@ -262,7 +262,7 @@ export interface ChangesListResponse {
   kind?: string;
 }
 
-export const ChangesListResponse: Schema.Schema<ChangesListResponse> =
+export const ChangesListResponse: Schema.Codec<ChangesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     changes: Schema.optional(Schema.Array(Change)),
     nextPageToken: Schema.optional(Schema.String),
@@ -275,7 +275,7 @@ export interface ManagedZoneCloudLoggingConfig {
   enableLogging?: boolean;
 }
 
-export const ManagedZoneCloudLoggingConfig: Schema.Schema<ManagedZoneCloudLoggingConfig> =
+export const ManagedZoneCloudLoggingConfig: Schema.Codec<ManagedZoneCloudLoggingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     enableLogging: Schema.optional(Schema.Boolean),
@@ -287,7 +287,7 @@ export interface ResponsePolicyNetwork {
   kind?: string;
 }
 
-export const ResponsePolicyNetwork: Schema.Schema<ResponsePolicyNetwork> =
+export const ResponsePolicyNetwork: Schema.Codec<ResponsePolicyNetwork> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     networkUrl: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -299,7 +299,7 @@ export interface ResponsePolicyGKECluster {
   gkeClusterName?: string;
 }
 
-export const ResponsePolicyGKECluster: Schema.Schema<ResponsePolicyGKECluster> =
+export const ResponsePolicyGKECluster: Schema.Codec<ResponsePolicyGKECluster> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     gkeClusterName: Schema.optional(Schema.String),
@@ -321,7 +321,7 @@ export interface ResponsePolicy {
   id?: string;
 }
 
-export const ResponsePolicy: Schema.Schema<ResponsePolicy> =
+export const ResponsePolicy: Schema.Codec<ResponsePolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     networks: Schema.optional(Schema.Array(ResponsePolicyNetwork)),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -336,7 +336,7 @@ export interface ResponsePoliciesUpdateResponse {
   responsePolicy?: ResponsePolicy;
 }
 
-export const ResponsePoliciesUpdateResponse: Schema.Schema<ResponsePoliciesUpdateResponse> =
+export const ResponsePoliciesUpdateResponse: Schema.Codec<ResponsePoliciesUpdateResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     responsePolicy: Schema.optional(ResponsePolicy),
   }).annotate({ identifier: "ResponsePoliciesUpdateResponse" });
@@ -352,7 +352,7 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
+export const Expr: Schema.Codec<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -369,7 +369,7 @@ export interface GoogleIamV1Binding {
   condition?: Expr;
 }
 
-export const GoogleIamV1Binding: Schema.Schema<GoogleIamV1Binding> =
+export const GoogleIamV1Binding: Schema.Codec<GoogleIamV1Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     members: Schema.optional(Schema.Array(Schema.String)),
     role: Schema.optional(Schema.String),
@@ -388,7 +388,7 @@ export interface GoogleIamV1AuditLogConfig {
   exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const GoogleIamV1AuditLogConfig: Schema.Schema<GoogleIamV1AuditLogConfig> =
+export const GoogleIamV1AuditLogConfig: Schema.Codec<GoogleIamV1AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
@@ -401,7 +401,7 @@ export interface GoogleIamV1AuditConfig {
   auditLogConfigs?: ReadonlyArray<GoogleIamV1AuditLogConfig>;
 }
 
-export const GoogleIamV1AuditConfig: Schema.Schema<GoogleIamV1AuditConfig> =
+export const GoogleIamV1AuditConfig: Schema.Codec<GoogleIamV1AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
@@ -418,7 +418,7 @@ export interface GoogleIamV1Policy {
   auditConfigs?: ReadonlyArray<GoogleIamV1AuditConfig>;
 }
 
-export const GoogleIamV1Policy: Schema.Schema<GoogleIamV1Policy> =
+export const GoogleIamV1Policy: Schema.Codec<GoogleIamV1Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bindings: Schema.optional(Schema.Array(GoogleIamV1Binding)),
     etag: Schema.optional(Schema.String),
@@ -433,7 +433,7 @@ export interface GoogleIamV1SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const GoogleIamV1SetIamPolicyRequest: Schema.Schema<GoogleIamV1SetIamPolicyRequest> =
+export const GoogleIamV1SetIamPolicyRequest: Schema.Codec<GoogleIamV1SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(GoogleIamV1Policy),
     updateMask: Schema.optional(Schema.String),
@@ -447,7 +447,7 @@ export interface ManagedZonePeeringConfigTargetNetwork {
   kind?: string;
 }
 
-export const ManagedZonePeeringConfigTargetNetwork: Schema.Schema<ManagedZonePeeringConfigTargetNetwork> =
+export const ManagedZonePeeringConfigTargetNetwork: Schema.Codec<ManagedZonePeeringConfigTargetNetwork> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deactivateTime: Schema.optional(Schema.String),
     networkUrl: Schema.optional(Schema.String),
@@ -460,7 +460,7 @@ export interface ManagedZonePeeringConfig {
   targetNetwork?: ManagedZonePeeringConfigTargetNetwork;
 }
 
-export const ManagedZonePeeringConfig: Schema.Schema<ManagedZonePeeringConfig> =
+export const ManagedZonePeeringConfig: Schema.Codec<ManagedZonePeeringConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     targetNetwork: Schema.optional(ManagedZonePeeringConfigTargetNetwork),
@@ -482,7 +482,7 @@ export interface DnsKeySpec {
   kind?: string;
 }
 
-export const DnsKeySpec: Schema.Schema<DnsKeySpec> =
+export const DnsKeySpec: Schema.Codec<DnsKeySpec> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keyType: Schema.optional(Schema.String),
     keyLength: Schema.optional(Schema.Number),
@@ -500,7 +500,7 @@ export interface ManagedZoneDnsSecConfig {
   kind?: string;
 }
 
-export const ManagedZoneDnsSecConfig: Schema.Schema<ManagedZoneDnsSecConfig> =
+export const ManagedZoneDnsSecConfig: Schema.Codec<ManagedZoneDnsSecConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nonExistence: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -516,7 +516,7 @@ export interface ManagedZoneServiceDirectoryConfigNamespace {
   deletionTime?: string;
 }
 
-export const ManagedZoneServiceDirectoryConfigNamespace: Schema.Schema<ManagedZoneServiceDirectoryConfigNamespace> =
+export const ManagedZoneServiceDirectoryConfigNamespace: Schema.Codec<ManagedZoneServiceDirectoryConfigNamespace> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     namespaceUrl: Schema.optional(Schema.String),
@@ -529,7 +529,7 @@ export interface ManagedZoneServiceDirectoryConfig {
   kind?: string;
 }
 
-export const ManagedZoneServiceDirectoryConfig: Schema.Schema<ManagedZoneServiceDirectoryConfig> =
+export const ManagedZoneServiceDirectoryConfig: Schema.Codec<ManagedZoneServiceDirectoryConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.optional(ManagedZoneServiceDirectoryConfigNamespace),
     kind: Schema.optional(Schema.String),
@@ -541,7 +541,7 @@ export interface ManagedZonePrivateVisibilityConfigGKECluster {
   kind?: string;
 }
 
-export const ManagedZonePrivateVisibilityConfigGKECluster: Schema.Schema<ManagedZonePrivateVisibilityConfigGKECluster> =
+export const ManagedZonePrivateVisibilityConfigGKECluster: Schema.Codec<ManagedZonePrivateVisibilityConfigGKECluster> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gkeClusterName: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -553,7 +553,7 @@ export interface ManagedZonePrivateVisibilityConfigNetwork {
   kind?: string;
 }
 
-export const ManagedZonePrivateVisibilityConfigNetwork: Schema.Schema<ManagedZonePrivateVisibilityConfigNetwork> =
+export const ManagedZonePrivateVisibilityConfigNetwork: Schema.Codec<ManagedZonePrivateVisibilityConfigNetwork> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     networkUrl: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -567,7 +567,7 @@ export interface ManagedZonePrivateVisibilityConfig {
   kind?: string;
 }
 
-export const ManagedZonePrivateVisibilityConfig: Schema.Schema<ManagedZonePrivateVisibilityConfig> =
+export const ManagedZonePrivateVisibilityConfig: Schema.Codec<ManagedZonePrivateVisibilityConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gkeClusters: Schema.optional(
       Schema.Array(ManagedZonePrivateVisibilityConfigGKECluster),
@@ -582,7 +582,7 @@ export interface ManagedZoneReverseLookupConfig {
   kind?: string;
 }
 
-export const ManagedZoneReverseLookupConfig: Schema.Schema<ManagedZoneReverseLookupConfig> =
+export const ManagedZoneReverseLookupConfig: Schema.Codec<ManagedZoneReverseLookupConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
   }).annotate({ identifier: "ManagedZoneReverseLookupConfig" });
@@ -593,7 +593,7 @@ export interface ManagedZoneForwardingConfig {
   targetNameServers?: ReadonlyArray<ManagedZoneForwardingConfigNameServerTarget>;
 }
 
-export const ManagedZoneForwardingConfig: Schema.Schema<ManagedZoneForwardingConfig> =
+export const ManagedZoneForwardingConfig: Schema.Codec<ManagedZoneForwardingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     targetNameServers: Schema.optional(
@@ -636,7 +636,7 @@ export interface ManagedZone {
   nameServerSet?: string;
 }
 
-export const ManagedZone: Schema.Schema<ManagedZone> =
+export const ManagedZone: Schema.Codec<ManagedZone> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameServers: Schema.optional(Schema.Array(Schema.String)),
     peeringConfig: Schema.optional(ManagedZonePeeringConfig),
@@ -666,7 +666,7 @@ export interface OperationManagedZoneContext {
   newValue?: ManagedZone;
 }
 
-export const OperationManagedZoneContext: Schema.Schema<OperationManagedZoneContext> =
+export const OperationManagedZoneContext: Schema.Codec<OperationManagedZoneContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     oldValue: Schema.optional(ManagedZone),
     newValue: Schema.optional(ManagedZone),
@@ -678,7 +678,7 @@ export interface PolicyNetwork {
   networkUrl?: string;
 }
 
-export const PolicyNetwork: Schema.Schema<PolicyNetwork> =
+export const PolicyNetwork: Schema.Codec<PolicyNetwork> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     networkUrl: Schema.optional(Schema.String),
@@ -691,7 +691,7 @@ export interface DnsKeyDigest {
   digest?: string;
 }
 
-export const DnsKeyDigest: Schema.Schema<DnsKeyDigest> =
+export const DnsKeyDigest: Schema.Codec<DnsKeyDigest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     digest: Schema.optional(Schema.String),
@@ -727,7 +727,7 @@ export interface DnsKey {
   keyLength?: number;
 }
 
-export const DnsKey: Schema.Schema<DnsKey> =
+export const DnsKey: Schema.Codec<DnsKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     algorithm: Schema.optional(Schema.String),
     keyTag: Schema.optional(Schema.Number),
@@ -751,7 +751,7 @@ export interface DnsKeysListResponse {
   dnsKeys?: ReadonlyArray<DnsKey>;
 }
 
-export const DnsKeysListResponse: Schema.Schema<DnsKeysListResponse> =
+export const DnsKeysListResponse: Schema.Codec<DnsKeysListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -763,7 +763,7 @@ export interface ResponsePolicyRuleLocalData {
   localDatas?: ReadonlyArray<ResourceRecordSet>;
 }
 
-export const ResponsePolicyRuleLocalData: Schema.Schema<ResponsePolicyRuleLocalData> =
+export const ResponsePolicyRuleLocalData: Schema.Codec<ResponsePolicyRuleLocalData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     localDatas: Schema.optional(Schema.Array(ResourceRecordSet)),
   }).annotate({ identifier: "ResponsePolicyRuleLocalData" });
@@ -772,7 +772,7 @@ export interface ResponsePoliciesPatchResponse {
   responsePolicy?: ResponsePolicy;
 }
 
-export const ResponsePoliciesPatchResponse: Schema.Schema<ResponsePoliciesPatchResponse> =
+export const ResponsePoliciesPatchResponse: Schema.Codec<ResponsePoliciesPatchResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     responsePolicy: Schema.optional(ResponsePolicy),
   }).annotate({ identifier: "ResponsePoliciesPatchResponse" });
@@ -787,7 +787,7 @@ export interface PolicyAlternativeNameServerConfigTargetNameServer {
   ipv4Address?: string;
 }
 
-export const PolicyAlternativeNameServerConfigTargetNameServer: Schema.Schema<PolicyAlternativeNameServerConfigTargetNameServer> =
+export const PolicyAlternativeNameServerConfigTargetNameServer: Schema.Codec<PolicyAlternativeNameServerConfigTargetNameServer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     forwardingPath: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -803,7 +803,7 @@ export interface PolicyAlternativeNameServerConfig {
   kind?: string;
 }
 
-export const PolicyAlternativeNameServerConfig: Schema.Schema<PolicyAlternativeNameServerConfig> =
+export const PolicyAlternativeNameServerConfig: Schema.Codec<PolicyAlternativeNameServerConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetNameServers: Schema.optional(
       Schema.Array(PolicyAlternativeNameServerConfigTargetNameServer),
@@ -817,7 +817,7 @@ export interface PolicyDns64ConfigScope {
   kind?: string;
 }
 
-export const PolicyDns64ConfigScope: Schema.Schema<PolicyDns64ConfigScope> =
+export const PolicyDns64ConfigScope: Schema.Codec<PolicyDns64ConfigScope> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allQueries: Schema.optional(Schema.Boolean),
     kind: Schema.optional(Schema.String),
@@ -829,7 +829,7 @@ export interface PolicyDns64Config {
   kind?: string;
 }
 
-export const PolicyDns64Config: Schema.Schema<PolicyDns64Config> =
+export const PolicyDns64Config: Schema.Codec<PolicyDns64Config> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.optional(PolicyDns64ConfigScope),
     kind: Schema.optional(Schema.String),
@@ -855,7 +855,7 @@ export interface Policy {
   description?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     networks: Schema.optional(Schema.Array(PolicyNetwork)),
     alternativeNameServerConfig: Schema.optional(
@@ -874,7 +874,7 @@ export interface PoliciesPatchResponse {
   policy?: Policy;
 }
 
-export const PoliciesPatchResponse: Schema.Schema<PoliciesPatchResponse> =
+export const PoliciesPatchResponse: Schema.Codec<PoliciesPatchResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
   }).annotate({ identifier: "PoliciesPatchResponse" });
@@ -884,7 +884,7 @@ export interface GoogleIamV1GetPolicyOptions {
   requestedPolicyVersion?: number;
 }
 
-export const GoogleIamV1GetPolicyOptions: Schema.Schema<GoogleIamV1GetPolicyOptions> =
+export const GoogleIamV1GetPolicyOptions: Schema.Codec<GoogleIamV1GetPolicyOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestedPolicyVersion: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleIamV1GetPolicyOptions" });
@@ -901,7 +901,7 @@ export interface ResponsePolicyRule {
   ruleName?: string;
 }
 
-export const ResponsePolicyRule: Schema.Schema<ResponsePolicyRule> =
+export const ResponsePolicyRule: Schema.Codec<ResponsePolicyRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     localData: Schema.optional(ResponsePolicyRuleLocalData),
@@ -914,7 +914,7 @@ export interface ResponsePolicyRulesPatchResponse {
   responsePolicyRule?: ResponsePolicyRule;
 }
 
-export const ResponsePolicyRulesPatchResponse: Schema.Schema<ResponsePolicyRulesPatchResponse> =
+export const ResponsePolicyRulesPatchResponse: Schema.Codec<ResponsePolicyRulesPatchResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     responsePolicyRule: Schema.optional(ResponsePolicyRule),
   }).annotate({ identifier: "ResponsePolicyRulesPatchResponse" });
@@ -924,7 +924,7 @@ export interface GoogleIamV1TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const GoogleIamV1TestIamPermissionsResponse: Schema.Schema<GoogleIamV1TestIamPermissionsResponse> =
+export const GoogleIamV1TestIamPermissionsResponse: Schema.Codec<GoogleIamV1TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleIamV1TestIamPermissionsResponse" });
@@ -933,7 +933,7 @@ export interface PoliciesUpdateResponse {
   policy?: Policy;
 }
 
-export const PoliciesUpdateResponse: Schema.Schema<PoliciesUpdateResponse> =
+export const PoliciesUpdateResponse: Schema.Codec<PoliciesUpdateResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
   }).annotate({ identifier: "PoliciesUpdateResponse" });
@@ -945,7 +945,7 @@ export interface OperationDnsKeyContext {
   newValue?: DnsKey;
 }
 
-export const OperationDnsKeyContext: Schema.Schema<OperationDnsKeyContext> =
+export const OperationDnsKeyContext: Schema.Codec<OperationDnsKeyContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     oldValue: Schema.optional(DnsKey),
     newValue: Schema.optional(DnsKey),
@@ -969,7 +969,7 @@ export interface Operation {
   dnsKeyContext?: OperationDnsKeyContext;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -988,7 +988,7 @@ export interface ResponsePoliciesListResponse {
   nextPageToken?: string;
 }
 
-export const ResponsePoliciesListResponse: Schema.Schema<ResponsePoliciesListResponse> =
+export const ResponsePoliciesListResponse: Schema.Codec<ResponsePoliciesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     responsePolicies: Schema.optional(Schema.Array(ResponsePolicy)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1003,7 +1003,7 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1025,7 +1025,7 @@ export interface GoogleLongrunningOperation {
   metadata?: Record<string, unknown>;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
+export const GoogleLongrunningOperation: Schema.Codec<GoogleLongrunningOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     done: Schema.optional(Schema.Boolean),
@@ -1041,7 +1041,7 @@ export interface ResponsePolicyRulesListResponse {
   nextPageToken?: string;
 }
 
-export const ResponsePolicyRulesListResponse: Schema.Schema<ResponsePolicyRulesListResponse> =
+export const ResponsePolicyRulesListResponse: Schema.Codec<ResponsePolicyRulesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     responsePolicyRules: Schema.optional(Schema.Array(ResponsePolicyRule)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1052,14 +1052,14 @@ export interface GoogleIamV1TestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const GoogleIamV1TestIamPermissionsRequest: Schema.Schema<GoogleIamV1TestIamPermissionsRequest> =
+export const GoogleIamV1TestIamPermissionsRequest: Schema.Codec<GoogleIamV1TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleIamV1TestIamPermissionsRequest" });
 
 export interface ResourceRecordSetsDeleteResponse {}
 
-export const ResourceRecordSetsDeleteResponse: Schema.Schema<ResourceRecordSetsDeleteResponse> =
+export const ResourceRecordSetsDeleteResponse: Schema.Codec<ResourceRecordSetsDeleteResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ResourceRecordSetsDeleteResponse",
   });
@@ -1073,7 +1073,7 @@ export interface ManagedZonesListResponse {
   kind?: string;
 }
 
-export const ManagedZonesListResponse: Schema.Schema<ManagedZonesListResponse> =
+export const ManagedZonesListResponse: Schema.Codec<ManagedZonesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managedZones: Schema.optional(Schema.Array(ManagedZone)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1089,7 +1089,7 @@ export interface ResourceRecordSetsListResponse {
   kind?: string;
 }
 
-export const ResourceRecordSetsListResponse: Schema.Schema<ResourceRecordSetsListResponse> =
+export const ResourceRecordSetsListResponse: Schema.Codec<ResourceRecordSetsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rrsets: Schema.optional(Schema.Array(ResourceRecordSet)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1149,7 +1149,7 @@ export interface Quota {
   gkeClustersPerPolicy?: number;
 }
 
-export const Quota: Schema.Schema<Quota> =
+export const Quota: Schema.Codec<Quota> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     networksPerResponsePolicy: Schema.optional(Schema.Number),
     gkeClustersPerManagedZone: Schema.optional(Schema.Number),
@@ -1184,7 +1184,7 @@ export interface GoogleIamV1GetIamPolicyRequest {
   options?: GoogleIamV1GetPolicyOptions;
 }
 
-export const GoogleIamV1GetIamPolicyRequest: Schema.Schema<GoogleIamV1GetIamPolicyRequest> =
+export const GoogleIamV1GetIamPolicyRequest: Schema.Codec<GoogleIamV1GetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     options: Schema.optional(GoogleIamV1GetPolicyOptions),
   }).annotate({ identifier: "GoogleIamV1GetIamPolicyRequest" });
@@ -1193,7 +1193,7 @@ export interface ResponsePolicyRulesUpdateResponse {
   responsePolicyRule?: ResponsePolicyRule;
 }
 
-export const ResponsePolicyRulesUpdateResponse: Schema.Schema<ResponsePolicyRulesUpdateResponse> =
+export const ResponsePolicyRulesUpdateResponse: Schema.Codec<ResponsePolicyRulesUpdateResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     responsePolicyRule: Schema.optional(ResponsePolicyRule),
   }).annotate({ identifier: "ResponsePolicyRulesUpdateResponse" });
@@ -1207,7 +1207,7 @@ export interface PoliciesListResponse {
   kind?: string;
 }
 
-export const PoliciesListResponse: Schema.Schema<PoliciesListResponse> =
+export const PoliciesListResponse: Schema.Codec<PoliciesListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policies: Schema.optional(Schema.Array(Policy)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1223,7 +1223,7 @@ export interface ManagedZoneOperationsListResponse {
   operations?: ReadonlyArray<Operation>;
 }
 
-export const ManagedZoneOperationsListResponse: Schema.Schema<ManagedZoneOperationsListResponse> =
+export const ManagedZoneOperationsListResponse: Schema.Codec<ManagedZoneOperationsListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -1240,7 +1240,7 @@ export interface Project {
   id?: string;
 }
 
-export const Project: Schema.Schema<Project> =
+export const Project: Schema.Codec<Project> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     number: Schema.optional(Schema.String),
@@ -1328,7 +1328,7 @@ export const CreateResponsePolicyRulesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateResponsePolicyRulesRequest>;
+  ) as unknown as Schema.Codec<CreateResponsePolicyRulesRequest>;
 
 export type CreateResponsePolicyRulesResponse = ResponsePolicyRule;
 export const CreateResponsePolicyRulesResponse =
@@ -1382,7 +1382,7 @@ export const UpdateResponsePolicyRulesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateResponsePolicyRulesRequest>;
+  ) as unknown as Schema.Codec<UpdateResponsePolicyRulesRequest>;
 
 export type UpdateResponsePolicyRulesResponse =
   ResponsePolicyRulesUpdateResponse;
@@ -1431,7 +1431,7 @@ export const ListResponsePolicyRulesRequest =
       path: "dns/v1/projects/{project}/responsePolicies/{responsePolicy}/rules",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListResponsePolicyRulesRequest>;
+  ) as unknown as Schema.Codec<ListResponsePolicyRulesRequest>;
 
 export type ListResponsePolicyRulesResponse = ResponsePolicyRulesListResponse;
 export const ListResponsePolicyRulesResponse =
@@ -1484,7 +1484,7 @@ export const PatchResponsePolicyRulesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchResponsePolicyRulesRequest>;
+  ) as unknown as Schema.Codec<PatchResponsePolicyRulesRequest>;
 
 export type PatchResponsePolicyRulesResponse = ResponsePolicyRulesPatchResponse;
 export const PatchResponsePolicyRulesResponse =
@@ -1534,7 +1534,7 @@ export const GetResponsePolicyRulesRequest =
       path: "dns/v1/projects/{project}/responsePolicies/{responsePolicy}/rules/{responsePolicyRule}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetResponsePolicyRulesRequest>;
+  ) as unknown as Schema.Codec<GetResponsePolicyRulesRequest>;
 
 export type GetResponsePolicyRulesResponse = ResponsePolicyRule;
 export const GetResponsePolicyRulesResponse =
@@ -1579,13 +1579,13 @@ export const DeleteResponsePolicyRulesRequest =
       path: "dns/v1/projects/{project}/responsePolicies/{responsePolicy}/rules/{responsePolicyRule}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteResponsePolicyRulesRequest>;
+  ) as unknown as Schema.Codec<DeleteResponsePolicyRulesRequest>;
 
 export interface DeleteResponsePolicyRulesResponse {}
-export const DeleteResponsePolicyRulesResponse: Schema.Schema<DeleteResponsePolicyRulesResponse> =
+export const DeleteResponsePolicyRulesResponse: Schema.Codec<DeleteResponsePolicyRulesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteResponsePolicyRulesResponse>;
+  ) as any as Schema.Codec<DeleteResponsePolicyRulesResponse>;
 
 export type DeleteResponsePolicyRulesError =
   | DefaultErrors
@@ -1632,7 +1632,7 @@ export const CreateResourceRecordSetsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateResourceRecordSetsRequest>;
+  ) as unknown as Schema.Codec<CreateResourceRecordSetsRequest>;
 
 export type CreateResourceRecordSetsResponse = ResourceRecordSet;
 export const CreateResourceRecordSetsResponse =
@@ -1685,7 +1685,7 @@ export const DeleteResourceRecordSetsRequest =
       path: "dns/v1/projects/{project}/managedZones/{managedZone}/rrsets/{name}/{type}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteResourceRecordSetsRequest>;
+  ) as unknown as Schema.Codec<DeleteResourceRecordSetsRequest>;
 
 export type DeleteResourceRecordSetsResponse = ResourceRecordSetsDeleteResponse;
 export const DeleteResourceRecordSetsResponse =
@@ -1738,7 +1738,7 @@ export const GetResourceRecordSetsRequest =
       path: "dns/v1/projects/{project}/managedZones/{managedZone}/rrsets/{name}/{type}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetResourceRecordSetsRequest>;
+  ) as unknown as Schema.Codec<GetResourceRecordSetsRequest>;
 
 export type GetResourceRecordSetsResponse = ResourceRecordSet;
 export const GetResourceRecordSetsResponse =
@@ -1790,7 +1790,7 @@ export const ListResourceRecordSetsRequest =
       path: "dns/v1/projects/{project}/managedZones/{managedZone}/rrsets",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListResourceRecordSetsRequest>;
+  ) as unknown as Schema.Codec<ListResourceRecordSetsRequest>;
 
 export type ListResourceRecordSetsResponse = ResourceRecordSetsListResponse;
 export const ListResourceRecordSetsResponse =
@@ -1846,7 +1846,7 @@ export const PatchResourceRecordSetsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchResourceRecordSetsRequest>;
+  ) as unknown as Schema.Codec<PatchResourceRecordSetsRequest>;
 
 export type PatchResourceRecordSetsResponse = ResourceRecordSet;
 export const PatchResourceRecordSetsResponse =
@@ -1891,7 +1891,7 @@ export const ListResponsePoliciesRequest =
       path: "dns/v1/projects/{project}/responsePolicies",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListResponsePoliciesRequest>;
+  ) as unknown as Schema.Codec<ListResponsePoliciesRequest>;
 
 export type ListResponsePoliciesResponse = ResponsePoliciesListResponse;
 export const ListResponsePoliciesResponse =
@@ -1941,7 +1941,7 @@ export const PatchResponsePoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchResponsePoliciesRequest>;
+  ) as unknown as Schema.Codec<PatchResponsePoliciesRequest>;
 
 export type PatchResponsePoliciesResponse = ResponsePoliciesPatchResponse;
 export const PatchResponsePoliciesResponse =
@@ -1988,13 +1988,13 @@ export const DeleteResponsePoliciesRequest =
       path: "dns/v1/projects/{project}/responsePolicies/{responsePolicy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteResponsePoliciesRequest>;
+  ) as unknown as Schema.Codec<DeleteResponsePoliciesRequest>;
 
 export interface DeleteResponsePoliciesResponse {}
-export const DeleteResponsePoliciesResponse: Schema.Schema<DeleteResponsePoliciesResponse> =
+export const DeleteResponsePoliciesResponse: Schema.Codec<DeleteResponsePoliciesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteResponsePoliciesResponse>;
+  ) as any as Schema.Codec<DeleteResponsePoliciesResponse>;
 
 export type DeleteResponsePoliciesError =
   | DefaultErrors
@@ -2037,7 +2037,7 @@ export const GetResponsePoliciesRequest =
       path: "dns/v1/projects/{project}/responsePolicies/{responsePolicy}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetResponsePoliciesRequest>;
+  ) as unknown as Schema.Codec<GetResponsePoliciesRequest>;
 
 export type GetResponsePoliciesResponse = ResponsePolicy;
 export const GetResponsePoliciesResponse =
@@ -2080,7 +2080,7 @@ export const CreateResponsePoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateResponsePoliciesRequest>;
+  ) as unknown as Schema.Codec<CreateResponsePoliciesRequest>;
 
 export type CreateResponsePoliciesResponse = ResponsePolicy;
 export const CreateResponsePoliciesResponse =
@@ -2131,7 +2131,7 @@ export const UpdateResponsePoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateResponsePoliciesRequest>;
+  ) as unknown as Schema.Codec<UpdateResponsePoliciesRequest>;
 
 export type UpdateResponsePoliciesResponse = ResponsePoliciesUpdateResponse;
 export const UpdateResponsePoliciesResponse =
@@ -2181,7 +2181,7 @@ export const GetManagedZoneOperationsRequest =
       path: "dns/v1/projects/{project}/managedZones/{managedZone}/operations/{operation}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetManagedZoneOperationsRequest>;
+  ) as unknown as Schema.Codec<GetManagedZoneOperationsRequest>;
 
 export type GetManagedZoneOperationsResponse = Operation;
 export const GetManagedZoneOperationsResponse =
@@ -2230,7 +2230,7 @@ export const ListManagedZoneOperationsRequest =
       path: "dns/v1/projects/{project}/managedZones/{managedZone}/operations",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListManagedZoneOperationsRequest>;
+  ) as unknown as Schema.Codec<ListManagedZoneOperationsRequest>;
 
 export type ListManagedZoneOperationsResponse =
   ManagedZoneOperationsListResponse;
@@ -2278,7 +2278,7 @@ export const TestIamPermissionsManagedZonesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsManagedZonesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsManagedZonesRequest>;
 
 export type TestIamPermissionsManagedZonesResponse =
   GoogleIamV1TestIamPermissionsResponse;
@@ -2322,7 +2322,7 @@ export const GetIamPolicyManagedZonesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyManagedZonesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyManagedZonesRequest>;
 
 export type GetIamPolicyManagedZonesResponse = GoogleIamV1Policy;
 export const GetIamPolicyManagedZonesResponse =
@@ -2373,7 +2373,7 @@ export const UpdateManagedZonesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateManagedZonesRequest>;
+  ) as unknown as Schema.Codec<UpdateManagedZonesRequest>;
 
 export type UpdateManagedZonesResponse = Operation;
 export const UpdateManagedZonesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -2417,7 +2417,7 @@ export const ListManagedZonesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "dns/v1/projects/{project}/managedZones" }),
     svc,
-  ) as unknown as Schema.Schema<ListManagedZonesRequest>;
+  ) as unknown as Schema.Codec<ListManagedZonesRequest>;
 
 export type ListManagedZonesResponse = ManagedZonesListResponse;
 export const ListManagedZonesResponse =
@@ -2467,7 +2467,7 @@ export const PatchManagedZonesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchManagedZonesRequest>;
+  ) as unknown as Schema.Codec<PatchManagedZonesRequest>;
 
 export type PatchManagedZonesResponse = Operation;
 export const PatchManagedZonesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -2513,13 +2513,13 @@ export const DeleteManagedZonesRequest =
       path: "dns/v1/projects/{project}/managedZones/{managedZone}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteManagedZonesRequest>;
+  ) as unknown as Schema.Codec<DeleteManagedZonesRequest>;
 
 export interface DeleteManagedZonesResponse {}
-export const DeleteManagedZonesResponse: Schema.Schema<DeleteManagedZonesResponse> =
+export const DeleteManagedZonesResponse: Schema.Codec<DeleteManagedZonesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteManagedZonesResponse>;
+  ) as any as Schema.Codec<DeleteManagedZonesResponse>;
 
 export type DeleteManagedZonesError =
   | DefaultErrors
@@ -2563,7 +2563,7 @@ export const GetManagedZonesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "dns/v1/projects/{project}/managedZones/{managedZone}",
   }),
   svc,
-) as unknown as Schema.Schema<GetManagedZonesRequest>;
+) as unknown as Schema.Codec<GetManagedZonesRequest>;
 
 export type GetManagedZonesResponse = ManagedZone;
 export const GetManagedZonesResponse = /*@__PURE__*/ /*#__PURE__*/ ManagedZone;
@@ -2605,7 +2605,7 @@ export const CreateManagedZonesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateManagedZonesRequest>;
+  ) as unknown as Schema.Codec<CreateManagedZonesRequest>;
 
 export type CreateManagedZonesResponse = ManagedZone;
 export const CreateManagedZonesResponse =
@@ -2648,7 +2648,7 @@ export const SetIamPolicyManagedZonesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyManagedZonesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyManagedZonesRequest>;
 
 export type SetIamPolicyManagedZonesResponse = GoogleIamV1Policy;
 export const SetIamPolicyManagedZonesResponse =
@@ -2700,7 +2700,7 @@ export const GetDnsKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "dns/v1/projects/{project}/managedZones/{managedZone}/dnsKeys/{dnsKeyId}",
   }),
   svc,
-) as unknown as Schema.Schema<GetDnsKeysRequest>;
+) as unknown as Schema.Codec<GetDnsKeysRequest>;
 
 export type GetDnsKeysResponse = DnsKey;
 export const GetDnsKeysResponse = /*@__PURE__*/ /*#__PURE__*/ DnsKey;
@@ -2744,7 +2744,7 @@ export const ListDnsKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "dns/v1/projects/{project}/managedZones/{managedZone}/dnsKeys",
   }),
   svc,
-) as unknown as Schema.Schema<ListDnsKeysRequest>;
+) as unknown as Schema.Codec<ListDnsKeysRequest>;
 
 export type ListDnsKeysResponse = DnsKeysListResponse;
 export const ListDnsKeysResponse =
@@ -2783,7 +2783,7 @@ export const GetProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "dns/v1/projects/{project}" }),
   svc,
-) as unknown as Schema.Schema<GetProjectsRequest>;
+) as unknown as Schema.Codec<GetProjectsRequest>;
 
 export type GetProjectsResponse = Project;
 export const GetProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Project;
@@ -2826,7 +2826,7 @@ export const GetChangesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "dns/v1/projects/{project}/managedZones/{managedZone}/changes/{changeId}",
   }),
   svc,
-) as unknown as Schema.Schema<GetChangesRequest>;
+) as unknown as Schema.Codec<GetChangesRequest>;
 
 export type GetChangesResponse = Change;
 export const GetChangesResponse = /*@__PURE__*/ /*#__PURE__*/ Change;
@@ -2873,7 +2873,7 @@ export const ListChangesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "dns/v1/projects/{project}/managedZones/{managedZone}/changes",
   }),
   svc,
-) as unknown as Schema.Schema<ListChangesRequest>;
+) as unknown as Schema.Codec<ListChangesRequest>;
 
 export type ListChangesResponse = ChangesListResponse;
 export const ListChangesResponse =
@@ -2922,7 +2922,7 @@ export const CreateChangesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<CreateChangesRequest>;
+) as unknown as Schema.Codec<CreateChangesRequest>;
 
 export type CreateChangesResponse = Change;
 export const CreateChangesResponse = /*@__PURE__*/ /*#__PURE__*/ Change;
@@ -2968,7 +2968,7 @@ export const CreatePoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<CreatePoliciesRequest>;
+) as unknown as Schema.Codec<CreatePoliciesRequest>;
 
 export type CreatePoliciesResponse = Policy;
 export const CreatePoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -3017,7 +3017,7 @@ export const UpdatePoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdatePoliciesRequest>;
+) as unknown as Schema.Codec<UpdatePoliciesRequest>;
 
 export type UpdatePoliciesResponse = PoliciesUpdateResponse;
 export const UpdatePoliciesResponse =
@@ -3058,7 +3058,7 @@ export const ListPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "dns/v1/projects/{project}/policies" }),
   svc,
-) as unknown as Schema.Schema<ListPoliciesRequest>;
+) as unknown as Schema.Codec<ListPoliciesRequest>;
 
 export type ListPoliciesResponse = PoliciesListResponse;
 export const ListPoliciesResponse =
@@ -3107,7 +3107,7 @@ export const PatchPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchPoliciesRequest>;
+) as unknown as Schema.Codec<PatchPoliciesRequest>;
 
 export type PatchPoliciesResponse = PoliciesPatchResponse;
 export const PatchPoliciesResponse =
@@ -3153,13 +3153,13 @@ export const DeletePoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "dns/v1/projects/{project}/policies/{policy}",
   }),
   svc,
-) as unknown as Schema.Schema<DeletePoliciesRequest>;
+) as unknown as Schema.Codec<DeletePoliciesRequest>;
 
 export interface DeletePoliciesResponse {}
-export const DeletePoliciesResponse: Schema.Schema<DeletePoliciesResponse> =
+export const DeletePoliciesResponse: Schema.Codec<DeletePoliciesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeletePoliciesResponse>;
+  ) as any as Schema.Codec<DeletePoliciesResponse>;
 
 export type DeletePoliciesError =
   | DefaultErrors
@@ -3201,7 +3201,7 @@ export const GetPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "dns/v1/projects/{project}/policies/{policy}",
   }),
   svc,
-) as unknown as Schema.Schema<GetPoliciesRequest>;
+) as unknown as Schema.Codec<GetPoliciesRequest>;
 
 export type GetPoliciesResponse = Policy;
 export const GetPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;

@@ -3,6 +3,14 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface TracingSpansAttributesRetrieveInput {
+  project_id: string;
+  attribute_type?: "span_attribute" | "span_resource_attribute";
+  limit?: number;
+  offset?: number;
+  search?: string;
+  search_values?: boolean;
+}
 export const TracingSpansAttributesRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -18,11 +26,18 @@ export const TracingSpansAttributesRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/tracing/spans/attributes/",
     }),
-  );
-export type TracingSpansAttributesRetrieveInput =
-  typeof TracingSpansAttributesRetrieveInput.Type;
+  ) as unknown as Schema.Codec<TracingSpansAttributesRetrieveInput>;
 
 // Output Schema
+export interface TracingSpansAttributesRetrieveOutput {
+  results: {
+    name: string;
+    propertyFilterType: string;
+    matchedOn: "key" | "value";
+    matchedValue?: string | null;
+  }[];
+  count: number;
+}
 export const TracingSpansAttributesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.Array(
@@ -34,9 +49,7 @@ export const TracingSpansAttributesRetrieveOutput =
       }),
     ),
     count: Schema.Number,
-  });
-export type TracingSpansAttributesRetrieveOutput =
-  typeof TracingSpansAttributesRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<TracingSpansAttributesRetrieveOutput>;
 
 // The operation
 /**

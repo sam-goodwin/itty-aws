@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface BucketByActivity {
   activityDataSourceId?: string;
 }
 
-export const BucketByActivity: Schema.Schema<BucketByActivity> =
+export const BucketByActivity: Schema.Codec<BucketByActivity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minDurationMillis: Schema.optional(Schema.String),
     activityDataSourceId: Schema.optional(Schema.String),
@@ -42,7 +42,7 @@ export interface BucketByTimePeriod {
   value?: number;
 }
 
-export const BucketByTimePeriod: Schema.Schema<BucketByTimePeriod> =
+export const BucketByTimePeriod: Schema.Codec<BucketByTimePeriod> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     timeZoneId: Schema.optional(Schema.String),
@@ -55,7 +55,7 @@ export interface BucketByTime {
   period?: BucketByTimePeriod;
 }
 
-export const BucketByTime: Schema.Schema<BucketByTime> =
+export const BucketByTime: Schema.Codec<BucketByTime> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     durationMillis: Schema.optional(Schema.String),
     period: Schema.optional(BucketByTimePeriod),
@@ -66,7 +66,7 @@ export interface BucketBySession {
   minDurationMillis?: string;
 }
 
-export const BucketBySession: Schema.Schema<BucketBySession> =
+export const BucketBySession: Schema.Codec<BucketBySession> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minDurationMillis: Schema.optional(Schema.String),
   }).annotate({ identifier: "BucketBySession" });
@@ -78,7 +78,7 @@ export interface AggregateBy {
   dataSourceId?: string;
 }
 
-export const AggregateBy: Schema.Schema<AggregateBy> =
+export const AggregateBy: Schema.Codec<AggregateBy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataTypeName: Schema.optional(Schema.String),
     dataSourceId: Schema.optional(Schema.String),
@@ -115,7 +115,7 @@ export interface AggregateRequest {
   aggregateBy?: ReadonlyArray<AggregateBy>;
 }
 
-export const AggregateRequest: Schema.Schema<AggregateRequest> =
+export const AggregateRequest: Schema.Codec<AggregateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTimeMillis: Schema.optional(Schema.String),
     endTimeMillis: Schema.optional(Schema.String),
@@ -132,7 +132,7 @@ export interface MapValue {
   fpVal?: number;
 }
 
-export const MapValue: Schema.Schema<MapValue> =
+export const MapValue: Schema.Codec<MapValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fpVal: Schema.optional(Schema.Number),
   }).annotate({ identifier: "MapValue" });
@@ -142,7 +142,7 @@ export interface ValueMapValEntry {
   value?: MapValue;
 }
 
-export const ValueMapValEntry: Schema.Schema<ValueMapValEntry> =
+export const ValueMapValEntry: Schema.Codec<ValueMapValEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(MapValue),
@@ -164,7 +164,7 @@ export interface DataTypeField {
   optional?: boolean;
 }
 
-export const DataTypeField: Schema.Schema<DataTypeField> =
+export const DataTypeField: Schema.Codec<DataTypeField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     format: Schema.optional(Schema.String),
@@ -182,7 +182,7 @@ export interface Value {
   fpVal?: number;
 }
 
-export const Value: Schema.Schema<Value> =
+export const Value: Schema.Codec<Value> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     intVal: Schema.optional(Schema.Number),
     stringVal: Schema.optional(Schema.String),
@@ -209,7 +209,7 @@ export interface DataPoint {
   computationTimeMillis?: string;
 }
 
-export const DataPoint: Schema.Schema<DataPoint> =
+export const DataPoint: Schema.Codec<DataPoint> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Array(Value)),
     startTimeNanos: Schema.optional(Schema.String),
@@ -232,7 +232,7 @@ export interface ListDataPointChangesResponse {
   dataSourceId?: string;
 }
 
-export const ListDataPointChangesResponse: Schema.Schema<ListDataPointChangesResponse> =
+export const ListDataPointChangesResponse: Schema.Codec<ListDataPointChangesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deletedDataPoint: Schema.optional(Schema.Array(DataPoint)),
     nextPageToken: Schema.optional(Schema.String),
@@ -262,7 +262,7 @@ export interface Device {
     | (string & {});
 }
 
-export const Device: Schema.Schema<Device> =
+export const Device: Schema.Codec<Device> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     model: Schema.optional(Schema.String),
@@ -278,7 +278,7 @@ export interface DataType {
   field?: ReadonlyArray<DataTypeField>;
 }
 
-export const DataType: Schema.Schema<DataType> =
+export const DataType: Schema.Codec<DataType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     field: Schema.optional(Schema.Array(DataTypeField)),
@@ -295,7 +295,7 @@ export interface Application {
   detailsUrl?: string;
 }
 
-export const Application: Schema.Schema<Application> =
+export const Application: Schema.Codec<Application> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -334,7 +334,7 @@ export interface DataSource {
   application?: Application;
 }
 
-export const DataSource: Schema.Schema<DataSource> =
+export const DataSource: Schema.Codec<DataSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     device: Schema.optional(Device),
     dataStreamId: Schema.optional(Schema.String),
@@ -367,7 +367,7 @@ export interface Session {
   activityType?: number;
 }
 
-export const Session: Schema.Schema<Session> =
+export const Session: Schema.Codec<Session> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTimeMillis: Schema.optional(Schema.String),
     modifiedTimeMillis: Schema.optional(Schema.String),
@@ -393,7 +393,7 @@ export interface Dataset {
   minStartTimeNs?: string;
 }
 
-export const Dataset: Schema.Schema<Dataset> =
+export const Dataset: Schema.Codec<Dataset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     point: Schema.optional(Schema.Array(DataPoint)),
@@ -423,7 +423,7 @@ export interface AggregateBucket {
   dataset?: ReadonlyArray<Dataset>;
 }
 
-export const AggregateBucket: Schema.Schema<AggregateBucket> =
+export const AggregateBucket: Schema.Codec<AggregateBucket> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     activity: Schema.optional(Schema.Number),
@@ -438,7 +438,7 @@ export interface AggregateResponse {
   bucket?: ReadonlyArray<AggregateBucket>;
 }
 
-export const AggregateResponse: Schema.Schema<AggregateResponse> =
+export const AggregateResponse: Schema.Codec<AggregateResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bucket: Schema.optional(Schema.Array(AggregateBucket)),
   }).annotate({ identifier: "AggregateResponse" });
@@ -454,7 +454,7 @@ export interface ListSessionsResponse {
   hasMoreData?: boolean;
 }
 
-export const ListSessionsResponse: Schema.Schema<ListSessionsResponse> =
+export const ListSessionsResponse: Schema.Codec<ListSessionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     session: Schema.optional(Schema.Array(Session)),
     deletedSession: Schema.optional(Schema.Array(Session)),
@@ -467,7 +467,7 @@ export interface ListDataSourcesResponse {
   dataSource?: ReadonlyArray<DataSource>;
 }
 
-export const ListDataSourcesResponse: Schema.Schema<ListDataSourcesResponse> =
+export const ListDataSourcesResponse: Schema.Codec<ListDataSourcesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataSource: Schema.optional(Schema.Array(DataSource)),
   }).annotate({ identifier: "ListDataSourcesResponse" });
@@ -547,7 +547,7 @@ export const UpdateUsersSessionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateUsersSessionsRequest>;
+  ) as unknown as Schema.Codec<UpdateUsersSessionsRequest>;
 
 export type UpdateUsersSessionsResponse = Session;
 export const UpdateUsersSessionsResponse = /*@__PURE__*/ /*#__PURE__*/ Session;
@@ -601,7 +601,7 @@ export const ListUsersSessionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "{userId}/sessions" }),
     svc,
-  ) as unknown as Schema.Schema<ListUsersSessionsRequest>;
+  ) as unknown as Schema.Codec<ListUsersSessionsRequest>;
 
 export type ListUsersSessionsResponse = ListSessionsResponse;
 export const ListUsersSessionsResponse =
@@ -639,13 +639,13 @@ export const DeleteUsersSessionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "{userId}/sessions/{sessionId}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteUsersSessionsRequest>;
+  ) as unknown as Schema.Codec<DeleteUsersSessionsRequest>;
 
 export interface DeleteUsersSessionsResponse {}
-export const DeleteUsersSessionsResponse: Schema.Schema<DeleteUsersSessionsResponse> =
+export const DeleteUsersSessionsResponse: Schema.Codec<DeleteUsersSessionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteUsersSessionsResponse>;
+  ) as any as Schema.Codec<DeleteUsersSessionsResponse>;
 
 export type DeleteUsersSessionsError =
   | DefaultErrors
@@ -682,7 +682,7 @@ export const ListUsersDataSourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "{userId}/dataSources" }),
     svc,
-  ) as unknown as Schema.Schema<ListUsersDataSourcesRequest>;
+  ) as unknown as Schema.Codec<ListUsersDataSourcesRequest>;
 
 export type ListUsersDataSourcesResponse = ListDataSourcesResponse;
 export const ListUsersDataSourcesResponse =
@@ -723,7 +723,7 @@ export const UpdateUsersDataSourcesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateUsersDataSourcesRequest>;
+  ) as unknown as Schema.Codec<UpdateUsersDataSourcesRequest>;
 
 export type UpdateUsersDataSourcesResponse = DataSource;
 export const UpdateUsersDataSourcesResponse =
@@ -762,7 +762,7 @@ export const GetUsersDataSourcesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "{userId}/dataSources/{dataSourceId}" }),
     svc,
-  ) as unknown as Schema.Schema<GetUsersDataSourcesRequest>;
+  ) as unknown as Schema.Codec<GetUsersDataSourcesRequest>;
 
 export type GetUsersDataSourcesResponse = DataSource;
 export const GetUsersDataSourcesResponse =
@@ -796,7 +796,7 @@ export const CreateUsersDataSourcesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "{userId}/dataSources", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateUsersDataSourcesRequest>;
+  ) as unknown as Schema.Codec<CreateUsersDataSourcesRequest>;
 
 export type CreateUsersDataSourcesResponse = DataSource;
 export const CreateUsersDataSourcesResponse =
@@ -835,7 +835,7 @@ export const DeleteUsersDataSourcesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "{userId}/dataSources/{dataSourceId}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteUsersDataSourcesRequest>;
+  ) as unknown as Schema.Codec<DeleteUsersDataSourcesRequest>;
 
 export type DeleteUsersDataSourcesResponse = DataSource;
 export const DeleteUsersDataSourcesResponse =
@@ -884,7 +884,7 @@ export const PatchUsersDataSourcesDatasetsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchUsersDataSourcesDatasetsRequest>;
+  ) as unknown as Schema.Codec<PatchUsersDataSourcesDatasetsRequest>;
 
 export type PatchUsersDataSourcesDatasetsResponse = Dataset;
 export const PatchUsersDataSourcesDatasetsResponse =
@@ -935,7 +935,7 @@ export const GetUsersDataSourcesDatasetsRequest =
       path: "{userId}/dataSources/{dataSourceId}/datasets/{datasetId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetUsersDataSourcesDatasetsRequest>;
+  ) as unknown as Schema.Codec<GetUsersDataSourcesDatasetsRequest>;
 
 export type GetUsersDataSourcesDatasetsResponse = Dataset;
 export const GetUsersDataSourcesDatasetsResponse =
@@ -982,13 +982,13 @@ export const DeleteUsersDataSourcesDatasetsRequest =
       path: "{userId}/dataSources/{dataSourceId}/datasets/{datasetId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteUsersDataSourcesDatasetsRequest>;
+  ) as unknown as Schema.Codec<DeleteUsersDataSourcesDatasetsRequest>;
 
 export interface DeleteUsersDataSourcesDatasetsResponse {}
-export const DeleteUsersDataSourcesDatasetsResponse: Schema.Schema<DeleteUsersDataSourcesDatasetsResponse> =
+export const DeleteUsersDataSourcesDatasetsResponse: Schema.Codec<DeleteUsersDataSourcesDatasetsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteUsersDataSourcesDatasetsResponse>;
+  ) as any as Schema.Codec<DeleteUsersDataSourcesDatasetsResponse>;
 
 export type DeleteUsersDataSourcesDatasetsError =
   | DefaultErrors
@@ -1032,7 +1032,7 @@ export const ListUsersDataSourcesDataPointChangesRequest =
       path: "{userId}/dataSources/{dataSourceId}/dataPointChanges",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListUsersDataSourcesDataPointChangesRequest>;
+  ) as unknown as Schema.Codec<ListUsersDataSourcesDataPointChangesRequest>;
 
 export type ListUsersDataSourcesDataPointChangesResponse =
   ListDataPointChangesResponse;
@@ -1078,7 +1078,7 @@ export const AggregateUsersDatasetRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AggregateUsersDatasetRequest>;
+  ) as unknown as Schema.Codec<AggregateUsersDatasetRequest>;
 
 export type AggregateUsersDatasetResponse = AggregateResponse;
 export const AggregateUsersDatasetResponse =

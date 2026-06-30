@@ -3,6 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface VisualReviewRunsFinalizeCreateInput {
+  id: string;
+  project_id: string;
+  approve_all?: boolean;
+  commit_to_github?: boolean;
+  add_images_to_comment_on_pr?: boolean;
+}
 export const VisualReviewRunsFinalizeCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -15,16 +22,55 @@ export const VisualReviewRunsFinalizeCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/visual_review/runs/{id}/finalize/",
     }),
-  );
-export type VisualReviewRunsFinalizeCreateInput =
-  typeof VisualReviewRunsFinalizeCreateInput.Type;
+  ) as unknown as Schema.Codec<VisualReviewRunsFinalizeCreateInput>;
 
 // Output Schema
+export interface VisualReviewRunsFinalizeCreateOutput {
+  run: {
+    approved_by?: { id?: number; first_name?: string; email?: string } | null;
+    search_match_type?: "exact" | "similar" | null;
+    id?: string;
+    repo_id?: string;
+    status?: string;
+    run_type?: string;
+    commit_sha?: string;
+    branch?: string;
+    pr_number?: number | null;
+    approved?: boolean;
+    approved_at?: string | null;
+    summary?: {
+      total?: number;
+      changed?: number;
+      new?: number;
+      removed?: number;
+      unchanged?: number;
+      unresolved?: number;
+      tolerated_matched?: number;
+    };
+    error_message?: string | null;
+    created_at?: string;
+    completed_at?: string | null;
+    is_stale?: boolean;
+    superseded_by_id?: string | null;
+    metadata?: Record<string, unknown>;
+  };
+  baseline_content: string;
+}
 export const VisualReviewRunsFinalizeCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     run: Schema.Struct({
-      approved_by: Schema.optional(Schema.Unknown),
-      search_match_type: Schema.optional(Schema.Unknown),
+      approved_by: Schema.optional(
+        Schema.NullOr(
+          Schema.Struct({
+            id: Schema.optional(Schema.Number),
+            first_name: Schema.optional(Schema.String),
+            email: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      search_match_type: Schema.optional(
+        Schema.NullOr(Schema.Literals(["exact", "similar"])),
+      ),
       id: Schema.optional(Schema.String),
       repo_id: Schema.optional(Schema.String),
       status: Schema.optional(Schema.String),
@@ -53,9 +99,7 @@ export const VisualReviewRunsFinalizeCreateOutput =
       metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     }),
     baseline_content: Schema.String,
-  });
-export type VisualReviewRunsFinalizeCreateOutput =
-  typeof VisualReviewRunsFinalizeCreateOutput.Type;
+  }) as unknown as Schema.Codec<VisualReviewRunsFinalizeCreateOutput>;
 
 // The operation
 /**

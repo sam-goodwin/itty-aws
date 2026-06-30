@@ -3,6 +3,29 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface PrepareUserOperationInput {
+  address: string;
+  network:
+    | "base-sepolia"
+    | "base"
+    | "arbitrum"
+    | "optimism"
+    | "zora"
+    | "polygon"
+    | "bnb"
+    | "avalanche"
+    | "ethereum"
+    | "ethereum-sepolia";
+  calls: {
+    to: string;
+    value: string;
+    data: string;
+    overrideGasLimit?: string;
+  }[];
+  paymasterUrl?: string;
+  paymasterContext?: Record<string, unknown>;
+  dataSuffix?: string;
+}
 export const PrepareUserOperationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     address: Schema.String.pipe(T.PathParam()),
@@ -36,10 +59,45 @@ export const PrepareUserOperationInput =
       method: "POST",
       path: "/v2/evm/smart-accounts/{address}/user-operations",
     }),
-  );
-export type PrepareUserOperationInput = typeof PrepareUserOperationInput.Type;
+  ) as unknown as Schema.Codec<PrepareUserOperationInput>;
 
 // Output Schema
+export interface PrepareUserOperationOutput {
+  network:
+    | "base-sepolia"
+    | "base"
+    | "arbitrum"
+    | "optimism"
+    | "zora"
+    | "polygon"
+    | "bnb"
+    | "avalanche"
+    | "ethereum"
+    | "ethereum-sepolia";
+  userOpHash: string;
+  calls: {
+    to: string;
+    value: string;
+    data: string;
+    overrideGasLimit?: string;
+  }[];
+  status:
+    | "pending"
+    | "signed"
+    | "broadcast"
+    | "complete"
+    | "dropped"
+    | "failed";
+  transactionHash?: string;
+  receipts?: {
+    revert?: { data: string; message: string };
+    transactionHash?: string;
+    blockHash?: string;
+    blockNumber?: number;
+    gasUsed?: string;
+  }[];
+  expiresAt?: string;
+}
 export const PrepareUserOperationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     network: Schema.Literals([
@@ -89,8 +147,7 @@ export const PrepareUserOperationOutput =
       ),
     ),
     expiresAt: Schema.optional(Schema.String),
-  });
-export type PrepareUserOperationOutput = typeof PrepareUserOperationOutput.Type;
+  }) as unknown as Schema.Codec<PrepareUserOperationOutput>;
 
 // The operation
 /**

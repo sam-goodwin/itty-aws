@@ -3,16 +3,27 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface V1GetPostgrestServiceConfigInput {
+  ref: string;
+}
 export const V1GetPostgrestServiceConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/v1/projects/{ref}/postgrest" }));
-export type V1GetPostgrestServiceConfigInput =
-  typeof V1GetPostgrestServiceConfigInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/v1/projects/{ref}/postgrest" }),
+  ) as unknown as Schema.Codec<V1GetPostgrestServiceConfigInput>;
 
 // Output Schema
+export interface V1GetPostgrestServiceConfigOutput {
+  db_schema: string;
+  max_rows: number;
+  db_extra_search_path: string;
+  db_pool: number | null;
+  jwt_secret?: Redacted.Redacted<string>;
+}
 export const V1GetPostgrestServiceConfigOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     db_schema: Schema.String,
@@ -20,9 +31,7 @@ export const V1GetPostgrestServiceConfigOutput =
     db_extra_search_path: Schema.String,
     db_pool: Schema.NullOr(Schema.Number),
     jwt_secret: Schema.optional(SensitiveOutputString),
-  });
-export type V1GetPostgrestServiceConfigOutput =
-  typeof V1GetPostgrestServiceConfigOutput.Type;
+  }) as unknown as Schema.Codec<V1GetPostgrestServiceConfigOutput>;
 
 // The operation
 /**

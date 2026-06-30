@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DismissSchemaRecommendationInput {
+  organization: string;
+  database: string;
+  number: number;
+  reason?: string;
+}
 export const DismissSchemaRecommendationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -15,11 +21,39 @@ export const DismissSchemaRecommendationInput =
       method: "POST",
       path: "/organizations/{organization}/databases/{database}/schema-recommendations/{number}/dismiss",
     }),
-  );
-export type DismissSchemaRecommendationInput =
-  typeof DismissSchemaRecommendationInput.Type;
+  ) as unknown as Schema.Codec<DismissSchemaRecommendationInput>;
 
 // Output Schema
+export interface DismissSchemaRecommendationOutput {
+  id: string;
+  html_url: string;
+  title: string;
+  table_name: string;
+  keyspace: string;
+  ddl_statement: string;
+  number: number;
+  state: "open" | "applied" | "dismissed" | "stale";
+  recommendation_type:
+    | "unused_table"
+    | "unused_index"
+    | "duplicate_index"
+    | "sequence_overflow"
+    | "sequence_overflow_foreign_key"
+    | "new_index"
+    | "encoding_upgrade"
+    | "bloated_table"
+    | "bloated_index";
+  created_at: string;
+  updated_at: string;
+  applied_at: string | null;
+  dismissed_at: string | null;
+  closed_by_deploy_request: {
+    id: string;
+    branch_id: string;
+    number: number;
+  } | null;
+  dismissed_by: { id: string; display_name: string; avatar_url: string } | null;
+}
 export const DismissSchemaRecommendationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -59,9 +93,7 @@ export const DismissSchemaRecommendationOutput =
         avatar_url: Schema.String,
       }),
     ),
-  });
-export type DismissSchemaRecommendationOutput =
-  typeof DismissSchemaRecommendationOutput.Type;
+  }) as unknown as Schema.Codec<DismissSchemaRecommendationOutput>;
 
 // The operation
 /**

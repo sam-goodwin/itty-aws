@@ -3,6 +3,9 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface MarketingAnalyticsTestMappingCreateInput {
+  project_id: string;
+}
 export const MarketingAnalyticsTestMappingCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -11,15 +14,12 @@ export const MarketingAnalyticsTestMappingCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/marketing_analytics/test_mapping/",
     }),
-  );
-export type MarketingAnalyticsTestMappingCreateInput =
-  typeof MarketingAnalyticsTestMappingCreateInput.Type;
+  ) as unknown as Schema.Codec<MarketingAnalyticsTestMappingCreateInput>;
 
 // Output Schema
+export type MarketingAnalyticsTestMappingCreateOutput = void;
 export const MarketingAnalyticsTestMappingCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MarketingAnalyticsTestMappingCreateOutput =
-  typeof MarketingAnalyticsTestMappingCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MarketingAnalyticsTestMappingCreateOutput>;
 
 // The operation
 /**

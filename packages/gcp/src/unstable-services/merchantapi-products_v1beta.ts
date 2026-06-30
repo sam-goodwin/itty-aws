@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface ProductDimension {
   unit?: string;
 }
 
-export const ProductDimension: Schema.Schema<ProductDimension> =
+export const ProductDimension: Schema.Codec<ProductDimension> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Number),
     unit: Schema.optional(Schema.String),
@@ -42,7 +42,7 @@ export interface Price {
   currencyCode?: string;
 }
 
-export const Price: Schema.Schema<Price> =
+export const Price: Schema.Codec<Price> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     amountMicros: Schema.optional(Schema.String),
     currencyCode: Schema.optional(Schema.String),
@@ -55,7 +55,7 @@ export interface FreeShippingThreshold {
   priceThreshold?: Price;
 }
 
-export const FreeShippingThreshold: Schema.Schema<FreeShippingThreshold> =
+export const FreeShippingThreshold: Schema.Codec<FreeShippingThreshold> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     country: Schema.optional(Schema.String),
     priceThreshold: Schema.optional(Price),
@@ -75,7 +75,7 @@ export interface SubscriptionCost {
     | (string & {});
 }
 
-export const SubscriptionCost: Schema.Schema<SubscriptionCost> =
+export const SubscriptionCost: Schema.Codec<SubscriptionCost> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     periodLength: Schema.optional(Schema.String),
     amount: Schema.optional(Price),
@@ -97,15 +97,16 @@ export interface Tax {
   region?: string;
 }
 
-export const Tax: Schema.Schema<Tax> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Tax: Schema.Codec<Tax> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     rate: Schema.optional(Schema.Number),
     postalCode: Schema.optional(Schema.String),
     country: Schema.optional(Schema.String),
     locationId: Schema.optional(Schema.String),
     taxShip: Schema.optional(Schema.Boolean),
     region: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Tax" });
+  },
+).annotate({ identifier: "Tax" });
 
 export interface ProductStructuredDescription {
   /** The digital source type, for example "trained_algorithmic_media". Following [IPTC](https://cv.iptc.org/newscodes/digitalsourcetype). Maximum length is 40 characters. */
@@ -114,7 +115,7 @@ export interface ProductStructuredDescription {
   content?: string;
 }
 
-export const ProductStructuredDescription: Schema.Schema<ProductStructuredDescription> =
+export const ProductStructuredDescription: Schema.Codec<ProductStructuredDescription> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     digitalSourceType: Schema.optional(Schema.String),
     content: Schema.optional(Schema.String),
@@ -133,7 +134,7 @@ export interface ProductSustainabilityIncentive {
   amount?: Price;
 }
 
-export const ProductSustainabilityIncentive: Schema.Schema<ProductSustainabilityIncentive> =
+export const ProductSustainabilityIncentive: Schema.Codec<ProductSustainabilityIncentive> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     percentage: Schema.optional(Schema.Number),
     type: Schema.optional(Schema.String),
@@ -147,7 +148,7 @@ export interface ShippingDimension {
   unit?: string;
 }
 
-export const ShippingDimension: Schema.Schema<ShippingDimension> =
+export const ShippingDimension: Schema.Codec<ShippingDimension> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Number),
     unit: Schema.optional(Schema.String),
@@ -164,7 +165,7 @@ export interface Installment {
   creditType?: string;
 }
 
-export const Installment: Schema.Schema<Installment> =
+export const Installment: Schema.Codec<Installment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     amount: Schema.optional(Price),
     downpayment: Schema.optional(Price),
@@ -179,7 +180,7 @@ export interface ShippingWeight {
   unit?: string;
 }
 
-export const ShippingWeight: Schema.Schema<ShippingWeight> =
+export const ShippingWeight: Schema.Codec<ShippingWeight> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Number),
     unit: Schema.optional(Schema.String),
@@ -204,7 +205,7 @@ export interface CloudExportAdditionalProperties {
   textValue?: ReadonlyArray<string>;
 }
 
-export const CloudExportAdditionalProperties: Schema.Schema<CloudExportAdditionalProperties> =
+export const CloudExportAdditionalProperties: Schema.Codec<CloudExportAdditionalProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     floatValue: Schema.optional(Schema.Array(Schema.Number)),
     intValue: Schema.optional(Schema.Array(Schema.String)),
@@ -223,7 +224,7 @@ export interface Interval {
   endTime?: string;
 }
 
-export const Interval: Schema.Schema<Interval> =
+export const Interval: Schema.Codec<Interval> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -246,7 +247,7 @@ export interface LoyaltyProgram {
   price?: Price;
 }
 
-export const LoyaltyProgram: Schema.Schema<LoyaltyProgram> =
+export const LoyaltyProgram: Schema.Codec<LoyaltyProgram> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tierLabel: Schema.optional(Schema.String),
     cashbackForFutureUse: Schema.optional(Price),
@@ -266,7 +267,7 @@ export interface ProductDetail {
   attributeValue?: string;
 }
 
-export const ProductDetail: Schema.Schema<ProductDetail> =
+export const ProductDetail: Schema.Codec<ProductDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attributeName: Schema.optional(Schema.String),
     sectionName: Schema.optional(Schema.String),
@@ -280,7 +281,7 @@ export interface UnitPricingBaseMeasure {
   unit?: string;
 }
 
-export const UnitPricingBaseMeasure: Schema.Schema<UnitPricingBaseMeasure> =
+export const UnitPricingBaseMeasure: Schema.Codec<UnitPricingBaseMeasure> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     unit: Schema.optional(Schema.String),
@@ -293,7 +294,7 @@ export interface UnitPricingMeasure {
   unit?: string;
 }
 
-export const UnitPricingMeasure: Schema.Schema<UnitPricingMeasure> =
+export const UnitPricingMeasure: Schema.Codec<UnitPricingMeasure> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Number),
     unit: Schema.optional(Schema.String),
@@ -308,7 +309,7 @@ export interface LoyaltyPoints {
   ratio?: number;
 }
 
-export const LoyaltyPoints: Schema.Schema<LoyaltyPoints> =
+export const LoyaltyPoints: Schema.Codec<LoyaltyPoints> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     pointsValue: Schema.optional(Schema.String),
@@ -322,7 +323,7 @@ export interface ProductStructuredTitle {
   content?: string;
 }
 
-export const ProductStructuredTitle: Schema.Schema<ProductStructuredTitle> =
+export const ProductStructuredTitle: Schema.Codec<ProductStructuredTitle> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     digitalSourceType: Schema.optional(Schema.String),
     content: Schema.optional(Schema.String),
@@ -361,7 +362,7 @@ export interface Shipping {
   handlingCutoffTime?: string;
 }
 
-export const Shipping: Schema.Schema<Shipping> =
+export const Shipping: Schema.Codec<Shipping> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     region: Schema.optional(Schema.String),
     locationId: Schema.optional(Schema.String),
@@ -391,7 +392,7 @@ export interface Certification {
   certificationCode?: string;
 }
 
-export const Certification: Schema.Schema<Certification> =
+export const Certification: Schema.Codec<Certification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     certificationAuthority: Schema.optional(Schema.String),
     certificationName: Schema.optional(Schema.String),
@@ -406,7 +407,7 @@ export interface ProductWeight {
   unit?: string;
 }
 
-export const ProductWeight: Schema.Schema<ProductWeight> =
+export const ProductWeight: Schema.Codec<ProductWeight> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Number),
     unit: Schema.optional(Schema.String),
@@ -605,7 +606,7 @@ export interface Attributes {
   sizeTypes?: ReadonlyArray<string>;
 }
 
-export const Attributes: Schema.Schema<Attributes> =
+export const Attributes: Schema.Codec<Attributes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     material: Schema.optional(Schema.String),
     displayAdsLink: Schema.optional(Schema.String),
@@ -740,7 +741,7 @@ export interface DestinationStatus {
   disapprovedCountries?: ReadonlyArray<string>;
 }
 
-export const DestinationStatus: Schema.Schema<DestinationStatus> =
+export const DestinationStatus: Schema.Codec<DestinationStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportingContext: Schema.optional(Schema.String),
     approvedCountries: Schema.optional(Schema.Array(Schema.String)),
@@ -780,7 +781,7 @@ export interface ProductChange {
   oldValue?: string;
 }
 
-export const ProductChange: Schema.Schema<ProductChange> =
+export const ProductChange: Schema.Codec<ProductChange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     newValue: Schema.optional(Schema.String),
     regionCode: Schema.optional(Schema.String),
@@ -813,7 +814,7 @@ export interface ProductStatusChangeMessage {
   eventTime?: string;
 }
 
-export const ProductStatusChangeMessage: Schema.Schema<ProductStatusChangeMessage> =
+export const ProductStatusChangeMessage: Schema.Codec<ProductStatusChangeMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceType: Schema.optional(Schema.String),
     changes: Schema.optional(Schema.Array(ProductChange)),
@@ -835,7 +836,7 @@ export interface AutomatedDiscounts {
   gadPrice?: Price;
 }
 
-export const AutomatedDiscounts: Schema.Schema<AutomatedDiscounts> =
+export const AutomatedDiscounts: Schema.Codec<AutomatedDiscounts> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     priorPrice: Schema.optional(Price),
     priorPriceProgressive: Schema.optional(Price),
@@ -851,7 +852,7 @@ export interface CustomAttribute {
   value?: string;
 }
 
-export const CustomAttribute: Schema.Schema<CustomAttribute> =
+export const CustomAttribute: Schema.Codec<CustomAttribute> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       groupValues: Schema.optional(Schema.Array(CustomAttribute)),
@@ -860,7 +861,7 @@ export const CustomAttribute: Schema.Schema<CustomAttribute> =
     }),
   ).annotate({
     identifier: "CustomAttribute",
-  }) as any as Schema.Schema<CustomAttribute>;
+  }) as any as Schema.Codec<CustomAttribute>;
 
 export interface ItemLevelIssue {
   /** The reporting context the issue applies to. */
@@ -909,7 +910,7 @@ export interface ItemLevelIssue {
   detail?: string;
 }
 
-export const ItemLevelIssue: Schema.Schema<ItemLevelIssue> =
+export const ItemLevelIssue: Schema.Codec<ItemLevelIssue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportingContext: Schema.optional(Schema.String),
     severity: Schema.optional(Schema.String),
@@ -935,7 +936,7 @@ export interface ProductStatus {
   googleExpirationDate?: string;
 }
 
-export const ProductStatus: Schema.Schema<ProductStatus> =
+export const ProductStatus: Schema.Codec<ProductStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creationDate: Schema.optional(Schema.String),
     itemLevelIssues: Schema.optional(Schema.Array(ItemLevelIssue)),
@@ -973,7 +974,7 @@ export interface Product {
   productStatus?: ProductStatus;
 }
 
-export const Product: Schema.Schema<Product> =
+export const Product: Schema.Codec<Product> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     archived: Schema.optional(Schema.Boolean),
     base64EncodedName: Schema.optional(Schema.String),
@@ -997,7 +998,7 @@ export interface ListProductsResponse {
   products?: ReadonlyArray<Product>;
 }
 
-export const ListProductsResponse: Schema.Schema<ListProductsResponse> =
+export const ListProductsResponse: Schema.Codec<ListProductsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     products: Schema.optional(Schema.Array(Product)),
@@ -1005,7 +1006,7 @@ export const ListProductsResponse: Schema.Schema<ListProductsResponse> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -1035,7 +1036,7 @@ export interface ProductInput {
   contentLanguage?: string;
 }
 
-export const ProductInput: Schema.Schema<ProductInput> =
+export const ProductInput: Schema.Codec<ProductInput> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     channel: Schema.optional(Schema.String),
     feedLabel: Schema.optional(Schema.String),
@@ -1125,7 +1126,7 @@ export const InsertAccountsProductInputsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertAccountsProductInputsRequest>;
+  ) as unknown as Schema.Codec<InsertAccountsProductInputsRequest>;
 
 export type InsertAccountsProductInputsResponse = ProductInput;
 export const InsertAccountsProductInputsResponse =
@@ -1164,7 +1165,7 @@ export const DeleteAccountsProductInputsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "products/v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsProductInputsRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsProductInputsRequest>;
 
 export type DeleteAccountsProductInputsResponse = Empty;
 export const DeleteAccountsProductInputsResponse =
@@ -1209,7 +1210,7 @@ export const PatchAccountsProductInputsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "products/v1beta/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchAccountsProductInputsRequest>;
+  ) as unknown as Schema.Codec<PatchAccountsProductInputsRequest>;
 
 export type PatchAccountsProductInputsResponse = ProductInput;
 export const PatchAccountsProductInputsResponse =
@@ -1245,7 +1246,7 @@ export const GetAccountsProductsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "products/v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetAccountsProductsRequest>;
+  ) as unknown as Schema.Codec<GetAccountsProductsRequest>;
 
 export type GetAccountsProductsResponse = Product;
 export const GetAccountsProductsResponse = /*@__PURE__*/ /*#__PURE__*/ Product;
@@ -1281,7 +1282,7 @@ export const ListAccountsProductsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "products/v1beta/{+parent}/products" }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsProductsRequest>;
+  ) as unknown as Schema.Codec<ListAccountsProductsRequest>;
 
 export type ListAccountsProductsResponse = ListProductsResponse;
 export const ListAccountsProductsResponse =

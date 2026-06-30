@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface CreateSessionSummariesIndividuallyInput {
+  project_id: string;
+  session_ids?: string[];
+  focus_area?: string;
+}
 export const CreateSessionSummariesIndividuallyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,18 +18,18 @@ export const CreateSessionSummariesIndividuallyInput =
       method: "POST",
       path: "/api/projects/{project_id}/session_summaries/create_session_summaries_individually/",
     }),
-  );
-export type CreateSessionSummariesIndividuallyInput =
-  typeof CreateSessionSummariesIndividuallyInput.Type;
+  ) as unknown as Schema.Codec<CreateSessionSummariesIndividuallyInput>;
 
 // Output Schema
+export interface CreateSessionSummariesIndividuallyOutput {
+  session_ids?: string[];
+  focus_area?: string;
+}
 export const CreateSessionSummariesIndividuallyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     session_ids: Schema.optional(Schema.Array(Schema.String)),
     focus_area: Schema.optional(Schema.String),
-  });
-export type CreateSessionSummariesIndividuallyOutput =
-  typeof CreateSessionSummariesIndividuallyOutput.Type;
+  }) as unknown as Schema.Codec<CreateSessionSummariesIndividuallyOutput>;
 
 // The operation
 /**

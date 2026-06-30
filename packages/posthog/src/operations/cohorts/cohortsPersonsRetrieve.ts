@@ -4,6 +4,13 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface CohortsPersonsRetrieveInput {
+  id: number;
+  project_id: string;
+  format?: "csv" | "json";
+  limit?: number;
+  offset?: number;
+}
 export const CohortsPersonsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -16,11 +23,26 @@ export const CohortsPersonsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/cohorts/{id}/persons/",
     }),
-  );
-export type CohortsPersonsRetrieveInput =
-  typeof CohortsPersonsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<CohortsPersonsRetrieveInput>;
 
 // Output Schema
+export interface CohortsPersonsRetrieveOutput {
+  results: {
+    id: string;
+    uuid: string;
+    type: "person";
+    name: string;
+    distinct_ids: string[];
+    properties: Record<string, unknown>;
+    created_at: string | null;
+    last_seen_at: string | null;
+    is_identified: boolean | null;
+    matched_recordings: Record<string, unknown>[];
+    value_at_data_point: number | null;
+  }[];
+  next: string | null;
+  previous: string | null;
+}
 export const CohortsPersonsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.Array(
@@ -42,9 +64,7 @@ export const CohortsPersonsRetrieveOutput =
     ),
     next: Schema.NullOr(Schema.String),
     previous: Schema.NullOr(Schema.String),
-  });
-export type CohortsPersonsRetrieveOutput =
-  typeof CohortsPersonsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<CohortsPersonsRetrieveOutput>;
 
 // The operation
 /**

@@ -9,16 +9,29 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationRolePermissionsControllerAddPermissionInput {
+  slug: string;
+}
 export const AuthorizationRolePermissionsControllerAddPermissionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     slug: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "POST", path: "/authorization/roles/{slug}/permissions" }),
-  );
-export type AuthorizationRolePermissionsControllerAddPermissionInput =
-  typeof AuthorizationRolePermissionsControllerAddPermissionInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationRolePermissionsControllerAddPermissionInput>;
 
 // Output Schema
+export interface AuthorizationRolePermissionsControllerAddPermissionOutput {
+  slug: string;
+  object: string;
+  id: string;
+  name: string;
+  description: string | null;
+  type: "EnvironmentRole" | "OrganizationRole";
+  resource_type_slug: string;
+  permissions: string[];
+  created_at: string;
+  updated_at: string;
+}
 export const AuthorizationRolePermissionsControllerAddPermissionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     slug: Schema.String,
@@ -31,9 +44,7 @@ export const AuthorizationRolePermissionsControllerAddPermissionOutput =
     permissions: Schema.Array(Schema.String),
     created_at: Schema.String,
     updated_at: Schema.String,
-  });
-export type AuthorizationRolePermissionsControllerAddPermissionOutput =
-  typeof AuthorizationRolePermissionsControllerAddPermissionOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizationRolePermissionsControllerAddPermissionOutput>;
 
 // The operation
 /**

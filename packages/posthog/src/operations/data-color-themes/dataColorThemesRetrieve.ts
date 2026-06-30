@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface DataColorThemesRetrieveInput {
+  id: number;
+  project_id: string;
+}
 export const DataColorThemesRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -13,11 +17,37 @@ export const DataColorThemesRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/data_color_themes/{id}/",
     }),
-  );
-export type DataColorThemesRetrieveInput =
-  typeof DataColorThemesRetrieveInput.Type;
+  ) as unknown as Schema.Codec<DataColorThemesRetrieveInput>;
 
 // Output Schema
+export interface DataColorThemesRetrieveOutput {
+  id?: number;
+  name?: string;
+  colors?: unknown;
+  is_global?: boolean;
+  created_at?: string | null;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+}
 export const DataColorThemesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
@@ -38,13 +68,27 @@ export const DataColorThemesRetrieveOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
-  });
-export type DataColorThemesRetrieveOutput =
-  typeof DataColorThemesRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<DataColorThemesRetrieveOutput>;
 
 // The operation
 /**

@@ -4,11 +4,16 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AvailabilityStatusesGetByResourceInput {
+  resourceUri: string;
+  $filter?: string;
+  $expand?: string;
+}
 export const AvailabilityStatusesGetByResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -20,20 +25,22 @@ export const AvailabilityStatusesGetByResourceInput =
       path: "/{resourceUri}/providers/Microsoft.ResourceHealth/availabilityStatuses/current",
       apiVersion: "2025-05-01",
     }),
-  );
-export type AvailabilityStatusesGetByResourceInput =
-  typeof AvailabilityStatusesGetByResourceInput.Type;
+  ) as unknown as Schema.Codec<AvailabilityStatusesGetByResourceInput>;
 
 // Output Schema
+export interface AvailabilityStatusesGetByResourceOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+}
 export const AvailabilityStatusesGetByResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
-  });
-export type AvailabilityStatusesGetByResourceOutput =
-  typeof AvailabilityStatusesGetByResourceOutput.Type;
+  }) as unknown as Schema.Codec<AvailabilityStatusesGetByResourceOutput>;
 
 // The operation
 /**
@@ -50,6 +57,11 @@ export const AvailabilityStatusesGetByResource =
     outputSchema: AvailabilityStatusesGetByResourceOutput,
   }));
 // Input Schema
+export interface AvailabilityStatusesListInput {
+  resourceUri: string;
+  $filter?: string;
+  $expand?: string;
+}
 export const AvailabilityStatusesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -61,11 +73,13 @@ export const AvailabilityStatusesListInput =
       path: "/{resourceUri}/providers/Microsoft.ResourceHealth/availabilityStatuses",
       apiVersion: "2025-05-01",
     }),
-  );
-export type AvailabilityStatusesListInput =
-  typeof AvailabilityStatusesListInput.Type;
+  ) as unknown as Schema.Codec<AvailabilityStatusesListInput>;
 
 // Output Schema
+export interface AvailabilityStatusesListOutput {
+  value: { id?: string; name?: string; type?: string; location?: string }[];
+  nextLink?: string;
+}
 export const AvailabilityStatusesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -77,9 +91,7 @@ export const AvailabilityStatusesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AvailabilityStatusesListOutput =
-  typeof AvailabilityStatusesListOutput.Type;
+  }) as unknown as Schema.Codec<AvailabilityStatusesListOutput>;
 
 // The operation
 /**
@@ -97,6 +109,12 @@ export const AvailabilityStatusesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AvailabilityStatusesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $filter?: string;
+  $expand?: string;
+}
 export const AvailabilityStatusesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -109,11 +127,13 @@ export const AvailabilityStatusesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceHealth/availabilityStatuses",
       apiVersion: "2025-05-01",
     }),
-  );
-export type AvailabilityStatusesListByResourceGroupInput =
-  typeof AvailabilityStatusesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<AvailabilityStatusesListByResourceGroupInput>;
 
 // Output Schema
+export interface AvailabilityStatusesListByResourceGroupOutput {
+  value: { id?: string; name?: string; type?: string; location?: string }[];
+  nextLink?: string;
+}
 export const AvailabilityStatusesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -125,9 +145,7 @@ export const AvailabilityStatusesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AvailabilityStatusesListByResourceGroupOutput =
-  typeof AvailabilityStatusesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<AvailabilityStatusesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -145,6 +163,11 @@ export const AvailabilityStatusesListByResourceGroup =
     outputSchema: AvailabilityStatusesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface AvailabilityStatusesListBySubscriptionIdInput {
+  subscriptionId: string;
+  $filter?: string;
+  $expand?: string;
+}
 export const AvailabilityStatusesListBySubscriptionIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -156,11 +179,13 @@ export const AvailabilityStatusesListBySubscriptionIdInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/availabilityStatuses",
       apiVersion: "2025-05-01",
     }),
-  );
-export type AvailabilityStatusesListBySubscriptionIdInput =
-  typeof AvailabilityStatusesListBySubscriptionIdInput.Type;
+  ) as unknown as Schema.Codec<AvailabilityStatusesListBySubscriptionIdInput>;
 
 // Output Schema
+export interface AvailabilityStatusesListBySubscriptionIdOutput {
+  value: { id?: string; name?: string; type?: string; location?: string }[];
+  nextLink?: string;
+}
 export const AvailabilityStatusesListBySubscriptionIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -172,9 +197,7 @@ export const AvailabilityStatusesListBySubscriptionIdOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AvailabilityStatusesListBySubscriptionIdOutput =
-  typeof AvailabilityStatusesListBySubscriptionIdOutput.Type;
+  }) as unknown as Schema.Codec<AvailabilityStatusesListBySubscriptionIdOutput>;
 
 // The operation
 /**
@@ -191,6 +214,11 @@ export const AvailabilityStatusesListBySubscriptionId =
     outputSchema: AvailabilityStatusesListBySubscriptionIdOutput,
   }));
 // Input Schema
+export interface ChildAvailabilityStatusesGetByResourceInput {
+  resourceUri: string;
+  $filter?: string;
+  $expand?: string;
+}
 export const ChildAvailabilityStatusesGetByResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -202,20 +230,22 @@ export const ChildAvailabilityStatusesGetByResourceInput =
       path: "/{resourceUri}/providers/Microsoft.ResourceHealth/childAvailabilityStatuses/current",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ChildAvailabilityStatusesGetByResourceInput =
-  typeof ChildAvailabilityStatusesGetByResourceInput.Type;
+  ) as unknown as Schema.Codec<ChildAvailabilityStatusesGetByResourceInput>;
 
 // Output Schema
+export interface ChildAvailabilityStatusesGetByResourceOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+}
 export const ChildAvailabilityStatusesGetByResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
-  });
-export type ChildAvailabilityStatusesGetByResourceOutput =
-  typeof ChildAvailabilityStatusesGetByResourceOutput.Type;
+  }) as unknown as Schema.Codec<ChildAvailabilityStatusesGetByResourceOutput>;
 
 // The operation
 /**
@@ -232,6 +262,11 @@ export const ChildAvailabilityStatusesGetByResource =
     outputSchema: ChildAvailabilityStatusesGetByResourceOutput,
   }));
 // Input Schema
+export interface ChildAvailabilityStatusesListInput {
+  resourceUri: string;
+  $filter?: string;
+  $expand?: string;
+}
 export const ChildAvailabilityStatusesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -243,11 +278,13 @@ export const ChildAvailabilityStatusesListInput =
       path: "/{resourceUri}/providers/Microsoft.ResourceHealth/childAvailabilityStatuses",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ChildAvailabilityStatusesListInput =
-  typeof ChildAvailabilityStatusesListInput.Type;
+  ) as unknown as Schema.Codec<ChildAvailabilityStatusesListInput>;
 
 // Output Schema
+export interface ChildAvailabilityStatusesListOutput {
+  value: { id?: string; name?: string; type?: string; location?: string }[];
+  nextLink?: string;
+}
 export const ChildAvailabilityStatusesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -259,9 +296,7 @@ export const ChildAvailabilityStatusesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ChildAvailabilityStatusesListOutput =
-  typeof ChildAvailabilityStatusesListOutput.Type;
+  }) as unknown as Schema.Codec<ChildAvailabilityStatusesListOutput>;
 
 // The operation
 /**
@@ -278,6 +313,11 @@ export const ChildAvailabilityStatusesList =
     outputSchema: ChildAvailabilityStatusesListOutput,
   }));
 // Input Schema
+export interface ChildResourcesListInput {
+  resourceUri: string;
+  $filter?: string;
+  $expand?: string;
+}
 export const ChildResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -289,10 +329,13 @@ export const ChildResourcesListInput =
       path: "/{resourceUri}/providers/Microsoft.ResourceHealth/childResources",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ChildResourcesListInput = typeof ChildResourcesListInput.Type;
+  ) as unknown as Schema.Codec<ChildResourcesListInput>;
 
 // Output Schema
+export interface ChildResourcesListOutput {
+  value: { id?: string; name?: string; type?: string; location?: string }[];
+  nextLink?: string;
+}
 export const ChildResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -304,8 +347,7 @@ export const ChildResourcesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ChildResourcesListOutput = typeof ChildResourcesListOutput.Type;
+  }) as unknown as Schema.Codec<ChildResourcesListOutput>;
 
 // The operation
 /**
@@ -321,6 +363,9 @@ export const ChildResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ChildResourcesListOutput,
 }));
 // Input Schema
+export interface EmergingIssuesGetInput {
+  issueName: "default";
+}
 export const EmergingIssuesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     issueName: Schema.Literals(["default"]).pipe(T.PathParam()),
@@ -331,10 +376,22 @@ export const EmergingIssuesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.ResourceHealth/emergingIssues/{issueName}",
     apiVersion: "2025-05-01",
   }),
-);
-export type EmergingIssuesGetInput = typeof EmergingIssuesGetInput.Type;
+) as unknown as Schema.Codec<EmergingIssuesGetInput>;
 
 // Output Schema
+export interface EmergingIssuesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EmergingIssuesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -354,8 +411,7 @@ export const EmergingIssuesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EmergingIssuesGetOutput = typeof EmergingIssuesGetOutput.Type;
+  }) as unknown as Schema.Codec<EmergingIssuesGetOutput>;
 
 // The operation
 /**
@@ -369,6 +425,7 @@ export const EmergingIssuesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EmergingIssuesGetOutput,
 }));
 // Input Schema
+export interface EmergingIssuesListInput {}
 export const EmergingIssuesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
@@ -376,10 +433,25 @@ export const EmergingIssuesListInput =
       path: "/providers/Microsoft.ResourceHealth/emergingIssues",
       apiVersion: "2025-05-01",
     }),
-  );
-export type EmergingIssuesListInput = typeof EmergingIssuesListInput.Type;
+  ) as unknown as Schema.Codec<EmergingIssuesListInput>;
 
 // Output Schema
+export interface EmergingIssuesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const EmergingIssuesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -416,8 +488,7 @@ export const EmergingIssuesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type EmergingIssuesListOutput = typeof EmergingIssuesListOutput.Type;
+  }) as unknown as Schema.Codec<EmergingIssuesListOutput>;
 
 // The operation
 /**
@@ -430,6 +501,10 @@ export const EmergingIssuesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EmergingIssuesListOutput,
 }));
 // Input Schema
+export interface EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdInput {
+  subscriptionId: string;
+  eventTrackingId: string;
+}
 export const EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -440,11 +515,22 @@ export const EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingId
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/fetchBillingCommunicationDetails",
       apiVersion: "2025-05-01",
     }),
-  );
-export type EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdInput =
-  typeof EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdInput.Type;
+  ) as unknown as Schema.Codec<EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdInput>;
 
 // Output Schema
+export interface EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -464,9 +550,7 @@ export const EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingId
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdOutput =
-  typeof EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdOutput.Type;
+  }) as unknown as Schema.Codec<EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdOutput>;
 
 // The operation
 /**
@@ -484,6 +568,10 @@ export const EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingId
       EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdOutput,
   }));
 // Input Schema
+export interface EventFetchDetailsBySubscriptionIdAndTrackingIdInput {
+  subscriptionId: string;
+  eventTrackingId: string;
+}
 export const EventFetchDetailsBySubscriptionIdAndTrackingIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -494,11 +582,22 @@ export const EventFetchDetailsBySubscriptionIdAndTrackingIdInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/fetchEventDetails",
       apiVersion: "2025-05-01",
     }),
-  );
-export type EventFetchDetailsBySubscriptionIdAndTrackingIdInput =
-  typeof EventFetchDetailsBySubscriptionIdAndTrackingIdInput.Type;
+  ) as unknown as Schema.Codec<EventFetchDetailsBySubscriptionIdAndTrackingIdInput>;
 
 // Output Schema
+export interface EventFetchDetailsBySubscriptionIdAndTrackingIdOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EventFetchDetailsBySubscriptionIdAndTrackingIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -518,9 +617,7 @@ export const EventFetchDetailsBySubscriptionIdAndTrackingIdOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EventFetchDetailsBySubscriptionIdAndTrackingIdOutput =
-  typeof EventFetchDetailsBySubscriptionIdAndTrackingIdOutput.Type;
+  }) as unknown as Schema.Codec<EventFetchDetailsBySubscriptionIdAndTrackingIdOutput>;
 
 // The operation
 /**
@@ -536,6 +633,9 @@ export const EventFetchDetailsBySubscriptionIdAndTrackingId =
     outputSchema: EventFetchDetailsBySubscriptionIdAndTrackingIdOutput,
   }));
 // Input Schema
+export interface EventFetchDetailsByTenantIdAndTrackingIdInput {
+  eventTrackingId: string;
+}
 export const EventFetchDetailsByTenantIdAndTrackingIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventTrackingId: Schema.String.pipe(T.PathParam()),
@@ -545,11 +645,22 @@ export const EventFetchDetailsByTenantIdAndTrackingIdInput =
       path: "/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/fetchEventDetails",
       apiVersion: "2025-05-01",
     }),
-  );
-export type EventFetchDetailsByTenantIdAndTrackingIdInput =
-  typeof EventFetchDetailsByTenantIdAndTrackingIdInput.Type;
+  ) as unknown as Schema.Codec<EventFetchDetailsByTenantIdAndTrackingIdInput>;
 
 // Output Schema
+export interface EventFetchDetailsByTenantIdAndTrackingIdOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EventFetchDetailsByTenantIdAndTrackingIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -569,9 +680,7 @@ export const EventFetchDetailsByTenantIdAndTrackingIdOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EventFetchDetailsByTenantIdAndTrackingIdOutput =
-  typeof EventFetchDetailsByTenantIdAndTrackingIdOutput.Type;
+  }) as unknown as Schema.Codec<EventFetchDetailsByTenantIdAndTrackingIdOutput>;
 
 // The operation
 /**
@@ -586,6 +695,12 @@ export const EventFetchDetailsByTenantIdAndTrackingId =
     outputSchema: EventFetchDetailsByTenantIdAndTrackingIdOutput,
   }));
 // Input Schema
+export interface EventGetBySubscriptionIdAndTrackingIdInput {
+  subscriptionId: string;
+  eventTrackingId: string;
+  $filter?: string;
+  queryStartTime?: string;
+}
 export const EventGetBySubscriptionIdAndTrackingIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -598,11 +713,22 @@ export const EventGetBySubscriptionIdAndTrackingIdInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events/{eventTrackingId}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type EventGetBySubscriptionIdAndTrackingIdInput =
-  typeof EventGetBySubscriptionIdAndTrackingIdInput.Type;
+  ) as unknown as Schema.Codec<EventGetBySubscriptionIdAndTrackingIdInput>;
 
 // Output Schema
+export interface EventGetBySubscriptionIdAndTrackingIdOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EventGetBySubscriptionIdAndTrackingIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -622,9 +748,7 @@ export const EventGetBySubscriptionIdAndTrackingIdOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EventGetBySubscriptionIdAndTrackingIdOutput =
-  typeof EventGetBySubscriptionIdAndTrackingIdOutput.Type;
+  }) as unknown as Schema.Codec<EventGetBySubscriptionIdAndTrackingIdOutput>;
 
 // The operation
 /**
@@ -642,6 +766,11 @@ export const EventGetBySubscriptionIdAndTrackingId =
     outputSchema: EventGetBySubscriptionIdAndTrackingIdOutput,
   }));
 // Input Schema
+export interface EventGetByTenantIdAndTrackingIdInput {
+  eventTrackingId: string;
+  $filter?: string;
+  queryStartTime?: string;
+}
 export const EventGetByTenantIdAndTrackingIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventTrackingId: Schema.String.pipe(T.PathParam()),
@@ -653,11 +782,22 @@ export const EventGetByTenantIdAndTrackingIdInput =
       path: "/providers/Microsoft.ResourceHealth/events/{eventTrackingId}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type EventGetByTenantIdAndTrackingIdInput =
-  typeof EventGetByTenantIdAndTrackingIdInput.Type;
+  ) as unknown as Schema.Codec<EventGetByTenantIdAndTrackingIdInput>;
 
 // Output Schema
+export interface EventGetByTenantIdAndTrackingIdOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EventGetByTenantIdAndTrackingIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -677,9 +817,7 @@ export const EventGetByTenantIdAndTrackingIdOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EventGetByTenantIdAndTrackingIdOutput =
-  typeof EventGetByTenantIdAndTrackingIdOutput.Type;
+  }) as unknown as Schema.Codec<EventGetByTenantIdAndTrackingIdOutput>;
 
 // The operation
 /**
@@ -696,6 +834,10 @@ export const EventGetByTenantIdAndTrackingId =
     outputSchema: EventGetByTenantIdAndTrackingIdOutput,
   }));
 // Input Schema
+export interface EventsListBySingleResourceInput {
+  resourceUri: string;
+  $filter?: string;
+}
 export const EventsListBySingleResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -706,11 +848,25 @@ export const EventsListBySingleResourceInput =
       path: "/{resourceUri}/providers/Microsoft.ResourceHealth/events",
       apiVersion: "2025-05-01",
     }),
-  );
-export type EventsListBySingleResourceInput =
-  typeof EventsListBySingleResourceInput.Type;
+  ) as unknown as Schema.Codec<EventsListBySingleResourceInput>;
 
 // Output Schema
+export interface EventsListBySingleResourceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const EventsListBySingleResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -745,9 +901,7 @@ export const EventsListBySingleResourceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type EventsListBySingleResourceOutput =
-  typeof EventsListBySingleResourceOutput.Type;
+  }) as unknown as Schema.Codec<EventsListBySingleResourceOutput>;
 
 // The operation
 /**
@@ -764,6 +918,11 @@ export const EventsListBySingleResource = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EventsListBySubscriptionIdInput {
+  subscriptionId: string;
+  $filter?: string;
+  queryStartTime?: string;
+}
 export const EventsListBySubscriptionIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -775,11 +934,25 @@ export const EventsListBySubscriptionIdInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events",
       apiVersion: "2025-05-01",
     }),
-  );
-export type EventsListBySubscriptionIdInput =
-  typeof EventsListBySubscriptionIdInput.Type;
+  ) as unknown as Schema.Codec<EventsListBySubscriptionIdInput>;
 
 // Output Schema
+export interface EventsListBySubscriptionIdOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const EventsListBySubscriptionIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -814,9 +987,7 @@ export const EventsListBySubscriptionIdOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type EventsListBySubscriptionIdOutput =
-  typeof EventsListBySubscriptionIdOutput.Type;
+  }) as unknown as Schema.Codec<EventsListBySubscriptionIdOutput>;
 
 // The operation
 /**
@@ -834,6 +1005,10 @@ export const EventsListBySubscriptionId = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EventsListByTenantIdInput {
+  $filter?: string;
+  queryStartTime?: string;
+}
 export const EventsListByTenantIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     $filter: Schema.optional(Schema.String),
@@ -844,10 +1019,25 @@ export const EventsListByTenantIdInput =
       path: "/providers/Microsoft.ResourceHealth/events",
       apiVersion: "2025-05-01",
     }),
-  );
-export type EventsListByTenantIdInput = typeof EventsListByTenantIdInput.Type;
+  ) as unknown as Schema.Codec<EventsListByTenantIdInput>;
 
 // Output Schema
+export interface EventsListByTenantIdOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const EventsListByTenantIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -882,8 +1072,7 @@ export const EventsListByTenantIdOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type EventsListByTenantIdOutput = typeof EventsListByTenantIdOutput.Type;
+  }) as unknown as Schema.Codec<EventsListByTenantIdOutput>;
 
 // The operation
 /**
@@ -900,6 +1089,11 @@ export const EventsListByTenantId = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ImpactedResourcesGetInput {
+  subscriptionId: string;
+  eventTrackingId: string;
+  impactedResourceName: string;
+}
 export const ImpactedResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -911,10 +1105,22 @@ export const ImpactedResourcesGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/impactedResources/{impactedResourceName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ImpactedResourcesGetInput = typeof ImpactedResourcesGetInput.Type;
+  ) as unknown as Schema.Codec<ImpactedResourcesGetInput>;
 
 // Output Schema
+export interface ImpactedResourcesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ImpactedResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -934,8 +1140,7 @@ export const ImpactedResourcesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ImpactedResourcesGetOutput = typeof ImpactedResourcesGetOutput.Type;
+  }) as unknown as Schema.Codec<ImpactedResourcesGetOutput>;
 
 // The operation
 /**
@@ -953,6 +1158,10 @@ export const ImpactedResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ImpactedResourcesGetByTenantIdInput {
+  eventTrackingId: string;
+  impactedResourceName: string;
+}
 export const ImpactedResourcesGetByTenantIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventTrackingId: Schema.String.pipe(T.PathParam()),
@@ -963,11 +1172,22 @@ export const ImpactedResourcesGetByTenantIdInput =
       path: "/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/impactedResources/{impactedResourceName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ImpactedResourcesGetByTenantIdInput =
-  typeof ImpactedResourcesGetByTenantIdInput.Type;
+  ) as unknown as Schema.Codec<ImpactedResourcesGetByTenantIdInput>;
 
 // Output Schema
+export interface ImpactedResourcesGetByTenantIdOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ImpactedResourcesGetByTenantIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -987,9 +1207,7 @@ export const ImpactedResourcesGetByTenantIdOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ImpactedResourcesGetByTenantIdOutput =
-  typeof ImpactedResourcesGetByTenantIdOutput.Type;
+  }) as unknown as Schema.Codec<ImpactedResourcesGetByTenantIdOutput>;
 
 // The operation
 /**
@@ -1005,6 +1223,11 @@ export const ImpactedResourcesGetByTenantId =
     outputSchema: ImpactedResourcesGetByTenantIdOutput,
   }));
 // Input Schema
+export interface ImpactedResourcesListBySubscriptionIdAndEventIdInput {
+  subscriptionId: string;
+  eventTrackingId: string;
+  $filter?: string;
+}
 export const ImpactedResourcesListBySubscriptionIdAndEventIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1016,11 +1239,25 @@ export const ImpactedResourcesListBySubscriptionIdAndEventIdInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/impactedResources",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ImpactedResourcesListBySubscriptionIdAndEventIdInput =
-  typeof ImpactedResourcesListBySubscriptionIdAndEventIdInput.Type;
+  ) as unknown as Schema.Codec<ImpactedResourcesListBySubscriptionIdAndEventIdInput>;
 
 // Output Schema
+export interface ImpactedResourcesListBySubscriptionIdAndEventIdOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ImpactedResourcesListBySubscriptionIdAndEventIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1055,9 +1292,7 @@ export const ImpactedResourcesListBySubscriptionIdAndEventIdOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ImpactedResourcesListBySubscriptionIdAndEventIdOutput =
-  typeof ImpactedResourcesListBySubscriptionIdAndEventIdOutput.Type;
+  }) as unknown as Schema.Codec<ImpactedResourcesListBySubscriptionIdAndEventIdOutput>;
 
 // The operation
 /**
@@ -1074,6 +1309,10 @@ export const ImpactedResourcesListBySubscriptionIdAndEventId =
     outputSchema: ImpactedResourcesListBySubscriptionIdAndEventIdOutput,
   }));
 // Input Schema
+export interface ImpactedResourcesListByTenantIdAndEventIdInput {
+  eventTrackingId: string;
+  $filter?: string;
+}
 export const ImpactedResourcesListByTenantIdAndEventIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventTrackingId: Schema.String.pipe(T.PathParam()),
@@ -1084,11 +1323,25 @@ export const ImpactedResourcesListByTenantIdAndEventIdInput =
       path: "/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/impactedResources",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ImpactedResourcesListByTenantIdAndEventIdInput =
-  typeof ImpactedResourcesListByTenantIdAndEventIdInput.Type;
+  ) as unknown as Schema.Codec<ImpactedResourcesListByTenantIdAndEventIdInput>;
 
 // Output Schema
+export interface ImpactedResourcesListByTenantIdAndEventIdOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ImpactedResourcesListByTenantIdAndEventIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1123,9 +1376,7 @@ export const ImpactedResourcesListByTenantIdAndEventIdOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ImpactedResourcesListByTenantIdAndEventIdOutput =
-  typeof ImpactedResourcesListByTenantIdAndEventIdOutput.Type;
+  }) as unknown as Schema.Codec<ImpactedResourcesListByTenantIdAndEventIdOutput>;
 
 // The operation
 /**
@@ -1141,6 +1392,9 @@ export const ImpactedResourcesListByTenantIdAndEventId =
     outputSchema: ImpactedResourcesListByTenantIdAndEventIdOutput,
   }));
 // Input Schema
+export interface MetadataGetEntityInput {
+  name: string;
+}
 export const MetadataGetEntityInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     name: Schema.String.pipe(T.PathParam()),
@@ -1151,10 +1405,22 @@ export const MetadataGetEntityInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.ResourceHealth/metadata/{name}",
     apiVersion: "2025-05-01",
   }),
-);
-export type MetadataGetEntityInput = typeof MetadataGetEntityInput.Type;
+) as unknown as Schema.Codec<MetadataGetEntityInput>;
 
 // Output Schema
+export interface MetadataGetEntityOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MetadataGetEntityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1174,8 +1440,7 @@ export const MetadataGetEntityOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MetadataGetEntityOutput = typeof MetadataGetEntityOutput.Type;
+  }) as unknown as Schema.Codec<MetadataGetEntityOutput>;
 
 // The operation
 /**
@@ -1189,6 +1454,7 @@ export const MetadataGetEntity = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MetadataGetEntityOutput,
 }));
 // Input Schema
+export interface MetadataListInput {}
 export const MetadataListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1197,10 +1463,25 @@ export const MetadataListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.ResourceHealth/metadata",
     apiVersion: "2025-05-01",
   }),
-);
-export type MetadataListInput = typeof MetadataListInput.Type;
+) as unknown as Schema.Codec<MetadataListInput>;
 
 // Output Schema
+export interface MetadataListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MetadataListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1236,8 +1517,7 @@ export const MetadataListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type MetadataListOutput = typeof MetadataListOutput.Type;
+}) as unknown as Schema.Codec<MetadataListOutput>;
 
 // The operation
 /**
@@ -1250,6 +1530,7 @@ export const MetadataList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MetadataListOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1258,10 +1539,20 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.ResourceHealth/operations",
     apiVersion: "2025-05-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value: {
+    name?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+  }[];
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -1276,8 +1567,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
     }),
   ),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -1290,6 +1580,11 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdInput {
+  subscriptionId: string;
+  eventTrackingId: string;
+  $filter?: string;
+}
 export const SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1301,11 +1596,25 @@ export const SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdInpu
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/listSecurityAdvisoryImpactedResources",
       apiVersion: "2025-05-01",
     }),
-  );
-export type SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdInput =
-  typeof SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdInput.Type;
+  ) as unknown as Schema.Codec<SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdInput>;
 
 // Output Schema
+export interface SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1340,9 +1649,7 @@ export const SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdOutp
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdOutput =
-  typeof SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdOutput.Type;
+  }) as unknown as Schema.Codec<SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdOutput>;
 
 // The operation
 /**
@@ -1361,6 +1668,10 @@ export const SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventId =
       SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdOutput,
   }));
 // Input Schema
+export interface SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdInput {
+  eventTrackingId: string;
+  $filter?: string;
+}
 export const SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventTrackingId: Schema.String.pipe(T.PathParam()),
@@ -1371,11 +1682,25 @@ export const SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdInput =
       path: "/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/listSecurityAdvisoryImpactedResources",
       apiVersion: "2025-05-01",
     }),
-  );
-export type SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdInput =
-  typeof SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdInput.Type;
+  ) as unknown as Schema.Codec<SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdInput>;
 
 // Output Schema
+export interface SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1410,9 +1735,7 @@ export const SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdOutput =
-  typeof SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdOutput.Type;
+  }) as unknown as Schema.Codec<SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdOutput>;
 
 // The operation
 /**

@@ -4,6 +4,20 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface EndpointsUpdateInput {
+  name: string;
+  project_id: string;
+  query?: unknown;
+  description?: string | null;
+  data_freshness_seconds?: number | null;
+  is_active?: boolean | null;
+  is_materialized?: boolean | null;
+  derived_from_insight?: string | null;
+  version?: number | null;
+  bucket_overrides?: Record<string, unknown> | null;
+  deleted?: boolean | null;
+  tags?: string[] | null;
+}
 export const EndpointsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
@@ -24,10 +38,61 @@ export const EndpointsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/api/projects/{project_id}/endpoints/{name}/",
   }),
-);
-export type EndpointsUpdateInput = typeof EndpointsUpdateInput.Type;
+) as unknown as Schema.Codec<EndpointsUpdateInput>;
 
 // Output Schema
+export interface EndpointsUpdateOutput {
+  id?: string;
+  name?: string;
+  description?: string | null;
+  query?: unknown;
+  is_active?: boolean;
+  data_freshness_seconds?: number;
+  endpoint_path?: string;
+  url?: string | null;
+  ui_url?: string | null;
+  created_at?: string;
+  updated_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  is_materialized?: boolean;
+  current_version?: number;
+  current_version_id?: string | null;
+  versions_count?: number;
+  derived_from_insight?: string | null;
+  last_executed_at?: string | null;
+  materialization?: {
+    name?: string;
+    status?: string;
+    can_materialize?: boolean;
+    reason?: string | null;
+    last_materialized_at?: string | null;
+    error?: string;
+    saved_query_id?: string | null;
+  };
+  bucket_overrides?: Record<string, unknown> | null;
+  columns?: { name?: string; type?: string }[];
+  tags?: string[];
+}
 export const EndpointsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -53,7 +118,23 @@ export const EndpointsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         hedgehog_config: Schema.optional(
           Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
+              ]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
       }),
     ),
   ),
@@ -86,8 +167,7 @@ export const EndpointsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   tags: Schema.optional(Schema.Array(Schema.String)),
-});
-export type EndpointsUpdateOutput = typeof EndpointsUpdateOutput.Type;
+}) as unknown as Schema.Codec<EndpointsUpdateOutput>;
 
 // The operation
 /**

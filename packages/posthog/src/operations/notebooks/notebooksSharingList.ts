@@ -2,8 +2,13 @@ import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { SensitiveOutputNullableString } from "../../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface NotebooksSharingListInput {
+  notebook_id: string;
+  project_id: string;
+}
 export const NotebooksSharingListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     notebook_id: Schema.String.pipe(T.PathParam()),
@@ -13,10 +18,23 @@ export const NotebooksSharingListInput =
       method: "GET",
       path: "/api/projects/{project_id}/notebooks/{notebook_id}/sharing/",
     }),
-  );
-export type NotebooksSharingListInput = typeof NotebooksSharingListInput.Type;
+  ) as unknown as Schema.Codec<NotebooksSharingListInput>;
 
 // Output Schema
+export type NotebooksSharingListOutput = {
+  created_at?: string;
+  enabled?: boolean;
+  access_token?: Redacted.Redacted<string> | null;
+  settings?: unknown;
+  password_required?: boolean;
+  share_passwords?: {
+    id?: number;
+    created_at?: string;
+    note?: string | null;
+    created_by_email?: string;
+    is_active?: boolean;
+  }[];
+}[];
 export const NotebooksSharingListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -37,8 +55,7 @@ export const NotebooksSharingListOutput =
         ),
       ),
     }),
-  );
-export type NotebooksSharingListOutput = typeof NotebooksSharingListOutput.Type;
+  ) as unknown as Schema.Codec<NotebooksSharingListOutput>;
 
 // The operation
 /**

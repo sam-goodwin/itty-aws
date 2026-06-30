@@ -4,12 +4,107 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveOutputString, SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface OpenShiftClustersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  properties?: {
+    provisioningState?:
+      | "AdminUpdating"
+      | "Canceled"
+      | "Creating"
+      | "Deleting"
+      | "Failed"
+      | "Succeeded"
+      | "Updating";
+    clusterProfile?: {
+      pullSecret?: string;
+      domain?: string;
+      version?: string;
+      resourceGroupId?: string;
+      fipsValidatedModules?: "Disabled" | "Enabled";
+      oidcIssuer?: string;
+    };
+    consoleProfile?: { url?: string };
+    servicePrincipalProfile?: {
+      clientId?: string;
+      clientSecret?: string | Redacted.Redacted<string>;
+    };
+    platformWorkloadIdentityProfile?: {
+      upgradeableTo?: string;
+      platformWorkloadIdentities?: Record<
+        string,
+        { resourceId?: string; clientId?: string; objectId?: string }
+      >;
+    };
+    networkProfile?: {
+      podCidr?: string;
+      serviceCidr?: string;
+      outboundType?: "Loadbalancer" | "UserDefinedRouting";
+      loadBalancerProfile?: {
+        managedOutboundIps?: { count?: number };
+        effectiveOutboundIps?: { id?: string }[];
+      };
+      preconfiguredNSG?: "Disabled" | "Enabled";
+    };
+    masterProfile?: {
+      vmSize?: string;
+      subnetId?: string;
+      encryptionAtHost?: "Disabled" | "Enabled";
+      diskEncryptionSetId?: string;
+    };
+    workerProfiles?: {
+      name?: string;
+      vmSize?: string;
+      diskSizeGB?: number;
+      subnetId?: string;
+      count?: number;
+      encryptionAtHost?: "Disabled" | "Enabled";
+      diskEncryptionSetId?: string;
+    }[];
+    workerProfilesStatus?: {
+      name?: string;
+      vmSize?: string;
+      diskSizeGB?: number;
+      subnetId?: string;
+      count?: number;
+      encryptionAtHost?: "Disabled" | "Enabled";
+      diskEncryptionSetId?: string;
+    }[];
+    apiserverProfile?: {
+      visibility?: "Private" | "Public";
+      url?: string;
+      ip?: string;
+    };
+    ingressProfiles?: {
+      name?: string;
+      visibility?: "Private" | "Public";
+      ip?: string;
+    }[];
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const OpenShiftClustersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -183,11 +278,22 @@ export const OpenShiftClustersCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/openShiftClusters/{resourceName}",
       apiVersion: "2025-07-25",
     }),
-  );
-export type OpenShiftClustersCreateOrUpdateInput =
-  typeof OpenShiftClustersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<OpenShiftClustersCreateOrUpdateInput>;
 
 // Output Schema
+export interface OpenShiftClustersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OpenShiftClustersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -207,9 +313,7 @@ export const OpenShiftClustersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type OpenShiftClustersCreateOrUpdateOutput =
-  typeof OpenShiftClustersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<OpenShiftClustersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -228,6 +332,11 @@ export const OpenShiftClustersCreateOrUpdate =
     outputSchema: OpenShiftClustersCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface OpenShiftClustersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const OpenShiftClustersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -239,15 +348,12 @@ export const OpenShiftClustersDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/openShiftClusters/{resourceName}",
       apiVersion: "2025-07-25",
     }),
-  );
-export type OpenShiftClustersDeleteInput =
-  typeof OpenShiftClustersDeleteInput.Type;
+  ) as unknown as Schema.Codec<OpenShiftClustersDeleteInput>;
 
 // Output Schema
+export type OpenShiftClustersDeleteOutput = void;
 export const OpenShiftClustersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type OpenShiftClustersDeleteOutput =
-  typeof OpenShiftClustersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OpenShiftClustersDeleteOutput>;
 
 // The operation
 /**
@@ -267,6 +373,11 @@ export const OpenShiftClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OpenShiftClustersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const OpenShiftClustersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -278,10 +389,22 @@ export const OpenShiftClustersGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/openShiftClusters/{resourceName}",
       apiVersion: "2025-07-25",
     }),
-  );
-export type OpenShiftClustersGetInput = typeof OpenShiftClustersGetInput.Type;
+  ) as unknown as Schema.Codec<OpenShiftClustersGetInput>;
 
 // Output Schema
+export interface OpenShiftClustersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OpenShiftClustersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -301,8 +424,7 @@ export const OpenShiftClustersGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type OpenShiftClustersGetOutput = typeof OpenShiftClustersGetOutput.Type;
+  }) as unknown as Schema.Codec<OpenShiftClustersGetOutput>;
 
 // The operation
 /**
@@ -322,6 +444,9 @@ export const OpenShiftClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OpenShiftClustersListInput {
+  subscriptionId: string;
+}
 export const OpenShiftClustersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -331,10 +456,25 @@ export const OpenShiftClustersListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.RedHatOpenShift/openShiftClusters",
       apiVersion: "2025-07-25",
     }),
-  );
-export type OpenShiftClustersListInput = typeof OpenShiftClustersListInput.Type;
+  ) as unknown as Schema.Codec<OpenShiftClustersListInput>;
 
 // Output Schema
+export interface OpenShiftClustersListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const OpenShiftClustersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -369,9 +509,7 @@ export const OpenShiftClustersListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type OpenShiftClustersListOutput =
-  typeof OpenShiftClustersListOutput.Type;
+  }) as unknown as Schema.Codec<OpenShiftClustersListOutput>;
 
 // The operation
 /**
@@ -389,6 +527,11 @@ export const OpenShiftClustersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OpenShiftClustersListAdminCredentialsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const OpenShiftClustersListAdminCredentialsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -400,17 +543,16 @@ export const OpenShiftClustersListAdminCredentialsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/openShiftClusters/{resourceName}/listAdminCredentials",
       apiVersion: "2025-07-25",
     }),
-  );
-export type OpenShiftClustersListAdminCredentialsInput =
-  typeof OpenShiftClustersListAdminCredentialsInput.Type;
+  ) as unknown as Schema.Codec<OpenShiftClustersListAdminCredentialsInput>;
 
 // Output Schema
+export interface OpenShiftClustersListAdminCredentialsOutput {
+  kubeconfig?: string;
+}
 export const OpenShiftClustersListAdminCredentialsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kubeconfig: Schema.optional(Schema.String),
-  });
-export type OpenShiftClustersListAdminCredentialsOutput =
-  typeof OpenShiftClustersListAdminCredentialsOutput.Type;
+  }) as unknown as Schema.Codec<OpenShiftClustersListAdminCredentialsOutput>;
 
 // The operation
 /**
@@ -429,6 +571,10 @@ export const OpenShiftClustersListAdminCredentials =
     outputSchema: OpenShiftClustersListAdminCredentialsOutput,
   }));
 // Input Schema
+export interface OpenShiftClustersListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const OpenShiftClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -439,11 +585,25 @@ export const OpenShiftClustersListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/openShiftClusters",
       apiVersion: "2025-07-25",
     }),
-  );
-export type OpenShiftClustersListByResourceGroupInput =
-  typeof OpenShiftClustersListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<OpenShiftClustersListByResourceGroupInput>;
 
 // Output Schema
+export interface OpenShiftClustersListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const OpenShiftClustersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -478,9 +638,7 @@ export const OpenShiftClustersListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type OpenShiftClustersListByResourceGroupOutput =
-  typeof OpenShiftClustersListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<OpenShiftClustersListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -498,6 +656,11 @@ export const OpenShiftClustersListByResourceGroup =
     outputSchema: OpenShiftClustersListByResourceGroupOutput,
   }));
 // Input Schema
+export interface OpenShiftClustersListCredentialsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const OpenShiftClustersListCredentialsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -509,18 +672,18 @@ export const OpenShiftClustersListCredentialsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/openShiftClusters/{resourceName}/listCredentials",
       apiVersion: "2025-07-25",
     }),
-  );
-export type OpenShiftClustersListCredentialsInput =
-  typeof OpenShiftClustersListCredentialsInput.Type;
+  ) as unknown as Schema.Codec<OpenShiftClustersListCredentialsInput>;
 
 // Output Schema
+export interface OpenShiftClustersListCredentialsOutput {
+  kubeadminUsername?: string;
+  kubeadminPassword?: Redacted.Redacted<string>;
+}
 export const OpenShiftClustersListCredentialsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kubeadminUsername: Schema.optional(Schema.String),
     kubeadminPassword: Schema.optional(SensitiveOutputString),
-  });
-export type OpenShiftClustersListCredentialsOutput =
-  typeof OpenShiftClustersListCredentialsOutput.Type;
+  }) as unknown as Schema.Codec<OpenShiftClustersListCredentialsOutput>;
 
 // The operation
 /**
@@ -539,6 +702,99 @@ export const OpenShiftClustersListCredentials =
     outputSchema: OpenShiftClustersListCredentialsOutput,
   }));
 // Input Schema
+export interface OpenShiftClustersUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    provisioningState?:
+      | "AdminUpdating"
+      | "Canceled"
+      | "Creating"
+      | "Deleting"
+      | "Failed"
+      | "Succeeded"
+      | "Updating";
+    clusterProfile?: {
+      pullSecret?: string;
+      domain?: string;
+      version?: string;
+      resourceGroupId?: string;
+      fipsValidatedModules?: "Disabled" | "Enabled";
+      oidcIssuer?: string;
+    };
+    consoleProfile?: { url?: string };
+    servicePrincipalProfile?: {
+      clientId?: string;
+      clientSecret?: string | Redacted.Redacted<string>;
+    };
+    platformWorkloadIdentityProfile?: {
+      upgradeableTo?: string;
+      platformWorkloadIdentities?: Record<
+        string,
+        { resourceId?: string; clientId?: string; objectId?: string }
+      >;
+    };
+    networkProfile?: {
+      podCidr?: string;
+      serviceCidr?: string;
+      outboundType?: "Loadbalancer" | "UserDefinedRouting";
+      loadBalancerProfile?: {
+        managedOutboundIps?: { count?: number };
+        effectiveOutboundIps?: { id?: string }[];
+      };
+      preconfiguredNSG?: "Disabled" | "Enabled";
+    };
+    masterProfile?: {
+      vmSize?: string;
+      subnetId?: string;
+      encryptionAtHost?: "Disabled" | "Enabled";
+      diskEncryptionSetId?: string;
+    };
+    workerProfiles?: {
+      name?: string;
+      vmSize?: string;
+      diskSizeGB?: number;
+      subnetId?: string;
+      count?: number;
+      encryptionAtHost?: "Disabled" | "Enabled";
+      diskEncryptionSetId?: string;
+    }[];
+    workerProfilesStatus?: {
+      name?: string;
+      vmSize?: string;
+      diskSizeGB?: number;
+      subnetId?: string;
+      count?: number;
+      encryptionAtHost?: "Disabled" | "Enabled";
+      diskEncryptionSetId?: string;
+    }[];
+    apiserverProfile?: {
+      visibility?: "Private" | "Public";
+      url?: string;
+      ip?: string;
+    };
+    ingressProfiles?: {
+      name?: string;
+      visibility?: "Private" | "Public";
+      ip?: string;
+    }[];
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const OpenShiftClustersUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -711,11 +967,22 @@ export const OpenShiftClustersUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/openShiftClusters/{resourceName}",
       apiVersion: "2025-07-25",
     }),
-  );
-export type OpenShiftClustersUpdateInput =
-  typeof OpenShiftClustersUpdateInput.Type;
+  ) as unknown as Schema.Codec<OpenShiftClustersUpdateInput>;
 
 // Output Schema
+export interface OpenShiftClustersUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OpenShiftClustersUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -735,9 +1002,7 @@ export const OpenShiftClustersUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type OpenShiftClustersUpdateOutput =
-  typeof OpenShiftClustersUpdateOutput.Type;
+  }) as unknown as Schema.Codec<OpenShiftClustersUpdateOutput>;
 
 // The operation
 /**
@@ -757,6 +1022,11 @@ export const OpenShiftClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OpenShiftVersionsGetInput {
+  subscriptionId: string;
+  location: string;
+  openShiftVersion: string;
+}
 export const OpenShiftVersionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -768,10 +1038,22 @@ export const OpenShiftVersionsGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.RedHatOpenShift/locations/{location}/openShiftVersions/{openShiftVersion}",
       apiVersion: "2025-07-25",
     }),
-  );
-export type OpenShiftVersionsGetInput = typeof OpenShiftVersionsGetInput.Type;
+  ) as unknown as Schema.Codec<OpenShiftVersionsGetInput>;
 
 // Output Schema
+export interface OpenShiftVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OpenShiftVersionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -791,8 +1073,7 @@ export const OpenShiftVersionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type OpenShiftVersionsGetOutput = typeof OpenShiftVersionsGetOutput.Type;
+  }) as unknown as Schema.Codec<OpenShiftVersionsGetOutput>;
 
 // The operation
 /**
@@ -812,6 +1093,10 @@ export const OpenShiftVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OpenShiftVersionsListInput {
+  subscriptionId: string;
+  location: string;
+}
 export const OpenShiftVersionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -822,10 +1107,25 @@ export const OpenShiftVersionsListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.RedHatOpenShift/locations/{location}/openShiftVersions",
       apiVersion: "2025-07-25",
     }),
-  );
-export type OpenShiftVersionsListInput = typeof OpenShiftVersionsListInput.Type;
+  ) as unknown as Schema.Codec<OpenShiftVersionsListInput>;
 
 // Output Schema
+export interface OpenShiftVersionsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const OpenShiftVersionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -860,9 +1160,7 @@ export const OpenShiftVersionsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type OpenShiftVersionsListOutput =
-  typeof OpenShiftVersionsListOutput.Type;
+  }) as unknown as Schema.Codec<OpenShiftVersionsListOutput>;
 
 // The operation
 /**
@@ -881,6 +1179,7 @@ export const OpenShiftVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -889,10 +1188,22 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.RedHatOpenShift/operations",
     apiVersion: "2025-07-25",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value: {
+    name?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: string;
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -909,8 +1220,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -923,6 +1233,11 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PlatformWorkloadIdentityRoleSetGetInput {
+  subscriptionId: string;
+  location: string;
+  openShiftMinorVersion: string;
+}
 export const PlatformWorkloadIdentityRoleSetGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -934,11 +1249,22 @@ export const PlatformWorkloadIdentityRoleSetGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.RedHatOpenShift/locations/{location}/platformWorkloadIdentityRoleSets/{openShiftMinorVersion}",
       apiVersion: "2025-07-25",
     }),
-  );
-export type PlatformWorkloadIdentityRoleSetGetInput =
-  typeof PlatformWorkloadIdentityRoleSetGetInput.Type;
+  ) as unknown as Schema.Codec<PlatformWorkloadIdentityRoleSetGetInput>;
 
 // Output Schema
+export interface PlatformWorkloadIdentityRoleSetGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PlatformWorkloadIdentityRoleSetGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -958,9 +1284,7 @@ export const PlatformWorkloadIdentityRoleSetGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PlatformWorkloadIdentityRoleSetGetOutput =
-  typeof PlatformWorkloadIdentityRoleSetGetOutput.Type;
+  }) as unknown as Schema.Codec<PlatformWorkloadIdentityRoleSetGetOutput>;
 
 // The operation
 /**
@@ -979,6 +1303,10 @@ export const PlatformWorkloadIdentityRoleSetGet =
     outputSchema: PlatformWorkloadIdentityRoleSetGetOutput,
   }));
 // Input Schema
+export interface PlatformWorkloadIdentityRoleSetsListInput {
+  subscriptionId: string;
+  location: string;
+}
 export const PlatformWorkloadIdentityRoleSetsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -989,11 +1317,25 @@ export const PlatformWorkloadIdentityRoleSetsListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.RedHatOpenShift/locations/{location}/platformWorkloadIdentityRoleSets",
       apiVersion: "2025-07-25",
     }),
-  );
-export type PlatformWorkloadIdentityRoleSetsListInput =
-  typeof PlatformWorkloadIdentityRoleSetsListInput.Type;
+  ) as unknown as Schema.Codec<PlatformWorkloadIdentityRoleSetsListInput>;
 
 // Output Schema
+export interface PlatformWorkloadIdentityRoleSetsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PlatformWorkloadIdentityRoleSetsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1028,9 +1370,7 @@ export const PlatformWorkloadIdentityRoleSetsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PlatformWorkloadIdentityRoleSetsListOutput =
-  typeof PlatformWorkloadIdentityRoleSetsListOutput.Type;
+  }) as unknown as Schema.Codec<PlatformWorkloadIdentityRoleSetsListOutput>;
 
 // The operation
 /**

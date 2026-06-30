@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface ListClusterDetailsInput {
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+}
 export const ListClusterDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     envelope: Schema.optional(Schema.Boolean),
@@ -11,12 +18,14 @@ export const ListClusterDetailsInput =
     itemsPerPage: Schema.optional(Schema.Number),
     pageNum: Schema.optional(Schema.Number),
     pretty: Schema.optional(Schema.Boolean),
-  }).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/clusters" }));
-export type ListClusterDetailsInput = typeof ListClusterDetailsInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/api/atlas/v2/clusters" }),
+  ) as unknown as Schema.Codec<ListClusterDetailsInput>;
 
 // Output Schema
-export const ListClusterDetailsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListClusterDetailsOutput = typeof ListClusterDetailsOutput.Type;
+export type ListClusterDetailsOutput = void;
+export const ListClusterDetailsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListClusterDetailsOutput>;
 
 // The operation
 /**

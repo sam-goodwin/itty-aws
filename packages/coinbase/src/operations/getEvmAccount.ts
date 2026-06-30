@@ -3,20 +3,30 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetEvmAccountInput {
+  address: string;
+}
 export const GetEvmAccountInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   address: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "GET", path: "/v2/evm/accounts/{address}" }));
-export type GetEvmAccountInput = typeof GetEvmAccountInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/v2/evm/accounts/{address}" }),
+) as unknown as Schema.Codec<GetEvmAccountInput>;
 
 // Output Schema
+export interface GetEvmAccountOutput {
+  address: string;
+  name?: string;
+  policies?: string[];
+  createdAt?: string;
+  updatedAt?: string;
+}
 export const GetEvmAccountOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   address: Schema.String,
   name: Schema.optional(Schema.String),
   policies: Schema.optional(Schema.Array(Schema.String)),
   createdAt: Schema.optional(Schema.String),
   updatedAt: Schema.optional(Schema.String),
-});
-export type GetEvmAccountOutput = typeof GetEvmAccountOutput.Type;
+}) as unknown as Schema.Codec<GetEvmAccountOutput>;
 
 // The operation
 /**

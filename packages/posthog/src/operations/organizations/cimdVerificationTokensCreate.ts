@@ -3,6 +3,35 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface CimdVerificationTokensCreateInput {
+  organization_id: string;
+  id: string;
+  label: string;
+  mask_value: string | null;
+  created_by: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  };
+  created_at: string;
+  last_used_at: string | null;
+}
 export const CimdVerificationTokensCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
@@ -20,7 +49,23 @@ export const CimdVerificationTokensCreateInput =
       hedgehog_config: Schema.optional(
         Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
+      role_at_organization: Schema.optional(
+        Schema.NullOr(
+          Schema.Union([
+            Schema.Literals([
+              "engineering",
+              "data",
+              "product",
+              "founder",
+              "leadership",
+              "marketing",
+              "sales",
+              "other",
+            ]),
+            Schema.Literals([""]),
+          ]),
+        ),
+      ),
     }),
     created_at: Schema.String,
     last_used_at: Schema.NullOr(Schema.String),
@@ -29,11 +74,38 @@ export const CimdVerificationTokensCreateInput =
       method: "POST",
       path: "/api/organizations/{organization_id}/cimd_verification_tokens/",
     }),
-  );
-export type CimdVerificationTokensCreateInput =
-  typeof CimdVerificationTokensCreateInput.Type;
+  ) as unknown as Schema.Codec<CimdVerificationTokensCreateInput>;
 
 // Output Schema
+export interface CimdVerificationTokensCreateOutput {
+  id: string;
+  label: string;
+  mask_value: string | null;
+  created_by: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  };
+  created_at: string;
+  last_used_at: string | null;
+  value: string;
+}
 export const CimdVerificationTokensCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -50,14 +122,28 @@ export const CimdVerificationTokensCreateOutput =
       hedgehog_config: Schema.optional(
         Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
+      role_at_organization: Schema.optional(
+        Schema.NullOr(
+          Schema.Union([
+            Schema.Literals([
+              "engineering",
+              "data",
+              "product",
+              "founder",
+              "leadership",
+              "marketing",
+              "sales",
+              "other",
+            ]),
+            Schema.Literals([""]),
+          ]),
+        ),
+      ),
     }),
     created_at: Schema.String,
     last_used_at: Schema.NullOr(Schema.String),
     value: Schema.String,
-  });
-export type CimdVerificationTokensCreateOutput =
-  typeof CimdVerificationTokensCreateOutput.Type;
+  }) as unknown as Schema.Codec<CimdVerificationTokensCreateOutput>;
 
 // The operation
 /**

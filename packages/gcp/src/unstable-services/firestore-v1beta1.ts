@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface Status {
   code?: number;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -53,7 +53,7 @@ export interface GoogleLongrunningOperation {
   name?: string;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
+export const GoogleLongrunningOperation: Schema.Codec<GoogleLongrunningOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     done: Schema.optional(Schema.Boolean),
@@ -69,7 +69,7 @@ export interface GoogleFirestoreAdminV1beta1Progress {
   workEstimated?: string;
 }
 
-export const GoogleFirestoreAdminV1beta1Progress: Schema.Schema<GoogleFirestoreAdminV1beta1Progress> =
+export const GoogleFirestoreAdminV1beta1Progress: Schema.Codec<GoogleFirestoreAdminV1beta1Progress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     workCompleted: Schema.optional(Schema.String),
     workEstimated: Schema.optional(Schema.String),
@@ -93,7 +93,7 @@ export interface GoogleFirestoreAdminV1beta1IndexOperationMetadata {
   endTime?: string;
 }
 
-export const GoogleFirestoreAdminV1beta1IndexOperationMetadata: Schema.Schema<GoogleFirestoreAdminV1beta1IndexOperationMetadata> =
+export const GoogleFirestoreAdminV1beta1IndexOperationMetadata: Schema.Codec<GoogleFirestoreAdminV1beta1IndexOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     documentProgress: Schema.optional(GoogleFirestoreAdminV1beta1Progress),
     operationType: Schema.optional(Schema.String),
@@ -110,7 +110,7 @@ export interface GoogleFirestoreAdminV1beta1ExportDocumentsResponse {
   outputUriPrefix?: string;
 }
 
-export const GoogleFirestoreAdminV1beta1ExportDocumentsResponse: Schema.Schema<GoogleFirestoreAdminV1beta1ExportDocumentsResponse> =
+export const GoogleFirestoreAdminV1beta1ExportDocumentsResponse: Schema.Codec<GoogleFirestoreAdminV1beta1ExportDocumentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     outputUriPrefix: Schema.optional(Schema.String),
   }).annotate({
@@ -122,7 +122,7 @@ export interface FieldReference {
   fieldPath?: string;
 }
 
-export const FieldReference: Schema.Schema<FieldReference> =
+export const FieldReference: Schema.Codec<FieldReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldPath: Schema.optional(Schema.String),
   }).annotate({ identifier: "FieldReference" });
@@ -140,7 +140,7 @@ export interface UnaryFilter {
   field?: FieldReference;
 }
 
-export const UnaryFilter: Schema.Schema<UnaryFilter> =
+export const UnaryFilter: Schema.Codec<UnaryFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     op: Schema.optional(Schema.String),
     field: Schema.optional(FieldReference),
@@ -157,7 +157,7 @@ export interface Order {
     | (string & {});
 }
 
-export const Order: Schema.Schema<Order> =
+export const Order: Schema.Codec<Order> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     field: Schema.optional(FieldReference),
     direction: Schema.optional(Schema.String),
@@ -174,7 +174,7 @@ export interface ReadWrite {
     | (string & {});
 }
 
-export const ReadWrite: Schema.Schema<ReadWrite> =
+export const ReadWrite: Schema.Codec<ReadWrite> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     retryTransaction: Schema.optional(Schema.String),
     concurrencyMode: Schema.optional(Schema.String),
@@ -187,7 +187,7 @@ export interface CollectionSelector {
   allDescendants?: boolean;
 }
 
-export const CollectionSelector: Schema.Schema<CollectionSelector> =
+export const CollectionSelector: Schema.Codec<CollectionSelector> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     collectionId: Schema.optional(Schema.String),
     allDescendants: Schema.optional(Schema.Boolean),
@@ -198,24 +198,24 @@ export interface ArrayValue {
   values?: ReadonlyArray<Value>;
 }
 
-export const ArrayValue: Schema.Schema<ArrayValue> =
+export const ArrayValue: Schema.Codec<ArrayValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       values: Schema.optional(Schema.Array(Value)),
     }),
-  ).annotate({ identifier: "ArrayValue" }) as any as Schema.Schema<ArrayValue>;
+  ).annotate({ identifier: "ArrayValue" }) as any as Schema.Codec<ArrayValue>;
 
 export interface MapValue {
   /** The map's fields. The map keys represent field names. Field names matching the regular expression `__.*__` are reserved. Reserved field names are forbidden except in certain documented contexts. The map keys, represented as UTF-8, must not exceed 1,500 bytes and cannot be empty. */
   fields?: Record<string, Value>;
 }
 
-export const MapValue: Schema.Schema<MapValue> =
+export const MapValue: Schema.Codec<MapValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       fields: Schema.optional(Schema.Record(Schema.String, Value)),
     }),
-  ).annotate({ identifier: "MapValue" }) as any as Schema.Schema<MapValue>;
+  ).annotate({ identifier: "MapValue" }) as any as Schema.Codec<MapValue>;
 
 export interface Stage {
   /** Required. The name of the stage to evaluate. **Requires:** * must be in snake case (lower case with underscore separator). */
@@ -226,26 +226,26 @@ export interface Stage {
   options?: Record<string, Value>;
 }
 
-export const Stage: Schema.Schema<Stage> =
+export const Stage: Schema.Codec<Stage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.optional(Schema.String),
       args: Schema.optional(Schema.Array(Value)),
       options: Schema.optional(Schema.Record(Schema.String, Value)),
     }),
-  ).annotate({ identifier: "Stage" }) as any as Schema.Schema<Stage>;
+  ).annotate({ identifier: "Stage" }) as any as Schema.Codec<Stage>;
 
 export interface Pipeline {
   /** Required. Ordered list of stages to evaluate. */
   stages?: ReadonlyArray<Stage>;
 }
 
-export const Pipeline: Schema.Schema<Pipeline> =
+export const Pipeline: Schema.Codec<Pipeline> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       stages: Schema.optional(Schema.Array(Stage)),
     }),
-  ).annotate({ identifier: "Pipeline" }) as any as Schema.Schema<Pipeline>;
+  ).annotate({ identifier: "Pipeline" }) as any as Schema.Codec<Pipeline>;
 
 export interface LatLng {
   /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
@@ -254,7 +254,7 @@ export interface LatLng {
   longitude?: number;
 }
 
-export const LatLng: Schema.Schema<LatLng> =
+export const LatLng: Schema.Codec<LatLng> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     latitude: Schema.optional(Schema.Number),
     longitude: Schema.optional(Schema.Number),
@@ -269,7 +269,7 @@ export interface Firestore_Function {
   options?: Record<string, Value>;
 }
 
-export const Firestore_Function: Schema.Schema<Firestore_Function> =
+export const Firestore_Function: Schema.Codec<Firestore_Function> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -278,7 +278,7 @@ export const Firestore_Function: Schema.Schema<Firestore_Function> =
     }),
   ).annotate({
     identifier: "Firestore_Function",
-  }) as any as Schema.Schema<Firestore_Function>;
+  }) as any as Schema.Codec<Firestore_Function>;
 
 export interface Value {
   /** A string value. The string, represented as UTF-8, must not exceed 1 MiB - 89 bytes. Only the first 1,500 bytes of the UTF-8 representation are considered by queries. */
@@ -313,7 +313,7 @@ export interface Value {
   timestampValue?: string;
 }
 
-export const Value: Schema.Schema<Value> =
+export const Value: Schema.Codec<Value> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       stringValue: Schema.optional(Schema.String),
@@ -332,7 +332,7 @@ export const Value: Schema.Schema<Value> =
       functionValue: Schema.optional(Firestore_Function),
       timestampValue: Schema.optional(Schema.String),
     }),
-  ).annotate({ identifier: "Value" }) as any as Schema.Schema<Value>;
+  ).annotate({ identifier: "Value" }) as any as Schema.Codec<Value>;
 
 export interface Cursor {
   /** The values that represent a position, in the order they appear in the order by clause of a query. Can contain fewer values than specified in the order by clause. */
@@ -341,7 +341,7 @@ export interface Cursor {
   before?: boolean;
 }
 
-export const Cursor: Schema.Schema<Cursor> =
+export const Cursor: Schema.Codec<Cursor> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Value)),
     before: Schema.optional(Schema.Boolean),
@@ -354,7 +354,7 @@ export interface CompositeFilter {
   filters?: ReadonlyArray<Filter>;
 }
 
-export const CompositeFilter: Schema.Schema<CompositeFilter> =
+export const CompositeFilter: Schema.Codec<CompositeFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       op: Schema.optional(Schema.String),
@@ -362,7 +362,7 @@ export const CompositeFilter: Schema.Schema<CompositeFilter> =
     }),
   ).annotate({
     identifier: "CompositeFilter",
-  }) as any as Schema.Schema<CompositeFilter>;
+  }) as any as Schema.Codec<CompositeFilter>;
 
 export interface FieldFilter {
   /** The field to filter by. */
@@ -385,7 +385,7 @@ export interface FieldFilter {
     | (string & {});
 }
 
-export const FieldFilter: Schema.Schema<FieldFilter> =
+export const FieldFilter: Schema.Codec<FieldFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     field: Schema.optional(FieldReference),
     value: Schema.optional(Value),
@@ -401,14 +401,14 @@ export interface Filter {
   unaryFilter?: UnaryFilter;
 }
 
-export const Filter: Schema.Schema<Filter> =
+export const Filter: Schema.Codec<Filter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       compositeFilter: Schema.optional(CompositeFilter),
       fieldFilter: Schema.optional(FieldFilter),
       unaryFilter: Schema.optional(UnaryFilter),
     }),
-  ).annotate({ identifier: "Filter" }) as any as Schema.Schema<Filter>;
+  ).annotate({ identifier: "Filter" }) as any as Schema.Codec<Filter>;
 
 export interface FindNearest {
   /** Optional. Option to specify a threshold for which no less similar documents will be returned. The behavior of the specified `distance_measure` will affect the meaning of the distance threshold. Since DOT_PRODUCT distances increase when the vectors are more similar, the comparison is inverted. * For EUCLIDEAN, COSINE: `WHERE distance <= distance_threshold` * For DOT_PRODUCT: `WHERE distance >= distance_threshold` */
@@ -430,7 +430,7 @@ export interface FindNearest {
     | (string & {});
 }
 
-export const FindNearest: Schema.Schema<FindNearest> =
+export const FindNearest: Schema.Codec<FindNearest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     distanceThreshold: Schema.optional(Schema.Number),
     queryVector: Schema.optional(Value),
@@ -445,7 +445,7 @@ export interface Projection {
   fields?: ReadonlyArray<FieldReference>;
 }
 
-export const Projection: Schema.Schema<Projection> =
+export const Projection: Schema.Codec<Projection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fields: Schema.optional(Schema.Array(FieldReference)),
   }).annotate({ identifier: "Projection" });
@@ -471,7 +471,7 @@ export interface StructuredQuery {
   orderBy?: ReadonlyArray<Order>;
 }
 
-export const StructuredQuery: Schema.Schema<StructuredQuery> =
+export const StructuredQuery: Schema.Codec<StructuredQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     from: Schema.optional(Schema.Array(CollectionSelector)),
     startAt: Schema.optional(Cursor),
@@ -491,7 +491,7 @@ export interface BitSequence {
   bitmap?: string;
 }
 
-export const BitSequence: Schema.Schema<BitSequence> =
+export const BitSequence: Schema.Codec<BitSequence> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     padding: Schema.optional(Schema.Number),
     bitmap: Schema.optional(Schema.String),
@@ -504,7 +504,7 @@ export interface BloomFilter {
   bits?: BitSequence;
 }
 
-export const BloomFilter: Schema.Schema<BloomFilter> =
+export const BloomFilter: Schema.Codec<BloomFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hashCount: Schema.optional(Schema.Number),
     bits: Schema.optional(BitSequence),
@@ -519,7 +519,7 @@ export interface ExistenceFilter {
   unchangedNames?: BloomFilter;
 }
 
-export const ExistenceFilter: Schema.Schema<ExistenceFilter> =
+export const ExistenceFilter: Schema.Codec<ExistenceFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetId: Schema.optional(Schema.Number),
     count: Schema.optional(Schema.Number),
@@ -535,7 +535,7 @@ export interface ListCollectionIdsRequest {
   pageToken?: string;
 }
 
-export const ListCollectionIdsRequest: Schema.Schema<ListCollectionIdsRequest> =
+export const ListCollectionIdsRequest: Schema.Codec<ListCollectionIdsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number),
     readTime: Schema.optional(Schema.String),
@@ -553,7 +553,7 @@ export interface Document {
   createTime?: string;
 }
 
-export const Document: Schema.Schema<Document> =
+export const Document: Schema.Codec<Document> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -568,7 +568,7 @@ export interface ListDocumentsResponse {
   documents?: ReadonlyArray<Document>;
 }
 
-export const ListDocumentsResponse: Schema.Schema<ListDocumentsResponse> =
+export const ListDocumentsResponse: Schema.Codec<ListDocumentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     documents: Schema.optional(Schema.Array(Document)),
@@ -581,7 +581,7 @@ export interface GoogleFirestoreAdminV1beta1ImportDocumentsRequest {
   collectionIds?: ReadonlyArray<string>;
 }
 
-export const GoogleFirestoreAdminV1beta1ImportDocumentsRequest: Schema.Schema<GoogleFirestoreAdminV1beta1ImportDocumentsRequest> =
+export const GoogleFirestoreAdminV1beta1ImportDocumentsRequest: Schema.Codec<GoogleFirestoreAdminV1beta1ImportDocumentsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inputUriPrefix: Schema.optional(Schema.String),
     collectionIds: Schema.optional(Schema.Array(Schema.String)),
@@ -596,7 +596,7 @@ export interface GoogleFirestoreAdminV1Progress {
   completedWork?: string;
 }
 
-export const GoogleFirestoreAdminV1Progress: Schema.Schema<GoogleFirestoreAdminV1Progress> =
+export const GoogleFirestoreAdminV1Progress: Schema.Codec<GoogleFirestoreAdminV1Progress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     estimatedWork: Schema.optional(Schema.String),
     completedWork: Schema.optional(Schema.String),
@@ -626,7 +626,7 @@ export interface GoogleFirestoreAdminV1RestoreDatabaseMetadata {
   backup?: string;
 }
 
-export const GoogleFirestoreAdminV1RestoreDatabaseMetadata: Schema.Schema<GoogleFirestoreAdminV1RestoreDatabaseMetadata> =
+export const GoogleFirestoreAdminV1RestoreDatabaseMetadata: Schema.Codec<GoogleFirestoreAdminV1RestoreDatabaseMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -649,7 +649,7 @@ export interface PartitionQueryRequest {
   pageToken?: string;
 }
 
-export const PartitionQueryRequest: Schema.Schema<PartitionQueryRequest> =
+export const PartitionQueryRequest: Schema.Codec<PartitionQueryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partitionCount: Schema.optional(Schema.String),
     structuredQuery: Schema.optional(StructuredQuery),
@@ -663,7 +663,7 @@ export interface AggregationResult {
   aggregateFields?: Record<string, Value>;
 }
 
-export const AggregationResult: Schema.Schema<AggregationResult> =
+export const AggregationResult: Schema.Codec<AggregationResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     aggregateFields: Schema.optional(Schema.Record(Schema.String, Value)),
   }).annotate({ identifier: "AggregationResult" });
@@ -679,7 +679,7 @@ export interface ExecutionStats {
   resultsReturned?: string;
 }
 
-export const ExecutionStats: Schema.Schema<ExecutionStats> =
+export const ExecutionStats: Schema.Codec<ExecutionStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     executionDuration: Schema.optional(Schema.String),
     readOperations: Schema.optional(Schema.String),
@@ -692,7 +692,7 @@ export interface PlanSummary {
   indexesUsed?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const PlanSummary: Schema.Schema<PlanSummary> =
+export const PlanSummary: Schema.Codec<PlanSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     indexesUsed: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -706,7 +706,7 @@ export interface ExplainMetrics {
   planSummary?: PlanSummary;
 }
 
-export const ExplainMetrics: Schema.Schema<ExplainMetrics> =
+export const ExplainMetrics: Schema.Codec<ExplainMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     executionStats: Schema.optional(ExecutionStats),
     planSummary: Schema.optional(PlanSummary),
@@ -723,7 +723,7 @@ export interface RunAggregationQueryResponse {
   explainMetrics?: ExplainMetrics;
 }
 
-export const RunAggregationQueryResponse: Schema.Schema<RunAggregationQueryResponse> =
+export const RunAggregationQueryResponse: Schema.Codec<RunAggregationQueryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transaction: Schema.optional(Schema.String),
     result: Schema.optional(AggregationResult),
@@ -736,7 +736,7 @@ export interface ReadOnly {
   readTime?: string;
 }
 
-export const ReadOnly: Schema.Schema<ReadOnly> =
+export const ReadOnly: Schema.Codec<ReadOnly> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     readTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "ReadOnly" });
@@ -748,7 +748,7 @@ export interface TransactionOptions {
   readWrite?: ReadWrite;
 }
 
-export const TransactionOptions: Schema.Schema<TransactionOptions> =
+export const TransactionOptions: Schema.Codec<TransactionOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     readOnly: Schema.optional(ReadOnly),
     readWrite: Schema.optional(ReadWrite),
@@ -761,7 +761,7 @@ export interface StructuredPipeline {
   options?: Record<string, Value>;
 }
 
-export const StructuredPipeline: Schema.Schema<StructuredPipeline> =
+export const StructuredPipeline: Schema.Codec<StructuredPipeline> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pipeline: Schema.optional(Pipeline),
     options: Schema.optional(Schema.Record(Schema.String, Value)),
@@ -780,7 +780,7 @@ export interface ExecutePipelineRequest {
   transaction?: string;
 }
 
-export const ExecutePipelineRequest: Schema.Schema<ExecutePipelineRequest> =
+export const ExecutePipelineRequest: Schema.Codec<ExecutePipelineRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     newTransaction: Schema.optional(TransactionOptions),
     autoCommitTransaction: Schema.optional(Schema.Boolean),
@@ -808,7 +808,7 @@ export interface TargetChange {
   cause?: Status;
 }
 
-export const TargetChange: Schema.Schema<TargetChange> =
+export const TargetChange: Schema.Codec<TargetChange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetIds: Schema.optional(Schema.Array(Schema.Number)),
     resumeToken: Schema.optional(Schema.String),
@@ -837,7 +837,7 @@ export interface FieldTransform {
   minimum?: Value;
 }
 
-export const FieldTransform: Schema.Schema<FieldTransform> =
+export const FieldTransform: Schema.Codec<FieldTransform> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appendMissingElements: Schema.optional(ArrayValue),
     setToServerValue: Schema.optional(Schema.String),
@@ -855,7 +855,7 @@ export interface DocumentTransform {
   document?: string;
 }
 
-export const DocumentTransform: Schema.Schema<DocumentTransform> =
+export const DocumentTransform: Schema.Codec<DocumentTransform> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldTransforms: Schema.optional(Schema.Array(FieldTransform)),
     document: Schema.optional(Schema.String),
@@ -866,7 +866,7 @@ export interface DocumentMask {
   fieldPaths?: ReadonlyArray<string>;
 }
 
-export const DocumentMask: Schema.Schema<DocumentMask> =
+export const DocumentMask: Schema.Codec<DocumentMask> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldPaths: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "DocumentMask" });
@@ -878,7 +878,7 @@ export interface Precondition {
   updateTime?: string;
 }
 
-export const Precondition: Schema.Schema<Precondition> =
+export const Precondition: Schema.Codec<Precondition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exists: Schema.optional(Schema.Boolean),
     updateTime: Schema.optional(Schema.String),
@@ -899,7 +899,7 @@ export interface Write {
   currentDocument?: Precondition;
 }
 
-export const Write: Schema.Schema<Write> =
+export const Write: Schema.Codec<Write> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transform: Schema.optional(DocumentTransform),
     delete: Schema.optional(Schema.String),
@@ -916,7 +916,7 @@ export interface CommitRequest {
   transaction?: string;
 }
 
-export const CommitRequest: Schema.Schema<CommitRequest> =
+export const CommitRequest: Schema.Codec<CommitRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     writes: Schema.optional(Schema.Array(Write)),
     transaction: Schema.optional(Schema.String),
@@ -948,7 +948,7 @@ export interface GoogleFirestoreAdminV1beta1ExportDocumentsMetadata {
   progressBytes?: GoogleFirestoreAdminV1beta1Progress;
 }
 
-export const GoogleFirestoreAdminV1beta1ExportDocumentsMetadata: Schema.Schema<GoogleFirestoreAdminV1beta1ExportDocumentsMetadata> =
+export const GoogleFirestoreAdminV1beta1ExportDocumentsMetadata: Schema.Codec<GoogleFirestoreAdminV1beta1ExportDocumentsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     operationState: Schema.optional(Schema.String),
@@ -970,7 +970,7 @@ export interface DocumentChange {
   removedTargetIds?: ReadonlyArray<number>;
 }
 
-export const DocumentChange: Schema.Schema<DocumentChange> =
+export const DocumentChange: Schema.Codec<DocumentChange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetIds: Schema.optional(Schema.Array(Schema.Number)),
     document: Schema.optional(Document),
@@ -988,7 +988,7 @@ export interface WriteRequest {
   writes?: ReadonlyArray<Write>;
 }
 
-export const WriteRequest: Schema.Schema<WriteRequest> =
+export const WriteRequest: Schema.Codec<WriteRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     streamId: Schema.optional(Schema.String),
     streamToken: Schema.optional(Schema.String),
@@ -1011,7 +1011,7 @@ export interface RunQueryResponse {
   explainMetrics?: ExplainMetrics;
 }
 
-export const RunQueryResponse: Schema.Schema<RunQueryResponse> =
+export const RunQueryResponse: Schema.Codec<RunQueryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transaction: Schema.optional(Schema.String),
     document: Schema.optional(Document),
@@ -1049,7 +1049,7 @@ export interface GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata {
   progressBytes?: GoogleFirestoreAdminV1Progress;
 }
 
-export const GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata: Schema.Schema<GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata> =
+export const GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata: Schema.Codec<GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     progressDocuments: Schema.optional(GoogleFirestoreAdminV1Progress),
@@ -1072,7 +1072,7 @@ export interface DocumentRemove {
   readTime?: string;
 }
 
-export const DocumentRemove: Schema.Schema<DocumentRemove> =
+export const DocumentRemove: Schema.Codec<DocumentRemove> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     document: Schema.optional(Schema.String),
     removedTargetIds: Schema.optional(Schema.Array(Schema.Number)),
@@ -1088,7 +1088,7 @@ export interface DocumentDelete {
   readTime?: string;
 }
 
-export const DocumentDelete: Schema.Schema<DocumentDelete> =
+export const DocumentDelete: Schema.Codec<DocumentDelete> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     document: Schema.optional(Schema.String),
     removedTargetIds: Schema.optional(Schema.Array(Schema.Number)),
@@ -1108,7 +1108,7 @@ export interface ListenResponse {
   documentDelete?: DocumentDelete;
 }
 
-export const ListenResponse: Schema.Schema<ListenResponse> =
+export const ListenResponse: Schema.Codec<ListenResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     documentRemove: Schema.optional(DocumentRemove),
     filter: Schema.optional(ExistenceFilter),
@@ -1124,7 +1124,7 @@ export interface ListCollectionIdsResponse {
   nextPageToken?: string;
 }
 
-export const ListCollectionIdsResponse: Schema.Schema<ListCollectionIdsResponse> =
+export const ListCollectionIdsResponse: Schema.Codec<ListCollectionIdsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     collectionIds: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1135,7 +1135,7 @@ export interface BeginTransactionRequest {
   options?: TransactionOptions;
 }
 
-export const BeginTransactionRequest: Schema.Schema<BeginTransactionRequest> =
+export const BeginTransactionRequest: Schema.Codec<BeginTransactionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     options: Schema.optional(TransactionOptions),
   }).annotate({ identifier: "BeginTransactionRequest" });
@@ -1145,10 +1145,11 @@ export interface Avg {
   field?: FieldReference;
 }
 
-export const Avg: Schema.Schema<Avg> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Avg: Schema.Codec<Avg> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     field: Schema.optional(FieldReference),
-  }).annotate({ identifier: "Avg" });
+  },
+).annotate({ identifier: "Avg" });
 
 export interface QueryTarget {
   /** The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom` */
@@ -1157,7 +1158,7 @@ export interface QueryTarget {
   structuredQuery?: StructuredQuery;
 }
 
-export const QueryTarget: Schema.Schema<QueryTarget> =
+export const QueryTarget: Schema.Codec<QueryTarget> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     structuredQuery: Schema.optional(StructuredQuery),
@@ -1168,7 +1169,7 @@ export interface DocumentsTarget {
   documents?: ReadonlyArray<string>;
 }
 
-export const DocumentsTarget: Schema.Schema<DocumentsTarget> =
+export const DocumentsTarget: Schema.Codec<DocumentsTarget> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     documents: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "DocumentsTarget" });
@@ -1190,7 +1191,7 @@ export interface Target {
   once?: boolean;
 }
 
-export const Target: Schema.Schema<Target> =
+export const Target: Schema.Codec<Target> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expectedCount: Schema.optional(Schema.Number),
     query: Schema.optional(QueryTarget),
@@ -1210,7 +1211,7 @@ export interface ListenRequest {
   removeTarget?: number;
 }
 
-export const ListenRequest: Schema.Schema<ListenRequest> =
+export const ListenRequest: Schema.Codec<ListenRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     addTarget: Schema.optional(Target),
@@ -1230,7 +1231,7 @@ export interface BatchGetDocumentsRequest {
   transaction?: string;
 }
 
-export const BatchGetDocumentsRequest: Schema.Schema<BatchGetDocumentsRequest> =
+export const BatchGetDocumentsRequest: Schema.Codec<BatchGetDocumentsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mask: Schema.optional(DocumentMask),
     newTransaction: Schema.optional(TransactionOptions),
@@ -1244,7 +1245,7 @@ export interface Count {
   upTo?: string;
 }
 
-export const Count: Schema.Schema<Count> =
+export const Count: Schema.Codec<Count> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     upTo: Schema.optional(Schema.String),
   }).annotate({ identifier: "Count" });
@@ -1254,10 +1255,11 @@ export interface Sum {
   field?: FieldReference;
 }
 
-export const Sum: Schema.Schema<Sum> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Sum: Schema.Codec<Sum> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     field: Schema.optional(FieldReference),
-  }).annotate({ identifier: "Sum" });
+  },
+).annotate({ identifier: "Sum" });
 
 export interface Aggregation {
   /** Count aggregator. */
@@ -1270,7 +1272,7 @@ export interface Aggregation {
   alias?: string;
 }
 
-export const Aggregation: Schema.Schema<Aggregation> =
+export const Aggregation: Schema.Codec<Aggregation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Count),
     sum: Schema.optional(Sum),
@@ -1285,7 +1287,7 @@ export interface StructuredAggregationQuery {
   aggregations?: ReadonlyArray<Aggregation>;
 }
 
-export const StructuredAggregationQuery: Schema.Schema<StructuredAggregationQuery> =
+export const StructuredAggregationQuery: Schema.Codec<StructuredAggregationQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     structuredQuery: Schema.optional(StructuredQuery),
     aggregations: Schema.optional(Schema.Array(Aggregation)),
@@ -1296,7 +1298,7 @@ export interface ExplainOptions {
   analyze?: boolean;
 }
 
-export const ExplainOptions: Schema.Schema<ExplainOptions> =
+export const ExplainOptions: Schema.Codec<ExplainOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     analyze: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "ExplainOptions" });
@@ -1314,7 +1316,7 @@ export interface RunAggregationQueryRequest {
   transaction?: string;
 }
 
-export const RunAggregationQueryRequest: Schema.Schema<RunAggregationQueryRequest> =
+export const RunAggregationQueryRequest: Schema.Codec<RunAggregationQueryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     newTransaction: Schema.optional(TransactionOptions),
     structuredAggregationQuery: Schema.optional(StructuredAggregationQuery),
@@ -1328,7 +1330,7 @@ export interface RollbackRequest {
   transaction?: string;
 }
 
-export const RollbackRequest: Schema.Schema<RollbackRequest> =
+export const RollbackRequest: Schema.Codec<RollbackRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transaction: Schema.optional(Schema.String),
   }).annotate({ identifier: "RollbackRequest" });
@@ -1340,7 +1342,7 @@ export interface WriteResult {
   transformResults?: ReadonlyArray<Value>;
 }
 
-export const WriteResult: Schema.Schema<WriteResult> =
+export const WriteResult: Schema.Codec<WriteResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     transformResults: Schema.optional(Schema.Array(Value)),
@@ -1359,7 +1361,7 @@ export interface RunQueryRequest {
   explainOptions?: ExplainOptions;
 }
 
-export const RunQueryRequest: Schema.Schema<RunQueryRequest> =
+export const RunQueryRequest: Schema.Codec<RunQueryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     structuredQuery: Schema.optional(StructuredQuery),
     readTime: Schema.optional(Schema.String),
@@ -1380,7 +1382,7 @@ export interface GoogleFirestoreAdminV1beta1IndexField {
     | (string & {});
 }
 
-export const GoogleFirestoreAdminV1beta1IndexField: Schema.Schema<GoogleFirestoreAdminV1beta1IndexField> =
+export const GoogleFirestoreAdminV1beta1IndexField: Schema.Codec<GoogleFirestoreAdminV1beta1IndexField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldPath: Schema.optional(Schema.String),
     mode: Schema.optional(Schema.String),
@@ -1395,7 +1397,7 @@ export interface GoogleFirestoreAdminV1PitrSnapshot {
   snapshotTime?: string;
 }
 
-export const GoogleFirestoreAdminV1PitrSnapshot: Schema.Schema<GoogleFirestoreAdminV1PitrSnapshot> =
+export const GoogleFirestoreAdminV1PitrSnapshot: Schema.Codec<GoogleFirestoreAdminV1PitrSnapshot> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     database: Schema.optional(Schema.String),
     databaseUid: Schema.optional(Schema.String),
@@ -1413,7 +1415,7 @@ export interface WriteResponse {
   writeResults?: ReadonlyArray<WriteResult>;
 }
 
-export const WriteResponse: Schema.Schema<WriteResponse> =
+export const WriteResponse: Schema.Codec<WriteResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     streamId: Schema.optional(Schema.String),
     streamToken: Schema.optional(Schema.String),
@@ -1423,7 +1425,7 @@ export const WriteResponse: Schema.Schema<WriteResponse> =
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -1435,7 +1437,7 @@ export interface GoogleFirestoreAdminV1beta1ExportDocumentsRequest {
   outputUriPrefix?: string;
 }
 
-export const GoogleFirestoreAdminV1beta1ExportDocumentsRequest: Schema.Schema<GoogleFirestoreAdminV1beta1ExportDocumentsRequest> =
+export const GoogleFirestoreAdminV1beta1ExportDocumentsRequest: Schema.Codec<GoogleFirestoreAdminV1beta1ExportDocumentsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     collectionIds: Schema.optional(Schema.Array(Schema.String)),
     outputUriPrefix: Schema.optional(Schema.String),
@@ -1454,7 +1456,7 @@ export interface GoogleFirestoreAdminV1beta1Index {
   state?: "STATE_UNSPECIFIED" | "CREATING" | "READY" | "ERROR" | (string & {});
 }
 
-export const GoogleFirestoreAdminV1beta1Index: Schema.Schema<GoogleFirestoreAdminV1beta1Index> =
+export const GoogleFirestoreAdminV1beta1Index: Schema.Codec<GoogleFirestoreAdminV1beta1Index> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fields: Schema.optional(
       Schema.Array(GoogleFirestoreAdminV1beta1IndexField),
@@ -1471,7 +1473,7 @@ export interface GoogleFirestoreAdminV1beta1ListIndexesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleFirestoreAdminV1beta1ListIndexesResponse: Schema.Schema<GoogleFirestoreAdminV1beta1ListIndexesResponse> =
+export const GoogleFirestoreAdminV1beta1ListIndexesResponse: Schema.Codec<GoogleFirestoreAdminV1beta1ListIndexesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     indexes: Schema.optional(Schema.Array(GoogleFirestoreAdminV1beta1Index)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1488,7 +1490,7 @@ export interface BatchGetDocumentsResponse {
   transaction?: string;
 }
 
-export const BatchGetDocumentsResponse: Schema.Schema<BatchGetDocumentsResponse> =
+export const BatchGetDocumentsResponse: Schema.Codec<BatchGetDocumentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     readTime: Schema.optional(Schema.String),
     found: Schema.optional(Document),
@@ -1503,7 +1505,7 @@ export interface PartitionQueryResponse {
   nextPageToken?: string;
 }
 
-export const PartitionQueryResponse: Schema.Schema<PartitionQueryResponse> =
+export const PartitionQueryResponse: Schema.Codec<PartitionQueryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partitions: Schema.optional(Schema.Array(Cursor)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1511,7 +1513,7 @@ export const PartitionQueryResponse: Schema.Schema<PartitionQueryResponse> =
 
 export interface GoogleFirestoreAdminV1UpdateDatabaseMetadata {}
 
-export const GoogleFirestoreAdminV1UpdateDatabaseMetadata: Schema.Schema<GoogleFirestoreAdminV1UpdateDatabaseMetadata> =
+export const GoogleFirestoreAdminV1UpdateDatabaseMetadata: Schema.Codec<GoogleFirestoreAdminV1UpdateDatabaseMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirestoreAdminV1UpdateDatabaseMetadata",
   });
@@ -1521,7 +1523,7 @@ export interface ExplainStats {
   data?: Record<string, unknown>;
 }
 
-export const ExplainStats: Schema.Schema<ExplainStats> =
+export const ExplainStats: Schema.Codec<ExplainStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({ identifier: "ExplainStats" });
@@ -1552,7 +1554,7 @@ export interface GoogleFirestoreAdminV1beta1ImportDocumentsMetadata {
   progressBytes?: GoogleFirestoreAdminV1beta1Progress;
 }
 
-export const GoogleFirestoreAdminV1beta1ImportDocumentsMetadata: Schema.Schema<GoogleFirestoreAdminV1beta1ImportDocumentsMetadata> =
+export const GoogleFirestoreAdminV1beta1ImportDocumentsMetadata: Schema.Codec<GoogleFirestoreAdminV1beta1ImportDocumentsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     progressDocuments: Schema.optional(GoogleFirestoreAdminV1beta1Progress),
@@ -1572,7 +1574,7 @@ export interface BatchWriteResponse {
   status?: ReadonlyArray<Status>;
 }
 
-export const BatchWriteResponse: Schema.Schema<BatchWriteResponse> =
+export const BatchWriteResponse: Schema.Codec<BatchWriteResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     writeResults: Schema.optional(Schema.Array(WriteResult)),
     status: Schema.optional(Schema.Array(Status)),
@@ -1602,7 +1604,7 @@ export interface GoogleFirestoreAdminV1CloneDatabaseMetadata {
   database?: string;
 }
 
-export const GoogleFirestoreAdminV1CloneDatabaseMetadata: Schema.Schema<GoogleFirestoreAdminV1CloneDatabaseMetadata> =
+export const GoogleFirestoreAdminV1CloneDatabaseMetadata: Schema.Codec<GoogleFirestoreAdminV1CloneDatabaseMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     operationState: Schema.optional(Schema.String),
@@ -1619,7 +1621,7 @@ export interface BatchWriteRequest {
   labels?: Record<string, string>;
 }
 
-export const BatchWriteRequest: Schema.Schema<BatchWriteRequest> =
+export const BatchWriteRequest: Schema.Codec<BatchWriteRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     writes: Schema.optional(Schema.Array(Write)),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -1627,7 +1629,7 @@ export const BatchWriteRequest: Schema.Schema<BatchWriteRequest> =
 
 export interface GoogleFirestoreAdminV1DeleteDatabaseMetadata {}
 
-export const GoogleFirestoreAdminV1DeleteDatabaseMetadata: Schema.Schema<GoogleFirestoreAdminV1DeleteDatabaseMetadata> =
+export const GoogleFirestoreAdminV1DeleteDatabaseMetadata: Schema.Codec<GoogleFirestoreAdminV1DeleteDatabaseMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirestoreAdminV1DeleteDatabaseMetadata",
   });
@@ -1637,7 +1639,7 @@ export interface BeginTransactionResponse {
   transaction?: string;
 }
 
-export const BeginTransactionResponse: Schema.Schema<BeginTransactionResponse> =
+export const BeginTransactionResponse: Schema.Codec<BeginTransactionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transaction: Schema.optional(Schema.String),
   }).annotate({ identifier: "BeginTransactionResponse" });
@@ -1649,7 +1651,7 @@ export interface CommitResponse {
   commitTime?: string;
 }
 
-export const CommitResponse: Schema.Schema<CommitResponse> =
+export const CommitResponse: Schema.Codec<CommitResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     writeResults: Schema.optional(Schema.Array(WriteResult)),
     commitTime: Schema.optional(Schema.String),
@@ -1657,7 +1659,7 @@ export const CommitResponse: Schema.Schema<CommitResponse> =
 
 export interface GoogleFirestoreAdminV1CreateDatabaseMetadata {}
 
-export const GoogleFirestoreAdminV1CreateDatabaseMetadata: Schema.Schema<GoogleFirestoreAdminV1CreateDatabaseMetadata> =
+export const GoogleFirestoreAdminV1CreateDatabaseMetadata: Schema.Codec<GoogleFirestoreAdminV1CreateDatabaseMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirestoreAdminV1CreateDatabaseMetadata",
   });
@@ -1673,7 +1675,7 @@ export interface ExecutePipelineResponse {
   results?: ReadonlyArray<Document>;
 }
 
-export const ExecutePipelineResponse: Schema.Schema<ExecutePipelineResponse> =
+export const ExecutePipelineResponse: Schema.Codec<ExecutePipelineResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transaction: Schema.optional(Schema.String),
     executionTime: Schema.optional(Schema.String),
@@ -1683,7 +1685,7 @@ export const ExecutePipelineResponse: Schema.Schema<ExecutePipelineResponse> =
 
 export interface GoogleFirestoreAdminV1beta1LocationMetadata {}
 
-export const GoogleFirestoreAdminV1beta1LocationMetadata: Schema.Schema<GoogleFirestoreAdminV1beta1LocationMetadata> =
+export const GoogleFirestoreAdminV1beta1LocationMetadata: Schema.Codec<GoogleFirestoreAdminV1beta1LocationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirestoreAdminV1beta1LocationMetadata",
   });
@@ -1762,7 +1764,7 @@ export const ExportDocumentsProjectsDatabasesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ExportDocumentsProjectsDatabasesRequest>;
+  ) as unknown as Schema.Codec<ExportDocumentsProjectsDatabasesRequest>;
 
 export type ExportDocumentsProjectsDatabasesResponse =
   GoogleLongrunningOperation;
@@ -1808,7 +1810,7 @@ export const ImportDocumentsProjectsDatabasesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ImportDocumentsProjectsDatabasesRequest>;
+  ) as unknown as Schema.Codec<ImportDocumentsProjectsDatabasesRequest>;
 
 export type ImportDocumentsProjectsDatabasesResponse =
   GoogleLongrunningOperation;
@@ -1863,7 +1865,7 @@ export const CreateDocumentProjectsDatabasesDocumentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateDocumentProjectsDatabasesDocumentsRequest>;
+  ) as unknown as Schema.Codec<CreateDocumentProjectsDatabasesDocumentsRequest>;
 
 export type CreateDocumentProjectsDatabasesDocumentsResponse = Document;
 export const CreateDocumentProjectsDatabasesDocumentsResponse =
@@ -1912,7 +1914,7 @@ export const GetProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsDatabasesDocumentsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsDatabasesDocumentsRequest>;
 
 export type GetProjectsDatabasesDocumentsResponse = Document;
 export const GetProjectsDatabasesDocumentsResponse =
@@ -1953,7 +1955,7 @@ export const WriteProjectsDatabasesDocumentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<WriteProjectsDatabasesDocumentsRequest>;
+  ) as unknown as Schema.Codec<WriteProjectsDatabasesDocumentsRequest>;
 
 export type WriteProjectsDatabasesDocumentsResponse = WriteResponse;
 export const WriteProjectsDatabasesDocumentsResponse =
@@ -2019,7 +2021,7 @@ export const ListProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/{collectionId}" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsDatabasesDocumentsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsDatabasesDocumentsRequest>;
 
 export type ListProjectsDatabasesDocumentsResponse = ListDocumentsResponse;
 export const ListProjectsDatabasesDocumentsResponse =
@@ -2064,7 +2066,7 @@ export const BeginTransactionProjectsDatabasesDocumentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BeginTransactionProjectsDatabasesDocumentsRequest>;
+  ) as unknown as Schema.Codec<BeginTransactionProjectsDatabasesDocumentsRequest>;
 
 export type BeginTransactionProjectsDatabasesDocumentsResponse =
   BeginTransactionResponse;
@@ -2108,7 +2110,7 @@ export const RunAggregationQueryProjectsDatabasesDocumentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RunAggregationQueryProjectsDatabasesDocumentsRequest>;
+  ) as unknown as Schema.Codec<RunAggregationQueryProjectsDatabasesDocumentsRequest>;
 
 export type RunAggregationQueryProjectsDatabasesDocumentsResponse =
   RunAggregationQueryResponse;
@@ -2168,7 +2170,7 @@ export const PatchProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsDatabasesDocumentsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsDatabasesDocumentsRequest>;
 
 export type PatchProjectsDatabasesDocumentsResponse = Document;
 export const PatchProjectsDatabasesDocumentsResponse =
@@ -2211,7 +2213,7 @@ export const ListenProjectsDatabasesDocumentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ListenProjectsDatabasesDocumentsRequest>;
+  ) as unknown as Schema.Codec<ListenProjectsDatabasesDocumentsRequest>;
 
 export type ListenProjectsDatabasesDocumentsResponse = ListenResponse;
 export const ListenProjectsDatabasesDocumentsResponse =
@@ -2254,7 +2256,7 @@ export const CommitProjectsDatabasesDocumentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CommitProjectsDatabasesDocumentsRequest>;
+  ) as unknown as Schema.Codec<CommitProjectsDatabasesDocumentsRequest>;
 
 export type CommitProjectsDatabasesDocumentsResponse = CommitResponse;
 export const CommitProjectsDatabasesDocumentsResponse =
@@ -2297,7 +2299,7 @@ export const RunQueryProjectsDatabasesDocumentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RunQueryProjectsDatabasesDocumentsRequest>;
+  ) as unknown as Schema.Codec<RunQueryProjectsDatabasesDocumentsRequest>;
 
 export type RunQueryProjectsDatabasesDocumentsResponse = RunQueryResponse;
 export const RunQueryProjectsDatabasesDocumentsResponse =
@@ -2340,7 +2342,7 @@ export const ExecutePipelineProjectsDatabasesDocumentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ExecutePipelineProjectsDatabasesDocumentsRequest>;
+  ) as unknown as Schema.Codec<ExecutePipelineProjectsDatabasesDocumentsRequest>;
 
 export type ExecutePipelineProjectsDatabasesDocumentsResponse =
   ExecutePipelineResponse;
@@ -2384,7 +2386,7 @@ export const PartitionQueryProjectsDatabasesDocumentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PartitionQueryProjectsDatabasesDocumentsRequest>;
+  ) as unknown as Schema.Codec<PartitionQueryProjectsDatabasesDocumentsRequest>;
 
 export type PartitionQueryProjectsDatabasesDocumentsResponse =
   PartitionQueryResponse;
@@ -2428,7 +2430,7 @@ export const BatchGetProjectsDatabasesDocumentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchGetProjectsDatabasesDocumentsRequest>;
+  ) as unknown as Schema.Codec<BatchGetProjectsDatabasesDocumentsRequest>;
 
 export type BatchGetProjectsDatabasesDocumentsResponse =
   BatchGetDocumentsResponse;
@@ -2472,7 +2474,7 @@ export const BatchWriteProjectsDatabasesDocumentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchWriteProjectsDatabasesDocumentsRequest>;
+  ) as unknown as Schema.Codec<BatchWriteProjectsDatabasesDocumentsRequest>;
 
 export type BatchWriteProjectsDatabasesDocumentsResponse = BatchWriteResponse;
 export const BatchWriteProjectsDatabasesDocumentsResponse =
@@ -2515,7 +2517,7 @@ export const ListCollectionIdsProjectsDatabasesDocumentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ListCollectionIdsProjectsDatabasesDocumentsRequest>;
+  ) as unknown as Schema.Codec<ListCollectionIdsProjectsDatabasesDocumentsRequest>;
 
 export type ListCollectionIdsProjectsDatabasesDocumentsResponse =
   ListCollectionIdsResponse;
@@ -2559,7 +2561,7 @@ export const RollbackProjectsDatabasesDocumentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RollbackProjectsDatabasesDocumentsRequest>;
+  ) as unknown as Schema.Codec<RollbackProjectsDatabasesDocumentsRequest>;
 
 export type RollbackProjectsDatabasesDocumentsResponse = Empty;
 export const RollbackProjectsDatabasesDocumentsResponse =
@@ -2605,7 +2607,7 @@ export const DeleteProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsDatabasesDocumentsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsDatabasesDocumentsRequest>;
 
 export type DeleteProjectsDatabasesDocumentsResponse = Empty;
 export const DeleteProjectsDatabasesDocumentsResponse =
@@ -2671,7 +2673,7 @@ export const ListDocumentsProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/{collectionId}" }),
     svc,
-  ) as unknown as Schema.Schema<ListDocumentsProjectsDatabasesDocumentsRequest>;
+  ) as unknown as Schema.Codec<ListDocumentsProjectsDatabasesDocumentsRequest>;
 
 export type ListDocumentsProjectsDatabasesDocumentsResponse =
   ListDocumentsResponse;
@@ -2710,7 +2712,7 @@ export const DeleteProjectsDatabasesIndexesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsDatabasesIndexesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsDatabasesIndexesRequest>;
 
 export type DeleteProjectsDatabasesIndexesResponse = Empty;
 export const DeleteProjectsDatabasesIndexesResponse =
@@ -2753,7 +2755,7 @@ export const CreateProjectsDatabasesIndexesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsDatabasesIndexesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsDatabasesIndexesRequest>;
 
 export type CreateProjectsDatabasesIndexesResponse = GoogleLongrunningOperation;
 export const CreateProjectsDatabasesIndexesResponse =
@@ -2789,7 +2791,7 @@ export const GetProjectsDatabasesIndexesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsDatabasesIndexesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsDatabasesIndexesRequest>;
 
 export type GetProjectsDatabasesIndexesResponse =
   GoogleFirestoreAdminV1beta1Index;
@@ -2832,7 +2834,7 @@ export const ListProjectsDatabasesIndexesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+parent}/indexes" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsDatabasesIndexesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsDatabasesIndexesRequest>;
 
 export type ListProjectsDatabasesIndexesResponse =
   GoogleFirestoreAdminV1beta1ListIndexesResponse;

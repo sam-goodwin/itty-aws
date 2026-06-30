@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface CreateOrgBillingCostExplorerUsageProcessInput {
+  orgId: string;
+  envelope?: boolean;
+}
 export const CreateOrgBillingCostExplorerUsageProcessInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const CreateOrgBillingCostExplorerUsageProcessInput =
       method: "POST",
       path: "/api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage",
     }),
-  );
-export type CreateOrgBillingCostExplorerUsageProcessInput =
-  typeof CreateOrgBillingCostExplorerUsageProcessInput.Type;
+  ) as unknown as Schema.Codec<CreateOrgBillingCostExplorerUsageProcessInput>;
 
 // Output Schema
+export type CreateOrgBillingCostExplorerUsageProcessOutput = void;
 export const CreateOrgBillingCostExplorerUsageProcessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateOrgBillingCostExplorerUsageProcessOutput =
-  typeof CreateOrgBillingCostExplorerUsageProcessOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateOrgBillingCostExplorerUsageProcessOutput>;
 
 // The operation
 /**

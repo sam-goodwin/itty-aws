@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface DashboardsDestroyInput {
+  id: number;
+  project_id: string;
+  format?: "json" | "txt";
+}
 export const DashboardsDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.Number.pipe(T.PathParam()),
@@ -15,12 +20,12 @@ export const DashboardsDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/api/projects/{project_id}/dashboards/{id}/",
   }),
-);
-export type DashboardsDestroyInput = typeof DashboardsDestroyInput.Type;
+) as unknown as Schema.Codec<DashboardsDestroyInput>;
 
 // Output Schema
-export const DashboardsDestroyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DashboardsDestroyOutput = typeof DashboardsDestroyOutput.Type;
+export type DashboardsDestroyOutput = void;
+export const DashboardsDestroyOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DashboardsDestroyOutput>;
 
 // The operation
 /**

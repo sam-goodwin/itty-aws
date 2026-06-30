@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface DocsSearchInput {
+  project_id: string;
+  query: string;
+}
 export const DocsSearchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   query: Schema.String,
@@ -11,14 +15,15 @@ export const DocsSearchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/api/projects/{project_id}/mcp_tools/docs_search/",
   }),
-);
-export type DocsSearchInput = typeof DocsSearchInput.Type;
+) as unknown as Schema.Codec<DocsSearchInput>;
 
 // Output Schema
+export interface DocsSearchOutput {
+  content: string;
+}
 export const DocsSearchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   content: Schema.String,
-});
-export type DocsSearchOutput = typeof DocsSearchOutput.Type;
+}) as unknown as Schema.Codec<DocsSearchOutput>;
 
 // The operation
 /**

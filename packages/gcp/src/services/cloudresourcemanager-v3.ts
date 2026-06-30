@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -34,7 +34,7 @@ export interface AuditLogConfig {
   exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
+export const AuditLogConfig: Schema.Codec<AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
@@ -47,7 +47,7 @@ export interface AuditConfig {
   service?: string;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
+export const AuditConfig: Schema.Codec<AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
     service: Schema.optional(Schema.String),
@@ -64,7 +64,7 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
+export const Expr: Schema.Codec<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -81,7 +81,7 @@ export interface Binding {
   members?: ReadonlyArray<string>;
 }
 
-export const Binding: Schema.Schema<Binding> =
+export const Binding: Schema.Codec<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     condition: Schema.optional(Expr),
     role: Schema.optional(Schema.String),
@@ -99,7 +99,7 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
     version: Schema.optional(Schema.Number),
@@ -114,7 +114,7 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
     updateMask: Schema.optional(Schema.String),
@@ -139,7 +139,7 @@ export interface Organization {
   etag?: string;
 }
 
-export const Organization: Schema.Schema<Organization> =
+export const Organization: Schema.Codec<Organization> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -178,7 +178,7 @@ export interface Project {
   deleteTime?: string;
 }
 
-export const Project: Schema.Schema<Project> =
+export const Project: Schema.Codec<Project> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectId: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -201,7 +201,7 @@ export interface SearchProjectsResponse {
   nextPageToken?: string;
 }
 
-export const SearchProjectsResponse: Schema.Schema<SearchProjectsResponse> =
+export const SearchProjectsResponse: Schema.Codec<SearchProjectsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projects: Schema.optional(Schema.Array(Project)),
     nextPageToken: Schema.optional(Schema.String),
@@ -222,7 +222,7 @@ export interface EffectiveTag {
   namespacedTagValue?: string;
 }
 
-export const EffectiveTag: Schema.Schema<EffectiveTag> =
+export const EffectiveTag: Schema.Codec<EffectiveTag> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tagKey: Schema.optional(Schema.String),
     namespacedTagKey: Schema.optional(Schema.String),
@@ -251,7 +251,7 @@ export interface TagValue {
   description?: string;
 }
 
-export const TagValue: Schema.Schema<TagValue> =
+export const TagValue: Schema.Codec<TagValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -274,7 +274,7 @@ export interface TagBindingCollection {
   fullResourceName?: string;
 }
 
-export const TagBindingCollection: Schema.Schema<TagBindingCollection> =
+export const TagBindingCollection: Schema.Codec<TagBindingCollection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     etag: Schema.optional(Schema.String),
@@ -284,7 +284,7 @@ export const TagBindingCollection: Schema.Schema<TagBindingCollection> =
 
 export interface UndeleteProjectMetadata {}
 
-export const UndeleteProjectMetadata: Schema.Schema<UndeleteProjectMetadata> =
+export const UndeleteProjectMetadata: Schema.Codec<UndeleteProjectMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteProjectMetadata",
   });
@@ -314,7 +314,7 @@ export interface Folder {
   deleteTime?: string;
 }
 
-export const Folder: Schema.Schema<Folder> =
+export const Folder: Schema.Codec<Folder> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -336,7 +336,7 @@ export interface SearchFoldersResponse {
   folders?: ReadonlyArray<Folder>;
 }
 
-export const SearchFoldersResponse: Schema.Schema<SearchFoldersResponse> =
+export const SearchFoldersResponse: Schema.Codec<SearchFoldersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     folders: Schema.optional(Schema.Array(Folder)),
@@ -351,7 +351,7 @@ export interface Status {
   code?: number;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -373,7 +373,7 @@ export interface Operation {
   done?: boolean;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     error: Schema.optional(Status),
@@ -397,7 +397,7 @@ export interface FolderOperation {
   sourceParent?: string;
 }
 
-export const FolderOperation: Schema.Schema<FolderOperation> =
+export const FolderOperation: Schema.Codec<FolderOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destinationParent: Schema.optional(Schema.String),
     operationType: Schema.optional(Schema.String),
@@ -407,14 +407,14 @@ export const FolderOperation: Schema.Schema<FolderOperation> =
 
 export interface MoveProjectMetadata {}
 
-export const MoveProjectMetadata: Schema.Schema<MoveProjectMetadata> =
+export const MoveProjectMetadata: Schema.Codec<MoveProjectMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MoveProjectMetadata",
   });
 
 export interface DeleteProjectMetadata {}
 
-export const DeleteProjectMetadata: Schema.Schema<DeleteProjectMetadata> =
+export const DeleteProjectMetadata: Schema.Codec<DeleteProjectMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteProjectMetadata",
   });
@@ -424,7 +424,7 @@ export interface TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
@@ -438,7 +438,7 @@ export interface MoveFolderMetadata {
   destinationParent?: string;
 }
 
-export const MoveFolderMetadata: Schema.Schema<MoveFolderMetadata> =
+export const MoveFolderMetadata: Schema.Codec<MoveFolderMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     sourceParent: Schema.optional(Schema.String),
@@ -450,7 +450,7 @@ export interface MoveFolderRequest {
   destinationParent?: string;
 }
 
-export const MoveFolderRequest: Schema.Schema<MoveFolderRequest> =
+export const MoveFolderRequest: Schema.Codec<MoveFolderRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destinationParent: Schema.optional(Schema.String),
   }).annotate({ identifier: "MoveFolderRequest" });
@@ -460,7 +460,7 @@ export interface GetPolicyOptions {
   requestedPolicyVersion?: number;
 }
 
-export const GetPolicyOptions: Schema.Schema<GetPolicyOptions> =
+export const GetPolicyOptions: Schema.Codec<GetPolicyOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestedPolicyVersion: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GetPolicyOptions" });
@@ -470,7 +470,7 @@ export interface GetIamPolicyRequest {
   options?: GetPolicyOptions;
 }
 
-export const GetIamPolicyRequest: Schema.Schema<GetIamPolicyRequest> =
+export const GetIamPolicyRequest: Schema.Codec<GetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     options: Schema.optional(GetPolicyOptions),
   }).annotate({ identifier: "GetIamPolicyRequest" });
@@ -480,7 +480,7 @@ export interface TestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
@@ -492,7 +492,7 @@ export interface ListTagValuesResponse {
   nextPageToken?: string;
 }
 
-export const ListTagValuesResponse: Schema.Schema<ListTagValuesResponse> =
+export const ListTagValuesResponse: Schema.Codec<ListTagValuesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tagValues: Schema.optional(Schema.Array(TagValue)),
     nextPageToken: Schema.optional(Schema.String),
@@ -507,7 +507,7 @@ export interface ProjectCreationStatus {
   ready?: boolean;
 }
 
-export const ProjectCreationStatus: Schema.Schema<ProjectCreationStatus> =
+export const ProjectCreationStatus: Schema.Codec<ProjectCreationStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     gettable: Schema.optional(Schema.Boolean),
@@ -516,21 +516,21 @@ export const ProjectCreationStatus: Schema.Schema<ProjectCreationStatus> =
 
 export interface DeleteFolderMetadata {}
 
-export const DeleteFolderMetadata: Schema.Schema<DeleteFolderMetadata> =
+export const DeleteFolderMetadata: Schema.Codec<DeleteFolderMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteFolderMetadata",
   });
 
 export interface CreateTagValueMetadata {}
 
-export const CreateTagValueMetadata: Schema.Schema<CreateTagValueMetadata> =
+export const CreateTagValueMetadata: Schema.Codec<CreateTagValueMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CreateTagValueMetadata",
   });
 
 export interface UndeleteFolderRequest {}
 
-export const UndeleteFolderRequest: Schema.Schema<UndeleteFolderRequest> =
+export const UndeleteFolderRequest: Schema.Codec<UndeleteFolderRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteFolderRequest",
   });
@@ -542,7 +542,7 @@ export interface ListEffectiveTagsResponse {
   nextPageToken?: string;
 }
 
-export const ListEffectiveTagsResponse: Schema.Schema<ListEffectiveTagsResponse> =
+export const ListEffectiveTagsResponse: Schema.Codec<ListEffectiveTagsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     effectiveTags: Schema.optional(Schema.Array(EffectiveTag)),
     nextPageToken: Schema.optional(Schema.String),
@@ -563,7 +563,7 @@ export interface CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOper
     | (string & {});
 }
 
-export const CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation: Schema.Schema<CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation> =
+export const CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation: Schema.Codec<CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destinationParent: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -589,7 +589,7 @@ export interface Lien {
   origin?: string;
 }
 
-export const Lien: Schema.Schema<Lien> =
+export const Lien: Schema.Codec<Lien> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     restrictions: Schema.optional(Schema.Array(Schema.String)),
     name: Schema.optional(Schema.String),
@@ -606,7 +606,7 @@ export interface ListLiensResponse {
   nextPageToken?: string;
 }
 
-export const ListLiensResponse: Schema.Schema<ListLiensResponse> =
+export const ListLiensResponse: Schema.Codec<ListLiensResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     liens: Schema.optional(Schema.Array(Lien)),
     nextPageToken: Schema.optional(Schema.String),
@@ -614,14 +614,14 @@ export const ListLiensResponse: Schema.Schema<ListLiensResponse> =
 
 export interface DeleteTagBindingMetadata {}
 
-export const DeleteTagBindingMetadata: Schema.Schema<DeleteTagBindingMetadata> =
+export const DeleteTagBindingMetadata: Schema.Codec<DeleteTagBindingMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteTagBindingMetadata",
   });
 
 export interface UndeleteProjectRequest {}
 
-export const UndeleteProjectRequest: Schema.Schema<UndeleteProjectRequest> =
+export const UndeleteProjectRequest: Schema.Codec<UndeleteProjectRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteProjectRequest",
   });
@@ -635,7 +635,7 @@ export interface CreateProjectMetadata {
   createTime?: string;
 }
 
-export const CreateProjectMetadata: Schema.Schema<CreateProjectMetadata> =
+export const CreateProjectMetadata: Schema.Codec<CreateProjectMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gettable: Schema.optional(Schema.Boolean),
     ready: Schema.optional(Schema.Boolean),
@@ -649,7 +649,7 @@ export interface ListProjectsResponse {
   nextPageToken?: string;
 }
 
-export const ListProjectsResponse: Schema.Schema<ListProjectsResponse> =
+export const ListProjectsResponse: Schema.Codec<ListProjectsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projects: Schema.optional(Schema.Array(Project)),
     nextPageToken: Schema.optional(Schema.String),
@@ -657,7 +657,7 @@ export const ListProjectsResponse: Schema.Schema<ListProjectsResponse> =
 
 export interface CreateTagKeyMetadata {}
 
-export const CreateTagKeyMetadata: Schema.Schema<CreateTagKeyMetadata> =
+export const CreateTagKeyMetadata: Schema.Codec<CreateTagKeyMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CreateTagKeyMetadata",
   });
@@ -673,7 +673,7 @@ export interface TagBinding {
   parent?: string;
 }
 
-export const TagBinding: Schema.Schema<TagBinding> =
+export const TagBinding: Schema.Codec<TagBinding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tagValue: Schema.optional(Schema.String),
     tagValueNamespacedName: Schema.optional(Schema.String),
@@ -688,7 +688,7 @@ export interface ListTagBindingsResponse {
   nextPageToken?: string;
 }
 
-export const ListTagBindingsResponse: Schema.Schema<ListTagBindingsResponse> =
+export const ListTagBindingsResponse: Schema.Codec<ListTagBindingsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tagBindings: Schema.optional(Schema.Array(TagBinding)),
     nextPageToken: Schema.optional(Schema.String),
@@ -711,7 +711,7 @@ export interface FolderOperationError {
     | (string & {});
 }
 
-export const FolderOperationError: Schema.Schema<FolderOperationError> =
+export const FolderOperationError: Schema.Codec<FolderOperationError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorMessageId: Schema.optional(Schema.String),
   }).annotate({ identifier: "FolderOperationError" });
@@ -745,7 +745,7 @@ export interface TagKey {
   etag?: string;
 }
 
-export const TagKey: Schema.Schema<TagKey> =
+export const TagKey: Schema.Codec<TagKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     namespacedName: Schema.optional(Schema.String),
@@ -767,7 +767,7 @@ export interface ListTagKeysResponse {
   nextPageToken?: string;
 }
 
-export const ListTagKeysResponse: Schema.Schema<ListTagKeysResponse> =
+export const ListTagKeysResponse: Schema.Codec<ListTagKeysResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tagKeys: Schema.optional(Schema.Array(TagKey)),
     nextPageToken: Schema.optional(Schema.String),
@@ -778,70 +778,70 @@ export interface MoveProjectRequest {
   destinationParent?: string;
 }
 
-export const MoveProjectRequest: Schema.Schema<MoveProjectRequest> =
+export const MoveProjectRequest: Schema.Codec<MoveProjectRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destinationParent: Schema.optional(Schema.String),
   }).annotate({ identifier: "MoveProjectRequest" });
 
 export interface UpdateFolderMetadata {}
 
-export const UpdateFolderMetadata: Schema.Schema<UpdateFolderMetadata> =
+export const UpdateFolderMetadata: Schema.Codec<UpdateFolderMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UpdateFolderMetadata",
   });
 
 export interface UpdateTagValueMetadata {}
 
-export const UpdateTagValueMetadata: Schema.Schema<UpdateTagValueMetadata> =
+export const UpdateTagValueMetadata: Schema.Codec<UpdateTagValueMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UpdateTagValueMetadata",
   });
 
 export interface DeleteTagValueMetadata {}
 
-export const DeleteTagValueMetadata: Schema.Schema<DeleteTagValueMetadata> =
+export const DeleteTagValueMetadata: Schema.Codec<DeleteTagValueMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteTagValueMetadata",
   });
 
 export interface DeleteOrganizationMetadata {}
 
-export const DeleteOrganizationMetadata: Schema.Schema<DeleteOrganizationMetadata> =
+export const DeleteOrganizationMetadata: Schema.Codec<DeleteOrganizationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteOrganizationMetadata",
   });
 
 export interface DeleteTagKeyMetadata {}
 
-export const DeleteTagKeyMetadata: Schema.Schema<DeleteTagKeyMetadata> =
+export const DeleteTagKeyMetadata: Schema.Codec<DeleteTagKeyMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteTagKeyMetadata",
   });
 
 export interface CreateTagBindingMetadata {}
 
-export const CreateTagBindingMetadata: Schema.Schema<CreateTagBindingMetadata> =
+export const CreateTagBindingMetadata: Schema.Codec<CreateTagBindingMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CreateTagBindingMetadata",
   });
 
 export interface UpdateTagKeyMetadata {}
 
-export const UpdateTagKeyMetadata: Schema.Schema<UpdateTagKeyMetadata> =
+export const UpdateTagKeyMetadata: Schema.Codec<UpdateTagKeyMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UpdateTagKeyMetadata",
   });
 
 export interface UndeleteFolderMetadata {}
 
-export const UndeleteFolderMetadata: Schema.Schema<UndeleteFolderMetadata> =
+export const UndeleteFolderMetadata: Schema.Codec<UndeleteFolderMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteFolderMetadata",
   });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -861,7 +861,7 @@ export interface CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOpe
   destinationParent?: string;
 }
 
-export const CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation: Schema.Schema<CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation> =
+export const CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation: Schema.Codec<CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operationType: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -879,7 +879,7 @@ export interface ListFoldersResponse {
   folders?: ReadonlyArray<Folder>;
 }
 
-export const ListFoldersResponse: Schema.Schema<ListFoldersResponse> =
+export const ListFoldersResponse: Schema.Codec<ListFoldersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     folders: Schema.optional(Schema.Array(Folder)),
@@ -892,7 +892,7 @@ export interface SearchOrganizationsResponse {
   nextPageToken?: string;
 }
 
-export const SearchOrganizationsResponse: Schema.Schema<SearchOrganizationsResponse> =
+export const SearchOrganizationsResponse: Schema.Codec<SearchOrganizationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizations: Schema.optional(Schema.Array(Organization)),
     nextPageToken: Schema.optional(Schema.String),
@@ -911,7 +911,7 @@ export interface TagHold {
   name?: string;
 }
 
-export const TagHold: Schema.Schema<TagHold> =
+export const TagHold: Schema.Codec<TagHold> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     holder: Schema.optional(Schema.String),
     helpLink: Schema.optional(Schema.String),
@@ -922,7 +922,7 @@ export const TagHold: Schema.Schema<TagHold> =
 
 export interface UpdateProjectMetadata {}
 
-export const UpdateProjectMetadata: Schema.Schema<UpdateProjectMetadata> =
+export const UpdateProjectMetadata: Schema.Codec<UpdateProjectMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UpdateProjectMetadata",
   });
@@ -936,7 +936,7 @@ export interface EffectiveTagBindingCollection {
   effectiveTags?: Record<string, string>;
 }
 
-export const EffectiveTagBindingCollection: Schema.Schema<EffectiveTagBindingCollection> =
+export const EffectiveTagBindingCollection: Schema.Codec<EffectiveTagBindingCollection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fullResourceName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -950,7 +950,7 @@ export interface CreateFolderMetadata {
   parent?: string;
 }
 
-export const CreateFolderMetadata: Schema.Schema<CreateFolderMetadata> =
+export const CreateFolderMetadata: Schema.Codec<CreateFolderMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     parent: Schema.optional(Schema.String),
@@ -963,7 +963,7 @@ export interface ListTagHoldsResponse {
   nextPageToken?: string;
 }
 
-export const ListTagHoldsResponse: Schema.Schema<ListTagHoldsResponse> =
+export const ListTagHoldsResponse: Schema.Codec<ListTagHoldsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tagHolds: Schema.optional(Schema.Array(TagHold)),
     nextPageToken: Schema.optional(Schema.String),
@@ -976,7 +976,7 @@ export interface Capability {
   value?: boolean;
 }
 
-export const Capability: Schema.Schema<Capability> =
+export const Capability: Schema.Codec<Capability> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Boolean),
@@ -984,7 +984,7 @@ export const Capability: Schema.Schema<Capability> =
 
 export interface UndeleteOrganizationMetadata {}
 
-export const UndeleteOrganizationMetadata: Schema.Schema<UndeleteOrganizationMetadata> =
+export const UndeleteOrganizationMetadata: Schema.Codec<UndeleteOrganizationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteOrganizationMetadata",
   });
@@ -1061,7 +1061,7 @@ export const GetIamPolicyFoldersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyFoldersRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyFoldersRequest>;
 
 export type GetIamPolicyFoldersResponse = Policy;
 export const GetIamPolicyFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -1103,7 +1103,7 @@ export const SetIamPolicyFoldersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyFoldersRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyFoldersRequest>;
 
 export type SetIamPolicyFoldersResponse = Policy;
 export const SetIamPolicyFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -1142,7 +1142,7 @@ export const UndeleteFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "POST", path: "v3/{+name}:undelete", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<UndeleteFoldersRequest>;
+) as unknown as Schema.Codec<UndeleteFoldersRequest>;
 
 export type UndeleteFoldersResponse = Operation;
 export const UndeleteFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -1185,7 +1185,7 @@ export const ListFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v3/folders" }),
   svc,
-) as unknown as Schema.Schema<ListFoldersRequest>;
+) as unknown as Schema.Codec<ListFoldersRequest>;
 
 export type ListFoldersResponse_Op = ListFoldersResponse;
 export const ListFoldersResponse_Op =
@@ -1227,7 +1227,7 @@ export const TestIamPermissionsFoldersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsFoldersRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsFoldersRequest>;
 
 export type TestIamPermissionsFoldersResponse = TestIamPermissionsResponse;
 export const TestIamPermissionsFoldersResponse =
@@ -1265,7 +1265,7 @@ export const MoveFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v3/{+name}:move", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<MoveFoldersRequest>;
+) as unknown as Schema.Codec<MoveFoldersRequest>;
 
 export type MoveFoldersResponse = Operation;
 export const MoveFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -1299,7 +1299,7 @@ export const GetFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v3/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetFoldersRequest>;
+) as unknown as Schema.Codec<GetFoldersRequest>;
 
 export type GetFoldersResponse = Folder;
 export const GetFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Folder;
@@ -1334,7 +1334,7 @@ export const SearchFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v3/folders:search" }),
   svc,
-) as unknown as Schema.Schema<SearchFoldersRequest>;
+) as unknown as Schema.Codec<SearchFoldersRequest>;
 
 export type SearchFoldersResponse_Op = SearchFoldersResponse;
 export const SearchFoldersResponse_Op =
@@ -1368,7 +1368,7 @@ export const CreateFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v3/folders", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<CreateFoldersRequest>;
+) as unknown as Schema.Codec<CreateFoldersRequest>;
 
 export type CreateFoldersResponse = Operation;
 export const CreateFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -1402,7 +1402,7 @@ export const DeleteFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "v3/{+name}" }),
   svc,
-) as unknown as Schema.Schema<DeleteFoldersRequest>;
+) as unknown as Schema.Codec<DeleteFoldersRequest>;
 
 export type DeleteFoldersResponse = Operation;
 export const DeleteFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -1442,7 +1442,7 @@ export const PatchFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PATCH", path: "v3/{+name}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<PatchFoldersRequest>;
+) as unknown as Schema.Codec<PatchFoldersRequest>;
 
 export type PatchFoldersResponse = Operation;
 export const PatchFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -1477,7 +1477,7 @@ export const GetFoldersCapabilitiesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v3/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetFoldersCapabilitiesRequest>;
+  ) as unknown as Schema.Codec<GetFoldersCapabilitiesRequest>;
 
 export type GetFoldersCapabilitiesResponse = Capability;
 export const GetFoldersCapabilitiesResponse =
@@ -1514,7 +1514,7 @@ export const PatchFoldersCapabilitiesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v3/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchFoldersCapabilitiesRequest>;
+  ) as unknown as Schema.Codec<PatchFoldersCapabilitiesRequest>;
 
 export type PatchFoldersCapabilitiesResponse = Operation;
 export const PatchFoldersCapabilitiesResponse =
@@ -1557,7 +1557,7 @@ export const GetIamPolicyTagValuesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyTagValuesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyTagValuesRequest>;
 
 export type GetIamPolicyTagValuesResponse = Policy;
 export const GetIamPolicyTagValuesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -1599,7 +1599,7 @@ export const SetIamPolicyTagValuesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyTagValuesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyTagValuesRequest>;
 
 export type SetIamPolicyTagValuesResponse = Policy;
 export const SetIamPolicyTagValuesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -1639,7 +1639,7 @@ export const ListTagValuesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v3/tagValues" }),
   svc,
-) as unknown as Schema.Schema<ListTagValuesRequest>;
+) as unknown as Schema.Codec<ListTagValuesRequest>;
 
 export type ListTagValuesResponse_Op = ListTagValuesResponse;
 export const ListTagValuesResponse_Op =
@@ -1681,7 +1681,7 @@ export const TestIamPermissionsTagValuesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsTagValuesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsTagValuesRequest>;
 
 export type TestIamPermissionsTagValuesResponse = TestIamPermissionsResponse;
 export const TestIamPermissionsTagValuesResponse =
@@ -1716,7 +1716,7 @@ export const GetTagValuesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v3/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetTagValuesRequest>;
+) as unknown as Schema.Codec<GetTagValuesRequest>;
 
 export type GetTagValuesResponse = TagValue;
 export const GetTagValuesResponse = /*@__PURE__*/ /*#__PURE__*/ TagValue;
@@ -1746,7 +1746,7 @@ export const GetNamespacedTagValuesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v3/tagValues/namespaced" }),
     svc,
-  ) as unknown as Schema.Schema<GetNamespacedTagValuesRequest>;
+  ) as unknown as Schema.Codec<GetNamespacedTagValuesRequest>;
 
 export type GetNamespacedTagValuesResponse = TagValue;
 export const GetNamespacedTagValuesResponse =
@@ -1783,7 +1783,7 @@ export const CreateTagValuesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "POST", path: "v3/tagValues", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<CreateTagValuesRequest>;
+) as unknown as Schema.Codec<CreateTagValuesRequest>;
 
 export type CreateTagValuesResponse = Operation;
 export const CreateTagValuesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -1828,7 +1828,7 @@ export const PatchTagValuesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PATCH", path: "v3/{+name}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<PatchTagValuesRequest>;
+) as unknown as Schema.Codec<PatchTagValuesRequest>;
 
 export type PatchTagValuesResponse = Operation;
 export const PatchTagValuesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -1872,7 +1872,7 @@ export const DeleteTagValuesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "DELETE", path: "v3/{+name}" }),
   svc,
-) as unknown as Schema.Schema<DeleteTagValuesRequest>;
+) as unknown as Schema.Codec<DeleteTagValuesRequest>;
 
 export type DeleteTagValuesResponse = Operation;
 export const DeleteTagValuesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -1916,7 +1916,7 @@ export const ListTagValuesTagHoldsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v3/{+parent}/tagHolds" }),
     svc,
-  ) as unknown as Schema.Schema<ListTagValuesTagHoldsRequest>;
+  ) as unknown as Schema.Codec<ListTagValuesTagHoldsRequest>;
 
 export type ListTagValuesTagHoldsResponse = ListTagHoldsResponse;
 export const ListTagValuesTagHoldsResponse =
@@ -1956,7 +1956,7 @@ export const DeleteTagValuesTagHoldsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v3/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteTagValuesTagHoldsRequest>;
+  ) as unknown as Schema.Codec<DeleteTagValuesTagHoldsRequest>;
 
 export type DeleteTagValuesTagHoldsResponse = Operation;
 export const DeleteTagValuesTagHoldsResponse =
@@ -2000,7 +2000,7 @@ export const CreateTagValuesTagHoldsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v3/{+parent}/tagHolds", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateTagValuesTagHoldsRequest>;
+  ) as unknown as Schema.Codec<CreateTagValuesTagHoldsRequest>;
 
 export type CreateTagValuesTagHoldsResponse = Operation;
 export const CreateTagValuesTagHoldsResponse =
@@ -2035,7 +2035,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v3/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetOperationsRequest>;
+) as unknown as Schema.Codec<GetOperationsRequest>;
 
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -2064,7 +2064,7 @@ export const GetLiensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v3/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetLiensRequest>;
+) as unknown as Schema.Codec<GetLiensRequest>;
 
 export type GetLiensResponse = Lien;
 export const GetLiensResponse = /*@__PURE__*/ /*#__PURE__*/ Lien;
@@ -2093,7 +2093,7 @@ export const DeleteLiensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "v3/{+name}" }),
   svc,
-) as unknown as Schema.Schema<DeleteLiensRequest>;
+) as unknown as Schema.Codec<DeleteLiensRequest>;
 
 export type DeleteLiensResponse = Empty;
 export const DeleteLiensResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -2133,7 +2133,7 @@ export const ListLiensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v3/liens" }),
   svc,
-) as unknown as Schema.Schema<ListLiensRequest>;
+) as unknown as Schema.Codec<ListLiensRequest>;
 
 export type ListLiensResponse_Op = ListLiensResponse;
 export const ListLiensResponse_Op =
@@ -2167,7 +2167,7 @@ export const CreateLiensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v3/liens", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<CreateLiensRequest>;
+) as unknown as Schema.Codec<CreateLiensRequest>;
 
 export type CreateLiensResponse = Lien;
 export const CreateLiensResponse = /*@__PURE__*/ /*#__PURE__*/ Lien;
@@ -2209,7 +2209,7 @@ export const TestIamPermissionsOrganizationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsOrganizationsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsOrganizationsRequest>;
 
 export type TestIamPermissionsOrganizationsResponse =
   TestIamPermissionsResponse;
@@ -2246,7 +2246,7 @@ export const GetOrganizationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v3/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsRequest>;
 
 export type GetOrganizationsResponse = Organization;
 export const GetOrganizationsResponse =
@@ -2283,7 +2283,7 @@ export const SearchOrganizationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v3/organizations:search" }),
     svc,
-  ) as unknown as Schema.Schema<SearchOrganizationsRequest>;
+  ) as unknown as Schema.Codec<SearchOrganizationsRequest>;
 
 export type SearchOrganizationsResponse_Op = SearchOrganizationsResponse;
 export const SearchOrganizationsResponse_Op =
@@ -2325,7 +2325,7 @@ export const GetIamPolicyOrganizationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyOrganizationsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyOrganizationsRequest>;
 
 export type GetIamPolicyOrganizationsResponse = Policy;
 export const GetIamPolicyOrganizationsResponse =
@@ -2368,7 +2368,7 @@ export const SetIamPolicyOrganizationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyOrganizationsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyOrganizationsRequest>;
 
 export type SetIamPolicyOrganizationsResponse = Policy;
 export const SetIamPolicyOrganizationsResponse =
@@ -2406,7 +2406,7 @@ export const MoveProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v3/{+name}:move", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<MoveProjectsRequest>;
+) as unknown as Schema.Codec<MoveProjectsRequest>;
 
 export type MoveProjectsResponse = Operation;
 export const MoveProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -2448,7 +2448,7 @@ export const TestIamPermissionsProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsRequest>;
 
 export type TestIamPermissionsProjectsResponse = TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsResponse =
@@ -2483,7 +2483,7 @@ export const GetProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v3/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetProjectsRequest>;
+) as unknown as Schema.Codec<GetProjectsRequest>;
 
 export type GetProjectsResponse = Project;
 export const GetProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Project;
@@ -2520,7 +2520,7 @@ export const GetIamPolicyProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsRequest>;
 
 export type GetIamPolicyProjectsResponse = Policy;
 export const GetIamPolicyProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -2562,7 +2562,7 @@ export const SetIamPolicyProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsRequest>;
 
 export type SetIamPolicyProjectsResponse = Policy;
 export const SetIamPolicyProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -2605,7 +2605,7 @@ export const ListProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v3/projects" }),
   svc,
-) as unknown as Schema.Schema<ListProjectsRequest>;
+) as unknown as Schema.Codec<ListProjectsRequest>;
 
 export type ListProjectsResponse_Op = ListProjectsResponse;
 export const ListProjectsResponse_Op =
@@ -2643,7 +2643,7 @@ export const UndeleteProjectsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v3/{+name}:undelete", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UndeleteProjectsRequest>;
+  ) as unknown as Schema.Codec<UndeleteProjectsRequest>;
 
 export type UndeleteProjectsResponse = Operation;
 export const UndeleteProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -2677,7 +2677,7 @@ export const CreateProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v3/projects", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<CreateProjectsRequest>;
+) as unknown as Schema.Codec<CreateProjectsRequest>;
 
 export type CreateProjectsResponse = Operation;
 export const CreateProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -2717,7 +2717,7 @@ export const PatchProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PATCH", path: "v3/{+name}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<PatchProjectsRequest>;
+) as unknown as Schema.Codec<PatchProjectsRequest>;
 
 export type PatchProjectsResponse = Operation;
 export const PatchProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -2751,7 +2751,7 @@ export const DeleteProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "v3/{+name}" }),
   svc,
-) as unknown as Schema.Schema<DeleteProjectsRequest>;
+) as unknown as Schema.Codec<DeleteProjectsRequest>;
 
 export type DeleteProjectsResponse = Operation;
 export const DeleteProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -2791,7 +2791,7 @@ export const SearchProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v3/projects:search" }),
   svc,
-) as unknown as Schema.Schema<SearchProjectsRequest>;
+) as unknown as Schema.Codec<SearchProjectsRequest>;
 
 export type SearchProjectsResponse_Op = SearchProjectsResponse;
 export const SearchProjectsResponse_Op =
@@ -2830,7 +2830,7 @@ export const CreateTagKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v3/tagKeys", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<CreateTagKeysRequest>;
+) as unknown as Schema.Codec<CreateTagKeysRequest>;
 
 export type CreateTagKeysResponse = Operation;
 export const CreateTagKeysResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -2865,7 +2865,7 @@ export const GetNamespacedTagKeysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v3/tagKeys/namespaced" }),
     svc,
-  ) as unknown as Schema.Schema<GetNamespacedTagKeysRequest>;
+  ) as unknown as Schema.Codec<GetNamespacedTagKeysRequest>;
 
 export type GetNamespacedTagKeysResponse = TagKey;
 export const GetNamespacedTagKeysResponse = /*@__PURE__*/ /*#__PURE__*/ TagKey;
@@ -2902,7 +2902,7 @@ export const DeleteTagKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "v3/{+name}" }),
   svc,
-) as unknown as Schema.Schema<DeleteTagKeysRequest>;
+) as unknown as Schema.Codec<DeleteTagKeysRequest>;
 
 export type DeleteTagKeysResponse = Operation;
 export const DeleteTagKeysResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -2947,7 +2947,7 @@ export const PatchTagKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PATCH", path: "v3/{+name}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<PatchTagKeysRequest>;
+) as unknown as Schema.Codec<PatchTagKeysRequest>;
 
 export type PatchTagKeysResponse = Operation;
 export const PatchTagKeysResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -2989,7 +2989,7 @@ export const GetIamPolicyTagKeysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyTagKeysRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyTagKeysRequest>;
 
 export type GetIamPolicyTagKeysResponse = Policy;
 export const GetIamPolicyTagKeysResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -3031,7 +3031,7 @@ export const SetIamPolicyTagKeysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyTagKeysRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyTagKeysRequest>;
 
 export type SetIamPolicyTagKeysResponse = Policy;
 export const SetIamPolicyTagKeysResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -3071,7 +3071,7 @@ export const ListTagKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v3/tagKeys" }),
   svc,
-) as unknown as Schema.Schema<ListTagKeysRequest>;
+) as unknown as Schema.Codec<ListTagKeysRequest>;
 
 export type ListTagKeysResponse_Op = ListTagKeysResponse;
 export const ListTagKeysResponse_Op =
@@ -3113,7 +3113,7 @@ export const TestIamPermissionsTagKeysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsTagKeysRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsTagKeysRequest>;
 
 export type TestIamPermissionsTagKeysResponse = TestIamPermissionsResponse;
 export const TestIamPermissionsTagKeysResponse =
@@ -3148,7 +3148,7 @@ export const GetTagKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v3/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetTagKeysRequest>;
+) as unknown as Schema.Codec<GetTagKeysRequest>;
 
 export type GetTagKeysResponse = TagKey;
 export const GetTagKeysResponse = /*@__PURE__*/ /*#__PURE__*/ TagKey;
@@ -3183,7 +3183,7 @@ export const CreateTagBindingsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v3/tagBindings", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateTagBindingsRequest>;
+  ) as unknown as Schema.Codec<CreateTagBindingsRequest>;
 
 export type CreateTagBindingsResponse = Operation;
 export const CreateTagBindingsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -3225,7 +3225,7 @@ export const ListTagBindingsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "v3/tagBindings" }),
   svc,
-) as unknown as Schema.Schema<ListTagBindingsRequest>;
+) as unknown as Schema.Codec<ListTagBindingsRequest>;
 
 export type ListTagBindingsResponse_Op = ListTagBindingsResponse;
 export const ListTagBindingsResponse_Op =
@@ -3260,7 +3260,7 @@ export const DeleteTagBindingsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v3/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteTagBindingsRequest>;
+  ) as unknown as Schema.Codec<DeleteTagBindingsRequest>;
 
 export type DeleteTagBindingsResponse = Operation;
 export const DeleteTagBindingsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -3295,7 +3295,7 @@ export const GetLocationsTagBindingCollectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v3/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetLocationsTagBindingCollectionsRequest>;
+  ) as unknown as Schema.Codec<GetLocationsTagBindingCollectionsRequest>;
 
 export type GetLocationsTagBindingCollectionsResponse = TagBindingCollection;
 export const GetLocationsTagBindingCollectionsResponse =
@@ -3335,7 +3335,7 @@ export const PatchLocationsTagBindingCollectionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v3/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchLocationsTagBindingCollectionsRequest>;
+  ) as unknown as Schema.Codec<PatchLocationsTagBindingCollectionsRequest>;
 
 export type PatchLocationsTagBindingCollectionsResponse = Operation;
 export const PatchLocationsTagBindingCollectionsResponse =
@@ -3371,7 +3371,7 @@ export const GetLocationsEffectiveTagBindingCollectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v3/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetLocationsEffectiveTagBindingCollectionsRequest>;
+  ) as unknown as Schema.Codec<GetLocationsEffectiveTagBindingCollectionsRequest>;
 
 export type GetLocationsEffectiveTagBindingCollectionsResponse =
   EffectiveTagBindingCollection;
@@ -3412,7 +3412,7 @@ export const ListEffectiveTagsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v3/effectiveTags" }),
     svc,
-  ) as unknown as Schema.Schema<ListEffectiveTagsRequest>;
+  ) as unknown as Schema.Codec<ListEffectiveTagsRequest>;
 
 export type ListEffectiveTagsResponse_Op = ListEffectiveTagsResponse;
 export const ListEffectiveTagsResponse_Op =

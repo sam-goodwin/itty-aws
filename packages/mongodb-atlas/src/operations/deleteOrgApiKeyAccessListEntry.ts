@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteOrgApiKeyAccessListEntryInput {
+  orgId: string;
+  apiUserId: string;
+  ipAddress: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const DeleteOrgApiKeyAccessListEntryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
@@ -16,15 +23,12 @@ export const DeleteOrgApiKeyAccessListEntryInput =
       method: "DELETE",
       path: "/api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList/{ipAddress}",
     }),
-  );
-export type DeleteOrgApiKeyAccessListEntryInput =
-  typeof DeleteOrgApiKeyAccessListEntryInput.Type;
+  ) as unknown as Schema.Codec<DeleteOrgApiKeyAccessListEntryInput>;
 
 // Output Schema
+export type DeleteOrgApiKeyAccessListEntryOutput = void;
 export const DeleteOrgApiKeyAccessListEntryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteOrgApiKeyAccessListEntryOutput =
-  typeof DeleteOrgApiKeyAccessListEntryOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteOrgApiKeyAccessListEntryOutput>;
 
 // The operation
 /**

@@ -3,6 +3,14 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface TracingSpansValuesRetrieveInput {
+  project_id: string;
+  attribute_type?: "span" | "span_attribute" | "span_resource_attribute";
+  key: string;
+  limit?: number;
+  offset?: number;
+  value?: string;
+}
 export const TracingSpansValuesRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -18,15 +26,12 @@ export const TracingSpansValuesRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/tracing/spans/values/",
     }),
-  );
-export type TracingSpansValuesRetrieveInput =
-  typeof TracingSpansValuesRetrieveInput.Type;
+  ) as unknown as Schema.Codec<TracingSpansValuesRetrieveInput>;
 
 // Output Schema
+export type TracingSpansValuesRetrieveOutput = void;
 export const TracingSpansValuesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TracingSpansValuesRetrieveOutput =
-  typeof TracingSpansValuesRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TracingSpansValuesRetrieveOutput>;
 
 // The operation
 /**

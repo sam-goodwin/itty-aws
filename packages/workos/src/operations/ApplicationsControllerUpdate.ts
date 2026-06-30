@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface ApplicationsControllerUpdateInput {
+  id: string;
+  name?: string;
+  description?: string | null;
+  scopes?: string[] | null;
+  redirect_uris?: { uri?: string; default?: boolean | null }[] | null;
+}
 export const ApplicationsControllerUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -20,11 +27,21 @@ export const ApplicationsControllerUpdateInput =
         ),
       ),
     ),
-  }).pipe(T.Http({ method: "PUT", path: "/connect/applications/{id}" }));
-export type ApplicationsControllerUpdateInput =
-  typeof ApplicationsControllerUpdateInput.Type;
+  }).pipe(
+    T.Http({ method: "PUT", path: "/connect/applications/{id}" }),
+  ) as unknown as Schema.Codec<ApplicationsControllerUpdateInput>;
 
 // Output Schema
+export interface ApplicationsControllerUpdateOutput {
+  object: string;
+  id: string;
+  client_id: string;
+  description: string | null;
+  name: string;
+  scopes: string[];
+  created_at: string;
+  updated_at: string;
+}
 export const ApplicationsControllerUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.String,
@@ -35,9 +52,7 @@ export const ApplicationsControllerUpdateOutput =
     scopes: Schema.Array(Schema.String),
     created_at: Schema.String,
     updated_at: Schema.String,
-  });
-export type ApplicationsControllerUpdateOutput =
-  typeof ApplicationsControllerUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationsControllerUpdateOutput>;
 
 // The operation
 /**

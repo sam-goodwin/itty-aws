@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface SignEvmTransactionInput {
+  address: string;
+  transaction: string;
+}
 export const SignEvmTransactionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     address: Schema.String.pipe(T.PathParam()),
@@ -12,15 +16,16 @@ export const SignEvmTransactionInput =
       method: "POST",
       path: "/v2/evm/accounts/{address}/sign/transaction",
     }),
-  );
-export type SignEvmTransactionInput = typeof SignEvmTransactionInput.Type;
+  ) as unknown as Schema.Codec<SignEvmTransactionInput>;
 
 // Output Schema
+export interface SignEvmTransactionOutput {
+  signedTransaction: string;
+}
 export const SignEvmTransactionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signedTransaction: Schema.String,
-  });
-export type SignEvmTransactionOutput = typeof SignEvmTransactionOutput.Type;
+  }) as unknown as Schema.Codec<SignEvmTransactionOutput>;
 
 // The operation
 /**

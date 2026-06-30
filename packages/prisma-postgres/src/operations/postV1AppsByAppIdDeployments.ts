@@ -4,20 +4,34 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface PostV1AppsByAppIdDeploymentsInput {
+  appId: string;
+  portMapping?: { http?: number | null };
+  skipCodeUpload?: boolean;
+}
 export const PostV1AppsByAppIdDeploymentsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appId: Schema.String.pipe(T.PathParam()),
     portMapping: Schema.optional(
       Schema.Struct({
-        http: Schema.optional(Schema.Unknown),
+        http: Schema.optional(Schema.NullOr(Schema.Number)),
       }),
     ),
     skipCodeUpload: Schema.optional(Schema.Boolean),
-  }).pipe(T.Http({ method: "POST", path: "/v1/apps/{appId}/deployments" }));
-export type PostV1AppsByAppIdDeploymentsInput =
-  typeof PostV1AppsByAppIdDeploymentsInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/v1/apps/{appId}/deployments" }),
+  ) as unknown as Schema.Codec<PostV1AppsByAppIdDeploymentsInput>;
 
 // Output Schema
+export interface PostV1AppsByAppIdDeploymentsOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    foundryVersionId: string;
+    uploadUrl: string | null;
+  };
+}
 export const PostV1AppsByAppIdDeploymentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Struct({
@@ -27,9 +41,7 @@ export const PostV1AppsByAppIdDeploymentsOutput =
       foundryVersionId: Schema.String,
       uploadUrl: Schema.NullOr(Schema.String),
     }),
-  });
-export type PostV1AppsByAppIdDeploymentsOutput =
-  typeof PostV1AppsByAppIdDeploymentsOutput.Type;
+  }) as unknown as Schema.Codec<PostV1AppsByAppIdDeploymentsOutput>;
 
 // The operation
 /**

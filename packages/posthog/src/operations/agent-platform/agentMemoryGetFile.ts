@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AgentMemoryGetFileInput {
+  application_id: string;
+  project_id: string;
+  path: string;
+}
 export const AgentMemoryGetFileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     application_id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +18,16 @@ export const AgentMemoryGetFileInput =
       method: "GET",
       path: "/api/projects/{project_id}/agent_applications/{application_id}/memory/files/by_path/",
     }),
-  );
-export type AgentMemoryGetFileInput = typeof AgentMemoryGetFileInput.Type;
+  ) as unknown as Schema.Codec<AgentMemoryGetFileInput>;
 
 // Output Schema
+export interface AgentMemoryGetFileOutput {
+  content: string;
+}
 export const AgentMemoryGetFileOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.String,
-  });
-export type AgentMemoryGetFileOutput = typeof AgentMemoryGetFileOutput.Type;
+  }) as unknown as Schema.Codec<AgentMemoryGetFileOutput>;
 
 // The operation
 /**

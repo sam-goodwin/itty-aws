@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -35,7 +35,7 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
+export const Location: Schema.Codec<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -51,7 +51,7 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Location)),
     nextPageToken: Schema.optional(Schema.String),
@@ -85,7 +85,7 @@ export interface CloudLocation {
   carbonFreeEnergyPercentage?: number;
 }
 
-export const CloudLocation: Schema.Schema<CloudLocation> =
+export const CloudLocation: Schema.Codec<CloudLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     territoryCode: Schema.optional(Schema.String),
@@ -103,7 +103,7 @@ export interface SearchCloudLocationsResponse {
   nextPageToken?: string;
 }
 
-export const SearchCloudLocationsResponse: Schema.Schema<SearchCloudLocationsResponse> =
+export const SearchCloudLocationsResponse: Schema.Codec<SearchCloudLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cloudLocations: Schema.optional(Schema.Array(CloudLocation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -116,7 +116,7 @@ export interface ListCloudLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListCloudLocationsResponse: Schema.Schema<ListCloudLocationsResponse> =
+export const ListCloudLocationsResponse: Schema.Codec<ListCloudLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cloudLocations: Schema.optional(Schema.Array(CloudLocation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -178,7 +178,7 @@ export const ListProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
@@ -213,7 +213,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
@@ -244,7 +244,7 @@ export const GetProjectsLocationsCloudLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCloudLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCloudLocationsRequest>;
 
 export type GetProjectsLocationsCloudLocationsResponse = CloudLocation;
 export const GetProjectsLocationsCloudLocationsResponse =
@@ -287,7 +287,7 @@ export const ListProjectsLocationsCloudLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/cloudLocations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCloudLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCloudLocationsRequest>;
 
 export type ListProjectsLocationsCloudLocationsResponse =
   ListCloudLocationsResponse;
@@ -340,7 +340,7 @@ export const SearchProjectsLocationsCloudLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+parent}/cloudLocations:search" }),
     svc,
-  ) as unknown as Schema.Schema<SearchProjectsLocationsCloudLocationsRequest>;
+  ) as unknown as Schema.Codec<SearchProjectsLocationsCloudLocationsRequest>;
 
 export type SearchProjectsLocationsCloudLocationsResponse =
   SearchCloudLocationsResponse;

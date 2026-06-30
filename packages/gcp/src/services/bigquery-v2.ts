@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -33,7 +33,7 @@ export interface Expr {
   title?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
+export const Expr: Schema.Codec<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
@@ -50,7 +50,7 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
+export const Binding: Schema.Codec<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     members: Schema.optional(Schema.Array(Schema.String)),
     role: Schema.optional(Schema.String),
@@ -69,7 +69,7 @@ export interface AuditLogConfig {
   exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
+export const AuditLogConfig: Schema.Codec<AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
@@ -82,7 +82,7 @@ export interface AuditConfig {
   service?: string;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
+export const AuditConfig: Schema.Codec<AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
     service: Schema.optional(Schema.String),
@@ -99,7 +99,7 @@ export interface Policy {
   auditConfigs?: ReadonlyArray<AuditConfig>;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.Number),
     bindings: Schema.optional(Schema.Array(Binding)),
@@ -114,7 +114,7 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
     updateMask: Schema.optional(Schema.String),
@@ -129,7 +129,7 @@ export interface ModelReference {
   datasetId?: string;
 }
 
-export const ModelReference: Schema.Schema<ModelReference> =
+export const ModelReference: Schema.Codec<ModelReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modelId: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
@@ -149,7 +149,7 @@ export interface RegressionMetrics {
   meanSquaredLogError?: number;
 }
 
-export const RegressionMetrics: Schema.Schema<RegressionMetrics> =
+export const RegressionMetrics: Schema.Codec<RegressionMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     medianAbsoluteError: Schema.optional(Schema.Number),
     rSquared: Schema.optional(Schema.Number),
@@ -165,7 +165,7 @@ export interface CategoryCount {
   count?: string;
 }
 
-export const CategoryCount: Schema.Schema<CategoryCount> =
+export const CategoryCount: Schema.Codec<CategoryCount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     category: Schema.optional(Schema.String),
     count: Schema.optional(Schema.String),
@@ -176,7 +176,7 @@ export interface CategoricalValue {
   categoryCounts?: ReadonlyArray<CategoryCount>;
 }
 
-export const CategoricalValue: Schema.Schema<CategoricalValue> =
+export const CategoricalValue: Schema.Codec<CategoricalValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     categoryCounts: Schema.optional(Schema.Array(CategoryCount)),
   }).annotate({ identifier: "CategoricalValue" });
@@ -190,7 +190,7 @@ export interface FeatureValue {
   numericalValue?: number;
 }
 
-export const FeatureValue: Schema.Schema<FeatureValue> =
+export const FeatureValue: Schema.Codec<FeatureValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     categoricalValue: Schema.optional(CategoricalValue),
     featureColumn: Schema.optional(Schema.String),
@@ -206,7 +206,7 @@ export interface Cluster {
   count?: string;
 }
 
-export const Cluster: Schema.Schema<Cluster> =
+export const Cluster: Schema.Codec<Cluster> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     centroidId: Schema.optional(Schema.String),
     featureValues: Schema.optional(Schema.Array(FeatureValue)),
@@ -222,7 +222,7 @@ export interface ClusteringMetrics {
   daviesBouldinIndex?: number;
 }
 
-export const ClusteringMetrics: Schema.Schema<ClusteringMetrics> =
+export const ClusteringMetrics: Schema.Codec<ClusteringMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clusters: Schema.optional(Schema.Array(Cluster)),
     meanSquaredDistance: Schema.optional(Schema.Number),
@@ -236,7 +236,7 @@ export interface Entry {
   predictedLabel?: string;
 }
 
-export const Entry: Schema.Schema<Entry> =
+export const Entry: Schema.Codec<Entry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     itemCount: Schema.optional(Schema.String),
     predictedLabel: Schema.optional(Schema.String),
@@ -249,11 +249,12 @@ export interface Row {
   actualLabel?: string;
 }
 
-export const Row: Schema.Schema<Row> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Row: Schema.Codec<Row> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     entries: Schema.optional(Schema.Array(Entry)),
     actualLabel: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Row" });
+  },
+).annotate({ identifier: "Row" });
 
 export interface ConfusionMatrix {
   /** Confidence threshold used when computing the entries of the confusion matrix. */
@@ -262,7 +263,7 @@ export interface ConfusionMatrix {
   rows?: ReadonlyArray<Row>;
 }
 
-export const ConfusionMatrix: Schema.Schema<ConfusionMatrix> =
+export const ConfusionMatrix: Schema.Codec<ConfusionMatrix> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     confidenceThreshold: Schema.optional(Schema.Number),
     rows: Schema.optional(Schema.Array(Row)),
@@ -285,7 +286,7 @@ export interface AggregateClassificationMetrics {
   f1Score?: number;
 }
 
-export const AggregateClassificationMetrics: Schema.Schema<AggregateClassificationMetrics> =
+export const AggregateClassificationMetrics: Schema.Codec<AggregateClassificationMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accuracy: Schema.optional(Schema.Number),
     precision: Schema.optional(Schema.Number),
@@ -303,7 +304,7 @@ export interface MultiClassClassificationMetrics {
   aggregateClassificationMetrics?: AggregateClassificationMetrics;
 }
 
-export const MultiClassClassificationMetrics: Schema.Schema<MultiClassClassificationMetrics> =
+export const MultiClassClassificationMetrics: Schema.Codec<MultiClassClassificationMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     confusionMatrixList: Schema.optional(Schema.Array(ConfusionMatrix)),
     aggregateClassificationMetrics: Schema.optional(
@@ -322,7 +323,7 @@ export interface RankingMetrics {
   meanAveragePrecision?: number;
 }
 
-export const RankingMetrics: Schema.Schema<RankingMetrics> =
+export const RankingMetrics: Schema.Codec<RankingMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     normalizedDiscountedCumulativeGain: Schema.optional(Schema.Number),
     meanSquaredError: Schema.optional(Schema.Number),
@@ -335,7 +336,7 @@ export interface DimensionalityReductionMetrics {
   totalExplainedVarianceRatio?: number;
 }
 
-export const DimensionalityReductionMetrics: Schema.Schema<DimensionalityReductionMetrics> =
+export const DimensionalityReductionMetrics: Schema.Codec<DimensionalityReductionMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalExplainedVarianceRatio: Schema.optional(Schema.Number),
   }).annotate({ identifier: "DimensionalityReductionMetrics" });
@@ -349,7 +350,7 @@ export interface ArimaFittingMetrics {
   logLikelihood?: number;
 }
 
-export const ArimaFittingMetrics: Schema.Schema<ArimaFittingMetrics> =
+export const ArimaFittingMetrics: Schema.Codec<ArimaFittingMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     variance: Schema.optional(Schema.Number),
     aic: Schema.optional(Schema.Number),
@@ -365,7 +366,7 @@ export interface ArimaOrder {
   d?: string;
 }
 
-export const ArimaOrder: Schema.Schema<ArimaOrder> =
+export const ArimaOrder: Schema.Codec<ArimaOrder> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     q: Schema.optional(Schema.String),
     p: Schema.optional(Schema.String),
@@ -403,7 +404,7 @@ export interface ArimaSingleModelForecastingMetrics {
   timeSeriesId?: string;
 }
 
-export const ArimaSingleModelForecastingMetrics: Schema.Schema<ArimaSingleModelForecastingMetrics> =
+export const ArimaSingleModelForecastingMetrics: Schema.Codec<ArimaSingleModelForecastingMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasSpikesAndDips: Schema.optional(Schema.Boolean),
     hasDrift: Schema.optional(Schema.Boolean),
@@ -441,7 +442,7 @@ export interface ArimaForecastingMetrics {
   arimaSingleModelForecastingMetrics?: ReadonlyArray<ArimaSingleModelForecastingMetrics>;
 }
 
-export const ArimaForecastingMetrics: Schema.Schema<ArimaForecastingMetrics> =
+export const ArimaForecastingMetrics: Schema.Codec<ArimaForecastingMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     arimaFittingMetrics: Schema.optional(Schema.Array(ArimaFittingMetrics)),
     hasDrift: Schema.optional(Schema.Array(Schema.Boolean)),
@@ -474,7 +475,7 @@ export interface BinaryConfusionMatrix {
   falseNegatives?: string;
 }
 
-export const BinaryConfusionMatrix: Schema.Schema<BinaryConfusionMatrix> =
+export const BinaryConfusionMatrix: Schema.Codec<BinaryConfusionMatrix> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     f1Score: Schema.optional(Schema.Number),
     trueNegatives: Schema.optional(Schema.String),
@@ -498,7 +499,7 @@ export interface BinaryClassificationMetrics {
   binaryConfusionMatrixList?: ReadonlyArray<BinaryConfusionMatrix>;
 }
 
-export const BinaryClassificationMetrics: Schema.Schema<BinaryClassificationMetrics> =
+export const BinaryClassificationMetrics: Schema.Codec<BinaryClassificationMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     negativeLabel: Schema.optional(Schema.String),
     positiveLabel: Schema.optional(Schema.String),
@@ -527,7 +528,7 @@ export interface EvaluationMetrics {
   binaryClassificationMetrics?: BinaryClassificationMetrics;
 }
 
-export const EvaluationMetrics: Schema.Schema<EvaluationMetrics> =
+export const EvaluationMetrics: Schema.Codec<EvaluationMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regressionMetrics: Schema.optional(RegressionMetrics),
     clusteringMetrics: Schema.optional(ClusteringMetrics),
@@ -976,7 +977,7 @@ export interface TrainingOptions {
   timeSeriesTimestampColumn?: string;
 }
 
-export const TrainingOptions: Schema.Schema<TrainingOptions> =
+export const TrainingOptions: Schema.Codec<TrainingOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     categoryEncodingMethod: Schema.optional(Schema.String),
     hiddenUnits: Schema.optional(Schema.Array(Schema.String)),
@@ -1114,7 +1115,7 @@ export interface HparamTuningTrial {
   trainingLoss?: number;
 }
 
-export const HparamTuningTrial: Schema.Schema<HparamTuningTrial> =
+export const HparamTuningTrial: Schema.Codec<HparamTuningTrial> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     evaluationMetrics: Schema.optional(EvaluationMetrics),
     trialId: Schema.optional(Schema.String),
@@ -1135,7 +1136,7 @@ export interface GoogleSheetsOptions {
   skipLeadingRows?: string;
 }
 
-export const GoogleSheetsOptions: Schema.Schema<GoogleSheetsOptions> =
+export const GoogleSheetsOptions: Schema.Codec<GoogleSheetsOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     range: Schema.optional(Schema.String),
     skipLeadingRows: Schema.optional(Schema.String),
@@ -1150,7 +1151,7 @@ export interface TableReference {
   projectId?: string;
 }
 
-export const TableReference: Schema.Schema<TableReference> =
+export const TableReference: Schema.Codec<TableReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tableId: Schema.optional(Schema.String),
     datasetId: Schema.optional(Schema.String),
@@ -1164,7 +1165,7 @@ export interface CloneDefinition {
   cloneTime?: string;
 }
 
-export const CloneDefinition: Schema.Schema<CloneDefinition> =
+export const CloneDefinition: Schema.Codec<CloneDefinition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     baseTableReference: Schema.optional(TableReference),
     cloneTime: Schema.optional(Schema.String),
@@ -1175,7 +1176,7 @@ export interface IntArray {
   elements?: ReadonlyArray<string>;
 }
 
-export const IntArray: Schema.Schema<IntArray> =
+export const IntArray: Schema.Codec<IntArray> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     elements: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "IntArray" });
@@ -1199,7 +1200,7 @@ export interface DifferentialPrivacyPolicy {
   deltaBudgetRemaining?: number;
 }
 
-export const DifferentialPrivacyPolicy: Schema.Schema<DifferentialPrivacyPolicy> =
+export const DifferentialPrivacyPolicy: Schema.Codec<DifferentialPrivacyPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     epsilonBudget: Schema.optional(Schema.Number),
     deltaPerQuery: Schema.optional(Schema.Number),
@@ -1218,7 +1219,7 @@ export interface ExternalDatasetReference {
   externalSource?: string;
 }
 
-export const ExternalDatasetReference: Schema.Schema<ExternalDatasetReference> =
+export const ExternalDatasetReference: Schema.Codec<ExternalDatasetReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connection: Schema.optional(Schema.String),
     externalSource: Schema.optional(Schema.String),
@@ -1231,7 +1232,7 @@ export interface IntRange {
   min?: string;
 }
 
-export const IntRange: Schema.Schema<IntRange> =
+export const IntRange: Schema.Codec<IntRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     max: Schema.optional(Schema.String),
     min: Schema.optional(Schema.String),
@@ -1242,7 +1243,7 @@ export interface TestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
@@ -1258,7 +1259,7 @@ export interface HivePartitioningOptions {
   mode?: string;
 }
 
-export const HivePartitioningOptions: Schema.Schema<HivePartitioningOptions> =
+export const HivePartitioningOptions: Schema.Codec<HivePartitioningOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fields: Schema.optional(Schema.Array(Schema.String)),
     requirePartitionFilter: Schema.optional(Schema.Boolean),
@@ -1271,7 +1272,7 @@ export interface JsonOptions {
   encoding?: string;
 }
 
-export const JsonOptions: Schema.Schema<JsonOptions> =
+export const JsonOptions: Schema.Codec<JsonOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encoding: Schema.optional(Schema.String),
   }).annotate({ identifier: "JsonOptions" });
@@ -1283,7 +1284,7 @@ export interface StandardSqlField {
   name?: string;
 }
 
-export const StandardSqlField: Schema.Schema<StandardSqlField> =
+export const StandardSqlField: Schema.Codec<StandardSqlField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       type: Schema.optional(StandardSqlDataType),
@@ -1291,21 +1292,21 @@ export const StandardSqlField: Schema.Schema<StandardSqlField> =
     }),
   ).annotate({
     identifier: "StandardSqlField",
-  }) as any as Schema.Schema<StandardSqlField>;
+  }) as any as Schema.Codec<StandardSqlField>;
 
 export interface StandardSqlStructType {
   /** Fields within the struct. */
   fields?: ReadonlyArray<StandardSqlField>;
 }
 
-export const StandardSqlStructType: Schema.Schema<StandardSqlStructType> =
+export const StandardSqlStructType: Schema.Codec<StandardSqlStructType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       fields: Schema.optional(Schema.Array(StandardSqlField)),
     }),
   ).annotate({
     identifier: "StandardSqlStructType",
-  }) as any as Schema.Schema<StandardSqlStructType>;
+  }) as any as Schema.Codec<StandardSqlStructType>;
 
 export interface StandardSqlDataType {
   /** The type of the array's elements, if type_kind = "ARRAY". */
@@ -1337,7 +1338,7 @@ export interface StandardSqlDataType {
   rangeElementType?: StandardSqlDataType;
 }
 
-export const StandardSqlDataType: Schema.Schema<StandardSqlDataType> =
+export const StandardSqlDataType: Schema.Codec<StandardSqlDataType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       arrayElementType: Schema.optional(StandardSqlDataType),
@@ -1347,7 +1348,7 @@ export const StandardSqlDataType: Schema.Schema<StandardSqlDataType> =
     }),
   ).annotate({
     identifier: "StandardSqlDataType",
-  }) as any as Schema.Schema<StandardSqlDataType>;
+  }) as any as Schema.Codec<StandardSqlDataType>;
 
 export interface TransformColumn {
   /** Output only. The SQL expression used in the column transform. */
@@ -1358,7 +1359,7 @@ export interface TransformColumn {
   name?: string;
 }
 
-export const TransformColumn: Schema.Schema<TransformColumn> =
+export const TransformColumn: Schema.Codec<TransformColumn> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transformSql: Schema.optional(Schema.String),
     type: Schema.optional(StandardSqlDataType),
@@ -1386,7 +1387,7 @@ export interface IncrementalResultStats {
   lastIncrementalRowTime?: string;
 }
 
-export const IncrementalResultStats: Schema.Schema<IncrementalResultStats> =
+export const IncrementalResultStats: Schema.Codec<IncrementalResultStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     disabledReason: Schema.optional(Schema.String),
     resultSetLastReplaceTime: Schema.optional(Schema.String),
@@ -1406,7 +1407,7 @@ export interface ArimaCoefficients {
   interceptCoefficient?: number;
 }
 
-export const ArimaCoefficients: Schema.Schema<ArimaCoefficients> =
+export const ArimaCoefficients: Schema.Codec<ArimaCoefficients> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     movingAverageCoefficients: Schema.optional(Schema.Array(Schema.Number)),
     autoRegressiveCoefficients: Schema.optional(Schema.Array(Schema.Number)),
@@ -1446,7 +1447,7 @@ export interface ArimaModelInfo {
   hasSpikesAndDips?: boolean;
 }
 
-export const ArimaModelInfo: Schema.Schema<ArimaModelInfo> =
+export const ArimaModelInfo: Schema.Codec<ArimaModelInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasHolidayEffect: Schema.optional(Schema.Boolean),
     arimaCoefficients: Schema.optional(ArimaCoefficients),
@@ -1477,7 +1478,7 @@ export interface ArimaResult {
   arimaModelInfo?: ReadonlyArray<ArimaModelInfo>;
 }
 
-export const ArimaResult: Schema.Schema<ArimaResult> =
+export const ArimaResult: Schema.Codec<ArimaResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     seasonalPeriods: Schema.optional(Schema.Array(Schema.String)),
     arimaModelInfo: Schema.optional(Schema.Array(ArimaModelInfo)),
@@ -1507,7 +1508,7 @@ export interface MaterializedView {
   chosen?: boolean;
 }
 
-export const MaterializedView: Schema.Schema<MaterializedView> =
+export const MaterializedView: Schema.Codec<MaterializedView> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rejectedReason: Schema.optional(Schema.String),
     estimatedBytesSaved: Schema.optional(Schema.String),
@@ -1520,7 +1521,7 @@ export interface MaterializedViewStatistics {
   materializedView?: ReadonlyArray<MaterializedView>;
 }
 
-export const MaterializedViewStatistics: Schema.Schema<MaterializedViewStatistics> =
+export const MaterializedViewStatistics: Schema.Codec<MaterializedViewStatistics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     materializedView: Schema.optional(Schema.Array(MaterializedView)),
   }).annotate({ identifier: "MaterializedViewStatistics" });
@@ -1530,7 +1531,7 @@ export interface DoubleCandidates {
   candidates?: ReadonlyArray<number>;
 }
 
-export const DoubleCandidates: Schema.Schema<DoubleCandidates> =
+export const DoubleCandidates: Schema.Codec<DoubleCandidates> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     candidates: Schema.optional(Schema.Array(Schema.Number)),
   }).annotate({ identifier: "DoubleCandidates" });
@@ -1552,7 +1553,7 @@ export interface StoredColumnsUnusedReason {
   uncoveredColumns?: ReadonlyArray<string>;
 }
 
-export const StoredColumnsUnusedReason: Schema.Schema<StoredColumnsUnusedReason> =
+export const StoredColumnsUnusedReason: Schema.Codec<StoredColumnsUnusedReason> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -1568,7 +1569,7 @@ export interface StoredColumnsUsage {
   isQueryAccelerated?: boolean;
 }
 
-export const StoredColumnsUsage: Schema.Schema<StoredColumnsUsage> =
+export const StoredColumnsUsage: Schema.Codec<StoredColumnsUsage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     baseTable: Schema.optional(TableReference),
     storedColumnsUnusedReasons: Schema.optional(
@@ -1581,7 +1582,7 @@ export interface TableCell {
   v?: unknown;
 }
 
-export const TableCell: Schema.Schema<TableCell> =
+export const TableCell: Schema.Codec<TableCell> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     v: Schema.optional(Schema.Unknown),
   }).annotate({ identifier: "TableCell" });
@@ -1591,7 +1592,7 @@ export interface TableRow {
   f?: ReadonlyArray<TableCell>;
 }
 
-export const TableRow: Schema.Schema<TableRow> =
+export const TableRow: Schema.Codec<TableRow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     f: Schema.optional(Schema.Array(TableCell)),
   }).annotate({ identifier: "TableRow" });
@@ -1605,7 +1606,7 @@ export interface JobReference {
   location?: string;
 }
 
-export const JobReference: Schema.Schema<JobReference> =
+export const JobReference: Schema.Codec<JobReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectId: Schema.optional(Schema.String),
     jobId: Schema.optional(Schema.String),
@@ -1617,7 +1618,7 @@ export interface DataPolicyOption {
   name?: string;
 }
 
-export const DataPolicyOption: Schema.Schema<DataPolicyOption> =
+export const DataPolicyOption: Schema.Codec<DataPolicyOption> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "DataPolicyOption" });
@@ -1631,7 +1632,7 @@ export interface GeneratedExpressionInfo {
   stored?: boolean;
 }
 
-export const GeneratedExpressionInfo: Schema.Schema<GeneratedExpressionInfo> =
+export const GeneratedExpressionInfo: Schema.Codec<GeneratedExpressionInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     asynchronous: Schema.optional(Schema.Boolean),
     generationExpression: Schema.optional(Schema.String),
@@ -1649,7 +1650,7 @@ export interface GeneratedColumn {
     | (string & {});
 }
 
-export const GeneratedColumn: Schema.Schema<GeneratedColumn> =
+export const GeneratedColumn: Schema.Codec<GeneratedColumn> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     generatedExpressionInfo: Schema.optional(GeneratedExpressionInfo),
     generatedMode: Schema.optional(Schema.String),
@@ -1660,7 +1661,7 @@ export interface DataPolicyList {
   dataPolicies?: ReadonlyArray<DataPolicyOption>;
 }
 
-export const DataPolicyList: Schema.Schema<DataPolicyList> =
+export const DataPolicyList: Schema.Codec<DataPolicyList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataPolicies: Schema.optional(Schema.Array(DataPolicyOption)),
   }).annotate({ identifier: "DataPolicyList" });
@@ -1712,7 +1713,7 @@ export interface TableFieldSchema {
   fields?: ReadonlyArray<TableFieldSchema>;
 }
 
-export const TableFieldSchema: Schema.Schema<TableFieldSchema> =
+export const TableFieldSchema: Schema.Codec<TableFieldSchema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dataPolicies: Schema.optional(Schema.Array(DataPolicyOption)),
@@ -1750,14 +1751,14 @@ export const TableFieldSchema: Schema.Schema<TableFieldSchema> =
     }),
   ).annotate({
     identifier: "TableFieldSchema",
-  }) as any as Schema.Schema<TableFieldSchema>;
+  }) as any as Schema.Codec<TableFieldSchema>;
 
 export interface ForeignTypeInfo {
   /** Required. Specifies the system which defines the foreign data type. */
   typeSystem?: "TYPE_SYSTEM_UNSPECIFIED" | "HIVE" | (string & {});
 }
 
-export const ForeignTypeInfo: Schema.Schema<ForeignTypeInfo> =
+export const ForeignTypeInfo: Schema.Codec<ForeignTypeInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     typeSystem: Schema.optional(Schema.String),
   }).annotate({ identifier: "ForeignTypeInfo" });
@@ -1769,7 +1770,7 @@ export interface TableSchema {
   foreignTypeInfo?: ForeignTypeInfo;
 }
 
-export const TableSchema: Schema.Schema<TableSchema> =
+export const TableSchema: Schema.Codec<TableSchema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fields: Schema.optional(Schema.Array(TableFieldSchema)),
     foreignTypeInfo: Schema.optional(ForeignTypeInfo),
@@ -1786,7 +1787,7 @@ export interface ErrorProto {
   reason?: string;
 }
 
-export const ErrorProto: Schema.Schema<ErrorProto> =
+export const ErrorProto: Schema.Codec<ErrorProto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
     debugInfo: Schema.optional(Schema.String),
@@ -1821,7 +1822,7 @@ export interface GetQueryResultsResponse {
   totalRows?: string;
 }
 
-export const GetQueryResultsResponse: Schema.Schema<GetQueryResultsResponse> =
+export const GetQueryResultsResponse: Schema.Codec<GetQueryResultsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cacheHit: Schema.optional(Schema.Boolean),
     etag: Schema.optional(Schema.String),
@@ -1860,7 +1861,7 @@ export interface CsvOptions {
   encoding?: string;
 }
 
-export const CsvOptions: Schema.Schema<CsvOptions> =
+export const CsvOptions: Schema.Codec<CsvOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowQuotedNewlines: Schema.optional(Schema.Boolean),
     quote: Schema.optional(Schema.String),
@@ -1879,7 +1880,7 @@ export interface TransactionInfo {
   transactionId?: string;
 }
 
-export const TransactionInfo: Schema.Schema<TransactionInfo> =
+export const TransactionInfo: Schema.Codec<TransactionInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transactionId: Schema.optional(Schema.String),
   }).annotate({ identifier: "TransactionInfo" });
@@ -1899,7 +1900,7 @@ export interface ScriptStackFrame {
   startLine?: number;
 }
 
-export const ScriptStackFrame: Schema.Schema<ScriptStackFrame> =
+export const ScriptStackFrame: Schema.Codec<ScriptStackFrame> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endColumn: Schema.optional(Schema.Number),
     startColumn: Schema.optional(Schema.Number),
@@ -1920,7 +1921,7 @@ export interface ScriptStatistics {
   stackFrames?: ReadonlyArray<ScriptStackFrame>;
 }
 
-export const ScriptStatistics: Schema.Schema<ScriptStatistics> =
+export const ScriptStatistics: Schema.Codec<ScriptStatistics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     evaluationKind: Schema.optional(Schema.String),
     stackFrames: Schema.optional(Schema.Array(ScriptStackFrame)),
@@ -1931,7 +1932,7 @@ export interface RowLevelSecurityStatistics {
   rowLevelSecurityApplied?: boolean;
 }
 
-export const RowLevelSecurityStatistics: Schema.Schema<RowLevelSecurityStatistics> =
+export const RowLevelSecurityStatistics: Schema.Codec<RowLevelSecurityStatistics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rowLevelSecurityApplied: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "RowLevelSecurityStatistics" });
@@ -1943,7 +1944,7 @@ export interface JobStatistics5 {
   copiedRows?: string;
 }
 
-export const JobStatistics5: Schema.Schema<JobStatistics5> =
+export const JobStatistics5: Schema.Codec<JobStatistics5> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     copiedLogicalBytes: Schema.optional(Schema.String),
     copiedRows: Schema.optional(Schema.String),
@@ -1966,7 +1967,7 @@ export interface QueryTimelineSample {
   totalSlotMs?: string;
 }
 
-export const QueryTimelineSample: Schema.Schema<QueryTimelineSample> =
+export const QueryTimelineSample: Schema.Codec<QueryTimelineSample> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     completedUnits: Schema.optional(Schema.String),
     pendingUnits: Schema.optional(Schema.String),
@@ -1992,7 +1993,7 @@ export interface JobStatistics3 {
   badRecords?: string;
 }
 
-export const JobStatistics3: Schema.Schema<JobStatistics3> =
+export const JobStatistics3: Schema.Codec<JobStatistics3> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inputFiles: Schema.optional(Schema.String),
     outputRows: Schema.optional(Schema.String),
@@ -2007,7 +2008,7 @@ export interface DataMaskingStatistics {
   dataMaskingApplied?: boolean;
 }
 
-export const DataMaskingStatistics: Schema.Schema<DataMaskingStatistics> =
+export const DataMaskingStatistics: Schema.Codec<DataMaskingStatistics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataMaskingApplied: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "DataMaskingStatistics" });
@@ -2017,7 +2018,7 @@ export interface QueryInfo {
   optimizationDetails?: Record<string, unknown>;
 }
 
-export const QueryInfo: Schema.Schema<QueryInfo> =
+export const QueryInfo: Schema.Codec<QueryInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     optimizationDetails: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
@@ -2031,7 +2032,7 @@ export interface ExportDataStatistics {
   rowCount?: string;
 }
 
-export const ExportDataStatistics: Schema.Schema<ExportDataStatistics> =
+export const ExportDataStatistics: Schema.Codec<ExportDataStatistics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fileCount: Schema.optional(Schema.String),
     rowCount: Schema.optional(Schema.String),
@@ -2044,7 +2045,7 @@ export interface DatasetReference {
   projectId?: string;
 }
 
-export const DatasetReference: Schema.Schema<DatasetReference> =
+export const DatasetReference: Schema.Codec<DatasetReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     datasetId: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
@@ -2059,7 +2060,7 @@ export interface RoutineReference {
   routineId?: string;
 }
 
-export const RoutineReference: Schema.Schema<RoutineReference> =
+export const RoutineReference: Schema.Codec<RoutineReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     datasetId: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
@@ -2083,7 +2084,7 @@ export interface QueryParameterType {
   timestampPrecision?: string;
 }
 
-export const QueryParameterType: Schema.Schema<QueryParameterType> =
+export const QueryParameterType: Schema.Codec<QueryParameterType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       rangeElementType: Schema.optional(QueryParameterType),
@@ -2102,7 +2103,7 @@ export const QueryParameterType: Schema.Schema<QueryParameterType> =
     }),
   ).annotate({
     identifier: "QueryParameterType",
-  }) as any as Schema.Schema<QueryParameterType>;
+  }) as any as Schema.Codec<QueryParameterType>;
 
 export interface RangeValue {
   /** Optional. The start value of the range. A missing value represents an unbounded start. */
@@ -2111,13 +2112,13 @@ export interface RangeValue {
   end?: QueryParameterValue;
 }
 
-export const RangeValue: Schema.Schema<RangeValue> =
+export const RangeValue: Schema.Codec<RangeValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       start: Schema.optional(QueryParameterValue),
       end: Schema.optional(QueryParameterValue),
     }),
-  ).annotate({ identifier: "RangeValue" }) as any as Schema.Schema<RangeValue>;
+  ).annotate({ identifier: "RangeValue" }) as any as Schema.Codec<RangeValue>;
 
 export interface QueryParameterValue {
   /** Optional. The array values, if this is an array type. */
@@ -2130,7 +2131,7 @@ export interface QueryParameterValue {
   structValues?: Record<string, QueryParameterValue>;
 }
 
-export const QueryParameterValue: Schema.Schema<QueryParameterValue> =
+export const QueryParameterValue: Schema.Codec<QueryParameterValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       arrayValues: Schema.optional(Schema.Array(QueryParameterValue)),
@@ -2142,7 +2143,7 @@ export const QueryParameterValue: Schema.Schema<QueryParameterValue> =
     }),
   ).annotate({
     identifier: "QueryParameterValue",
-  }) as any as Schema.Schema<QueryParameterValue>;
+  }) as any as Schema.Codec<QueryParameterValue>;
 
 export interface QueryParameter {
   /** Required. The type of this parameter. */
@@ -2153,7 +2154,7 @@ export interface QueryParameter {
   name?: string;
 }
 
-export const QueryParameter: Schema.Schema<QueryParameter> =
+export const QueryParameter: Schema.Codec<QueryParameter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parameterType: Schema.optional(QueryParameterType),
     parameterValue: Schema.optional(QueryParameterValue),
@@ -2194,7 +2195,7 @@ export interface IndexUnusedReason {
   message?: string;
 }
 
-export const IndexUnusedReason: Schema.Schema<IndexUnusedReason> =
+export const IndexUnusedReason: Schema.Codec<IndexUnusedReason> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     baseTable: Schema.optional(TableReference),
     code: Schema.optional(Schema.String),
@@ -2213,7 +2214,7 @@ export interface IndexPruningStats {
   postIndexPruningParallelInputCount?: string;
 }
 
-export const IndexPruningStats: Schema.Schema<IndexPruningStats> =
+export const IndexPruningStats: Schema.Codec<IndexPruningStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     indexId: Schema.optional(Schema.String),
     preIndexPruningParallelInputCount: Schema.optional(Schema.String),
@@ -2235,7 +2236,7 @@ export interface SearchStatistics {
     | (string & {});
 }
 
-export const SearchStatistics: Schema.Schema<SearchStatistics> =
+export const SearchStatistics: Schema.Codec<SearchStatistics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     indexUnusedReasons: Schema.optional(Schema.Array(IndexUnusedReason)),
     indexPruningStats: Schema.optional(Schema.Array(IndexPruningStats)),
@@ -2249,7 +2250,7 @@ export interface BigQueryModelTraining {
   expectedTotalIterations?: string;
 }
 
-export const BigQueryModelTraining: Schema.Schema<BigQueryModelTraining> =
+export const BigQueryModelTraining: Schema.Codec<BigQueryModelTraining> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     currentIteration: Schema.optional(Schema.Number),
     expectedTotalIterations: Schema.optional(Schema.String),
@@ -2277,7 +2278,7 @@ export interface DmlStatistics {
   updatedRowCount?: string;
 }
 
-export const DmlStatistics: Schema.Schema<DmlStatistics> =
+export const DmlStatistics: Schema.Codec<DmlStatistics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deletedRowCount: Schema.optional(Schema.String),
     dmlMode: Schema.optional(Schema.String),
@@ -2301,7 +2302,7 @@ export interface LoadQueryStatistics {
   bytesTransferred?: string;
 }
 
-export const LoadQueryStatistics: Schema.Schema<LoadQueryStatistics> =
+export const LoadQueryStatistics: Schema.Codec<LoadQueryStatistics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     outputBytes: Schema.optional(Schema.String),
     badRecords: Schema.optional(Schema.String),
@@ -2320,7 +2321,7 @@ export interface ClusterInfo {
   clusterRadius?: number;
 }
 
-export const ClusterInfo: Schema.Schema<ClusterInfo> =
+export const ClusterInfo: Schema.Codec<ClusterInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clusterSize: Schema.optional(Schema.String),
     centroidId: Schema.optional(Schema.String),
@@ -2338,7 +2339,7 @@ export interface PrincipalComponentInfo {
   explainedVarianceRatio?: number;
 }
 
-export const PrincipalComponentInfo: Schema.Schema<PrincipalComponentInfo> =
+export const PrincipalComponentInfo: Schema.Codec<PrincipalComponentInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     explainedVariance: Schema.optional(Schema.Number),
     principalComponentId: Schema.optional(Schema.String),
@@ -2365,7 +2366,7 @@ export interface IterationResult {
   index?: number;
 }
 
-export const IterationResult: Schema.Schema<IterationResult> =
+export const IterationResult: Schema.Codec<IterationResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     durationMs: Schema.optional(Schema.String),
     clusterInfos: Schema.optional(Schema.Array(ClusterInfo)),
@@ -2423,7 +2424,7 @@ export interface MlStatistics {
     | (string & {});
 }
 
-export const MlStatistics: Schema.Schema<MlStatistics> =
+export const MlStatistics: Schema.Codec<MlStatistics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hparamTrials: Schema.optional(Schema.Array(HparamTuningTrial)),
     modelType: Schema.optional(Schema.String),
@@ -2441,7 +2442,7 @@ export interface PruningStats {
   postCmetaPruningParallelInputCount?: string;
 }
 
-export const PruningStats: Schema.Schema<PruningStats> =
+export const PruningStats: Schema.Codec<PruningStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     preCmetaPruningParallelInputCount: Schema.optional(Schema.String),
     postCmetaPruningPartitionCount: Schema.optional(Schema.String),
@@ -2468,7 +2469,7 @@ export interface TableMetadataCacheUsage {
   staleness?: string;
 }
 
-export const TableMetadataCacheUsage: Schema.Schema<TableMetadataCacheUsage> =
+export const TableMetadataCacheUsage: Schema.Codec<TableMetadataCacheUsage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     unusedReason: Schema.optional(Schema.String),
     explanation: Schema.optional(Schema.String),
@@ -2483,7 +2484,7 @@ export interface MetadataCacheStatistics {
   tableMetadataCacheUsage?: ReadonlyArray<TableMetadataCacheUsage>;
 }
 
-export const MetadataCacheStatistics: Schema.Schema<MetadataCacheStatistics> =
+export const MetadataCacheStatistics: Schema.Codec<MetadataCacheStatistics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tableMetadataCacheUsage: Schema.optional(
       Schema.Array(TableMetadataCacheUsage),
@@ -2495,7 +2496,7 @@ export interface InputDataChange {
   recordsReadDiffPercentage?: number;
 }
 
-export const InputDataChange: Schema.Schema<InputDataChange> =
+export const InputDataChange: Schema.Codec<InputDataChange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recordsReadDiffPercentage: Schema.optional(Schema.Number),
   }).annotate({ identifier: "InputDataChange" });
@@ -2507,7 +2508,7 @@ export interface StagePerformanceChangeInsight {
   stageId?: string;
 }
 
-export const StagePerformanceChangeInsight: Schema.Schema<StagePerformanceChangeInsight> =
+export const StagePerformanceChangeInsight: Schema.Codec<StagePerformanceChangeInsight> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inputDataChange: Schema.optional(InputDataChange),
     stageId: Schema.optional(Schema.String),
@@ -2520,7 +2521,7 @@ export interface MetadataCacheStalenessInsight {
   stalenessPercentageIncrease?: number;
 }
 
-export const MetadataCacheStalenessInsight: Schema.Schema<MetadataCacheStalenessInsight> =
+export const MetadataCacheStalenessInsight: Schema.Codec<MetadataCacheStalenessInsight> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     avgPreviousStalenessMs: Schema.optional(Schema.String),
     stalenessPercentageIncrease: Schema.optional(Schema.Number),
@@ -2535,7 +2536,7 @@ export interface TableChangeInsight {
   metadataCacheStalenessInsight?: MetadataCacheStalenessInsight;
 }
 
-export const TableChangeInsight: Schema.Schema<TableChangeInsight> =
+export const TableChangeInsight: Schema.Codec<TableChangeInsight> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadataCacheNotUsedButUsedPreviously: Schema.optional(Schema.Boolean),
     tableReference: Schema.optional(TableReference),
@@ -2559,7 +2560,7 @@ export interface BiEngineReason {
   message?: string;
 }
 
-export const BiEngineReason: Schema.Schema<BiEngineReason> =
+export const BiEngineReason: Schema.Codec<BiEngineReason> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -2570,7 +2571,7 @@ export interface SkewSource {
   stageId?: string;
 }
 
-export const SkewSource: Schema.Schema<SkewSource> =
+export const SkewSource: Schema.Codec<SkewSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stageId: Schema.optional(Schema.String),
   }).annotate({ identifier: "SkewSource" });
@@ -2580,7 +2581,7 @@ export interface PartitionSkew {
   skewSources?: ReadonlyArray<SkewSource>;
 }
 
-export const PartitionSkew: Schema.Schema<PartitionSkew> =
+export const PartitionSkew: Schema.Codec<PartitionSkew> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     skewSources: Schema.optional(Schema.Array(SkewSource)),
   }).annotate({ identifier: "PartitionSkew" });
@@ -2596,7 +2597,7 @@ export interface HighCardinalityJoin {
   stepIndex?: number;
 }
 
-export const HighCardinalityJoin: Schema.Schema<HighCardinalityJoin> =
+export const HighCardinalityJoin: Schema.Codec<HighCardinalityJoin> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     leftRows: Schema.optional(Schema.String),
     rightRows: Schema.optional(Schema.String),
@@ -2619,7 +2620,7 @@ export interface StagePerformanceStandaloneInsight {
   highCardinalityJoins?: ReadonlyArray<HighCardinalityJoin>;
 }
 
-export const StagePerformanceStandaloneInsight: Schema.Schema<StagePerformanceStandaloneInsight> =
+export const StagePerformanceStandaloneInsight: Schema.Codec<StagePerformanceStandaloneInsight> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     insufficientShuffleQuota: Schema.optional(Schema.Boolean),
     slotContention: Schema.optional(Schema.Boolean),
@@ -2640,7 +2641,7 @@ export interface PerformanceInsights {
   stagePerformanceStandaloneInsights?: ReadonlyArray<StagePerformanceStandaloneInsight>;
 }
 
-export const PerformanceInsights: Schema.Schema<PerformanceInsights> =
+export const PerformanceInsights: Schema.Codec<PerformanceInsights> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     avgPreviousExecutionMs: Schema.optional(Schema.String),
     stagePerformanceChangeInsights: Schema.optional(
@@ -2666,7 +2667,7 @@ export interface VectorSearchStatistics {
   indexUnusedReasons?: ReadonlyArray<IndexUnusedReason>;
 }
 
-export const VectorSearchStatistics: Schema.Schema<VectorSearchStatistics> =
+export const VectorSearchStatistics: Schema.Codec<VectorSearchStatistics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     indexUsageMode: Schema.optional(Schema.String),
     storedColumnsUsages: Schema.optional(Schema.Array(StoredColumnsUsage)),
@@ -2684,7 +2685,7 @@ export interface RowAccessPolicyReference {
   policyId?: string;
 }
 
-export const RowAccessPolicyReference: Schema.Schema<RowAccessPolicyReference> =
+export const RowAccessPolicyReference: Schema.Codec<RowAccessPolicyReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     datasetId: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
@@ -2701,7 +2702,7 @@ export interface PropertyGraphReference {
   datasetId?: string;
 }
 
-export const PropertyGraphReference: Schema.Schema<PropertyGraphReference> =
+export const PropertyGraphReference: Schema.Codec<PropertyGraphReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     propertyGraphId: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
@@ -2715,7 +2716,7 @@ export interface ExplainQueryStep {
   substeps?: ReadonlyArray<string>;
 }
 
-export const ExplainQueryStep: Schema.Schema<ExplainQueryStep> =
+export const ExplainQueryStep: Schema.Codec<ExplainQueryStep> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     substeps: Schema.optional(Schema.Array(Schema.String)),
@@ -2790,7 +2791,7 @@ export interface ExplainQueryStage {
   computeMsMax?: string;
 }
 
-export const ExplainQueryStage: Schema.Schema<ExplainQueryStage> =
+export const ExplainQueryStage: Schema.Codec<ExplainQueryStage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     writeRatioAvg: Schema.optional(Schema.Number),
     startMs: Schema.optional(Schema.String),
@@ -2845,7 +2846,7 @@ export interface BiEngineStatistics {
     | (string & {});
 }
 
-export const BiEngineStatistics: Schema.Schema<BiEngineStatistics> =
+export const BiEngineStatistics: Schema.Codec<BiEngineStatistics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accelerationMode: Schema.optional(Schema.String),
     biEngineReasons: Schema.optional(Schema.Array(BiEngineReason)),
@@ -2859,7 +2860,7 @@ export interface SparkLoggingInfo {
   resourceType?: string;
 }
 
-export const SparkLoggingInfo: Schema.Schema<SparkLoggingInfo> =
+export const SparkLoggingInfo: Schema.Codec<SparkLoggingInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectId: Schema.optional(Schema.String),
     resourceType: Schema.optional(Schema.String),
@@ -2880,7 +2881,7 @@ export interface SparkStatistics {
   sparkJobLocation?: string;
 }
 
-export const SparkStatistics: Schema.Schema<SparkStatistics> =
+export const SparkStatistics: Schema.Codec<SparkStatistics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kmsKeyName: Schema.optional(Schema.String),
     loggingInfo: Schema.optional(SparkLoggingInfo),
@@ -2895,7 +2896,7 @@ export interface GenAiErrorStats {
   errors?: ReadonlyArray<string>;
 }
 
-export const GenAiErrorStats: Schema.Schema<GenAiErrorStats> =
+export const GenAiErrorStats: Schema.Codec<GenAiErrorStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errors: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GenAiErrorStats" });
@@ -2907,7 +2908,7 @@ export interface GenAiFunctionCostOptimizationStats {
   numCostOptimizedRows?: string;
 }
 
-export const GenAiFunctionCostOptimizationStats: Schema.Schema<GenAiFunctionCostOptimizationStats> =
+export const GenAiFunctionCostOptimizationStats: Schema.Codec<GenAiFunctionCostOptimizationStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     numCostOptimizedRows: Schema.optional(Schema.String),
@@ -2920,7 +2921,7 @@ export interface GenAiFunctionErrorStats {
   numFailedRows?: string;
 }
 
-export const GenAiFunctionErrorStats: Schema.Schema<GenAiFunctionErrorStats> =
+export const GenAiFunctionErrorStats: Schema.Codec<GenAiFunctionErrorStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errors: Schema.optional(Schema.Array(Schema.String)),
     numFailedRows: Schema.optional(Schema.String),
@@ -2931,7 +2932,7 @@ export interface GenAiFunctionCacheStats {
   numCacheHitRows?: string;
 }
 
-export const GenAiFunctionCacheStats: Schema.Schema<GenAiFunctionCacheStats> =
+export const GenAiFunctionCacheStats: Schema.Codec<GenAiFunctionCacheStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     numCacheHitRows: Schema.optional(Schema.String),
   }).annotate({ identifier: "GenAiFunctionCacheStats" });
@@ -2951,7 +2952,7 @@ export interface GenAiFunctionStats {
   functionName?: string;
 }
 
-export const GenAiFunctionStats: Schema.Schema<GenAiFunctionStats> =
+export const GenAiFunctionStats: Schema.Codec<GenAiFunctionStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     costOptimizationStats: Schema.optional(GenAiFunctionCostOptimizationStats),
     errorStats: Schema.optional(GenAiFunctionErrorStats),
@@ -2968,7 +2969,7 @@ export interface GenAiStats {
   functionStats?: ReadonlyArray<GenAiFunctionStats>;
 }
 
-export const GenAiStats: Schema.Schema<GenAiStats> =
+export const GenAiStats: Schema.Codec<GenAiStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorStats: Schema.optional(GenAiErrorStats),
     functionStats: Schema.optional(Schema.Array(GenAiFunctionStats)),
@@ -2989,7 +2990,7 @@ export interface ExternalServiceCost {
   bytesProcessed?: string;
 }
 
-export const ExternalServiceCost: Schema.Schema<ExternalServiceCost> =
+export const ExternalServiceCost: Schema.Codec<ExternalServiceCost> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingMethod: Schema.optional(Schema.String),
     externalService: Schema.optional(Schema.String),
@@ -3098,7 +3099,7 @@ export interface JobStatistics2 {
   externalServiceCosts?: ReadonlyArray<ExternalServiceCost>;
 }
 
-export const JobStatistics2: Schema.Schema<JobStatistics2> =
+export const JobStatistics2: Schema.Codec<JobStatistics2> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modelTrainingExpectedTotalIteration: Schema.optional(Schema.String),
     queryInfo: Schema.optional(QueryInfo),
@@ -3168,7 +3169,7 @@ export interface JobStatistics4 {
   timeline?: ReadonlyArray<QueryTimelineSample>;
 }
 
-export const JobStatistics4: Schema.Schema<JobStatistics4> =
+export const JobStatistics4: Schema.Codec<JobStatistics4> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destinationUriFileCounts: Schema.optional(Schema.Array(Schema.String)),
     inputBytes: Schema.optional(Schema.String),
@@ -3180,7 +3181,7 @@ export interface SessionInfo {
   sessionId?: string;
 }
 
-export const SessionInfo: Schema.Schema<SessionInfo> =
+export const SessionInfo: Schema.Codec<SessionInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sessionId: Schema.optional(Schema.String),
   }).annotate({ identifier: "SessionInfo" });
@@ -3239,7 +3240,7 @@ export interface JobStatistics {
   startTime?: string;
 }
 
-export const JobStatistics: Schema.Schema<JobStatistics> =
+export const JobStatistics: Schema.Codec<JobStatistics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     creationTime: Schema.optional(Schema.String),
     totalBytesProcessed: Schema.optional(Schema.String),
@@ -3280,7 +3281,7 @@ export interface BigtableProtoConfig {
   schemaBundleId?: string;
 }
 
-export const BigtableProtoConfig: Schema.Schema<BigtableProtoConfig> =
+export const BigtableProtoConfig: Schema.Codec<BigtableProtoConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     protoMessageName: Schema.optional(Schema.String),
     schemaBundleId: Schema.optional(Schema.String),
@@ -3303,7 +3304,7 @@ export interface BigtableColumn {
   protoConfig?: BigtableProtoConfig;
 }
 
-export const BigtableColumn: Schema.Schema<BigtableColumn> =
+export const BigtableColumn: Schema.Codec<BigtableColumn> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fieldName: Schema.optional(Schema.String),
     onlyReadLatest: Schema.optional(Schema.Boolean),
@@ -3329,7 +3330,7 @@ export interface BigtableColumnFamily {
   onlyReadLatest?: boolean;
 }
 
-export const BigtableColumnFamily: Schema.Schema<BigtableColumnFamily> =
+export const BigtableColumnFamily: Schema.Codec<BigtableColumnFamily> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     protoConfig: Schema.optional(BigtableProtoConfig),
     familyId: Schema.optional(Schema.String),
@@ -3350,7 +3351,7 @@ export interface BigtableOptions {
   ignoreUnspecifiedColumnFamilies?: boolean;
 }
 
-export const BigtableOptions: Schema.Schema<BigtableOptions> =
+export const BigtableOptions: Schema.Codec<BigtableOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     outputColumnFamiliesAsJson: Schema.optional(Schema.Boolean),
     readRowkeyAsString: Schema.optional(Schema.Boolean),
@@ -3363,7 +3364,7 @@ export interface PartitionedColumn {
   field?: string;
 }
 
-export const PartitionedColumn: Schema.Schema<PartitionedColumn> =
+export const PartitionedColumn: Schema.Codec<PartitionedColumn> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     field: Schema.optional(Schema.String),
   }).annotate({ identifier: "PartitionedColumn" });
@@ -3373,7 +3374,7 @@ export interface PartitioningDefinition {
   partitionedColumn?: ReadonlyArray<PartitionedColumn>;
 }
 
-export const PartitioningDefinition: Schema.Schema<PartitioningDefinition> =
+export const PartitioningDefinition: Schema.Codec<PartitioningDefinition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partitionedColumn: Schema.optional(Schema.Array(PartitionedColumn)),
   }).annotate({ identifier: "PartitioningDefinition" });
@@ -3385,7 +3386,7 @@ export interface SnapshotDefinition {
   snapshotTime?: string;
 }
 
-export const SnapshotDefinition: Schema.Schema<SnapshotDefinition> =
+export const SnapshotDefinition: Schema.Codec<SnapshotDefinition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     baseTableReference: Schema.optional(TableReference),
     snapshotTime: Schema.optional(Schema.String),
@@ -3400,7 +3401,7 @@ export interface DataSplitResult {
   evaluationTable?: TableReference;
 }
 
-export const DataSplitResult: Schema.Schema<DataSplitResult> =
+export const DataSplitResult: Schema.Codec<DataSplitResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trainingTable: Schema.optional(TableReference),
     testTable: Schema.optional(TableReference),
@@ -3414,7 +3415,7 @@ export interface DoubleRange {
   min?: number;
 }
 
-export const DoubleRange: Schema.Schema<DoubleRange> =
+export const DoubleRange: Schema.Codec<DoubleRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     max: Schema.optional(Schema.Number),
     min: Schema.optional(Schema.Number),
@@ -3427,7 +3428,7 @@ export interface DoubleHparamSearchSpace {
   candidates?: DoubleCandidates;
 }
 
-export const DoubleHparamSearchSpace: Schema.Schema<DoubleHparamSearchSpace> =
+export const DoubleHparamSearchSpace: Schema.Codec<DoubleHparamSearchSpace> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     range: Schema.optional(DoubleRange),
     candidates: Schema.optional(DoubleCandidates),
@@ -3438,7 +3439,7 @@ export interface StringHparamSearchSpace {
   candidates?: ReadonlyArray<string>;
 }
 
-export const StringHparamSearchSpace: Schema.Schema<StringHparamSearchSpace> =
+export const StringHparamSearchSpace: Schema.Codec<StringHparamSearchSpace> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     candidates: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "StringHparamSearchSpace" });
@@ -3448,7 +3449,7 @@ export interface IntCandidates {
   candidates?: ReadonlyArray<string>;
 }
 
-export const IntCandidates: Schema.Schema<IntCandidates> =
+export const IntCandidates: Schema.Codec<IntCandidates> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     candidates: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "IntCandidates" });
@@ -3460,7 +3461,7 @@ export interface IntHparamSearchSpace {
   candidates?: IntCandidates;
 }
 
-export const IntHparamSearchSpace: Schema.Schema<IntHparamSearchSpace> =
+export const IntHparamSearchSpace: Schema.Codec<IntHparamSearchSpace> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     range: Schema.optional(IntRange),
     candidates: Schema.optional(IntCandidates),
@@ -3471,7 +3472,7 @@ export interface IntArrayHparamSearchSpace {
   candidates?: ReadonlyArray<IntArray>;
 }
 
-export const IntArrayHparamSearchSpace: Schema.Schema<IntArrayHparamSearchSpace> =
+export const IntArrayHparamSearchSpace: Schema.Codec<IntArrayHparamSearchSpace> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     candidates: Schema.optional(Schema.Array(IntArray)),
   }).annotate({ identifier: "IntArrayHparamSearchSpace" });
@@ -3523,7 +3524,7 @@ export interface HparamSearchSpaces {
   treeMethod?: StringHparamSearchSpace;
 }
 
-export const HparamSearchSpaces: Schema.Schema<HparamSearchSpaces> =
+export const HparamSearchSpaces: Schema.Codec<HparamSearchSpaces> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     l2Reg: Schema.optional(DoubleHparamSearchSpace),
     activationFn: Schema.optional(StringHparamSearchSpace),
@@ -3562,7 +3563,7 @@ export interface JoinRestrictionPolicy {
   joinAllowedColumns?: ReadonlyArray<string>;
 }
 
-export const JoinRestrictionPolicy: Schema.Schema<JoinRestrictionPolicy> =
+export const JoinRestrictionPolicy: Schema.Codec<JoinRestrictionPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     joinCondition: Schema.optional(Schema.String),
     joinAllowedColumns: Schema.optional(Schema.Array(Schema.String)),
@@ -3575,7 +3576,7 @@ export interface AggregationThresholdPolicy {
   privacyUnitColumns?: ReadonlyArray<string>;
 }
 
-export const AggregationThresholdPolicy: Schema.Schema<AggregationThresholdPolicy> =
+export const AggregationThresholdPolicy: Schema.Codec<AggregationThresholdPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     threshold: Schema.optional(Schema.String),
     privacyUnitColumns: Schema.optional(Schema.Array(Schema.String)),
@@ -3590,7 +3591,7 @@ export interface PrivacyPolicy {
   aggregationThresholdPolicy?: AggregationThresholdPolicy;
 }
 
-export const PrivacyPolicy: Schema.Schema<PrivacyPolicy> =
+export const PrivacyPolicy: Schema.Codec<PrivacyPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     joinRestrictionPolicy: Schema.optional(JoinRestrictionPolicy),
     differentialPrivacyPolicy: Schema.optional(DifferentialPrivacyPolicy),
@@ -3602,7 +3603,7 @@ export interface GetPolicyOptions {
   requestedPolicyVersion?: number;
 }
 
-export const GetPolicyOptions: Schema.Schema<GetPolicyOptions> =
+export const GetPolicyOptions: Schema.Codec<GetPolicyOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestedPolicyVersion: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GetPolicyOptions" });
@@ -3612,7 +3613,7 @@ export interface GetIamPolicyRequest {
   options?: GetPolicyOptions;
 }
 
-export const GetIamPolicyRequest: Schema.Schema<GetIamPolicyRequest> =
+export const GetIamPolicyRequest: Schema.Codec<GetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     options: Schema.optional(GetPolicyOptions),
   }).annotate({ identifier: "GetIamPolicyRequest" });
@@ -3625,7 +3626,7 @@ export interface RestrictionConfig {
     | (string & {});
 }
 
-export const RestrictionConfig: Schema.Schema<RestrictionConfig> =
+export const RestrictionConfig: Schema.Codec<RestrictionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "RestrictionConfig" });
@@ -3647,7 +3648,7 @@ export interface Argument {
   mode?: "MODE_UNSPECIFIED" | "IN" | "OUT" | "INOUT" | (string & {});
 }
 
-export const Argument: Schema.Schema<Argument> =
+export const Argument: Schema.Codec<Argument> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isAggregate: Schema.optional(Schema.Boolean),
     argumentKind: Schema.optional(Schema.String),
@@ -3667,7 +3668,7 @@ export interface RemoteFunctionOptions {
   userDefinedContext?: Record<string, string>;
 }
 
-export const RemoteFunctionOptions: Schema.Schema<RemoteFunctionOptions> =
+export const RemoteFunctionOptions: Schema.Codec<RemoteFunctionOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connection: Schema.optional(Schema.String),
     endpoint: Schema.optional(Schema.String),
@@ -3695,7 +3696,7 @@ export interface RoutineBuildStatus {
   errorResult?: ErrorProto;
 }
 
-export const RoutineBuildStatus: Schema.Schema<RoutineBuildStatus> =
+export const RoutineBuildStatus: Schema.Codec<RoutineBuildStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     buildStateUpdateTime: Schema.optional(Schema.String),
     buildDuration: Schema.optional(Schema.String),
@@ -3719,7 +3720,7 @@ export interface ExternalRuntimeOptions {
   runtimeConnection?: string;
 }
 
-export const ExternalRuntimeOptions: Schema.Schema<ExternalRuntimeOptions> =
+export const ExternalRuntimeOptions: Schema.Codec<ExternalRuntimeOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     containerRequestConcurrency: Schema.optional(Schema.String),
     runtimeVersion: Schema.optional(Schema.String),
@@ -3752,7 +3753,7 @@ export interface SparkOptions {
   mainFileUri?: string;
 }
 
-export const SparkOptions: Schema.Schema<SparkOptions> =
+export const SparkOptions: Schema.Codec<SparkOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fileUris: Schema.optional(Schema.Array(Schema.String)),
     jarUris: Schema.optional(Schema.Array(Schema.String)),
@@ -3771,7 +3772,7 @@ export interface StandardSqlTableType {
   columns?: ReadonlyArray<StandardSqlField>;
 }
 
-export const StandardSqlTableType: Schema.Schema<StandardSqlTableType> =
+export const StandardSqlTableType: Schema.Codec<StandardSqlTableType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     columns: Schema.optional(Schema.Array(StandardSqlField)),
   }).annotate({ identifier: "StandardSqlTableType" });
@@ -3783,7 +3784,7 @@ export interface PythonOptions {
   packages?: ReadonlyArray<string>;
 }
 
-export const PythonOptions: Schema.Schema<PythonOptions> =
+export const PythonOptions: Schema.Codec<PythonOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entryPoint: Schema.optional(Schema.String),
     packages: Schema.optional(Schema.Array(Schema.String)),
@@ -3858,7 +3859,7 @@ export interface Routine {
   pythonOptions?: PythonOptions;
 }
 
-export const Routine: Schema.Schema<Routine> =
+export const Routine: Schema.Codec<Routine> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     arguments: Schema.optional(Schema.Array(Argument)),
     importedLibraries: Schema.optional(Schema.Array(Schema.String)),
@@ -3904,7 +3905,7 @@ export interface RemoteModelInfo {
     | (string & {});
 }
 
-export const RemoteModelInfo: Schema.Schema<RemoteModelInfo> =
+export const RemoteModelInfo: Schema.Codec<RemoteModelInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connection: Schema.optional(Schema.String),
     speechRecognizer: Schema.optional(Schema.String),
@@ -3919,7 +3920,7 @@ export interface EncryptionConfiguration {
   kmsKeyName?: string;
 }
 
-export const EncryptionConfiguration: Schema.Schema<EncryptionConfiguration> =
+export const EncryptionConfiguration: Schema.Codec<EncryptionConfiguration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kmsKeyName: Schema.optional(Schema.String),
   }).annotate({ identifier: "EncryptionConfiguration" });
@@ -3949,7 +3950,7 @@ export interface JobConfigurationTableCopy {
   sourceTable?: TableReference;
 }
 
-export const JobConfigurationTableCopy: Schema.Schema<JobConfigurationTableCopy> =
+export const JobConfigurationTableCopy: Schema.Codec<JobConfigurationTableCopy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operationType: Schema.optional(Schema.String),
     destinationExpirationTime: Schema.optional(Schema.String),
@@ -3974,7 +3975,7 @@ export interface TimePartitioning {
   expirationMs?: string;
 }
 
-export const TimePartitioning: Schema.Schema<TimePartitioning> =
+export const TimePartitioning: Schema.Codec<TimePartitioning> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     field: Schema.optional(Schema.String),
@@ -3994,7 +3995,7 @@ export interface ParquetOptions {
     | (string & {});
 }
 
-export const ParquetOptions: Schema.Schema<ParquetOptions> =
+export const ParquetOptions: Schema.Codec<ParquetOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableListInference: Schema.optional(Schema.Boolean),
     enumAsString: Schema.optional(Schema.Boolean),
@@ -4008,7 +4009,7 @@ export interface RangePartitioning {
   range?: { start?: string; end?: string; interval?: string };
 }
 
-export const RangePartitioning: Schema.Schema<RangePartitioning> =
+export const RangePartitioning: Schema.Codec<RangePartitioning> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     field: Schema.optional(Schema.String),
     range: Schema.optional(
@@ -4031,7 +4032,7 @@ export interface DestinationTableProperties {
   description?: string;
 }
 
-export const DestinationTableProperties: Schema.Schema<DestinationTableProperties> =
+export const DestinationTableProperties: Schema.Codec<DestinationTableProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     friendlyName: Schema.optional(Schema.String),
     expirationTime: Schema.optional(Schema.String),
@@ -4044,7 +4045,7 @@ export interface Clustering {
   fields?: ReadonlyArray<string>;
 }
 
-export const Clustering: Schema.Schema<Clustering> =
+export const Clustering: Schema.Codec<Clustering> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fields: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "Clustering" });
@@ -4056,7 +4057,7 @@ export interface ConnectionProperty {
   value?: string;
 }
 
-export const ConnectionProperty: Schema.Schema<ConnectionProperty> =
+export const ConnectionProperty: Schema.Codec<ConnectionProperty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -4173,7 +4174,7 @@ export interface JobConfigurationLoad {
   connectionProperties?: ReadonlyArray<ConnectionProperty>;
 }
 
-export const JobConfigurationLoad: Schema.Schema<JobConfigurationLoad> =
+export const JobConfigurationLoad: Schema.Codec<JobConfigurationLoad> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timePartitioning: Schema.optional(TimePartitioning),
     sourceUris: Schema.optional(Schema.Array(Schema.String)),
@@ -4232,7 +4233,7 @@ export interface AvroOptions {
   useAvroLogicalTypes?: boolean;
 }
 
-export const AvroOptions: Schema.Schema<AvroOptions> =
+export const AvroOptions: Schema.Codec<AvroOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     useAvroLogicalTypes: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "AvroOptions" });
@@ -4311,7 +4312,7 @@ export interface ExternalDataConfiguration {
   timestampFormat?: string;
 }
 
-export const ExternalDataConfiguration: Schema.Schema<ExternalDataConfiguration> =
+export const ExternalDataConfiguration: Schema.Codec<ExternalDataConfiguration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jsonOptions: Schema.optional(JsonOptions),
     referenceFileSchemaUri: Schema.optional(Schema.String),
@@ -4343,11 +4344,11 @@ export const ExternalDataConfiguration: Schema.Schema<ExternalDataConfiguration>
   }).annotate({ identifier: "ExternalDataConfiguration" });
 
 export type JsonObject = Record<string, JsonValue>;
-export const JsonObject: Schema.Schema<JsonObject> =
+export const JsonObject: Schema.Codec<JsonObject> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
     Schema.String,
     JsonValue,
-  ) as any as Schema.Schema<JsonObject>;
+  ) as any as Schema.Codec<JsonObject>;
 
 export interface SystemVariables {
   /** Output only. Data type for each system variable. */
@@ -4356,7 +4357,7 @@ export interface SystemVariables {
   values?: Record<string, unknown>;
 }
 
-export const SystemVariables: Schema.Schema<SystemVariables> =
+export const SystemVariables: Schema.Codec<SystemVariables> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     types: Schema.optional(Schema.Record(Schema.String, StandardSqlDataType)),
     values: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -4369,7 +4370,7 @@ export interface UserDefinedFunctionResource {
   resourceUri?: string;
 }
 
-export const UserDefinedFunctionResource: Schema.Schema<UserDefinedFunctionResource> =
+export const UserDefinedFunctionResource: Schema.Codec<UserDefinedFunctionResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inlineCode: Schema.optional(Schema.String),
     resourceUri: Schema.optional(Schema.String),
@@ -4388,7 +4389,7 @@ export interface ScriptOptions {
     | (string & {});
 }
 
-export const ScriptOptions: Schema.Schema<ScriptOptions> =
+export const ScriptOptions: Schema.Codec<ScriptOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     statementByteBudget: Schema.optional(Schema.String),
     statementTimeoutMs: Schema.optional(Schema.String),
@@ -4454,7 +4455,7 @@ export interface JobConfigurationQuery {
   scriptOptions?: ScriptOptions;
 }
 
-export const JobConfigurationQuery: Schema.Schema<JobConfigurationQuery> =
+export const JobConfigurationQuery: Schema.Codec<JobConfigurationQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     defaultDataset: Schema.optional(DatasetReference),
     writeDisposition: Schema.optional(Schema.String),
@@ -4497,7 +4498,7 @@ export interface ModelExtractOptions {
   trialId?: string;
 }
 
-export const ModelExtractOptions: Schema.Schema<ModelExtractOptions> =
+export const ModelExtractOptions: Schema.Codec<ModelExtractOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trialId: Schema.optional(Schema.String),
   }).annotate({ identifier: "ModelExtractOptions" });
@@ -4525,7 +4526,7 @@ export interface JobConfigurationExtract {
   compression?: string;
 }
 
-export const JobConfigurationExtract: Schema.Schema<JobConfigurationExtract> =
+export const JobConfigurationExtract: Schema.Codec<JobConfigurationExtract> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destinationUris: Schema.optional(Schema.Array(Schema.String)),
     fieldDelimiter: Schema.optional(Schema.String),
@@ -4562,7 +4563,7 @@ export interface JobConfiguration {
   extract?: JobConfigurationExtract;
 }
 
-export const JobConfiguration: Schema.Schema<JobConfiguration> =
+export const JobConfiguration: Schema.Codec<JobConfiguration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     copy: Schema.optional(JobConfigurationTableCopy),
     dryRun: Schema.optional(Schema.Boolean),
@@ -4585,7 +4586,7 @@ export interface JobStatus {
   state?: string;
 }
 
-export const JobStatus: Schema.Schema<JobStatus> =
+export const JobStatus: Schema.Codec<JobStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorResult: Schema.optional(ErrorProto),
     errors: Schema.optional(Schema.Array(ErrorProto)),
@@ -4616,7 +4617,7 @@ export interface JobList {
   }>;
 }
 
-export const JobList: Schema.Schema<JobList> =
+export const JobList: Schema.Codec<JobList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -4663,7 +4664,7 @@ export interface DatasetList {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const DatasetList: Schema.Schema<DatasetList> =
+export const DatasetList: Schema.Codec<DatasetList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     datasets: Schema.optional(
@@ -4697,7 +4698,7 @@ export interface JobCreationReason {
     | (string & {});
 }
 
-export const JobCreationReason: Schema.Schema<JobCreationReason> =
+export const JobCreationReason: Schema.Codec<JobCreationReason> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
   }).annotate({ identifier: "JobCreationReason" });
@@ -4727,8 +4728,8 @@ export interface Job {
   status?: JobStatus;
 }
 
-export const Job: Schema.Schema<Job> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Job: Schema.Codec<Job> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     jobReference: Schema.optional(JobReference),
     principal_subject: Schema.optional(Schema.String),
     statistics: Schema.optional(JobStatistics),
@@ -4740,7 +4741,8 @@ export const Job: Schema.Schema<Job> =
     id: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     status: Schema.optional(JobStatus),
-  }).annotate({ identifier: "Job" });
+  },
+).annotate({ identifier: "Job" });
 
 export interface JobCancelResponse {
   /** The final state of the job. */
@@ -4749,7 +4751,7 @@ export interface JobCancelResponse {
   kind?: string;
 }
 
-export const JobCancelResponse: Schema.Schema<JobCancelResponse> =
+export const JobCancelResponse: Schema.Codec<JobCancelResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     job: Schema.optional(Job),
     kind: Schema.optional(Schema.String),
@@ -4767,7 +4769,7 @@ export interface DataFormatOptions {
     | (string & {});
 }
 
-export const DataFormatOptions: Schema.Schema<DataFormatOptions> =
+export const DataFormatOptions: Schema.Codec<DataFormatOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     useInt64Timestamp: Schema.optional(Schema.Boolean),
     timestampOutputFormat: Schema.optional(Schema.String),
@@ -4778,7 +4780,7 @@ export interface LinkedDatasetMetadata {
   linkState?: "LINK_STATE_UNSPECIFIED" | "LINKED" | "UNLINKED" | (string & {});
 }
 
-export const LinkedDatasetMetadata: Schema.Schema<LinkedDatasetMetadata> =
+export const LinkedDatasetMetadata: Schema.Codec<LinkedDatasetMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     linkState: Schema.optional(Schema.String),
   }).annotate({ identifier: "LinkedDatasetMetadata" });
@@ -4792,7 +4794,7 @@ export interface DatasetAccessEntry {
   dataset?: DatasetReference;
 }
 
-export const DatasetAccessEntry: Schema.Schema<DatasetAccessEntry> =
+export const DatasetAccessEntry: Schema.Codec<DatasetAccessEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targetTypes: Schema.optional(Schema.Array(Schema.String)),
     dataset: Schema.optional(DatasetReference),
@@ -4805,7 +4807,7 @@ export interface ExternalCatalogDatasetOptions {
   parameters?: Record<string, string>;
 }
 
-export const ExternalCatalogDatasetOptions: Schema.Schema<ExternalCatalogDatasetOptions> =
+export const ExternalCatalogDatasetOptions: Schema.Codec<ExternalCatalogDatasetOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     defaultStorageLocationUri: Schema.optional(Schema.String),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -4816,7 +4818,7 @@ export interface LinkedDatasetSource {
   sourceDataset?: DatasetReference;
 }
 
-export const LinkedDatasetSource: Schema.Schema<LinkedDatasetSource> =
+export const LinkedDatasetSource: Schema.Codec<LinkedDatasetSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceDataset: Schema.optional(DatasetReference),
   }).annotate({ identifier: "LinkedDatasetSource" });
@@ -4905,7 +4907,7 @@ export interface Dataset {
   defaultTableExpirationMs?: string;
 }
 
-export const Dataset: Schema.Schema<Dataset> =
+export const Dataset: Schema.Codec<Dataset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxTimeTravelHours: Schema.optional(Schema.String),
     storageBillingModel: Schema.optional(Schema.String),
@@ -4973,7 +4975,7 @@ export interface SerDeInfo {
   parameters?: Record<string, string>;
 }
 
-export const SerDeInfo: Schema.Schema<SerDeInfo> =
+export const SerDeInfo: Schema.Codec<SerDeInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     serializationLibrary: Schema.optional(Schema.String),
@@ -4998,7 +5000,7 @@ export interface TableConstraints {
   primaryKey?: { columns?: ReadonlyArray<string> };
 }
 
-export const TableConstraints: Schema.Schema<TableConstraints> =
+export const TableConstraints: Schema.Codec<TableConstraints> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     foreignKeys: Schema.optional(
       Schema.Array(
@@ -5034,7 +5036,7 @@ export interface GetServiceAccountResponse {
   kind?: string;
 }
 
-export const GetServiceAccountResponse: Schema.Schema<GetServiceAccountResponse> =
+export const GetServiceAccountResponse: Schema.Codec<GetServiceAccountResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -5047,7 +5049,7 @@ export interface ForeignViewDefinition {
   query?: string;
 }
 
-export const ForeignViewDefinition: Schema.Schema<ForeignViewDefinition> =
+export const ForeignViewDefinition: Schema.Codec<ForeignViewDefinition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dialect: Schema.optional(Schema.String),
     query: Schema.optional(Schema.String),
@@ -5058,7 +5060,7 @@ export interface UndeleteDatasetRequest {
   deletionTime?: string;
 }
 
-export const UndeleteDatasetRequest: Schema.Schema<UndeleteDatasetRequest> =
+export const UndeleteDatasetRequest: Schema.Codec<UndeleteDatasetRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deletionTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "UndeleteDatasetRequest" });
@@ -5074,7 +5076,7 @@ export interface StorageDescriptor {
   outputFormat?: string;
 }
 
-export const StorageDescriptor: Schema.Schema<StorageDescriptor> =
+export const StorageDescriptor: Schema.Codec<StorageDescriptor> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serdeInfo: Schema.optional(SerDeInfo),
     locationUri: Schema.optional(Schema.String),
@@ -5097,7 +5099,7 @@ export interface RowAccessPolicy {
   filterPredicate?: string;
 }
 
-export const RowAccessPolicy: Schema.Schema<RowAccessPolicy> =
+export const RowAccessPolicy: Schema.Codec<RowAccessPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     grantees: Schema.optional(Schema.Array(Schema.String)),
     etag: Schema.optional(Schema.String),
@@ -5112,7 +5114,7 @@ export interface ProjectReference {
   projectId?: string;
 }
 
-export const ProjectReference: Schema.Schema<ProjectReference> =
+export const ProjectReference: Schema.Codec<ProjectReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "ProjectReference" });
@@ -5130,7 +5132,7 @@ export interface TableDataList {
   rows?: ReadonlyArray<TableRow>;
 }
 
-export const TableDataList: Schema.Schema<TableDataList> =
+export const TableDataList: Schema.Codec<TableDataList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totalRows: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -5155,7 +5157,7 @@ export interface ArrowSerializationOptions {
     | (string & {});
 }
 
-export const ArrowSerializationOptions: Schema.Schema<ArrowSerializationOptions> =
+export const ArrowSerializationOptions: Schema.Codec<ArrowSerializationOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bufferCompression: Schema.optional(Schema.String),
     picosTimestampPrecision: Schema.optional(Schema.String),
@@ -5226,7 +5228,7 @@ export interface QueryRequest {
   useQueryCache?: boolean;
 }
 
-export const QueryRequest: Schema.Schema<QueryRequest> =
+export const QueryRequest: Schema.Codec<QueryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxSlots: Schema.optional(Schema.Number),
     reservation: Schema.optional(Schema.String),
@@ -5266,7 +5268,7 @@ export interface Explanation {
   featureName?: string;
 }
 
-export const Explanation: Schema.Schema<Explanation> =
+export const Explanation: Schema.Codec<Explanation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attribution: Schema.optional(Schema.Number),
     featureName: Schema.optional(Schema.String),
@@ -5279,7 +5281,7 @@ export interface GlobalExplanation {
   explanations?: ReadonlyArray<Explanation>;
 }
 
-export const GlobalExplanation: Schema.Schema<GlobalExplanation> =
+export const GlobalExplanation: Schema.Codec<GlobalExplanation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     classLabel: Schema.optional(Schema.String),
     explanations: Schema.optional(Schema.Array(Explanation)),
@@ -5308,7 +5310,7 @@ export interface TrainingRun {
   classLevelGlobalExplanations?: ReadonlyArray<GlobalExplanation>;
 }
 
-export const TrainingRun: Schema.Schema<TrainingRun> =
+export const TrainingRun: Schema.Codec<TrainingRun> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     evaluationMetrics: Schema.optional(EvaluationMetrics),
     trainingOptions: Schema.optional(TrainingOptions),
@@ -5396,7 +5398,7 @@ export interface Model {
   featureColumns?: ReadonlyArray<StandardSqlField>;
 }
 
-export const Model: Schema.Schema<Model> =
+export const Model: Schema.Codec<Model> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hparamSearchSpaces: Schema.optional(HparamSearchSpaces),
     modelType: Schema.optional(Schema.String),
@@ -5428,7 +5430,7 @@ export interface ListModelsResponse {
   nextPageToken?: string;
 }
 
-export const ListModelsResponse: Schema.Schema<ListModelsResponse> =
+export const ListModelsResponse: Schema.Codec<ListModelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     models: Schema.optional(Schema.Array(Model)),
     nextPageToken: Schema.optional(Schema.String),
@@ -5443,7 +5445,7 @@ export interface ExternalCatalogTableOptions {
   connectionId?: string;
 }
 
-export const ExternalCatalogTableOptions: Schema.Schema<ExternalCatalogTableOptions> =
+export const ExternalCatalogTableOptions: Schema.Codec<ExternalCatalogTableOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     storageDescriptor: Schema.optional(StorageDescriptor),
@@ -5457,7 +5459,7 @@ export interface ListRoutinesResponse {
   routines?: ReadonlyArray<Routine>;
 }
 
-export const ListRoutinesResponse: Schema.Schema<ListRoutinesResponse> =
+export const ListRoutinesResponse: Schema.Codec<ListRoutinesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     routines: Schema.optional(Schema.Array(Routine)),
@@ -5474,7 +5476,7 @@ export interface BigLakeConfiguration {
   tableFormat?: "TABLE_FORMAT_UNSPECIFIED" | "ICEBERG" | (string & {});
 }
 
-export const BigLakeConfiguration: Schema.Schema<BigLakeConfiguration> =
+export const BigLakeConfiguration: Schema.Codec<BigLakeConfiguration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connectionId: Schema.optional(Schema.String),
     storageUri: Schema.optional(Schema.String),
@@ -5495,7 +5497,7 @@ export interface BqmlIterationResult {
   durationMs?: string;
 }
 
-export const BqmlIterationResult: Schema.Schema<BqmlIterationResult> =
+export const BqmlIterationResult: Schema.Codec<BqmlIterationResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trainingLoss: Schema.optional(Schema.Number),
     learnRate: Schema.optional(Schema.Number),
@@ -5525,7 +5527,7 @@ export interface BqmlTrainingRun {
   iterationResults?: ReadonlyArray<BqmlIterationResult>;
 }
 
-export const BqmlTrainingRun: Schema.Schema<BqmlTrainingRun> =
+export const BqmlTrainingRun: Schema.Codec<BqmlTrainingRun> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -5556,7 +5558,7 @@ export interface ModelDefinition {
   };
 }
 
-export const ModelDefinition: Schema.Schema<ModelDefinition> =
+export const ModelDefinition: Schema.Codec<ModelDefinition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trainingRuns: Schema.optional(Schema.Array(BqmlTrainingRun)),
     modelOptions: Schema.optional(
@@ -5575,7 +5577,7 @@ export interface MaterializedViewStatus {
   refreshWatermark?: string;
 }
 
-export const MaterializedViewStatus: Schema.Schema<MaterializedViewStatus> =
+export const MaterializedViewStatus: Schema.Codec<MaterializedViewStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lastRefreshStatus: Schema.optional(ErrorProto),
     refreshWatermark: Schema.optional(Schema.String),
@@ -5596,7 +5598,7 @@ export interface MaterializedViewDefinition {
   query?: string;
 }
 
-export const MaterializedViewDefinition: Schema.Schema<MaterializedViewDefinition> =
+export const MaterializedViewDefinition: Schema.Codec<MaterializedViewDefinition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowNonIncrementalDefinition: Schema.optional(Schema.Boolean),
     maxStaleness: Schema.optional(Schema.String),
@@ -5615,7 +5617,7 @@ export interface Streamingbuffer {
   estimatedBytes?: string;
 }
 
-export const Streamingbuffer: Schema.Schema<Streamingbuffer> =
+export const Streamingbuffer: Schema.Codec<Streamingbuffer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     estimatedRows: Schema.optional(Schema.String),
     oldestEntryTime: Schema.optional(Schema.String),
@@ -5637,7 +5639,7 @@ export interface ViewDefinition {
   query?: string;
 }
 
-export const ViewDefinition: Schema.Schema<ViewDefinition> =
+export const ViewDefinition: Schema.Codec<ViewDefinition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     foreignDefinitions: Schema.optional(Schema.Array(ForeignViewDefinition)),
     userDefinedFunctionResources: Schema.optional(
@@ -5668,7 +5670,7 @@ export interface TableReplicationInfo {
   sourceTable?: TableReference;
 }
 
-export const TableReplicationInfo: Schema.Schema<TableReplicationInfo> =
+export const TableReplicationInfo: Schema.Codec<TableReplicationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     replicationStatus: Schema.optional(Schema.String),
     replicationIntervalMs: Schema.optional(Schema.String),
@@ -5792,7 +5794,7 @@ export interface Table {
   tableReplicationInfo?: TableReplicationInfo;
 }
 
-export const Table: Schema.Schema<Table> =
+export const Table: Schema.Codec<Table> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     numRows: Schema.optional(Schema.String),
     restrictions: Schema.optional(RestrictionConfig),
@@ -5853,7 +5855,7 @@ export interface ArrowRecordBatch {
   serializedRecordBatch?: string;
 }
 
-export const ArrowRecordBatch: Schema.Schema<ArrowRecordBatch> =
+export const ArrowRecordBatch: Schema.Codec<ArrowRecordBatch> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serializedRecordBatch: Schema.optional(Schema.String),
   }).annotate({ identifier: "ArrowRecordBatch" });
@@ -5868,7 +5870,7 @@ export interface TableDataInsertAllResponse {
   }>;
 }
 
-export const TableDataInsertAllResponse: Schema.Schema<TableDataInsertAllResponse> =
+export const TableDataInsertAllResponse: Schema.Codec<TableDataInsertAllResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     insertErrors: Schema.optional(
@@ -5888,7 +5890,7 @@ export interface ListRowAccessPoliciesResponse {
   rowAccessPolicies?: ReadonlyArray<RowAccessPolicy>;
 }
 
-export const ListRowAccessPoliciesResponse: Schema.Schema<ListRowAccessPoliciesResponse> =
+export const ListRowAccessPoliciesResponse: Schema.Codec<ListRowAccessPoliciesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     rowAccessPolicies: Schema.optional(Schema.Array(RowAccessPolicy)),
@@ -5908,7 +5910,7 @@ export interface TableDataInsertAllRequest {
   skipInvalidRows?: boolean;
 }
 
-export const TableDataInsertAllRequest: Schema.Schema<TableDataInsertAllRequest> =
+export const TableDataInsertAllRequest: Schema.Codec<TableDataInsertAllRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ignoreUnknownValues: Schema.optional(Schema.Boolean),
     traceId: Schema.optional(Schema.String),
@@ -5932,7 +5934,7 @@ export interface BatchDeleteRowAccessPoliciesRequest {
   policyIds?: ReadonlyArray<string>;
 }
 
-export const BatchDeleteRowAccessPoliciesRequest: Schema.Schema<BatchDeleteRowAccessPoliciesRequest> =
+export const BatchDeleteRowAccessPoliciesRequest: Schema.Codec<BatchDeleteRowAccessPoliciesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     force: Schema.optional(Schema.Boolean),
     policyIds: Schema.optional(Schema.Array(Schema.String)),
@@ -5943,7 +5945,7 @@ export interface ArrowSchema {
   serializedSchema?: string;
 }
 
-export const ArrowSchema: Schema.Schema<ArrowSchema> =
+export const ArrowSchema: Schema.Codec<ArrowSchema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serializedSchema: Schema.optional(Schema.String),
   }).annotate({ identifier: "ArrowSchema" });
@@ -5953,7 +5955,7 @@ export interface TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
@@ -5963,7 +5965,7 @@ export interface LocationMetadata {
   legacyLocationId?: string;
 }
 
-export const LocationMetadata: Schema.Schema<LocationMetadata> =
+export const LocationMetadata: Schema.Codec<LocationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     legacyLocationId: Schema.optional(Schema.String),
   }).annotate({ identifier: "LocationMetadata" });
@@ -6019,7 +6021,7 @@ export interface QueryResponse {
   schema?: TableSchema;
 }
 
-export const QueryResponse: Schema.Schema<QueryResponse> =
+export const QueryResponse: Schema.Codec<QueryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobReference: Schema.optional(JobReference),
     numDmlAffectedRows: Schema.optional(Schema.String),
@@ -6074,7 +6076,7 @@ export interface TableList {
   etag?: string;
 }
 
-export const TableList: Schema.Schema<TableList> =
+export const TableList: Schema.Codec<TableList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     tables: Schema.optional(
@@ -6125,7 +6127,7 @@ export interface ProjectList {
   etag?: string;
 }
 
-export const ProjectList: Schema.Schema<ProjectList> =
+export const ProjectList: Schema.Codec<ProjectList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projects: Schema.optional(
       Schema.Array(
@@ -6227,7 +6229,7 @@ export const GetDatasetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{+projectId}/datasets/{+datasetId}",
   }),
   svc,
-) as unknown as Schema.Schema<GetDatasetsRequest>;
+) as unknown as Schema.Codec<GetDatasetsRequest>;
 
 export type GetDatasetsResponse = Dataset;
 export const GetDatasetsResponse = /*@__PURE__*/ /*#__PURE__*/ Dataset;
@@ -6268,7 +6270,7 @@ export const ListDatasetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "projects/{+projectId}/datasets" }),
   svc,
-) as unknown as Schema.Schema<ListDatasetsRequest>;
+) as unknown as Schema.Codec<ListDatasetsRequest>;
 
 export type ListDatasetsResponse = DatasetList;
 export const ListDatasetsResponse = /*@__PURE__*/ /*#__PURE__*/ DatasetList;
@@ -6312,7 +6314,7 @@ export const UndeleteDatasetsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UndeleteDatasetsRequest>;
+  ) as unknown as Schema.Codec<UndeleteDatasetsRequest>;
 
 export type UndeleteDatasetsResponse = Dataset;
 export const UndeleteDatasetsResponse = /*@__PURE__*/ /*#__PURE__*/ Dataset;
@@ -6358,7 +6360,7 @@ export const InsertDatasetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertDatasetsRequest>;
+) as unknown as Schema.Codec<InsertDatasetsRequest>;
 
 export type InsertDatasetsResponse = Dataset;
 export const InsertDatasetsResponse = /*@__PURE__*/ /*#__PURE__*/ Dataset;
@@ -6415,7 +6417,7 @@ export const PatchDatasetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchDatasetsRequest>;
+) as unknown as Schema.Codec<PatchDatasetsRequest>;
 
 export type PatchDatasetsResponse = Dataset;
 export const PatchDatasetsResponse = /*@__PURE__*/ /*#__PURE__*/ Dataset;
@@ -6460,13 +6462,13 @@ export const DeleteDatasetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{+projectId}/datasets/{+datasetId}",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteDatasetsRequest>;
+) as unknown as Schema.Codec<DeleteDatasetsRequest>;
 
 export interface DeleteDatasetsResponse {}
-export const DeleteDatasetsResponse: Schema.Schema<DeleteDatasetsResponse> =
+export const DeleteDatasetsResponse: Schema.Codec<DeleteDatasetsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteDatasetsResponse>;
+  ) as any as Schema.Codec<DeleteDatasetsResponse>;
 
 export type DeleteDatasetsError =
   | DefaultErrors
@@ -6520,7 +6522,7 @@ export const UpdateDatasetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateDatasetsRequest>;
+) as unknown as Schema.Codec<UpdateDatasetsRequest>;
 
 export type UpdateDatasetsResponse = Dataset;
 export const UpdateDatasetsResponse = /*@__PURE__*/ /*#__PURE__*/ Dataset;
@@ -6564,7 +6566,7 @@ export const CancelJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<CancelJobsRequest>;
+) as unknown as Schema.Codec<CancelJobsRequest>;
 
 export type CancelJobsResponse = JobCancelResponse;
 export const CancelJobsResponse = /*@__PURE__*/ /*#__PURE__*/ JobCancelResponse;
@@ -6604,7 +6606,7 @@ export const GetJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "projects/{+projectId}/jobs/{+jobId}" }),
   svc,
-) as unknown as Schema.Schema<GetJobsRequest>;
+) as unknown as Schema.Codec<GetJobsRequest>;
 
 export type GetJobsResponse = Job;
 export const GetJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Job;
@@ -6667,7 +6669,7 @@ export const GetQueryResultsJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "projects/{+projectId}/queries/{+jobId}" }),
     svc,
-  ) as unknown as Schema.Schema<GetQueryResultsJobsRequest>;
+  ) as unknown as Schema.Codec<GetQueryResultsJobsRequest>;
 
 export type GetQueryResultsJobsResponse = GetQueryResultsResponse;
 export const GetQueryResultsJobsResponse =
@@ -6727,7 +6729,7 @@ export const ListJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "projects/{+projectId}/jobs" }),
   svc,
-) as unknown as Schema.Schema<ListJobsRequest>;
+) as unknown as Schema.Codec<ListJobsRequest>;
 
 export type ListJobsResponse = JobList;
 export const ListJobsResponse = /*@__PURE__*/ /*#__PURE__*/ JobList;
@@ -6763,7 +6765,7 @@ export const InsertJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "projects/{+projectId}/jobs", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<InsertJobsRequest>;
+) as unknown as Schema.Codec<InsertJobsRequest>;
 
 export type InsertJobsResponse = Job;
 export const InsertJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Job;
@@ -6806,13 +6808,13 @@ export const DeleteJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{+projectId}/jobs/{+jobId}/delete",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteJobsRequest>;
+) as unknown as Schema.Codec<DeleteJobsRequest>;
 
 export interface DeleteJobsResponse {}
-export const DeleteJobsResponse: Schema.Schema<DeleteJobsResponse> =
+export const DeleteJobsResponse: Schema.Codec<DeleteJobsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteJobsResponse>;
+  ) as any as Schema.Codec<DeleteJobsResponse>;
 
 export type DeleteJobsError =
   | DefaultErrors
@@ -6850,7 +6852,7 @@ export const QueryJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<QueryJobsRequest>;
+) as unknown as Schema.Codec<QueryJobsRequest>;
 
 export type QueryJobsResponse = QueryResponse;
 export const QueryJobsResponse = /*@__PURE__*/ /*#__PURE__*/ QueryResponse;
@@ -6922,7 +6924,7 @@ export const ListTabledataRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/data",
   }),
   svc,
-) as unknown as Schema.Schema<ListTabledataRequest>;
+) as unknown as Schema.Codec<ListTabledataRequest>;
 
 export type ListTabledataResponse = TableDataList;
 export const ListTabledataResponse = /*@__PURE__*/ /*#__PURE__*/ TableDataList;
@@ -6965,7 +6967,7 @@ export const InsertAllTabledataRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertAllTabledataRequest>;
+  ) as unknown as Schema.Codec<InsertAllTabledataRequest>;
 
 export type InsertAllTabledataResponse = TableDataInsertAllResponse;
 export const InsertAllTabledataResponse =
@@ -7016,13 +7018,13 @@ export const BatchDeleteRowAccessPoliciesRequest_Op =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchDeleteRowAccessPoliciesRequest_Op>;
+  ) as unknown as Schema.Codec<BatchDeleteRowAccessPoliciesRequest_Op>;
 
 export interface BatchDeleteRowAccessPoliciesResponse {}
-export const BatchDeleteRowAccessPoliciesResponse: Schema.Schema<BatchDeleteRowAccessPoliciesResponse> =
+export const BatchDeleteRowAccessPoliciesResponse: Schema.Codec<BatchDeleteRowAccessPoliciesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<BatchDeleteRowAccessPoliciesResponse>;
+  ) as any as Schema.Codec<BatchDeleteRowAccessPoliciesResponse>;
 
 export type BatchDeleteRowAccessPoliciesError =
   | DefaultErrors
@@ -7066,7 +7068,7 @@ export const GetRowAccessPoliciesRequest =
       path: "projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies/{+policyId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetRowAccessPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetRowAccessPoliciesRequest>;
 
 export type GetRowAccessPoliciesResponse = RowAccessPolicy;
 export const GetRowAccessPoliciesResponse =
@@ -7112,7 +7114,7 @@ export const ListRowAccessPoliciesRequest =
       path: "projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListRowAccessPoliciesRequest>;
+  ) as unknown as Schema.Codec<ListRowAccessPoliciesRequest>;
 
 export type ListRowAccessPoliciesResponse_Op = ListRowAccessPoliciesResponse;
 export const ListRowAccessPoliciesResponse_Op =
@@ -7154,7 +7156,7 @@ export const TestIamPermissionsRowAccessPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsRowAccessPoliciesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsRowAccessPoliciesRequest>;
 
 export type TestIamPermissionsRowAccessPoliciesResponse =
   TestIamPermissionsResponse;
@@ -7206,13 +7208,13 @@ export const DeleteRowAccessPoliciesRequest =
       path: "projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies/{+policyId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRowAccessPoliciesRequest>;
+  ) as unknown as Schema.Codec<DeleteRowAccessPoliciesRequest>;
 
 export interface DeleteRowAccessPoliciesResponse {}
-export const DeleteRowAccessPoliciesResponse: Schema.Schema<DeleteRowAccessPoliciesResponse> =
+export const DeleteRowAccessPoliciesResponse: Schema.Codec<DeleteRowAccessPoliciesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteRowAccessPoliciesResponse>;
+  ) as any as Schema.Codec<DeleteRowAccessPoliciesResponse>;
 
 export type DeleteRowAccessPoliciesError =
   | DefaultErrors
@@ -7257,7 +7259,7 @@ export const InsertRowAccessPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertRowAccessPoliciesRequest>;
+  ) as unknown as Schema.Codec<InsertRowAccessPoliciesRequest>;
 
 export type InsertRowAccessPoliciesResponse = RowAccessPolicy;
 export const InsertRowAccessPoliciesResponse =
@@ -7309,7 +7311,7 @@ export const UpdateRowAccessPoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateRowAccessPoliciesRequest>;
+  ) as unknown as Schema.Codec<UpdateRowAccessPoliciesRequest>;
 
 export type UpdateRowAccessPoliciesResponse = RowAccessPolicy;
 export const UpdateRowAccessPoliciesResponse =
@@ -7348,7 +7350,7 @@ export const GetIamPolicyRowAccessPoliciesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "{+resource}:getIamPolicy", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyRowAccessPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyRowAccessPoliciesRequest>;
 
 export type GetIamPolicyRowAccessPoliciesResponse = Policy;
 export const GetIamPolicyRowAccessPoliciesResponse =
@@ -7396,7 +7398,7 @@ export const PatchModelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchModelsRequest>;
+) as unknown as Schema.Codec<PatchModelsRequest>;
 
 export type PatchModelsResponse = Model;
 export const PatchModelsResponse = /*@__PURE__*/ /*#__PURE__*/ Model;
@@ -7439,13 +7441,13 @@ export const DeleteModelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{+projectId}/datasets/{+datasetId}/models/{+modelId}",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteModelsRequest>;
+) as unknown as Schema.Codec<DeleteModelsRequest>;
 
 export interface DeleteModelsResponse {}
-export const DeleteModelsResponse: Schema.Schema<DeleteModelsResponse> =
+export const DeleteModelsResponse: Schema.Codec<DeleteModelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteModelsResponse>;
+  ) as any as Schema.Codec<DeleteModelsResponse>;
 
 export type DeleteModelsError =
   | DefaultErrors
@@ -7485,7 +7487,7 @@ export const GetModelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{+projectId}/datasets/{+datasetId}/models/{+modelId}",
   }),
   svc,
-) as unknown as Schema.Schema<GetModelsRequest>;
+) as unknown as Schema.Codec<GetModelsRequest>;
 
 export type GetModelsResponse = Model;
 export const GetModelsResponse = /*@__PURE__*/ /*#__PURE__*/ Model;
@@ -7526,7 +7528,7 @@ export const ListModelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{+projectId}/datasets/{+datasetId}/models",
   }),
   svc,
-) as unknown as Schema.Schema<ListModelsRequest>;
+) as unknown as Schema.Codec<ListModelsRequest>;
 
 export type ListModelsResponse_Op = ListModelsResponse;
 export const ListModelsResponse_Op =
@@ -7561,7 +7563,7 @@ export const GetServiceAccountProjectsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "projects/{+projectId}/serviceAccount" }),
     svc,
-  ) as unknown as Schema.Schema<GetServiceAccountProjectsRequest>;
+  ) as unknown as Schema.Codec<GetServiceAccountProjectsRequest>;
 
 export type GetServiceAccountProjectsResponse = GetServiceAccountResponse;
 export const GetServiceAccountProjectsResponse =
@@ -7597,7 +7599,7 @@ export const ListProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "projects" }),
   svc,
-) as unknown as Schema.Schema<ListProjectsRequest>;
+) as unknown as Schema.Codec<ListProjectsRequest>;
 
 export type ListProjectsResponse = ProjectList;
 export const ListProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ ProjectList;
@@ -7643,7 +7645,7 @@ export const UpdateRoutinesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateRoutinesRequest>;
+) as unknown as Schema.Codec<UpdateRoutinesRequest>;
 
 export type UpdateRoutinesResponse = Routine;
 export const UpdateRoutinesResponse = /*@__PURE__*/ /*#__PURE__*/ Routine;
@@ -7681,7 +7683,7 @@ export const GetIamPolicyRoutinesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "{+resource}:getIamPolicy", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyRoutinesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyRoutinesRequest>;
 
 export type GetIamPolicyRoutinesResponse = Policy;
 export const GetIamPolicyRoutinesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -7723,7 +7725,7 @@ export const TestIamPermissionsRoutinesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsRoutinesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsRoutinesRequest>;
 
 export type TestIamPermissionsRoutinesResponse = TestIamPermissionsResponse;
 export const TestIamPermissionsRoutinesResponse =
@@ -7770,7 +7772,7 @@ export const GetRoutinesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{+projectId}/datasets/{+datasetId}/routines/{+routineId}",
   }),
   svc,
-) as unknown as Schema.Schema<GetRoutinesRequest>;
+) as unknown as Schema.Codec<GetRoutinesRequest>;
 
 export type GetRoutinesResponse = Routine;
 export const GetRoutinesResponse = /*@__PURE__*/ /*#__PURE__*/ Routine;
@@ -7817,7 +7819,7 @@ export const ListRoutinesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{+projectId}/datasets/{+datasetId}/routines",
   }),
   svc,
-) as unknown as Schema.Schema<ListRoutinesRequest>;
+) as unknown as Schema.Codec<ListRoutinesRequest>;
 
 export type ListRoutinesResponse_Op = ListRoutinesResponse;
 export const ListRoutinesResponse_Op =
@@ -7861,7 +7863,7 @@ export const InsertRoutinesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertRoutinesRequest>;
+) as unknown as Schema.Codec<InsertRoutinesRequest>;
 
 export type InsertRoutinesResponse = Routine;
 export const InsertRoutinesResponse = /*@__PURE__*/ /*#__PURE__*/ Routine;
@@ -7899,7 +7901,7 @@ export const SetIamPolicyRoutinesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "{+resource}:setIamPolicy", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyRoutinesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyRoutinesRequest>;
 
 export type SetIamPolicyRoutinesResponse = Policy;
 export const SetIamPolicyRoutinesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -7942,13 +7944,13 @@ export const DeleteRoutinesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{+projectId}/datasets/{+datasetId}/routines/{+routineId}",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteRoutinesRequest>;
+) as unknown as Schema.Codec<DeleteRoutinesRequest>;
 
 export interface DeleteRoutinesResponse {}
-export const DeleteRoutinesResponse: Schema.Schema<DeleteRoutinesResponse> =
+export const DeleteRoutinesResponse: Schema.Codec<DeleteRoutinesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteRoutinesResponse>;
+  ) as any as Schema.Codec<DeleteRoutinesResponse>;
 
 export type DeleteRoutinesError =
   | DefaultErrors
@@ -7983,7 +7985,7 @@ export const GetIamPolicyTablesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "{+resource}:getIamPolicy", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyTablesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyTablesRequest>;
 
 export type GetIamPolicyTablesResponse = Policy;
 export const GetIamPolicyTablesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -8035,7 +8037,7 @@ export const UpdateTablesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateTablesRequest>;
+) as unknown as Schema.Codec<UpdateTablesRequest>;
 
 export type UpdateTablesResponse = Table;
 export const UpdateTablesResponse = /*@__PURE__*/ /*#__PURE__*/ Table;
@@ -8079,7 +8081,7 @@ export const InsertTablesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<InsertTablesRequest>;
+) as unknown as Schema.Codec<InsertTablesRequest>;
 
 export type InsertTablesResponse = Table;
 export const InsertTablesResponse = /*@__PURE__*/ /*#__PURE__*/ Table;
@@ -8131,7 +8133,7 @@ export const PatchTablesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchTablesRequest>;
+) as unknown as Schema.Codec<PatchTablesRequest>;
 
 export type PatchTablesResponse = Table;
 export const PatchTablesResponse = /*@__PURE__*/ /*#__PURE__*/ Table;
@@ -8169,7 +8171,7 @@ export const SetIamPolicyTablesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "{+resource}:setIamPolicy", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyTablesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyTablesRequest>;
 
 export type SetIamPolicyTablesResponse = Policy;
 export const SetIamPolicyTablesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -8211,7 +8213,7 @@ export const TestIamPermissionsTablesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsTablesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsTablesRequest>;
 
 export type TestIamPermissionsTablesResponse = TestIamPermissionsResponse;
 export const TestIamPermissionsTablesResponse =
@@ -8268,7 +8270,7 @@ export const GetTablesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}",
   }),
   svc,
-) as unknown as Schema.Schema<GetTablesRequest>;
+) as unknown as Schema.Codec<GetTablesRequest>;
 
 export type GetTablesResponse = Table;
 export const GetTablesResponse = /*@__PURE__*/ /*#__PURE__*/ Table;
@@ -8306,13 +8308,13 @@ export const DeleteTablesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteTablesRequest>;
+) as unknown as Schema.Codec<DeleteTablesRequest>;
 
 export interface DeleteTablesResponse {}
-export const DeleteTablesResponse: Schema.Schema<DeleteTablesResponse> =
+export const DeleteTablesResponse: Schema.Codec<DeleteTablesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteTablesResponse>;
+  ) as any as Schema.Codec<DeleteTablesResponse>;
 
 export type DeleteTablesError =
   | DefaultErrors
@@ -8355,7 +8357,7 @@ export const ListTablesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "projects/{+projectId}/datasets/{+datasetId}/tables",
   }),
   svc,
-) as unknown as Schema.Schema<ListTablesRequest>;
+) as unknown as Schema.Codec<ListTablesRequest>;
 
 export type ListTablesResponse = TableList;
 export const ListTablesResponse = /*@__PURE__*/ /*#__PURE__*/ TableList;

@@ -4,16 +4,28 @@ import * as T from "../../traits.ts";
 import { NotFound, UnprocessableEntity } from "../../errors.ts";
 
 // Input Schema
+export interface GetMonitorHistoryInput {
+  id: string;
+  startTime: string;
+  endTime: string;
+}
 export const GetMonitorHistoryInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.String.pipe(T.PathParam()),
     startTime: Schema.String,
     endTime: Schema.String,
   },
-).pipe(T.Http({ method: "GET", path: "/v2/monitors/{id}/history" }));
-export type GetMonitorHistoryInput = typeof GetMonitorHistoryInput.Type;
+).pipe(
+  T.Http({ method: "GET", path: "/v2/monitors/{id}/history" }),
+) as unknown as Schema.Codec<GetMonitorHistoryInput>;
 
 // Output Schema
+export type GetMonitorHistoryOutput = {
+  checkId: string;
+  name: string;
+  state: "open" | "closed";
+  timestamp: string;
+}[];
 export const GetMonitorHistoryOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     checkId: Schema.String,
@@ -21,8 +33,7 @@ export const GetMonitorHistoryOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     state: Schema.Literals(["open", "closed"]),
     timestamp: Schema.String,
   }),
-);
-export type GetMonitorHistoryOutput = typeof GetMonitorHistoryOutput.Type;
+) as unknown as Schema.Codec<GetMonitorHistoryOutput>;
 
 // The operation
 /**

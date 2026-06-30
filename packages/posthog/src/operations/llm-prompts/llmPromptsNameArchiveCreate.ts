@@ -3,6 +3,43 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface LlmPromptsNameArchiveCreateInput {
+  project_id: string;
+  prompt_name: string;
+  id?: string;
+  name?: string;
+  prompt?: unknown;
+  version?: number;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  created_at?: string;
+  updated_at?: string;
+  deleted?: boolean;
+  is_latest?: boolean;
+  latest_version?: number;
+  version_count?: number;
+  first_version_created_at?: string;
+  outline?: { level?: number; text?: string }[];
+}
 export const LlmPromptsNameArchiveCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -24,7 +61,23 @@ export const LlmPromptsNameArchiveCreateInput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -48,11 +101,44 @@ export const LlmPromptsNameArchiveCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/llm_prompts/name/{prompt_name}/archive/",
     }),
-  );
-export type LlmPromptsNameArchiveCreateInput =
-  typeof LlmPromptsNameArchiveCreateInput.Type;
+  ) as unknown as Schema.Codec<LlmPromptsNameArchiveCreateInput>;
 
 // Output Schema
+export interface LlmPromptsNameArchiveCreateOutput {
+  id?: string;
+  name?: string;
+  prompt?: unknown;
+  version?: number;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  created_at?: string;
+  updated_at?: string;
+  deleted?: boolean;
+  is_latest?: boolean;
+  latest_version?: number;
+  version_count?: number;
+  first_version_created_at?: string;
+  outline?: { level?: number; text?: string }[];
+}
 export const LlmPromptsNameArchiveCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -72,7 +158,23 @@ export const LlmPromptsNameArchiveCreateOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -91,9 +193,7 @@ export const LlmPromptsNameArchiveCreateOutput =
         }),
       ),
     ),
-  });
-export type LlmPromptsNameArchiveCreateOutput =
-  typeof LlmPromptsNameArchiveCreateOutput.Type;
+  }) as unknown as Schema.Codec<LlmPromptsNameArchiveCreateOutput>;
 
 // The operation
 /**

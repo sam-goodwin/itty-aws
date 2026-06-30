@@ -4,14 +4,31 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface JumpWireWebDataVaultControllershowByNameInput {
+  name: string;
+}
 export const JumpWireWebDataVaultControllershowByNameInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/vault/v1/kv/name/{name}" }));
-export type JumpWireWebDataVaultControllershowByNameInput =
-  typeof JumpWireWebDataVaultControllershowByNameInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/vault/v1/kv/name/{name}" }),
+  ) as unknown as Schema.Codec<JumpWireWebDataVaultControllershowByNameInput>;
 
 // Output Schema
+export interface JumpWireWebDataVaultControllershowByNameOutput {
+  id: string;
+  metadata: {
+    context: Record<string, string>;
+    environment_id: string;
+    id: string;
+    key_id: string;
+    updated_at: string;
+    updated_by: { id: string; name: string };
+    version_id?: string | null;
+  };
+  name: string;
+  value: string;
+}
 export const JumpWireWebDataVaultControllershowByNameOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -29,9 +46,7 @@ export const JumpWireWebDataVaultControllershowByNameOutput =
     }),
     name: Schema.String,
     value: Schema.String,
-  });
-export type JumpWireWebDataVaultControllershowByNameOutput =
-  typeof JumpWireWebDataVaultControllershowByNameOutput.Type;
+  }) as unknown as Schema.Codec<JumpWireWebDataVaultControllershowByNameOutput>;
 
 // The operation
 /**

@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationResourcesByExternalIdControllerDeleteByExternalIdInput {
+  organization_id: string;
+  resource_type_slug: string;
+  external_id: string;
+  cascade_delete?: boolean;
+}
 export const AuthorizationResourcesByExternalIdControllerDeleteByExternalIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,13 @@ export const AuthorizationResourcesByExternalIdControllerDeleteByExternalIdInput
       method: "DELETE",
       path: "/authorization/organizations/{organization_id}/resources/{resource_type_slug}/{external_id}",
     }),
-  );
-export type AuthorizationResourcesByExternalIdControllerDeleteByExternalIdInput =
-  typeof AuthorizationResourcesByExternalIdControllerDeleteByExternalIdInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationResourcesByExternalIdControllerDeleteByExternalIdInput>;
 
 // Output Schema
-export const AuthorizationResourcesByExternalIdControllerDeleteByExternalIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
 export type AuthorizationResourcesByExternalIdControllerDeleteByExternalIdOutput =
-  typeof AuthorizationResourcesByExternalIdControllerDeleteByExternalIdOutput.Type;
+  void;
+export const AuthorizationResourcesByExternalIdControllerDeleteByExternalIdOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AuthorizationResourcesByExternalIdControllerDeleteByExternalIdOutput>;
 
 // The operation
 /**

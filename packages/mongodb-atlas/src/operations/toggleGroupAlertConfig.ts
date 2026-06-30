@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ToggleGroupAlertConfigInput {
+  groupId: string;
+  alertConfigId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const ToggleGroupAlertConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const ToggleGroupAlertConfigInput =
       method: "PATCH",
       path: "/api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}",
     }),
-  );
-export type ToggleGroupAlertConfigInput =
-  typeof ToggleGroupAlertConfigInput.Type;
+  ) as unknown as Schema.Codec<ToggleGroupAlertConfigInput>;
 
 // Output Schema
+export type ToggleGroupAlertConfigOutput = void;
 export const ToggleGroupAlertConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ToggleGroupAlertConfigOutput =
-  typeof ToggleGroupAlertConfigOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ToggleGroupAlertConfigOutput>;
 
 // The operation
 /**

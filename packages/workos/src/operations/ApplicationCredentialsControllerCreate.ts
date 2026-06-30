@@ -3,8 +3,12 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface ApplicationCredentialsControllerCreateInput {
+  id: string;
+}
 export const ApplicationCredentialsControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,18 @@ export const ApplicationCredentialsControllerCreateInput =
       method: "POST",
       path: "/connect/applications/{id}/client_secrets",
     }),
-  );
-export type ApplicationCredentialsControllerCreateInput =
-  typeof ApplicationCredentialsControllerCreateInput.Type;
+  ) as unknown as Schema.Codec<ApplicationCredentialsControllerCreateInput>;
 
 // Output Schema
+export interface ApplicationCredentialsControllerCreateOutput {
+  object?: string;
+  id?: string;
+  secret_hint?: string;
+  last_used_at?: string | null;
+  created_at?: string;
+  updated_at?: string;
+  secret?: Redacted.Redacted<string>;
+}
 export const ApplicationCredentialsControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -27,9 +38,7 @@ export const ApplicationCredentialsControllerCreateOutput =
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
     secret: Schema.optional(SensitiveOutputString),
-  });
-export type ApplicationCredentialsControllerCreateOutput =
-  typeof ApplicationCredentialsControllerCreateOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationCredentialsControllerCreateOutput>;
 
 // The operation
 /**

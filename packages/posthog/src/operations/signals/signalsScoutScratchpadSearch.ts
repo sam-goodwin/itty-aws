@@ -3,6 +3,15 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface SignalsScoutScratchpadSearchInput {
+  project_id: string;
+  content_max_chars?: number;
+  date_from?: string;
+  date_to?: string;
+  keys_only?: boolean;
+  limit?: number;
+  text?: string;
+}
 export const SignalsScoutScratchpadSearchInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -17,11 +26,18 @@ export const SignalsScoutScratchpadSearchInput =
       method: "GET",
       path: "/api/projects/{project_id}/signals/scout/scratchpad/",
     }),
-  );
-export type SignalsScoutScratchpadSearchInput =
-  typeof SignalsScoutScratchpadSearchInput.Type;
+  ) as unknown as Schema.Codec<SignalsScoutScratchpadSearchInput>;
 
 // Output Schema
+export type SignalsScoutScratchpadSearchOutput = {
+  key: string;
+  content: string;
+  created_at: string | null;
+  updated_at: string | null;
+  created_by_run_id: string | null;
+  created_by_skill?: string | null;
+  created_by_run_url?: string | null;
+}[];
 export const SignalsScoutScratchpadSearchOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -33,9 +49,7 @@ export const SignalsScoutScratchpadSearchOutput =
       created_by_skill: Schema.optional(Schema.NullOr(Schema.String)),
       created_by_run_url: Schema.optional(Schema.NullOr(Schema.String)),
     }),
-  );
-export type SignalsScoutScratchpadSearchOutput =
-  typeof SignalsScoutScratchpadSearchOutput.Type;
+  ) as unknown as Schema.Codec<SignalsScoutScratchpadSearchOutput>;
 
 // The operation
 /**

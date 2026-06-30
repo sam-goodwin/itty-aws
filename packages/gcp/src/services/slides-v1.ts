@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface RgbColor {
   green?: number;
 }
 
-export const RgbColor: Schema.Schema<RgbColor> =
+export const RgbColor: Schema.Codec<RgbColor> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     red: Schema.optional(Schema.Number),
     blue: Schema.optional(Schema.Number),
@@ -63,7 +63,7 @@ export interface OpaqueColor {
   rgbColor?: RgbColor;
 }
 
-export const OpaqueColor: Schema.Schema<OpaqueColor> =
+export const OpaqueColor: Schema.Codec<OpaqueColor> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     themeColor: Schema.optional(Schema.String),
     rgbColor: Schema.optional(RgbColor),
@@ -76,7 +76,7 @@ export interface SolidFill {
   alpha?: number;
 }
 
-export const SolidFill: Schema.Schema<SolidFill> =
+export const SolidFill: Schema.Codec<SolidFill> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     color: Schema.optional(OpaqueColor),
     alpha: Schema.optional(Schema.Number),
@@ -89,7 +89,7 @@ export interface Dimension {
   unit?: "UNIT_UNSPECIFIED" | "EMU" | "PT" | (string & {});
 }
 
-export const Dimension: Schema.Schema<Dimension> =
+export const Dimension: Schema.Codec<Dimension> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     magnitude: Schema.optional(Schema.Number),
     unit: Schema.optional(Schema.String),
@@ -102,7 +102,7 @@ export interface Size {
   height?: Dimension;
 }
 
-export const Size: Schema.Schema<Size> =
+export const Size: Schema.Codec<Size> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     width: Schema.optional(Dimension),
     height: Schema.optional(Dimension),
@@ -115,7 +115,7 @@ export interface StretchedPictureFill {
   size?: Size;
 }
 
-export const StretchedPictureFill: Schema.Schema<StretchedPictureFill> =
+export const StretchedPictureFill: Schema.Codec<StretchedPictureFill> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentUrl: Schema.optional(Schema.String),
     size: Schema.optional(Size),
@@ -130,7 +130,7 @@ export interface PageBackgroundFill {
   stretchedPictureFill?: StretchedPictureFill;
 }
 
-export const PageBackgroundFill: Schema.Schema<PageBackgroundFill> =
+export const PageBackgroundFill: Schema.Codec<PageBackgroundFill> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     solidFill: Schema.optional(SolidFill),
     propertyState: Schema.optional(Schema.String),
@@ -142,7 +142,7 @@ export interface OptionalColor {
   opaqueColor?: OpaqueColor;
 }
 
-export const OptionalColor: Schema.Schema<OptionalColor> =
+export const OptionalColor: Schema.Codec<OptionalColor> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     opaqueColor: Schema.optional(OpaqueColor),
   }).annotate({ identifier: "OptionalColor" });
@@ -164,7 +164,7 @@ export interface Link {
   pageObjectId?: string;
 }
 
-export const Link: Schema.Schema<Link> =
+export const Link: Schema.Codec<Link> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     slideIndex: Schema.optional(Schema.Number),
     url: Schema.optional(Schema.String),
@@ -179,7 +179,7 @@ export interface WeightedFontFamily {
   fontFamily?: string;
 }
 
-export const WeightedFontFamily: Schema.Schema<WeightedFontFamily> =
+export const WeightedFontFamily: Schema.Codec<WeightedFontFamily> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     weight: Schema.optional(Schema.Number),
     fontFamily: Schema.optional(Schema.String),
@@ -217,7 +217,7 @@ export interface TextStyle {
   fontSize?: Dimension;
 }
 
-export const TextStyle: Schema.Schema<TextStyle> =
+export const TextStyle: Schema.Codec<TextStyle> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     foregroundColor: Schema.optional(OptionalColor),
     link: Schema.optional(Link),
@@ -242,7 +242,7 @@ export interface AutoText {
   content?: string;
 }
 
-export const AutoText: Schema.Schema<AutoText> =
+export const AutoText: Schema.Codec<AutoText> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     style: Schema.optional(TextStyle),
@@ -254,7 +254,7 @@ export interface OutlineFill {
   solidFill?: SolidFill;
 }
 
-export const OutlineFill: Schema.Schema<OutlineFill> =
+export const OutlineFill: Schema.Codec<OutlineFill> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     solidFill: Schema.optional(SolidFill),
   }).annotate({ identifier: "OutlineFill" });
@@ -278,7 +278,7 @@ export interface Outline {
   outlineFill?: OutlineFill;
 }
 
-export const Outline: Schema.Schema<Outline> =
+export const Outline: Schema.Codec<Outline> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dashStyle: Schema.optional(Schema.String),
     weight: Schema.optional(Dimension),
@@ -299,7 +299,7 @@ export interface VideoProperties {
   outline?: Outline;
 }
 
-export const VideoProperties: Schema.Schema<VideoProperties> =
+export const VideoProperties: Schema.Codec<VideoProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autoPlay: Schema.optional(Schema.Boolean),
     mute: Schema.optional(Schema.Boolean),
@@ -315,7 +315,7 @@ export interface ShapeBackgroundFill {
   solidFill?: SolidFill;
 }
 
-export const ShapeBackgroundFill: Schema.Schema<ShapeBackgroundFill> =
+export const ShapeBackgroundFill: Schema.Codec<ShapeBackgroundFill> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     propertyState: Schema.optional(Schema.String),
     solidFill: Schema.optional(SolidFill),
@@ -330,7 +330,7 @@ export interface SubstringMatchCriteria {
   searchByRegex?: boolean;
 }
 
-export const SubstringMatchCriteria: Schema.Schema<SubstringMatchCriteria> =
+export const SubstringMatchCriteria: Schema.Codec<SubstringMatchCriteria> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     matchCase: Schema.optional(Schema.Boolean),
@@ -350,7 +350,7 @@ export interface ReplaceAllShapesWithSheetsChartRequest {
   pageObjectIds?: ReadonlyArray<string>;
 }
 
-export const ReplaceAllShapesWithSheetsChartRequest: Schema.Schema<ReplaceAllShapesWithSheetsChartRequest> =
+export const ReplaceAllShapesWithSheetsChartRequest: Schema.Codec<ReplaceAllShapesWithSheetsChartRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     chartId: Schema.optional(Schema.Number),
     containsText: Schema.optional(SubstringMatchCriteria),
@@ -366,7 +366,7 @@ export interface TextRun {
   style?: TextStyle;
 }
 
-export const TextRun: Schema.Schema<TextRun> =
+export const TextRun: Schema.Codec<TextRun> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
     style: Schema.optional(TextStyle),
@@ -407,7 +407,7 @@ export interface ParagraphStyle {
     | (string & {});
 }
 
-export const ParagraphStyle: Schema.Schema<ParagraphStyle> =
+export const ParagraphStyle: Schema.Codec<ParagraphStyle> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     indentEnd: Schema.optional(Dimension),
     alignment: Schema.optional(Schema.String),
@@ -431,7 +431,7 @@ export interface Bullet {
   listId?: string;
 }
 
-export const Bullet: Schema.Schema<Bullet> =
+export const Bullet: Schema.Codec<Bullet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     glyph: Schema.optional(Schema.String),
     bulletStyle: Schema.optional(TextStyle),
@@ -446,7 +446,7 @@ export interface ParagraphMarker {
   bullet?: Bullet;
 }
 
-export const ParagraphMarker: Schema.Schema<ParagraphMarker> =
+export const ParagraphMarker: Schema.Codec<ParagraphMarker> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     style: Schema.optional(ParagraphStyle),
     bullet: Schema.optional(Bullet),
@@ -465,7 +465,7 @@ export interface TextElement {
   autoText?: AutoText;
 }
 
-export const TextElement: Schema.Schema<TextElement> =
+export const TextElement: Schema.Codec<TextElement> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startIndex: Schema.optional(Schema.Number),
     textRun: Schema.optional(TextRun),
@@ -491,7 +491,7 @@ export interface AffineTransform {
   translateY?: number;
 }
 
-export const AffineTransform: Schema.Schema<AffineTransform> =
+export const AffineTransform: Schema.Codec<AffineTransform> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scaleY: Schema.optional(Schema.Number),
     shearX: Schema.optional(Schema.Number),
@@ -511,7 +511,7 @@ export interface PageElementProperties {
   pageObjectId?: string;
 }
 
-export const PageElementProperties: Schema.Schema<PageElementProperties> =
+export const PageElementProperties: Schema.Codec<PageElementProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     size: Schema.optional(Size),
     transform: Schema.optional(AffineTransform),
@@ -525,7 +525,7 @@ export interface TableCellLocation {
   columnIndex?: number;
 }
 
-export const TableCellLocation: Schema.Schema<TableCellLocation> =
+export const TableCellLocation: Schema.Codec<TableCellLocation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rowIndex: Schema.optional(Schema.Number),
     columnIndex: Schema.optional(Schema.Number),
@@ -538,7 +538,7 @@ export interface DeleteTableColumnRequest {
   cellLocation?: TableCellLocation;
 }
 
-export const DeleteTableColumnRequest: Schema.Schema<DeleteTableColumnRequest> =
+export const DeleteTableColumnRequest: Schema.Codec<DeleteTableColumnRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tableObjectId: Schema.optional(Schema.String),
     cellLocation: Schema.optional(TableCellLocation),
@@ -549,7 +549,7 @@ export interface CreateSlideResponse {
   objectId?: string;
 }
 
-export const CreateSlideResponse: Schema.Schema<CreateSlideResponse> =
+export const CreateSlideResponse: Schema.Codec<CreateSlideResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateSlideResponse" });
@@ -561,7 +561,7 @@ export interface TableCellBackgroundFill {
   solidFill?: SolidFill;
 }
 
-export const TableCellBackgroundFill: Schema.Schema<TableCellBackgroundFill> =
+export const TableCellBackgroundFill: Schema.Codec<TableCellBackgroundFill> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     propertyState: Schema.optional(Schema.String),
     solidFill: Schema.optional(SolidFill),
@@ -580,7 +580,7 @@ export interface TableCellProperties {
     | (string & {});
 }
 
-export const TableCellProperties: Schema.Schema<TableCellProperties> =
+export const TableCellProperties: Schema.Codec<TableCellProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tableCellBackgroundFill: Schema.optional(TableCellBackgroundFill),
     contentAlignment: Schema.optional(Schema.String),
@@ -600,7 +600,7 @@ export interface Autofit {
   fontScale?: number;
 }
 
-export const Autofit: Schema.Schema<Autofit> =
+export const Autofit: Schema.Codec<Autofit> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     autofitType: Schema.optional(Schema.String),
     lineSpacingReduction: Schema.optional(Schema.Number),
@@ -637,7 +637,7 @@ export interface Shadow {
   rotateWithShape?: boolean;
 }
 
-export const Shadow: Schema.Schema<Shadow> =
+export const Shadow: Schema.Codec<Shadow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alignment: Schema.optional(Schema.String),
     propertyState: Schema.optional(Schema.String),
@@ -670,7 +670,7 @@ export interface ShapeProperties {
   shadow?: Shadow;
 }
 
-export const ShapeProperties: Schema.Schema<ShapeProperties> =
+export const ShapeProperties: Schema.Codec<ShapeProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     shapeBackgroundFill: Schema.optional(ShapeBackgroundFill),
     autofit: Schema.optional(Autofit),
@@ -685,7 +685,7 @@ export interface DeleteObjectRequest {
   objectId?: string;
 }
 
-export const DeleteObjectRequest: Schema.Schema<DeleteObjectRequest> =
+export const DeleteObjectRequest: Schema.Codec<DeleteObjectRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "DeleteObjectRequest" });
@@ -699,7 +699,7 @@ export interface UpdatePageElementAltTextRequest {
   description?: string;
 }
 
-export const UpdatePageElementAltTextRequest: Schema.Schema<UpdatePageElementAltTextRequest> =
+export const UpdatePageElementAltTextRequest: Schema.Codec<UpdatePageElementAltTextRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     objectId: Schema.optional(Schema.String),
@@ -711,7 +711,7 @@ export interface CreateSheetsChartResponse {
   objectId?: string;
 }
 
-export const CreateSheetsChartResponse: Schema.Schema<CreateSheetsChartResponse> =
+export const CreateSheetsChartResponse: Schema.Codec<CreateSheetsChartResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateSheetsChartResponse" });
@@ -723,7 +723,7 @@ export interface SpeakerSpotlightProperties {
   shadow?: Shadow;
 }
 
-export const SpeakerSpotlightProperties: Schema.Schema<SpeakerSpotlightProperties> =
+export const SpeakerSpotlightProperties: Schema.Codec<SpeakerSpotlightProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     outline: Schema.optional(Outline),
     shadow: Schema.optional(Shadow),
@@ -734,7 +734,7 @@ export interface SpeakerSpotlight {
   speakerSpotlightProperties?: SpeakerSpotlightProperties;
 }
 
-export const SpeakerSpotlight: Schema.Schema<SpeakerSpotlight> =
+export const SpeakerSpotlight: Schema.Codec<SpeakerSpotlight> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     speakerSpotlightProperties: Schema.optional(SpeakerSpotlightProperties),
   }).annotate({ identifier: "SpeakerSpotlight" });
@@ -744,7 +744,7 @@ export interface WordArt {
   renderedText?: string;
 }
 
-export const WordArt: Schema.Schema<WordArt> =
+export const WordArt: Schema.Codec<WordArt> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     renderedText: Schema.optional(Schema.String),
   }).annotate({ identifier: "WordArt" });
@@ -762,7 +762,7 @@ export interface CropProperties {
   leftOffset?: number;
 }
 
-export const CropProperties: Schema.Schema<CropProperties> =
+export const CropProperties: Schema.Codec<CropProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     angle: Schema.optional(Schema.Number),
     rightOffset: Schema.optional(Schema.Number),
@@ -780,7 +780,7 @@ export interface ColorStop {
   alpha?: number;
 }
 
-export const ColorStop: Schema.Schema<ColorStop> =
+export const ColorStop: Schema.Codec<ColorStop> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     position: Schema.optional(Schema.Number),
     color: Schema.optional(OpaqueColor),
@@ -820,7 +820,7 @@ export interface Recolor {
     | (string & {});
 }
 
-export const Recolor: Schema.Schema<Recolor> =
+export const Recolor: Schema.Codec<Recolor> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recolorStops: Schema.optional(Schema.Array(ColorStop)),
     name: Schema.optional(Schema.String),
@@ -845,7 +845,7 @@ export interface ImageProperties {
   brightness?: number;
 }
 
-export const ImageProperties: Schema.Schema<ImageProperties> =
+export const ImageProperties: Schema.Codec<ImageProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cropProperties: Schema.optional(CropProperties),
     transparency: Schema.optional(Schema.Number),
@@ -862,7 +862,7 @@ export interface SheetsChartProperties {
   chartImageProperties?: ImageProperties;
 }
 
-export const SheetsChartProperties: Schema.Schema<SheetsChartProperties> =
+export const SheetsChartProperties: Schema.Codec<SheetsChartProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     chartImageProperties: Schema.optional(ImageProperties),
   }).annotate({ identifier: "SheetsChartProperties" });
@@ -878,7 +878,7 @@ export interface SheetsChart {
   sheetsChartProperties?: SheetsChartProperties;
 }
 
-export const SheetsChart: Schema.Schema<SheetsChart> =
+export const SheetsChart: Schema.Codec<SheetsChart> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spreadsheetId: Schema.optional(Schema.String),
     chartId: Schema.optional(Schema.Number),
@@ -891,19 +891,19 @@ export interface Group {
   children?: ReadonlyArray<PageElement>;
 }
 
-export const Group: Schema.Schema<Group> =
+export const Group: Schema.Codec<Group> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       children: Schema.optional(Schema.Array(PageElement)),
     }),
-  ).annotate({ identifier: "Group" }) as any as Schema.Schema<Group>;
+  ).annotate({ identifier: "Group" }) as any as Schema.Codec<Group>;
 
 export interface NestingLevel {
   /** The style of a bullet at this level of nesting. */
   bulletStyle?: TextStyle;
 }
 
-export const NestingLevel: Schema.Schema<NestingLevel> =
+export const NestingLevel: Schema.Codec<NestingLevel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bulletStyle: Schema.optional(TextStyle),
   }).annotate({ identifier: "NestingLevel" });
@@ -915,7 +915,7 @@ export interface List {
   nestingLevel?: Record<string, NestingLevel>;
 }
 
-export const List: Schema.Schema<List> =
+export const List: Schema.Codec<List> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     listId: Schema.optional(Schema.String),
     nestingLevel: Schema.optional(Schema.Record(Schema.String, NestingLevel)),
@@ -928,7 +928,7 @@ export interface TextContent {
   lists?: Record<string, List>;
 }
 
-export const TextContent: Schema.Schema<TextContent> =
+export const TextContent: Schema.Codec<TextContent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     textElements: Schema.optional(Schema.Array(TextElement)),
     lists: Schema.optional(Schema.Record(Schema.String, List)),
@@ -961,7 +961,7 @@ export interface Placeholder {
     | (string & {});
 }
 
-export const Placeholder: Schema.Schema<Placeholder> =
+export const Placeholder: Schema.Codec<Placeholder> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     index: Schema.optional(Schema.Number),
     parentObjectId: Schema.optional(Schema.String),
@@ -1123,7 +1123,7 @@ export interface Shape {
   placeholder?: Placeholder;
 }
 
-export const Shape: Schema.Schema<Shape> =
+export const Shape: Schema.Codec<Shape> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(TextContent),
     shapeProperties: Schema.optional(ShapeProperties),
@@ -1142,7 +1142,7 @@ export interface Image {
   sourceUrl?: string;
 }
 
-export const Image: Schema.Schema<Image> =
+export const Image: Schema.Codec<Image> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentUrl: Schema.optional(Schema.String),
     imageProperties: Schema.optional(ImageProperties),
@@ -1161,7 +1161,7 @@ export interface Video {
   id?: string;
 }
 
-export const Video: Schema.Schema<Video> =
+export const Video: Schema.Codec<Video> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     source: Schema.optional(Schema.String),
     videoProperties: Schema.optional(VideoProperties),
@@ -1176,7 +1176,7 @@ export interface LineConnection {
   connectionSiteIndex?: number;
 }
 
-export const LineConnection: Schema.Schema<LineConnection> =
+export const LineConnection: Schema.Codec<LineConnection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connectedObjectId: Schema.optional(Schema.String),
     connectionSiteIndex: Schema.optional(Schema.Number),
@@ -1187,7 +1187,7 @@ export interface LineFill {
   solidFill?: SolidFill;
 }
 
-export const LineFill: Schema.Schema<LineFill> =
+export const LineFill: Schema.Codec<LineFill> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     solidFill: Schema.optional(SolidFill),
   }).annotate({ identifier: "LineFill" });
@@ -1243,7 +1243,7 @@ export interface LineProperties {
   weight?: Dimension;
 }
 
-export const LineProperties: Schema.Schema<LineProperties> =
+export const LineProperties: Schema.Codec<LineProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startArrow: Schema.optional(Schema.String),
     endConnection: Schema.optional(LineConnection),
@@ -1281,7 +1281,7 @@ export interface Line {
     | (string & {});
 }
 
-export const Line: Schema.Schema<Line> =
+export const Line: Schema.Codec<Line> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lineProperties: Schema.optional(LineProperties),
     lineType: Schema.optional(Schema.String),
@@ -1293,7 +1293,7 @@ export interface TableColumnProperties {
   columnWidth?: Dimension;
 }
 
-export const TableColumnProperties: Schema.Schema<TableColumnProperties> =
+export const TableColumnProperties: Schema.Codec<TableColumnProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     columnWidth: Schema.optional(Dimension),
   }).annotate({ identifier: "TableColumnProperties" });
@@ -1303,7 +1303,7 @@ export interface TableBorderFill {
   solidFill?: SolidFill;
 }
 
-export const TableBorderFill: Schema.Schema<TableBorderFill> =
+export const TableBorderFill: Schema.Codec<TableBorderFill> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     solidFill: Schema.optional(SolidFill),
   }).annotate({ identifier: "TableBorderFill" });
@@ -1325,7 +1325,7 @@ export interface TableBorderProperties {
     | (string & {});
 }
 
-export const TableBorderProperties: Schema.Schema<TableBorderProperties> =
+export const TableBorderProperties: Schema.Codec<TableBorderProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tableBorderFill: Schema.optional(TableBorderFill),
     weight: Schema.optional(Dimension),
@@ -1339,7 +1339,7 @@ export interface TableBorderCell {
   tableBorderProperties?: TableBorderProperties;
 }
 
-export const TableBorderCell: Schema.Schema<TableBorderCell> =
+export const TableBorderCell: Schema.Codec<TableBorderCell> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.optional(TableCellLocation),
     tableBorderProperties: Schema.optional(TableBorderProperties),
@@ -1350,7 +1350,7 @@ export interface TableBorderRow {
   tableBorderCells?: ReadonlyArray<TableBorderCell>;
 }
 
-export const TableBorderRow: Schema.Schema<TableBorderRow> =
+export const TableBorderRow: Schema.Codec<TableBorderRow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tableBorderCells: Schema.optional(Schema.Array(TableBorderCell)),
   }).annotate({ identifier: "TableBorderRow" });
@@ -1360,7 +1360,7 @@ export interface TableRowProperties {
   minRowHeight?: Dimension;
 }
 
-export const TableRowProperties: Schema.Schema<TableRowProperties> =
+export const TableRowProperties: Schema.Codec<TableRowProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minRowHeight: Schema.optional(Dimension),
   }).annotate({ identifier: "TableRowProperties" });
@@ -1378,7 +1378,7 @@ export interface TableCell {
   text?: TextContent;
 }
 
-export const TableCell: Schema.Schema<TableCell> =
+export const TableCell: Schema.Codec<TableCell> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rowSpan: Schema.optional(Schema.Number),
     tableCellProperties: Schema.optional(TableCellProperties),
@@ -1396,7 +1396,7 @@ export interface TableRow {
   tableCells?: ReadonlyArray<TableCell>;
 }
 
-export const TableRow: Schema.Schema<TableRow> =
+export const TableRow: Schema.Codec<TableRow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rowHeight: Schema.optional(Dimension),
     tableRowProperties: Schema.optional(TableRowProperties),
@@ -1418,7 +1418,7 @@ export interface Table {
   horizontalBorderRows?: ReadonlyArray<TableBorderRow>;
 }
 
-export const Table: Schema.Schema<Table> =
+export const Table: Schema.Codec<Table> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rows: Schema.optional(Schema.Number),
     tableColumns: Schema.optional(Schema.Array(TableColumnProperties)),
@@ -1459,7 +1459,7 @@ export interface PageElement {
   table?: Table;
 }
 
-export const PageElement: Schema.Schema<PageElement> =
+export const PageElement: Schema.Codec<PageElement> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       speakerSpotlight: Schema.optional(SpeakerSpotlight),
@@ -1477,16 +1477,14 @@ export const PageElement: Schema.Schema<PageElement> =
       description: Schema.optional(Schema.String),
       table: Schema.optional(Table),
     }),
-  ).annotate({
-    identifier: "PageElement",
-  }) as any as Schema.Schema<PageElement>;
+  ).annotate({ identifier: "PageElement" }) as any as Schema.Codec<PageElement>;
 
 export interface NotesProperties {
   /** The object ID of the shape on this notes page that contains the speaker notes for the corresponding slide. The actual shape may not always exist on the notes page. Inserting text using this object ID will automatically create the shape. In this case, the actual shape may have different object ID. The `GetPresentation` or `GetPage` action will always return the latest object ID. */
   speakerNotesObjectId?: string;
 }
 
-export const NotesProperties: Schema.Schema<NotesProperties> =
+export const NotesProperties: Schema.Codec<NotesProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     speakerNotesObjectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "NotesProperties" });
@@ -1496,7 +1494,7 @@ export interface MasterProperties {
   displayName?: string;
 }
 
-export const MasterProperties: Schema.Schema<MasterProperties> =
+export const MasterProperties: Schema.Codec<MasterProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "MasterProperties" });
@@ -1510,7 +1508,7 @@ export interface LayoutProperties {
   name?: string;
 }
 
-export const LayoutProperties: Schema.Schema<LayoutProperties> =
+export const LayoutProperties: Schema.Codec<LayoutProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     masterObjectId: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -1542,7 +1540,7 @@ export interface ThemeColorPair {
   color?: RgbColor;
 }
 
-export const ThemeColorPair: Schema.Schema<ThemeColorPair> =
+export const ThemeColorPair: Schema.Codec<ThemeColorPair> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     color: Schema.optional(RgbColor),
@@ -1553,7 +1551,7 @@ export interface ColorScheme {
   colors?: ReadonlyArray<ThemeColorPair>;
 }
 
-export const ColorScheme: Schema.Schema<ColorScheme> =
+export const ColorScheme: Schema.Codec<ColorScheme> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     colors: Schema.optional(Schema.Array(ThemeColorPair)),
   }).annotate({ identifier: "ColorScheme" });
@@ -1565,7 +1563,7 @@ export interface PageProperties {
   colorScheme?: ColorScheme;
 }
 
-export const PageProperties: Schema.Schema<PageProperties> =
+export const PageProperties: Schema.Codec<PageProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageBackgroundFill: Schema.optional(PageBackgroundFill),
     colorScheme: Schema.optional(ColorScheme),
@@ -1598,7 +1596,7 @@ export interface Page {
   pageProperties?: PageProperties;
 }
 
-export const Page: Schema.Schema<Page> =
+export const Page: Schema.Codec<Page> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       objectId: Schema.optional(Schema.String),
@@ -1611,7 +1609,7 @@ export const Page: Schema.Schema<Page> =
       layoutProperties: Schema.optional(LayoutProperties),
       pageProperties: Schema.optional(PageProperties),
     }),
-  ).annotate({ identifier: "Page" }) as any as Schema.Schema<Page>;
+  ).annotate({ identifier: "Page" }) as any as Schema.Codec<Page>;
 
 export interface SlideProperties {
   /** The object ID of the master that this slide is based on. This property is read-only. */
@@ -1624,7 +1622,7 @@ export interface SlideProperties {
   layoutObjectId?: string;
 }
 
-export const SlideProperties: Schema.Schema<SlideProperties> =
+export const SlideProperties: Schema.Codec<SlideProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       masterObjectId: Schema.optional(Schema.String),
@@ -1634,7 +1632,7 @@ export const SlideProperties: Schema.Schema<SlideProperties> =
     }),
   ).annotate({
     identifier: "SlideProperties",
-  }) as any as Schema.Schema<SlideProperties>;
+  }) as any as Schema.Codec<SlideProperties>;
 
 export interface UpdateSlidePropertiesRequest {
   /** The slide properties to update. */
@@ -1645,7 +1643,7 @@ export interface UpdateSlidePropertiesRequest {
   objectId?: string;
 }
 
-export const UpdateSlidePropertiesRequest: Schema.Schema<UpdateSlidePropertiesRequest> =
+export const UpdateSlidePropertiesRequest: Schema.Codec<UpdateSlidePropertiesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     slideProperties: Schema.optional(SlideProperties),
     fields: Schema.optional(Schema.String),
@@ -1672,7 +1670,7 @@ export interface LayoutReference {
   layoutId?: string;
 }
 
-export const LayoutReference: Schema.Schema<LayoutReference> =
+export const LayoutReference: Schema.Codec<LayoutReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     predefinedLayout: Schema.optional(Schema.String),
     layoutId: Schema.optional(Schema.String),
@@ -1687,7 +1685,7 @@ export interface TableRange {
   columnSpan?: number;
 }
 
-export const TableRange: Schema.Schema<TableRange> =
+export const TableRange: Schema.Codec<TableRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.optional(TableCellLocation),
     rowSpan: Schema.optional(Schema.Number),
@@ -1701,7 +1699,7 @@ export interface MergeTableCellsRequest {
   objectId?: string;
 }
 
-export const MergeTableCellsRequest: Schema.Schema<MergeTableCellsRequest> =
+export const MergeTableCellsRequest: Schema.Codec<MergeTableCellsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tableRange: Schema.optional(TableRange),
     objectId: Schema.optional(Schema.String),
@@ -1716,7 +1714,7 @@ export interface LayoutPlaceholderIdMapping {
   objectId?: string;
 }
 
-export const LayoutPlaceholderIdMapping: Schema.Schema<LayoutPlaceholderIdMapping> =
+export const LayoutPlaceholderIdMapping: Schema.Codec<LayoutPlaceholderIdMapping> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     layoutPlaceholderObjectId: Schema.optional(Schema.String),
     layoutPlaceholder: Schema.optional(Placeholder),
@@ -1737,7 +1735,7 @@ export interface Range {
   startIndex?: number;
 }
 
-export const Range: Schema.Schema<Range> =
+export const Range: Schema.Codec<Range> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     endIndex: Schema.optional(Schema.Number),
@@ -1757,7 +1755,7 @@ export interface UpdateTextStyleRequest {
   fields?: string;
 }
 
-export const UpdateTextStyleRequest: Schema.Schema<UpdateTextStyleRequest> =
+export const UpdateTextStyleRequest: Schema.Codec<UpdateTextStyleRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cellLocation: Schema.optional(TableCellLocation),
     objectId: Schema.optional(Schema.String),
@@ -1771,7 +1769,7 @@ export interface ReplaceAllShapesWithImageResponse {
   occurrencesChanged?: number;
 }
 
-export const ReplaceAllShapesWithImageResponse: Schema.Schema<ReplaceAllShapesWithImageResponse> =
+export const ReplaceAllShapesWithImageResponse: Schema.Codec<ReplaceAllShapesWithImageResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     occurrencesChanged: Schema.optional(Schema.Number),
   }).annotate({ identifier: "ReplaceAllShapesWithImageResponse" });
@@ -1783,7 +1781,7 @@ export interface UnmergeTableCellsRequest {
   objectId?: string;
 }
 
-export const UnmergeTableCellsRequest: Schema.Schema<UnmergeTableCellsRequest> =
+export const UnmergeTableCellsRequest: Schema.Codec<UnmergeTableCellsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tableRange: Schema.optional(TableRange),
     objectId: Schema.optional(Schema.String),
@@ -1802,7 +1800,7 @@ export interface UpdatePageElementTransformRequest {
     | (string & {});
 }
 
-export const UpdatePageElementTransformRequest: Schema.Schema<UpdatePageElementTransformRequest> =
+export const UpdatePageElementTransformRequest: Schema.Codec<UpdatePageElementTransformRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
     transform: Schema.optional(AffineTransform),
@@ -1820,7 +1818,7 @@ export interface InsertTableRowsRequest {
   tableObjectId?: string;
 }
 
-export const InsertTableRowsRequest: Schema.Schema<InsertTableRowsRequest> =
+export const InsertTableRowsRequest: Schema.Codec<InsertTableRowsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cellLocation: Schema.optional(TableCellLocation),
     insertBelow: Schema.optional(Schema.Boolean),
@@ -1839,7 +1837,7 @@ export interface UpdateTableRowPropertiesRequest {
   fields?: string;
 }
 
-export const UpdateTableRowPropertiesRequest: Schema.Schema<UpdateTableRowPropertiesRequest> =
+export const UpdateTableRowPropertiesRequest: Schema.Codec<UpdateTableRowPropertiesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tableRowProperties: Schema.optional(TableRowProperties),
     objectId: Schema.optional(Schema.String),
@@ -1860,7 +1858,7 @@ export interface ReplaceImageRequest {
     | (string & {});
 }
 
-export const ReplaceImageRequest: Schema.Schema<ReplaceImageRequest> =
+export const ReplaceImageRequest: Schema.Codec<ReplaceImageRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     imageObjectId: Schema.optional(Schema.String),
@@ -1876,7 +1874,7 @@ export interface DeleteTextRequest {
   textRange?: Range;
 }
 
-export const DeleteTextRequest: Schema.Schema<DeleteTextRequest> =
+export const DeleteTextRequest: Schema.Codec<DeleteTextRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
     cellLocation: Schema.optional(TableCellLocation),
@@ -1894,7 +1892,7 @@ export interface UpdateTableColumnPropertiesRequest {
   tableColumnProperties?: TableColumnProperties;
 }
 
-export const UpdateTableColumnPropertiesRequest: Schema.Schema<UpdateTableColumnPropertiesRequest> =
+export const UpdateTableColumnPropertiesRequest: Schema.Codec<UpdateTableColumnPropertiesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fields: Schema.optional(Schema.String),
     objectId: Schema.optional(Schema.String),
@@ -1909,7 +1907,7 @@ export interface DuplicateObjectRequest {
   objectIds?: Record<string, string>;
 }
 
-export const DuplicateObjectRequest: Schema.Schema<DuplicateObjectRequest> =
+export const DuplicateObjectRequest: Schema.Codec<DuplicateObjectRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
     objectIds: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -1920,7 +1918,7 @@ export interface UngroupObjectsRequest {
   objectIds?: ReadonlyArray<string>;
 }
 
-export const UngroupObjectsRequest: Schema.Schema<UngroupObjectsRequest> =
+export const UngroupObjectsRequest: Schema.Codec<UngroupObjectsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "UngroupObjectsRequest" });
@@ -1934,7 +1932,7 @@ export interface ReplaceAllTextRequest {
   pageObjectIds?: ReadonlyArray<string>;
 }
 
-export const ReplaceAllTextRequest: Schema.Schema<ReplaceAllTextRequest> =
+export const ReplaceAllTextRequest: Schema.Codec<ReplaceAllTextRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     containsText: Schema.optional(SubstringMatchCriteria),
     replaceText: Schema.optional(Schema.String),
@@ -1950,7 +1948,7 @@ export interface DeleteParagraphBulletsRequest {
   textRange?: Range;
 }
 
-export const DeleteParagraphBulletsRequest: Schema.Schema<DeleteParagraphBulletsRequest> =
+export const DeleteParagraphBulletsRequest: Schema.Codec<DeleteParagraphBulletsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cellLocation: Schema.optional(TableCellLocation),
     objectId: Schema.optional(Schema.String),
@@ -1970,7 +1968,7 @@ export interface UpdatePageElementsZOrderRequest {
   pageElementObjectIds?: ReadonlyArray<string>;
 }
 
-export const UpdatePageElementsZOrderRequest: Schema.Schema<UpdatePageElementsZOrderRequest> =
+export const UpdatePageElementsZOrderRequest: Schema.Codec<UpdatePageElementsZOrderRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operation: Schema.optional(Schema.String),
     pageElementObjectIds: Schema.optional(Schema.Array(Schema.String)),
@@ -1999,7 +1997,7 @@ export interface UpdateTableBorderPropertiesRequest {
   tableRange?: TableRange;
 }
 
-export const UpdateTableBorderPropertiesRequest: Schema.Schema<UpdateTableBorderPropertiesRequest> =
+export const UpdateTableBorderPropertiesRequest: Schema.Codec<UpdateTableBorderPropertiesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     borderPosition: Schema.optional(Schema.String),
     tableBorderProperties: Schema.optional(TableBorderProperties),
@@ -2019,7 +2017,7 @@ export interface InsertTextRequest {
   insertionIndex?: number;
 }
 
-export const InsertTextRequest: Schema.Schema<InsertTextRequest> =
+export const InsertTextRequest: Schema.Codec<InsertTextRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cellLocation: Schema.optional(TableCellLocation),
     objectId: Schema.optional(Schema.String),
@@ -2180,7 +2178,7 @@ export interface CreateShapeRequest {
     | (string & {});
 }
 
-export const CreateShapeRequest: Schema.Schema<CreateShapeRequest> =
+export const CreateShapeRequest: Schema.Codec<CreateShapeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
     elementProperties: Schema.optional(PageElementProperties),
@@ -2196,7 +2194,7 @@ export interface UpdateImagePropertiesRequest {
   objectId?: string;
 }
 
-export const UpdateImagePropertiesRequest: Schema.Schema<UpdateImagePropertiesRequest> =
+export const UpdateImagePropertiesRequest: Schema.Codec<UpdateImagePropertiesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     imageProperties: Schema.optional(ImageProperties),
     fields: Schema.optional(Schema.String),
@@ -2220,7 +2218,7 @@ export interface ReplaceAllShapesWithImageRequest {
     | (string & {});
 }
 
-export const ReplaceAllShapesWithImageRequest: Schema.Schema<ReplaceAllShapesWithImageRequest> =
+export const ReplaceAllShapesWithImageRequest: Schema.Codec<ReplaceAllShapesWithImageRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     containsText: Schema.optional(SubstringMatchCriteria),
     imageUrl: Schema.optional(Schema.String),
@@ -2240,7 +2238,7 @@ export interface CreateSlideRequest {
   slideLayoutReference?: LayoutReference;
 }
 
-export const CreateSlideRequest: Schema.Schema<CreateSlideRequest> =
+export const CreateSlideRequest: Schema.Codec<CreateSlideRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     insertionIndex: Schema.optional(Schema.Number),
     placeholderIdMappings: Schema.optional(
@@ -2259,7 +2257,7 @@ export interface UpdateLinePropertiesRequest {
   objectId?: string;
 }
 
-export const UpdateLinePropertiesRequest: Schema.Schema<UpdateLinePropertiesRequest> =
+export const UpdateLinePropertiesRequest: Schema.Codec<UpdateLinePropertiesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fields: Schema.optional(Schema.String),
     lineProperties: Schema.optional(LineProperties),
@@ -2282,7 +2280,7 @@ export interface CreateLineRequest {
   lineCategory?: "STRAIGHT" | "BENT" | "CURVED" | (string & {});
 }
 
-export const CreateLineRequest: Schema.Schema<CreateLineRequest> =
+export const CreateLineRequest: Schema.Codec<CreateLineRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     elementProperties: Schema.optional(PageElementProperties),
     category: Schema.optional(Schema.String),
@@ -2301,7 +2299,7 @@ export interface UpdateTableCellPropertiesRequest {
   tableRange?: TableRange;
 }
 
-export const UpdateTableCellPropertiesRequest: Schema.Schema<UpdateTableCellPropertiesRequest> =
+export const UpdateTableCellPropertiesRequest: Schema.Codec<UpdateTableCellPropertiesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
     tableCellProperties: Schema.optional(TableCellProperties),
@@ -2322,7 +2320,7 @@ export interface UpdateParagraphStyleRequest {
   cellLocation?: TableCellLocation;
 }
 
-export const UpdateParagraphStyleRequest: Schema.Schema<UpdateParagraphStyleRequest> =
+export const UpdateParagraphStyleRequest: Schema.Codec<UpdateParagraphStyleRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fields: Schema.optional(Schema.String),
     style: Schema.optional(ParagraphStyle),
@@ -2342,7 +2340,7 @@ export interface CreateVideoRequest {
   id?: string;
 }
 
-export const CreateVideoRequest: Schema.Schema<CreateVideoRequest> =
+export const CreateVideoRequest: Schema.Codec<CreateVideoRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     source: Schema.optional(Schema.String),
     elementProperties: Schema.optional(PageElementProperties),
@@ -2363,7 +2361,7 @@ export interface CreateSheetsChartRequest {
   spreadsheetId?: string;
 }
 
-export const CreateSheetsChartRequest: Schema.Schema<CreateSheetsChartRequest> =
+export const CreateSheetsChartRequest: Schema.Codec<CreateSheetsChartRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
     chartId: Schema.optional(Schema.Number),
@@ -2379,7 +2377,7 @@ export interface UpdateSlidesPositionRequest {
   slideObjectIds?: ReadonlyArray<string>;
 }
 
-export const UpdateSlidesPositionRequest: Schema.Schema<UpdateSlidesPositionRequest> =
+export const UpdateSlidesPositionRequest: Schema.Codec<UpdateSlidesPositionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     insertionIndex: Schema.optional(Schema.Number),
     slideObjectIds: Schema.optional(Schema.Array(Schema.String)),
@@ -2396,7 +2394,7 @@ export interface CreateTableRequest {
   elementProperties?: PageElementProperties;
 }
 
-export const CreateTableRequest: Schema.Schema<CreateTableRequest> =
+export const CreateTableRequest: Schema.Codec<CreateTableRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
     rows: Schema.optional(Schema.Number),
@@ -2413,7 +2411,7 @@ export interface UpdateShapePropertiesRequest {
   shapeProperties?: ShapeProperties;
 }
 
-export const UpdateShapePropertiesRequest: Schema.Schema<UpdateShapePropertiesRequest> =
+export const UpdateShapePropertiesRequest: Schema.Codec<UpdateShapePropertiesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fields: Schema.optional(Schema.String),
     objectId: Schema.optional(Schema.String),
@@ -2432,7 +2430,7 @@ export interface UpdateLineCategoryRequest {
     | (string & {});
 }
 
-export const UpdateLineCategoryRequest: Schema.Schema<UpdateLineCategoryRequest> =
+export const UpdateLineCategoryRequest: Schema.Codec<UpdateLineCategoryRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
     lineCategory: Schema.optional(Schema.String),
@@ -2443,7 +2441,7 @@ export interface RefreshSheetsChartRequest {
   objectId?: string;
 }
 
-export const RefreshSheetsChartRequest: Schema.Schema<RefreshSheetsChartRequest> =
+export const RefreshSheetsChartRequest: Schema.Codec<RefreshSheetsChartRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "RefreshSheetsChartRequest" });
@@ -2459,7 +2457,7 @@ export interface InsertTableColumnsRequest {
   number?: number;
 }
 
-export const InsertTableColumnsRequest: Schema.Schema<InsertTableColumnsRequest> =
+export const InsertTableColumnsRequest: Schema.Codec<InsertTableColumnsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tableObjectId: Schema.optional(Schema.String),
     insertRight: Schema.optional(Schema.Boolean),
@@ -2494,7 +2492,7 @@ export interface CreateParagraphBulletsRequest {
   objectId?: string;
 }
 
-export const CreateParagraphBulletsRequest: Schema.Schema<CreateParagraphBulletsRequest> =
+export const CreateParagraphBulletsRequest: Schema.Codec<CreateParagraphBulletsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     textRange: Schema.optional(Range),
     bulletPreset: Schema.optional(Schema.String),
@@ -2509,7 +2507,7 @@ export interface DeleteTableRowRequest {
   tableObjectId?: string;
 }
 
-export const DeleteTableRowRequest: Schema.Schema<DeleteTableRowRequest> =
+export const DeleteTableRowRequest: Schema.Codec<DeleteTableRowRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cellLocation: Schema.optional(TableCellLocation),
     tableObjectId: Schema.optional(Schema.String),
@@ -2520,7 +2518,7 @@ export interface RerouteLineRequest {
   objectId?: string;
 }
 
-export const RerouteLineRequest: Schema.Schema<RerouteLineRequest> =
+export const RerouteLineRequest: Schema.Codec<RerouteLineRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "RerouteLineRequest" });
@@ -2534,7 +2532,7 @@ export interface UpdateVideoPropertiesRequest {
   objectId?: string;
 }
 
-export const UpdateVideoPropertiesRequest: Schema.Schema<UpdateVideoPropertiesRequest> =
+export const UpdateVideoPropertiesRequest: Schema.Codec<UpdateVideoPropertiesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     videoProperties: Schema.optional(VideoProperties),
     fields: Schema.optional(Schema.String),
@@ -2550,7 +2548,7 @@ export interface CreateImageRequest {
   elementProperties?: PageElementProperties;
 }
 
-export const CreateImageRequest: Schema.Schema<CreateImageRequest> =
+export const CreateImageRequest: Schema.Codec<CreateImageRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     objectId: Schema.optional(Schema.String),
@@ -2564,7 +2562,7 @@ export interface GroupObjectsRequest {
   groupObjectId?: string;
 }
 
-export const GroupObjectsRequest: Schema.Schema<GroupObjectsRequest> =
+export const GroupObjectsRequest: Schema.Codec<GroupObjectsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     childrenObjectIds: Schema.optional(Schema.Array(Schema.String)),
     groupObjectId: Schema.optional(Schema.String),
@@ -2579,7 +2577,7 @@ export interface UpdatePagePropertiesRequest {
   objectId?: string;
 }
 
-export const UpdatePagePropertiesRequest: Schema.Schema<UpdatePagePropertiesRequest> =
+export const UpdatePagePropertiesRequest: Schema.Codec<UpdatePagePropertiesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fields: Schema.optional(Schema.String),
     pageProperties: Schema.optional(PageProperties),
@@ -2677,7 +2675,7 @@ export interface Request {
   replaceAllShapesWithSheetsChart?: ReplaceAllShapesWithSheetsChartRequest;
 }
 
-export const Request: Schema.Schema<Request> =
+export const Request: Schema.Codec<Request> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     insertTableRows: Schema.optional(InsertTableRowsRequest),
     updateTableRowProperties: Schema.optional(UpdateTableRowPropertiesRequest),
@@ -2742,7 +2740,7 @@ export interface WriteControl {
   requiredRevisionId?: string;
 }
 
-export const WriteControl: Schema.Schema<WriteControl> =
+export const WriteControl: Schema.Codec<WriteControl> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requiredRevisionId: Schema.optional(Schema.String),
   }).annotate({ identifier: "WriteControl" });
@@ -2754,7 +2752,7 @@ export interface BatchUpdatePresentationRequest {
   requests?: ReadonlyArray<Request>;
 }
 
-export const BatchUpdatePresentationRequest: Schema.Schema<BatchUpdatePresentationRequest> =
+export const BatchUpdatePresentationRequest: Schema.Codec<BatchUpdatePresentationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     writeControl: Schema.optional(WriteControl),
     requests: Schema.optional(Schema.Array(Request)),
@@ -2769,7 +2767,7 @@ export interface Thumbnail {
   height?: number;
 }
 
-export const Thumbnail: Schema.Schema<Thumbnail> =
+export const Thumbnail: Schema.Codec<Thumbnail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     contentUrl: Schema.optional(Schema.String),
     width: Schema.optional(Schema.Number),
@@ -2781,7 +2779,7 @@ export interface DuplicateObjectResponse {
   objectId?: string;
 }
 
-export const DuplicateObjectResponse: Schema.Schema<DuplicateObjectResponse> =
+export const DuplicateObjectResponse: Schema.Codec<DuplicateObjectResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "DuplicateObjectResponse" });
@@ -2791,7 +2789,7 @@ export interface CreateImageResponse {
   objectId?: string;
 }
 
-export const CreateImageResponse: Schema.Schema<CreateImageResponse> =
+export const CreateImageResponse: Schema.Codec<CreateImageResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateImageResponse" });
@@ -2801,7 +2799,7 @@ export interface GroupObjectsResponse {
   objectId?: string;
 }
 
-export const GroupObjectsResponse: Schema.Schema<GroupObjectsResponse> =
+export const GroupObjectsResponse: Schema.Codec<GroupObjectsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "GroupObjectsResponse" });
@@ -2811,7 +2809,7 @@ export interface CreateTableResponse {
   objectId?: string;
 }
 
-export const CreateTableResponse: Schema.Schema<CreateTableResponse> =
+export const CreateTableResponse: Schema.Codec<CreateTableResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateTableResponse" });
@@ -2821,7 +2819,7 @@ export interface ReplaceAllTextResponse {
   occurrencesChanged?: number;
 }
 
-export const ReplaceAllTextResponse: Schema.Schema<ReplaceAllTextResponse> =
+export const ReplaceAllTextResponse: Schema.Codec<ReplaceAllTextResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     occurrencesChanged: Schema.optional(Schema.Number),
   }).annotate({ identifier: "ReplaceAllTextResponse" });
@@ -2831,7 +2829,7 @@ export interface CreateLineResponse {
   objectId?: string;
 }
 
-export const CreateLineResponse: Schema.Schema<CreateLineResponse> =
+export const CreateLineResponse: Schema.Codec<CreateLineResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateLineResponse" });
@@ -2841,7 +2839,7 @@ export interface ReplaceAllShapesWithSheetsChartResponse {
   occurrencesChanged?: number;
 }
 
-export const ReplaceAllShapesWithSheetsChartResponse: Schema.Schema<ReplaceAllShapesWithSheetsChartResponse> =
+export const ReplaceAllShapesWithSheetsChartResponse: Schema.Codec<ReplaceAllShapesWithSheetsChartResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     occurrencesChanged: Schema.optional(Schema.Number),
   }).annotate({ identifier: "ReplaceAllShapesWithSheetsChartResponse" });
@@ -2851,7 +2849,7 @@ export interface CreateVideoResponse {
   objectId?: string;
 }
 
-export const CreateVideoResponse: Schema.Schema<CreateVideoResponse> =
+export const CreateVideoResponse: Schema.Codec<CreateVideoResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateVideoResponse" });
@@ -2861,7 +2859,7 @@ export interface CreateShapeResponse {
   objectId?: string;
 }
 
-export const CreateShapeResponse: Schema.Schema<CreateShapeResponse> =
+export const CreateShapeResponse: Schema.Codec<CreateShapeResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectId: Schema.optional(Schema.String),
   }).annotate({ identifier: "CreateShapeResponse" });
@@ -2893,7 +2891,7 @@ export interface Response {
   createShape?: CreateShapeResponse;
 }
 
-export const Response: Schema.Schema<Response> =
+export const Response: Schema.Codec<Response> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createSheetsChart: Schema.optional(CreateSheetsChartResponse),
     duplicateObject: Schema.optional(DuplicateObjectResponse),
@@ -2922,7 +2920,7 @@ export interface BatchUpdatePresentationResponse {
   presentationId?: string;
 }
 
-export const BatchUpdatePresentationResponse: Schema.Schema<BatchUpdatePresentationResponse> =
+export const BatchUpdatePresentationResponse: Schema.Codec<BatchUpdatePresentationResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     replies: Schema.optional(Schema.Array(Response)),
     writeControl: Schema.optional(WriteControl),
@@ -2950,7 +2948,7 @@ export interface Presentation {
   pageSize?: Size;
 }
 
-export const Presentation: Schema.Schema<Presentation> =
+export const Presentation: Schema.Codec<Presentation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     notesMaster: Schema.optional(Page),
     masters: Schema.optional(Schema.Array(Page)),
@@ -3028,7 +3026,7 @@ export const GetPresentationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/presentations/{+presentationId}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPresentationsRequest>;
+  ) as unknown as Schema.Codec<GetPresentationsRequest>;
 
 export type GetPresentationsResponse = Presentation;
 export const GetPresentationsResponse =
@@ -3066,7 +3064,7 @@ export const BatchUpdatePresentationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchUpdatePresentationsRequest>;
+  ) as unknown as Schema.Codec<BatchUpdatePresentationsRequest>;
 
 export type BatchUpdatePresentationsResponse = BatchUpdatePresentationResponse;
 export const BatchUpdatePresentationsResponse =
@@ -3102,7 +3100,7 @@ export const CreatePresentationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/presentations", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreatePresentationsRequest>;
+  ) as unknown as Schema.Codec<CreatePresentationsRequest>;
 
 export type CreatePresentationsResponse = Presentation;
 export const CreatePresentationsResponse =
@@ -3144,7 +3142,7 @@ export const GetPresentationsPagesRequest =
       path: "v1/presentations/{presentationId}/pages/{pageObjectId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetPresentationsPagesRequest>;
+  ) as unknown as Schema.Codec<GetPresentationsPagesRequest>;
 
 export type GetPresentationsPagesResponse = Page;
 export const GetPresentationsPagesResponse = /*@__PURE__*/ /*#__PURE__*/ Page;
@@ -3196,7 +3194,7 @@ export const GetThumbnailPresentationsPagesRequest =
       path: "v1/presentations/{presentationId}/pages/{pageObjectId}/thumbnail",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetThumbnailPresentationsPagesRequest>;
+  ) as unknown as Schema.Codec<GetThumbnailPresentationsPagesRequest>;
 
 export type GetThumbnailPresentationsPagesResponse = Thumbnail;
 export const GetThumbnailPresentationsPagesResponse =

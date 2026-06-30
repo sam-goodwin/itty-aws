@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface AddGroupApiKeyInput {
+  groupId: string;
+  apiUserId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const AddGroupApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   apiUserId: Schema.String.pipe(T.PathParam()),
@@ -14,12 +20,12 @@ export const AddGroupApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId}",
   }),
-);
-export type AddGroupApiKeyInput = typeof AddGroupApiKeyInput.Type;
+) as unknown as Schema.Codec<AddGroupApiKeyInput>;
 
 // Output Schema
-export const AddGroupApiKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AddGroupApiKeyOutput = typeof AddGroupApiKeyOutput.Type;
+export type AddGroupApiKeyOutput = void;
+export const AddGroupApiKeyOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AddGroupApiKeyOutput>;
 
 // The operation
 /**

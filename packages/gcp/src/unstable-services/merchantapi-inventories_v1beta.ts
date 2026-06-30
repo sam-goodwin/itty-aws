@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface Price {
   currencyCode?: string;
 }
 
-export const Price: Schema.Schema<Price> =
+export const Price: Schema.Codec<Price> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     amountMicros: Schema.optional(Schema.String),
     currencyCode: Schema.optional(Schema.String),
@@ -44,7 +44,7 @@ export interface CustomAttribute {
   value?: string;
 }
 
-export const CustomAttribute: Schema.Schema<CustomAttribute> =
+export const CustomAttribute: Schema.Codec<CustomAttribute> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       groupValues: Schema.optional(Schema.Array(CustomAttribute)),
@@ -53,7 +53,7 @@ export const CustomAttribute: Schema.Schema<CustomAttribute> =
     }),
   ).annotate({
     identifier: "CustomAttribute",
-  }) as any as Schema.Schema<CustomAttribute>;
+  }) as any as Schema.Codec<CustomAttribute>;
 
 export interface Interval {
   /** Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end. */
@@ -62,7 +62,7 @@ export interface Interval {
   startTime?: string;
 }
 
-export const Interval: Schema.Schema<Interval> =
+export const Interval: Schema.Codec<Interval> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -97,7 +97,7 @@ export interface LocalInventory {
   salePriceEffectiveDate?: Interval;
 }
 
-export const LocalInventory: Schema.Schema<LocalInventory> =
+export const LocalInventory: Schema.Codec<LocalInventory> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     price: Schema.optional(Price),
     salePrice: Schema.optional(Price),
@@ -146,7 +146,7 @@ export interface ProductChange {
     | (string & {});
 }
 
-export const ProductChange: Schema.Schema<ProductChange> =
+export const ProductChange: Schema.Codec<ProductChange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regionCode: Schema.optional(Schema.String),
     oldValue: Schema.optional(Schema.String),
@@ -161,7 +161,7 @@ export interface ListLocalInventoriesResponse {
   nextPageToken?: string;
 }
 
-export const ListLocalInventoriesResponse: Schema.Schema<ListLocalInventoriesResponse> =
+export const ListLocalInventoriesResponse: Schema.Codec<ListLocalInventoriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     localInventories: Schema.optional(Schema.Array(LocalInventory)),
     nextPageToken: Schema.optional(Schema.String),
@@ -192,7 +192,7 @@ export interface ProductStatusChangeMessage {
   eventTime?: string;
 }
 
-export const ProductStatusChangeMessage: Schema.Schema<ProductStatusChangeMessage> =
+export const ProductStatusChangeMessage: Schema.Codec<ProductStatusChangeMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attribute: Schema.optional(Schema.String),
     account: Schema.optional(Schema.String),
@@ -207,7 +207,7 @@ export const ProductStatusChangeMessage: Schema.Schema<ProductStatusChangeMessag
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -233,7 +233,7 @@ export interface RegionalInventory {
   account?: string;
 }
 
-export const RegionalInventory: Schema.Schema<RegionalInventory> =
+export const RegionalInventory: Schema.Codec<RegionalInventory> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     base64EncodedName: Schema.optional(Schema.String),
     region: Schema.optional(Schema.String),
@@ -253,7 +253,7 @@ export interface ListRegionalInventoriesResponse {
   nextPageToken?: string;
 }
 
-export const ListRegionalInventoriesResponse: Schema.Schema<ListRegionalInventoriesResponse> =
+export const ListRegionalInventoriesResponse: Schema.Codec<ListRegionalInventoriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regionalInventories: Schema.optional(Schema.Array(RegionalInventory)),
     nextPageToken: Schema.optional(Schema.String),
@@ -333,7 +333,7 @@ export const ListAccountsProductsLocalInventoriesRequest =
       path: "inventories/v1beta/{+parent}/localInventories",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsProductsLocalInventoriesRequest>;
+  ) as unknown as Schema.Codec<ListAccountsProductsLocalInventoriesRequest>;
 
 export type ListAccountsProductsLocalInventoriesResponse =
   ListLocalInventoriesResponse;
@@ -379,7 +379,7 @@ export const InsertAccountsProductsLocalInventoriesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertAccountsProductsLocalInventoriesRequest>;
+  ) as unknown as Schema.Codec<InsertAccountsProductsLocalInventoriesRequest>;
 
 export type InsertAccountsProductsLocalInventoriesResponse = LocalInventory;
 export const InsertAccountsProductsLocalInventoriesResponse =
@@ -415,7 +415,7 @@ export const DeleteAccountsProductsLocalInventoriesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "inventories/v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsProductsLocalInventoriesRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsProductsLocalInventoriesRequest>;
 
 export type DeleteAccountsProductsLocalInventoriesResponse = Empty;
 export const DeleteAccountsProductsLocalInventoriesResponse =
@@ -451,7 +451,7 @@ export const DeleteAccountsProductsRegionalInventoriesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "inventories/v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteAccountsProductsRegionalInventoriesRequest>;
+  ) as unknown as Schema.Codec<DeleteAccountsProductsRegionalInventoriesRequest>;
 
 export type DeleteAccountsProductsRegionalInventoriesResponse = Empty;
 export const DeleteAccountsProductsRegionalInventoriesResponse =
@@ -496,7 +496,7 @@ export const ListAccountsProductsRegionalInventoriesRequest =
       path: "inventories/v1beta/{+parent}/regionalInventories",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListAccountsProductsRegionalInventoriesRequest>;
+  ) as unknown as Schema.Codec<ListAccountsProductsRegionalInventoriesRequest>;
 
 export type ListAccountsProductsRegionalInventoriesResponse =
   ListRegionalInventoriesResponse;
@@ -542,7 +542,7 @@ export const InsertAccountsProductsRegionalInventoriesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertAccountsProductsRegionalInventoriesRequest>;
+  ) as unknown as Schema.Codec<InsertAccountsProductsRegionalInventoriesRequest>;
 
 export type InsertAccountsProductsRegionalInventoriesResponse =
   RegionalInventory;

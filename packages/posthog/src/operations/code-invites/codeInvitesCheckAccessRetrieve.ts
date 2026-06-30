@@ -4,18 +4,16 @@ import * as T from "../../traits.ts";
 import { Forbidden } from "../../errors.ts";
 
 // Input Schema
+export interface CodeInvitesCheckAccessRetrieveInput {}
 export const CodeInvitesCheckAccessRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/code/invites/check-access/" }),
-  );
-export type CodeInvitesCheckAccessRetrieveInput =
-  typeof CodeInvitesCheckAccessRetrieveInput.Type;
+  ) as unknown as Schema.Codec<CodeInvitesCheckAccessRetrieveInput>;
 
 // Output Schema
+export type CodeInvitesCheckAccessRetrieveOutput = void;
 export const CodeInvitesCheckAccessRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CodeInvitesCheckAccessRetrieveOutput =
-  typeof CodeInvitesCheckAccessRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CodeInvitesCheckAccessRetrieveOutput>;
 
 // The operation
 /**

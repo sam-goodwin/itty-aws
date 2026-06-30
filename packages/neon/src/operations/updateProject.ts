@@ -4,6 +4,44 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpdateProjectInput {
+  project_id: string;
+  project: {
+    settings?: {
+      quota?: {
+        active_time_seconds?: number;
+        compute_time_seconds?: number;
+        written_data_bytes?: number;
+        data_transfer_bytes?: number;
+        logical_size_bytes?: number;
+      };
+      allowed_ips?: { ips?: string[]; protected_branches_only?: boolean };
+      enable_logical_replication?: boolean;
+      maintenance_window?: {
+        weekdays: number[];
+        start_time: string;
+        end_time: string;
+      };
+      block_public_connections?: boolean;
+      block_vpc_connections?: boolean;
+      audit_log_level?: "base" | "extended" | "full";
+      hipaa?: boolean;
+      preload_libraries?: {
+        use_defaults?: boolean;
+        enabled_libraries?: string[];
+      };
+    };
+    name?: string;
+    default_endpoint_settings?: {
+      pg_settings?: Record<string, string>;
+      pgbouncer_settings?: Record<string, string>;
+      autoscaling_limit_min_cu?: number;
+      autoscaling_limit_max_cu?: number;
+      suspend_timeout_seconds?: number;
+    };
+    history_retention_seconds?: number;
+  };
+}
 export const UpdateProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   project: Schema.Struct({
@@ -62,10 +100,153 @@ export const UpdateProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
     history_retention_seconds: Schema.optional(Schema.Number),
   }),
-}).pipe(T.Http({ method: "PATCH", path: "/projects/{project_id}" }));
-export type UpdateProjectInput = typeof UpdateProjectInput.Type;
+}).pipe(
+  T.Http({ method: "PATCH", path: "/projects/{project_id}" }),
+) as unknown as Schema.Codec<UpdateProjectInput>;
 
 // Output Schema
+export interface UpdateProjectOutput {
+  project: {
+    data_storage_bytes_hour: number;
+    data_transfer_bytes: number;
+    written_data_bytes: number;
+    compute_time_seconds: number;
+    active_time_seconds: number;
+    cpu_used_sec: number;
+    id: string;
+    platform_id: string;
+    region_id: string;
+    name: string;
+    provisioner: string;
+    default_endpoint_settings?: {
+      pg_settings?: Record<string, string>;
+      pgbouncer_settings?: Record<string, string>;
+      autoscaling_limit_min_cu?: number;
+      autoscaling_limit_max_cu?: number;
+      suspend_timeout_seconds?: number;
+    };
+    settings?: {
+      quota?: {
+        active_time_seconds?: number;
+        compute_time_seconds?: number;
+        written_data_bytes?: number;
+        data_transfer_bytes?: number;
+        logical_size_bytes?: number;
+      };
+      allowed_ips?: { ips?: string[]; protected_branches_only?: boolean };
+      enable_logical_replication?: boolean;
+      maintenance_window?: {
+        weekdays: number[];
+        start_time: string;
+        end_time: string;
+      };
+      block_public_connections?: boolean;
+      block_vpc_connections?: boolean;
+      audit_log_level?: "base" | "extended" | "full";
+      hipaa?: boolean;
+      preload_libraries?: {
+        use_defaults?: boolean;
+        enabled_libraries?: string[];
+      };
+    };
+    pg_version: number;
+    proxy_host: string;
+    branch_logical_size_limit: number;
+    branch_logical_size_limit_bytes: number;
+    store_passwords: boolean;
+    maintenance_starts_at?: string;
+    creation_source: string;
+    history_retention_seconds: number;
+    created_at: string;
+    updated_at: string;
+    synthetic_storage_size?: number;
+    consumption_period_start: string;
+    consumption_period_end: string;
+    quota_reset_at?: string;
+    owner_id: string;
+    owner?: {
+      email: string;
+      name: string;
+      branches_limit: number;
+      subscription_type:
+        | "UNKNOWN"
+        | "direct_sales"
+        | "direct_sales_v3"
+        | "aws_marketplace"
+        | "free_v2"
+        | "free_v3"
+        | "launch"
+        | "launch_v3"
+        | "scale"
+        | "scale_v3"
+        | "business"
+        | "vercel_pg_legacy";
+    };
+    compute_last_active_at?: string;
+    org_id?: string;
+    maintenance_scheduled_for?: string;
+    hipaa_enabled_at?: string;
+    effective_project_permission?:
+      | "CAN_VIEW"
+      | "CAN_EDIT"
+      | "CAN_MANAGE"
+      | null;
+  };
+  operations: {
+    id: string;
+    project_id: string;
+    branch_id?: string;
+    endpoint_id?: string;
+    action:
+      | "create_compute"
+      | "create_timeline"
+      | "start_compute"
+      | "suspend_compute"
+      | "apply_config"
+      | "check_availability"
+      | "delete_timeline"
+      | "create_branch"
+      | "import_data"
+      | "tenant_ignore"
+      | "tenant_attach"
+      | "tenant_detach"
+      | "tenant_reattach"
+      | "replace_safekeeper"
+      | "disable_maintenance"
+      | "apply_storage_config"
+      | "prepare_secondary_pageserver"
+      | "switch_pageserver"
+      | "detach_parent_branch"
+      | "timeline_archive"
+      | "timeline_unarchive"
+      | "start_reserved_compute"
+      | "sync_dbs_and_roles_from_compute"
+      | "apply_schema_from_branch"
+      | "timeline_mark_invisible"
+      | "timeline_update_protected_config"
+      | "prewarm_replica"
+      | "promote_replica"
+      | "set_storage_non_dirty"
+      | "swap_binding_id"
+      | "finalize_migration"
+      | "mark_migration_prepared";
+    status:
+      | "scheduling"
+      | "running"
+      | "finished"
+      | "failed"
+      | "error"
+      | "cancelling"
+      | "cancelled"
+      | "skipped";
+    error?: string;
+    failures_count: number;
+    retry_at?: string;
+    created_at: string;
+    updated_at: string;
+    total_duration_ms: number;
+  }[];
+}
 export const UpdateProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project: Schema.Struct({
     data_storage_bytes_hour: Schema.Number,
@@ -233,8 +414,7 @@ export const UpdateProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       total_duration_ms: Schema.Number,
     }),
   ),
-});
-export type UpdateProjectOutput = typeof UpdateProjectOutput.Type;
+}) as unknown as Schema.Codec<UpdateProjectOutput>;
 
 // The operation
 /**

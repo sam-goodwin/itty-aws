@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ErrorTrackingSuppressionRulesCreateInput {
+  project_id: string;
+  filters?: { type?: "AND" | "OR"; values?: unknown[] };
+  sampling_rate?: number;
+}
 export const ErrorTrackingSuppressionRulesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -18,11 +23,18 @@ export const ErrorTrackingSuppressionRulesCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/error_tracking/suppression_rules/",
     }),
-  );
-export type ErrorTrackingSuppressionRulesCreateInput =
-  typeof ErrorTrackingSuppressionRulesCreateInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingSuppressionRulesCreateInput>;
 
 // Output Schema
+export interface ErrorTrackingSuppressionRulesCreateOutput {
+  id?: string;
+  filters?: unknown;
+  order_key?: number;
+  disabled_data?: unknown;
+  sampling_rate?: number;
+  created_at?: string;
+  updated_at?: string;
+}
 export const ErrorTrackingSuppressionRulesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -32,9 +44,7 @@ export const ErrorTrackingSuppressionRulesCreateOutput =
     sampling_rate: Schema.optional(Schema.Number),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type ErrorTrackingSuppressionRulesCreateOutput =
-  typeof ErrorTrackingSuppressionRulesCreateOutput.Type;
+  }) as unknown as Schema.Codec<ErrorTrackingSuppressionRulesCreateOutput>;
 
 // The operation
 /**

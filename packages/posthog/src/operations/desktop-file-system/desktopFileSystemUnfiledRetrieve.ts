@@ -3,6 +3,9 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface DesktopFileSystemUnfiledRetrieveInput {
+  project_id: string;
+}
 export const DesktopFileSystemUnfiledRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -11,15 +14,12 @@ export const DesktopFileSystemUnfiledRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/desktop_file_system/unfiled/",
     }),
-  );
-export type DesktopFileSystemUnfiledRetrieveInput =
-  typeof DesktopFileSystemUnfiledRetrieveInput.Type;
+  ) as unknown as Schema.Codec<DesktopFileSystemUnfiledRetrieveInput>;
 
 // Output Schema
+export type DesktopFileSystemUnfiledRetrieveOutput = void;
 export const DesktopFileSystemUnfiledRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DesktopFileSystemUnfiledRetrieveOutput =
-  typeof DesktopFileSystemUnfiledRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DesktopFileSystemUnfiledRetrieveOutput>;
 
 // The operation
 /**

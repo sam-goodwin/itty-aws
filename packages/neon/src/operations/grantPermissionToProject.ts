@@ -3,26 +3,32 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GrantPermissionToProjectInput {
+  project_id: string;
+  email: string;
+}
 export const GrantPermissionToProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     email: Schema.String,
   }).pipe(
     T.Http({ method: "POST", path: "/projects/{project_id}/permissions" }),
-  );
-export type GrantPermissionToProjectInput =
-  typeof GrantPermissionToProjectInput.Type;
+  ) as unknown as Schema.Codec<GrantPermissionToProjectInput>;
 
 // Output Schema
+export interface GrantPermissionToProjectOutput {
+  id: string;
+  granted_to_email: string;
+  granted_at: string;
+  revoked_at?: string;
+}
 export const GrantPermissionToProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     granted_to_email: Schema.String,
     granted_at: Schema.String,
     revoked_at: Schema.optional(Schema.String),
-  });
-export type GrantPermissionToProjectOutput =
-  typeof GrantPermissionToProjectOutput.Type;
+  }) as unknown as Schema.Codec<GrantPermissionToProjectOutput>;
 
 // The operation
 /**

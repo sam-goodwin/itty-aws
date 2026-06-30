@@ -4,14 +4,27 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UserlandMagicAuthControllerGetInput {
+  id: string;
+}
 export const UserlandMagicAuthControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/user_management/magic_auth/{id}" }));
-export type UserlandMagicAuthControllerGetInput =
-  typeof UserlandMagicAuthControllerGetInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/user_management/magic_auth/{id}" }),
+  ) as unknown as Schema.Codec<UserlandMagicAuthControllerGetInput>;
 
 // Output Schema
+export interface UserlandMagicAuthControllerGetOutput {
+  object?: string;
+  id?: string;
+  user_id?: string;
+  email?: string;
+  expires_at?: string;
+  created_at?: string;
+  updated_at?: string;
+  code?: string;
+}
 export const UserlandMagicAuthControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -22,9 +35,7 @@ export const UserlandMagicAuthControllerGetOutput =
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
     code: Schema.optional(Schema.String),
-  });
-export type UserlandMagicAuthControllerGetOutput =
-  typeof UserlandMagicAuthControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<UserlandMagicAuthControllerGetOutput>;
 
 // The operation
 /**

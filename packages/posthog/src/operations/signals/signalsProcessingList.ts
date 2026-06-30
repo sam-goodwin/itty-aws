@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SignalsProcessingListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const SignalsProcessingListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,10 +19,15 @@ export const SignalsProcessingListInput =
       method: "GET",
       path: "/api/projects/{project_id}/signals/processing/",
     }),
-  );
-export type SignalsProcessingListInput = typeof SignalsProcessingListInput.Type;
+  ) as unknown as Schema.Codec<SignalsProcessingListInput>;
 
 // Output Schema
+export interface SignalsProcessingListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: { paused_until?: string | null }[];
+}
 export const SignalsProcessingListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -30,9 +40,7 @@ export const SignalsProcessingListOutput =
         }),
       ),
     ),
-  });
-export type SignalsProcessingListOutput =
-  typeof SignalsProcessingListOutput.Type;
+  }) as unknown as Schema.Codec<SignalsProcessingListOutput>;
 
 // The operation
 /**

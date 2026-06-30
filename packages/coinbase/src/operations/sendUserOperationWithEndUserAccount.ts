@@ -3,6 +3,33 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface SendUserOperationWithEndUserAccountInput {
+  userId: string;
+  address: string;
+  projectID?: string;
+  network:
+    | "base-sepolia"
+    | "base"
+    | "arbitrum"
+    | "optimism"
+    | "zora"
+    | "polygon"
+    | "bnb"
+    | "avalanche"
+    | "ethereum"
+    | "ethereum-sepolia";
+  calls: {
+    to: string;
+    value: string;
+    data: string;
+    overrideGasLimit?: string;
+  }[];
+  useCdpPaymaster: boolean;
+  paymasterUrl?: string;
+  paymasterContext?: Record<string, unknown>;
+  walletSecretId?: string;
+  dataSuffix?: string;
+}
 export const SendUserOperationWithEndUserAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.PathParam()),
@@ -40,11 +67,45 @@ export const SendUserOperationWithEndUserAccountInput =
       method: "POST",
       path: "/v2/embedded-wallet-api/end-users/{userId}/evm/smart-accounts/{address}/send",
     }),
-  );
-export type SendUserOperationWithEndUserAccountInput =
-  typeof SendUserOperationWithEndUserAccountInput.Type;
+  ) as unknown as Schema.Codec<SendUserOperationWithEndUserAccountInput>;
 
 // Output Schema
+export interface SendUserOperationWithEndUserAccountOutput {
+  network:
+    | "base-sepolia"
+    | "base"
+    | "arbitrum"
+    | "optimism"
+    | "zora"
+    | "polygon"
+    | "bnb"
+    | "avalanche"
+    | "ethereum"
+    | "ethereum-sepolia";
+  userOpHash: string;
+  calls: {
+    to: string;
+    value: string;
+    data: string;
+    overrideGasLimit?: string;
+  }[];
+  status:
+    | "pending"
+    | "signed"
+    | "broadcast"
+    | "complete"
+    | "dropped"
+    | "failed";
+  transactionHash?: string;
+  receipts?: {
+    revert?: { data: string; message: string };
+    transactionHash?: string;
+    blockHash?: string;
+    blockNumber?: number;
+    gasUsed?: string;
+  }[];
+  expiresAt?: string;
+}
 export const SendUserOperationWithEndUserAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     network: Schema.Literals([
@@ -94,9 +155,7 @@ export const SendUserOperationWithEndUserAccountOutput =
       ),
     ),
     expiresAt: Schema.optional(Schema.String),
-  });
-export type SendUserOperationWithEndUserAccountOutput =
-  typeof SendUserOperationWithEndUserAccountOutput.Type;
+  }) as unknown as Schema.Codec<SendUserOperationWithEndUserAccountOutput>;
 
 // The operation
 /**

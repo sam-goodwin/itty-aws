@@ -4,6 +4,9 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationOrganizationRolesControllerListInput {
+  organizationId: string;
+}
 export const AuthorizationOrganizationRolesControllerListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
@@ -12,11 +15,24 @@ export const AuthorizationOrganizationRolesControllerListInput =
       method: "GET",
       path: "/authorization/organizations/{organizationId}/roles",
     }),
-  );
-export type AuthorizationOrganizationRolesControllerListInput =
-  typeof AuthorizationOrganizationRolesControllerListInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationOrganizationRolesControllerListInput>;
 
 // Output Schema
+export interface AuthorizationOrganizationRolesControllerListOutput {
+  object?: string;
+  data?: {
+    slug?: string;
+    object?: string;
+    id?: string;
+    name?: string;
+    description?: string | null;
+    type?: "EnvironmentRole" | "OrganizationRole";
+    resource_type_slug?: string;
+    permissions?: string[];
+    created_at?: string;
+    updated_at?: string;
+  }[];
+}
 export const AuthorizationOrganizationRolesControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -38,9 +54,7 @@ export const AuthorizationOrganizationRolesControllerListOutput =
         }),
       ),
     ),
-  });
-export type AuthorizationOrganizationRolesControllerListOutput =
-  typeof AuthorizationOrganizationRolesControllerListOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizationOrganizationRolesControllerListOutput>;
 
 // The operation
 /**

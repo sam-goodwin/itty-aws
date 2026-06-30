@@ -4,6 +4,15 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface UserlandUserOrganizationMembershipsControllerListInput {
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+  organization_id?: string;
+  statuses?: string;
+  user_id?: string;
+}
 export const UserlandUserOrganizationMembershipsControllerListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
@@ -18,11 +27,43 @@ export const UserlandUserOrganizationMembershipsControllerListInput =
       method: "GET",
       path: "/user_management/organization_memberships",
     }),
-  );
-export type UserlandUserOrganizationMembershipsControllerListInput =
-  typeof UserlandUserOrganizationMembershipsControllerListInput.Type;
+  ) as unknown as Schema.Codec<UserlandUserOrganizationMembershipsControllerListInput>;
 
 // Output Schema
+export interface UserlandUserOrganizationMembershipsControllerListOutput {
+  object: string;
+  data: {
+    object?: string;
+    id?: string;
+    user_id?: string;
+    organization_id?: string;
+    status?: "active" | "inactive" | "pending";
+    directory_managed?: boolean;
+    organization_name?: string;
+    custom_attributes?: Record<string, unknown>;
+    created_at?: string;
+    updated_at?: string;
+    role?: { slug?: string };
+    roles?: { slug?: string }[];
+    user?: {
+      object?: string;
+      id?: string;
+      first_name?: string | null;
+      last_name?: string | null;
+      name?: string | null;
+      profile_picture_url?: string | null;
+      email?: string;
+      email_verified?: boolean;
+      external_id?: string | null;
+      metadata?: Record<string, string>;
+      last_sign_in_at?: string | null;
+      locale?: string | null;
+      created_at?: string;
+      updated_at?: string;
+    };
+  }[];
+  list_metadata: { before: string | null; after: string | null };
+}
 export const UserlandUserOrganizationMembershipsControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.String,
@@ -80,9 +121,7 @@ export const UserlandUserOrganizationMembershipsControllerListOutput =
       before: Schema.NullOr(Schema.String),
       after: Schema.NullOr(Schema.String),
     }),
-  });
-export type UserlandUserOrganizationMembershipsControllerListOutput =
-  typeof UserlandUserOrganizationMembershipsControllerListOutput.Type;
+  }) as unknown as Schema.Codec<UserlandUserOrganizationMembershipsControllerListOutput>;
 
 // The operation
 /**

@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteGroupAccessListEntryInput {
+  groupId: string;
+  entryValue: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const DeleteGroupAccessListEntryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const DeleteGroupAccessListEntryInput =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/accessList/{entryValue}",
     }),
-  );
-export type DeleteGroupAccessListEntryInput =
-  typeof DeleteGroupAccessListEntryInput.Type;
+  ) as unknown as Schema.Codec<DeleteGroupAccessListEntryInput>;
 
 // Output Schema
+export type DeleteGroupAccessListEntryOutput = void;
 export const DeleteGroupAccessListEntryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupAccessListEntryOutput =
-  typeof DeleteGroupAccessListEntryOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupAccessListEntryOutput>;
 
 // The operation
 /**

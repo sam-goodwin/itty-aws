@@ -4,6 +4,27 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1UpdateStorageConfigInput {
+  ref: string;
+  fileSizeLimit?: number;
+  features?: {
+    imageTransformation?: { enabled: boolean };
+    s3Protocol?: { enabled: boolean };
+    purgeCache?: { enabled: boolean };
+    icebergCatalog?: {
+      enabled: boolean;
+      maxNamespaces: number;
+      maxTables: number;
+      maxCatalogs: number;
+    };
+    vectorBuckets?: {
+      enabled: boolean;
+      maxBuckets: number;
+      maxIndexes: number;
+    };
+  };
+  external?: { upstreamTarget: "main" | "canary" };
+}
 export const V1UpdateStorageConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
@@ -49,14 +70,12 @@ export const V1UpdateStorageConfigInput =
     ),
   }).pipe(
     T.Http({ method: "PATCH", path: "/v1/projects/{ref}/config/storage" }),
-  );
-export type V1UpdateStorageConfigInput = typeof V1UpdateStorageConfigInput.Type;
+  ) as unknown as Schema.Codec<V1UpdateStorageConfigInput>;
 
 // Output Schema
+export type V1UpdateStorageConfigOutput = void;
 export const V1UpdateStorageConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type V1UpdateStorageConfigOutput =
-  typeof V1UpdateStorageConfigOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1UpdateStorageConfigOutput>;
 
 // The operation
 /**

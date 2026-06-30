@@ -3,12 +3,141 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface RecoverProjectInput {
+  project_id: string;
+}
 export const RecoverProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "POST", path: "/projects/{project_id}/recover" }));
-export type RecoverProjectInput = typeof RecoverProjectInput.Type;
+}).pipe(
+  T.Http({ method: "POST", path: "/projects/{project_id}/recover" }),
+) as unknown as Schema.Codec<RecoverProjectInput>;
 
 // Output Schema
+export interface RecoverProjectOutput {
+  project: {
+    data_storage_bytes_hour: number;
+    data_transfer_bytes: number;
+    written_data_bytes: number;
+    compute_time_seconds: number;
+    active_time_seconds: number;
+    cpu_used_sec: number;
+    id: string;
+    platform_id: string;
+    region_id: string;
+    name: string;
+    provisioner: string;
+    default_endpoint_settings?: {
+      pg_settings?: Record<string, string>;
+      pgbouncer_settings?: Record<string, string>;
+      autoscaling_limit_min_cu?: number;
+      autoscaling_limit_max_cu?: number;
+      suspend_timeout_seconds?: number;
+    };
+    settings?: {
+      quota?: {
+        active_time_seconds?: number;
+        compute_time_seconds?: number;
+        written_data_bytes?: number;
+        data_transfer_bytes?: number;
+        logical_size_bytes?: number;
+      };
+      allowed_ips?: { ips?: string[]; protected_branches_only?: boolean };
+      enable_logical_replication?: boolean;
+      maintenance_window?: {
+        weekdays: number[];
+        start_time: string;
+        end_time: string;
+      };
+      block_public_connections?: boolean;
+      block_vpc_connections?: boolean;
+      audit_log_level?: "base" | "extended" | "full";
+      hipaa?: boolean;
+      preload_libraries?: {
+        use_defaults?: boolean;
+        enabled_libraries?: string[];
+      };
+    };
+    pg_version: number;
+    proxy_host: string;
+    branch_logical_size_limit: number;
+    branch_logical_size_limit_bytes: number;
+    store_passwords: boolean;
+    maintenance_starts_at?: string;
+    creation_source: string;
+    history_retention_seconds: number;
+    created_at: string;
+    updated_at: string;
+    synthetic_storage_size?: number;
+    consumption_period_start: string;
+    consumption_period_end: string;
+    quota_reset_at?: string;
+    owner_id: string;
+    owner?: {
+      email: string;
+      name: string;
+      branches_limit: number;
+      subscription_type:
+        | "UNKNOWN"
+        | "direct_sales"
+        | "direct_sales_v3"
+        | "aws_marketplace"
+        | "free_v2"
+        | "free_v3"
+        | "launch"
+        | "launch_v3"
+        | "scale"
+        | "scale_v3"
+        | "business"
+        | "vercel_pg_legacy";
+    };
+    compute_last_active_at?: string;
+    org_id?: string;
+    maintenance_scheduled_for?: string;
+    hipaa_enabled_at?: string;
+    effective_project_permission?:
+      | "CAN_VIEW"
+      | "CAN_EDIT"
+      | "CAN_MANAGE"
+      | null;
+  };
+  branches: {
+    id: string;
+    project_id: string;
+    parent_id?: string;
+    parent_lsn?: string;
+    parent_timestamp?: string;
+    name: string;
+    current_state: string;
+    pending_state?: string;
+    state_changed_at: string;
+    logical_size?: number;
+    creation_source: string;
+    primary?: boolean;
+    default: boolean;
+    protected: boolean;
+    cpu_used_sec: number;
+    compute_time_seconds: number;
+    active_time_seconds: number;
+    written_data_bytes: number;
+    data_transfer_bytes: number;
+    created_at: string;
+    updated_at: string;
+    ttl_interval_seconds?: number;
+    expires_at?: string;
+    last_reset_at?: string;
+    created_by?: { name?: string; image?: string };
+    init_source?: string;
+    restore_status?: string;
+    restored_from?: string;
+    restored_as?: string;
+    restricted_actions?: { name: string; reason: string }[];
+    recovery?: {
+      deleted_at: string;
+      recoverable_until: string;
+      deletion_method: "user" | "ttl";
+    };
+  }[];
+}
 export const RecoverProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project: Schema.Struct({
     data_storage_bytes_hour: Schema.Number,
@@ -171,8 +300,7 @@ export const RecoverProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
     }),
   ),
-});
-export type RecoverProjectOutput = typeof RecoverProjectOutput.Type;
+}) as unknown as Schema.Codec<RecoverProjectOutput>;
 
 // The operation
 /**

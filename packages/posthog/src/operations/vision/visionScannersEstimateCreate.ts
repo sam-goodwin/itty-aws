@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface VisionScannersEstimateCreateInput {
+  project_id: string;
+  query?: unknown;
+  sampling_rate?: number;
+}
 export const VisionScannersEstimateCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,20 +18,22 @@ export const VisionScannersEstimateCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/vision/scanners/estimate/",
     }),
-  );
-export type VisionScannersEstimateCreateInput =
-  typeof VisionScannersEstimateCreateInput.Type;
+  ) as unknown as Schema.Codec<VisionScannersEstimateCreateInput>;
 
 // Output Schema
+export interface VisionScannersEstimateCreateOutput {
+  matched_sessions_in_window: number;
+  window_days: number;
+  estimated_observations_per_month: number;
+  sampling_rate: number;
+}
 export const VisionScannersEstimateCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     matched_sessions_in_window: Schema.Number,
     window_days: Schema.Number,
     estimated_observations_per_month: Schema.Number,
     sampling_rate: Schema.Number,
-  });
-export type VisionScannersEstimateCreateOutput =
-  typeof VisionScannersEstimateCreateOutput.Type;
+  }) as unknown as Schema.Codec<VisionScannersEstimateCreateOutput>;
 
 // The operation
 /**

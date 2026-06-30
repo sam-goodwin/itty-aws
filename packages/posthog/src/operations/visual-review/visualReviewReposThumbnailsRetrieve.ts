@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface VisualReviewReposThumbnailsRetrieveInput {
+  id: string;
+  identifier: string;
+  project_id: string;
+}
 export const VisualReviewReposThumbnailsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +18,12 @@ export const VisualReviewReposThumbnailsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/visual_review/repos/{id}/thumbnails/{identifier}/",
     }),
-  );
-export type VisualReviewReposThumbnailsRetrieveInput =
-  typeof VisualReviewReposThumbnailsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<VisualReviewReposThumbnailsRetrieveInput>;
 
 // Output Schema
+export type VisualReviewReposThumbnailsRetrieveOutput = void;
 export const VisualReviewReposThumbnailsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VisualReviewReposThumbnailsRetrieveOutput =
-  typeof VisualReviewReposThumbnailsRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VisualReviewReposThumbnailsRetrieveOutput>;
 
 // The operation
 /**

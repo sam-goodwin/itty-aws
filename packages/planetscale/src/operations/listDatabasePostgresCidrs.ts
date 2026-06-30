@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface ListDatabasePostgresCidrsInput {
+  organization: string;
+  database: string;
+  page?: number;
+  per_page?: number;
+}
 export const ListDatabasePostgresCidrsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -15,11 +21,27 @@ export const ListDatabasePostgresCidrsInput =
       method: "GET",
       path: "/organizations/{organization}/databases/{database}/cidrs",
     }),
-  );
-export type ListDatabasePostgresCidrsInput =
-  typeof ListDatabasePostgresCidrsInput.Type;
+  ) as unknown as Schema.Codec<ListDatabasePostgresCidrsInput>;
 
 // Output Schema
+export interface ListDatabasePostgresCidrsOutput {
+  type: string;
+  current_page: number;
+  next_page: number | null;
+  next_page_url: string | null;
+  prev_page: number | null;
+  prev_page_url: string | null;
+  data: {
+    id: string;
+    schema: string;
+    role: string;
+    cidrs: string[];
+    created_at: string;
+    updated_at: string;
+    deleted_at: string | null;
+    actor: { id: string; display_name: string; avatar_url: string };
+  }[];
+}
 export const ListDatabasePostgresCidrsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.String,
@@ -44,9 +66,7 @@ export const ListDatabasePostgresCidrsOutput =
         }),
       }),
     ),
-  });
-export type ListDatabasePostgresCidrsOutput =
-  typeof ListDatabasePostgresCidrsOutput.Type;
+  }) as unknown as Schema.Codec<ListDatabasePostgresCidrsOutput>;
 
 // The operation
 /**

@@ -4,14 +4,19 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface AppsDeleteInput {
+  app_name: string;
+}
 export const AppsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "DELETE", path: "/apps/{app_name}" }));
-export type AppsDeleteInput = typeof AppsDeleteInput.Type;
+}).pipe(
+  T.Http({ method: "DELETE", path: "/apps/{app_name}" }),
+) as unknown as Schema.Codec<AppsDeleteInput>;
 
 // Output Schema
-export const AppsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AppsDeleteOutput = typeof AppsDeleteOutput.Type;
+export type AppsDeleteOutput = void;
+export const AppsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AppsDeleteOutput>;
 
 // The operation
 /**

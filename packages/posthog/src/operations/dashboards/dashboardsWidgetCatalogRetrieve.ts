@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface DashboardsWidgetCatalogRetrieveInput {
+  project_id: string;
+  format?: "json" | "txt";
+}
 export const DashboardsWidgetCatalogRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,17 +16,16 @@ export const DashboardsWidgetCatalogRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/dashboards/widget_catalog/",
     }),
-  );
-export type DashboardsWidgetCatalogRetrieveInput =
-  typeof DashboardsWidgetCatalogRetrieveInput.Type;
+  ) as unknown as Schema.Codec<DashboardsWidgetCatalogRetrieveInput>;
 
 // Output Schema
+export interface DashboardsWidgetCatalogRetrieveOutput {
+  results: unknown[];
+}
 export const DashboardsWidgetCatalogRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.Array(Schema.Unknown),
-  });
-export type DashboardsWidgetCatalogRetrieveOutput =
-  typeof DashboardsWidgetCatalogRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<DashboardsWidgetCatalogRetrieveOutput>;
 
 // The operation
 /**

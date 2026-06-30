@@ -3,6 +3,24 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AgentApplicationsUpdateInput {
+  id: string;
+  project_id: string;
+  team_id: number;
+  name: string;
+  slug?: string;
+  description?: string;
+  live_revision: string | null;
+  archived?: boolean;
+  archived_at: string | null;
+  created_by_id: number | null;
+  created_by: { id?: number; first_name?: string; email?: string } | null;
+  created_at: string;
+  updated_at: string;
+  slack_events_url: string | null;
+  slack_interactivity_url: string | null;
+  ingress_base_url: string | null;
+}
 export const AgentApplicationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -32,11 +50,26 @@ export const AgentApplicationsUpdateInput =
       method: "PUT",
       path: "/api/projects/{project_id}/agent_applications/{id}/",
     }),
-  );
-export type AgentApplicationsUpdateInput =
-  typeof AgentApplicationsUpdateInput.Type;
+  ) as unknown as Schema.Codec<AgentApplicationsUpdateInput>;
 
 // Output Schema
+export interface AgentApplicationsUpdateOutput {
+  id: string;
+  team_id: number;
+  name: string;
+  slug?: string;
+  description?: string;
+  live_revision: string | null;
+  archived?: boolean;
+  archived_at: string | null;
+  created_by_id: number | null;
+  created_by: { id?: number; first_name?: string; email?: string } | null;
+  created_at: string;
+  updated_at: string;
+  slack_events_url: string | null;
+  slack_interactivity_url: string | null;
+  ingress_base_url: string | null;
+}
 export const AgentApplicationsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -60,9 +93,7 @@ export const AgentApplicationsUpdateOutput =
     slack_events_url: Schema.NullOr(Schema.String),
     slack_interactivity_url: Schema.NullOr(Schema.String),
     ingress_base_url: Schema.NullOr(Schema.String),
-  });
-export type AgentApplicationsUpdateOutput =
-  typeof AgentApplicationsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AgentApplicationsUpdateOutput>;
 
 // The operation
 /**

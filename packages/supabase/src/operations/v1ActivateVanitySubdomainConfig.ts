@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1ActivateVanitySubdomainConfigInput {
+  ref: string;
+  vanity_subdomain: string;
+}
 export const V1ActivateVanitySubdomainConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
@@ -13,17 +17,16 @@ export const V1ActivateVanitySubdomainConfigInput =
       method: "POST",
       path: "/v1/projects/{ref}/vanity-subdomain/activate",
     }),
-  );
-export type V1ActivateVanitySubdomainConfigInput =
-  typeof V1ActivateVanitySubdomainConfigInput.Type;
+  ) as unknown as Schema.Codec<V1ActivateVanitySubdomainConfigInput>;
 
 // Output Schema
+export interface V1ActivateVanitySubdomainConfigOutput {
+  custom_domain: string;
+}
 export const V1ActivateVanitySubdomainConfigOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     custom_domain: Schema.String,
-  });
-export type V1ActivateVanitySubdomainConfigOutput =
-  typeof V1ActivateVanitySubdomainConfigOutput.Type;
+  }) as unknown as Schema.Codec<V1ActivateVanitySubdomainConfigOutput>;
 
 // The operation
 /**

@@ -3,13 +3,31 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface FileDownloadBatchExportsCancelCreateInput {
+  id: string;
+  project_id: string;
+  file: {
+    format?: "Parquet" | "JSONLines";
+    compression?: "brotli" | "gzip" | "lz4" | "snappy" | "zstd" | null;
+    max_size_mb?: number | null;
+  };
+  model: "events" | "persons" | "sessions";
+  include?: string[];
+  exclude?: string[];
+  data_interval_start: string;
+  data_interval_end: string;
+}
 export const FileDownloadBatchExportsCancelCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     file: Schema.Struct({
       format: Schema.optional(Schema.Literals(["Parquet", "JSONLines"])),
-      compression: Schema.optional(Schema.Unknown),
+      compression: Schema.optional(
+        Schema.NullOr(
+          Schema.Literals(["brotli", "gzip", "lz4", "snappy", "zstd"]),
+        ),
+      ),
       max_size_mb: Schema.optional(Schema.NullOr(Schema.Number)),
     }),
     model: Schema.Literals(["events", "persons", "sessions"]),
@@ -22,15 +40,12 @@ export const FileDownloadBatchExportsCancelCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/file_download_batch_exports/{id}/cancel/",
     }),
-  );
-export type FileDownloadBatchExportsCancelCreateInput =
-  typeof FileDownloadBatchExportsCancelCreateInput.Type;
+  ) as unknown as Schema.Codec<FileDownloadBatchExportsCancelCreateInput>;
 
 // Output Schema
+export type FileDownloadBatchExportsCancelCreateOutput = void;
 export const FileDownloadBatchExportsCancelCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FileDownloadBatchExportsCancelCreateOutput =
-  typeof FileDownloadBatchExportsCancelCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FileDownloadBatchExportsCancelCreateOutput>;
 
 // The operation
 /**

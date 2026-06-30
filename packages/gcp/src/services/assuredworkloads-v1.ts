@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGc
   gcloudCommands?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud: Schema.Schema<GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud> =
+export const GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud: Schema.Codec<GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     steps: Schema.optional(Schema.Array(Schema.String)),
     additionalLinks: Schema.optional(Schema.Array(Schema.String)),
@@ -46,7 +46,7 @@ export interface GoogleCloudAssuredworkloadsV1MoveImpact {
   detail?: string;
 }
 
-export const GoogleCloudAssuredworkloadsV1MoveImpact: Schema.Schema<GoogleCloudAssuredworkloadsV1MoveImpact> =
+export const GoogleCloudAssuredworkloadsV1MoveImpact: Schema.Codec<GoogleCloudAssuredworkloadsV1MoveImpact> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     detail: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudAssuredworkloadsV1MoveImpact" });
@@ -58,7 +58,7 @@ export interface GoogleCloudAssuredworkloadsV1MoveAnalysisResult {
   blockers?: ReadonlyArray<GoogleCloudAssuredworkloadsV1MoveImpact>;
 }
 
-export const GoogleCloudAssuredworkloadsV1MoveAnalysisResult: Schema.Schema<GoogleCloudAssuredworkloadsV1MoveAnalysisResult> =
+export const GoogleCloudAssuredworkloadsV1MoveAnalysisResult: Schema.Codec<GoogleCloudAssuredworkloadsV1MoveAnalysisResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warnings: Schema.optional(
       Schema.Array(GoogleCloudAssuredworkloadsV1MoveImpact),
@@ -104,7 +104,7 @@ export interface GoogleCloudAssuredworkloadsV1DbFindingSummary {
   name?: string;
 }
 
-export const GoogleCloudAssuredworkloadsV1DbFindingSummary: Schema.Schema<GoogleCloudAssuredworkloadsV1DbFindingSummary> =
+export const GoogleCloudAssuredworkloadsV1DbFindingSummary: Schema.Codec<GoogleCloudAssuredworkloadsV1DbFindingSummary> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     findingCategory: Schema.optional(Schema.String),
     findingClass: Schema.optional(Schema.String),
@@ -124,7 +124,7 @@ export interface GoogleRpcStatus {
   code?: number;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
+export const GoogleRpcStatus: Schema.Codec<GoogleRpcStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -148,7 +148,7 @@ export interface GoogleCloudAssuredworkloadsV1WorkloadResourceSettings {
   displayName?: string;
 }
 
-export const GoogleCloudAssuredworkloadsV1WorkloadResourceSettings: Schema.Schema<GoogleCloudAssuredworkloadsV1WorkloadResourceSettings> =
+export const GoogleCloudAssuredworkloadsV1WorkloadResourceSettings: Schema.Codec<GoogleCloudAssuredworkloadsV1WorkloadResourceSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceId: Schema.optional(Schema.String),
     resourceType: Schema.optional(Schema.String),
@@ -170,7 +170,7 @@ export interface GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest {
   comment?: string;
 }
 
-export const GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest: Schema.Schema<GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest> =
+export const GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest: Schema.Codec<GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     acknowledgeType: Schema.optional(Schema.String),
     nonCompliantOrgPolicy: Schema.optional(Schema.String),
@@ -186,7 +186,7 @@ export interface GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRuleStringValues {
   deniedValues?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRuleStringValues: Schema.Schema<GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRuleStringValues> =
+export const GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRuleStringValues: Schema.Codec<GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRuleStringValues> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowedValues: Schema.optional(Schema.Array(Schema.String)),
     deniedValues: Schema.optional(Schema.Array(Schema.String)),
@@ -205,7 +205,7 @@ export interface GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRule {
   denyAll?: boolean;
 }
 
-export const GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRule: Schema.Schema<GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRule> =
+export const GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRule: Schema.Codec<GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(
       GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRuleStringValues,
@@ -230,7 +230,7 @@ export interface GoogleCloudAssuredworkloadsV1OrgPolicy {
   resource?: string;
 }
 
-export const GoogleCloudAssuredworkloadsV1OrgPolicy: Schema.Schema<GoogleCloudAssuredworkloadsV1OrgPolicy> =
+export const GoogleCloudAssuredworkloadsV1OrgPolicy: Schema.Codec<GoogleCloudAssuredworkloadsV1OrgPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inherit: Schema.optional(Schema.Boolean),
     reset: Schema.optional(Schema.Boolean),
@@ -246,7 +246,7 @@ export interface GoogleCloudAssuredworkloadsV1OrgPolicyUpdate {
   suggestedPolicy?: GoogleCloudAssuredworkloadsV1OrgPolicy;
 }
 
-export const GoogleCloudAssuredworkloadsV1OrgPolicyUpdate: Schema.Schema<GoogleCloudAssuredworkloadsV1OrgPolicyUpdate> =
+export const GoogleCloudAssuredworkloadsV1OrgPolicyUpdate: Schema.Codec<GoogleCloudAssuredworkloadsV1OrgPolicyUpdate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appliedPolicy: Schema.optional(GoogleCloudAssuredworkloadsV1OrgPolicy),
     suggestedPolicy: Schema.optional(GoogleCloudAssuredworkloadsV1OrgPolicy),
@@ -257,7 +257,7 @@ export interface GoogleCloudAssuredworkloadsV1UpdateDetails {
   orgPolicyUpdate?: GoogleCloudAssuredworkloadsV1OrgPolicyUpdate;
 }
 
-export const GoogleCloudAssuredworkloadsV1UpdateDetails: Schema.Schema<GoogleCloudAssuredworkloadsV1UpdateDetails> =
+export const GoogleCloudAssuredworkloadsV1UpdateDetails: Schema.Codec<GoogleCloudAssuredworkloadsV1UpdateDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orgPolicyUpdate: Schema.optional(
       GoogleCloudAssuredworkloadsV1OrgPolicyUpdate,
@@ -282,7 +282,7 @@ export interface GoogleCloudAssuredworkloadsV1WorkloadUpdate {
   details?: GoogleCloudAssuredworkloadsV1UpdateDetails;
 }
 
-export const GoogleCloudAssuredworkloadsV1WorkloadUpdate: Schema.Schema<GoogleCloudAssuredworkloadsV1WorkloadUpdate> =
+export const GoogleCloudAssuredworkloadsV1WorkloadUpdate: Schema.Codec<GoogleCloudAssuredworkloadsV1WorkloadUpdate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -296,7 +296,7 @@ export interface GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateResponse {
   appliedUpdate?: GoogleCloudAssuredworkloadsV1WorkloadUpdate;
 }
 
-export const GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateResponse: Schema.Schema<GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateResponse> =
+export const GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateResponse: Schema.Codec<GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appliedUpdate: Schema.optional(GoogleCloudAssuredworkloadsV1WorkloadUpdate),
   }).annotate({
@@ -305,7 +305,7 @@ export const GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateResponse: Schema.Sc
 
 export interface GoogleCloudAssuredworkloadsV1AcknowledgeViolationResponse {}
 
-export const GoogleCloudAssuredworkloadsV1AcknowledgeViolationResponse: Schema.Schema<GoogleCloudAssuredworkloadsV1AcknowledgeViolationResponse> =
+export const GoogleCloudAssuredworkloadsV1AcknowledgeViolationResponse: Schema.Codec<GoogleCloudAssuredworkloadsV1AcknowledgeViolationResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudAssuredworkloadsV1AcknowledgeViolationResponse",
   });
@@ -315,7 +315,7 @@ export interface GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsRespon
   movedEventsCount?: number;
 }
 
-export const GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsResponse: Schema.Schema<GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsResponse> =
+export const GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsResponse: Schema.Codec<GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     movedEventsCount: Schema.optional(Schema.Number),
   }).annotate({
@@ -330,7 +330,7 @@ export interface GoogleCloudAssuredworkloadsV1WorkloadKMSSettings {
   rotationPeriod?: string;
 }
 
-export const GoogleCloudAssuredworkloadsV1WorkloadKMSSettings: Schema.Schema<GoogleCloudAssuredworkloadsV1WorkloadKMSSettings> =
+export const GoogleCloudAssuredworkloadsV1WorkloadKMSSettings: Schema.Codec<GoogleCloudAssuredworkloadsV1WorkloadKMSSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextRotationTime: Schema.optional(Schema.String),
     rotationPeriod: Schema.optional(Schema.String),
@@ -364,7 +364,7 @@ export interface GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse {
     | (string & {});
 }
 
-export const GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse: Schema.Schema<GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse> =
+export const GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse: Schema.Codec<GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ekmProvisioningState: Schema.optional(Schema.String),
     ekmProvisioningErrorDomain: Schema.optional(Schema.String),
@@ -382,7 +382,7 @@ export interface GoogleCloudAssuredworkloadsV1ViolationExceptionContext {
   userName?: string;
 }
 
-export const GoogleCloudAssuredworkloadsV1ViolationExceptionContext: Schema.Schema<GoogleCloudAssuredworkloadsV1ViolationExceptionContext> =
+export const GoogleCloudAssuredworkloadsV1ViolationExceptionContext: Schema.Codec<GoogleCloudAssuredworkloadsV1ViolationExceptionContext> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     acknowledgementTime: Schema.optional(Schema.String),
     comment: Schema.optional(Schema.String),
@@ -400,7 +400,7 @@ export interface GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsCo
   additionalLinks?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole: Schema.Schema<GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole> =
+export const GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole: Schema.Codec<GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consoleUris: Schema.optional(Schema.Array(Schema.String)),
     steps: Schema.optional(Schema.Array(Schema.String)),
@@ -417,7 +417,7 @@ export interface GoogleCloudAssuredworkloadsV1ViolationRemediationInstructions {
   gcloudInstructions?: GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud;
 }
 
-export const GoogleCloudAssuredworkloadsV1ViolationRemediationInstructions: Schema.Schema<GoogleCloudAssuredworkloadsV1ViolationRemediationInstructions> =
+export const GoogleCloudAssuredworkloadsV1ViolationRemediationInstructions: Schema.Codec<GoogleCloudAssuredworkloadsV1ViolationRemediationInstructions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     consoleInstructions: Schema.optional(
       GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole,
@@ -446,7 +446,7 @@ export interface GoogleCloudAssuredworkloadsV1ViolationRemediation {
   instructions?: GoogleCloudAssuredworkloadsV1ViolationRemediationInstructions;
 }
 
-export const GoogleCloudAssuredworkloadsV1ViolationRemediation: Schema.Schema<GoogleCloudAssuredworkloadsV1ViolationRemediation> =
+export const GoogleCloudAssuredworkloadsV1ViolationRemediation: Schema.Codec<GoogleCloudAssuredworkloadsV1ViolationRemediation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     remediationType: Schema.optional(Schema.String),
     compliantValues: Schema.optional(Schema.Array(Schema.String)),
@@ -509,7 +509,7 @@ export interface GoogleCloudAssuredworkloadsV1Violation {
   resourceName?: string;
 }
 
-export const GoogleCloudAssuredworkloadsV1Violation: Schema.Schema<GoogleCloudAssuredworkloadsV1Violation> =
+export const GoogleCloudAssuredworkloadsV1Violation: Schema.Codec<GoogleCloudAssuredworkloadsV1Violation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nonCompliantOrgPolicy: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -548,7 +548,7 @@ export interface GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus {
   acknowledgedResourceViolationCount?: number;
 }
 
-export const GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus: Schema.Schema<GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus> =
+export const GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus: Schema.Codec<GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     acknowledgedViolationCount: Schema.optional(Schema.Number),
     activeResourceViolationCount: Schema.optional(Schema.Number),
@@ -573,7 +573,7 @@ export interface GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsReques
   archiveStartTime?: string;
 }
 
-export const GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsRequest: Schema.Schema<GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsRequest> =
+export const GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsRequest: Schema.Codec<GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationId: Schema.optional(Schema.String),
     archiveEndTime: Schema.optional(Schema.String),
@@ -601,7 +601,7 @@ export interface GoogleCloudAssuredworkloadsV1ArchiveResourceEventsRequest {
   eventCutoffTime?: string;
 }
 
-export const GoogleCloudAssuredworkloadsV1ArchiveResourceEventsRequest: Schema.Schema<GoogleCloudAssuredworkloadsV1ArchiveResourceEventsRequest> =
+export const GoogleCloudAssuredworkloadsV1ArchiveResourceEventsRequest: Schema.Codec<GoogleCloudAssuredworkloadsV1ArchiveResourceEventsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationId: Schema.optional(Schema.String),
     archiveTime: Schema.optional(Schema.String),
@@ -620,7 +620,7 @@ export interface GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse: Schema.Schema<GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse> =
+export const GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse: Schema.Codec<GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dbFindingSummaries: Schema.optional(
       Schema.Array(GoogleCloudAssuredworkloadsV1DbFindingSummary),
@@ -635,7 +635,7 @@ export interface GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsResponse
   acknowledgedViolationsCount?: number;
 }
 
-export const GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsResponse: Schema.Schema<GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsResponse> =
+export const GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsResponse: Schema.Codec<GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     acknowledgedViolationsCount: Schema.optional(Schema.Number),
   }).annotate({
@@ -652,7 +652,7 @@ export interface GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateOperationMetada
   createTime?: string;
 }
 
-export const GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateOperationMetadata: Schema.Schema<GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateOperationMetadata> =
+export const GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateOperationMetadata: Schema.Codec<GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateName: Schema.optional(Schema.String),
     action: Schema.optional(Schema.String),
@@ -671,7 +671,7 @@ export interface GoogleCloudAssuredworkloadsV1MoveAnalysisGroup {
   displayName?: string;
 }
 
-export const GoogleCloudAssuredworkloadsV1MoveAnalysisGroup: Schema.Schema<GoogleCloudAssuredworkloadsV1MoveAnalysisGroup> =
+export const GoogleCloudAssuredworkloadsV1MoveAnalysisGroup: Schema.Codec<GoogleCloudAssuredworkloadsV1MoveAnalysisGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     analysisResult: Schema.optional(
       GoogleCloudAssuredworkloadsV1MoveAnalysisResult,
@@ -689,7 +689,7 @@ export interface GoogleCloudAssuredworkloadsV1AssetMoveAnalysis {
   asset?: string;
 }
 
-export const GoogleCloudAssuredworkloadsV1AssetMoveAnalysis: Schema.Schema<GoogleCloudAssuredworkloadsV1AssetMoveAnalysis> =
+export const GoogleCloudAssuredworkloadsV1AssetMoveAnalysis: Schema.Codec<GoogleCloudAssuredworkloadsV1AssetMoveAnalysis> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assetType: Schema.optional(Schema.String),
     analysisGroups: Schema.optional(
@@ -700,7 +700,7 @@ export const GoogleCloudAssuredworkloadsV1AssetMoveAnalysis: Schema.Schema<Googl
 
 export interface GoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse {}
 
-export const GoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse: Schema.Schema<GoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse> =
+export const GoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse: Schema.Codec<GoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse",
   });
@@ -718,7 +718,7 @@ export interface GoogleLongrunningOperation {
   error?: GoogleRpcStatus;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
+export const GoogleLongrunningOperation: Schema.Codec<GoogleLongrunningOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     done: Schema.optional(Schema.Boolean),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -736,7 +736,7 @@ export interface GoogleLongrunningListOperationsResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
+export const GoogleLongrunningListOperationsResponse: Schema.Codec<GoogleLongrunningListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
@@ -754,7 +754,7 @@ export interface GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions {
   serviceAccessApprover?: boolean;
 }
 
-export const GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions: Schema.Schema<GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions> =
+export const GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions: Schema.Codec<GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataLogsViewer: Schema.optional(Schema.Boolean),
     assuredWorkloadsMonitoring: Schema.optional(Schema.Boolean),
@@ -772,7 +772,7 @@ export interface GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions {
     | (string & {});
 }
 
-export const GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions: Schema.Schema<GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions> =
+export const GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions: Schema.Codec<GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kajEnrollmentType: Schema.optional(Schema.String),
   }).annotate({
@@ -797,7 +797,7 @@ export interface GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse {
   >;
 }
 
-export const GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse: Schema.Schema<GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse> =
+export const GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse: Schema.Codec<GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     setupStatus: Schema.optional(Schema.String),
     setupErrors: Schema.optional(Schema.Array(Schema.String)),
@@ -810,7 +810,7 @@ export interface GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateRequest {
   action?: "WORKLOAD_UPDATE_ACTION_UNSPECIFIED" | "APPLY" | (string & {});
 }
 
-export const GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateRequest: Schema.Schema<GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateRequest> =
+export const GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateRequest: Schema.Codec<GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String),
   }).annotate({
@@ -875,7 +875,7 @@ export interface GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata {
   displayName?: string;
 }
 
-export const GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata: Schema.Schema<GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata> =
+export const GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata: Schema.Codec<GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     complianceRegime: Schema.optional(Schema.String),
@@ -892,7 +892,7 @@ export interface GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse: Schema.Schema<GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse> =
+export const GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse: Schema.Codec<GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assetMoveAnalyses: Schema.optional(
       Schema.Array(GoogleCloudAssuredworkloadsV1AssetMoveAnalysis),
@@ -907,7 +907,7 @@ export interface GoogleCloudAssuredworkloadsV1ArchiveResourceEventsResponse {
   movedEventsCount?: number;
 }
 
-export const GoogleCloudAssuredworkloadsV1ArchiveResourceEventsResponse: Schema.Schema<GoogleCloudAssuredworkloadsV1ArchiveResourceEventsResponse> =
+export const GoogleCloudAssuredworkloadsV1ArchiveResourceEventsResponse: Schema.Codec<GoogleCloudAssuredworkloadsV1ArchiveResourceEventsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     movedEventsCount: Schema.optional(Schema.Number),
   }).annotate({
@@ -923,7 +923,7 @@ export interface GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest {
   updateMask?: string;
 }
 
-export const GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest: Schema.Schema<GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest> =
+export const GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest: Schema.Codec<GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     partnerPermissions: Schema.optional(
@@ -947,7 +947,7 @@ export interface GoogleCloudAssuredworkloadsV1WorkloadResourceInfo {
     | (string & {});
 }
 
-export const GoogleCloudAssuredworkloadsV1WorkloadResourceInfo: Schema.Schema<GoogleCloudAssuredworkloadsV1WorkloadResourceInfo> =
+export const GoogleCloudAssuredworkloadsV1WorkloadResourceInfo: Schema.Codec<GoogleCloudAssuredworkloadsV1WorkloadResourceInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceId: Schema.optional(Schema.String),
     resourceType: Schema.optional(Schema.String),
@@ -1064,7 +1064,7 @@ export interface GoogleCloudAssuredworkloadsV1Workload {
   name?: string;
 }
 
-export const GoogleCloudAssuredworkloadsV1Workload: Schema.Schema<GoogleCloudAssuredworkloadsV1Workload> =
+export const GoogleCloudAssuredworkloadsV1Workload: Schema.Codec<GoogleCloudAssuredworkloadsV1Workload> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     compliantButDisallowedServices: Schema.optional(
       Schema.Array(Schema.String),
@@ -1116,7 +1116,7 @@ export interface GoogleCloudAssuredworkloadsV1ListWorkloadUpdatesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudAssuredworkloadsV1ListWorkloadUpdatesResponse: Schema.Schema<GoogleCloudAssuredworkloadsV1ListWorkloadUpdatesResponse> =
+export const GoogleCloudAssuredworkloadsV1ListWorkloadUpdatesResponse: Schema.Codec<GoogleCloudAssuredworkloadsV1ListWorkloadUpdatesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     workloadUpdates: Schema.optional(
       Schema.Array(GoogleCloudAssuredworkloadsV1WorkloadUpdate),
@@ -1128,7 +1128,7 @@ export const GoogleCloudAssuredworkloadsV1ListWorkloadUpdatesResponse: Schema.Sc
 
 export interface GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse {}
 
-export const GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse: Schema.Schema<GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse> =
+export const GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse: Schema.Codec<GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse",
   });
@@ -1146,7 +1146,7 @@ export interface GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsRequest 
   names?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsRequest: Schema.Schema<GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsRequest> =
+export const GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsRequest: Schema.Codec<GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     acknowledgeType: Schema.optional(Schema.String),
     comment: Schema.optional(Schema.String),
@@ -1163,7 +1163,7 @@ export interface GoogleCloudAssuredworkloadsV1ListWorkloadsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudAssuredworkloadsV1ListWorkloadsResponse: Schema.Schema<GoogleCloudAssuredworkloadsV1ListWorkloadsResponse> =
+export const GoogleCloudAssuredworkloadsV1ListWorkloadsResponse: Schema.Codec<GoogleCloudAssuredworkloadsV1ListWorkloadsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     workloads: Schema.optional(
       Schema.Array(GoogleCloudAssuredworkloadsV1Workload),
@@ -1175,14 +1175,14 @@ export const GoogleCloudAssuredworkloadsV1ListWorkloadsResponse: Schema.Schema<G
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
+export const GoogleProtobufEmpty: Schema.Codec<GoogleProtobufEmpty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleProtobufEmpty",
   });
 
 export interface GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse {}
 
-export const GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse: Schema.Schema<GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse> =
+export const GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse: Schema.Codec<GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse",
   });
@@ -1196,7 +1196,7 @@ export interface GoogleCloudAssuredworkloadsV1ListViolationsResponse {
   violations?: ReadonlyArray<GoogleCloudAssuredworkloadsV1Violation>;
 }
 
-export const GoogleCloudAssuredworkloadsV1ListViolationsResponse: Schema.Schema<GoogleCloudAssuredworkloadsV1ListViolationsResponse> =
+export const GoogleCloudAssuredworkloadsV1ListViolationsResponse: Schema.Codec<GoogleCloudAssuredworkloadsV1ListViolationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     totalSize: Schema.optional(Schema.Number),
@@ -1217,7 +1217,7 @@ export interface GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest {
     | (string & {});
 }
 
-export const GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest: Schema.Schema<GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest> =
+export const GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest: Schema.Codec<GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     restrictionType: Schema.optional(Schema.String),
   }).annotate({
@@ -1303,7 +1303,7 @@ export const ListOrganizationsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsOperationsRequest>;
 
 export type ListOrganizationsLocationsOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -1342,7 +1342,7 @@ export const GetOrganizationsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsOperationsRequest>;
 
 export type GetOrganizationsLocationsOperationsResponse =
   GoogleLongrunningOperation;
@@ -1386,7 +1386,7 @@ export const RestrictAllowedResourcesOrganizationsLocationsWorkloadsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RestrictAllowedResourcesOrganizationsLocationsWorkloadsRequest>;
+  ) as unknown as Schema.Codec<RestrictAllowedResourcesOrganizationsLocationsWorkloadsRequest>;
 
 export type RestrictAllowedResourcesOrganizationsLocationsWorkloadsResponse =
   GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse;
@@ -1427,7 +1427,7 @@ export const EnableComplianceUpdatesOrganizationsLocationsWorkloadsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<EnableComplianceUpdatesOrganizationsLocationsWorkloadsRequest>;
+  ) as unknown as Schema.Codec<EnableComplianceUpdatesOrganizationsLocationsWorkloadsRequest>;
 
 export type EnableComplianceUpdatesOrganizationsLocationsWorkloadsResponse =
   GoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse;
@@ -1473,7 +1473,7 @@ export const ListOrganizationsLocationsWorkloadsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/workloads" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsWorkloadsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsWorkloadsRequest>;
 
 export type ListOrganizationsLocationsWorkloadsResponse =
   GoogleCloudAssuredworkloadsV1ListWorkloadsResponse;
@@ -1520,7 +1520,7 @@ export const PatchOrganizationsLocationsWorkloadsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsLocationsWorkloadsRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsLocationsWorkloadsRequest>;
 
 export type PatchOrganizationsLocationsWorkloadsResponse =
   GoogleCloudAssuredworkloadsV1Workload;
@@ -1565,7 +1565,7 @@ export const CreateOrganizationsLocationsWorkloadsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/workloads", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsLocationsWorkloadsRequest>;
+  ) as unknown as Schema.Codec<CreateOrganizationsLocationsWorkloadsRequest>;
 
 export type CreateOrganizationsLocationsWorkloadsResponse =
   GoogleLongrunningOperation;
@@ -1611,7 +1611,7 @@ export const MutatePartnerPermissionsOrganizationsLocationsWorkloadsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MutatePartnerPermissionsOrganizationsLocationsWorkloadsRequest>;
+  ) as unknown as Schema.Codec<MutatePartnerPermissionsOrganizationsLocationsWorkloadsRequest>;
 
 export type MutatePartnerPermissionsOrganizationsLocationsWorkloadsResponse =
   GoogleCloudAssuredworkloadsV1Workload;
@@ -1662,7 +1662,7 @@ export const AnalyzeWorkloadMoveOrganizationsLocationsWorkloadsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+target}:analyzeWorkloadMove" }),
     svc,
-  ) as unknown as Schema.Schema<AnalyzeWorkloadMoveOrganizationsLocationsWorkloadsRequest>;
+  ) as unknown as Schema.Codec<AnalyzeWorkloadMoveOrganizationsLocationsWorkloadsRequest>;
 
 export type AnalyzeWorkloadMoveOrganizationsLocationsWorkloadsResponse =
   GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse;
@@ -1701,7 +1701,7 @@ export const GetOrganizationsLocationsWorkloadsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsWorkloadsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsWorkloadsRequest>;
 
 export type GetOrganizationsLocationsWorkloadsResponse =
   GoogleCloudAssuredworkloadsV1Workload;
@@ -1739,7 +1739,7 @@ export const DeleteOrganizationsLocationsWorkloadsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteOrganizationsLocationsWorkloadsRequest>;
+  ) as unknown as Schema.Codec<DeleteOrganizationsLocationsWorkloadsRequest>;
 
 export type DeleteOrganizationsLocationsWorkloadsResponse = GoogleProtobufEmpty;
 export const DeleteOrganizationsLocationsWorkloadsResponse =
@@ -1779,7 +1779,7 @@ export const EnableResourceMonitoringOrganizationsLocationsWorkloadsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<EnableResourceMonitoringOrganizationsLocationsWorkloadsRequest>;
+  ) as unknown as Schema.Codec<EnableResourceMonitoringOrganizationsLocationsWorkloadsRequest>;
 
 export type EnableResourceMonitoringOrganizationsLocationsWorkloadsResponse =
   GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse;
@@ -1825,7 +1825,7 @@ export const BatchAcknowledgeViolationsOrganizationsLocationsWorkloadsViolations
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchAcknowledgeViolationsOrganizationsLocationsWorkloadsViolationsRequest>;
+  ) as unknown as Schema.Codec<BatchAcknowledgeViolationsOrganizationsLocationsWorkloadsViolationsRequest>;
 
 export type BatchAcknowledgeViolationsOrganizationsLocationsWorkloadsViolationsResponse =
   GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsResponse;
@@ -1833,7 +1833,11 @@ export const BatchAcknowledgeViolationsOrganizationsLocationsWorkloadsViolations
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsResponse;
 
 export type BatchAcknowledgeViolationsOrganizationsLocationsWorkloadsViolationsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Acknowledges multiple existing violations. By acknowledging violations, users acknowledge the existence of compliance violations in their workload and decide to ignore them due to a valid business justification. Acknowledgement is a permanent operation and it cannot be reverted. This is a batch version of AcknowledgeViolation. */
 export const batchAcknowledgeViolationsOrganizationsLocationsWorkloadsViolations: API.OperationMethod<
@@ -1882,7 +1886,7 @@ export const ListOrganizationsLocationsWorkloadsViolationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/violations" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsWorkloadsViolationsRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsWorkloadsViolationsRequest>;
 
 export type ListOrganizationsLocationsWorkloadsViolationsResponse =
   GoogleCloudAssuredworkloadsV1ListViolationsResponse;
@@ -1921,7 +1925,7 @@ export const GetOrganizationsLocationsWorkloadsViolationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsWorkloadsViolationsRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsWorkloadsViolationsRequest>;
 
 export type GetOrganizationsLocationsWorkloadsViolationsResponse =
   GoogleCloudAssuredworkloadsV1Violation;
@@ -1961,7 +1965,7 @@ export const AcknowledgeOrganizationsLocationsWorkloadsViolationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:acknowledge", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<AcknowledgeOrganizationsLocationsWorkloadsViolationsRequest>;
+  ) as unknown as Schema.Codec<AcknowledgeOrganizationsLocationsWorkloadsViolationsRequest>;
 
 export type AcknowledgeOrganizationsLocationsWorkloadsViolationsResponse =
   GoogleCloudAssuredworkloadsV1AcknowledgeViolationResponse;
@@ -2004,7 +2008,7 @@ export const ListOrganizationsLocationsWorkloadsUpdatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/updates" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsWorkloadsUpdatesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsWorkloadsUpdatesRequest>;
 
 export type ListOrganizationsLocationsWorkloadsUpdatesResponse =
   GoogleCloudAssuredworkloadsV1ListWorkloadUpdatesResponse;
@@ -2048,7 +2052,7 @@ export const ApplyOrganizationsLocationsWorkloadsUpdatesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:apply", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ApplyOrganizationsLocationsWorkloadsUpdatesRequest>;
+  ) as unknown as Schema.Codec<ApplyOrganizationsLocationsWorkloadsUpdatesRequest>;
 
 export type ApplyOrganizationsLocationsWorkloadsUpdatesResponse =
   GoogleLongrunningOperation;
@@ -2094,7 +2098,7 @@ export const ListOrganizationsLocationsDbFindingSummariesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dbFindingSummaries" }),
     svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsDbFindingSummariesRequest>;
+  ) as unknown as Schema.Codec<ListOrganizationsLocationsDbFindingSummariesRequest>;
 
 export type ListOrganizationsLocationsDbFindingSummariesResponse =
   GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse;
@@ -2142,7 +2146,7 @@ export const ListFoldersLocationsDbFindingSummariesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dbFindingSummaries" }),
     svc,
-  ) as unknown as Schema.Schema<ListFoldersLocationsDbFindingSummariesRequest>;
+  ) as unknown as Schema.Codec<ListFoldersLocationsDbFindingSummariesRequest>;
 
 export type ListFoldersLocationsDbFindingSummariesResponse =
   GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse;
@@ -2190,7 +2194,7 @@ export const ListProjectsLocationsDbFindingSummariesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/dbFindingSummaries" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsDbFindingSummariesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsDbFindingSummariesRequest>;
 
 export type ListProjectsLocationsDbFindingSummariesResponse =
   GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse;
@@ -2235,7 +2239,7 @@ export const ArchiveResourceEventsAssuredworkloadsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ArchiveResourceEventsAssuredworkloadsRequest>;
+  ) as unknown as Schema.Codec<ArchiveResourceEventsAssuredworkloadsRequest>;
 
 export type ArchiveResourceEventsAssuredworkloadsResponse =
   GoogleCloudAssuredworkloadsV1ArchiveResourceEventsResponse;
@@ -2278,7 +2282,7 @@ export const RevertArchivedResourceEventsAssuredworkloadsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RevertArchivedResourceEventsAssuredworkloadsRequest>;
+  ) as unknown as Schema.Codec<RevertArchivedResourceEventsAssuredworkloadsRequest>;
 
 export type RevertArchivedResourceEventsAssuredworkloadsResponse =
   GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsResponse;

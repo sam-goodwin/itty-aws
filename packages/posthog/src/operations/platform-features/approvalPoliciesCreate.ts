@@ -3,6 +3,41 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ApprovalPoliciesCreateInput {
+  project_id: string;
+  id?: string;
+  action_key?: string;
+  conditions?: unknown;
+  approver_config?: unknown;
+  allow_self_approve?: boolean;
+  bypass_org_membership_levels?: unknown;
+  bypass_roles?: string[];
+  expires_after?: string;
+  enabled?: boolean;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  created_at?: string;
+  updated_at?: string | null;
+}
 export const ApprovalPoliciesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -28,7 +63,23 @@ export const ApprovalPoliciesCreateInput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -39,11 +90,43 @@ export const ApprovalPoliciesCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/approval_policies/",
     }),
-  );
-export type ApprovalPoliciesCreateInput =
-  typeof ApprovalPoliciesCreateInput.Type;
+  ) as unknown as Schema.Codec<ApprovalPoliciesCreateInput>;
 
 // Output Schema
+export interface ApprovalPoliciesCreateOutput {
+  id?: string;
+  action_key?: string;
+  conditions?: unknown;
+  approver_config?: unknown;
+  allow_self_approve?: boolean;
+  bypass_org_membership_levels?: unknown;
+  bypass_roles?: string[];
+  expires_after?: string;
+  enabled?: boolean;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  created_at?: string;
+  updated_at?: string | null;
+}
 export const ApprovalPoliciesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -68,15 +151,29 @@ export const ApprovalPoliciesCreateOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type ApprovalPoliciesCreateOutput =
-  typeof ApprovalPoliciesCreateOutput.Type;
+  }) as unknown as Schema.Codec<ApprovalPoliciesCreateOutput>;
 
 // The operation
 /**

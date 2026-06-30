@@ -3,20 +3,26 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetSchemaChangesInput {}
 export const GetSchemaChangesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
-).pipe(T.Http({ method: "GET", path: "/operations/schema_changes" }));
-export type GetSchemaChangesInput = typeof GetSchemaChangesInput.Type;
+).pipe(
+  T.Http({ method: "GET", path: "/operations/schema_changes" }),
+) as unknown as Schema.Codec<GetSchemaChangesInput>;
 
 // Output Schema
+export type GetSchemaChangesOutput = {
+  collection?: string;
+  validated_docs?: number;
+  altered_docs?: number;
+}[];
 export const GetSchemaChangesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     collection: Schema.optional(Schema.String),
     validated_docs: Schema.optional(Schema.Number),
     altered_docs: Schema.optional(Schema.Number),
   }),
-);
-export type GetSchemaChangesOutput = typeof GetSchemaChangesOutput.Type;
+) as unknown as Schema.Codec<GetSchemaChangesOutput>;
 
 // The operation
 /**

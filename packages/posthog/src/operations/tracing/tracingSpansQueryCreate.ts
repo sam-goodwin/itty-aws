@@ -3,6 +3,40 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface TracingSpansQueryCreateInput {
+  project_id: string;
+  query: {
+    dateRange?: { date_from?: string | null; date_to?: string | null };
+    serviceNames?: string[];
+    statusCodes?: number[];
+    orderBy?: "timestamp" | "duration";
+    orderDirection?: "ASC" | "DESC";
+    filterGroup?: {
+      key: string;
+      type: "span" | "span_attribute" | "span_resource_attribute";
+      operator:
+        | "exact"
+        | "is_not"
+        | "icontains"
+        | "not_icontains"
+        | "regex"
+        | "not_regex"
+        | "gt"
+        | "lt"
+        | "is_set"
+        | "is_not_set";
+      value?: unknown;
+    }[];
+    traceId?: string;
+    limit?: number;
+    after?: string;
+    offset?: number;
+    rootSpans?: boolean;
+    flatSpans?: boolean;
+    prefetchSpans?: number;
+    excludeAttributes?: boolean;
+  };
+}
 export const TracingSpansQueryCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -56,15 +90,12 @@ export const TracingSpansQueryCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/tracing/spans/query/",
     }),
-  );
-export type TracingSpansQueryCreateInput =
-  typeof TracingSpansQueryCreateInput.Type;
+  ) as unknown as Schema.Codec<TracingSpansQueryCreateInput>;
 
 // Output Schema
+export type TracingSpansQueryCreateOutput = void;
 export const TracingSpansQueryCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TracingSpansQueryCreateOutput =
-  typeof TracingSpansQueryCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TracingSpansQueryCreateOutput>;
 
 // The operation
 /**

@@ -4,17 +4,34 @@ import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface PatchV1EnvironmentVariablesByEnvVarIdInput {
+  envVarId: string;
+  value: string;
+}
 export const PatchV1EnvironmentVariablesByEnvVarIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     envVarId: Schema.String.pipe(T.PathParam()),
     value: Schema.String,
   }).pipe(
     T.Http({ method: "PATCH", path: "/v1/environment-variables/{envVarId}" }),
-  );
-export type PatchV1EnvironmentVariablesByEnvVarIdInput =
-  typeof PatchV1EnvironmentVariablesByEnvVarIdInput.Type;
+  ) as unknown as Schema.Codec<PatchV1EnvironmentVariablesByEnvVarIdInput>;
 
 // Output Schema
+export interface PatchV1EnvironmentVariablesByEnvVarIdOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    projectId: string;
+    branchId: string | null;
+    class: "production" | "preview";
+    key: string;
+    valueKid: string;
+    isManagedBySystem: boolean;
+    createdAt: string;
+    updatedAt: string;
+  };
+}
 export const PatchV1EnvironmentVariablesByEnvVarIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Struct({
@@ -30,9 +47,7 @@ export const PatchV1EnvironmentVariablesByEnvVarIdOutput =
       createdAt: Schema.String,
       updatedAt: Schema.String,
     }),
-  });
-export type PatchV1EnvironmentVariablesByEnvVarIdOutput =
-  typeof PatchV1EnvironmentVariablesByEnvVarIdOutput.Type;
+  }) as unknown as Schema.Codec<PatchV1EnvironmentVariablesByEnvVarIdOutput>;
 
 // The operation
 /**

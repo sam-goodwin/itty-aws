@@ -4,16 +4,20 @@ import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface UpdateMapFieldsInput {
+  dataset_id: string;
+}
 export const UpdateMapFieldsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   dataset_id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "PUT", path: "/v2/datasets/{dataset_id}/mapfields" }));
-export type UpdateMapFieldsInput = typeof UpdateMapFieldsInput.Type;
+}).pipe(
+  T.Http({ method: "PUT", path: "/v2/datasets/{dataset_id}/mapfields" }),
+) as unknown as Schema.Codec<UpdateMapFieldsInput>;
 
 // Output Schema
+export type UpdateMapFieldsOutput = string[];
 export const UpdateMapFieldsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.String,
-);
-export type UpdateMapFieldsOutput = typeof UpdateMapFieldsOutput.Type;
+) as unknown as Schema.Codec<UpdateMapFieldsOutput>;
 
 // The operation
 export const updateMapFields = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

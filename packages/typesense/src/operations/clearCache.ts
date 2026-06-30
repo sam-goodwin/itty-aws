@@ -3,16 +3,20 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ClearCacheInput {}
 export const ClearCacheInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
-).pipe(T.Http({ method: "POST", path: "/operations/cache/clear" }));
-export type ClearCacheInput = typeof ClearCacheInput.Type;
+).pipe(
+  T.Http({ method: "POST", path: "/operations/cache/clear" }),
+) as unknown as Schema.Codec<ClearCacheInput>;
 
 // Output Schema
+export interface ClearCacheOutput {
+  success: boolean;
+}
 export const ClearCacheOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   success: Schema.Boolean,
-});
-export type ClearCacheOutput = typeof ClearCacheOutput.Type;
+}) as unknown as Schema.Codec<ClearCacheOutput>;
 
 // The operation
 /**

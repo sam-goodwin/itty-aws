@@ -3,14 +3,25 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface CreateFoundationAccountInput {
+  name?: string;
+}
 export const CreateFoundationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "POST", path: "/v2/accounts" }));
-export type CreateFoundationAccountInput =
-  typeof CreateFoundationAccountInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/v2/accounts" }),
+  ) as unknown as Schema.Codec<CreateFoundationAccountInput>;
 
 // Output Schema
+export interface CreateFoundationAccountOutput {
+  accountId: string;
+  type: "prime" | "business" | "cdp";
+  owner: string;
+  name?: string;
+  createdAt: string;
+  updatedAt: string;
+}
 export const CreateFoundationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String,
@@ -19,9 +30,7 @@ export const CreateFoundationAccountOutput =
     name: Schema.optional(Schema.String),
     createdAt: Schema.String,
     updatedAt: Schema.String,
-  });
-export type CreateFoundationAccountOutput =
-  typeof CreateFoundationAccountOutput.Type;
+  }) as unknown as Schema.Codec<CreateFoundationAccountOutput>;
 
 // The operation
 /**

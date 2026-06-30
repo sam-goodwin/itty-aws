@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface WizardSessionsRetrieveInput {
+  project_id: string;
+  session_id: string;
+}
 export const WizardSessionsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,27 @@ export const WizardSessionsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/wizard/sessions/{session_id}/",
     }),
-  );
-export type WizardSessionsRetrieveInput =
-  typeof WizardSessionsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<WizardSessionsRetrieveInput>;
 
 // Output Schema
+export interface WizardSessionsRetrieveOutput {
+  session_id: string;
+  team_id: number;
+  workflow_id: string;
+  skill_id: string;
+  started_at: string;
+  run_phase: "idle" | "running" | "completed" | "error";
+  tasks: {
+    id: string;
+    title: string;
+    status: "pending" | "in_progress" | "completed" | "failed" | "canceled";
+  }[];
+  event_plan: Record<string, unknown> | null;
+  error: Record<string, unknown> | null;
+  created_at: string;
+  updated_at: string;
+  is_stale: boolean;
+}
 export const WizardSessionsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     session_id: Schema.String,
@@ -44,9 +64,7 @@ export const WizardSessionsRetrieveOutput =
     created_at: Schema.String,
     updated_at: Schema.String,
     is_stale: Schema.Boolean,
-  });
-export type WizardSessionsRetrieveOutput =
-  typeof WizardSessionsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<WizardSessionsRetrieveOutput>;
 
 // The operation
 /**

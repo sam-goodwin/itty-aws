@@ -3,6 +3,24 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AccountsListInput {
+  project_id: string;
+  account_executive?: string;
+  account_owner?: string;
+  all_roles_unassigned?: boolean;
+  csm?: string;
+  limit?: number;
+  offset?: number;
+  ordering?:
+    | "-created_at"
+    | "-name"
+    | "-updated_at"
+    | "created_at"
+    | "name"
+    | "updated_at";
+  search?: string;
+  tags?: string;
+}
 export const AccountsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   account_executive: Schema.optional(Schema.String),
@@ -25,10 +43,36 @@ export const AccountsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   tags: Schema.optional(Schema.String),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/accounts/" }),
-);
-export type AccountsListInput = typeof AccountsListInput.Type;
+) as unknown as Schema.Codec<AccountsListInput>;
 
 // Output Schema
+export interface AccountsListOutput {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: {
+    id: string;
+    name: string;
+    external_id?: string | null;
+    properties?: {
+      csm?: { id: number; email: string } | null;
+      account_executive?: { id: number; email: string } | null;
+      account_owner?: { id: number; email: string } | null;
+      stripe_customer_id?: string | null;
+      hubspot_deal_id?: string | null;
+      billing_id?: string | null;
+      sfdc_id?: string | null;
+      zendesk_id?: string | null;
+      slack_channel_id?: string | null;
+      usage_dashboard_link?: string | null;
+    } | null;
+    tags?: string[];
+    notebooks: string[];
+    created_at: string;
+    created_by: number | null;
+    updated_at: string | null;
+  }[];
+}
 export const AccountsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   count: Schema.Number,
   next: Schema.optional(Schema.NullOr(Schema.String)),
@@ -82,8 +126,7 @@ export const AccountsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       updated_at: Schema.NullOr(Schema.String),
     }),
   ),
-});
-export type AccountsListOutput = typeof AccountsListOutput.Type;
+}) as unknown as Schema.Codec<AccountsListOutput>;
 
 // The operation
 /**

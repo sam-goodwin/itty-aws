@@ -3,6 +3,16 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface VolumesOrgListInput {
+  org_slug: string;
+  include_deleted?: boolean;
+  region?: string;
+  state?: string;
+  summary?: boolean;
+  updated_after?: string;
+  cursor?: string;
+  limit?: number;
+}
 export const VolumesOrgListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   org_slug: Schema.String.pipe(T.PathParam()),
   include_deleted: Schema.optional(Schema.Boolean),
@@ -12,10 +22,41 @@ export const VolumesOrgListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updated_after: Schema.optional(Schema.String),
   cursor: Schema.optional(Schema.String),
   limit: Schema.optional(Schema.Number),
-}).pipe(T.Http({ method: "GET", path: "/orgs/{org_slug}/volumes" }));
-export type VolumesOrgListInput = typeof VolumesOrgListInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/orgs/{org_slug}/volumes" }),
+) as unknown as Schema.Codec<VolumesOrgListInput>;
 
 // Output Schema
+export interface VolumesOrgListOutput {
+  last_updated_at?: string;
+  last_volume_id?: string;
+  next_cursor?: string;
+  volumes?: {
+    app_name?: string;
+    attached_alloc_id?: string;
+    attached_machine_id?: string;
+    auto_backup_enabled?: boolean;
+    block_size?: number;
+    blocks?: number;
+    blocks_avail?: number;
+    blocks_free?: number;
+    bytes_total?: number;
+    bytes_used?: number;
+    created_at?: string;
+    encrypted?: boolean;
+    fstype?: string;
+    host_status?: "ok" | "unknown" | "unreachable";
+    id?: string;
+    name?: string;
+    region?: string;
+    size_gb?: number;
+    snapshot_retention?: number;
+    state?: string;
+    type?: "local" | "cache";
+    updated_at?: string;
+    zone?: string;
+  }[];
+}
 export const VolumesOrgListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   last_updated_at: Schema.optional(Schema.String),
   last_volume_id: Schema.optional(Schema.String),
@@ -51,8 +92,7 @@ export const VolumesOrgListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type VolumesOrgListOutput = typeof VolumesOrgListOutput.Type;
+}) as unknown as Schema.Codec<VolumesOrgListOutput>;
 
 // The operation
 /**

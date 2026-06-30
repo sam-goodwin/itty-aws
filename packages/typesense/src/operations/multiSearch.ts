@@ -4,6 +4,80 @@ import * as T from "../traits.ts";
 import { BadRequest } from "../errors.ts";
 
 // Input Schema
+export interface MultiSearchInput {
+  multiSearchParameters: string;
+  union?: boolean;
+  searches: {
+    q?: string;
+    query_by?: string;
+    query_by_weights?: string;
+    text_match_type?: string;
+    prefix?: string;
+    infix?: string;
+    max_extra_prefix?: number;
+    max_extra_suffix?: number;
+    filter_by?: string;
+    sort_by?: string;
+    facet_by?: string;
+    max_facet_values?: number;
+    facet_query?: string;
+    num_typos?: string;
+    page?: number;
+    per_page?: number;
+    limit?: number;
+    offset?: number;
+    group_by?: string;
+    group_limit?: number;
+    group_missing_values?: boolean;
+    include_fields?: string;
+    exclude_fields?: string;
+    highlight_full_fields?: string;
+    highlight_affix_num_tokens?: number;
+    highlight_start_tag?: string;
+    highlight_end_tag?: string;
+    snippet_threshold?: number;
+    drop_tokens_threshold?: number;
+    drop_tokens_mode?: "right_to_left" | "left_to_right" | "both_sides:3";
+    typo_tokens_threshold?: number;
+    enable_typos_for_alpha_numerical_tokens?: boolean;
+    filter_curated_hits?: boolean;
+    enable_synonyms?: boolean;
+    enable_analytics?: boolean;
+    synonym_prefix?: boolean;
+    synonym_num_typos?: number;
+    pinned_hits?: string;
+    hidden_hits?: string;
+    curation_tags?: string;
+    highlight_fields?: string;
+    pre_segmented_query?: boolean;
+    preset?: string;
+    enable_curations?: boolean;
+    prioritize_exact_match?: boolean;
+    prioritize_token_position?: boolean;
+    prioritize_num_matching_fields?: boolean;
+    enable_typos_for_numerical_tokens?: boolean;
+    exhaustive_search?: boolean;
+    search_cutoff_ms?: number;
+    use_cache?: boolean;
+    cache_ttl?: number;
+    min_len_1typo?: number;
+    min_len_2typo?: number;
+    vector_query?: string;
+    remote_embedding_timeout_ms?: number;
+    remote_embedding_num_tries?: number;
+    facet_strategy?: string;
+    stopwords?: string;
+    facet_return_parent?: string;
+    voice_query?: string;
+    conversation?: boolean;
+    conversation_model_id?: string;
+    conversation_id?: string;
+    validate_field_names?: boolean;
+    collection?: string;
+    "x-typesense-api-key"?: string;
+    rerank_hybrid_matches?: boolean;
+  }[];
+}
 export const MultiSearchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   multiSearchParameters: Schema.String,
   union: Schema.optional(Schema.Boolean),
@@ -81,10 +155,125 @@ export const MultiSearchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       rerank_hybrid_matches: Schema.optional(Schema.Boolean),
     }),
   ),
-}).pipe(T.Http({ method: "POST", path: "/multi_search" }));
-export type MultiSearchInput = typeof MultiSearchInput.Type;
+}).pipe(
+  T.Http({ method: "POST", path: "/multi_search" }),
+) as unknown as Schema.Codec<MultiSearchInput>;
 
 // Output Schema
+export interface MultiSearchOutput {
+  results: {
+    facet_counts?: {
+      counts?: {
+        count?: number;
+        highlighted?: string;
+        value?: string;
+        parent?: unknown;
+      }[];
+      field_name?: string;
+      sampled?: boolean;
+      stats?: {
+        max?: number;
+        min?: number;
+        sum?: number;
+        total_values?: number;
+        avg?: number;
+      };
+    }[];
+    found?: number;
+    found_docs?: number;
+    search_time_ms?: number;
+    out_of?: number;
+    search_cutoff?: boolean;
+    page?: number;
+    grouped_hits?: {
+      found?: number;
+      group_key: unknown[];
+      hits: {
+        highlights?: {
+          field?: string;
+          snippet?: string;
+          snippets?: string[];
+          value?: string;
+          values?: string[];
+          indices?: number[];
+          matched_tokens?: unknown[];
+        }[];
+        highlight?: Record<string, unknown>;
+        document?: Record<string, unknown>;
+        text_match?: number;
+        text_match_info?: {
+          best_field_score?: string;
+          best_field_weight?: number;
+          fields_matched?: number;
+          num_tokens_dropped?: number;
+          score?: string;
+          tokens_matched?: number;
+          typo_prefix_score?: number;
+        };
+        geo_distance_meters?: Record<string, number>;
+        vector_distance?: number;
+        hybrid_search_info?: { rank_fusion_score?: number };
+        search_index?: number;
+      }[];
+    }[];
+    hits?: {
+      highlights?: {
+        field?: string;
+        snippet?: string;
+        snippets?: string[];
+        value?: string;
+        values?: string[];
+        indices?: number[];
+        matched_tokens?: unknown[];
+      }[];
+      highlight?: Record<string, unknown>;
+      document?: Record<string, unknown>;
+      text_match?: number;
+      text_match_info?: {
+        best_field_score?: string;
+        best_field_weight?: number;
+        fields_matched?: number;
+        num_tokens_dropped?: number;
+        score?: string;
+        tokens_matched?: number;
+        typo_prefix_score?: number;
+      };
+      geo_distance_meters?: Record<string, number>;
+      vector_distance?: number;
+      hybrid_search_info?: { rank_fusion_score?: number };
+      search_index?: number;
+    }[];
+    request_params?: {
+      collection_name: string;
+      first_q?: string;
+      q: string;
+      per_page: number;
+      voice_query?: { transcribed_query?: string };
+    };
+    conversation?: {
+      answer: string;
+      conversation_history: unknown[];
+      conversation_id: string;
+      query: string;
+    };
+    union_request_params?: {
+      collection_name: string;
+      first_q?: string;
+      q: string;
+      per_page: number;
+      voice_query?: { transcribed_query?: string };
+    }[];
+    metadata?: Record<string, unknown>;
+    code?: number;
+    error?: string;
+  }[];
+  conversation?: {
+    answer: string;
+    conversation_history: unknown[];
+    conversation_id: string;
+    query: string;
+  };
+}
 export const MultiSearchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   results: Schema.Array(
     Schema.Struct({
@@ -272,8 +461,7 @@ export const MultiSearchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       query: Schema.String,
     }),
   ),
-});
-export type MultiSearchOutput = typeof MultiSearchOutput.Type;
+}) as unknown as Schema.Codec<MultiSearchOutput>;
 
 // The operation
 /**

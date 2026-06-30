@@ -4,15 +4,39 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ExportsRetrieveInput {
+  id: number;
+  project_id: string;
+}
 export const ExportsRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.Number.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/exports/{id}/" }),
-);
-export type ExportsRetrieveInput = typeof ExportsRetrieveInput.Type;
+) as unknown as Schema.Codec<ExportsRetrieveInput>;
 
 // Output Schema
+export interface ExportsRetrieveOutput {
+  id?: number;
+  dashboard?: number | null;
+  insight?: number | null;
+  export_format?:
+    | "image/png"
+    | "application/pdf"
+    | "text/csv"
+    | "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    | "video/webm"
+    | "video/mp4"
+    | "image/gif"
+    | "application/json";
+  created_at?: string;
+  has_content?: boolean;
+  export_context?: unknown;
+  filename?: string;
+  expires_after?: string | null;
+  exception?: string | null;
+  user_access_level?: string | null;
+}
 export const ExportsRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Number),
   dashboard: Schema.optional(Schema.NullOr(Schema.Number)),
@@ -36,8 +60,7 @@ export const ExportsRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   expires_after: Schema.optional(Schema.NullOr(Schema.String)),
   exception: Schema.optional(Schema.NullOr(Schema.String)),
   user_access_level: Schema.optional(Schema.NullOr(Schema.String)),
-});
-export type ExportsRetrieveOutput = typeof ExportsRetrieveOutput.Type;
+}) as unknown as Schema.Codec<ExportsRetrieveOutput>;
 
 // The operation
 /**

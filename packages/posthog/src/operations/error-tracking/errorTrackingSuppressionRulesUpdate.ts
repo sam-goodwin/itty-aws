@@ -3,6 +3,12 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface ErrorTrackingSuppressionRulesUpdateInput {
+  id: string;
+  project_id: string;
+  filters?: { type?: "AND" | "OR"; values?: unknown[] };
+  sampling_rate?: number;
+}
 export const ErrorTrackingSuppressionRulesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -19,15 +25,12 @@ export const ErrorTrackingSuppressionRulesUpdateInput =
       method: "PUT",
       path: "/api/projects/{project_id}/error_tracking/suppression_rules/{id}/",
     }),
-  );
-export type ErrorTrackingSuppressionRulesUpdateInput =
-  typeof ErrorTrackingSuppressionRulesUpdateInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingSuppressionRulesUpdateInput>;
 
 // Output Schema
+export type ErrorTrackingSuppressionRulesUpdateOutput = void;
 export const ErrorTrackingSuppressionRulesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ErrorTrackingSuppressionRulesUpdateOutput =
-  typeof ErrorTrackingSuppressionRulesUpdateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingSuppressionRulesUpdateOutput>;
 
 // The operation
 /**

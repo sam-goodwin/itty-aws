@@ -3,6 +3,17 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface AgentApplicationsSessionLogsInput {
+  id: string;
+  project_id: string;
+  session_id: string;
+  after?: string;
+  before?: string;
+  instance_id?: string;
+  level?: string;
+  limit?: number;
+  search?: string;
+}
 export const AgentApplicationsSessionLogsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -19,11 +30,18 @@ export const AgentApplicationsSessionLogsInput =
       method: "GET",
       path: "/api/projects/{project_id}/agent_applications/{id}/sessions/{session_id}/logs/",
     }),
-  );
-export type AgentApplicationsSessionLogsInput =
-  typeof AgentApplicationsSessionLogsInput.Type;
+  ) as unknown as Schema.Codec<AgentApplicationsSessionLogsInput>;
 
 // Output Schema
+export interface AgentApplicationsSessionLogsOutput {
+  results: {
+    log_source_id: string;
+    instance_id: string;
+    timestamp: string;
+    level: string;
+    message: string;
+  }[];
+}
 export const AgentApplicationsSessionLogsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.Array(
@@ -35,9 +53,7 @@ export const AgentApplicationsSessionLogsOutput =
         message: Schema.String,
       }),
     ),
-  });
-export type AgentApplicationsSessionLogsOutput =
-  typeof AgentApplicationsSessionLogsOutput.Type;
+  }) as unknown as Schema.Codec<AgentApplicationsSessionLogsOutput>;
 
 // The operation
 /**

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -35,7 +35,7 @@ export interface Reader {
   ppid?: string;
 }
 
-export const Reader: Schema.Schema<Reader> =
+export const Reader: Schema.Codec<Reader> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     originatingPublicationId: Schema.optional(Schema.String),
     publicationId: Schema.optional(Schema.String),
@@ -55,7 +55,7 @@ export interface Entitlement {
   subscriptionToken?: string;
 }
 
-export const Entitlement: Schema.Schema<Entitlement> =
+export const Entitlement: Schema.Codec<Entitlement> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expireTime: Schema.optional(Schema.String),
     detail: Schema.optional(Schema.String),
@@ -65,7 +65,7 @@ export const Entitlement: Schema.Schema<Entitlement> =
 
 export interface DeleteReaderResponse {}
 
-export const DeleteReaderResponse: Schema.Schema<DeleteReaderResponse> =
+export const DeleteReaderResponse: Schema.Codec<DeleteReaderResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteReaderResponse",
   });
@@ -77,7 +77,7 @@ export interface ReaderEntitlements {
   name?: string;
 }
 
-export const ReaderEntitlements: Schema.Schema<ReaderEntitlements> =
+export const ReaderEntitlements: Schema.Codec<ReaderEntitlements> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entitlements: Schema.optional(Schema.Array(Entitlement)),
     name: Schema.optional(Schema.String),
@@ -148,7 +148,7 @@ export const GetEntitlementsPublicationsReadersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetEntitlementsPublicationsReadersRequest>;
+  ) as unknown as Schema.Codec<GetEntitlementsPublicationsReadersRequest>;
 
 export type GetEntitlementsPublicationsReadersResponse = ReaderEntitlements;
 export const GetEntitlementsPublicationsReadersResponse =
@@ -188,7 +188,7 @@ export const UpdateEntitlementsPublicationsReadersRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateEntitlementsPublicationsReadersRequest>;
+  ) as unknown as Schema.Codec<UpdateEntitlementsPublicationsReadersRequest>;
 
 export type UpdateEntitlementsPublicationsReadersResponse = ReaderEntitlements;
 export const UpdateEntitlementsPublicationsReadersResponse =
@@ -224,7 +224,7 @@ export const GetPublicationsReadersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPublicationsReadersRequest>;
+  ) as unknown as Schema.Codec<GetPublicationsReadersRequest>;
 
 export type GetPublicationsReadersResponse = Reader;
 export const GetPublicationsReadersResponse =
@@ -258,7 +258,7 @@ export const DeletePublicationsReadersRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeletePublicationsReadersRequest>;
+  ) as unknown as Schema.Codec<DeletePublicationsReadersRequest>;
 
 export type DeletePublicationsReadersResponse = DeleteReaderResponse;
 export const DeletePublicationsReadersResponse =

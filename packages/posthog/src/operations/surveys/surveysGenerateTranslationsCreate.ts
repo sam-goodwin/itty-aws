@@ -3,6 +3,14 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface SurveysGenerateTranslationsCreateInput {
+  id: string;
+  project_id: string;
+  target_language: string;
+  source_language?: string;
+  overwrite?: boolean;
+  survey?: Record<string, unknown>;
+}
 export const SurveysGenerateTranslationsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -16,11 +24,37 @@ export const SurveysGenerateTranslationsCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/surveys/{id}/generate_translations/",
     }),
-  );
-export type SurveysGenerateTranslationsCreateInput =
-  typeof SurveysGenerateTranslationsCreateInput.Type;
+  ) as unknown as Schema.Codec<SurveysGenerateTranslationsCreateInput>;
 
 // Output Schema
+export interface SurveysGenerateTranslationsCreateOutput {
+  translations: Record<
+    string,
+    {
+      name?: string;
+      thankYouMessageHeader?: string;
+      thankYouMessageDescription?: string;
+      thankYouMessageCloseButtonText?: string;
+    }
+  >;
+  questions: {
+    id: string;
+    translations: Record<
+      string,
+      {
+        question?: string;
+        description?: string;
+        buttonText?: string;
+        choices?: string[];
+        lowerBoundLabel?: string;
+        upperBoundLabel?: string;
+        link?: string;
+      }
+    >;
+  }[];
+  generated_field_paths: string[];
+  trace_id: string;
+}
 export const SurveysGenerateTranslationsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     translations: Schema.Record(
@@ -51,9 +85,7 @@ export const SurveysGenerateTranslationsCreateOutput =
     ),
     generated_field_paths: Schema.Array(Schema.String),
     trace_id: Schema.String,
-  });
-export type SurveysGenerateTranslationsCreateOutput =
-  typeof SurveysGenerateTranslationsCreateOutput.Type;
+  }) as unknown as Schema.Codec<SurveysGenerateTranslationsCreateOutput>;
 
 // The operation
 /**

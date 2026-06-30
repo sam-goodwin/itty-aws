@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -37,7 +37,7 @@ export interface GoogleCloudRecaptchaenterpriseV1TransactionDataAddress {
   postalCode?: string;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1TransactionDataAddress: Schema.Schema<GoogleCloudRecaptchaenterpriseV1TransactionDataAddress> =
+export const GoogleCloudRecaptchaenterpriseV1TransactionDataAddress: Schema.Codec<GoogleCloudRecaptchaenterpriseV1TransactionDataAddress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recipient: Schema.optional(Schema.String),
     regionCode: Schema.optional(Schema.String),
@@ -56,7 +56,7 @@ export interface GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals {
   activeDaysLowerBound?: number;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals: Schema.Schema<GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals> =
+export const GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals: Schema.Codec<GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     syntheticRisk: Schema.optional(Schema.Number),
     activeDaysLowerBound: Schema.optional(Schema.Number),
@@ -75,7 +75,7 @@ export interface GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals {
   >;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals: Schema.Schema<GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals> =
+export const GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals: Schema.Codec<GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cardLabels: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -89,7 +89,7 @@ export interface GoogleCloudRecaptchaenterpriseV1FraudSignals {
   cardSignals?: GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1FraudSignals: Schema.Schema<GoogleCloudRecaptchaenterpriseV1FraudSignals> =
+export const GoogleCloudRecaptchaenterpriseV1FraudSignals: Schema.Codec<GoogleCloudRecaptchaenterpriseV1FraudSignals> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userSignals: Schema.optional(
       GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals,
@@ -104,7 +104,7 @@ export interface GoogleCloudRecaptchaenterpriseV1ScoreDistribution {
   scoreBuckets?: Record<string, string>;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1ScoreDistribution: Schema.Schema<GoogleCloudRecaptchaenterpriseV1ScoreDistribution> =
+export const GoogleCloudRecaptchaenterpriseV1ScoreDistribution: Schema.Codec<GoogleCloudRecaptchaenterpriseV1ScoreDistribution> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scoreBuckets: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({
@@ -121,7 +121,7 @@ export interface GoogleCloudRecaptchaenterpriseV1ScoreMetrics {
   >;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1ScoreMetrics: Schema.Schema<GoogleCloudRecaptchaenterpriseV1ScoreMetrics> =
+export const GoogleCloudRecaptchaenterpriseV1ScoreMetrics: Schema.Codec<GoogleCloudRecaptchaenterpriseV1ScoreMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     overallMetrics: Schema.optional(
       GoogleCloudRecaptchaenterpriseV1ScoreDistribution,
@@ -136,7 +136,7 @@ export const GoogleCloudRecaptchaenterpriseV1ScoreMetrics: Schema.Schema<GoogleC
 
 export interface GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse {}
 
-export const GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse: Schema.Schema<GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse> =
+export const GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse: Schema.Codec<GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse",
   });
@@ -148,7 +148,7 @@ export interface GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent {
   phoneNumber?: string;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent: Schema.Schema<GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent> =
+export const GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent: Schema.Codec<GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventTime: Schema.optional(Schema.String),
     phoneNumber: Schema.optional(Schema.String),
@@ -187,7 +187,7 @@ export interface GoogleCloudRecaptchaenterpriseV1TransactionEvent {
   eventTime?: string;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1TransactionEvent: Schema.Schema<GoogleCloudRecaptchaenterpriseV1TransactionEvent> =
+export const GoogleCloudRecaptchaenterpriseV1TransactionEvent: Schema.Codec<GoogleCloudRecaptchaenterpriseV1TransactionEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String),
     eventType: Schema.optional(Schema.String),
@@ -235,7 +235,7 @@ export interface GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest {
   hashedAccountId?: string;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest: Schema.Schema<GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest> =
+export const GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest: Schema.Codec<GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.optional(Schema.String),
     annotation: Schema.optional(Schema.String),
@@ -260,7 +260,7 @@ export interface GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict {
   >;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict: Schema.Schema<GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict> =
+export const GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict: Schema.Codec<GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     risk: Schema.optional(Schema.Number),
     reasons: Schema.optional(Schema.Array(Schema.String)),
@@ -283,7 +283,7 @@ export interface GoogleCloudRecaptchaenterpriseV1TransactionDataUser {
   phoneVerified?: boolean;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1TransactionDataUser: Schema.Schema<GoogleCloudRecaptchaenterpriseV1TransactionDataUser> =
+export const GoogleCloudRecaptchaenterpriseV1TransactionDataUser: Schema.Codec<GoogleCloudRecaptchaenterpriseV1TransactionDataUser> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.optional(Schema.String),
     phoneNumber: Schema.optional(Schema.String),
@@ -300,7 +300,7 @@ export interface GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings {
   scoreThreshold?: number;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings: Schema.Schema<GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings> =
+export const GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings: Schema.Codec<GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scoreThreshold: Schema.optional(Schema.Number),
   }).annotate({
@@ -317,7 +317,7 @@ export interface GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings
   >;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings: Schema.Schema<GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings> =
+export const GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings: Schema.Codec<GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     defaultSettings: Schema.optional(
       GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings,
@@ -359,7 +359,7 @@ export interface GoogleCloudRecaptchaenterpriseV1WebKeySettings {
   challengeSettings?: GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1WebKeySettings: Schema.Schema<GoogleCloudRecaptchaenterpriseV1WebKeySettings> =
+export const GoogleCloudRecaptchaenterpriseV1WebKeySettings: Schema.Codec<GoogleCloudRecaptchaenterpriseV1WebKeySettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowedDomains: Schema.optional(Schema.Array(Schema.String)),
     integrationType: Schema.optional(Schema.String),
@@ -382,7 +382,7 @@ export interface GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccoun
     | (string & {});
 }
 
-export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason: Schema.Schema<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason> =
+export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason: Schema.Codec<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String),
   }).annotate({
@@ -395,7 +395,7 @@ export interface GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolen
   risk?: number;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict: Schema.Schema<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict> =
+export const GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict: Schema.Codec<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     risk: Schema.optional(Schema.Number),
   }).annotate({
@@ -408,7 +408,7 @@ export interface GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavi
   trust?: number;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict: Schema.Schema<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict> =
+export const GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict: Schema.Codec<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trust: Schema.optional(Schema.Number),
   }).annotate({
@@ -421,7 +421,7 @@ export interface GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTe
   risk?: number;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict: Schema.Schema<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict> =
+export const GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict: Schema.Codec<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     risk: Schema.optional(Schema.Number),
   }).annotate({
@@ -441,7 +441,7 @@ export interface GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskRe
     | (string & {});
 }
 
-export const GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason: Schema.Schema<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason> =
+export const GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason: Schema.Codec<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String),
   }).annotate({
@@ -462,7 +462,7 @@ export interface GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment {
   riskReasons?: ReadonlyArray<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason>;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment: Schema.Schema<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment> =
+export const GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment: Schema.Codec<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transactionRisk: Schema.optional(Schema.Number),
     stolenInstrumentVerdict: Schema.optional(
@@ -494,7 +494,7 @@ export interface GoogleCloudRecaptchaenterpriseV1ChallengeMetrics {
   passedCount?: string;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1ChallengeMetrics: Schema.Schema<GoogleCloudRecaptchaenterpriseV1ChallengeMetrics> =
+export const GoogleCloudRecaptchaenterpriseV1ChallengeMetrics: Schema.Codec<GoogleCloudRecaptchaenterpriseV1ChallengeMetrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageloadCount: Schema.optional(Schema.String),
     nocaptchaCount: Schema.optional(Schema.String),
@@ -515,7 +515,7 @@ export interface GoogleCloudRecaptchaenterpriseV1Metrics {
   scoreMetrics?: ReadonlyArray<GoogleCloudRecaptchaenterpriseV1ScoreMetrics>;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1Metrics: Schema.Schema<GoogleCloudRecaptchaenterpriseV1Metrics> =
+export const GoogleCloudRecaptchaenterpriseV1Metrics: Schema.Codec<GoogleCloudRecaptchaenterpriseV1Metrics> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     challengeMetrics: Schema.optional(
@@ -538,7 +538,7 @@ export interface GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification
   lookupHashPrefix?: string;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification: Schema.Schema<GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification> =
+export const GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification: Schema.Codec<GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reencryptedUserCredentialsHash: Schema.optional(Schema.String),
     encryptedLeakMatchPrefixes: Schema.optional(Schema.Array(Schema.String)),
@@ -551,14 +551,14 @@ export const GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification: Sc
 
 export interface GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction {}
 
-export const GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction: Schema.Schema<GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction> =
+export const GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction: Schema.Codec<GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction",
   });
 
 export interface GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction {}
 
-export const GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction: Schema.Schema<GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction> =
+export const GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction: Schema.Codec<GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction",
   });
@@ -570,7 +570,7 @@ export interface GoogleCloudRecaptchaenterpriseV1IpOverrideData {
   overrideType?: "OVERRIDE_TYPE_UNSPECIFIED" | "ALLOW" | (string & {});
 }
 
-export const GoogleCloudRecaptchaenterpriseV1IpOverrideData: Schema.Schema<GoogleCloudRecaptchaenterpriseV1IpOverrideData> =
+export const GoogleCloudRecaptchaenterpriseV1IpOverrideData: Schema.Codec<GoogleCloudRecaptchaenterpriseV1IpOverrideData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ip: Schema.optional(Schema.String),
     overrideType: Schema.optional(Schema.String),
@@ -581,7 +581,7 @@ export interface GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest {
   ipOverrideData?: GoogleCloudRecaptchaenterpriseV1IpOverrideData;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest: Schema.Schema<GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest> =
+export const GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest: Schema.Codec<GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipOverrideData: Schema.optional(
       GoogleCloudRecaptchaenterpriseV1IpOverrideData,
@@ -599,7 +599,7 @@ export interface GoogleRpcStatus {
   code?: number;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
+export const GoogleRpcStatus: Schema.Codec<GoogleRpcStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -610,7 +610,7 @@ export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
 
 export interface GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction {}
 
-export const GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction: Schema.Schema<GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction> =
+export const GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction: Schema.Codec<GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction",
@@ -623,7 +623,7 @@ export interface GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction {
   value?: string;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction: Schema.Schema<GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction> =
+export const GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction: Schema.Codec<GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -633,7 +633,7 @@ export const GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction: Sche
 
 export interface GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction {}
 
-export const GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction: Schema.Schema<GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction> =
+export const GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction: Schema.Codec<GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction",
   });
@@ -643,7 +643,7 @@ export interface GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction 
   path?: string;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction: Schema.Schema<GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction> =
+export const GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction: Schema.Codec<GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
   }).annotate({
@@ -666,7 +666,7 @@ export interface GoogleCloudRecaptchaenterpriseV1FirewallAction {
   substitute?: GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1FirewallAction: Schema.Schema<GoogleCloudRecaptchaenterpriseV1FirewallAction> =
+export const GoogleCloudRecaptchaenterpriseV1FirewallAction: Schema.Codec<GoogleCloudRecaptchaenterpriseV1FirewallAction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     block: Schema.optional(
       GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction,
@@ -701,7 +701,7 @@ export interface GoogleCloudRecaptchaenterpriseV1FirewallPolicy {
   condition?: string;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1FirewallPolicy: Schema.Schema<GoogleCloudRecaptchaenterpriseV1FirewallPolicy> =
+export const GoogleCloudRecaptchaenterpriseV1FirewallPolicy: Schema.Codec<GoogleCloudRecaptchaenterpriseV1FirewallPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
@@ -719,7 +719,7 @@ export interface GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment {
   firewallPolicy?: GoogleCloudRecaptchaenterpriseV1FirewallPolicy;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment: Schema.Schema<GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment> =
+export const GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment: Schema.Codec<GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(GoogleRpcStatus),
     firewallPolicy: Schema.optional(
@@ -734,7 +734,7 @@ export interface GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest {
   skipBillingCheck?: boolean;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest: Schema.Schema<GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest> =
+export const GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest: Schema.Codec<GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     skipBillingCheck: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -760,7 +760,7 @@ export interface GoogleCloudRecaptchaenterpriseV1WafSettings {
     | (string & {});
 }
 
-export const GoogleCloudRecaptchaenterpriseV1WafSettings: Schema.Schema<GoogleCloudRecaptchaenterpriseV1WafSettings> =
+export const GoogleCloudRecaptchaenterpriseV1WafSettings: Schema.Codec<GoogleCloudRecaptchaenterpriseV1WafSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     wafService: Schema.optional(Schema.String),
     wafFeature: Schema.optional(Schema.String),
@@ -777,7 +777,7 @@ export interface GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo {
   phoneNumber?: string;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo: Schema.Schema<GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo> =
+export const GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo: Schema.Codec<GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lastVerificationTime: Schema.optional(Schema.String),
     requestToken: Schema.optional(Schema.String),
@@ -796,7 +796,7 @@ export interface GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership {
   hashedAccountId?: string;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership: Schema.Schema<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership> =
+export const GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership: Schema.Codec<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     accountId: Schema.optional(Schema.String),
@@ -807,7 +807,7 @@ export const GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership: Sche
 
 export interface GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse {}
 
-export const GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse: Schema.Schema<GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse> =
+export const GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse: Schema.Codec<GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse",
   });
@@ -821,7 +821,7 @@ export interface GoogleCloudRecaptchaenterpriseV1AppleDeveloperId {
   keyId?: string;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1AppleDeveloperId: Schema.Schema<GoogleCloudRecaptchaenterpriseV1AppleDeveloperId> =
+export const GoogleCloudRecaptchaenterpriseV1AppleDeveloperId: Schema.Codec<GoogleCloudRecaptchaenterpriseV1AppleDeveloperId> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateKey: Schema.optional(Schema.String),
     teamId: Schema.optional(Schema.String),
@@ -841,7 +841,7 @@ export interface GoogleCloudRecaptchaenterpriseV1TestingOptions {
     | (string & {});
 }
 
-export const GoogleCloudRecaptchaenterpriseV1TestingOptions: Schema.Schema<GoogleCloudRecaptchaenterpriseV1TestingOptions> =
+export const GoogleCloudRecaptchaenterpriseV1TestingOptions: Schema.Codec<GoogleCloudRecaptchaenterpriseV1TestingOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     testingScore: Schema.optional(Schema.Number),
     testingChallenge: Schema.optional(Schema.String),
@@ -856,7 +856,7 @@ export interface GoogleCloudRecaptchaenterpriseV1IOSKeySettings {
   appleDeveloperId?: GoogleCloudRecaptchaenterpriseV1AppleDeveloperId;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1IOSKeySettings: Schema.Schema<GoogleCloudRecaptchaenterpriseV1IOSKeySettings> =
+export const GoogleCloudRecaptchaenterpriseV1IOSKeySettings: Schema.Codec<GoogleCloudRecaptchaenterpriseV1IOSKeySettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowedBundleIds: Schema.optional(Schema.Array(Schema.String)),
     allowAllBundleIds: Schema.optional(Schema.Boolean),
@@ -867,7 +867,7 @@ export const GoogleCloudRecaptchaenterpriseV1IOSKeySettings: Schema.Schema<Googl
 
 export interface GoogleCloudRecaptchaenterpriseV1ExpressKeySettings {}
 
-export const GoogleCloudRecaptchaenterpriseV1ExpressKeySettings: Schema.Schema<GoogleCloudRecaptchaenterpriseV1ExpressKeySettings> =
+export const GoogleCloudRecaptchaenterpriseV1ExpressKeySettings: Schema.Codec<GoogleCloudRecaptchaenterpriseV1ExpressKeySettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudRecaptchaenterpriseV1ExpressKeySettings",
   });
@@ -881,7 +881,7 @@ export interface GoogleCloudRecaptchaenterpriseV1AndroidKeySettings {
   allowAllPackageNames?: boolean;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1AndroidKeySettings: Schema.Schema<GoogleCloudRecaptchaenterpriseV1AndroidKeySettings> =
+export const GoogleCloudRecaptchaenterpriseV1AndroidKeySettings: Schema.Codec<GoogleCloudRecaptchaenterpriseV1AndroidKeySettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowedPackageNames: Schema.optional(Schema.Array(Schema.String)),
     supportNonGoogleAppStoreDistribution: Schema.optional(Schema.Boolean),
@@ -913,7 +913,7 @@ export interface GoogleCloudRecaptchaenterpriseV1Key {
   name?: string;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1Key: Schema.Schema<GoogleCloudRecaptchaenterpriseV1Key> =
+export const GoogleCloudRecaptchaenterpriseV1Key: Schema.Codec<GoogleCloudRecaptchaenterpriseV1Key> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     testingOptions: Schema.optional(
@@ -944,7 +944,7 @@ export interface GoogleCloudRecaptchaenterpriseV1ListKeysResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1ListKeysResponse: Schema.Schema<GoogleCloudRecaptchaenterpriseV1ListKeysResponse> =
+export const GoogleCloudRecaptchaenterpriseV1ListKeysResponse: Schema.Codec<GoogleCloudRecaptchaenterpriseV1ListKeysResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keys: Schema.optional(Schema.Array(GoogleCloudRecaptchaenterpriseV1Key)),
     nextPageToken: Schema.optional(Schema.String),
@@ -957,7 +957,7 @@ export interface GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest {
   ipOverrideData?: GoogleCloudRecaptchaenterpriseV1IpOverrideData;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest: Schema.Schema<GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest> =
+export const GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest: Schema.Codec<GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipOverrideData: Schema.optional(
       GoogleCloudRecaptchaenterpriseV1IpOverrideData,
@@ -973,7 +973,7 @@ export interface GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse: Schema.Schema<GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse> =
+export const GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse: Schema.Codec<GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     firewallPolicies: Schema.optional(
       Schema.Array(GoogleCloudRecaptchaenterpriseV1FirewallPolicy),
@@ -994,7 +994,7 @@ export interface GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo {
   avsResponseCode?: string;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo: Schema.Schema<GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo> =
+export const GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo: Schema.Codec<GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     gatewayResponseCode: Schema.optional(Schema.String),
@@ -1015,7 +1015,7 @@ export interface GoogleCloudRecaptchaenterpriseV1TransactionDataItem {
   merchantAccountId?: string;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1TransactionDataItem: Schema.Schema<GoogleCloudRecaptchaenterpriseV1TransactionDataItem> =
+export const GoogleCloudRecaptchaenterpriseV1TransactionDataItem: Schema.Codec<GoogleCloudRecaptchaenterpriseV1TransactionDataItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Number),
@@ -1032,7 +1032,7 @@ export interface GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembersh
   nextPageToken?: string;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse: Schema.Schema<GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse> =
+export const GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse: Schema.Codec<GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relatedAccountGroupMemberships: Schema.optional(
       Schema.Array(
@@ -1050,7 +1050,7 @@ export interface GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment {
   smsTollFraudVerdict?: GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment: Schema.Schema<GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment> =
+export const GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment: Schema.Codec<GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     smsTollFraudVerdict: Schema.optional(
       GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict,
@@ -1064,7 +1064,7 @@ export interface GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup {
   name?: string;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup: Schema.Schema<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup> =
+export const GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup: Schema.Codec<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
@@ -1080,7 +1080,7 @@ export interface GoogleCloudRecaptchaenterpriseV1UserId {
   phoneNumber?: string;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1UserId: Schema.Schema<GoogleCloudRecaptchaenterpriseV1UserId> =
+export const GoogleCloudRecaptchaenterpriseV1UserId: Schema.Codec<GoogleCloudRecaptchaenterpriseV1UserId> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
     username: Schema.optional(Schema.String),
@@ -1096,7 +1096,7 @@ export interface GoogleCloudRecaptchaenterpriseV1UserInfo {
   accountId?: string;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1UserInfo: Schema.Schema<GoogleCloudRecaptchaenterpriseV1UserInfo> =
+export const GoogleCloudRecaptchaenterpriseV1UserInfo: Schema.Codec<GoogleCloudRecaptchaenterpriseV1UserInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createAccountTime: Schema.optional(Schema.String),
     userIds: Schema.optional(
@@ -1134,7 +1134,7 @@ export interface GoogleCloudRecaptchaenterpriseV1TransactionData {
   billingAddress?: GoogleCloudRecaptchaenterpriseV1TransactionDataAddress;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1TransactionData: Schema.Schema<GoogleCloudRecaptchaenterpriseV1TransactionData> =
+export const GoogleCloudRecaptchaenterpriseV1TransactionData: Schema.Codec<GoogleCloudRecaptchaenterpriseV1TransactionData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cardLastFour: Schema.optional(Schema.String),
     user: Schema.optional(GoogleCloudRecaptchaenterpriseV1TransactionDataUser),
@@ -1202,7 +1202,7 @@ export interface GoogleCloudRecaptchaenterpriseV1Event {
   transactionData?: GoogleCloudRecaptchaenterpriseV1TransactionData;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1Event: Schema.Schema<GoogleCloudRecaptchaenterpriseV1Event> =
+export const GoogleCloudRecaptchaenterpriseV1Event: Schema.Codec<GoogleCloudRecaptchaenterpriseV1Event> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     token: Schema.optional(Schema.String),
     express: Schema.optional(Schema.Boolean),
@@ -1233,7 +1233,7 @@ export interface GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccoun
     | (string & {});
 }
 
-export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason: Schema.Schema<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason> =
+export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason: Schema.Codec<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String),
   }).annotate({
@@ -1250,7 +1250,7 @@ export interface GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccoun
   trustReasons?: ReadonlyArray<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason>;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict: Schema.Schema<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict> =
+export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict: Schema.Codec<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     risk: Schema.optional(Schema.Number),
     riskReasons: Schema.optional(
@@ -1282,7 +1282,7 @@ export interface GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment {
   >;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment: Schema.Schema<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment> =
+export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment: Schema.Codec<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountTakeoverVerdict: Schema.optional(
       GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict,
@@ -1299,7 +1299,7 @@ export interface GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment {
   version?: string;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment: Schema.Schema<GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment> =
+export const GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment: Schema.Codec<GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     client: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
@@ -1335,7 +1335,7 @@ export interface GoogleCloudRecaptchaenterpriseV1TokenProperties {
   createTime?: string;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1TokenProperties: Schema.Schema<GoogleCloudRecaptchaenterpriseV1TokenProperties> =
+export const GoogleCloudRecaptchaenterpriseV1TokenProperties: Schema.Codec<GoogleCloudRecaptchaenterpriseV1TokenProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     androidPackageName: Schema.optional(Schema.String),
     valid: Schema.optional(Schema.Boolean),
@@ -1360,7 +1360,7 @@ export interface GoogleCloudRecaptchaenterpriseV1Bot {
     | (string & {});
 }
 
-export const GoogleCloudRecaptchaenterpriseV1Bot: Schema.Schema<GoogleCloudRecaptchaenterpriseV1Bot> =
+export const GoogleCloudRecaptchaenterpriseV1Bot: Schema.Codec<GoogleCloudRecaptchaenterpriseV1Bot> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     botType: Schema.optional(Schema.String),
@@ -1394,7 +1394,7 @@ export interface GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
   >;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1RiskAnalysis: Schema.Schema<GoogleCloudRecaptchaenterpriseV1RiskAnalysis> =
+export const GoogleCloudRecaptchaenterpriseV1RiskAnalysis: Schema.Codec<GoogleCloudRecaptchaenterpriseV1RiskAnalysis> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     extendedVerdictReasons: Schema.optional(Schema.Array(Schema.String)),
     verifiedBots: Schema.optional(
@@ -1427,7 +1427,7 @@ export interface GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo {
   languageCode?: string;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo: Schema.Schema<GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo> =
+export const GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo: Schema.Codec<GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     username: Schema.optional(Schema.String),
     latestVerificationResult: Schema.optional(Schema.String),
@@ -1466,7 +1466,7 @@ export interface GoogleCloudRecaptchaenterpriseV1Assessment {
   privatePasswordLeakVerification?: GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1Assessment: Schema.Schema<GoogleCloudRecaptchaenterpriseV1Assessment> =
+export const GoogleCloudRecaptchaenterpriseV1Assessment: Schema.Codec<GoogleCloudRecaptchaenterpriseV1Assessment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     firewallPolicyAssessment: Schema.optional(
       GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment,
@@ -1505,7 +1505,7 @@ export interface GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse: Schema.Schema<GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse> =
+export const GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse: Schema.Codec<GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipOverrides: Schema.optional(
       Schema.Array(GoogleCloudRecaptchaenterpriseV1IpOverrideData),
@@ -1526,7 +1526,7 @@ export interface GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMember
   hashedAccountId?: string;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest: Schema.Schema<GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest> =
+export const GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest: Schema.Codec<GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.optional(Schema.String),
     pageSize: Schema.optional(Schema.Number),
@@ -1544,7 +1544,7 @@ export interface GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMember
   nextPageToken?: string;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse: Schema.Schema<GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse> =
+export const GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse: Schema.Codec<GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relatedAccountGroupMemberships: Schema.optional(
       Schema.Array(
@@ -1559,7 +1559,7 @@ export const GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembership
 
 export interface GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse {}
 
-export const GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse: Schema.Schema<GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse> =
+export const GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse: Schema.Codec<GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse",
   });
@@ -1569,7 +1569,7 @@ export interface GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse
   legacySecretKey?: string;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse: Schema.Schema<GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse> =
+export const GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse: Schema.Codec<GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     legacySecretKey: Schema.optional(Schema.String),
   }).annotate({
@@ -1579,14 +1579,14 @@ export const GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse: Sc
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
+export const GoogleProtobufEmpty: Schema.Codec<GoogleProtobufEmpty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleProtobufEmpty",
   });
 
 export interface GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse {}
 
-export const GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse: Schema.Schema<GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse> =
+export const GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse: Schema.Codec<GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse",
@@ -1597,7 +1597,7 @@ export interface GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest 
   names?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest: Schema.Schema<GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest> =
+export const GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest: Schema.Codec<GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     names: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -1612,7 +1612,7 @@ export interface GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsRespons
   nextPageToken?: string;
 }
 
-export const GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse: Schema.Schema<GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse> =
+export const GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse: Schema.Codec<GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relatedAccountGroups: Schema.optional(
       Schema.Array(GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup),
@@ -1694,7 +1694,7 @@ export const ListProjectsRelatedaccountgroupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/relatedaccountgroups" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsRelatedaccountgroupsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsRelatedaccountgroupsRequest>;
 
 export type ListProjectsRelatedaccountgroupsResponse =
   GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse;
@@ -1739,7 +1739,7 @@ export const ListProjectsRelatedaccountgroupsMembershipsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/memberships" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsRelatedaccountgroupsMembershipsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsRelatedaccountgroupsMembershipsRequest>;
 
 export type ListProjectsRelatedaccountgroupsMembershipsResponse =
   GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse;
@@ -1778,7 +1778,7 @@ export const GetProjectsFirewallpoliciesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsFirewallpoliciesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsFirewallpoliciesRequest>;
 
 export type GetProjectsFirewallpoliciesResponse =
   GoogleCloudRecaptchaenterpriseV1FirewallPolicy;
@@ -1813,7 +1813,7 @@ export const DeleteProjectsFirewallpoliciesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsFirewallpoliciesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsFirewallpoliciesRequest>;
 
 export type DeleteProjectsFirewallpoliciesResponse = GoogleProtobufEmpty;
 export const DeleteProjectsFirewallpoliciesResponse =
@@ -1858,7 +1858,7 @@ export const ReorderProjectsFirewallpoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ReorderProjectsFirewallpoliciesRequest>;
+  ) as unknown as Schema.Codec<ReorderProjectsFirewallpoliciesRequest>;
 
 export type ReorderProjectsFirewallpoliciesResponse =
   GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse;
@@ -1901,7 +1901,7 @@ export const ListProjectsFirewallpoliciesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/firewallpolicies" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsFirewallpoliciesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsFirewallpoliciesRequest>;
 
 export type ListProjectsFirewallpoliciesResponse =
   GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse;
@@ -1948,7 +1948,7 @@ export const PatchProjectsFirewallpoliciesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsFirewallpoliciesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsFirewallpoliciesRequest>;
 
 export type PatchProjectsFirewallpoliciesResponse =
   GoogleCloudRecaptchaenterpriseV1FirewallPolicy;
@@ -1994,7 +1994,7 @@ export const CreateProjectsFirewallpoliciesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsFirewallpoliciesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsFirewallpoliciesRequest>;
 
 export type CreateProjectsFirewallpoliciesResponse =
   GoogleCloudRecaptchaenterpriseV1FirewallPolicy;
@@ -2039,7 +2039,7 @@ export const PatchProjectsKeysRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsKeysRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsKeysRequest>;
 
 export type PatchProjectsKeysResponse = GoogleCloudRecaptchaenterpriseV1Key;
 export const PatchProjectsKeysResponse =
@@ -2080,7 +2080,7 @@ export const MigrateProjectsKeysRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:migrate", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<MigrateProjectsKeysRequest>;
+  ) as unknown as Schema.Codec<MigrateProjectsKeysRequest>;
 
 export type MigrateProjectsKeysResponse = GoogleCloudRecaptchaenterpriseV1Key;
 export const MigrateProjectsKeysResponse =
@@ -2111,7 +2111,7 @@ export const RetrieveLegacySecretKeyProjectsKeysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "v1/{+key}:retrieveLegacySecretKey" }),
     svc,
-  ) as unknown as Schema.Schema<RetrieveLegacySecretKeyProjectsKeysRequest>;
+  ) as unknown as Schema.Codec<RetrieveLegacySecretKeyProjectsKeysRequest>;
 
 export type RetrieveLegacySecretKeyProjectsKeysResponse =
   GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse;
@@ -2151,7 +2151,7 @@ export const AddIpOverrideProjectsKeysRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:addIpOverride", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<AddIpOverrideProjectsKeysRequest>;
+  ) as unknown as Schema.Codec<AddIpOverrideProjectsKeysRequest>;
 
 export type AddIpOverrideProjectsKeysResponse =
   GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse;
@@ -2189,7 +2189,7 @@ export const GetProjectsKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetProjectsKeysRequest>;
+) as unknown as Schema.Codec<GetProjectsKeysRequest>;
 
 export type GetProjectsKeysResponse = GoogleCloudRecaptchaenterpriseV1Key;
 export const GetProjectsKeysResponse =
@@ -2225,7 +2225,7 @@ export const CreateProjectsKeysRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/keys", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsKeysRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsKeysRequest>;
 
 export type CreateProjectsKeysResponse = GoogleCloudRecaptchaenterpriseV1Key;
 export const CreateProjectsKeysResponse =
@@ -2267,7 +2267,7 @@ export const ListProjectsKeysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/keys" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsKeysRequest>;
+  ) as unknown as Schema.Codec<ListProjectsKeysRequest>;
 
 export type ListProjectsKeysResponse =
   GoogleCloudRecaptchaenterpriseV1ListKeysResponse;
@@ -2303,7 +2303,7 @@ export const DeleteProjectsKeysRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsKeysRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsKeysRequest>;
 
 export type DeleteProjectsKeysResponse = GoogleProtobufEmpty;
 export const DeleteProjectsKeysResponse =
@@ -2348,7 +2348,7 @@ export const RemoveIpOverrideProjectsKeysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveIpOverrideProjectsKeysRequest>;
+  ) as unknown as Schema.Codec<RemoveIpOverrideProjectsKeysRequest>;
 
 export type RemoveIpOverrideProjectsKeysResponse =
   GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse;
@@ -2391,7 +2391,7 @@ export const ListIpOverridesProjectsKeysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}:listIpOverrides" }),
     svc,
-  ) as unknown as Schema.Schema<ListIpOverridesProjectsKeysRequest>;
+  ) as unknown as Schema.Codec<ListIpOverridesProjectsKeysRequest>;
 
 export type ListIpOverridesProjectsKeysResponse =
   GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse;
@@ -2430,7 +2430,7 @@ export const GetMetricsProjectsKeysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetMetricsProjectsKeysRequest>;
+  ) as unknown as Schema.Codec<GetMetricsProjectsKeysRequest>;
 
 export type GetMetricsProjectsKeysResponse =
   GoogleCloudRecaptchaenterpriseV1Metrics;
@@ -2471,7 +2471,7 @@ export const SearchProjectsRelatedaccountgroupmembershipsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SearchProjectsRelatedaccountgroupmembershipsRequest>;
+  ) as unknown as Schema.Codec<SearchProjectsRelatedaccountgroupmembershipsRequest>;
 
 export type SearchProjectsRelatedaccountgroupmembershipsResponse =
   GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse;
@@ -2513,7 +2513,7 @@ export const CreateProjectsAssessmentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/assessments", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsAssessmentsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsAssessmentsRequest>;
 
 export type CreateProjectsAssessmentsResponse =
   GoogleCloudRecaptchaenterpriseV1Assessment;
@@ -2555,7 +2555,7 @@ export const AnnotateProjectsAssessmentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:annotate", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<AnnotateProjectsAssessmentsRequest>;
+  ) as unknown as Schema.Codec<AnnotateProjectsAssessmentsRequest>;
 
 export type AnnotateProjectsAssessmentsResponse =
   GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse;

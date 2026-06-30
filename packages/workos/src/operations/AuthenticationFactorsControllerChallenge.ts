@@ -4,15 +4,28 @@ import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface AuthenticationFactorsControllerChallengeInput {
+  id: string;
+  sms_template?: string;
+}
 export const AuthenticationFactorsControllerChallengeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     sms_template: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "POST", path: "/auth/factors/{id}/challenge" }));
-export type AuthenticationFactorsControllerChallengeInput =
-  typeof AuthenticationFactorsControllerChallengeInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/auth/factors/{id}/challenge" }),
+  ) as unknown as Schema.Codec<AuthenticationFactorsControllerChallengeInput>;
 
 // Output Schema
+export interface AuthenticationFactorsControllerChallengeOutput {
+  object?: string;
+  id?: string;
+  expires_at?: string;
+  code?: string;
+  authentication_factor_id?: string;
+  created_at?: string;
+  updated_at?: string;
+}
 export const AuthenticationFactorsControllerChallengeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -22,9 +35,7 @@ export const AuthenticationFactorsControllerChallengeOutput =
     authentication_factor_id: Schema.optional(Schema.String),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type AuthenticationFactorsControllerChallengeOutput =
-  typeof AuthenticationFactorsControllerChallengeOutput.Type;
+  }) as unknown as Schema.Codec<AuthenticationFactorsControllerChallengeOutput>;
 
 // The operation
 /**

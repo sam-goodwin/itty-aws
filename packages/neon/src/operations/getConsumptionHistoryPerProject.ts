@@ -4,6 +4,17 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetConsumptionHistoryPerProjectInput {
+  cursor?: string;
+  limit?: number;
+  project_ids?: string;
+  from: string;
+  to: string;
+  granularity: string;
+  org_id?: string;
+  include_v1_metrics?: boolean;
+  metrics?: string;
+}
 export const GetConsumptionHistoryPerProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cursor: Schema.optional(Schema.String),
@@ -15,11 +26,34 @@ export const GetConsumptionHistoryPerProjectInput =
     org_id: Schema.optional(Schema.String),
     include_v1_metrics: Schema.optional(Schema.Boolean),
     metrics: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/consumption_history/projects" }));
-export type GetConsumptionHistoryPerProjectInput =
-  typeof GetConsumptionHistoryPerProjectInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/consumption_history/projects" }),
+  ) as unknown as Schema.Codec<GetConsumptionHistoryPerProjectInput>;
 
 // Output Schema
+export interface GetConsumptionHistoryPerProjectOutput {
+  projects: {
+    project_id: string;
+    periods: {
+      period_id: string;
+      period_plan: string;
+      period_start: string;
+      period_end?: string;
+      consumption: {
+        timeframe_start: string;
+        timeframe_end: string;
+        active_time_seconds: number;
+        compute_time_seconds: number;
+        written_data_bytes: number;
+        synthetic_storage_size_bytes: number;
+        data_storage_bytes_hour?: number;
+        logical_size_bytes?: number;
+        logical_size_bytes_hour?: number;
+      }[];
+    }[];
+  }[];
+  pagination?: { cursor: string };
+}
 export const GetConsumptionHistoryPerProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projects: Schema.Array(
@@ -53,9 +87,7 @@ export const GetConsumptionHistoryPerProjectOutput =
         cursor: Schema.String,
       }),
     ),
-  });
-export type GetConsumptionHistoryPerProjectOutput =
-  typeof GetConsumptionHistoryPerProjectOutput.Type;
+  }) as unknown as Schema.Codec<GetConsumptionHistoryPerProjectOutput>;
 
 // The operation
 /**

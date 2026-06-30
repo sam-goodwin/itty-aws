@@ -3,6 +3,13 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface EvaluationsTestHogCreateInput {
+  project_id: string;
+  source?: string;
+  sample_count?: number;
+  allows_na?: boolean;
+  conditions?: Record<string, unknown>[];
+}
 export const EvaluationsTestHogCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -17,11 +24,21 @@ export const EvaluationsTestHogCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/evaluations/test_hog/",
     }),
-  );
-export type EvaluationsTestHogCreateInput =
-  typeof EvaluationsTestHogCreateInput.Type;
+  ) as unknown as Schema.Codec<EvaluationsTestHogCreateInput>;
 
 // Output Schema
+export interface EvaluationsTestHogCreateOutput {
+  results?: {
+    event_uuid?: string;
+    trace_id?: string | null;
+    input_preview?: string;
+    output_preview?: string;
+    result?: boolean | null;
+    reasoning?: string | null;
+    error?: string | null;
+  }[];
+  message?: string;
+}
 export const EvaluationsTestHogCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(
@@ -38,9 +55,7 @@ export const EvaluationsTestHogCreateOutput =
       ),
     ),
     message: Schema.optional(Schema.String),
-  });
-export type EvaluationsTestHogCreateOutput =
-  typeof EvaluationsTestHogCreateOutput.Type;
+  }) as unknown as Schema.Codec<EvaluationsTestHogCreateOutput>;
 
 // The operation
 /**

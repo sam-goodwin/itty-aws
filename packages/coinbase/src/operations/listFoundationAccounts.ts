@@ -3,16 +3,32 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ListFoundationAccountsInput {
+  pageSize?: number;
+  pageToken?: string;
+  type?: string;
+}
 export const ListFoundationAccountsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number),
     pageToken: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/v2/accounts" }));
-export type ListFoundationAccountsInput =
-  typeof ListFoundationAccountsInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/v2/accounts" }),
+  ) as unknown as Schema.Codec<ListFoundationAccountsInput>;
 
 // Output Schema
+export interface ListFoundationAccountsOutput {
+  accounts: {
+    accountId: string;
+    type: "prime" | "business" | "cdp";
+    owner: string;
+    name?: string;
+    createdAt: string;
+    updatedAt: string;
+  }[];
+  nextPageToken?: string;
+}
 export const ListFoundationAccountsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accounts: Schema.Array(
@@ -26,9 +42,7 @@ export const ListFoundationAccountsOutput =
       }),
     ),
     nextPageToken: Schema.optional(Schema.String),
-  });
-export type ListFoundationAccountsOutput =
-  typeof ListFoundationAccountsOutput.Type;
+  }) as unknown as Schema.Codec<ListFoundationAccountsOutput>;
 
 // The operation
 /**

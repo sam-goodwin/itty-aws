@@ -4,11 +4,12 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -17,10 +18,23 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.WindowsIoT/operations",
     apiVersion: "2019-06-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    display?: {
+      description?: string;
+      operation?: string;
+      provider?: string;
+      resource?: string;
+    };
+    isDataAction?: boolean;
+    origin?: string;
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -40,8 +54,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -54,6 +67,10 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface ServicesCheckDeviceServiceNameAvailabilityInput {
+  subscriptionId: string;
+  name: string;
+}
 export const ServicesCheckDeviceServiceNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -64,19 +81,20 @@ export const ServicesCheckDeviceServiceNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.WindowsIoT/checkDeviceServiceNameAvailability",
       apiVersion: "2019-06-01",
     }),
-  );
-export type ServicesCheckDeviceServiceNameAvailabilityInput =
-  typeof ServicesCheckDeviceServiceNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<ServicesCheckDeviceServiceNameAvailabilityInput>;
 
 // Output Schema
+export interface ServicesCheckDeviceServiceNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  reason?: "Invalid" | "AlreadyExists";
+  message?: string;
+}
 export const ServicesCheckDeviceServiceNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
-  });
-export type ServicesCheckDeviceServiceNameAvailabilityOutput =
-  typeof ServicesCheckDeviceServiceNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<ServicesCheckDeviceServiceNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -91,6 +109,21 @@ export const ServicesCheckDeviceServiceNameAvailability =
     outputSchema: ServicesCheckDeviceServiceNameAvailabilityOutput,
   }));
 // Input Schema
+export interface ServicesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  etag?: string;
+  properties?: {
+    notes?: string;
+    startDate?: string;
+    quantity?: number;
+    billingDomainName?: string;
+    adminDomainName?: string;
+  };
+  tags?: Record<string, string>;
+  location?: string;
+}
 export const ServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -114,19 +147,20 @@ export const ServicesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WindowsIoT/deviceServices/{deviceName}",
       apiVersion: "2019-06-01",
     }),
-  );
-export type ServicesCreateOrUpdateInput =
-  typeof ServicesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ServicesCreateOrUpdateInput>;
 
 // Output Schema
+export interface ServicesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ServicesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type ServicesCreateOrUpdateOutput =
-  typeof ServicesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ServicesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -147,6 +181,11 @@ export const ServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServicesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+}
 export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -157,16 +196,19 @@ export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WindowsIoT/deviceServices/{deviceName}",
     apiVersion: "2019-06-01",
   }),
-);
-export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
+) as unknown as Schema.Codec<ServicesDeleteInput>;
 
 // Output Schema
+export interface ServicesDeleteOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ServicesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type ServicesDeleteOutput = typeof ServicesDeleteOutput.Type;
+}) as unknown as Schema.Codec<ServicesDeleteOutput>;
 
 // The operation
 /**
@@ -182,6 +224,11 @@ export const ServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesDeleteOutput,
 }));
 // Input Schema
+export interface ServicesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+}
 export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -192,16 +239,19 @@ export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WindowsIoT/deviceServices/{deviceName}",
     apiVersion: "2019-06-01",
   }),
-);
-export type ServicesGetInput = typeof ServicesGetInput.Type;
+) as unknown as Schema.Codec<ServicesGetInput>;
 
 // Output Schema
+export interface ServicesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type ServicesGetOutput = typeof ServicesGetOutput.Type;
+}) as unknown as Schema.Codec<ServicesGetOutput>;
 
 // The operation
 /**
@@ -217,6 +267,9 @@ export const ServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesGetOutput,
 }));
 // Input Schema
+export interface ServicesListInput {
+  subscriptionId: string;
+}
 export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -225,10 +278,13 @@ export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.WindowsIoT/deviceServices",
     apiVersion: "2019-06-01",
   }),
-);
-export type ServicesListInput = typeof ServicesListInput.Type;
+) as unknown as Schema.Codec<ServicesListInput>;
 
 // Output Schema
+export interface ServicesListOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const ServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -240,8 +296,7 @@ export const ServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type ServicesListOutput = typeof ServicesListOutput.Type;
+}) as unknown as Schema.Codec<ServicesListOutput>;
 
 // The operation
 /**
@@ -255,6 +310,10 @@ export const ServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesListOutput,
 }));
 // Input Schema
+export interface ServicesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const ServicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -265,11 +324,13 @@ export const ServicesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WindowsIoT/deviceServices",
       apiVersion: "2019-06-01",
     }),
-  );
-export type ServicesListByResourceGroupInput =
-  typeof ServicesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ServicesListByResourceGroupInput>;
 
 // Output Schema
+export interface ServicesListByResourceGroupOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const ServicesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -282,9 +343,7 @@ export const ServicesListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ServicesListByResourceGroupOutput =
-  typeof ServicesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ServicesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -301,6 +360,21 @@ export const ServicesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServicesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  etag?: string;
+  properties?: {
+    notes?: string;
+    startDate?: string;
+    quantity?: number;
+    billingDomainName?: string;
+    adminDomainName?: string;
+  };
+  tags?: Record<string, string>;
+  location?: string;
+}
 export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -323,16 +397,19 @@ export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WindowsIoT/deviceServices/{deviceName}",
     apiVersion: "2019-06-01",
   }),
-);
-export type ServicesUpdateInput = typeof ServicesUpdateInput.Type;
+) as unknown as Schema.Codec<ServicesUpdateInput>;
 
 // Output Schema
+export interface ServicesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ServicesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type ServicesUpdateOutput = typeof ServicesUpdateOutput.Type;
+}) as unknown as Schema.Codec<ServicesUpdateOutput>;
 
 // The operation
 /**

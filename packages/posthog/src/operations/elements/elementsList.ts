@@ -4,16 +4,36 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ElementsListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const ElementsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   limit: Schema.optional(Schema.Number),
   offset: Schema.optional(Schema.Number),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/elements/" }),
-);
-export type ElementsListInput = typeof ElementsListInput.Type;
+) as unknown as Schema.Codec<ElementsListInput>;
 
 // Output Schema
+export interface ElementsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    text?: string | null;
+    tag_name?: string | null;
+    attr_class?: string[] | null;
+    href?: string | null;
+    attr_id?: string | null;
+    nth_child?: number | null;
+    nth_of_type?: number | null;
+    attributes?: unknown;
+    order?: number | null;
+  }[];
+}
 export const ElementsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
@@ -33,8 +53,7 @@ export const ElementsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type ElementsListOutput = typeof ElementsListOutput.Type;
+}) as unknown as Schema.Codec<ElementsListOutput>;
 
 // The operation
 /**

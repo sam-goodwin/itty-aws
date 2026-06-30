@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface AttestationSource {
   containerAnalysisAttestationProjects?: ReadonlyArray<string>;
 }
 
-export const AttestationSource: Schema.Schema<AttestationSource> =
+export const AttestationSource: Schema.Codec<AttestationSource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     containerAnalysisAttestationProjects: Schema.optional(
       Schema.Array(Schema.String),
@@ -47,7 +47,7 @@ export interface VerificationRule {
   configBasedBuildRequired?: boolean;
 }
 
-export const VerificationRule: Schema.Schema<VerificationRule> =
+export const VerificationRule: Schema.Codec<VerificationRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attestationSource: Schema.optional(AttestationSource),
     trustedSourceRepoPatterns: Schema.optional(Schema.Array(Schema.String)),
@@ -61,7 +61,7 @@ export interface SlsaCheck {
   rules?: ReadonlyArray<VerificationRule>;
 }
 
-export const SlsaCheck: Schema.Schema<SlsaCheck> =
+export const SlsaCheck: Schema.Codec<SlsaCheck> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rules: Schema.optional(Schema.Array(VerificationRule)),
   }).annotate({ identifier: "SlsaCheck" });
@@ -97,7 +97,7 @@ export interface VulnerabilityCheck {
     | (string & {});
 }
 
-export const VulnerabilityCheck: Schema.Schema<VulnerabilityCheck> =
+export const VulnerabilityCheck: Schema.Codec<VulnerabilityCheck> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     containerAnalysisVulnerabilityProjects: Schema.optional(
       Schema.Array(Schema.String),
@@ -113,7 +113,7 @@ export interface ImageAllowlist {
   allowPattern?: ReadonlyArray<string>;
 }
 
-export const ImageAllowlist: Schema.Schema<ImageAllowlist> =
+export const ImageAllowlist: Schema.Codec<ImageAllowlist> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowPattern: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ImageAllowlist" });
@@ -147,7 +147,7 @@ export interface PkixPublicKey {
   keyId?: string;
 }
 
-export const PkixPublicKey: Schema.Schema<PkixPublicKey> =
+export const PkixPublicKey: Schema.Codec<PkixPublicKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publicKeyPem: Schema.optional(Schema.String),
     signatureAlgorithm: Schema.optional(Schema.String),
@@ -159,7 +159,7 @@ export interface PkixPublicKeySet {
   pkixPublicKeys?: ReadonlyArray<PkixPublicKey>;
 }
 
-export const PkixPublicKeySet: Schema.Schema<PkixPublicKeySet> =
+export const PkixPublicKeySet: Schema.Codec<PkixPublicKeySet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pkixPublicKeys: Schema.optional(Schema.Array(PkixPublicKey)),
   }).annotate({ identifier: "PkixPublicKeySet" });
@@ -171,7 +171,7 @@ export interface AttestationAuthenticator {
   pkixPublicKeySet?: PkixPublicKeySet;
 }
 
-export const AttestationAuthenticator: Schema.Schema<AttestationAuthenticator> =
+export const AttestationAuthenticator: Schema.Codec<AttestationAuthenticator> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     pkixPublicKeySet: Schema.optional(PkixPublicKeySet),
@@ -184,7 +184,7 @@ export interface SimpleSigningAttestationCheck {
   containerAnalysisAttestationProjects?: ReadonlyArray<string>;
 }
 
-export const SimpleSigningAttestationCheck: Schema.Schema<SimpleSigningAttestationCheck> =
+export const SimpleSigningAttestationCheck: Schema.Codec<SimpleSigningAttestationCheck> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attestationAuthenticators: Schema.optional(
       Schema.Array(AttestationAuthenticator),
@@ -199,7 +199,7 @@ export interface ImageFreshnessCheck {
   maxUploadAgeDays?: number;
 }
 
-export const ImageFreshnessCheck: Schema.Schema<ImageFreshnessCheck> =
+export const ImageFreshnessCheck: Schema.Codec<ImageFreshnessCheck> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxUploadAgeDays: Schema.optional(Schema.Number),
   }).annotate({ identifier: "ImageFreshnessCheck" });
@@ -209,7 +209,7 @@ export interface SigstorePublicKey {
   publicKeyPem?: string;
 }
 
-export const SigstorePublicKey: Schema.Schema<SigstorePublicKey> =
+export const SigstorePublicKey: Schema.Codec<SigstorePublicKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publicKeyPem: Schema.optional(Schema.String),
   }).annotate({ identifier: "SigstorePublicKey" });
@@ -219,7 +219,7 @@ export interface SigstorePublicKeySet {
   publicKeys?: ReadonlyArray<SigstorePublicKey>;
 }
 
-export const SigstorePublicKeySet: Schema.Schema<SigstorePublicKeySet> =
+export const SigstorePublicKeySet: Schema.Codec<SigstorePublicKeySet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publicKeys: Schema.optional(Schema.Array(SigstorePublicKey)),
   }).annotate({ identifier: "SigstorePublicKeySet" });
@@ -231,7 +231,7 @@ export interface SigstoreAuthority {
   publicKeySet?: SigstorePublicKeySet;
 }
 
-export const SigstoreAuthority: Schema.Schema<SigstoreAuthority> =
+export const SigstoreAuthority: Schema.Codec<SigstoreAuthority> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     publicKeySet: Schema.optional(SigstorePublicKeySet),
@@ -242,7 +242,7 @@ export interface SigstoreSignatureCheck {
   sigstoreAuthorities?: ReadonlyArray<SigstoreAuthority>;
 }
 
-export const SigstoreSignatureCheck: Schema.Schema<SigstoreSignatureCheck> =
+export const SigstoreSignatureCheck: Schema.Codec<SigstoreSignatureCheck> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sigstoreAuthorities: Schema.optional(Schema.Array(SigstoreAuthority)),
   }).annotate({ identifier: "SigstoreSignatureCheck" });
@@ -252,7 +252,7 @@ export interface TrustedDirectoryCheck {
   trustedDirPatterns?: ReadonlyArray<string>;
 }
 
-export const TrustedDirectoryCheck: Schema.Schema<TrustedDirectoryCheck> =
+export const TrustedDirectoryCheck: Schema.Codec<TrustedDirectoryCheck> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     trustedDirPatterns: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TrustedDirectoryCheck" });
@@ -278,7 +278,7 @@ export interface Check {
   displayName?: string;
 }
 
-export const Check: Schema.Schema<Check> =
+export const Check: Schema.Codec<Check> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     slsaCheck: Schema.optional(SlsaCheck),
     vulnerabilityCheck: Schema.optional(VulnerabilityCheck),
@@ -300,7 +300,7 @@ export interface Scope {
   kubernetesServiceAccount?: string;
 }
 
-export const Scope: Schema.Schema<Scope> =
+export const Scope: Schema.Codec<Scope> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kubernetesNamespace: Schema.optional(Schema.String),
     kubernetesServiceAccount: Schema.optional(Schema.String),
@@ -317,7 +317,7 @@ export interface CheckSet {
   displayName?: string;
 }
 
-export const CheckSet: Schema.Schema<CheckSet> =
+export const CheckSet: Schema.Codec<CheckSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.optional(Scope),
     imageAllowlist: Schema.optional(ImageAllowlist),
@@ -332,7 +332,7 @@ export interface GkePolicy {
   checkSets?: ReadonlyArray<CheckSet>;
 }
 
-export const GkePolicy: Schema.Schema<GkePolicy> =
+export const GkePolicy: Schema.Codec<GkePolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     imageAllowlist: Schema.optional(ImageAllowlist),
     checkSets: Schema.optional(Schema.Array(CheckSet)),
@@ -343,7 +343,7 @@ export interface TestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
+export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
@@ -353,7 +353,7 @@ export interface AllowlistResult {
   matchedPattern?: string;
 }
 
-export const AllowlistResult: Schema.Schema<AllowlistResult> =
+export const AllowlistResult: Schema.Codec<AllowlistResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     matchedPattern: Schema.optional(Schema.String),
   }).annotate({ identifier: "AllowlistResult" });
@@ -368,7 +368,7 @@ export interface EvaluationResult {
     | (string & {});
 }
 
-export const EvaluationResult: Schema.Schema<EvaluationResult> =
+export const EvaluationResult: Schema.Codec<EvaluationResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verdict: Schema.optional(Schema.String),
   }).annotate({ identifier: "EvaluationResult" });
@@ -388,7 +388,7 @@ export interface CheckResult {
   explanation?: string;
 }
 
-export const CheckResult: Schema.Schema<CheckResult> =
+export const CheckResult: Schema.Codec<CheckResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowlistResult: Schema.optional(AllowlistResult),
     type: Schema.optional(Schema.String),
@@ -403,7 +403,7 @@ export interface CheckResults {
   results?: ReadonlyArray<CheckResult>;
 }
 
-export const CheckResults: Schema.Schema<CheckResults> =
+export const CheckResults: Schema.Codec<CheckResults> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(Schema.Array(CheckResult)),
   }).annotate({ identifier: "CheckResults" });
@@ -413,10 +413,11 @@ export interface Jwt {
   compactJwt?: string;
 }
 
-export const Jwt: Schema.Schema<Jwt> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Jwt: Schema.Codec<Jwt> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     compactJwt: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Jwt" });
+  },
+).annotate({ identifier: "Jwt" });
 
 export interface Signature {
   /** The identifier for the public key that verifies this signature. * The `public_key_id` is required. * The `public_key_id` SHOULD be an RFC3986 conformant URI. * When possible, the `public_key_id` SHOULD be an immutable reference, such as a cryptographic digest. Examples of valid `public_key_id`s: OpenPGP V4 public key fingerprint: * "openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA" See https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr for more details on this scheme. RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization): * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU" * "nih:///sha-256;703f68f42aba2c6de30f488a5ea122fef76324679c9bf89791ba95a1271589a5" */
@@ -425,7 +426,7 @@ export interface Signature {
   signature?: string;
 }
 
-export const Signature: Schema.Schema<Signature> =
+export const Signature: Schema.Codec<Signature> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publicKeyId: Schema.optional(Schema.String),
     signature: Schema.optional(Schema.String),
@@ -440,7 +441,7 @@ export interface AttestationOccurrence {
   signatures?: ReadonlyArray<Signature>;
 }
 
-export const AttestationOccurrence: Schema.Schema<AttestationOccurrence> =
+export const AttestationOccurrence: Schema.Codec<AttestationOccurrence> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serializedPayload: Schema.optional(Schema.String),
     jwts: Schema.optional(Schema.Array(Jwt)),
@@ -456,7 +457,7 @@ export interface ValidateAttestationOccurrenceRequest {
   occurrenceResourceUri?: string;
 }
 
-export const ValidateAttestationOccurrenceRequest: Schema.Schema<ValidateAttestationOccurrenceRequest> =
+export const ValidateAttestationOccurrenceRequest: Schema.Codec<ValidateAttestationOccurrenceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attestation: Schema.optional(AttestationOccurrence),
     occurrenceNote: Schema.optional(Schema.String),
@@ -474,7 +475,7 @@ export interface Expr {
   expression?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
+export const Expr: Schema.Codec<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -491,7 +492,7 @@ export interface Binding {
   role?: string;
 }
 
-export const Binding: Schema.Schema<Binding> =
+export const Binding: Schema.Codec<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     members: Schema.optional(Schema.Array(Schema.String)),
     condition: Schema.optional(Expr),
@@ -509,7 +510,7 @@ export interface AttestorPublicKey {
   asciiArmoredPgpPublicKey?: string;
 }
 
-export const AttestorPublicKey: Schema.Schema<AttestorPublicKey> =
+export const AttestorPublicKey: Schema.Codec<AttestorPublicKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     comment: Schema.optional(Schema.String),
     pkixPublicKey: Schema.optional(PkixPublicKey),
@@ -526,7 +527,7 @@ export interface IamPolicy {
   version?: number;
 }
 
-export const IamPolicy: Schema.Schema<IamPolicy> =
+export const IamPolicy: Schema.Codec<IamPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     bindings: Schema.optional(Schema.Array(Binding)),
@@ -538,7 +539,7 @@ export interface SetIamPolicyRequest {
   policy?: IamPolicy;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(IamPolicy),
   }).annotate({ identifier: "SetIamPolicyRequest" });
@@ -552,7 +553,7 @@ export interface UserOwnedGrafeasNote {
   delegationServiceAccountEmail?: string;
 }
 
-export const UserOwnedGrafeasNote: Schema.Schema<UserOwnedGrafeasNote> =
+export const UserOwnedGrafeasNote: Schema.Codec<UserOwnedGrafeasNote> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     noteReference: Schema.optional(Schema.String),
     publicKeys: Schema.optional(Schema.Array(AttestorPublicKey)),
@@ -572,7 +573,7 @@ export interface Attestor {
   etag?: string;
 }
 
-export const Attestor: Schema.Schema<Attestor> =
+export const Attestor: Schema.Codec<Attestor> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -588,7 +589,7 @@ export interface ListAttestorsResponse {
   nextPageToken?: string;
 }
 
-export const ListAttestorsResponse: Schema.Schema<ListAttestorsResponse> =
+export const ListAttestorsResponse: Schema.Codec<ListAttestorsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     attestors: Schema.optional(Schema.Array(Attestor)),
     nextPageToken: Schema.optional(Schema.String),
@@ -612,7 +613,7 @@ export interface AdmissionRule {
   requireAttestationsBy?: ReadonlyArray<string>;
 }
 
-export const AdmissionRule: Schema.Schema<AdmissionRule> =
+export const AdmissionRule: Schema.Codec<AdmissionRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     evaluationMode: Schema.optional(Schema.String),
     enforcementMode: Schema.optional(Schema.String),
@@ -624,7 +625,7 @@ export interface AdmissionWhitelistPattern {
   namePattern?: string;
 }
 
-export const AdmissionWhitelistPattern: Schema.Schema<AdmissionWhitelistPattern> =
+export const AdmissionWhitelistPattern: Schema.Codec<AdmissionWhitelistPattern> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namePattern: Schema.optional(Schema.String),
   }).annotate({ identifier: "AdmissionWhitelistPattern" });
@@ -658,7 +659,7 @@ export interface Policy {
   clusterAdmissionRules?: Record<string, AdmissionRule>;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -698,7 +699,7 @@ export interface CheckSetResult {
   checkResults?: CheckResults;
 }
 
-export const CheckSetResult: Schema.Schema<CheckSetResult> =
+export const CheckSetResult: Schema.Codec<CheckSetResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowlistResult: Schema.optional(AllowlistResult),
     scope: Schema.optional(Scope),
@@ -726,7 +727,7 @@ export interface ImageResult {
   checkSetResult?: CheckSetResult;
 }
 
-export const ImageResult: Schema.Schema<ImageResult> =
+export const ImageResult: Schema.Codec<ImageResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     imageUri: Schema.optional(Schema.String),
     explanation: Schema.optional(Schema.String),
@@ -753,7 +754,7 @@ export interface PodResult {
   imageResults?: ReadonlyArray<ImageResult>;
 }
 
-export const PodResult: Schema.Schema<PodResult> =
+export const PodResult: Schema.Codec<PodResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kubernetesServiceAccount: Schema.optional(Schema.String),
     kubernetesNamespace: Schema.optional(Schema.String),
@@ -774,7 +775,7 @@ export interface EvaluateGkePolicyResponse {
   results?: ReadonlyArray<PodResult>;
 }
 
-export const EvaluateGkePolicyResponse: Schema.Schema<EvaluateGkePolicyResponse> =
+export const EvaluateGkePolicyResponse: Schema.Codec<EvaluateGkePolicyResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verdict: Schema.optional(Schema.String),
     results: Schema.optional(Schema.Array(PodResult)),
@@ -793,7 +794,7 @@ export interface PlatformPolicy {
   name?: string;
 }
 
-export const PlatformPolicy: Schema.Schema<PlatformPolicy> =
+export const PlatformPolicy: Schema.Codec<PlatformPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gkePolicy: Schema.optional(GkePolicy),
     description: Schema.optional(Schema.String),
@@ -809,7 +810,7 @@ export interface ListPlatformPoliciesResponse {
   nextPageToken?: string;
 }
 
-export const ListPlatformPoliciesResponse: Schema.Schema<ListPlatformPoliciesResponse> =
+export const ListPlatformPoliciesResponse: Schema.Codec<ListPlatformPoliciesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     platformPolicies: Schema.optional(Schema.Array(PlatformPolicy)),
     nextPageToken: Schema.optional(Schema.String),
@@ -817,7 +818,7 @@ export const ListPlatformPoliciesResponse: Schema.Schema<ListPlatformPoliciesRes
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -827,7 +828,7 @@ export interface EvaluateGkePolicyRequest {
   resource?: Record<string, unknown>;
 }
 
-export const EvaluateGkePolicyRequest: Schema.Schema<EvaluateGkePolicyRequest> =
+export const EvaluateGkePolicyRequest: Schema.Codec<EvaluateGkePolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({ identifier: "EvaluateGkePolicyRequest" });
@@ -843,7 +844,7 @@ export interface ValidateAttestationOccurrenceResponse {
     | (string & {});
 }
 
-export const ValidateAttestationOccurrenceResponse: Schema.Schema<ValidateAttestationOccurrenceResponse> =
+export const ValidateAttestationOccurrenceResponse: Schema.Codec<ValidateAttestationOccurrenceResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     denialReason: Schema.optional(Schema.String),
     result: Schema.optional(Schema.String),
@@ -854,7 +855,7 @@ export interface TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
@@ -927,7 +928,7 @@ export const UpdatePolicyProjectsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdatePolicyProjectsRequest>;
+  ) as unknown as Schema.Codec<UpdatePolicyProjectsRequest>;
 
 export type UpdatePolicyProjectsResponse = Policy;
 export const UpdatePolicyProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -962,7 +963,7 @@ export const GetPolicyProjectsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPolicyProjectsRequest>;
+  ) as unknown as Schema.Codec<GetPolicyProjectsRequest>;
 
 export type GetPolicyProjectsResponse = Policy;
 export const GetPolicyProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -995,7 +996,7 @@ export const EvaluateProjectsPlatformsGkePoliciesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:evaluate", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<EvaluateProjectsPlatformsGkePoliciesRequest>;
+  ) as unknown as Schema.Codec<EvaluateProjectsPlatformsGkePoliciesRequest>;
 
 export type EvaluateProjectsPlatformsGkePoliciesResponse =
   EvaluateGkePolicyResponse;
@@ -1035,7 +1036,7 @@ export const DeleteProjectsPlatformsPoliciesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsPlatformsPoliciesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsPlatformsPoliciesRequest>;
 
 export type DeleteProjectsPlatformsPoliciesResponse = Empty;
 export const DeleteProjectsPlatformsPoliciesResponse =
@@ -1077,7 +1078,7 @@ export const ListProjectsPlatformsPoliciesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/policies" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsPlatformsPoliciesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsPlatformsPoliciesRequest>;
 
 export type ListProjectsPlatformsPoliciesResponse =
   ListPlatformPoliciesResponse;
@@ -1119,7 +1120,7 @@ export const ReplacePlatformPolicyProjectsPlatformsPoliciesRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ReplacePlatformPolicyProjectsPlatformsPoliciesRequest>;
+  ) as unknown as Schema.Codec<ReplacePlatformPolicyProjectsPlatformsPoliciesRequest>;
 
 export type ReplacePlatformPolicyProjectsPlatformsPoliciesResponse =
   PlatformPolicy;
@@ -1156,7 +1157,7 @@ export const GetProjectsPlatformsPoliciesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsPlatformsPoliciesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsPlatformsPoliciesRequest>;
 
 export type GetProjectsPlatformsPoliciesResponse = PlatformPolicy;
 export const GetProjectsPlatformsPoliciesResponse =
@@ -1196,7 +1197,7 @@ export const CreateProjectsPlatformsPoliciesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/policies", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsPlatformsPoliciesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsPlatformsPoliciesRequest>;
 
 export type CreateProjectsPlatformsPoliciesResponse = PlatformPolicy;
 export const CreateProjectsPlatformsPoliciesResponse =
@@ -1237,7 +1238,7 @@ export const GetIamPolicyProjectsAttestorsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsAttestorsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsAttestorsRequest>;
 
 export type GetIamPolicyProjectsAttestorsResponse = IamPolicy;
 export const GetIamPolicyProjectsAttestorsResponse =
@@ -1271,7 +1272,7 @@ export const DeleteProjectsAttestorsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsAttestorsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsAttestorsRequest>;
 
 export type DeleteProjectsAttestorsResponse = Empty;
 export const DeleteProjectsAttestorsResponse =
@@ -1313,7 +1314,7 @@ export const CreateProjectsAttestorsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/attestors", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsAttestorsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsAttestorsRequest>;
 
 export type CreateProjectsAttestorsResponse = Attestor;
 export const CreateProjectsAttestorsResponse =
@@ -1358,7 +1359,7 @@ export const ValidateAttestationOccurrenceProjectsAttestorsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ValidateAttestationOccurrenceProjectsAttestorsRequest>;
+  ) as unknown as Schema.Codec<ValidateAttestationOccurrenceProjectsAttestorsRequest>;
 
 export type ValidateAttestationOccurrenceProjectsAttestorsResponse =
   ValidateAttestationOccurrenceResponse;
@@ -1401,7 +1402,7 @@ export const ListProjectsAttestorsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/attestors" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsAttestorsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsAttestorsRequest>;
 
 export type ListProjectsAttestorsResponse = ListAttestorsResponse;
 export const ListProjectsAttestorsResponse =
@@ -1443,7 +1444,7 @@ export const SetIamPolicyProjectsAttestorsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsAttestorsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsAttestorsRequest>;
 
 export type SetIamPolicyProjectsAttestorsResponse = IamPolicy;
 export const SetIamPolicyProjectsAttestorsResponse =
@@ -1486,7 +1487,7 @@ export const TestIamPermissionsProjectsAttestorsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsAttestorsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsAttestorsRequest>;
 
 export type TestIamPermissionsProjectsAttestorsResponse =
   TestIamPermissionsResponse;
@@ -1526,7 +1527,7 @@ export const UpdateProjectsAttestorsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateProjectsAttestorsRequest>;
+  ) as unknown as Schema.Codec<UpdateProjectsAttestorsRequest>;
 
 export type UpdateProjectsAttestorsResponse = Attestor;
 export const UpdateProjectsAttestorsResponse =
@@ -1562,7 +1563,7 @@ export const GetProjectsAttestorsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsAttestorsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsAttestorsRequest>;
 
 export type GetProjectsAttestorsResponse = Attestor;
 export const GetProjectsAttestorsResponse =
@@ -1600,7 +1601,7 @@ export const TestIamPermissionsProjectsPolicyRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsPolicyRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsPolicyRequest>;
 
 export type TestIamPermissionsProjectsPolicyResponse =
   TestIamPermissionsResponse;
@@ -1644,7 +1645,7 @@ export const SetIamPolicyProjectsPolicyRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsPolicyRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsPolicyRequest>;
 
 export type SetIamPolicyProjectsPolicyResponse = IamPolicy;
 export const SetIamPolicyProjectsPolicyResponse =
@@ -1685,7 +1686,7 @@ export const GetIamPolicyProjectsPolicyRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsPolicyRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsPolicyRequest>;
 
 export type GetIamPolicyProjectsPolicyResponse = IamPolicy;
 export const GetIamPolicyProjectsPolicyResponse =
@@ -1719,7 +1720,7 @@ export const GetPolicySystempolicyRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPolicySystempolicyRequest>;
+  ) as unknown as Schema.Codec<GetPolicySystempolicyRequest>;
 
 export type GetPolicySystempolicyResponse = Policy;
 export const GetPolicySystempolicyResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;

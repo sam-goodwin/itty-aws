@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface CustomerJourneysRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const CustomerJourneysRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +16,18 @@ export const CustomerJourneysRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/customer_journeys/{id}/",
     }),
-  );
-export type CustomerJourneysRetrieveInput =
-  typeof CustomerJourneysRetrieveInput.Type;
+  ) as unknown as Schema.Codec<CustomerJourneysRetrieveInput>;
 
 // Output Schema
+export interface CustomerJourneysRetrieveOutput {
+  id?: string;
+  insight?: number;
+  name?: string;
+  description?: string | null;
+  created_at?: string;
+  created_by?: number | null;
+  updated_at?: string | null;
+}
 export const CustomerJourneysRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -26,9 +37,7 @@ export const CustomerJourneysRetrieveOutput =
     created_at: Schema.optional(Schema.String),
     created_by: Schema.optional(Schema.NullOr(Schema.Number)),
     updated_at: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type CustomerJourneysRetrieveOutput =
-  typeof CustomerJourneysRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<CustomerJourneysRetrieveOutput>;
 
 // The operation
 /**

@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface InsightsAnalyzeRetrieveInput {
+  id: number;
+  project_id: string;
+  format?: "csv" | "json";
+}
 export const InsightsAnalyzeRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const InsightsAnalyzeRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/insights/{id}/analyze/",
     }),
-  );
-export type InsightsAnalyzeRetrieveInput =
-  typeof InsightsAnalyzeRetrieveInput.Type;
+  ) as unknown as Schema.Codec<InsightsAnalyzeRetrieveInput>;
 
 // Output Schema
+export type InsightsAnalyzeRetrieveOutput = void;
 export const InsightsAnalyzeRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type InsightsAnalyzeRetrieveOutput =
-  typeof InsightsAnalyzeRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<InsightsAnalyzeRetrieveOutput>;
 
 // The operation
 /**

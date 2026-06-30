@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface GoogleExampleLibraryagentV1Shelf {
   theme?: string;
 }
 
-export const GoogleExampleLibraryagentV1Shelf: Schema.Schema<GoogleExampleLibraryagentV1Shelf> =
+export const GoogleExampleLibraryagentV1Shelf: Schema.Codec<GoogleExampleLibraryagentV1Shelf> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     theme: Schema.optional(Schema.String),
@@ -42,7 +42,7 @@ export interface GoogleExampleLibraryagentV1ListShelvesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleExampleLibraryagentV1ListShelvesResponse: Schema.Schema<GoogleExampleLibraryagentV1ListShelvesResponse> =
+export const GoogleExampleLibraryagentV1ListShelvesResponse: Schema.Codec<GoogleExampleLibraryagentV1ListShelvesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     shelves: Schema.optional(Schema.Array(GoogleExampleLibraryagentV1Shelf)),
     nextPageToken: Schema.optional(Schema.String),
@@ -59,7 +59,7 @@ export interface GoogleExampleLibraryagentV1Book {
   title?: string;
 }
 
-export const GoogleExampleLibraryagentV1Book: Schema.Schema<GoogleExampleLibraryagentV1Book> =
+export const GoogleExampleLibraryagentV1Book: Schema.Codec<GoogleExampleLibraryagentV1Book> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     read: Schema.optional(Schema.Boolean),
@@ -74,7 +74,7 @@ export interface GoogleExampleLibraryagentV1ListBooksResponse {
   nextPageToken?: string;
 }
 
-export const GoogleExampleLibraryagentV1ListBooksResponse: Schema.Schema<GoogleExampleLibraryagentV1ListBooksResponse> =
+export const GoogleExampleLibraryagentV1ListBooksResponse: Schema.Codec<GoogleExampleLibraryagentV1ListBooksResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     books: Schema.optional(Schema.Array(GoogleExampleLibraryagentV1Book)),
     nextPageToken: Schema.optional(Schema.String),
@@ -144,7 +144,7 @@ export const GetShelvesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetShelvesRequest>;
+) as unknown as Schema.Codec<GetShelvesRequest>;
 
 export type GetShelvesResponse = GoogleExampleLibraryagentV1Shelf;
 export const GetShelvesResponse =
@@ -177,7 +177,7 @@ export const ListShelvesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/shelves" }),
   svc,
-) as unknown as Schema.Schema<ListShelvesRequest>;
+) as unknown as Schema.Codec<ListShelvesRequest>;
 
 export type ListShelvesResponse =
   GoogleExampleLibraryagentV1ListShelvesResponse;
@@ -213,7 +213,7 @@ export const BorrowShelvesBooksRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:borrow", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<BorrowShelvesBooksRequest>;
+  ) as unknown as Schema.Codec<BorrowShelvesBooksRequest>;
 
 export type BorrowShelvesBooksResponse = GoogleExampleLibraryagentV1Book;
 export const BorrowShelvesBooksResponse =
@@ -250,7 +250,7 @@ export const GetShelvesBooksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetShelvesBooksRequest>;
+) as unknown as Schema.Codec<GetShelvesBooksRequest>;
 
 export type GetShelvesBooksResponse = GoogleExampleLibraryagentV1Book;
 export const GetShelvesBooksResponse =
@@ -287,7 +287,7 @@ export const ListShelvesBooksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/books" }),
     svc,
-  ) as unknown as Schema.Schema<ListShelvesBooksRequest>;
+  ) as unknown as Schema.Codec<ListShelvesBooksRequest>;
 
 export type ListShelvesBooksResponse =
   GoogleExampleLibraryagentV1ListBooksResponse;
@@ -323,7 +323,7 @@ export const ReturnShelvesBooksRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:return", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ReturnShelvesBooksRequest>;
+  ) as unknown as Schema.Codec<ReturnShelvesBooksRequest>;
 
 export type ReturnShelvesBooksResponse = GoogleExampleLibraryagentV1Book;
 export const ReturnShelvesBooksResponse =

@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface RestartGroupClusterPrimariesInput {
+  groupId: string;
+  clusterName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const RestartGroupClusterPrimariesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const RestartGroupClusterPrimariesInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restartPrimaries",
     }),
-  );
-export type RestartGroupClusterPrimariesInput =
-  typeof RestartGroupClusterPrimariesInput.Type;
+  ) as unknown as Schema.Codec<RestartGroupClusterPrimariesInput>;
 
 // Output Schema
+export type RestartGroupClusterPrimariesOutput = void;
 export const RestartGroupClusterPrimariesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RestartGroupClusterPrimariesOutput =
-  typeof RestartGroupClusterPrimariesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RestartGroupClusterPrimariesOutput>;
 
 // The operation
 /**

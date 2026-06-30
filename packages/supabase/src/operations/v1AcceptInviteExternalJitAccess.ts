@@ -3,6 +3,11 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface V1AcceptInviteExternalJitAccessInput {
+  ref: string;
+  email: string;
+  token: string;
+}
 export const V1AcceptInviteExternalJitAccessInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,21 @@ export const V1AcceptInviteExternalJitAccessInput =
       method: "POST",
       path: "/v1/projects/{ref}/database/jit/invite/accept",
     }),
-  );
-export type V1AcceptInviteExternalJitAccessInput =
-  typeof V1AcceptInviteExternalJitAccessInput.Type;
+  ) as unknown as Schema.Codec<V1AcceptInviteExternalJitAccessInput>;
 
 // Output Schema
+export interface V1AcceptInviteExternalJitAccessOutput {
+  user_id?: string;
+  user_roles: {
+    role: string;
+    expires_at?: number;
+    allowed_networks?: {
+      allowed_cidrs?: { cidr: string }[];
+      allowed_cidrs_v6?: { cidr: string }[];
+    };
+    branches_only?: boolean;
+  }[];
+}
 export const V1AcceptInviteExternalJitAccessOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     user_id: Schema.optional(Schema.String),
@@ -46,9 +61,7 @@ export const V1AcceptInviteExternalJitAccessOutput =
         branches_only: Schema.optional(Schema.Boolean),
       }),
     ),
-  });
-export type V1AcceptInviteExternalJitAccessOutput =
-  typeof V1AcceptInviteExternalJitAccessOutput.Type;
+  }) as unknown as Schema.Codec<V1AcceptInviteExternalJitAccessOutput>;
 
 // The operation
 /**

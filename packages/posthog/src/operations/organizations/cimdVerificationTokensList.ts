@@ -3,6 +3,11 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface CimdVerificationTokensListInput {
+  organization_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const CimdVerificationTokensListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,42 @@ export const CimdVerificationTokensListInput =
       method: "GET",
       path: "/api/organizations/{organization_id}/cimd_verification_tokens/",
     }),
-  );
-export type CimdVerificationTokensListInput =
-  typeof CimdVerificationTokensListInput.Type;
+  ) as unknown as Schema.Codec<CimdVerificationTokensListInput>;
 
 // Output Schema
+export interface CimdVerificationTokensListOutput {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: {
+    id: string;
+    label: string;
+    mask_value: string | null;
+    created_by: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    };
+    created_at: string;
+    last_used_at: string | null;
+  }[];
+}
 export const CimdVerificationTokensListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.Number,
@@ -39,15 +75,29 @@ export const CimdVerificationTokensListOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
         created_at: Schema.String,
         last_used_at: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type CimdVerificationTokensListOutput =
-  typeof CimdVerificationTokensListOutput.Type;
+  }) as unknown as Schema.Codec<CimdVerificationTokensListOutput>;
 
 // The operation
 /**

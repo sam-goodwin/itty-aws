@@ -3,6 +3,14 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetFinancialConnectionsAccountsAccountOwnersInput {
+  account: string;
+  ending_before?: string;
+  expand?: string;
+  limit?: number;
+  ownership: string;
+  starting_after?: string;
+}
 export const GetFinancialConnectionsAccountsAccountOwnersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
@@ -17,11 +25,24 @@ export const GetFinancialConnectionsAccountsAccountOwnersInput =
       path: "/v1/financial_connections/accounts/{account}/owners",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetFinancialConnectionsAccountsAccountOwnersInput =
-  typeof GetFinancialConnectionsAccountsAccountOwnersInput.Type;
+  ) as unknown as Schema.Codec<GetFinancialConnectionsAccountsAccountOwnersInput>;
 
 // Output Schema
+export interface GetFinancialConnectionsAccountsAccountOwnersOutput {
+  data: {
+    email: string | null;
+    id: string;
+    name: string;
+    object: "financial_connections.account_owner";
+    ownership: string;
+    phone: string | null;
+    raw_address: string | null;
+    refreshed_at: number | null;
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetFinancialConnectionsAccountsAccountOwnersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -39,9 +60,7 @@ export const GetFinancialConnectionsAccountsAccountOwnersOutput =
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,
-  });
-export type GetFinancialConnectionsAccountsAccountOwnersOutput =
-  typeof GetFinancialConnectionsAccountsAccountOwnersOutput.Type;
+  }) as unknown as Schema.Codec<GetFinancialConnectionsAccountsAccountOwnersOutput>;
 
 // The operation
 /**

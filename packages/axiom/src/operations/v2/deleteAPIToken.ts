@@ -4,14 +4,19 @@ import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface DeleteAPITokenInput {
+  id: string;
+}
 export const DeleteAPITokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "DELETE", path: "/v2/tokens/{id}" }));
-export type DeleteAPITokenInput = typeof DeleteAPITokenInput.Type;
+}).pipe(
+  T.Http({ method: "DELETE", path: "/v2/tokens/{id}" }),
+) as unknown as Schema.Codec<DeleteAPITokenInput>;
 
 // Output Schema
-export const DeleteAPITokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteAPITokenOutput = typeof DeleteAPITokenOutput.Type;
+export type DeleteAPITokenOutput = void;
+export const DeleteAPITokenOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteAPITokenOutput>;
 
 // The operation
 /**

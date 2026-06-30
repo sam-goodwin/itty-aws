@@ -4,6 +4,14 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ErrorTrackingReleasesPartialUpdateInput {
+  id: string;
+  project_id: string;
+  version?: string | null;
+  project?: string | null;
+  hash_id?: string | null;
+  metadata?: Record<string, unknown> | null;
+}
 export const ErrorTrackingReleasesPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -19,15 +27,12 @@ export const ErrorTrackingReleasesPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/error_tracking/releases/{id}/",
     }),
-  );
-export type ErrorTrackingReleasesPartialUpdateInput =
-  typeof ErrorTrackingReleasesPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingReleasesPartialUpdateInput>;
 
 // Output Schema
+export type ErrorTrackingReleasesPartialUpdateOutput = void;
 export const ErrorTrackingReleasesPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ErrorTrackingReleasesPartialUpdateOutput =
-  typeof ErrorTrackingReleasesPartialUpdateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingReleasesPartialUpdateOutput>;
 
 // The operation
 /**

@@ -3,6 +3,10 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface LogsViewsDestroyInput {
+  project_id: string;
+  short_id: string;
+}
 export const LogsViewsDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   short_id: Schema.String.pipe(T.PathParam()),
@@ -11,12 +15,12 @@ export const LogsViewsDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/api/projects/{project_id}/logs/views/{short_id}/",
   }),
-);
-export type LogsViewsDestroyInput = typeof LogsViewsDestroyInput.Type;
+) as unknown as Schema.Codec<LogsViewsDestroyInput>;
 
 // Output Schema
-export const LogsViewsDestroyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type LogsViewsDestroyOutput = typeof LogsViewsDestroyOutput.Type;
+export type LogsViewsDestroyOutput = void;
+export const LogsViewsDestroyOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LogsViewsDestroyOutput>;
 
 // The operation
 /**

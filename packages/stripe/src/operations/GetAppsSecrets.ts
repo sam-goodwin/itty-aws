@@ -3,6 +3,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetAppsSecretsInput {
+  ending_before?: string;
+  expand?: string;
+  limit?: number;
+  scope: string;
+  starting_after?: string;
+}
 export const GetAppsSecretsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ending_before: Schema.optional(Schema.String),
   expand: Schema.optional(Schema.String),
@@ -15,10 +22,25 @@ export const GetAppsSecretsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/v1/apps/secrets",
     contentType: "form-urlencoded",
   }),
-);
-export type GetAppsSecretsInput = typeof GetAppsSecretsInput.Type;
+) as unknown as Schema.Codec<GetAppsSecretsInput>;
 
 // Output Schema
+export interface GetAppsSecretsOutput {
+  data: {
+    created: number;
+    deleted?: boolean;
+    expires_at: number | null;
+    id: string;
+    livemode: boolean;
+    name: string;
+    object: "apps.secret";
+    payload?: string | null;
+    scope: { type: "account" | "user"; user?: string };
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetAppsSecretsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
@@ -39,8 +61,7 @@ export const GetAppsSecretsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   has_more: Schema.Boolean,
   object: Schema.Literals(["list"]),
   url: Schema.String,
-});
-export type GetAppsSecretsOutput = typeof GetAppsSecretsOutput.Type;
+}) as unknown as Schema.Codec<GetAppsSecretsOutput>;
 
 // The operation
 /**

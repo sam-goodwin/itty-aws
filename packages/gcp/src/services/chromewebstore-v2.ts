@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface DistributionChannel {
   crxVersion?: string;
 }
 
-export const DistributionChannel: Schema.Schema<DistributionChannel> =
+export const DistributionChannel: Schema.Codec<DistributionChannel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deployPercentage: Schema.optional(Schema.Number),
     crxVersion: Schema.optional(Schema.String),
@@ -50,7 +50,7 @@ export interface ItemRevisionStatus {
     | (string & {});
 }
 
-export const ItemRevisionStatus: Schema.Schema<ItemRevisionStatus> =
+export const ItemRevisionStatus: Schema.Codec<ItemRevisionStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     distributionChannels: Schema.optional(Schema.Array(DistributionChannel)),
     state: Schema.optional(Schema.String),
@@ -58,7 +58,7 @@ export const ItemRevisionStatus: Schema.Schema<ItemRevisionStatus> =
 
 export interface CancelSubmissionRequest {}
 
-export const CancelSubmissionRequest: Schema.Schema<CancelSubmissionRequest> =
+export const CancelSubmissionRequest: Schema.Codec<CancelSubmissionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelSubmissionRequest",
   });
@@ -68,7 +68,7 @@ export interface DeployInfo {
   deployPercentage?: number;
 }
 
-export const DeployInfo: Schema.Schema<DeployInfo> =
+export const DeployInfo: Schema.Codec<DeployInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deployPercentage: Schema.optional(Schema.Number),
   }).annotate({ identifier: "DeployInfo" });
@@ -98,7 +98,7 @@ export interface FetchItemStatusResponse {
   takenDown?: boolean;
 }
 
-export const FetchItemStatusResponse: Schema.Schema<FetchItemStatusResponse> =
+export const FetchItemStatusResponse: Schema.Codec<FetchItemStatusResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     warned: Schema.optional(Schema.Boolean),
@@ -117,7 +117,7 @@ export interface Warning {
   description?: string;
 }
 
-export const Warning: Schema.Schema<Warning> =
+export const Warning: Schema.Codec<Warning> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -128,7 +128,7 @@ export interface WarningsInfo {
   warnings?: ReadonlyArray<Warning>;
 }
 
-export const WarningsInfo: Schema.Schema<WarningsInfo> =
+export const WarningsInfo: Schema.Codec<WarningsInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     warnings: Schema.optional(Schema.Array(Warning)),
   }).annotate({ identifier: "WarningsInfo" });
@@ -152,7 +152,7 @@ export interface PublishItemResponse {
   warningInfo?: WarningsInfo;
 }
 
-export const PublishItemResponse: Schema.Schema<PublishItemResponse> =
+export const PublishItemResponse: Schema.Codec<PublishItemResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     itemId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -165,14 +165,14 @@ export interface SetPublishedDeployPercentageRequest {
   deployPercentage?: number;
 }
 
-export const SetPublishedDeployPercentageRequest: Schema.Schema<SetPublishedDeployPercentageRequest> =
+export const SetPublishedDeployPercentageRequest: Schema.Codec<SetPublishedDeployPercentageRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deployPercentage: Schema.optional(Schema.Number),
   }).annotate({ identifier: "SetPublishedDeployPercentageRequest" });
 
 export interface CancelSubmissionResponse {}
 
-export const CancelSubmissionResponse: Schema.Schema<CancelSubmissionResponse> =
+export const CancelSubmissionResponse: Schema.Codec<CancelSubmissionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelSubmissionResponse",
   });
@@ -192,7 +192,7 @@ export interface PublishItemRequest {
   blockOnWarnings?: boolean;
 }
 
-export const PublishItemRequest: Schema.Schema<PublishItemRequest> =
+export const PublishItemRequest: Schema.Codec<PublishItemRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     skipReview: Schema.optional(Schema.Boolean),
     publishType: Schema.optional(Schema.String),
@@ -202,7 +202,7 @@ export const PublishItemRequest: Schema.Schema<PublishItemRequest> =
 
 export interface UploadItemPackageRequest {}
 
-export const UploadItemPackageRequest: Schema.Schema<UploadItemPackageRequest> =
+export const UploadItemPackageRequest: Schema.Codec<UploadItemPackageRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UploadItemPackageRequest",
   });
@@ -224,7 +224,7 @@ export interface UploadItemPackageResponse {
     | (string & {});
 }
 
-export const UploadItemPackageResponse: Schema.Schema<UploadItemPackageResponse> =
+export const UploadItemPackageResponse: Schema.Codec<UploadItemPackageResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     itemId: Schema.optional(Schema.String),
@@ -234,7 +234,7 @@ export const UploadItemPackageResponse: Schema.Schema<UploadItemPackageResponse>
 
 export interface SetPublishedDeployPercentageResponse {}
 
-export const SetPublishedDeployPercentageResponse: Schema.Schema<SetPublishedDeployPercentageResponse> =
+export const SetPublishedDeployPercentageResponse: Schema.Codec<SetPublishedDeployPercentageResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SetPublishedDeployPercentageResponse",
   });
@@ -306,7 +306,7 @@ export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v2/{+name}:upload", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<UploadMediaRequest>;
+) as unknown as Schema.Codec<UploadMediaRequest>;
 
 export type UploadMediaResponse = UploadItemPackageResponse;
 export const UploadMediaResponse =
@@ -345,7 +345,7 @@ export const PublishPublishersItemsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+name}:publish", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PublishPublishersItemsRequest>;
+  ) as unknown as Schema.Codec<PublishPublishersItemsRequest>;
 
 export type PublishPublishersItemsResponse = PublishItemResponse;
 export const PublishPublishersItemsResponse =
@@ -381,7 +381,7 @@ export const FetchStatusPublishersItemsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}:fetchStatus" }),
     svc,
-  ) as unknown as Schema.Schema<FetchStatusPublishersItemsRequest>;
+  ) as unknown as Schema.Codec<FetchStatusPublishersItemsRequest>;
 
 export type FetchStatusPublishersItemsResponse = FetchItemStatusResponse;
 export const FetchStatusPublishersItemsResponse =
@@ -424,7 +424,7 @@ export const SetPublishedDeployPercentagePublishersItemsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetPublishedDeployPercentagePublishersItemsRequest>;
+  ) as unknown as Schema.Codec<SetPublishedDeployPercentagePublishersItemsRequest>;
 
 export type SetPublishedDeployPercentagePublishersItemsResponse =
   SetPublishedDeployPercentageResponse;
@@ -468,7 +468,7 @@ export const CancelSubmissionPublishersItemsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CancelSubmissionPublishersItemsRequest>;
+  ) as unknown as Schema.Codec<CancelSubmissionPublishersItemsRequest>;
 
 export type CancelSubmissionPublishersItemsResponse = CancelSubmissionResponse;
 export const CancelSubmissionPublishersItemsResponse =

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -35,7 +35,7 @@ export interface Size {
   height?: number;
 }
 
-export const Size: Schema.Schema<Size> =
+export const Size: Schema.Codec<Size> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     iab: Schema.optional(Schema.Boolean),
     kind: Schema.optional(Schema.String),
@@ -51,7 +51,7 @@ export interface OffsetPosition {
   left?: number;
 }
 
-export const OffsetPosition: Schema.Schema<OffsetPosition> =
+export const OffsetPosition: Schema.Codec<OffsetPosition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     top: Schema.optional(Schema.Number),
     left: Schema.optional(Schema.Number),
@@ -66,7 +66,7 @@ export interface CreativeClickThroughUrl {
   customClickThroughUrl?: string;
 }
 
-export const CreativeClickThroughUrl: Schema.Schema<CreativeClickThroughUrl> =
+export const CreativeClickThroughUrl: Schema.Codec<CreativeClickThroughUrl> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     computedClickThroughUrl: Schema.optional(Schema.String),
     landingPageId: Schema.optional(Schema.String),
@@ -82,7 +82,7 @@ export interface ClickTag {
   clickThroughUrl?: CreativeClickThroughUrl;
 }
 
-export const ClickTag: Schema.Schema<ClickTag> =
+export const ClickTag: Schema.Codec<ClickTag> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     eventName: Schema.optional(Schema.String),
@@ -109,7 +109,7 @@ export interface DimensionValue {
   etag?: string;
 }
 
-export const DimensionValue: Schema.Schema<DimensionValue> =
+export const DimensionValue: Schema.Codec<DimensionValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     dimensionName: Schema.optional(Schema.String),
@@ -140,7 +140,7 @@ export interface PopupWindowProperties {
   showStatusBar?: boolean;
 }
 
-export const PopupWindowProperties: Schema.Schema<PopupWindowProperties> =
+export const PopupWindowProperties: Schema.Codec<PopupWindowProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     showAddressBar: Schema.optional(Schema.Boolean),
     positionType: Schema.optional(Schema.String),
@@ -191,7 +191,7 @@ export interface CreativeCustomEvent {
     | (string & {});
 }
 
-export const CreativeCustomEvent: Schema.Schema<CreativeCustomEvent> =
+export const CreativeCustomEvent: Schema.Codec<CreativeCustomEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     popupWindowProperties: Schema.optional(PopupWindowProperties),
     videoReportingId: Schema.optional(Schema.String),
@@ -219,7 +219,7 @@ export interface CreativeAssetId {
     | (string & {});
 }
 
-export const CreativeAssetId: Schema.Schema<CreativeAssetId> =
+export const CreativeAssetId: Schema.Codec<CreativeAssetId> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -346,7 +346,7 @@ export interface CreativeAssetMetadata {
   id?: string;
 }
 
-export const CreativeAssetMetadata: Schema.Schema<CreativeAssetMetadata> =
+export const CreativeAssetMetadata: Schema.Codec<CreativeAssetMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clickTags: Schema.optional(Schema.Array(ClickTag)),
     detectedFeatures: Schema.optional(Schema.Array(Schema.String)),
@@ -435,7 +435,7 @@ export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UploadMediaRequest>;
+) as unknown as Schema.Codec<UploadMediaRequest>;
 
 export type UploadMediaResponse = CreativeAssetMetadata;
 export const UploadMediaResponse =

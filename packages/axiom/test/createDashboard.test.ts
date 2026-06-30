@@ -52,7 +52,7 @@ describe("createDashboard", () => {
 
       await runEffect(effect);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   // Removed: "returns BadRequest when the dashboard body is structurally

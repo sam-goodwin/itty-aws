@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface CommentsDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const CommentsDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
@@ -12,12 +16,12 @@ export const CommentsDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/api/projects/{project_id}/comments/{id}/",
   }),
-);
-export type CommentsDestroyInput = typeof CommentsDestroyInput.Type;
+) as unknown as Schema.Codec<CommentsDestroyInput>;
 
 // Output Schema
-export const CommentsDestroyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CommentsDestroyOutput = typeof CommentsDestroyOutput.Type;
+export type CommentsDestroyOutput = void;
+export const CommentsDestroyOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CommentsDestroyOutput>;
 
 // The operation
 /**

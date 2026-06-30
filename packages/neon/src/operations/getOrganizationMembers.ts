@@ -3,6 +3,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetOrganizationMembersInput {
+  org_id: string;
+  sort_by?: "email" | "role" | "joined_at";
+  cursor?: string;
+  sort_order?: "asc" | "desc";
+  limit?: number;
+}
 export const GetOrganizationMembersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     org_id: Schema.String.pipe(T.PathParam()),
@@ -10,11 +17,24 @@ export const GetOrganizationMembersInput =
     cursor: Schema.optional(Schema.String),
     sort_order: Schema.optional(Schema.Literals(["asc", "desc"])),
     limit: Schema.optional(Schema.Number),
-  }).pipe(T.Http({ method: "GET", path: "/organizations/{org_id}/members" }));
-export type GetOrganizationMembersInput =
-  typeof GetOrganizationMembersInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/organizations/{org_id}/members" }),
+  ) as unknown as Schema.Codec<GetOrganizationMembersInput>;
 
 // Output Schema
+export interface GetOrganizationMembersOutput {
+  members: {
+    member: {
+      id: string;
+      user_id: string;
+      org_id: string;
+      role: "admin" | "member" | "editor" | "viewer" | "collaborator";
+      joined_at?: string;
+    };
+    user: { email: string; has_mfa?: boolean; deactivated_at?: string };
+  }[];
+  pagination?: { next?: string; sort_by?: string; sort_order?: string };
+}
 export const GetOrganizationMembersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     members: Schema.Array(
@@ -46,9 +66,7 @@ export const GetOrganizationMembersOutput =
         sort_order: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetOrganizationMembersOutput =
-  typeof GetOrganizationMembersOutput.Type;
+  }) as unknown as Schema.Codec<GetOrganizationMembersOutput>;
 
 // The operation
 /**

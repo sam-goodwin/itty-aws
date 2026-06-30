@@ -4,6 +4,15 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SurveysListInput {
+  project_id: string;
+  archived?: boolean;
+  ids?: string;
+  limit?: number;
+  offset?: number;
+  search?: string;
+  type?: "api" | "external_survey" | "popover" | "widget";
+}
 export const SurveysListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   archived: Schema.optional(Schema.Boolean),
@@ -14,10 +23,114 @@ export const SurveysListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   type: Schema.optional(
     Schema.Literals(["api", "external_survey", "popover", "widget"]),
   ),
-}).pipe(T.Http({ method: "GET", path: "/api/projects/{project_id}/surveys/" }));
-export type SurveysListInput = typeof SurveysListInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/api/projects/{project_id}/surveys/" }),
+) as unknown as Schema.Codec<SurveysListInput>;
 
 // Output Schema
+export interface SurveysListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    name?: string;
+    description?: string;
+    type?: "popover" | "widget" | "external_survey" | "api";
+    schedule?: string | null;
+    linked_flag?: {
+      id?: number;
+      team_id?: number;
+      name?: string;
+      key?: string;
+      filters?: Record<string, unknown>;
+      deleted?: boolean;
+      active?: boolean;
+      ensure_experience_continuity?: boolean | null;
+      version?: number | null;
+      evaluation_runtime?: "server" | "client" | "all" | "" | null;
+      bucketing_identifier?: "distinct_id" | "device_id" | "" | null;
+      evaluation_contexts?: string[];
+    };
+    linked_flag_id?: number | null;
+    linked_insight_id?: number | null;
+    targeting_flag?: {
+      id?: number;
+      team_id?: number;
+      name?: string;
+      key?: string;
+      filters?: Record<string, unknown>;
+      deleted?: boolean;
+      active?: boolean;
+      ensure_experience_continuity?: boolean | null;
+      version?: number | null;
+      evaluation_runtime?: "server" | "client" | "all" | "" | null;
+      bucketing_identifier?: "distinct_id" | "device_id" | "" | null;
+      evaluation_contexts?: string[];
+    };
+    internal_targeting_flag?: {
+      id?: number;
+      team_id?: number;
+      name?: string;
+      key?: string;
+      filters?: Record<string, unknown>;
+      deleted?: boolean;
+      active?: boolean;
+      ensure_experience_continuity?: boolean | null;
+      version?: number | null;
+      evaluation_runtime?: "server" | "client" | "all" | "" | null;
+      bucketing_identifier?: "distinct_id" | "device_id" | "" | null;
+      evaluation_contexts?: string[];
+    };
+    questions?: unknown;
+    conditions?: Record<string, unknown> | null;
+    appearance?: unknown;
+    created_at?: string;
+    created_by?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+    start_date?: string | null;
+    end_date?: string | null;
+    archived?: boolean;
+    responses_limit?: number | null;
+    feature_flag_keys?: Record<string, string | null>[];
+    iteration_count?: number | null;
+    iteration_frequency_days?: number | null;
+    iteration_start_dates?: (string | null)[] | null;
+    current_iteration?: number | null;
+    current_iteration_start_date?: string | null;
+    response_sampling_start_date?: string | null;
+    response_sampling_interval_type?: "day" | "week" | "month" | "" | null;
+    response_sampling_interval?: number | null;
+    response_sampling_limit?: number | null;
+    response_sampling_daily_limits?: unknown;
+    enable_partial_responses?: boolean | null;
+    enable_iframe_embedding?: boolean | null;
+    base_language?: string;
+    translations?: unknown;
+    user_access_level?: string | null;
+    form_content?: unknown;
+    search_match_type?: "exact" | "similar" | null;
+  }[];
+}
 export const SurveysListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
@@ -47,8 +160,22 @@ export const SurveysListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               Schema.NullOr(Schema.Boolean),
             ),
             version: Schema.optional(Schema.NullOr(Schema.Number)),
-            evaluation_runtime: Schema.optional(Schema.Unknown),
-            bucketing_identifier: Schema.optional(Schema.Unknown),
+            evaluation_runtime: Schema.optional(
+              Schema.NullOr(
+                Schema.Union([
+                  Schema.Literals(["server", "client", "all"]),
+                  Schema.Literals([""]),
+                ]),
+              ),
+            ),
+            bucketing_identifier: Schema.optional(
+              Schema.NullOr(
+                Schema.Union([
+                  Schema.Literals(["distinct_id", "device_id"]),
+                  Schema.Literals([""]),
+                ]),
+              ),
+            ),
             evaluation_contexts: Schema.optional(Schema.Array(Schema.String)),
           }),
         ),
@@ -69,8 +196,22 @@ export const SurveysListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               Schema.NullOr(Schema.Boolean),
             ),
             version: Schema.optional(Schema.NullOr(Schema.Number)),
-            evaluation_runtime: Schema.optional(Schema.Unknown),
-            bucketing_identifier: Schema.optional(Schema.Unknown),
+            evaluation_runtime: Schema.optional(
+              Schema.NullOr(
+                Schema.Union([
+                  Schema.Literals(["server", "client", "all"]),
+                  Schema.Literals([""]),
+                ]),
+              ),
+            ),
+            bucketing_identifier: Schema.optional(
+              Schema.NullOr(
+                Schema.Union([
+                  Schema.Literals(["distinct_id", "device_id"]),
+                  Schema.Literals([""]),
+                ]),
+              ),
+            ),
             evaluation_contexts: Schema.optional(Schema.Array(Schema.String)),
           }),
         ),
@@ -89,8 +230,22 @@ export const SurveysListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               Schema.NullOr(Schema.Boolean),
             ),
             version: Schema.optional(Schema.NullOr(Schema.Number)),
-            evaluation_runtime: Schema.optional(Schema.Unknown),
-            bucketing_identifier: Schema.optional(Schema.Unknown),
+            evaluation_runtime: Schema.optional(
+              Schema.NullOr(
+                Schema.Union([
+                  Schema.Literals(["server", "client", "all"]),
+                  Schema.Literals([""]),
+                ]),
+              ),
+            ),
+            bucketing_identifier: Schema.optional(
+              Schema.NullOr(
+                Schema.Union([
+                  Schema.Literals(["distinct_id", "device_id"]),
+                  Schema.Literals([""]),
+                ]),
+              ),
+            ),
             evaluation_contexts: Schema.optional(Schema.Array(Schema.String)),
           }),
         ),
@@ -113,7 +268,23 @@ export const SurveysListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               hedgehog_config: Schema.optional(
                 Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
               ),
-              role_at_organization: Schema.optional(Schema.Unknown),
+              role_at_organization: Schema.optional(
+                Schema.NullOr(
+                  Schema.Union([
+                    Schema.Literals([
+                      "engineering",
+                      "data",
+                      "product",
+                      "founder",
+                      "leadership",
+                      "marketing",
+                      "sales",
+                      "other",
+                    ]),
+                    Schema.Literals([""]),
+                  ]),
+                ),
+              ),
             }),
           ),
         ),
@@ -138,7 +309,14 @@ export const SurveysListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         response_sampling_start_date: Schema.optional(
           Schema.NullOr(Schema.String),
         ),
-        response_sampling_interval_type: Schema.optional(Schema.Unknown),
+        response_sampling_interval_type: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals(["day", "week", "month"]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
         response_sampling_interval: Schema.optional(
           Schema.NullOr(Schema.Number),
         ),
@@ -152,12 +330,13 @@ export const SurveysListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         translations: Schema.optional(Schema.Unknown),
         user_access_level: Schema.optional(Schema.NullOr(Schema.String)),
         form_content: Schema.optional(Schema.Unknown),
-        search_match_type: Schema.optional(Schema.Unknown),
+        search_match_type: Schema.optional(
+          Schema.NullOr(Schema.Literals(["exact", "similar"])),
+        ),
       }),
     ),
   ),
-});
-export type SurveysListOutput = typeof SurveysListOutput.Type;
+}) as unknown as Schema.Codec<SurveysListOutput>;
 
 // The operation
 /**

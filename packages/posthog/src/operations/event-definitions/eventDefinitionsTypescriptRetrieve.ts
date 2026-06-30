@@ -4,6 +4,9 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface EventDefinitionsTypescriptRetrieveInput {
+  project_id: string;
+}
 export const EventDefinitionsTypescriptRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,15 +15,12 @@ export const EventDefinitionsTypescriptRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/event_definitions/typescript/",
     }),
-  );
-export type EventDefinitionsTypescriptRetrieveInput =
-  typeof EventDefinitionsTypescriptRetrieveInput.Type;
+  ) as unknown as Schema.Codec<EventDefinitionsTypescriptRetrieveInput>;
 
 // Output Schema
+export type EventDefinitionsTypescriptRetrieveOutput = void;
 export const EventDefinitionsTypescriptRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type EventDefinitionsTypescriptRetrieveOutput =
-  typeof EventDefinitionsTypescriptRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EventDefinitionsTypescriptRetrieveOutput>;
 
 // The operation
 /**

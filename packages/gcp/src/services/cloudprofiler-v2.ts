@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -31,7 +31,7 @@ export interface Deployment {
   labels?: Record<string, string>;
 }
 
-export const Deployment: Schema.Schema<Deployment> =
+export const Deployment: Schema.Codec<Deployment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     target: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
@@ -64,7 +64,7 @@ export interface Profile {
   deployment?: Deployment;
 }
 
-export const Profile: Schema.Schema<Profile> =
+export const Profile: Schema.Codec<Profile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     profileBytes: Schema.optional(Schema.String),
@@ -84,7 +84,7 @@ export interface ListProfilesResponse {
   profiles?: ReadonlyArray<Profile>;
 }
 
-export const ListProfilesResponse: Schema.Schema<ListProfilesResponse> =
+export const ListProfilesResponse: Schema.Codec<ListProfilesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     skippedProfiles: Schema.optional(Schema.Number),
     nextPageToken: Schema.optional(Schema.String),
@@ -108,7 +108,7 @@ export interface CreateProfileRequest {
   >;
 }
 
-export const CreateProfileRequest: Schema.Schema<CreateProfileRequest> =
+export const CreateProfileRequest: Schema.Codec<CreateProfileRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deployment: Schema.optional(Deployment),
     profileType: Schema.optional(Schema.Array(Schema.String)),
@@ -182,7 +182,7 @@ export const CreateProjectsProfilesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+parent}/profiles", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsProfilesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsProfilesRequest>;
 
 export type CreateProjectsProfilesResponse = Profile;
 export const CreateProjectsProfilesResponse =
@@ -224,7 +224,7 @@ export const PatchProjectsProfilesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsProfilesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsProfilesRequest>;
 
 export type PatchProjectsProfilesResponse = Profile;
 export const PatchProjectsProfilesResponse =
@@ -266,7 +266,7 @@ export const ListProjectsProfilesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/profiles" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsProfilesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsProfilesRequest>;
 
 export type ListProjectsProfilesResponse = ListProfilesResponse;
 export const ListProjectsProfilesResponse =
@@ -308,7 +308,7 @@ export const CreateOfflineProjectsProfilesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateOfflineProjectsProfilesRequest>;
+  ) as unknown as Schema.Codec<CreateOfflineProjectsProfilesRequest>;
 
 export type CreateOfflineProjectsProfilesResponse = Profile;
 export const CreateOfflineProjectsProfilesResponse =

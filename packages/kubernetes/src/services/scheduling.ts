@@ -4,12 +4,56 @@
  * Generated from the Kubernetes OpenAPI spec.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface CreateSchedulingV1PriorityClassInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  description?: string;
+  globalDefault?: boolean;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  preemptionPolicy?: string;
+  value?: number;
+}
 export const CreateSchedulingV1PriorityClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -71,11 +115,49 @@ export const CreateSchedulingV1PriorityClassInput =
       method: "POST",
       path: "/apis/scheduling.k8s.io/v1/priorityclasses",
     }),
-  );
-export type CreateSchedulingV1PriorityClassInput =
-  typeof CreateSchedulingV1PriorityClassInput.Type;
+  ) as unknown as Schema.Codec<CreateSchedulingV1PriorityClassInput>;
 
 // Output Schema
+export interface CreateSchedulingV1PriorityClassOutput {
+  apiVersion?: string;
+  description?: string;
+  globalDefault?: boolean;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  preemptionPolicy?: string;
+  value?: number;
+}
 export const CreateSchedulingV1PriorityClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -128,9 +210,7 @@ export const CreateSchedulingV1PriorityClassOutput =
     ),
     preemptionPolicy: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Number),
-  });
-export type CreateSchedulingV1PriorityClassOutput =
-  typeof CreateSchedulingV1PriorityClassOutput.Type;
+  }) as unknown as Schema.Codec<CreateSchedulingV1PriorityClassOutput>;
 
 // The operation
 /**
@@ -148,6 +228,73 @@ export const createSchedulingV1PriorityClass =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateSchedulingV1alpha3NamespacedPodGroupInput {
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    disruptionMode?: { all?: unknown; single?: unknown };
+    podGroupTemplateRef?: {
+      workload?: { podGroupTemplateName: string; workloadName: string };
+    };
+    priority?: number;
+    priorityClassName?: string;
+    resourceClaims?: {
+      name: string;
+      resourceClaimName?: string;
+      resourceClaimTemplateName?: string;
+    }[];
+    schedulingConstraints?: { topology?: { key: string }[] };
+    schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    resourceClaimStatuses?: { name: string; resourceClaimName?: string }[];
+  };
+}
 export const CreateSchedulingV1alpha3NamespacedPodGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -278,11 +425,71 @@ export const CreateSchedulingV1alpha3NamespacedPodGroupInput =
       method: "POST",
       path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/podgroups",
     }),
-  );
-export type CreateSchedulingV1alpha3NamespacedPodGroupInput =
-  typeof CreateSchedulingV1alpha3NamespacedPodGroupInput.Type;
+  ) as unknown as Schema.Codec<CreateSchedulingV1alpha3NamespacedPodGroupInput>;
 
 // Output Schema
+export interface CreateSchedulingV1alpha3NamespacedPodGroupOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    disruptionMode?: { all?: unknown; single?: unknown };
+    podGroupTemplateRef?: {
+      workload?: { podGroupTemplateName: string; workloadName: string };
+    };
+    priority?: number;
+    priorityClassName?: string;
+    resourceClaims?: {
+      name: string;
+      resourceClaimName?: string;
+      resourceClaimTemplateName?: string;
+    }[];
+    schedulingConstraints?: { topology?: { key: string }[] };
+    schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    resourceClaimStatuses?: { name: string; resourceClaimName?: string }[];
+  };
+}
 export const CreateSchedulingV1alpha3NamespacedPodGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -403,9 +610,7 @@ export const CreateSchedulingV1alpha3NamespacedPodGroupOutput =
         ),
       }),
     ),
-  });
-export type CreateSchedulingV1alpha3NamespacedPodGroupOutput =
-  typeof CreateSchedulingV1alpha3NamespacedPodGroupOutput.Type;
+  }) as unknown as Schema.Codec<CreateSchedulingV1alpha3NamespacedPodGroupOutput>;
 
 // The operation
 /**
@@ -423,6 +628,63 @@ export const createSchedulingV1alpha3NamespacedPodGroup =
     outputSchema: CreateSchedulingV1alpha3NamespacedPodGroupOutput,
   }));
 // Input Schema
+export interface CreateSchedulingV1alpha3NamespacedWorkloadInput {
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    controllerRef?: { apiGroup?: string; kind: string; name: string };
+    podGroupTemplates: {
+      disruptionMode?: { all?: unknown; single?: unknown };
+      name: string;
+      priority?: number;
+      priorityClassName?: string;
+      resourceClaims?: {
+        name: string;
+        resourceClaimName?: string;
+        resourceClaimTemplateName?: string;
+      }[];
+      schedulingConstraints?: { topology?: { key: string }[] };
+      schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+    }[];
+  };
+}
 export const CreateSchedulingV1alpha3NamespacedWorkloadInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -531,11 +793,61 @@ export const CreateSchedulingV1alpha3NamespacedWorkloadInput =
       method: "POST",
       path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/workloads",
     }),
-  );
-export type CreateSchedulingV1alpha3NamespacedWorkloadInput =
-  typeof CreateSchedulingV1alpha3NamespacedWorkloadInput.Type;
+  ) as unknown as Schema.Codec<CreateSchedulingV1alpha3NamespacedWorkloadInput>;
 
 // Output Schema
+export interface CreateSchedulingV1alpha3NamespacedWorkloadOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    controllerRef?: { apiGroup?: string; kind: string; name: string };
+    podGroupTemplates: {
+      disruptionMode?: { all?: unknown; single?: unknown };
+      name: string;
+      priority?: number;
+      priorityClassName?: string;
+      resourceClaims?: {
+        name: string;
+        resourceClaimName?: string;
+        resourceClaimTemplateName?: string;
+      }[];
+      schedulingConstraints?: { topology?: { key: string }[] };
+      schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+    }[];
+  };
+}
 export const CreateSchedulingV1alpha3NamespacedWorkloadOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -634,9 +946,7 @@ export const CreateSchedulingV1alpha3NamespacedWorkloadOutput =
         }),
       ),
     }),
-  });
-export type CreateSchedulingV1alpha3NamespacedWorkloadOutput =
-  typeof CreateSchedulingV1alpha3NamespacedWorkloadOutput.Type;
+  }) as unknown as Schema.Codec<CreateSchedulingV1alpha3NamespacedWorkloadOutput>;
 
 // The operation
 /**
@@ -654,6 +964,26 @@ export const createSchedulingV1alpha3NamespacedWorkload =
     outputSchema: CreateSchedulingV1alpha3NamespacedWorkloadOutput,
   }));
 // Input Schema
+export interface DeleteSchedulingV1CollectionPriorityClassInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteSchedulingV1CollectionPriorityClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -686,11 +1016,32 @@ export const DeleteSchedulingV1CollectionPriorityClassInput =
       method: "DELETE",
       path: "/apis/scheduling.k8s.io/v1/priorityclasses",
     }),
-  );
-export type DeleteSchedulingV1CollectionPriorityClassInput =
-  typeof DeleteSchedulingV1CollectionPriorityClassInput.Type;
+  ) as unknown as Schema.Codec<DeleteSchedulingV1CollectionPriorityClassInput>;
 
 // Output Schema
+export interface DeleteSchedulingV1CollectionPriorityClassOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteSchedulingV1CollectionPriorityClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -730,9 +1081,7 @@ export const DeleteSchedulingV1CollectionPriorityClassOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteSchedulingV1CollectionPriorityClassOutput =
-  typeof DeleteSchedulingV1CollectionPriorityClassOutput.Type;
+  }) as unknown as Schema.Codec<DeleteSchedulingV1CollectionPriorityClassOutput>;
 
 // The operation
 /**
@@ -801,6 +1150,18 @@ export const deleteSchedulingV1CollectionPriorityClass =
     outputSchema: DeleteSchedulingV1CollectionPriorityClassOutput,
   }));
 // Input Schema
+export interface DeleteSchedulingV1PriorityClassInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteSchedulingV1PriorityClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -825,11 +1186,32 @@ export const DeleteSchedulingV1PriorityClassInput =
       method: "DELETE",
       path: "/apis/scheduling.k8s.io/v1/priorityclasses/{name}",
     }),
-  );
-export type DeleteSchedulingV1PriorityClassInput =
-  typeof DeleteSchedulingV1PriorityClassInput.Type;
+  ) as unknown as Schema.Codec<DeleteSchedulingV1PriorityClassInput>;
 
 // Output Schema
+export interface DeleteSchedulingV1PriorityClassOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteSchedulingV1PriorityClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -869,9 +1251,7 @@ export const DeleteSchedulingV1PriorityClassOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteSchedulingV1PriorityClassOutput =
-  typeof DeleteSchedulingV1PriorityClassOutput.Type;
+  }) as unknown as Schema.Codec<DeleteSchedulingV1PriorityClassOutput>;
 
 // The operation
 /**
@@ -892,6 +1272,27 @@ export const deleteSchedulingV1PriorityClass =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteSchedulingV1alpha3CollectionNamespacedPodGroupInput {
+  namespace: string;
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteSchedulingV1alpha3CollectionNamespacedPodGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -925,11 +1326,32 @@ export const DeleteSchedulingV1alpha3CollectionNamespacedPodGroupInput =
       method: "DELETE",
       path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/podgroups",
     }),
-  );
-export type DeleteSchedulingV1alpha3CollectionNamespacedPodGroupInput =
-  typeof DeleteSchedulingV1alpha3CollectionNamespacedPodGroupInput.Type;
+  ) as unknown as Schema.Codec<DeleteSchedulingV1alpha3CollectionNamespacedPodGroupInput>;
 
 // Output Schema
+export interface DeleteSchedulingV1alpha3CollectionNamespacedPodGroupOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteSchedulingV1alpha3CollectionNamespacedPodGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -969,9 +1391,7 @@ export const DeleteSchedulingV1alpha3CollectionNamespacedPodGroupOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteSchedulingV1alpha3CollectionNamespacedPodGroupOutput =
-  typeof DeleteSchedulingV1alpha3CollectionNamespacedPodGroupOutput.Type;
+  }) as unknown as Schema.Codec<DeleteSchedulingV1alpha3CollectionNamespacedPodGroupOutput>;
 
 // The operation
 /**
@@ -1041,6 +1461,27 @@ export const deleteSchedulingV1alpha3CollectionNamespacedPodGroup =
     outputSchema: DeleteSchedulingV1alpha3CollectionNamespacedPodGroupOutput,
   }));
 // Input Schema
+export interface DeleteSchedulingV1alpha3CollectionNamespacedWorkloadInput {
+  namespace: string;
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteSchedulingV1alpha3CollectionNamespacedWorkloadInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -1074,11 +1515,32 @@ export const DeleteSchedulingV1alpha3CollectionNamespacedWorkloadInput =
       method: "DELETE",
       path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/workloads",
     }),
-  );
-export type DeleteSchedulingV1alpha3CollectionNamespacedWorkloadInput =
-  typeof DeleteSchedulingV1alpha3CollectionNamespacedWorkloadInput.Type;
+  ) as unknown as Schema.Codec<DeleteSchedulingV1alpha3CollectionNamespacedWorkloadInput>;
 
 // Output Schema
+export interface DeleteSchedulingV1alpha3CollectionNamespacedWorkloadOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteSchedulingV1alpha3CollectionNamespacedWorkloadOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1118,9 +1580,7 @@ export const DeleteSchedulingV1alpha3CollectionNamespacedWorkloadOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteSchedulingV1alpha3CollectionNamespacedWorkloadOutput =
-  typeof DeleteSchedulingV1alpha3CollectionNamespacedWorkloadOutput.Type;
+  }) as unknown as Schema.Codec<DeleteSchedulingV1alpha3CollectionNamespacedWorkloadOutput>;
 
 // The operation
 /**
@@ -1190,6 +1650,19 @@ export const deleteSchedulingV1alpha3CollectionNamespacedWorkload =
     outputSchema: DeleteSchedulingV1alpha3CollectionNamespacedWorkloadOutput,
   }));
 // Input Schema
+export interface DeleteSchedulingV1alpha3NamespacedPodGroupInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteSchedulingV1alpha3NamespacedPodGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1215,11 +1688,32 @@ export const DeleteSchedulingV1alpha3NamespacedPodGroupInput =
       method: "DELETE",
       path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/podgroups/{name}",
     }),
-  );
-export type DeleteSchedulingV1alpha3NamespacedPodGroupInput =
-  typeof DeleteSchedulingV1alpha3NamespacedPodGroupInput.Type;
+  ) as unknown as Schema.Codec<DeleteSchedulingV1alpha3NamespacedPodGroupInput>;
 
 // Output Schema
+export interface DeleteSchedulingV1alpha3NamespacedPodGroupOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteSchedulingV1alpha3NamespacedPodGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1259,9 +1753,7 @@ export const DeleteSchedulingV1alpha3NamespacedPodGroupOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteSchedulingV1alpha3NamespacedPodGroupOutput =
-  typeof DeleteSchedulingV1alpha3NamespacedPodGroupOutput.Type;
+  }) as unknown as Schema.Codec<DeleteSchedulingV1alpha3NamespacedPodGroupOutput>;
 
 // The operation
 /**
@@ -1282,6 +1774,19 @@ export const deleteSchedulingV1alpha3NamespacedPodGroup =
     outputSchema: DeleteSchedulingV1alpha3NamespacedPodGroupOutput,
   }));
 // Input Schema
+export interface DeleteSchedulingV1alpha3NamespacedWorkloadInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteSchedulingV1alpha3NamespacedWorkloadInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1307,11 +1812,32 @@ export const DeleteSchedulingV1alpha3NamespacedWorkloadInput =
       method: "DELETE",
       path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/workloads/{name}",
     }),
-  );
-export type DeleteSchedulingV1alpha3NamespacedWorkloadInput =
-  typeof DeleteSchedulingV1alpha3NamespacedWorkloadInput.Type;
+  ) as unknown as Schema.Codec<DeleteSchedulingV1alpha3NamespacedWorkloadInput>;
 
 // Output Schema
+export interface DeleteSchedulingV1alpha3NamespacedWorkloadOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteSchedulingV1alpha3NamespacedWorkloadOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1351,9 +1877,7 @@ export const DeleteSchedulingV1alpha3NamespacedWorkloadOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteSchedulingV1alpha3NamespacedWorkloadOutput =
-  typeof DeleteSchedulingV1alpha3NamespacedWorkloadOutput.Type;
+  }) as unknown as Schema.Codec<DeleteSchedulingV1alpha3NamespacedWorkloadOutput>;
 
 // The operation
 /**
@@ -1374,13 +1898,21 @@ export const deleteSchedulingV1alpha3NamespacedWorkload =
     outputSchema: DeleteSchedulingV1alpha3NamespacedWorkloadOutput,
   }));
 // Input Schema
+export interface GetSchedulingAPIGroupInput {}
 export const GetSchedulingAPIGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/scheduling.k8s.io/" }),
-  );
-export type GetSchedulingAPIGroupInput = typeof GetSchedulingAPIGroupInput.Type;
+  ) as unknown as Schema.Codec<GetSchedulingAPIGroupInput>;
 
 // Output Schema
+export interface GetSchedulingAPIGroupOutput {
+  apiVersion?: string;
+  kind?: string;
+  name: string;
+  preferredVersion?: { groupVersion: string; version: string };
+  serverAddressByClientCIDRs?: { clientCIDR: string; serverAddress: string }[];
+  versions: { groupVersion: string; version: string }[];
+}
 export const GetSchedulingAPIGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1406,9 +1938,7 @@ export const GetSchedulingAPIGroupOutput =
         version: Schema.String,
       }),
     ),
-  });
-export type GetSchedulingAPIGroupOutput =
-  typeof GetSchedulingAPIGroupOutput.Type;
+  }) as unknown as Schema.Codec<GetSchedulingAPIGroupOutput>;
 
 // The operation
 /**
@@ -1421,14 +1951,30 @@ export const getSchedulingAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GetSchedulingV1APIResourcesInput {}
 export const GetSchedulingV1APIResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/scheduling.k8s.io/v1/" }),
-  );
-export type GetSchedulingV1APIResourcesInput =
-  typeof GetSchedulingV1APIResourcesInput.Type;
+  ) as unknown as Schema.Codec<GetSchedulingV1APIResourcesInput>;
 
 // Output Schema
+export interface GetSchedulingV1APIResourcesOutput {
+  apiVersion?: string;
+  groupVersion: string;
+  kind?: string;
+  resources: {
+    categories?: string[];
+    group?: string;
+    kind: string;
+    name: string;
+    namespaced: boolean;
+    shortNames?: string[];
+    singularName: string;
+    storageVersionHash?: string;
+    verbs: string[];
+    version?: string;
+  }[];
+}
 export const GetSchedulingV1APIResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1448,9 +1994,7 @@ export const GetSchedulingV1APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetSchedulingV1APIResourcesOutput =
-  typeof GetSchedulingV1APIResourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetSchedulingV1APIResourcesOutput>;
 
 // The operation
 /**
@@ -1463,14 +2007,30 @@ export const getSchedulingV1APIResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GetSchedulingV1alpha3APIResourcesInput {}
 export const GetSchedulingV1alpha3APIResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/scheduling.k8s.io/v1alpha3/" }),
-  );
-export type GetSchedulingV1alpha3APIResourcesInput =
-  typeof GetSchedulingV1alpha3APIResourcesInput.Type;
+  ) as unknown as Schema.Codec<GetSchedulingV1alpha3APIResourcesInput>;
 
 // Output Schema
+export interface GetSchedulingV1alpha3APIResourcesOutput {
+  apiVersion?: string;
+  groupVersion: string;
+  kind?: string;
+  resources: {
+    categories?: string[];
+    group?: string;
+    kind: string;
+    name: string;
+    namespaced: boolean;
+    shortNames?: string[];
+    singularName: string;
+    storageVersionHash?: string;
+    verbs: string[];
+    version?: string;
+  }[];
+}
 export const GetSchedulingV1alpha3APIResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1490,9 +2050,7 @@ export const GetSchedulingV1alpha3APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetSchedulingV1alpha3APIResourcesOutput =
-  typeof GetSchedulingV1alpha3APIResourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetSchedulingV1alpha3APIResourcesOutput>;
 
 // The operation
 /**
@@ -1504,6 +2062,20 @@ export const getSchedulingV1alpha3APIResources =
     outputSchema: GetSchedulingV1alpha3APIResourcesOutput,
   }));
 // Input Schema
+export interface ListSchedulingV1PriorityClassInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListSchedulingV1PriorityClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -1523,11 +2095,60 @@ export const ListSchedulingV1PriorityClassInput =
       method: "GET",
       path: "/apis/scheduling.k8s.io/v1/priorityclasses",
     }),
-  );
-export type ListSchedulingV1PriorityClassInput =
-  typeof ListSchedulingV1PriorityClassInput.Type;
+  ) as unknown as Schema.Codec<ListSchedulingV1PriorityClassInput>;
 
 // Output Schema
+export interface ListSchedulingV1PriorityClassOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    description?: string;
+    globalDefault?: boolean;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    preemptionPolicy?: string;
+    value?: number;
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListSchedulingV1PriorityClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1601,9 +2222,7 @@ export const ListSchedulingV1PriorityClassOutput =
         ),
       }),
     ),
-  });
-export type ListSchedulingV1PriorityClassOutput =
-  typeof ListSchedulingV1PriorityClassOutput.Type;
+  }) as unknown as Schema.Codec<ListSchedulingV1PriorityClassOutput>;
 
 // The operation
 /**
@@ -1669,6 +2288,21 @@ export const listSchedulingV1PriorityClass =
     outputSchema: ListSchedulingV1PriorityClassOutput,
   }));
 // Input Schema
+export interface ListSchedulingV1alpha3NamespacedPodGroupInput {
+  namespace: string;
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListSchedulingV1alpha3NamespacedPodGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -1689,11 +2323,82 @@ export const ListSchedulingV1alpha3NamespacedPodGroupInput =
       method: "GET",
       path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/podgroups",
     }),
-  );
-export type ListSchedulingV1alpha3NamespacedPodGroupInput =
-  typeof ListSchedulingV1alpha3NamespacedPodGroupInput.Type;
+  ) as unknown as Schema.Codec<ListSchedulingV1alpha3NamespacedPodGroupInput>;
 
 // Output Schema
+export interface ListSchedulingV1alpha3NamespacedPodGroupOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec: {
+      disruptionMode?: { all?: unknown; single?: unknown };
+      podGroupTemplateRef?: {
+        workload?: { podGroupTemplateName: string; workloadName: string };
+      };
+      priority?: number;
+      priorityClassName?: string;
+      resourceClaims?: {
+        name: string;
+        resourceClaimName?: string;
+        resourceClaimTemplateName?: string;
+      }[];
+      schedulingConstraints?: { topology?: { key: string }[] };
+      schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+    };
+    status?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      resourceClaimStatuses?: { name: string; resourceClaimName?: string }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListSchedulingV1alpha3NamespacedPodGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1835,9 +2540,7 @@ export const ListSchedulingV1alpha3NamespacedPodGroupOutput =
         ),
       }),
     ),
-  });
-export type ListSchedulingV1alpha3NamespacedPodGroupOutput =
-  typeof ListSchedulingV1alpha3NamespacedPodGroupOutput.Type;
+  }) as unknown as Schema.Codec<ListSchedulingV1alpha3NamespacedPodGroupOutput>;
 
 // The operation
 /**
@@ -1904,6 +2607,21 @@ export const listSchedulingV1alpha3NamespacedPodGroup =
     outputSchema: ListSchedulingV1alpha3NamespacedPodGroupOutput,
   }));
 // Input Schema
+export interface ListSchedulingV1alpha3NamespacedWorkloadInput {
+  namespace: string;
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListSchedulingV1alpha3NamespacedWorkloadInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -1924,11 +2642,72 @@ export const ListSchedulingV1alpha3NamespacedWorkloadInput =
       method: "GET",
       path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/workloads",
     }),
-  );
-export type ListSchedulingV1alpha3NamespacedWorkloadInput =
-  typeof ListSchedulingV1alpha3NamespacedWorkloadInput.Type;
+  ) as unknown as Schema.Codec<ListSchedulingV1alpha3NamespacedWorkloadInput>;
 
 // Output Schema
+export interface ListSchedulingV1alpha3NamespacedWorkloadOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec: {
+      controllerRef?: { apiGroup?: string; kind: string; name: string };
+      podGroupTemplates: {
+        disruptionMode?: { all?: unknown; single?: unknown };
+        name: string;
+        priority?: number;
+        priorityClassName?: string;
+        resourceClaims?: {
+          name: string;
+          resourceClaimName?: string;
+          resourceClaimTemplateName?: string;
+        }[];
+        schedulingConstraints?: { topology?: { key: string }[] };
+        schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+      }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListSchedulingV1alpha3NamespacedWorkloadOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2048,9 +2827,7 @@ export const ListSchedulingV1alpha3NamespacedWorkloadOutput =
         ),
       }),
     ),
-  });
-export type ListSchedulingV1alpha3NamespacedWorkloadOutput =
-  typeof ListSchedulingV1alpha3NamespacedWorkloadOutput.Type;
+  }) as unknown as Schema.Codec<ListSchedulingV1alpha3NamespacedWorkloadOutput>;
 
 // The operation
 /**
@@ -2117,6 +2894,20 @@ export const listSchedulingV1alpha3NamespacedWorkload =
     outputSchema: ListSchedulingV1alpha3NamespacedWorkloadOutput,
   }));
 // Input Schema
+export interface ListSchedulingV1alpha3PodGroupForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListSchedulingV1alpha3PodGroupForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -2136,11 +2927,82 @@ export const ListSchedulingV1alpha3PodGroupForAllNamespacesInput =
       method: "GET",
       path: "/apis/scheduling.k8s.io/v1alpha3/podgroups",
     }),
-  );
-export type ListSchedulingV1alpha3PodGroupForAllNamespacesInput =
-  typeof ListSchedulingV1alpha3PodGroupForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<ListSchedulingV1alpha3PodGroupForAllNamespacesInput>;
 
 // Output Schema
+export interface ListSchedulingV1alpha3PodGroupForAllNamespacesOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec: {
+      disruptionMode?: { all?: unknown; single?: unknown };
+      podGroupTemplateRef?: {
+        workload?: { podGroupTemplateName: string; workloadName: string };
+      };
+      priority?: number;
+      priorityClassName?: string;
+      resourceClaims?: {
+        name: string;
+        resourceClaimName?: string;
+        resourceClaimTemplateName?: string;
+      }[];
+      schedulingConstraints?: { topology?: { key: string }[] };
+      schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+    };
+    status?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      resourceClaimStatuses?: { name: string; resourceClaimName?: string }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListSchedulingV1alpha3PodGroupForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2282,9 +3144,7 @@ export const ListSchedulingV1alpha3PodGroupForAllNamespacesOutput =
         ),
       }),
     ),
-  });
-export type ListSchedulingV1alpha3PodGroupForAllNamespacesOutput =
-  typeof ListSchedulingV1alpha3PodGroupForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<ListSchedulingV1alpha3PodGroupForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -2350,6 +3210,20 @@ export const listSchedulingV1alpha3PodGroupForAllNamespaces =
     outputSchema: ListSchedulingV1alpha3PodGroupForAllNamespacesOutput,
   }));
 // Input Schema
+export interface ListSchedulingV1alpha3WorkloadForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListSchedulingV1alpha3WorkloadForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -2369,11 +3243,72 @@ export const ListSchedulingV1alpha3WorkloadForAllNamespacesInput =
       method: "GET",
       path: "/apis/scheduling.k8s.io/v1alpha3/workloads",
     }),
-  );
-export type ListSchedulingV1alpha3WorkloadForAllNamespacesInput =
-  typeof ListSchedulingV1alpha3WorkloadForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<ListSchedulingV1alpha3WorkloadForAllNamespacesInput>;
 
 // Output Schema
+export interface ListSchedulingV1alpha3WorkloadForAllNamespacesOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec: {
+      controllerRef?: { apiGroup?: string; kind: string; name: string };
+      podGroupTemplates: {
+        disruptionMode?: { all?: unknown; single?: unknown };
+        name: string;
+        priority?: number;
+        priorityClassName?: string;
+        resourceClaims?: {
+          name: string;
+          resourceClaimName?: string;
+          resourceClaimTemplateName?: string;
+        }[];
+        schedulingConstraints?: { topology?: { key: string }[] };
+        schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+      }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListSchedulingV1alpha3WorkloadForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2493,9 +3428,7 @@ export const ListSchedulingV1alpha3WorkloadForAllNamespacesOutput =
         ),
       }),
     ),
-  });
-export type ListSchedulingV1alpha3WorkloadForAllNamespacesOutput =
-  typeof ListSchedulingV1alpha3WorkloadForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<ListSchedulingV1alpha3WorkloadForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -2561,6 +3494,14 @@ export const listSchedulingV1alpha3WorkloadForAllNamespaces =
     outputSchema: ListSchedulingV1alpha3WorkloadForAllNamespacesOutput,
   }));
 // Input Schema
+export interface PatchSchedulingV1PriorityClassInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchSchedulingV1PriorityClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2574,11 +3515,49 @@ export const PatchSchedulingV1PriorityClassInput =
       method: "PATCH",
       path: "/apis/scheduling.k8s.io/v1/priorityclasses/{name}",
     }),
-  );
-export type PatchSchedulingV1PriorityClassInput =
-  typeof PatchSchedulingV1PriorityClassInput.Type;
+  ) as unknown as Schema.Codec<PatchSchedulingV1PriorityClassInput>;
 
 // Output Schema
+export interface PatchSchedulingV1PriorityClassOutput {
+  apiVersion?: string;
+  description?: string;
+  globalDefault?: boolean;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  preemptionPolicy?: string;
+  value?: number;
+}
 export const PatchSchedulingV1PriorityClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2631,9 +3610,7 @@ export const PatchSchedulingV1PriorityClassOutput =
     ),
     preemptionPolicy: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Number),
-  });
-export type PatchSchedulingV1PriorityClassOutput =
-  typeof PatchSchedulingV1PriorityClassOutput.Type;
+  }) as unknown as Schema.Codec<PatchSchedulingV1PriorityClassOutput>;
 
 // The operation
 /**
@@ -2653,6 +3630,15 @@ export const patchSchedulingV1PriorityClass =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchSchedulingV1alpha3NamespacedPodGroupInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchSchedulingV1alpha3NamespacedPodGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2667,11 +3653,71 @@ export const PatchSchedulingV1alpha3NamespacedPodGroupInput =
       method: "PATCH",
       path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/podgroups/{name}",
     }),
-  );
-export type PatchSchedulingV1alpha3NamespacedPodGroupInput =
-  typeof PatchSchedulingV1alpha3NamespacedPodGroupInput.Type;
+  ) as unknown as Schema.Codec<PatchSchedulingV1alpha3NamespacedPodGroupInput>;
 
 // Output Schema
+export interface PatchSchedulingV1alpha3NamespacedPodGroupOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    disruptionMode?: { all?: unknown; single?: unknown };
+    podGroupTemplateRef?: {
+      workload?: { podGroupTemplateName: string; workloadName: string };
+    };
+    priority?: number;
+    priorityClassName?: string;
+    resourceClaims?: {
+      name: string;
+      resourceClaimName?: string;
+      resourceClaimTemplateName?: string;
+    }[];
+    schedulingConstraints?: { topology?: { key: string }[] };
+    schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    resourceClaimStatuses?: { name: string; resourceClaimName?: string }[];
+  };
+}
 export const PatchSchedulingV1alpha3NamespacedPodGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2792,9 +3838,7 @@ export const PatchSchedulingV1alpha3NamespacedPodGroupOutput =
         ),
       }),
     ),
-  });
-export type PatchSchedulingV1alpha3NamespacedPodGroupOutput =
-  typeof PatchSchedulingV1alpha3NamespacedPodGroupOutput.Type;
+  }) as unknown as Schema.Codec<PatchSchedulingV1alpha3NamespacedPodGroupOutput>;
 
 // The operation
 /**
@@ -2814,6 +3858,15 @@ export const patchSchedulingV1alpha3NamespacedPodGroup =
     outputSchema: PatchSchedulingV1alpha3NamespacedPodGroupOutput,
   }));
 // Input Schema
+export interface PatchSchedulingV1alpha3NamespacedPodGroupStatusInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchSchedulingV1alpha3NamespacedPodGroupStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2828,11 +3881,71 @@ export const PatchSchedulingV1alpha3NamespacedPodGroupStatusInput =
       method: "PATCH",
       path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/podgroups/{name}/status",
     }),
-  );
-export type PatchSchedulingV1alpha3NamespacedPodGroupStatusInput =
-  typeof PatchSchedulingV1alpha3NamespacedPodGroupStatusInput.Type;
+  ) as unknown as Schema.Codec<PatchSchedulingV1alpha3NamespacedPodGroupStatusInput>;
 
 // Output Schema
+export interface PatchSchedulingV1alpha3NamespacedPodGroupStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    disruptionMode?: { all?: unknown; single?: unknown };
+    podGroupTemplateRef?: {
+      workload?: { podGroupTemplateName: string; workloadName: string };
+    };
+    priority?: number;
+    priorityClassName?: string;
+    resourceClaims?: {
+      name: string;
+      resourceClaimName?: string;
+      resourceClaimTemplateName?: string;
+    }[];
+    schedulingConstraints?: { topology?: { key: string }[] };
+    schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    resourceClaimStatuses?: { name: string; resourceClaimName?: string }[];
+  };
+}
 export const PatchSchedulingV1alpha3NamespacedPodGroupStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2953,9 +4066,7 @@ export const PatchSchedulingV1alpha3NamespacedPodGroupStatusOutput =
         ),
       }),
     ),
-  });
-export type PatchSchedulingV1alpha3NamespacedPodGroupStatusOutput =
-  typeof PatchSchedulingV1alpha3NamespacedPodGroupStatusOutput.Type;
+  }) as unknown as Schema.Codec<PatchSchedulingV1alpha3NamespacedPodGroupStatusOutput>;
 
 // The operation
 /**
@@ -2975,6 +4086,15 @@ export const patchSchedulingV1alpha3NamespacedPodGroupStatus =
     outputSchema: PatchSchedulingV1alpha3NamespacedPodGroupStatusOutput,
   }));
 // Input Schema
+export interface PatchSchedulingV1alpha3NamespacedWorkloadInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchSchedulingV1alpha3NamespacedWorkloadInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2989,11 +4109,61 @@ export const PatchSchedulingV1alpha3NamespacedWorkloadInput =
       method: "PATCH",
       path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/workloads/{name}",
     }),
-  );
-export type PatchSchedulingV1alpha3NamespacedWorkloadInput =
-  typeof PatchSchedulingV1alpha3NamespacedWorkloadInput.Type;
+  ) as unknown as Schema.Codec<PatchSchedulingV1alpha3NamespacedWorkloadInput>;
 
 // Output Schema
+export interface PatchSchedulingV1alpha3NamespacedWorkloadOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    controllerRef?: { apiGroup?: string; kind: string; name: string };
+    podGroupTemplates: {
+      disruptionMode?: { all?: unknown; single?: unknown };
+      name: string;
+      priority?: number;
+      priorityClassName?: string;
+      resourceClaims?: {
+        name: string;
+        resourceClaimName?: string;
+        resourceClaimTemplateName?: string;
+      }[];
+      schedulingConstraints?: { topology?: { key: string }[] };
+      schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+    }[];
+  };
+}
 export const PatchSchedulingV1alpha3NamespacedWorkloadOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3092,9 +4262,7 @@ export const PatchSchedulingV1alpha3NamespacedWorkloadOutput =
         }),
       ),
     }),
-  });
-export type PatchSchedulingV1alpha3NamespacedWorkloadOutput =
-  typeof PatchSchedulingV1alpha3NamespacedWorkloadOutput.Type;
+  }) as unknown as Schema.Codec<PatchSchedulingV1alpha3NamespacedWorkloadOutput>;
 
 // The operation
 /**
@@ -3114,6 +4282,10 @@ export const patchSchedulingV1alpha3NamespacedWorkload =
     outputSchema: PatchSchedulingV1alpha3NamespacedWorkloadOutput,
   }));
 // Input Schema
+export interface ReadSchedulingV1PriorityClassInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadSchedulingV1PriorityClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3123,11 +4295,49 @@ export const ReadSchedulingV1PriorityClassInput =
       method: "GET",
       path: "/apis/scheduling.k8s.io/v1/priorityclasses/{name}",
     }),
-  );
-export type ReadSchedulingV1PriorityClassInput =
-  typeof ReadSchedulingV1PriorityClassInput.Type;
+  ) as unknown as Schema.Codec<ReadSchedulingV1PriorityClassInput>;
 
 // Output Schema
+export interface ReadSchedulingV1PriorityClassOutput {
+  apiVersion?: string;
+  description?: string;
+  globalDefault?: boolean;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  preemptionPolicy?: string;
+  value?: number;
+}
 export const ReadSchedulingV1PriorityClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3180,9 +4390,7 @@ export const ReadSchedulingV1PriorityClassOutput =
     ),
     preemptionPolicy: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Number),
-  });
-export type ReadSchedulingV1PriorityClassOutput =
-  typeof ReadSchedulingV1PriorityClassOutput.Type;
+  }) as unknown as Schema.Codec<ReadSchedulingV1PriorityClassOutput>;
 
 // The operation
 /**
@@ -3198,6 +4406,11 @@ export const readSchedulingV1PriorityClass =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadSchedulingV1alpha3NamespacedPodGroupInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
 export const ReadSchedulingV1alpha3NamespacedPodGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3208,11 +4421,71 @@ export const ReadSchedulingV1alpha3NamespacedPodGroupInput =
       method: "GET",
       path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/podgroups/{name}",
     }),
-  );
-export type ReadSchedulingV1alpha3NamespacedPodGroupInput =
-  typeof ReadSchedulingV1alpha3NamespacedPodGroupInput.Type;
+  ) as unknown as Schema.Codec<ReadSchedulingV1alpha3NamespacedPodGroupInput>;
 
 // Output Schema
+export interface ReadSchedulingV1alpha3NamespacedPodGroupOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    disruptionMode?: { all?: unknown; single?: unknown };
+    podGroupTemplateRef?: {
+      workload?: { podGroupTemplateName: string; workloadName: string };
+    };
+    priority?: number;
+    priorityClassName?: string;
+    resourceClaims?: {
+      name: string;
+      resourceClaimName?: string;
+      resourceClaimTemplateName?: string;
+    }[];
+    schedulingConstraints?: { topology?: { key: string }[] };
+    schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    resourceClaimStatuses?: { name: string; resourceClaimName?: string }[];
+  };
+}
 export const ReadSchedulingV1alpha3NamespacedPodGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3333,9 +4606,7 @@ export const ReadSchedulingV1alpha3NamespacedPodGroupOutput =
         ),
       }),
     ),
-  });
-export type ReadSchedulingV1alpha3NamespacedPodGroupOutput =
-  typeof ReadSchedulingV1alpha3NamespacedPodGroupOutput.Type;
+  }) as unknown as Schema.Codec<ReadSchedulingV1alpha3NamespacedPodGroupOutput>;
 
 // The operation
 /**
@@ -3351,6 +4622,11 @@ export const readSchedulingV1alpha3NamespacedPodGroup =
     outputSchema: ReadSchedulingV1alpha3NamespacedPodGroupOutput,
   }));
 // Input Schema
+export interface ReadSchedulingV1alpha3NamespacedPodGroupStatusInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
 export const ReadSchedulingV1alpha3NamespacedPodGroupStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3361,11 +4637,71 @@ export const ReadSchedulingV1alpha3NamespacedPodGroupStatusInput =
       method: "GET",
       path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/podgroups/{name}/status",
     }),
-  );
-export type ReadSchedulingV1alpha3NamespacedPodGroupStatusInput =
-  typeof ReadSchedulingV1alpha3NamespacedPodGroupStatusInput.Type;
+  ) as unknown as Schema.Codec<ReadSchedulingV1alpha3NamespacedPodGroupStatusInput>;
 
 // Output Schema
+export interface ReadSchedulingV1alpha3NamespacedPodGroupStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    disruptionMode?: { all?: unknown; single?: unknown };
+    podGroupTemplateRef?: {
+      workload?: { podGroupTemplateName: string; workloadName: string };
+    };
+    priority?: number;
+    priorityClassName?: string;
+    resourceClaims?: {
+      name: string;
+      resourceClaimName?: string;
+      resourceClaimTemplateName?: string;
+    }[];
+    schedulingConstraints?: { topology?: { key: string }[] };
+    schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    resourceClaimStatuses?: { name: string; resourceClaimName?: string }[];
+  };
+}
 export const ReadSchedulingV1alpha3NamespacedPodGroupStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3486,9 +4822,7 @@ export const ReadSchedulingV1alpha3NamespacedPodGroupStatusOutput =
         ),
       }),
     ),
-  });
-export type ReadSchedulingV1alpha3NamespacedPodGroupStatusOutput =
-  typeof ReadSchedulingV1alpha3NamespacedPodGroupStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReadSchedulingV1alpha3NamespacedPodGroupStatusOutput>;
 
 // The operation
 /**
@@ -3504,6 +4838,11 @@ export const readSchedulingV1alpha3NamespacedPodGroupStatus =
     outputSchema: ReadSchedulingV1alpha3NamespacedPodGroupStatusOutput,
   }));
 // Input Schema
+export interface ReadSchedulingV1alpha3NamespacedWorkloadInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
 export const ReadSchedulingV1alpha3NamespacedWorkloadInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3514,11 +4853,61 @@ export const ReadSchedulingV1alpha3NamespacedWorkloadInput =
       method: "GET",
       path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/workloads/{name}",
     }),
-  );
-export type ReadSchedulingV1alpha3NamespacedWorkloadInput =
-  typeof ReadSchedulingV1alpha3NamespacedWorkloadInput.Type;
+  ) as unknown as Schema.Codec<ReadSchedulingV1alpha3NamespacedWorkloadInput>;
 
 // Output Schema
+export interface ReadSchedulingV1alpha3NamespacedWorkloadOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    controllerRef?: { apiGroup?: string; kind: string; name: string };
+    podGroupTemplates: {
+      disruptionMode?: { all?: unknown; single?: unknown };
+      name: string;
+      priority?: number;
+      priorityClassName?: string;
+      resourceClaims?: {
+        name: string;
+        resourceClaimName?: string;
+        resourceClaimTemplateName?: string;
+      }[];
+      schedulingConstraints?: { topology?: { key: string }[] };
+      schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+    }[];
+  };
+}
 export const ReadSchedulingV1alpha3NamespacedWorkloadOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3617,9 +5006,7 @@ export const ReadSchedulingV1alpha3NamespacedWorkloadOutput =
         }),
       ),
     }),
-  });
-export type ReadSchedulingV1alpha3NamespacedWorkloadOutput =
-  typeof ReadSchedulingV1alpha3NamespacedWorkloadOutput.Type;
+  }) as unknown as Schema.Codec<ReadSchedulingV1alpha3NamespacedWorkloadOutput>;
 
 // The operation
 /**
@@ -3635,6 +5022,51 @@ export const readSchedulingV1alpha3NamespacedWorkload =
     outputSchema: ReadSchedulingV1alpha3NamespacedWorkloadOutput,
   }));
 // Input Schema
+export interface ReplaceSchedulingV1PriorityClassInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  description?: string;
+  globalDefault?: boolean;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  preemptionPolicy?: string;
+  value?: number;
+}
 export const ReplaceSchedulingV1PriorityClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3697,11 +5129,49 @@ export const ReplaceSchedulingV1PriorityClassInput =
       method: "PUT",
       path: "/apis/scheduling.k8s.io/v1/priorityclasses/{name}",
     }),
-  );
-export type ReplaceSchedulingV1PriorityClassInput =
-  typeof ReplaceSchedulingV1PriorityClassInput.Type;
+  ) as unknown as Schema.Codec<ReplaceSchedulingV1PriorityClassInput>;
 
 // Output Schema
+export interface ReplaceSchedulingV1PriorityClassOutput {
+  apiVersion?: string;
+  description?: string;
+  globalDefault?: boolean;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  preemptionPolicy?: string;
+  value?: number;
+}
 export const ReplaceSchedulingV1PriorityClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3754,9 +5224,7 @@ export const ReplaceSchedulingV1PriorityClassOutput =
     ),
     preemptionPolicy: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Number),
-  });
-export type ReplaceSchedulingV1PriorityClassOutput =
-  typeof ReplaceSchedulingV1PriorityClassOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceSchedulingV1PriorityClassOutput>;
 
 // The operation
 /**
@@ -3775,6 +5243,74 @@ export const replaceSchedulingV1PriorityClass =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceSchedulingV1alpha3NamespacedPodGroupInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    disruptionMode?: { all?: unknown; single?: unknown };
+    podGroupTemplateRef?: {
+      workload?: { podGroupTemplateName: string; workloadName: string };
+    };
+    priority?: number;
+    priorityClassName?: string;
+    resourceClaims?: {
+      name: string;
+      resourceClaimName?: string;
+      resourceClaimTemplateName?: string;
+    }[];
+    schedulingConstraints?: { topology?: { key: string }[] };
+    schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    resourceClaimStatuses?: { name: string; resourceClaimName?: string }[];
+  };
+}
 export const ReplaceSchedulingV1alpha3NamespacedPodGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3906,11 +5442,71 @@ export const ReplaceSchedulingV1alpha3NamespacedPodGroupInput =
       method: "PUT",
       path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/podgroups/{name}",
     }),
-  );
-export type ReplaceSchedulingV1alpha3NamespacedPodGroupInput =
-  typeof ReplaceSchedulingV1alpha3NamespacedPodGroupInput.Type;
+  ) as unknown as Schema.Codec<ReplaceSchedulingV1alpha3NamespacedPodGroupInput>;
 
 // Output Schema
+export interface ReplaceSchedulingV1alpha3NamespacedPodGroupOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    disruptionMode?: { all?: unknown; single?: unknown };
+    podGroupTemplateRef?: {
+      workload?: { podGroupTemplateName: string; workloadName: string };
+    };
+    priority?: number;
+    priorityClassName?: string;
+    resourceClaims?: {
+      name: string;
+      resourceClaimName?: string;
+      resourceClaimTemplateName?: string;
+    }[];
+    schedulingConstraints?: { topology?: { key: string }[] };
+    schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    resourceClaimStatuses?: { name: string; resourceClaimName?: string }[];
+  };
+}
 export const ReplaceSchedulingV1alpha3NamespacedPodGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4031,9 +5627,7 @@ export const ReplaceSchedulingV1alpha3NamespacedPodGroupOutput =
         ),
       }),
     ),
-  });
-export type ReplaceSchedulingV1alpha3NamespacedPodGroupOutput =
-  typeof ReplaceSchedulingV1alpha3NamespacedPodGroupOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceSchedulingV1alpha3NamespacedPodGroupOutput>;
 
 // The operation
 /**
@@ -4052,6 +5646,74 @@ export const replaceSchedulingV1alpha3NamespacedPodGroup =
     outputSchema: ReplaceSchedulingV1alpha3NamespacedPodGroupOutput,
   }));
 // Input Schema
+export interface ReplaceSchedulingV1alpha3NamespacedPodGroupStatusInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    disruptionMode?: { all?: unknown; single?: unknown };
+    podGroupTemplateRef?: {
+      workload?: { podGroupTemplateName: string; workloadName: string };
+    };
+    priority?: number;
+    priorityClassName?: string;
+    resourceClaims?: {
+      name: string;
+      resourceClaimName?: string;
+      resourceClaimTemplateName?: string;
+    }[];
+    schedulingConstraints?: { topology?: { key: string }[] };
+    schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    resourceClaimStatuses?: { name: string; resourceClaimName?: string }[];
+  };
+}
 export const ReplaceSchedulingV1alpha3NamespacedPodGroupStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4183,11 +5845,71 @@ export const ReplaceSchedulingV1alpha3NamespacedPodGroupStatusInput =
       method: "PUT",
       path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/podgroups/{name}/status",
     }),
-  );
-export type ReplaceSchedulingV1alpha3NamespacedPodGroupStatusInput =
-  typeof ReplaceSchedulingV1alpha3NamespacedPodGroupStatusInput.Type;
+  ) as unknown as Schema.Codec<ReplaceSchedulingV1alpha3NamespacedPodGroupStatusInput>;
 
 // Output Schema
+export interface ReplaceSchedulingV1alpha3NamespacedPodGroupStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    disruptionMode?: { all?: unknown; single?: unknown };
+    podGroupTemplateRef?: {
+      workload?: { podGroupTemplateName: string; workloadName: string };
+    };
+    priority?: number;
+    priorityClassName?: string;
+    resourceClaims?: {
+      name: string;
+      resourceClaimName?: string;
+      resourceClaimTemplateName?: string;
+    }[];
+    schedulingConstraints?: { topology?: { key: string }[] };
+    schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    resourceClaimStatuses?: { name: string; resourceClaimName?: string }[];
+  };
+}
 export const ReplaceSchedulingV1alpha3NamespacedPodGroupStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4308,9 +6030,7 @@ export const ReplaceSchedulingV1alpha3NamespacedPodGroupStatusOutput =
         ),
       }),
     ),
-  });
-export type ReplaceSchedulingV1alpha3NamespacedPodGroupStatusOutput =
-  typeof ReplaceSchedulingV1alpha3NamespacedPodGroupStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceSchedulingV1alpha3NamespacedPodGroupStatusOutput>;
 
 // The operation
 /**
@@ -4329,6 +6049,64 @@ export const replaceSchedulingV1alpha3NamespacedPodGroupStatus =
     outputSchema: ReplaceSchedulingV1alpha3NamespacedPodGroupStatusOutput,
   }));
 // Input Schema
+export interface ReplaceSchedulingV1alpha3NamespacedWorkloadInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    controllerRef?: { apiGroup?: string; kind: string; name: string };
+    podGroupTemplates: {
+      disruptionMode?: { all?: unknown; single?: unknown };
+      name: string;
+      priority?: number;
+      priorityClassName?: string;
+      resourceClaims?: {
+        name: string;
+        resourceClaimName?: string;
+        resourceClaimTemplateName?: string;
+      }[];
+      schedulingConstraints?: { topology?: { key: string }[] };
+      schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+    }[];
+  };
+}
 export const ReplaceSchedulingV1alpha3NamespacedWorkloadInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4438,11 +6216,61 @@ export const ReplaceSchedulingV1alpha3NamespacedWorkloadInput =
       method: "PUT",
       path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/workloads/{name}",
     }),
-  );
-export type ReplaceSchedulingV1alpha3NamespacedWorkloadInput =
-  typeof ReplaceSchedulingV1alpha3NamespacedWorkloadInput.Type;
+  ) as unknown as Schema.Codec<ReplaceSchedulingV1alpha3NamespacedWorkloadInput>;
 
 // Output Schema
+export interface ReplaceSchedulingV1alpha3NamespacedWorkloadOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    controllerRef?: { apiGroup?: string; kind: string; name: string };
+    podGroupTemplates: {
+      disruptionMode?: { all?: unknown; single?: unknown };
+      name: string;
+      priority?: number;
+      priorityClassName?: string;
+      resourceClaims?: {
+        name: string;
+        resourceClaimName?: string;
+        resourceClaimTemplateName?: string;
+      }[];
+      schedulingConstraints?: { topology?: { key: string }[] };
+      schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+    }[];
+  };
+}
 export const ReplaceSchedulingV1alpha3NamespacedWorkloadOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4541,9 +6369,7 @@ export const ReplaceSchedulingV1alpha3NamespacedWorkloadOutput =
         }),
       ),
     }),
-  });
-export type ReplaceSchedulingV1alpha3NamespacedWorkloadOutput =
-  typeof ReplaceSchedulingV1alpha3NamespacedWorkloadOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceSchedulingV1alpha3NamespacedWorkloadOutput>;
 
 // The operation
 /**
@@ -4562,6 +6388,21 @@ export const replaceSchedulingV1alpha3NamespacedWorkload =
     outputSchema: ReplaceSchedulingV1alpha3NamespacedWorkloadOutput,
   }));
 // Input Schema
+export interface WatchSchedulingV1PriorityClassInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchSchedulingV1PriorityClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4582,18 +6423,18 @@ export const WatchSchedulingV1PriorityClassInput =
       method: "GET",
       path: "/apis/scheduling.k8s.io/v1/watch/priorityclasses/{name}",
     }),
-  );
-export type WatchSchedulingV1PriorityClassInput =
-  typeof WatchSchedulingV1PriorityClassInput.Type;
+  ) as unknown as Schema.Codec<WatchSchedulingV1PriorityClassInput>;
 
 // Output Schema
+export interface WatchSchedulingV1PriorityClassOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchSchedulingV1PriorityClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchSchedulingV1PriorityClassOutput =
-  typeof WatchSchedulingV1PriorityClassOutput.Type;
+  }) as unknown as Schema.Codec<WatchSchedulingV1PriorityClassOutput>;
 
 // The operation
 /**
@@ -4660,6 +6501,20 @@ export const watchSchedulingV1PriorityClass =
     outputSchema: WatchSchedulingV1PriorityClassOutput,
   }));
 // Input Schema
+export interface WatchSchedulingV1PriorityClassListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchSchedulingV1PriorityClassListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -4679,18 +6534,18 @@ export const WatchSchedulingV1PriorityClassListInput =
       method: "GET",
       path: "/apis/scheduling.k8s.io/v1/watch/priorityclasses",
     }),
-  );
-export type WatchSchedulingV1PriorityClassListInput =
-  typeof WatchSchedulingV1PriorityClassListInput.Type;
+  ) as unknown as Schema.Codec<WatchSchedulingV1PriorityClassListInput>;
 
 // Output Schema
+export interface WatchSchedulingV1PriorityClassListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchSchedulingV1PriorityClassListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchSchedulingV1PriorityClassListOutput =
-  typeof WatchSchedulingV1PriorityClassListOutput.Type;
+  }) as unknown as Schema.Codec<WatchSchedulingV1PriorityClassListOutput>;
 
 // The operation
 /**
@@ -4756,6 +6611,22 @@ export const watchSchedulingV1PriorityClassList =
     outputSchema: WatchSchedulingV1PriorityClassListOutput,
   }));
 // Input Schema
+export interface WatchSchedulingV1alpha3NamespacedPodGroupInput {
+  name: string;
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchSchedulingV1alpha3NamespacedPodGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4777,18 +6648,18 @@ export const WatchSchedulingV1alpha3NamespacedPodGroupInput =
       method: "GET",
       path: "/apis/scheduling.k8s.io/v1alpha3/watch/namespaces/{namespace}/podgroups/{name}",
     }),
-  );
-export type WatchSchedulingV1alpha3NamespacedPodGroupInput =
-  typeof WatchSchedulingV1alpha3NamespacedPodGroupInput.Type;
+  ) as unknown as Schema.Codec<WatchSchedulingV1alpha3NamespacedPodGroupInput>;
 
 // Output Schema
+export interface WatchSchedulingV1alpha3NamespacedPodGroupOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchSchedulingV1alpha3NamespacedPodGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchSchedulingV1alpha3NamespacedPodGroupOutput =
-  typeof WatchSchedulingV1alpha3NamespacedPodGroupOutput.Type;
+  }) as unknown as Schema.Codec<WatchSchedulingV1alpha3NamespacedPodGroupOutput>;
 
 // The operation
 /**
@@ -4856,6 +6727,21 @@ export const watchSchedulingV1alpha3NamespacedPodGroup =
     outputSchema: WatchSchedulingV1alpha3NamespacedPodGroupOutput,
   }));
 // Input Schema
+export interface WatchSchedulingV1alpha3NamespacedPodGroupListInput {
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchSchedulingV1alpha3NamespacedPodGroupListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -4876,18 +6762,18 @@ export const WatchSchedulingV1alpha3NamespacedPodGroupListInput =
       method: "GET",
       path: "/apis/scheduling.k8s.io/v1alpha3/watch/namespaces/{namespace}/podgroups",
     }),
-  );
-export type WatchSchedulingV1alpha3NamespacedPodGroupListInput =
-  typeof WatchSchedulingV1alpha3NamespacedPodGroupListInput.Type;
+  ) as unknown as Schema.Codec<WatchSchedulingV1alpha3NamespacedPodGroupListInput>;
 
 // Output Schema
+export interface WatchSchedulingV1alpha3NamespacedPodGroupListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchSchedulingV1alpha3NamespacedPodGroupListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchSchedulingV1alpha3NamespacedPodGroupListOutput =
-  typeof WatchSchedulingV1alpha3NamespacedPodGroupListOutput.Type;
+  }) as unknown as Schema.Codec<WatchSchedulingV1alpha3NamespacedPodGroupListOutput>;
 
 // The operation
 /**
@@ -4954,6 +6840,22 @@ export const watchSchedulingV1alpha3NamespacedPodGroupList =
     outputSchema: WatchSchedulingV1alpha3NamespacedPodGroupListOutput,
   }));
 // Input Schema
+export interface WatchSchedulingV1alpha3NamespacedWorkloadInput {
+  name: string;
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchSchedulingV1alpha3NamespacedWorkloadInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4975,18 +6877,18 @@ export const WatchSchedulingV1alpha3NamespacedWorkloadInput =
       method: "GET",
       path: "/apis/scheduling.k8s.io/v1alpha3/watch/namespaces/{namespace}/workloads/{name}",
     }),
-  );
-export type WatchSchedulingV1alpha3NamespacedWorkloadInput =
-  typeof WatchSchedulingV1alpha3NamespacedWorkloadInput.Type;
+  ) as unknown as Schema.Codec<WatchSchedulingV1alpha3NamespacedWorkloadInput>;
 
 // Output Schema
+export interface WatchSchedulingV1alpha3NamespacedWorkloadOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchSchedulingV1alpha3NamespacedWorkloadOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchSchedulingV1alpha3NamespacedWorkloadOutput =
-  typeof WatchSchedulingV1alpha3NamespacedWorkloadOutput.Type;
+  }) as unknown as Schema.Codec<WatchSchedulingV1alpha3NamespacedWorkloadOutput>;
 
 // The operation
 /**
@@ -5054,6 +6956,21 @@ export const watchSchedulingV1alpha3NamespacedWorkload =
     outputSchema: WatchSchedulingV1alpha3NamespacedWorkloadOutput,
   }));
 // Input Schema
+export interface WatchSchedulingV1alpha3NamespacedWorkloadListInput {
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchSchedulingV1alpha3NamespacedWorkloadListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -5074,18 +6991,18 @@ export const WatchSchedulingV1alpha3NamespacedWorkloadListInput =
       method: "GET",
       path: "/apis/scheduling.k8s.io/v1alpha3/watch/namespaces/{namespace}/workloads",
     }),
-  );
-export type WatchSchedulingV1alpha3NamespacedWorkloadListInput =
-  typeof WatchSchedulingV1alpha3NamespacedWorkloadListInput.Type;
+  ) as unknown as Schema.Codec<WatchSchedulingV1alpha3NamespacedWorkloadListInput>;
 
 // Output Schema
+export interface WatchSchedulingV1alpha3NamespacedWorkloadListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchSchedulingV1alpha3NamespacedWorkloadListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchSchedulingV1alpha3NamespacedWorkloadListOutput =
-  typeof WatchSchedulingV1alpha3NamespacedWorkloadListOutput.Type;
+  }) as unknown as Schema.Codec<WatchSchedulingV1alpha3NamespacedWorkloadListOutput>;
 
 // The operation
 /**
@@ -5152,6 +7069,20 @@ export const watchSchedulingV1alpha3NamespacedWorkloadList =
     outputSchema: WatchSchedulingV1alpha3NamespacedWorkloadListOutput,
   }));
 // Input Schema
+export interface WatchSchedulingV1alpha3PodGroupListForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchSchedulingV1alpha3PodGroupListForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -5171,18 +7102,18 @@ export const WatchSchedulingV1alpha3PodGroupListForAllNamespacesInput =
       method: "GET",
       path: "/apis/scheduling.k8s.io/v1alpha3/watch/podgroups",
     }),
-  );
-export type WatchSchedulingV1alpha3PodGroupListForAllNamespacesInput =
-  typeof WatchSchedulingV1alpha3PodGroupListForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<WatchSchedulingV1alpha3PodGroupListForAllNamespacesInput>;
 
 // Output Schema
+export interface WatchSchedulingV1alpha3PodGroupListForAllNamespacesOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchSchedulingV1alpha3PodGroupListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchSchedulingV1alpha3PodGroupListForAllNamespacesOutput =
-  typeof WatchSchedulingV1alpha3PodGroupListForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<WatchSchedulingV1alpha3PodGroupListForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -5248,6 +7179,20 @@ export const watchSchedulingV1alpha3PodGroupListForAllNamespaces =
     outputSchema: WatchSchedulingV1alpha3PodGroupListForAllNamespacesOutput,
   }));
 // Input Schema
+export interface WatchSchedulingV1alpha3WorkloadListForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchSchedulingV1alpha3WorkloadListForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -5267,18 +7212,18 @@ export const WatchSchedulingV1alpha3WorkloadListForAllNamespacesInput =
       method: "GET",
       path: "/apis/scheduling.k8s.io/v1alpha3/watch/workloads",
     }),
-  );
-export type WatchSchedulingV1alpha3WorkloadListForAllNamespacesInput =
-  typeof WatchSchedulingV1alpha3WorkloadListForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<WatchSchedulingV1alpha3WorkloadListForAllNamespacesInput>;
 
 // Output Schema
+export interface WatchSchedulingV1alpha3WorkloadListForAllNamespacesOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchSchedulingV1alpha3WorkloadListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchSchedulingV1alpha3WorkloadListForAllNamespacesOutput =
-  typeof WatchSchedulingV1alpha3WorkloadListForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<WatchSchedulingV1alpha3WorkloadListForAllNamespacesOutput>;
 
 // The operation
 /**

@@ -3,6 +3,61 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface MetricsQueryCreateInput {
+  project_id: string;
+  query: {
+    metricName?: string;
+    aggregation?:
+      | "sum"
+      | "avg"
+      | "count"
+      | "p95"
+      | "rate"
+      | "increase"
+      | "histogram_quantile";
+    quantile?: number | null;
+    filters?: {
+      key: string;
+      op?: "eq" | "neq" | "regex" | "not_regex";
+      value: string;
+      scope?: "resource" | "attribute" | "auto";
+    }[];
+    groupBy?: { key: string; scope?: "resource" | "attribute" | "auto" }[];
+    interval?:
+      | "second"
+      | "minute"
+      | "minute_5"
+      | "minute_15"
+      | "hour"
+      | "hour_6"
+      | "day"
+      | "week"
+      | null;
+    clauses?: {
+      name: string;
+      metricName: string;
+      aggregation?:
+        | "sum"
+        | "avg"
+        | "count"
+        | "p95"
+        | "rate"
+        | "increase"
+        | "histogram_quantile";
+      quantile?: number | null;
+      filters?: {
+        key: string;
+        op?: "eq" | "neq" | "regex" | "not_regex";
+        value: string;
+        scope?: "resource" | "attribute" | "auto";
+      }[];
+      groupBy?: { key: string; scope?: "resource" | "attribute" | "auto" }[];
+    }[];
+    formula?: string | null;
+    dateFrom: string;
+    dateTo?: string;
+  };
+}
 export const MetricsQueryCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -44,7 +99,20 @@ export const MetricsQueryCreateInput =
           }),
         ),
       ),
-      interval: Schema.optional(Schema.Unknown),
+      interval: Schema.optional(
+        Schema.NullOr(
+          Schema.Literals([
+            "second",
+            "minute",
+            "minute_5",
+            "minute_15",
+            "hour",
+            "hour_6",
+            "day",
+            "week",
+          ]),
+        ),
+      ),
       clauses: Schema.optional(
         Schema.Array(
           Schema.Struct({
@@ -98,10 +166,17 @@ export const MetricsQueryCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/metrics/query/",
     }),
-  );
-export type MetricsQueryCreateInput = typeof MetricsQueryCreateInput.Type;
+  ) as unknown as Schema.Codec<MetricsQueryCreateInput>;
 
 // Output Schema
+export interface MetricsQueryCreateOutput {
+  results: {
+    labels: Record<string, string>;
+    points: { time: string; value: number }[];
+    metric_name?: string | null;
+    clause?: string | null;
+  }[];
+}
 export const MetricsQueryCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.Array(
@@ -117,8 +192,7 @@ export const MetricsQueryCreateOutput =
         clause: Schema.optional(Schema.NullOr(Schema.String)),
       }),
     ),
-  });
-export type MetricsQueryCreateOutput = typeof MetricsQueryCreateOutput.Type;
+  }) as unknown as Schema.Codec<MetricsQueryCreateOutput>;
 
 // The operation
 /**

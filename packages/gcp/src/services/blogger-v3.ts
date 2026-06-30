@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -52,7 +52,7 @@ export interface Comment {
   };
 }
 
-export const Comment: Schema.Schema<Comment> =
+export const Comment: Schema.Codec<Comment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -138,7 +138,7 @@ export interface Post {
   etag?: string;
 }
 
-export const Post: Schema.Schema<Post> =
+export const Post: Schema.Codec<Post> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -221,7 +221,7 @@ export interface Blog {
   locale?: { language?: string; country?: string; variant?: string };
 }
 
-export const Blog: Schema.Schema<Blog> =
+export const Blog: Schema.Codec<Blog> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -275,7 +275,7 @@ export interface BlogPerUserInfo {
     | (string & {});
 }
 
-export const BlogPerUserInfo: Schema.Schema<BlogPerUserInfo> =
+export const BlogPerUserInfo: Schema.Codec<BlogPerUserInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     userId: Schema.optional(Schema.String),
@@ -294,7 +294,7 @@ export interface BlogUserInfo {
   blog_user_info?: BlogPerUserInfo;
 }
 
-export const BlogUserInfo: Schema.Schema<BlogUserInfo> =
+export const BlogUserInfo: Schema.Codec<BlogUserInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     blog: Schema.optional(Blog),
@@ -313,7 +313,7 @@ export interface Pageviews {
   }>;
 }
 
-export const Pageviews: Schema.Schema<Pageviews> =
+export const Pageviews: Schema.Codec<Pageviews> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     blogId: Schema.optional(Schema.String),
@@ -361,7 +361,7 @@ export interface Page {
   etag?: string;
 }
 
-export const Page: Schema.Schema<Page> =
+export const Page: Schema.Codec<Page> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -402,7 +402,7 @@ export interface PostPerUserInfo {
   hasEditAccess?: boolean;
 }
 
-export const PostPerUserInfo: Schema.Schema<PostPerUserInfo> =
+export const PostPerUserInfo: Schema.Codec<PostPerUserInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     userId: Schema.optional(Schema.String),
@@ -420,7 +420,7 @@ export interface PostUserInfo {
   post_user_info?: PostPerUserInfo;
 }
 
-export const PostUserInfo: Schema.Schema<PostUserInfo> =
+export const PostUserInfo: Schema.Codec<PostUserInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     post: Schema.optional(Post),
@@ -448,7 +448,7 @@ export interface User {
   locale?: { language?: string; country?: string; variant?: string };
 }
 
-export const User: Schema.Schema<User> =
+export const User: Schema.Codec<User> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -478,7 +478,7 @@ export interface BlogList {
   blogUserInfos?: ReadonlyArray<BlogUserInfo>;
 }
 
-export const BlogList: Schema.Schema<BlogList> =
+export const BlogList: Schema.Codec<BlogList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(Blog)),
@@ -498,7 +498,7 @@ export interface CommentList {
   etag?: string;
 }
 
-export const CommentList: Schema.Schema<CommentList> =
+export const CommentList: Schema.Codec<CommentList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
@@ -518,7 +518,7 @@ export interface PageList {
   etag?: string;
 }
 
-export const PageList: Schema.Schema<PageList> =
+export const PageList: Schema.Codec<PageList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(Page)),
@@ -539,7 +539,7 @@ export interface PostList {
   prevPageToken?: string;
 }
 
-export const PostList: Schema.Schema<PostList> =
+export const PostList: Schema.Codec<PostList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
@@ -557,7 +557,7 @@ export interface PostUserInfosList {
   items?: ReadonlyArray<PostUserInfo>;
 }
 
-export const PostUserInfosList: Schema.Schema<PostUserInfosList> =
+export const PostUserInfosList: Schema.Codec<PostUserInfosList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
@@ -637,7 +637,7 @@ export const ApproveCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<ApproveCommentsRequest>;
+) as unknown as Schema.Codec<ApproveCommentsRequest>;
 
 export type ApproveCommentsResponse = Comment;
 export const ApproveCommentsResponse = /*@__PURE__*/ /*#__PURE__*/ Comment;
@@ -677,13 +677,13 @@ export const DeleteCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}",
   }),
   svc,
-) as unknown as Schema.Schema<DeleteCommentsRequest>;
+) as unknown as Schema.Codec<DeleteCommentsRequest>;
 
 export interface DeleteCommentsResponse {}
-export const DeleteCommentsResponse: Schema.Schema<DeleteCommentsResponse> =
+export const DeleteCommentsResponse: Schema.Codec<DeleteCommentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteCommentsResponse>;
+  ) as any as Schema.Codec<DeleteCommentsResponse>;
 
 export type DeleteCommentsError =
   | DefaultErrors
@@ -727,7 +727,7 @@ export const GetCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}",
   }),
   svc,
-) as unknown as Schema.Schema<GetCommentsRequest>;
+) as unknown as Schema.Codec<GetCommentsRequest>;
 
 export type GetCommentsResponse = Comment;
 export const GetCommentsResponse = /*@__PURE__*/ /*#__PURE__*/ Comment;
@@ -776,7 +776,7 @@ export const ListCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v3/blogs/{blogId}/posts/{postId}/comments" }),
   svc,
-) as unknown as Schema.Schema<ListCommentsRequest>;
+) as unknown as Schema.Codec<ListCommentsRequest>;
 
 export type ListCommentsResponse = CommentList;
 export const ListCommentsResponse = /*@__PURE__*/ /*#__PURE__*/ CommentList;
@@ -826,7 +826,7 @@ export const ListByBlogCommentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v3/blogs/{blogId}/comments" }),
     svc,
-  ) as unknown as Schema.Schema<ListByBlogCommentsRequest>;
+  ) as unknown as Schema.Codec<ListByBlogCommentsRequest>;
 
 export type ListByBlogCommentsResponse = CommentList;
 export const ListByBlogCommentsResponse =
@@ -869,7 +869,7 @@ export const MarkAsSpamCommentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<MarkAsSpamCommentsRequest>;
+  ) as unknown as Schema.Codec<MarkAsSpamCommentsRequest>;
 
 export type MarkAsSpamCommentsResponse = Comment;
 export const MarkAsSpamCommentsResponse = /*@__PURE__*/ /*#__PURE__*/ Comment;
@@ -911,7 +911,7 @@ export const RemoveContentCommentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveContentCommentsRequest>;
+  ) as unknown as Schema.Codec<RemoveContentCommentsRequest>;
 
 export type RemoveContentCommentsResponse = Comment;
 export const RemoveContentCommentsResponse =
@@ -950,13 +950,13 @@ export const DeletePagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "v3/blogs/{blogId}/pages/{pageId}" }),
   svc,
-) as unknown as Schema.Schema<DeletePagesRequest>;
+) as unknown as Schema.Codec<DeletePagesRequest>;
 
 export interface DeletePagesResponse {}
-export const DeletePagesResponse: Schema.Schema<DeletePagesResponse> =
+export const DeletePagesResponse: Schema.Codec<DeletePagesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeletePagesResponse>;
+  ) as any as Schema.Codec<DeletePagesResponse>;
 
 export type DeletePagesError =
   | DefaultErrors
@@ -995,7 +995,7 @@ export const GetPagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v3/blogs/{blogId}/pages/{pageId}" }),
   svc,
-) as unknown as Schema.Schema<GetPagesRequest>;
+) as unknown as Schema.Codec<GetPagesRequest>;
 
 export type GetPagesResponse = Page;
 export const GetPagesResponse = /*@__PURE__*/ /*#__PURE__*/ Page;
@@ -1028,7 +1028,7 @@ export const InsertPagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v3/blogs/{blogId}/pages", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<InsertPagesRequest>;
+) as unknown as Schema.Codec<InsertPagesRequest>;
 
 export type InsertPagesResponse = Page;
 export const InsertPagesResponse = /*@__PURE__*/ /*#__PURE__*/ Page;
@@ -1078,7 +1078,7 @@ export const ListPagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v3/blogs/{blogId}/pages" }),
   svc,
-) as unknown as Schema.Schema<ListPagesRequest>;
+) as unknown as Schema.Codec<ListPagesRequest>;
 
 export type ListPagesResponse = PageList;
 export const ListPagesResponse = /*@__PURE__*/ /*#__PURE__*/ PageList;
@@ -1124,7 +1124,7 @@ export const PatchPagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchPagesRequest>;
+) as unknown as Schema.Codec<PatchPagesRequest>;
 
 export type PatchPagesResponse = Page;
 export const PatchPagesResponse = /*@__PURE__*/ /*#__PURE__*/ Page;
@@ -1163,7 +1163,7 @@ export const PublishPagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PublishPagesRequest>;
+) as unknown as Schema.Codec<PublishPagesRequest>;
 
 export type PublishPagesResponse = Page;
 export const PublishPagesResponse = /*@__PURE__*/ /*#__PURE__*/ Page;
@@ -1202,7 +1202,7 @@ export const RevertPagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<RevertPagesRequest>;
+) as unknown as Schema.Codec<RevertPagesRequest>;
 
 export type RevertPagesResponse = Page;
 export const RevertPagesResponse = /*@__PURE__*/ /*#__PURE__*/ Page;
@@ -1248,7 +1248,7 @@ export const UpdatePagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdatePagesRequest>;
+) as unknown as Schema.Codec<UpdatePagesRequest>;
 
 export type UpdatePagesResponse = Page;
 export const UpdatePagesResponse = /*@__PURE__*/ /*#__PURE__*/ Page;
@@ -1286,13 +1286,13 @@ export const DeletePostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "v3/blogs/{blogId}/posts/{postId}" }),
   svc,
-) as unknown as Schema.Schema<DeletePostsRequest>;
+) as unknown as Schema.Codec<DeletePostsRequest>;
 
 export interface DeletePostsResponse {}
-export const DeletePostsResponse: Schema.Schema<DeletePostsResponse> =
+export const DeletePostsResponse: Schema.Codec<DeletePostsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeletePostsResponse>;
+  ) as any as Schema.Codec<DeletePostsResponse>;
 
 export type DeletePostsError =
   | DefaultErrors
@@ -1337,7 +1337,7 @@ export const GetPostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v3/blogs/{blogId}/posts/{postId}" }),
   svc,
-) as unknown as Schema.Schema<GetPostsRequest>;
+) as unknown as Schema.Codec<GetPostsRequest>;
 
 export type GetPostsResponse = Post;
 export const GetPostsResponse = /*@__PURE__*/ /*#__PURE__*/ Post;
@@ -1376,7 +1376,7 @@ export const GetByPathPostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v3/blogs/{blogId}/posts/bypath" }),
   svc,
-) as unknown as Schema.Schema<GetByPathPostsRequest>;
+) as unknown as Schema.Codec<GetByPathPostsRequest>;
 
 export type GetByPathPostsResponse = Post;
 export const GetByPathPostsResponse = /*@__PURE__*/ /*#__PURE__*/ Post;
@@ -1413,7 +1413,7 @@ export const InsertPostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v3/blogs/{blogId}/posts", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<InsertPostsRequest>;
+) as unknown as Schema.Codec<InsertPostsRequest>;
 
 export type InsertPostsResponse = Post;
 export const InsertPostsResponse = /*@__PURE__*/ /*#__PURE__*/ Post;
@@ -1480,7 +1480,7 @@ export const ListPostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v3/blogs/{blogId}/posts" }),
   svc,
-) as unknown as Schema.Schema<ListPostsRequest>;
+) as unknown as Schema.Codec<ListPostsRequest>;
 
 export type ListPostsResponse = PostList;
 export const ListPostsResponse = /*@__PURE__*/ /*#__PURE__*/ PostList;
@@ -1532,7 +1532,7 @@ export const PatchPostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchPostsRequest>;
+) as unknown as Schema.Codec<PatchPostsRequest>;
 
 export type PatchPostsResponse = Post;
 export const PatchPostsResponse = /*@__PURE__*/ /*#__PURE__*/ Post;
@@ -1573,7 +1573,7 @@ export const PublishPostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PublishPostsRequest>;
+) as unknown as Schema.Codec<PublishPostsRequest>;
 
 export type PublishPostsResponse = Post;
 export const PublishPostsResponse = /*@__PURE__*/ /*#__PURE__*/ Post;
@@ -1612,7 +1612,7 @@ export const RevertPostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<RevertPostsRequest>;
+) as unknown as Schema.Codec<RevertPostsRequest>;
 
 export type RevertPostsResponse = Post;
 export const RevertPostsResponse = /*@__PURE__*/ /*#__PURE__*/ Post;
@@ -1651,7 +1651,7 @@ export const SearchPostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v3/blogs/{blogId}/posts/search" }),
   svc,
-) as unknown as Schema.Schema<SearchPostsRequest>;
+) as unknown as Schema.Codec<SearchPostsRequest>;
 
 export type SearchPostsResponse = PostList;
 export const SearchPostsResponse = /*@__PURE__*/ /*#__PURE__*/ PostList;
@@ -1698,7 +1698,7 @@ export const UpdatePostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdatePostsRequest>;
+) as unknown as Schema.Codec<UpdatePostsRequest>;
 
 export type UpdatePostsResponse = Post;
 export const UpdatePostsResponse = /*@__PURE__*/ /*#__PURE__*/ Post;
@@ -1741,7 +1741,7 @@ export const GetBlogsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v3/blogs/{blogId}" }),
   svc,
-) as unknown as Schema.Schema<GetBlogsRequest>;
+) as unknown as Schema.Codec<GetBlogsRequest>;
 
 export type GetBlogsResponse = Blog;
 export const GetBlogsResponse = /*@__PURE__*/ /*#__PURE__*/ Blog;
@@ -1777,7 +1777,7 @@ export const GetByUrlBlogsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v3/blogs/byurl" }),
   svc,
-) as unknown as Schema.Schema<GetByUrlBlogsRequest>;
+) as unknown as Schema.Codec<GetByUrlBlogsRequest>;
 
 export type GetByUrlBlogsResponse = Blog;
 export const GetByUrlBlogsResponse = /*@__PURE__*/ /*#__PURE__*/ Blog;
@@ -1833,7 +1833,7 @@ export const ListByUserBlogsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "v3/users/{userId}/blogs" }),
   svc,
-) as unknown as Schema.Schema<ListByUserBlogsRequest>;
+) as unknown as Schema.Codec<ListByUserBlogsRequest>;
 
 export type ListByUserBlogsResponse = BlogList;
 export const ListByUserBlogsResponse = /*@__PURE__*/ /*#__PURE__*/ BlogList;
@@ -1866,7 +1866,7 @@ export const GetBlogUserInfosRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v3/users/{userId}/blogs/{blogId}" }),
     svc,
-  ) as unknown as Schema.Schema<GetBlogUserInfosRequest>;
+  ) as unknown as Schema.Codec<GetBlogUserInfosRequest>;
 
 export type GetBlogUserInfosResponse = BlogUserInfo;
 export const GetBlogUserInfosResponse =
@@ -1899,7 +1899,7 @@ export const GetPageViewsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v3/blogs/{blogId}/pageviews" }),
   svc,
-) as unknown as Schema.Schema<GetPageViewsRequest>;
+) as unknown as Schema.Codec<GetPageViewsRequest>;
 
 export type GetPageViewsResponse = Pageviews;
 export const GetPageViewsResponse = /*@__PURE__*/ /*#__PURE__*/ Pageviews;
@@ -1939,7 +1939,7 @@ export const GetPostUserInfosRequest =
       path: "v3/users/{userId}/blogs/{blogId}/posts/{postId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetPostUserInfosRequest>;
+  ) as unknown as Schema.Codec<GetPostUserInfosRequest>;
 
 export type GetPostUserInfosResponse = PostUserInfo;
 export const GetPostUserInfosResponse =
@@ -1998,7 +1998,7 @@ export const ListPostUserInfosRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v3/users/{userId}/blogs/{blogId}/posts" }),
     svc,
-  ) as unknown as Schema.Schema<ListPostUserInfosRequest>;
+  ) as unknown as Schema.Codec<ListPostUserInfosRequest>;
 
 export type ListPostUserInfosResponse = PostUserInfosList;
 export const ListPostUserInfosResponse =
@@ -2032,7 +2032,7 @@ export const GetUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v3/users/{userId}" }),
   svc,
-) as unknown as Schema.Schema<GetUsersRequest>;
+) as unknown as Schema.Codec<GetUsersRequest>;
 
 export type GetUsersResponse = User;
 export const GetUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;

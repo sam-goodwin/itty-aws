@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GroupsControllerListInput {
+  organizationId: string;
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+}
 export const GroupsControllerListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
@@ -13,10 +20,22 @@ export const GroupsControllerListInput =
     order: Schema.optional(Schema.String),
   }).pipe(
     T.Http({ method: "GET", path: "/organizations/{organizationId}/groups" }),
-  );
-export type GroupsControllerListInput = typeof GroupsControllerListInput.Type;
+  ) as unknown as Schema.Codec<GroupsControllerListInput>;
 
 // Output Schema
+export interface GroupsControllerListOutput {
+  object?: string;
+  data?: {
+    object?: string;
+    id?: string;
+    organization_id?: string;
+    name?: string;
+    description?: string | null;
+    created_at?: string;
+    updated_at?: string;
+  }[];
+  list_metadata?: { before: string | null; after: string | null };
+}
 export const GroupsControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -39,8 +58,7 @@ export const GroupsControllerListOutput =
         after: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type GroupsControllerListOutput = typeof GroupsControllerListOutput.Type;
+  }) as unknown as Schema.Codec<GroupsControllerListOutput>;
 
 // The operation
 /**

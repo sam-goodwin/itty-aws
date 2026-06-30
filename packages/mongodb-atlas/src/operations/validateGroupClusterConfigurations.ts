@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ValidateGroupClusterConfigurationsInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const ValidateGroupClusterConfigurationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const ValidateGroupClusterConfigurationsInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/clusterConfigurations:validate",
     }),
-  );
-export type ValidateGroupClusterConfigurationsInput =
-  typeof ValidateGroupClusterConfigurationsInput.Type;
+  ) as unknown as Schema.Codec<ValidateGroupClusterConfigurationsInput>;
 
 // Output Schema
+export type ValidateGroupClusterConfigurationsOutput = void;
 export const ValidateGroupClusterConfigurationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ValidateGroupClusterConfigurationsOutput =
-  typeof ValidateGroupClusterConfigurationsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ValidateGroupClusterConfigurationsOutput>;
 
 // The operation
 /**

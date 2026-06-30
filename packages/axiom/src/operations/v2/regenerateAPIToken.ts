@@ -4,6 +4,50 @@ import * as T from "../../traits.ts";
 import { NotFound, UnprocessableEntity } from "../../errors.ts";
 
 // Input Schema
+export interface RegenerateAPITokenInput {
+  id: string;
+  existingTokenExpiresAt: string;
+  newToken?: {
+    datasetCapabilities?: Record<
+      string,
+      {
+        data?: "delete"[];
+        ingest?: "create"[];
+        query?: "read"[];
+        share?: ("create" | "read" | "delete")[];
+        starredQueries?: ("create" | "read" | "update" | "delete")[];
+        trim?: "update"[];
+        vacuum?: "update"[];
+        virtualFields?: ("create" | "read" | "update" | "delete")[];
+      }
+    >;
+    description?: string;
+    expiresAt?: string | null;
+    name: string;
+    orgCapabilities?: {
+      annotations?: ("create" | "read" | "update" | "delete")[];
+      apiTokens?: ("create" | "read" | "update" | "delete")[];
+      auditLog?: "read"[];
+      billing?: ("read" | "update")[];
+      dashboards?: ("create" | "read" | "update" | "delete")[];
+      datasets?: ("create" | "read" | "update" | "delete")[];
+      endpoints?: ("create" | "read" | "update" | "delete")[];
+      flows?: ("create" | "read" | "update" | "delete")[];
+      integrations?: ("create" | "read" | "update" | "delete")[];
+      monitors?: ("create" | "read" | "update" | "delete")[];
+      notifiers?: ("create" | "read" | "update" | "delete")[];
+      rbac?: ("create" | "read" | "update" | "delete")[];
+      sharedAccessKeys?: ("read" | "update")[];
+      users?: ("create" | "read" | "update" | "delete")[];
+      views?: ("create" | "read" | "update" | "delete")[];
+    };
+    viewCapabilities?: Record<
+      string,
+      { query?: "read"[]; share?: ("create" | "read" | "delete")[] }
+    >;
+  };
+  newTokenExpiresAt?: string | null;
+}
 export const RegenerateAPITokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -127,10 +171,53 @@ export const RegenerateAPITokenInput =
       }),
     ),
     newTokenExpiresAt: Schema.optional(Schema.NullOr(Schema.String)),
-  }).pipe(T.Http({ method: "POST", path: "/v2/tokens/{id}/regenerate" }));
-export type RegenerateAPITokenInput = typeof RegenerateAPITokenInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/v2/tokens/{id}/regenerate" }),
+  ) as unknown as Schema.Codec<RegenerateAPITokenInput>;
 
 // Output Schema
+export interface RegenerateAPITokenOutput {
+  datasetCapabilities: Record<
+    string,
+    {
+      data?: "delete"[];
+      ingest?: "create"[];
+      query?: "read"[];
+      share?: ("create" | "read" | "delete")[];
+      starredQueries?: ("create" | "read" | "update" | "delete")[];
+      trim?: "update"[];
+      vacuum?: "update"[];
+      virtualFields?: ("create" | "read" | "update" | "delete")[];
+    }
+  >;
+  description?: string;
+  expiresAt?: string | null;
+  id: string;
+  name: string;
+  orgCapabilities: {
+    annotations?: ("create" | "read" | "update" | "delete")[];
+    apiTokens?: ("create" | "read" | "update" | "delete")[];
+    auditLog?: "read"[];
+    billing?: ("read" | "update")[];
+    dashboards?: ("create" | "read" | "update" | "delete")[];
+    datasets?: ("create" | "read" | "update" | "delete")[];
+    endpoints?: ("create" | "read" | "update" | "delete")[];
+    flows?: ("create" | "read" | "update" | "delete")[];
+    integrations?: ("create" | "read" | "update" | "delete")[];
+    monitors?: ("create" | "read" | "update" | "delete")[];
+    notifiers?: ("create" | "read" | "update" | "delete")[];
+    rbac?: ("create" | "read" | "update" | "delete")[];
+    sharedAccessKeys?: ("read" | "update")[];
+    users?: ("create" | "read" | "update" | "delete")[];
+    views?: ("create" | "read" | "update" | "delete")[];
+  };
+  samlAuthenticated?: boolean;
+  viewCapabilities?: Record<
+    string,
+    { query?: "read"[]; share?: ("create" | "read" | "delete")[] }
+  >;
+  token?: string;
+}
 export const RegenerateAPITokenOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     datasetCapabilities: Schema.Record(
@@ -214,8 +301,7 @@ export const RegenerateAPITokenOutput =
       ),
     ),
     token: Schema.optional(Schema.String),
-  });
-export type RegenerateAPITokenOutput = typeof RegenerateAPITokenOutput.Type;
+  }) as unknown as Schema.Codec<RegenerateAPITokenOutput>;
 
 // The operation
 /**

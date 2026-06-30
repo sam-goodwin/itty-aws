@@ -3,6 +3,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface SignSolanaMessageWithEndUserAccountInput {
+  userId: string;
+  projectID?: string;
+  address: string;
+  message: string;
+  walletSecretId?: string;
+}
 export const SignSolanaMessageWithEndUserAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.PathParam()),
@@ -15,17 +22,16 @@ export const SignSolanaMessageWithEndUserAccountInput =
       method: "POST",
       path: "/v2/embedded-wallet-api/end-users/{userId}/solana/sign/message",
     }),
-  );
-export type SignSolanaMessageWithEndUserAccountInput =
-  typeof SignSolanaMessageWithEndUserAccountInput.Type;
+  ) as unknown as Schema.Codec<SignSolanaMessageWithEndUserAccountInput>;
 
 // Output Schema
+export interface SignSolanaMessageWithEndUserAccountOutput {
+  signature: string;
+}
 export const SignSolanaMessageWithEndUserAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signature: Schema.String,
-  });
-export type SignSolanaMessageWithEndUserAccountOutput =
-  typeof SignSolanaMessageWithEndUserAccountOutput.Type;
+  }) as unknown as Schema.Codec<SignSolanaMessageWithEndUserAccountOutput>;
 
 // The operation
 /**

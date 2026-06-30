@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,7 +29,7 @@ export interface GoogleCloudDatacatalogLineageV1EntityReference {
   field?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDatacatalogLineageV1EntityReference: Schema.Schema<GoogleCloudDatacatalogLineageV1EntityReference> =
+export const GoogleCloudDatacatalogLineageV1EntityReference: Schema.Codec<GoogleCloudDatacatalogLineageV1EntityReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fullyQualifiedName: Schema.optional(Schema.String),
     field: Schema.optional(Schema.Array(Schema.String)),
@@ -40,7 +40,7 @@ export interface GoogleCloudDatacatalogLineageV1MultipleEntityReference {
   entities?: ReadonlyArray<GoogleCloudDatacatalogLineageV1EntityReference>;
 }
 
-export const GoogleCloudDatacatalogLineageV1MultipleEntityReference: Schema.Schema<GoogleCloudDatacatalogLineageV1MultipleEntityReference> =
+export const GoogleCloudDatacatalogLineageV1MultipleEntityReference: Schema.Codec<GoogleCloudDatacatalogLineageV1MultipleEntityReference> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entities: Schema.optional(
       Schema.Array(GoogleCloudDatacatalogLineageV1EntityReference),
@@ -54,7 +54,7 @@ export interface GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestRoo
   entities?: GoogleCloudDatacatalogLineageV1MultipleEntityReference;
 }
 
-export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestRootCriteria: Schema.Schema<GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestRootCriteria> =
+export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestRootCriteria: Schema.Codec<GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestRootCriteria> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entities: Schema.optional(
       GoogleCloudDatacatalogLineageV1MultipleEntityReference,
@@ -69,7 +69,7 @@ export interface GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionI
   enabled?: boolean;
 }
 
-export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement: Schema.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement> =
+export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement: Schema.Codec<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -88,7 +88,7 @@ export interface GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionI
     | (string & {});
 }
 
-export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector: Schema.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector> =
+export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector: Schema.Codec<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     integration: Schema.optional(Schema.String),
   }).annotate({
@@ -103,7 +103,7 @@ export interface GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionI
   integrationSelector?: GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector;
 }
 
-export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule: Schema.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule> =
+export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule: Schema.Codec<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lineageEnablement: Schema.optional(
       GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement,
@@ -121,7 +121,7 @@ export interface GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion 
   rules?: ReadonlyArray<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule>;
 }
 
-export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion: Schema.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion> =
+export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion: Schema.Codec<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rules: Schema.optional(
       Schema.Array(
@@ -151,7 +151,7 @@ export interface GoogleCloudDatacatalogLineageV1Origin {
   name?: string;
 }
 
-export const GoogleCloudDatacatalogLineageV1Origin: Schema.Schema<GoogleCloudDatacatalogLineageV1Origin> =
+export const GoogleCloudDatacatalogLineageV1Origin: Schema.Codec<GoogleCloudDatacatalogLineageV1Origin> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceType: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -166,7 +166,7 @@ export interface GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest 
   pageToken?: string;
 }
 
-export const GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest: Schema.Schema<GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest> =
+export const GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest: Schema.Codec<GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     links: Schema.optional(Schema.Array(Schema.String)),
     pageSize: Schema.optional(Schema.Number),
@@ -197,7 +197,7 @@ export interface GoogleCloudDatacatalogLineageV1Run {
   attributes?: Record<string, unknown>;
 }
 
-export const GoogleCloudDatacatalogLineageV1Run: Schema.Schema<GoogleCloudDatacatalogLineageV1Run> =
+export const GoogleCloudDatacatalogLineageV1Run: Schema.Codec<GoogleCloudDatacatalogLineageV1Run> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -214,7 +214,7 @@ export interface GoogleCloudDatacatalogLineageV1ListRunsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDatacatalogLineageV1ListRunsResponse: Schema.Schema<GoogleCloudDatacatalogLineageV1ListRunsResponse> =
+export const GoogleCloudDatacatalogLineageV1ListRunsResponse: Schema.Codec<GoogleCloudDatacatalogLineageV1ListRunsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     runs: Schema.optional(Schema.Array(GoogleCloudDatacatalogLineageV1Run)),
     nextPageToken: Schema.optional(Schema.String),
@@ -231,7 +231,7 @@ export interface GoogleCloudDatacatalogLineageV1DependencyInfo {
     | (string & {});
 }
 
-export const GoogleCloudDatacatalogLineageV1DependencyInfo: Schema.Schema<GoogleCloudDatacatalogLineageV1DependencyInfo> =
+export const GoogleCloudDatacatalogLineageV1DependencyInfo: Schema.Codec<GoogleCloudDatacatalogLineageV1DependencyInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dependencyType: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDatacatalogLineageV1DependencyInfo" });
@@ -245,7 +245,7 @@ export interface GoogleCloudDatacatalogLineageV1EventLink {
   dependencyInfo?: GoogleCloudDatacatalogLineageV1DependencyInfo;
 }
 
-export const GoogleCloudDatacatalogLineageV1EventLink: Schema.Schema<GoogleCloudDatacatalogLineageV1EventLink> =
+export const GoogleCloudDatacatalogLineageV1EventLink: Schema.Codec<GoogleCloudDatacatalogLineageV1EventLink> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     source: Schema.optional(GoogleCloudDatacatalogLineageV1EntityReference),
     target: Schema.optional(GoogleCloudDatacatalogLineageV1EntityReference),
@@ -265,7 +265,7 @@ export interface GoogleCloudDatacatalogLineageV1LineageEvent {
   startTime?: string;
 }
 
-export const GoogleCloudDatacatalogLineageV1LineageEvent: Schema.Schema<GoogleCloudDatacatalogLineageV1LineageEvent> =
+export const GoogleCloudDatacatalogLineageV1LineageEvent: Schema.Codec<GoogleCloudDatacatalogLineageV1LineageEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     links: Schema.optional(
       Schema.Array(GoogleCloudDatacatalogLineageV1EventLink),
@@ -282,7 +282,7 @@ export interface GoogleCloudDatacatalogLineageV1ListLineageEventsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDatacatalogLineageV1ListLineageEventsResponse: Schema.Schema<GoogleCloudDatacatalogLineageV1ListLineageEventsResponse> =
+export const GoogleCloudDatacatalogLineageV1ListLineageEventsResponse: Schema.Codec<GoogleCloudDatacatalogLineageV1ListLineageEventsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lineageEvents: Schema.optional(
       Schema.Array(GoogleCloudDatacatalogLineageV1LineageEvent),
@@ -301,7 +301,7 @@ export interface GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventRespon
   lineageEvents?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse: Schema.Schema<GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse> =
+export const GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse: Schema.Codec<GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     run: Schema.optional(Schema.String),
     process: Schema.optional(Schema.String),
@@ -322,7 +322,7 @@ export interface GoogleCloudDatacatalogLineageV1Process {
   attributes?: Record<string, unknown>;
 }
 
-export const GoogleCloudDatacatalogLineageV1Process: Schema.Schema<GoogleCloudDatacatalogLineageV1Process> =
+export const GoogleCloudDatacatalogLineageV1Process: Schema.Codec<GoogleCloudDatacatalogLineageV1Process> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     origin: Schema.optional(GoogleCloudDatacatalogLineageV1Origin),
@@ -335,7 +335,7 @@ export interface GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess {
   process?: GoogleCloudDatacatalogLineageV1Process;
 }
 
-export const GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess: Schema.Schema<GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess> =
+export const GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess: Schema.Codec<GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     process: Schema.optional(GoogleCloudDatacatalogLineageV1Process),
   }).annotate({
@@ -351,7 +351,7 @@ export interface GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfo {
     | (string & {});
 }
 
-export const GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfo: Schema.Schema<GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfo> =
+export const GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfo: Schema.Codec<GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dependencyType: Schema.optional(Schema.String),
   }).annotate({
@@ -373,7 +373,7 @@ export interface GoogleCloudDatacatalogLineageV1LineageLink {
   location?: string;
 }
 
-export const GoogleCloudDatacatalogLineageV1LineageLink: Schema.Schema<GoogleCloudDatacatalogLineageV1LineageLink> =
+export const GoogleCloudDatacatalogLineageV1LineageLink: Schema.Codec<GoogleCloudDatacatalogLineageV1LineageLink> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     processes: Schema.optional(
       Schema.Array(GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess),
@@ -394,7 +394,7 @@ export interface GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse: Schema.Schema<GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse> =
+export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse: Schema.Codec<GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     links: Schema.optional(
       Schema.Array(GoogleCloudDatacatalogLineageV1LineageLink),
@@ -413,7 +413,7 @@ export interface GoogleCloudDatacatalogLineageConfigmanagementV1Config {
   etag?: string;
 }
 
-export const GoogleCloudDatacatalogLineageConfigmanagementV1Config: Schema.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1Config> =
+export const GoogleCloudDatacatalogLineageConfigmanagementV1Config: Schema.Codec<GoogleCloudDatacatalogLineageConfigmanagementV1Config> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ingestion: Schema.optional(
       GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion,
@@ -433,7 +433,7 @@ export interface GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSea
   maxProcessPerLink?: number;
 }
 
-export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchLimits: Schema.Schema<GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchLimits> =
+export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchLimits: Schema.Codec<GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchLimits> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxDepth: Schema.optional(Schema.Number),
     maxResults: Schema.optional(Schema.Number),
@@ -452,7 +452,7 @@ export interface GoogleRpcStatus {
   code?: number;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
+export const GoogleRpcStatus: Schema.Codec<GoogleRpcStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -474,7 +474,7 @@ export interface GoogleLongrunningOperation {
   error?: GoogleRpcStatus;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
+export const GoogleLongrunningOperation: Schema.Codec<GoogleLongrunningOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     done: Schema.optional(Schema.Boolean),
@@ -492,7 +492,7 @@ export interface GoogleLongrunningListOperationsResponse {
   operations?: ReadonlyArray<GoogleLongrunningOperation>;
 }
 
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
+export const GoogleLongrunningListOperationsResponse: Schema.Codec<GoogleLongrunningListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -501,7 +501,7 @@ export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongru
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
+export const GoogleProtobufEmpty: Schema.Codec<GoogleProtobufEmpty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleProtobufEmpty",
   });
@@ -527,7 +527,7 @@ export interface GoogleCloudDatacatalogLineageV1OperationMetadata {
   operationType?: "TYPE_UNSPECIFIED" | "DELETE" | "CREATE" | (string & {});
 }
 
-export const GoogleCloudDatacatalogLineageV1OperationMetadata: Schema.Schema<GoogleCloudDatacatalogLineageV1OperationMetadata> =
+export const GoogleCloudDatacatalogLineageV1OperationMetadata: Schema.Codec<GoogleCloudDatacatalogLineageV1OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -541,7 +541,7 @@ export const GoogleCloudDatacatalogLineageV1OperationMetadata: Schema.Schema<Goo
 
 export interface GoogleLongrunningCancelOperationRequest {}
 
-export const GoogleLongrunningCancelOperationRequest: Schema.Schema<GoogleLongrunningCancelOperationRequest> =
+export const GoogleLongrunningCancelOperationRequest: Schema.Codec<GoogleLongrunningCancelOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleLongrunningCancelOperationRequest",
   });
@@ -555,7 +555,7 @@ export interface GoogleCloudDatacatalogLineageV1LinkDependencyInfo {
     | (string & {});
 }
 
-export const GoogleCloudDatacatalogLineageV1LinkDependencyInfo: Schema.Schema<GoogleCloudDatacatalogLineageV1LinkDependencyInfo> =
+export const GoogleCloudDatacatalogLineageV1LinkDependencyInfo: Schema.Codec<GoogleCloudDatacatalogLineageV1LinkDependencyInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dependencyType: Schema.optional(Schema.String),
   }).annotate({
@@ -569,7 +569,7 @@ export interface GoogleCloudDatacatalogLineageV1ListProcessesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDatacatalogLineageV1ListProcessesResponse: Schema.Schema<GoogleCloudDatacatalogLineageV1ListProcessesResponse> =
+export const GoogleCloudDatacatalogLineageV1ListProcessesResponse: Schema.Codec<GoogleCloudDatacatalogLineageV1ListProcessesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     processes: Schema.optional(
       Schema.Array(GoogleCloudDatacatalogLineageV1Process),
@@ -594,7 +594,7 @@ export interface GoogleCloudDatacatalogLineageV1SearchLinksRequest {
   target?: GoogleCloudDatacatalogLineageV1EntityReference;
 }
 
-export const GoogleCloudDatacatalogLineageV1SearchLinksRequest: Schema.Schema<GoogleCloudDatacatalogLineageV1SearchLinksRequest> =
+export const GoogleCloudDatacatalogLineageV1SearchLinksRequest: Schema.Codec<GoogleCloudDatacatalogLineageV1SearchLinksRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     targets: Schema.optional(
       GoogleCloudDatacatalogLineageV1MultipleEntityReference,
@@ -619,7 +619,7 @@ export interface GoogleCloudDatacatalogLineageV1ProcessLinkInfo {
   startTime?: string;
 }
 
-export const GoogleCloudDatacatalogLineageV1ProcessLinkInfo: Schema.Schema<GoogleCloudDatacatalogLineageV1ProcessLinkInfo> =
+export const GoogleCloudDatacatalogLineageV1ProcessLinkInfo: Schema.Codec<GoogleCloudDatacatalogLineageV1ProcessLinkInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     link: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -633,7 +633,7 @@ export interface GoogleCloudDatacatalogLineageV1ProcessLinks {
   links?: ReadonlyArray<GoogleCloudDatacatalogLineageV1ProcessLinkInfo>;
 }
 
-export const GoogleCloudDatacatalogLineageV1ProcessLinks: Schema.Schema<GoogleCloudDatacatalogLineageV1ProcessLinks> =
+export const GoogleCloudDatacatalogLineageV1ProcessLinks: Schema.Codec<GoogleCloudDatacatalogLineageV1ProcessLinks> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     process: Schema.optional(Schema.String),
     links: Schema.optional(
@@ -648,7 +648,7 @@ export interface GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse
   nextPageToken?: string;
 }
 
-export const GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse: Schema.Schema<GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse> =
+export const GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse: Schema.Codec<GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     processLinks: Schema.optional(
       Schema.Array(GoogleCloudDatacatalogLineageV1ProcessLinks),
@@ -666,7 +666,7 @@ export interface GoogleTypeInterval {
   startTime?: string;
 }
 
-export const GoogleTypeInterval: Schema.Schema<GoogleTypeInterval> =
+export const GoogleTypeInterval: Schema.Codec<GoogleTypeInterval> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -683,7 +683,7 @@ export interface GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSea
   >;
 }
 
-export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFilters: Schema.Schema<GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFilters> =
+export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFilters: Schema.Codec<GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFilters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timeRange: Schema.optional(GoogleTypeInterval),
     entitySet: Schema.optional(Schema.String),
@@ -708,7 +708,7 @@ export interface GoogleCloudDatacatalogLineageV1Link {
   startTime?: string;
 }
 
-export const GoogleCloudDatacatalogLineageV1Link: Schema.Schema<GoogleCloudDatacatalogLineageV1Link> =
+export const GoogleCloudDatacatalogLineageV1Link: Schema.Codec<GoogleCloudDatacatalogLineageV1Link> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dependencyInfo: Schema.optional(
       Schema.Array(GoogleCloudDatacatalogLineageV1LinkDependencyInfo),
@@ -727,7 +727,7 @@ export interface GoogleCloudDatacatalogLineageV1SearchLinksResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDatacatalogLineageV1SearchLinksResponse: Schema.Schema<GoogleCloudDatacatalogLineageV1SearchLinksResponse> =
+export const GoogleCloudDatacatalogLineageV1SearchLinksResponse: Schema.Codec<GoogleCloudDatacatalogLineageV1SearchLinksResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     links: Schema.optional(Schema.Array(GoogleCloudDatacatalogLineageV1Link)),
     nextPageToken: Schema.optional(Schema.String),
@@ -752,7 +752,7 @@ export interface GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequest {
   rootCriteria?: GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestRootCriteria;
 }
 
-export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequest: Schema.Schema<GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequest> =
+export const GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequest: Schema.Codec<GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     direction: Schema.optional(Schema.String),
     locations: Schema.optional(Schema.Array(Schema.String)),
@@ -834,7 +834,7 @@ export const GetOrganizationsLocationsConfigRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsConfigRequest>;
+  ) as unknown as Schema.Codec<GetOrganizationsLocationsConfigRequest>;
 
 export type GetOrganizationsLocationsConfigResponse =
   GoogleCloudDatacatalogLineageConfigmanagementV1Config;
@@ -874,7 +874,7 @@ export const PatchOrganizationsLocationsConfigRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchOrganizationsLocationsConfigRequest>;
+  ) as unknown as Schema.Codec<PatchOrganizationsLocationsConfigRequest>;
 
 export type PatchOrganizationsLocationsConfigResponse =
   GoogleCloudDatacatalogLineageConfigmanagementV1Config;
@@ -911,7 +911,7 @@ export const GetFoldersLocationsConfigRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetFoldersLocationsConfigRequest>;
+  ) as unknown as Schema.Codec<GetFoldersLocationsConfigRequest>;
 
 export type GetFoldersLocationsConfigResponse =
   GoogleCloudDatacatalogLineageConfigmanagementV1Config;
@@ -951,7 +951,7 @@ export const PatchFoldersLocationsConfigRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchFoldersLocationsConfigRequest>;
+  ) as unknown as Schema.Codec<PatchFoldersLocationsConfigRequest>;
 
 export type PatchFoldersLocationsConfigResponse =
   GoogleCloudDatacatalogLineageConfigmanagementV1Config;
@@ -995,7 +995,7 @@ export const ProcessOpenLineageRunEventProjectsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ProcessOpenLineageRunEventProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ProcessOpenLineageRunEventProjectsLocationsRequest>;
 
 export type ProcessOpenLineageRunEventProjectsLocationsResponse =
   GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse;
@@ -1037,7 +1037,7 @@ export const SearchLinksProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}:searchLinks", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<SearchLinksProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<SearchLinksProjectsLocationsRequest>;
 
 export type SearchLinksProjectsLocationsResponse =
   GoogleCloudDatacatalogLineageV1SearchLinksResponse;
@@ -1083,7 +1083,7 @@ export const BatchSearchLinkProcessesProjectsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchSearchLinkProcessesProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<BatchSearchLinkProcessesProjectsLocationsRequest>;
 
 export type BatchSearchLinkProcessesProjectsLocationsResponse =
   GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse;
@@ -1129,7 +1129,7 @@ export const SearchLineageStreamingProjectsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SearchLineageStreamingProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<SearchLineageStreamingProjectsLocationsRequest>;
 
 export type SearchLineageStreamingProjectsLocationsResponse =
   GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse;
@@ -1182,7 +1182,7 @@ export const PatchProjectsLocationsProcessesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsProcessesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsProcessesRequest>;
 
 export type PatchProjectsLocationsProcessesResponse =
   GoogleCloudDatacatalogLineageV1Process;
@@ -1219,7 +1219,7 @@ export const GetProjectsLocationsProcessesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsProcessesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsProcessesRequest>;
 
 export type GetProjectsLocationsProcessesResponse =
   GoogleCloudDatacatalogLineageV1Process;
@@ -1260,7 +1260,7 @@ export const ListProjectsLocationsProcessesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/processes" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsProcessesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsProcessesRequest>;
 
 export type ListProjectsLocationsProcessesResponse =
   GoogleCloudDatacatalogLineageV1ListProcessesResponse;
@@ -1307,7 +1307,7 @@ export const CreateProjectsLocationsProcessesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/processes", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsProcessesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsProcessesRequest>;
 
 export type CreateProjectsLocationsProcessesResponse =
   GoogleCloudDatacatalogLineageV1Process;
@@ -1349,7 +1349,7 @@ export const DeleteProjectsLocationsProcessesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsProcessesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsProcessesRequest>;
 
 export type DeleteProjectsLocationsProcessesResponse =
   GoogleLongrunningOperation;
@@ -1399,7 +1399,7 @@ export const PatchProjectsLocationsProcessesRunsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsProcessesRunsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsProcessesRunsRequest>;
 
 export type PatchProjectsLocationsProcessesRunsResponse =
   GoogleCloudDatacatalogLineageV1Run;
@@ -1436,7 +1436,7 @@ export const GetProjectsLocationsProcessesRunsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsProcessesRunsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsProcessesRunsRequest>;
 
 export type GetProjectsLocationsProcessesRunsResponse =
   GoogleCloudDatacatalogLineageV1Run;
@@ -1477,7 +1477,7 @@ export const ListProjectsLocationsProcessesRunsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/runs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsProcessesRunsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsProcessesRunsRequest>;
 
 export type ListProjectsLocationsProcessesRunsResponse =
   GoogleCloudDatacatalogLineageV1ListRunsResponse;
@@ -1524,7 +1524,7 @@ export const CreateProjectsLocationsProcessesRunsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/runs", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsProcessesRunsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsProcessesRunsRequest>;
 
 export type CreateProjectsLocationsProcessesRunsResponse =
   GoogleCloudDatacatalogLineageV1Run;
@@ -1566,7 +1566,7 @@ export const DeleteProjectsLocationsProcessesRunsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsProcessesRunsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsProcessesRunsRequest>;
 
 export type DeleteProjectsLocationsProcessesRunsResponse =
   GoogleLongrunningOperation;
@@ -1615,7 +1615,7 @@ export const CreateProjectsLocationsProcessesRunsLineageEventsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsProcessesRunsLineageEventsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsProcessesRunsLineageEventsRequest>;
 
 export type CreateProjectsLocationsProcessesRunsLineageEventsResponse =
   GoogleCloudDatacatalogLineageV1LineageEvent;
@@ -1652,7 +1652,7 @@ export const GetProjectsLocationsProcessesRunsLineageEventsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsProcessesRunsLineageEventsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsProcessesRunsLineageEventsRequest>;
 
 export type GetProjectsLocationsProcessesRunsLineageEventsResponse =
   GoogleCloudDatacatalogLineageV1LineageEvent;
@@ -1692,7 +1692,7 @@ export const DeleteProjectsLocationsProcessesRunsLineageEventsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsProcessesRunsLineageEventsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsProcessesRunsLineageEventsRequest>;
 
 export type DeleteProjectsLocationsProcessesRunsLineageEventsResponse =
   GoogleProtobufEmpty;
@@ -1735,7 +1735,7 @@ export const ListProjectsLocationsProcessesRunsLineageEventsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/lineageEvents" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsProcessesRunsLineageEventsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsProcessesRunsLineageEventsRequest>;
 
 export type ListProjectsLocationsProcessesRunsLineageEventsResponse =
   GoogleCloudDatacatalogLineageV1ListLineageEventsResponse;
@@ -1779,7 +1779,7 @@ export const CancelProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = GoogleProtobufEmpty;
 export const CancelProjectsLocationsOperationsResponse =
@@ -1815,7 +1815,7 @@ export const GetProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = GoogleLongrunningOperation;
 export const GetProjectsLocationsOperationsResponse =
@@ -1849,7 +1849,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsOperationsRequest>;
 
 export type DeleteProjectsLocationsOperationsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsOperationsResponse =
@@ -1899,7 +1899,7 @@ export const ListProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsOperationsRequest>;
 
 export type ListProjectsLocationsOperationsResponse =
   GoogleLongrunningListOperationsResponse;
@@ -1938,7 +1938,7 @@ export const GetProjectsLocationsConfigRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsConfigRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsConfigRequest>;
 
 export type GetProjectsLocationsConfigResponse =
   GoogleCloudDatacatalogLineageConfigmanagementV1Config;
@@ -1978,7 +1978,7 @@ export const PatchProjectsLocationsConfigRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsConfigRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsConfigRequest>;
 
 export type PatchProjectsLocationsConfigResponse =
   GoogleCloudDatacatalogLineageConfigmanagementV1Config;

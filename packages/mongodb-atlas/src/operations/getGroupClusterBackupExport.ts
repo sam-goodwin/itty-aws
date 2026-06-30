@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupClusterBackupExportInput {
+  groupId: string;
+  clusterName: string;
+  exportId: string;
+  envelope?: boolean;
+}
 export const GetGroupClusterBackupExportInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const GetGroupClusterBackupExportInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports/{exportId}",
     }),
-  );
-export type GetGroupClusterBackupExportInput =
-  typeof GetGroupClusterBackupExportInput.Type;
+  ) as unknown as Schema.Codec<GetGroupClusterBackupExportInput>;
 
 // Output Schema
+export type GetGroupClusterBackupExportOutput = void;
 export const GetGroupClusterBackupExportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupClusterBackupExportOutput =
-  typeof GetGroupClusterBackupExportOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupClusterBackupExportOutput>;
 
 // The operation
 /**

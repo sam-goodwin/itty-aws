@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface CreateGroupFlexClusterBackupRestoreJobInput {
+  groupId: string;
+  name: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const CreateGroupFlexClusterBackupRestoreJobInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const CreateGroupFlexClusterBackupRestoreJobInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs",
     }),
-  );
-export type CreateGroupFlexClusterBackupRestoreJobInput =
-  typeof CreateGroupFlexClusterBackupRestoreJobInput.Type;
+  ) as unknown as Schema.Codec<CreateGroupFlexClusterBackupRestoreJobInput>;
 
 // Output Schema
+export type CreateGroupFlexClusterBackupRestoreJobOutput = void;
 export const CreateGroupFlexClusterBackupRestoreJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupFlexClusterBackupRestoreJobOutput =
-  typeof CreateGroupFlexClusterBackupRestoreJobOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupFlexClusterBackupRestoreJobOutput>;
 
 // The operation
 /**
