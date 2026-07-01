@@ -29,7 +29,8 @@
         "InvalidParameterValue",
         "InvalidVpcID.NotFound",
         "MissingParameter",
-        "ParseError"
+        "ParseError",
+        "InvalidSubnet.Conflict"
       ]
     },
     "deleteSubnet": {

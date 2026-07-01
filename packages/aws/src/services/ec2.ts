@@ -74839,6 +74839,10 @@ export class InaccessibleStorageLocation extends S.TaggedErrorClass<Inaccessible
   "InaccessibleStorageLocation",
   {},
 ) {}
+export class InvalidSubnetConflict extends S.TaggedErrorClass<InvalidSubnetConflict>()(
+  "InvalidSubnet.Conflict",
+  {},
+) {}
 export class TransitGatewayLimitExceeded extends S.TaggedErrorClass<TransitGatewayLimitExceeded>()(
   "TransitGatewayLimitExceeded",
   {},
@@ -78946,6 +78950,7 @@ export type CreateSubnetError =
   | InvalidVpcIDNotFound
   | MissingParameter
   | ParseError
+  | InvalidSubnetConflict
   | CommonErrors;
 /**
  * Creates a subnet in the specified VPC. For an IPv4 only subnet, specify an IPv4 CIDR block.
@@ -78986,6 +78991,7 @@ export const createSubnet: API.OperationMethod<
     InvalidVpcIDNotFound,
     MissingParameter,
     ParseError,
+    InvalidSubnetConflict,
   ],
 }));
 export type CreateSubnetCidrReservationError =
