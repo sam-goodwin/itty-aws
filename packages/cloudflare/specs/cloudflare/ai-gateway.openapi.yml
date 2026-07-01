@@ -1,7 +1,14 @@
 openapi: 3.1.0
 info:
-  title: Cloudflare AI-GATEWAY API
+  title: Cloudflare AI Gateway API (patch additions)
   version: 0.0.0
+  description: |
+    Operations missing from the upstream OpenAPI spec / TypeScript SDK.
+    Currently:
+      - deleteProviderConfig: the dashboard deletes BYOK provider configs via
+        DELETE .../provider_configs/{id}; verified live (returns the deleted
+        config object; a second delete returns code 7002 Not Found), but the
+        upstream spec only documents list + create.
 servers:
   - url: https://api.cloudflare.com/client/v4
 x-distilled-service: ai-gateway

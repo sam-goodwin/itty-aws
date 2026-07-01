@@ -5146,6 +5146,20 @@ paths:
                         required:
                           - mode
                           - target
+                      - type: object
+                        properties:
+                          mode:
+                            type: string
+                            enum:
+                              - smart
+                          status:
+                            type: string
+                            enum:
+                              - SUCCESS
+                              - UNSUPPORTED_APPLICATION
+                              - INSUFFICIENT_INVOCATIONS
+                          last_analyzed_at:
+                            type: string
                     description: Configuration for [Smart
                       Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
                       Specify mode='smart' for Smart Placement, or one of
@@ -5184,6 +5198,13 @@ paths:
                       - unbound
                     description: Usage model for the Worker invocations.
       x-distilled-response-path: result
+      x-distilled-errors:
+        DispatchNamespaceNotFound:
+          - code: 100119
+        DispatchNamespaceScriptNotFound:
+          - code: 10007
+        Forbidden:
+          - status: 403
     patch:
       operationId: patchDispatchNamespaceScriptSetting
       description: "Patch script metadata, such as bindings.  @example ```ts const
