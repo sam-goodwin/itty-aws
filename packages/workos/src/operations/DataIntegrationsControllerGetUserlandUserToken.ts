@@ -28,8 +28,8 @@ export type DataIntegrationsControllerGetUserlandUserTokenOutput =
         object: string;
         access_token: Redacted.Redacted<string>;
         expires_at: string | null;
-        scopes: string[];
-        missing_scopes: string[];
+        scopes: ReadonlyArray<string>;
+        missing_scopes: ReadonlyArray<string>;
       };
     }
   | { active: boolean; error: "needs_reauthorization" | "not_installed" };

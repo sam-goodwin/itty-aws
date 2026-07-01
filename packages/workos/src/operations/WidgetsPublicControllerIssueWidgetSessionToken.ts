@@ -7,7 +7,7 @@ import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 export interface WidgetsPublicControllerIssueWidgetSessionTokenInput {
   organization_id?: string;
   user_id?: string;
-  scopes?: (
+  scopes?: ReadonlyArray<
     | "widgets:users-table:manage"
     | "widgets:domain-verification:manage"
     | "widgets:sso:manage"
@@ -15,7 +15,7 @@ export interface WidgetsPublicControllerIssueWidgetSessionTokenInput {
     | "widgets:dsync:manage"
     | "widgets:audit-log-streaming:manage"
     | "widgets:pipes:manage"
-  )[];
+  >;
 }
 export const WidgetsPublicControllerIssueWidgetSessionTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

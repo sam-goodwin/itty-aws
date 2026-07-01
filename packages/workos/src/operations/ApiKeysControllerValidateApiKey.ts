@@ -26,10 +26,11 @@ export interface ApiKeysControllerValidateApiKeyOutput {
     obfuscated_value?: string;
     last_used_at?: string | null;
     expires_at?: string | null;
-    permissions?: string[];
+    permissions?: ReadonlyArray<string>;
     created_at?: string;
     updated_at?: string;
   } | null;
+  agent_registration_id?: string;
 }
 export const ApiKeysControllerValidateApiKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -61,6 +62,7 @@ export const ApiKeysControllerValidateApiKeyOutput =
         }),
       ),
     ),
+    agent_registration_id: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<ApiKeysControllerValidateApiKeyOutput>;
 
 // The operation

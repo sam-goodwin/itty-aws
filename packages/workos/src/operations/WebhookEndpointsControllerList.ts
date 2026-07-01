@@ -24,16 +24,16 @@ export const WebhookEndpointsControllerListInput =
 // Output Schema
 export interface WebhookEndpointsControllerListOutput {
   object?: string;
-  data?: {
+  data?: ReadonlyArray<{
     object?: string;
     id?: string;
     endpoint_url?: string;
     secret?: Redacted.Redacted<string>;
     status?: "enabled" | "disabled";
-    events?: string[];
+    events?: ReadonlyArray<string>;
     created_at?: string;
     updated_at?: string;
-  }[];
+  }>;
   list_metadata?: { before: string | null; after: string | null };
 }
 export const WebhookEndpointsControllerListOutput =

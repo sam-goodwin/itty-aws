@@ -14,8 +14,11 @@ export interface OrganizationsControllerUpdateOrganizationInput {
   id: string;
   name?: string;
   allow_profiles_outside_organization?: boolean;
-  domains?: string[];
-  domain_data?: { domain?: string; state?: "pending" | "verified" }[];
+  domains?: ReadonlyArray<string>;
+  domain_data?: ReadonlyArray<{
+    domain?: string;
+    state?: "pending" | "verified";
+  }>;
   stripe_customer_id?: string;
   metadata?: Record<string, string> | null;
   external_id?: string | null;
@@ -48,7 +51,7 @@ export interface OrganizationsControllerUpdateOrganizationOutput {
   object?: string;
   id?: string;
   name?: string;
-  domains?: {
+  domains?: ReadonlyArray<{
     object: string;
     id: string;
     organization_id: string;
@@ -64,7 +67,7 @@ export interface OrganizationsControllerUpdateOrganizationOutput {
     verification_strategy?: "dns" | "manual";
     created_at: string;
     updated_at: string;
-  }[];
+  }>;
   metadata?: Record<string, string>;
   external_id?: string | null;
   stripe_customer_id?: string;

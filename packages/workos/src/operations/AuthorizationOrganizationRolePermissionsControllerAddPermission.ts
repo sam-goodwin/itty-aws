@@ -33,7 +33,7 @@ export interface AuthorizationOrganizationRolePermissionsControllerAddPermission
   description: string | null;
   type: "EnvironmentRole" | "OrganizationRole";
   resource_type_slug: string;
-  permissions: string[];
+  permissions: ReadonlyArray<string>;
   created_at: string;
   updated_at: string;
 }

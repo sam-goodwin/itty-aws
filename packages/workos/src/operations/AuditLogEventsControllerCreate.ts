@@ -10,12 +10,12 @@ export interface AuditLogEventsControllerCreateInput {
     action?: string;
     occurred_at?: string;
     actor?: { id?: string; type?: string; name?: string; metadata?: unknown };
-    targets?: {
+    targets?: ReadonlyArray<{
       id?: string;
       type?: string;
       name?: string;
       metadata?: unknown;
-    }[];
+    }>;
     context?: { location?: string; user_agent?: string };
     metadata?: unknown;
     version?: number;

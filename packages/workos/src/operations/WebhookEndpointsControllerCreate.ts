@@ -8,7 +8,12 @@ import * as Redacted from "effect/Redacted";
 // Input Schema
 export interface WebhookEndpointsControllerCreateInput {
   endpoint_url?: string;
-  events?: (
+  events?: ReadonlyArray<
+    | "agent.registration.created"
+    | "agent.registration.claim.attempt.created"
+    | "agent.registration.claim.completed"
+    | "agent.registration.credential.issued"
+    | "agent.registration.organization.switched"
     | "authentication.email_verification_succeeded"
     | "authentication.magic_auth_failed"
     | "authentication.magic_auth_succeeded"
@@ -24,6 +29,7 @@ export interface WebhookEndpointsControllerCreateInput {
     | "authentication.sso_succeeded"
     | "authentication.sso_timed_out"
     | "authentication.radar_risk_detected"
+    | "authentication.reauthentication_succeeded"
     | "api_key.created"
     | "api_key.revoked"
     | "api_key.updated"
@@ -87,12 +93,11 @@ export interface WebhookEndpointsControllerCreateInput {
     | "pipes.connected_account.disconnected"
     | "pipes.connected_account.reauthorization_needed"
     | "session.created"
-    | "session.reauthenticated"
     | "session.revoked"
     | "waitlist_user.approved"
     | "waitlist_user.created"
     | "waitlist_user.denied"
-  )[];
+  >;
 }
 export const WebhookEndpointsControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -100,6 +105,11 @@ export const WebhookEndpointsControllerCreateInput =
     events: Schema.optional(
       Schema.Array(
         Schema.Literals([
+          "agent.registration.created",
+          "agent.registration.claim.attempt.created",
+          "agent.registration.claim.completed",
+          "agent.registration.credential.issued",
+          "agent.registration.organization.switched",
           "authentication.email_verification_succeeded",
           "authentication.magic_auth_failed",
           "authentication.magic_auth_succeeded",
@@ -115,6 +125,7 @@ export const WebhookEndpointsControllerCreateInput =
           "authentication.sso_succeeded",
           "authentication.sso_timed_out",
           "authentication.radar_risk_detected",
+          "authentication.reauthentication_succeeded",
           "api_key.created",
           "api_key.revoked",
           "api_key.updated",
@@ -178,7 +189,6 @@ export const WebhookEndpointsControllerCreateInput =
           "pipes.connected_account.disconnected",
           "pipes.connected_account.reauthorization_needed",
           "session.created",
-          "session.reauthenticated",
           "session.revoked",
           "waitlist_user.approved",
           "waitlist_user.created",
@@ -197,7 +207,7 @@ export interface WebhookEndpointsControllerCreateOutput {
   endpoint_url?: string;
   secret?: Redacted.Redacted<string>;
   status?: "enabled" | "disabled";
-  events?: string[];
+  events?: ReadonlyArray<string>;
   created_at?: string;
   updated_at?: string;
 }

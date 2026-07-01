@@ -20,14 +20,14 @@ export const ProviderControllerListForOrganizationInput =
 // Output Schema
 export interface ProviderControllerListForOrganizationOutput {
   object: string;
-  data: {
+  data: ReadonlyArray<{
     object: string;
     id: string;
     organization_id: string;
     slug: string;
     name: string;
     enabled: boolean;
-    scopes: string[] | null;
+    scopes: ReadonlyArray<string> | null;
     created_at: string;
     updated_at: string;
     credentials?: {
@@ -37,7 +37,7 @@ export interface ProviderControllerListForOrganizationOutput {
       client_secret_last_four: string | null;
       redirect_uri: string;
     };
-  }[];
+  }>;
 }
 export const ProviderControllerListForOrganizationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

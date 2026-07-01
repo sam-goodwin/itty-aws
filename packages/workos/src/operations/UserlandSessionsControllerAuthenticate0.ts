@@ -68,7 +68,7 @@ export interface UserlandSessionsControllerAuthenticate0Output {
     refresh_token: Redacted.Redacted<string>;
     access_token: Redacted.Redacted<string>;
     expires_at: number;
-    scopes: string[];
+    scopes: ReadonlyArray<string>;
   };
 }
 export const UserlandSessionsControllerAuthenticate0Output =

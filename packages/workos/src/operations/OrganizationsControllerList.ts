@@ -27,11 +27,11 @@ export const OrganizationsControllerListInput =
 // Output Schema
 export interface OrganizationsControllerListOutput {
   object?: string;
-  data?: {
+  data?: ReadonlyArray<{
     object?: string;
     id?: string;
     name?: string;
-    domains?: {
+    domains?: ReadonlyArray<{
       object: string;
       id: string;
       organization_id: string;
@@ -47,14 +47,14 @@ export interface OrganizationsControllerListOutput {
       verification_strategy?: "dns" | "manual";
       created_at: string;
       updated_at: string;
-    }[];
+    }>;
     metadata?: Record<string, string>;
     external_id?: string | null;
     stripe_customer_id?: string;
     created_at?: string;
     updated_at?: string;
     allow_profiles_outside_organization?: boolean;
-  }[];
+  }>;
   list_metadata?: { before: string | null; after: string | null };
 }
 export const OrganizationsControllerListOutput =

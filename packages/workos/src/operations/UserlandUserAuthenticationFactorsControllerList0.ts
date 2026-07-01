@@ -28,7 +28,7 @@ export const UserlandUserAuthenticationFactorsControllerList0Input =
 // Output Schema
 export interface UserlandUserAuthenticationFactorsControllerList0Output {
   object?: string;
-  data?: {
+  data?: ReadonlyArray<{
     object?: string;
     id?: string;
     type?: "generic_otp" | "sms" | "totp" | "webauthn";
@@ -37,7 +37,7 @@ export interface UserlandUserAuthenticationFactorsControllerList0Output {
     totp?: { issuer: string; user: string };
     created_at?: string;
     updated_at?: string;
-  }[];
+  }>;
   list_metadata?: { before: string | null; after: string | null };
 }
 export const UserlandUserAuthenticationFactorsControllerList0Output =

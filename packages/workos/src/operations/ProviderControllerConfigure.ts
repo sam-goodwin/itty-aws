@@ -10,7 +10,7 @@ export interface ProviderControllerConfigureInput {
   organizationId: string;
   slug: string;
   enabled?: boolean;
-  scopes?: string[] | null;
+  scopes?: ReadonlyArray<string> | null;
   client_id?: string;
   client_secret?: string | Redacted.Redacted<string>;
 }
@@ -37,7 +37,7 @@ export interface ProviderControllerConfigureOutput {
   slug: string;
   name: string;
   enabled: boolean;
-  scopes: string[] | null;
+  scopes: ReadonlyArray<string> | null;
   created_at: string;
   updated_at: string;
   credentials?: {

@@ -29,7 +29,7 @@ export const DirectoriesControllerListInput =
 // Output Schema
 export interface DirectoriesControllerListOutput {
   object?: string;
-  data?: {
+  data?: ReadonlyArray<{
     object?: string;
     id?: string;
     organization_id?: string;
@@ -67,7 +67,7 @@ export interface DirectoriesControllerListOutput {
     metadata?: { users: { active: number; inactive: number }; groups: number };
     created_at?: string;
     updated_at?: string;
-  }[];
+  }>;
   list_metadata?: { before: string | null; after: string | null };
 }
 export const DirectoriesControllerListOutput =

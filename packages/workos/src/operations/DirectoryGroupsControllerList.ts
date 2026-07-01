@@ -27,7 +27,7 @@ export const DirectoryGroupsControllerListInput =
 // Output Schema
 export interface DirectoryGroupsControllerListOutput {
   object?: string;
-  data?: {
+  data?: ReadonlyArray<{
     object?: string;
     id?: string;
     idp_id?: string;
@@ -37,7 +37,7 @@ export interface DirectoryGroupsControllerListOutput {
     raw_attributes?: Record<string, unknown>;
     created_at?: string;
     updated_at?: string;
-  }[];
+  }>;
   list_metadata?: { before: string | null; after: string | null };
 }
 export const DirectoryGroupsControllerListOutput =

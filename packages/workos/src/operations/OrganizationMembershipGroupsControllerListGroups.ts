@@ -28,7 +28,7 @@ export const OrganizationMembershipGroupsControllerListGroupsInput =
 // Output Schema
 export interface OrganizationMembershipGroupsControllerListGroupsOutput {
   object?: string;
-  data?: {
+  data?: ReadonlyArray<{
     object?: string;
     id?: string;
     organization_id?: string;
@@ -36,7 +36,7 @@ export interface OrganizationMembershipGroupsControllerListGroupsOutput {
     description?: string | null;
     created_at?: string;
     updated_at?: string;
-  }[];
+  }>;
   list_metadata?: { before: string | null; after: string | null };
 }
 export const OrganizationMembershipGroupsControllerListGroupsOutput =

@@ -28,7 +28,7 @@ export const AuthorizationGroupRoleAssignmentsControllerListInput =
 // Output Schema
 export interface AuthorizationGroupRoleAssignmentsControllerListOutput {
   object: string;
-  data: {
+  data: ReadonlyArray<{
     object: string;
     id: string;
     group_id: string;
@@ -36,7 +36,7 @@ export interface AuthorizationGroupRoleAssignmentsControllerListOutput {
     resource: { id: string; external_id: string; resource_type_slug: string };
     created_at: string;
     updated_at: string;
-  }[];
+  }>;
   list_metadata: { before: string | null; after: string | null };
 }
 export const AuthorizationGroupRoleAssignmentsControllerListOutput =

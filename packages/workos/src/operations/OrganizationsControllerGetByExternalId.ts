@@ -19,7 +19,7 @@ export interface OrganizationsControllerGetByExternalIdOutput {
   object?: string;
   id?: string;
   name?: string;
-  domains?: {
+  domains?: ReadonlyArray<{
     object: string;
     id: string;
     organization_id: string;
@@ -35,7 +35,7 @@ export interface OrganizationsControllerGetByExternalIdOutput {
     verification_strategy?: "dns" | "manual";
     created_at: string;
     updated_at: string;
-  }[];
+  }>;
   metadata?: Record<string, string>;
   external_id?: string | null;
   stripe_customer_id?: string;

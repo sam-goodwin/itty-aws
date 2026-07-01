@@ -26,7 +26,7 @@ export interface FeatureFlagsControllerFindBySlugOutput {
     first_name: string | null;
     last_name: string | null;
   } | null;
-  tags?: string[];
+  tags?: ReadonlyArray<string>;
   enabled?: boolean;
   default_value?: boolean;
   created_at?: string;

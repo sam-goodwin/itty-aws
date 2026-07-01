@@ -27,7 +27,7 @@ export const UserApiKeysControllerListInput =
 // Output Schema
 export interface UserApiKeysControllerListOutput {
   object: string;
-  data: {
+  data: ReadonlyArray<{
     object: string;
     id: string;
     owner: { type: string; id: string; organization_id: string };
@@ -35,10 +35,10 @@ export interface UserApiKeysControllerListOutput {
     obfuscated_value: string;
     last_used_at: string | null;
     expires_at: string | null;
-    permissions: string[];
+    permissions: ReadonlyArray<string>;
     created_at: string;
     updated_at: string;
-  }[];
+  }>;
   list_metadata: { before: string | null; after: string | null };
 }
 export const UserApiKeysControllerListOutput =

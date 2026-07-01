@@ -80,7 +80,7 @@ export interface ConnectionsControllerFindOutput {
     | "inactive"
     | "deleting";
   status?: "linked" | "unlinked";
-  domains?: { id: string; object: string; domain: string }[];
+  domains?: ReadonlyArray<{ id: string; object: string; domain: string }>;
   options?: { signing_cert: string | null };
   created_at?: string;
   updated_at?: string;

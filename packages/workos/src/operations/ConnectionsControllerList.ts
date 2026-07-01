@@ -130,7 +130,7 @@ export const ConnectionsControllerListInput =
 // Output Schema
 export interface ConnectionsControllerListOutput {
   object?: string;
-  data?: {
+  data?: ReadonlyArray<{
     object?: string;
     id?: string;
     organization_id?: string;
@@ -195,11 +195,11 @@ export interface ConnectionsControllerListOutput {
       | "inactive"
       | "deleting";
     status?: "linked" | "unlinked";
-    domains?: { id: string; object: string; domain: string }[];
+    domains?: ReadonlyArray<{ id: string; object: string; domain: string }>;
     options?: { signing_cert: string | null };
     created_at?: string;
     updated_at?: string;
-  }[];
+  }>;
   list_metadata?: { before: string | null; after: string | null };
 }
 export const ConnectionsControllerListOutput =

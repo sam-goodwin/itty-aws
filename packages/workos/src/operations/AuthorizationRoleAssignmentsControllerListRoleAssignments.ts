@@ -34,15 +34,19 @@ export const AuthorizationRoleAssignmentsControllerListRoleAssignmentsInput =
 // Output Schema
 export interface AuthorizationRoleAssignmentsControllerListRoleAssignmentsOutput {
   object: string;
-  data: {
+  data: ReadonlyArray<{
     object: string;
     id: string;
     organization_membership_id: string;
     role: { slug?: string };
     resource: { id: string; external_id: string; resource_type_slug: string };
+    source: {
+      type: "direct" | "group";
+      group_role_assignment_id: string | null;
+    };
     created_at: string;
     updated_at: string;
-  }[];
+  }>;
   list_metadata: { before: string | null; after: string | null };
 }
 export const AuthorizationRoleAssignmentsControllerListRoleAssignmentsOutput =
@@ -60,6 +64,10 @@ export const AuthorizationRoleAssignmentsControllerListRoleAssignmentsOutput =
           id: Schema.String,
           external_id: Schema.String,
           resource_type_slug: Schema.String,
+        }),
+        source: Schema.Struct({
+          type: Schema.Literals(["direct", "group"]),
+          group_role_assignment_id: Schema.NullOr(Schema.String),
         }),
         created_at: Schema.String,
         updated_at: Schema.String,

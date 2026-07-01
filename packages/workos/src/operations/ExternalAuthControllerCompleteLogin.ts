@@ -14,12 +14,12 @@ export interface ExternalAuthControllerCompleteLoginInput {
     name?: string;
     metadata?: Record<string, string>;
   };
-  user_consent_options?: {
+  user_consent_options?: ReadonlyArray<{
     claim?: string;
     type?: string;
     label?: string;
-    choices?: { value?: string; label?: string }[];
-  }[];
+    choices?: ReadonlyArray<{ value?: string; label?: string }>;
+  }>;
 }
 export const ExternalAuthControllerCompleteLoginInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

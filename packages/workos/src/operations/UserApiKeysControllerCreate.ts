@@ -8,7 +8,7 @@ export interface UserApiKeysControllerCreateInput {
   userId: string;
   name: string;
   organization_id: string;
-  permissions?: string[];
+  permissions?: ReadonlyArray<string>;
   expires_at?: string;
 }
 export const UserApiKeysControllerCreateInput =
@@ -34,7 +34,7 @@ export interface UserApiKeysControllerCreateOutput {
   obfuscated_value: string;
   last_used_at: string | null;
   expires_at: string | null;
-  permissions: string[];
+  permissions: ReadonlyArray<string>;
   created_at: string;
   updated_at: string;
   value: string;

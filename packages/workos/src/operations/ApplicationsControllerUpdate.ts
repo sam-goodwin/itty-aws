@@ -8,8 +8,11 @@ export interface ApplicationsControllerUpdateInput {
   id: string;
   name?: string;
   description?: string | null;
-  scopes?: string[] | null;
-  redirect_uris?: { uri?: string; default?: boolean | null }[] | null;
+  scopes?: ReadonlyArray<string> | null;
+  redirect_uris?: ReadonlyArray<{
+    uri?: string;
+    default?: boolean | null;
+  }> | null;
 }
 export const ApplicationsControllerUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -38,7 +41,7 @@ export interface ApplicationsControllerUpdateOutput {
   client_id: string;
   description: string | null;
   name: string;
-  scopes: string[];
+  scopes: ReadonlyArray<string>;
   created_at: string;
   updated_at: string;
 }

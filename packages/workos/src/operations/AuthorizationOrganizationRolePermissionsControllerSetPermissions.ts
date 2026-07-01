@@ -7,7 +7,7 @@ import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 export interface AuthorizationOrganizationRolePermissionsControllerSetPermissionsInput {
   organizationId: string;
   slug: string;
-  permissions?: string[];
+  permissions?: ReadonlyArray<string>;
 }
 export const AuthorizationOrganizationRolePermissionsControllerSetPermissionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -30,7 +30,7 @@ export interface AuthorizationOrganizationRolePermissionsControllerSetPermission
   description: string | null;
   type: "EnvironmentRole" | "OrganizationRole";
   resource_type_slug: string;
-  permissions: string[];
+  permissions: ReadonlyArray<string>;
   created_at: string;
   updated_at: string;
 }

@@ -16,13 +16,13 @@ export const JumpWireWebDataVaultControllerversionsInput =
 
 // Output Schema
 export interface JumpWireWebDataVaultControllerversionsOutput {
-  data: {
+  data: ReadonlyArray<{
     created_at: string;
     current_version: boolean;
     etag: string;
     id: string;
     size: number;
-  }[];
+  }>;
   list_metadata: { after?: string | null; before?: string | null };
 }
 export const JumpWireWebDataVaultControllerversionsOutput =

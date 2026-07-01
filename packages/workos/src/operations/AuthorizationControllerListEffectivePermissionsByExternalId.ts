@@ -32,7 +32,7 @@ export const AuthorizationControllerListEffectivePermissionsByExternalIdInput =
 // Output Schema
 export interface AuthorizationControllerListEffectivePermissionsByExternalIdOutput {
   object?: string;
-  data?: {
+  data?: ReadonlyArray<{
     object?: string;
     id?: string;
     slug?: string;
@@ -42,7 +42,7 @@ export interface AuthorizationControllerListEffectivePermissionsByExternalIdOutp
     resource_type_slug?: string;
     created_at?: string;
     updated_at?: string;
-  }[];
+  }>;
   list_metadata?: { before: string | null; after: string | null };
 }
 export const AuthorizationControllerListEffectivePermissionsByExternalIdOutput =

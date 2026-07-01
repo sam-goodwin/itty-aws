@@ -27,7 +27,7 @@ export const UserlandUserInvitesControllerListInput =
 // Output Schema
 export interface UserlandUserInvitesControllerListOutput {
   object: string;
-  data: {
+  data: ReadonlyArray<{
     object?: string;
     id?: string;
     email?: string;
@@ -43,7 +43,7 @@ export interface UserlandUserInvitesControllerListOutput {
     updated_at?: string;
     token?: string;
     accept_invitation_url?: string;
-  }[];
+  }>;
   list_metadata: { before: string | null; after: string | null };
 }
 export const UserlandUserInvitesControllerListOutput =

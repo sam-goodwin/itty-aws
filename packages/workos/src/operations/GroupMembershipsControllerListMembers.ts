@@ -30,7 +30,7 @@ export const GroupMembershipsControllerListMembersInput =
 // Output Schema
 export interface GroupMembershipsControllerListMembersOutput {
   object?: string;
-  data?: {
+  data?: ReadonlyArray<{
     object: string;
     id: string;
     user_id: string;
@@ -41,7 +41,7 @@ export interface GroupMembershipsControllerListMembersOutput {
     custom_attributes?: Record<string, unknown>;
     created_at: string;
     updated_at: string;
-  }[];
+  }>;
   list_metadata?: { before: string | null; after: string | null };
 }
 export const GroupMembershipsControllerListMembersOutput =

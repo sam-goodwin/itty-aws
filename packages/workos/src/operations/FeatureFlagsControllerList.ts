@@ -23,7 +23,7 @@ export const FeatureFlagsControllerListInput =
 // Output Schema
 export interface FeatureFlagsControllerListOutput {
   object?: string;
-  data?: {
+  data?: ReadonlyArray<{
     object?: string;
     id?: string;
     slug?: string;
@@ -34,12 +34,12 @@ export interface FeatureFlagsControllerListOutput {
       first_name: string | null;
       last_name: string | null;
     } | null;
-    tags?: string[];
+    tags?: ReadonlyArray<string>;
     enabled?: boolean;
     default_value?: boolean;
     created_at?: string;
     updated_at?: string;
-  }[];
+  }>;
   list_metadata?: { before: string | null; after: string | null };
 }
 export const FeatureFlagsControllerListOutput =

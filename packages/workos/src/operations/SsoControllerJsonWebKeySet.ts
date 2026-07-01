@@ -16,16 +16,16 @@ export const SsoControllerJsonWebKeySetInput =
 
 // Output Schema
 export interface SsoControllerJsonWebKeySetOutput {
-  keys?: {
+  keys?: ReadonlyArray<{
     alg: string;
     kty: string;
     use: string;
-    x5c: string[];
+    x5c: ReadonlyArray<string>;
     n: string;
     e: string;
     kid: string;
     "x5t#S256": string;
-  }[];
+  }>;
 }
 export const SsoControllerJsonWebKeySetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

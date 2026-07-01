@@ -6,12 +6,12 @@ import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 // Input Schema
 export interface AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignmentsInput {
   group_id: string;
-  role_assignments: {
+  role_assignments: ReadonlyArray<{
     role_slug: string;
     resource_id?: string;
     resource_external_id?: string;
     resource_type_slug?: string;
-  }[];
+  }>;
 }
 export const AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignmentsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -34,7 +34,7 @@ export const AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignme
 // Output Schema
 export interface AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignmentsOutput {
   object: string;
-  data: {
+  data: ReadonlyArray<{
     object: string;
     id: string;
     group_id: string;
@@ -42,7 +42,7 @@ export interface AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssi
     resource: { id: string; external_id: string; resource_type_slug: string };
     created_at: string;
     updated_at: string;
-  }[];
+  }>;
   list_metadata: { before: string | null; after: string | null };
 }
 export const AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignmentsOutput =

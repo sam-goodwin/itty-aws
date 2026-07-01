@@ -32,7 +32,7 @@ export const UserlandUserOrganizationMembershipsControllerListInput =
 // Output Schema
 export interface UserlandUserOrganizationMembershipsControllerListOutput {
   object: string;
-  data: {
+  data: ReadonlyArray<{
     object?: string;
     id?: string;
     user_id?: string;
@@ -44,7 +44,7 @@ export interface UserlandUserOrganizationMembershipsControllerListOutput {
     created_at?: string;
     updated_at?: string;
     role?: { slug?: string };
-    roles?: { slug?: string }[];
+    roles?: ReadonlyArray<{ slug?: string }>;
     user?: {
       object?: string;
       id?: string;
@@ -61,7 +61,7 @@ export interface UserlandUserOrganizationMembershipsControllerListOutput {
       created_at?: string;
       updated_at?: string;
     };
-  }[];
+  }>;
   list_metadata: { before: string | null; after: string | null };
 }
 export const UserlandUserOrganizationMembershipsControllerListOutput =

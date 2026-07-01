@@ -7,7 +7,7 @@ import { UnprocessableEntity } from "../errors.ts";
 export interface AuditLogValidatorVersionsControllerCreateInput {
   actionName: string;
   actor?: { metadata?: unknown };
-  targets?: { type?: string; metadata?: unknown }[];
+  targets?: ReadonlyArray<{ type?: string; metadata?: unknown }>;
   metadata?: unknown;
 }
 export const AuditLogValidatorVersionsControllerCreateInput =
@@ -39,7 +39,7 @@ export interface AuditLogValidatorVersionsControllerCreateOutput {
   object?: string;
   version?: number;
   actor?: { metadata: Record<string, unknown> };
-  targets?: { type: string; metadata?: Record<string, unknown> }[];
+  targets?: ReadonlyArray<{ type: string; metadata?: Record<string, unknown> }>;
   metadata?: Record<string, unknown>;
   created_at?: string;
 }

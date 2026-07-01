@@ -24,20 +24,23 @@ export const AuditLogValidatorsControllerListInput =
 export interface AuditLogValidatorsControllerListOutput {
   object?: string;
   list_metadata?: { before: string | null; after: string | null };
-  data?: {
+  data?: ReadonlyArray<{
     object?: string;
     name?: string;
     schema?: {
       object?: string;
       version?: number;
       actor?: { metadata: Record<string, unknown> };
-      targets?: { type: string; metadata?: Record<string, unknown> }[];
+      targets?: ReadonlyArray<{
+        type: string;
+        metadata?: Record<string, unknown>;
+      }>;
       metadata?: Record<string, unknown>;
       created_at?: string;
     };
     created_at?: string;
     updated_at?: string;
-  }[];
+  }>;
 }
 export const AuditLogValidatorsControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

@@ -21,11 +21,7 @@ export interface PortalSessionsControllerCreateInput {
     | "domain_verification"
     | "certificate_renewal"
     | "bring_your_own_key";
-  intent_options?: {
-    sso?: { bookmark_slug?: string; provider_type?: string };
-    domain_verification?: { domain_name?: string };
-  };
-  it_contact_emails?: string[];
+  it_contact_emails?: ReadonlyArray<string>;
 }
 export const PortalSessionsControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -42,21 +38,6 @@ export const PortalSessionsControllerCreateInput =
         "certificate_renewal",
         "bring_your_own_key",
       ]),
-    ),
-    intent_options: Schema.optional(
-      Schema.Struct({
-        sso: Schema.optional(
-          Schema.Struct({
-            bookmark_slug: Schema.optional(Schema.String),
-            provider_type: Schema.optional(Schema.String),
-          }),
-        ),
-        domain_verification: Schema.optional(
-          Schema.Struct({
-            domain_name: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
     ),
     it_contact_emails: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(

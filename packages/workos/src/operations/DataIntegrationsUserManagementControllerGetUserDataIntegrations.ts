@@ -22,7 +22,7 @@ export const DataIntegrationsUserManagementControllerGetUserDataIntegrationsInpu
 // Output Schema
 export interface DataIntegrationsUserManagementControllerGetUserDataIntegrationsOutput {
   object?: string;
-  data?: {
+  data?: ReadonlyArray<{
     object: string;
     id: string;
     name: string;
@@ -30,8 +30,8 @@ export interface DataIntegrationsUserManagementControllerGetUserDataIntegrations
     slug: string;
     integration_type: string;
     credentials_type: string;
-    scopes: string[] | null;
-    auth_methods?: ("oauth" | "api_key")[];
+    scopes: ReadonlyArray<string> | null;
+    auth_methods?: ReadonlyArray<"oauth" | "api_key">;
     ownership: "userland_user" | "organization";
     created_at: string;
     updated_at: string;
@@ -44,7 +44,7 @@ export interface DataIntegrationsUserManagementControllerGetUserDataIntegrations
       id: string;
       user_id: string | null;
       organization_id: string | null;
-      scopes: string[];
+      scopes: ReadonlyArray<string>;
       auth_method?: "oauth" | "api_key";
       api_key_last_4?: string | null;
       state: "connected" | "needs_reauthorization" | "disconnected";
@@ -55,7 +55,7 @@ export interface DataIntegrationsUserManagementControllerGetUserDataIntegrations
       createdAt: string;
       updatedAt: string;
     } | null;
-  }[];
+  }>;
 }
 export const DataIntegrationsUserManagementControllerGetUserDataIntegrationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

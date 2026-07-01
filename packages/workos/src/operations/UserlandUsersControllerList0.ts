@@ -29,7 +29,7 @@ export const UserlandUsersControllerList0Input =
 // Output Schema
 export interface UserlandUsersControllerList0Output {
   object?: string;
-  data?: {
+  data?: ReadonlyArray<{
     object?: string;
     id?: string;
     first_name?: string | null;
@@ -44,7 +44,7 @@ export interface UserlandUsersControllerList0Output {
     locale?: string | null;
     created_at?: string;
     updated_at?: string;
-  }[];
+  }>;
   list_metadata?: { before: string | null; after: string | null };
 }
 export const UserlandUsersControllerList0Output =

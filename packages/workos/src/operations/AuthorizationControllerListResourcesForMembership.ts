@@ -41,7 +41,7 @@ export const AuthorizationControllerListResourcesForMembershipInput =
 // Output Schema
 export interface AuthorizationControllerListResourcesForMembershipOutput {
   object?: string;
-  data?: {
+  data?: ReadonlyArray<{
     object?: string;
     name?: string;
     description?: string | null;
@@ -52,7 +52,7 @@ export interface AuthorizationControllerListResourcesForMembershipOutput {
     resource_type_slug?: string;
     created_at?: string;
     updated_at?: string;
-  }[];
+  }>;
   list_metadata?: { before: string | null; after: string | null };
 }
 export const AuthorizationControllerListResourcesForMembershipOutput =

@@ -25,7 +25,7 @@ export const OrganizationApiKeysControllerListInput =
 // Output Schema
 export interface OrganizationApiKeysControllerListOutput {
   object: string;
-  data: {
+  data: ReadonlyArray<{
     object: string;
     id: string;
     owner: { type: string; id: string };
@@ -33,10 +33,10 @@ export interface OrganizationApiKeysControllerListOutput {
     obfuscated_value: string;
     last_used_at: string | null;
     expires_at: string | null;
-    permissions: string[];
+    permissions: ReadonlyArray<string>;
     created_at: string;
     updated_at: string;
-  }[];
+  }>;
   list_metadata: { before: string | null; after: string | null };
 }
 export const OrganizationApiKeysControllerListOutput =

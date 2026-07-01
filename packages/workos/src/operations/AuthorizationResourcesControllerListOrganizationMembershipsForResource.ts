@@ -37,7 +37,7 @@ export const AuthorizationResourcesControllerListOrganizationMembershipsForResou
 // Output Schema
 export interface AuthorizationResourcesControllerListOrganizationMembershipsForResourceOutput {
   object: string;
-  data: {
+  data: ReadonlyArray<{
     object: string;
     id: string;
     user_id: string;
@@ -64,7 +64,7 @@ export interface AuthorizationResourcesControllerListOrganizationMembershipsForR
       created_at?: string;
       updated_at?: string;
     };
-  }[];
+  }>;
   list_metadata: { before: string | null; after: string | null };
 }
 export const AuthorizationResourcesControllerListOrganizationMembershipsForResourceOutput =

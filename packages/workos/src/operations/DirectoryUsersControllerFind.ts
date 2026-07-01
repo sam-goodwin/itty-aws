@@ -25,17 +25,21 @@ export interface DirectoryUsersControllerFindOutput {
   first_name?: string | null;
   last_name?: string | null;
   name?: string | null;
-  emails?: { primary?: boolean; type?: string; value?: string | null }[];
+  emails?: ReadonlyArray<{
+    primary?: boolean;
+    type?: string;
+    value?: string | null;
+  }>;
   job_title?: string | null;
   username?: string | null;
   state?: "active" | "suspended" | "inactive";
   raw_attributes?: Record<string, unknown>;
   custom_attributes?: Record<string, unknown>;
   role?: { slug?: string };
-  roles?: { slug?: string }[];
+  roles?: ReadonlyArray<{ slug?: string }>;
   created_at?: string;
   updated_at?: string;
-  groups?: {
+  groups?: ReadonlyArray<{
     object?: string;
     id?: string;
     idp_id?: string;
@@ -45,7 +49,7 @@ export interface DirectoryUsersControllerFindOutput {
     raw_attributes?: Record<string, unknown>;
     created_at?: string;
     updated_at?: string;
-  }[];
+  }>;
 }
 export const DirectoryUsersControllerFindOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

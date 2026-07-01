@@ -41,7 +41,7 @@ export const AuthorizationResourcesByExternalIdControllerListOrganizationMembers
 // Output Schema
 export interface AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalIdOutput {
   object: string;
-  data: {
+  data: ReadonlyArray<{
     object: string;
     id: string;
     user_id: string;
@@ -68,7 +68,7 @@ export interface AuthorizationResourcesByExternalIdControllerListOrganizationMem
       created_at?: string;
       updated_at?: string;
     };
-  }[];
+  }>;
   list_metadata: { before: string | null; after: string | null };
 }
 export const AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalIdOutput =

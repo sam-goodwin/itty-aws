@@ -28,10 +28,10 @@ export const AuthorizedApplicationsControllerListInput =
 // Output Schema
 export interface AuthorizedApplicationsControllerListOutput {
   object?: string;
-  data?: {
+  data?: ReadonlyArray<{
     object: string;
     id: string;
-    granted_scopes: string[];
+    granted_scopes: ReadonlyArray<string>;
     oauth_resource?: string;
     application: {
       object: string;
@@ -39,11 +39,11 @@ export interface AuthorizedApplicationsControllerListOutput {
       client_id: string;
       description: string | null;
       name: string;
-      scopes: string[];
+      scopes: ReadonlyArray<string>;
       created_at: string;
       updated_at: string;
     };
-  }[];
+  }>;
   list_metadata?: { before: string | null; after: string | null };
 }
 export const AuthorizedApplicationsControllerListOutput =

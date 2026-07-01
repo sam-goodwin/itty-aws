@@ -11,6 +11,7 @@ export interface UserlandSsoControllerAuthorizeInput {
   provider_query_params?: string;
   provider_scopes?: string;
   invitation_token?: string;
+  max_age?: number;
   screen_hint?: "sign-up" | "sign-in";
   login_hint?: string;
   provider?:
@@ -44,6 +45,7 @@ export const UserlandSsoControllerAuthorizeInput =
     provider_query_params: Schema.optional(Schema.String),
     provider_scopes: Schema.optional(Schema.String),
     invitation_token: Schema.optional(Schema.String),
+    max_age: Schema.optional(Schema.Number),
     screen_hint: Schema.optional(Schema.Literals(["sign-up", "sign-in"])),
     login_hint: Schema.optional(Schema.String),
     provider: Schema.optional(
@@ -92,6 +94,7 @@ export const UserlandSsoControllerAuthorizeOutput =
  * @param provider_query_params - Key/value pairs of query parameters to pass to the OAuth provider.
  * @param provider_scopes - Additional OAuth scopes to request from the identity provider.
  * @param invitation_token - A token representing a user invitation to redeem during authentication.
+ * @param max_age - Maximum allowable elapsed time, in seconds, since the user last actively authenticated. If the last authentication is older than this value, the user is prompted to re-authenticate; a value of `0` forces re-authentication. Only supported when the provider is `authkit`.
  * @param screen_hint - Used to specify which screen to display when the provider is `authkit`.
  * @param login_hint - A hint to the authorization server about the login identifier the user might use.
  * @param provider - The OAuth provider to authenticate with (e.g., GoogleOAuth, MicrosoftOAuth, GitHubOAuth).

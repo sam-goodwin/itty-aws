@@ -18,14 +18,14 @@ export const ApplicationCredentialsControllerListInput =
   ) as unknown as Schema.Codec<ApplicationCredentialsControllerListInput>;
 
 // Output Schema
-export type ApplicationCredentialsControllerListOutput = {
+export type ApplicationCredentialsControllerListOutput = ReadonlyArray<{
   object: string;
   id: string;
   secret_hint: string;
   last_used_at: string | null;
   created_at: string;
   updated_at: string;
-}[];
+}>;
 export const ApplicationCredentialsControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({

@@ -90,8 +90,8 @@ export interface SsoControllerTokenOutput {
     last_name?: string | null;
     name?: string | null;
     role?: { slug?: string } | null;
-    roles?: { slug?: string }[] | null;
-    groups?: string[];
+    roles?: ReadonlyArray<{ slug?: string }> | null;
+    groups?: ReadonlyArray<string>;
     custom_attributes?: Record<string, unknown>;
     raw_attributes?: Record<string, unknown>;
   };
@@ -100,7 +100,7 @@ export interface SsoControllerTokenOutput {
     refresh_token: Redacted.Redacted<string>;
     access_token: Redacted.Redacted<string>;
     expires_at: number;
-    scopes: string[];
+    scopes: ReadonlyArray<string>;
   };
 }
 export const SsoControllerTokenOutput =

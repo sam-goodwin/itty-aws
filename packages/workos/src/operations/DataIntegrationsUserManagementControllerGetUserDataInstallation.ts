@@ -27,7 +27,7 @@ export interface DataIntegrationsUserManagementControllerGetUserDataInstallation
   id?: string;
   user_id?: string | null;
   organization_id?: string | null;
-  scopes?: string[];
+  scopes?: ReadonlyArray<string>;
   auth_method?: "oauth" | "api_key";
   api_key_last_4?: string | null;
   state?: "connected" | "needs_reauthorization" | "disconnected";

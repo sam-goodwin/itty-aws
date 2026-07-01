@@ -8,11 +8,11 @@ export interface AuditLogExportsControllerExportsInput {
   organization_id?: string;
   range_start?: string;
   range_end?: string;
-  actions?: string[];
-  actors?: string[];
-  actor_names?: string[];
-  actor_ids?: string[];
-  targets?: string[];
+  actions?: ReadonlyArray<string>;
+  actors?: ReadonlyArray<string>;
+  actor_names?: ReadonlyArray<string>;
+  actor_ids?: ReadonlyArray<string>;
+  targets?: ReadonlyArray<string>;
 }
 export const AuditLogExportsControllerExportsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

@@ -31,14 +31,14 @@ export const EventsControllerListInput =
 // Output Schema
 export interface EventsControllerListOutput {
   object?: string;
-  data?: {
+  data?: ReadonlyArray<{
     object: string;
     id: string;
     event: string;
     data: Record<string, unknown>;
     created_at: string;
     context?: Record<string, unknown>;
-  }[];
+  }>;
   list_metadata?: { after: string | null };
 }
 export const EventsControllerListOutput =

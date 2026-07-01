@@ -30,7 +30,7 @@ export interface UserlandUserOrganizationMembershipsControllerDeactivateOutput {
   created_at: string;
   updated_at: string;
   role: { slug?: string };
-  roles: { slug?: string }[];
+  roles: ReadonlyArray<{ slug?: string }>;
   user: {
     object?: string;
     id?: string;

@@ -27,7 +27,7 @@ export interface ApiKeysControllerExpireOutput {
   obfuscated_value?: string;
   last_used_at?: string | null;
   expires_at?: string | null;
-  permissions?: string[];
+  permissions?: ReadonlyArray<string>;
   created_at?: string;
   updated_at?: string;
 }

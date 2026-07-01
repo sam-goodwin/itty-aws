@@ -21,7 +21,7 @@ export interface ApplicationsControllerFindOutput {
   client_id: string;
   description: string | null;
   name: string;
-  scopes: string[];
+  scopes: ReadonlyArray<string>;
   created_at: string;
   updated_at: string;
 }

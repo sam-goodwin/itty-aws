@@ -20,7 +20,7 @@ export const AuthorizationOrganizationRolesControllerListInput =
 // Output Schema
 export interface AuthorizationOrganizationRolesControllerListOutput {
   object?: string;
-  data?: {
+  data?: ReadonlyArray<{
     slug?: string;
     object?: string;
     id?: string;
@@ -28,10 +28,10 @@ export interface AuthorizationOrganizationRolesControllerListOutput {
     description?: string | null;
     type?: "EnvironmentRole" | "OrganizationRole";
     resource_type_slug?: string;
-    permissions?: string[];
+    permissions?: ReadonlyArray<string>;
     created_at?: string;
     updated_at?: string;
-  }[];
+  }>;
 }
 export const AuthorizationOrganizationRolesControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

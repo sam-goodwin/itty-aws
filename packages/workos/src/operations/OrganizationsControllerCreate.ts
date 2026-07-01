@@ -7,8 +7,11 @@ import { BadRequest, Conflict, UnprocessableEntity } from "../errors.ts";
 export interface OrganizationsControllerCreateInput {
   name?: string;
   allow_profiles_outside_organization?: boolean;
-  domains?: string[];
-  domain_data?: { domain?: string; state?: "pending" | "verified" }[];
+  domains?: ReadonlyArray<string>;
+  domain_data?: ReadonlyArray<{
+    domain?: string;
+    state?: "pending" | "verified";
+  }>;
   metadata?: Record<string, string> | null;
   external_id?: string | null;
 }
@@ -38,7 +41,7 @@ export interface OrganizationsControllerCreateOutput {
   object?: string;
   id?: string;
   name?: string;
-  domains?: {
+  domains?: ReadonlyArray<{
     object: string;
     id: string;
     organization_id: string;
@@ -54,7 +57,7 @@ export interface OrganizationsControllerCreateOutput {
     verification_strategy?: "dns" | "manual";
     created_at: string;
     updated_at: string;
-  }[];
+  }>;
   metadata?: Record<string, string>;
   external_id?: string | null;
   stripe_customer_id?: string;

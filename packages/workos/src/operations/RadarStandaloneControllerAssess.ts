@@ -18,6 +18,7 @@ export interface RadarStandaloneControllerAssessInput {
     | "SSO"
     | "Other";
   action: "sign-up" | "sign-in";
+  signals_id?: string;
 }
 export const RadarStandaloneControllerAssessInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -35,6 +36,7 @@ export const RadarStandaloneControllerAssessInput =
       "Other",
     ]),
     action: Schema.Literals(["sign-up", "sign-in"]),
+    signals_id: Schema.optional(Schema.String),
   }).pipe(
     T.Http({ method: "POST", path: "/radar/attempts" }),
   ) as unknown as Schema.Codec<RadarStandaloneControllerAssessInput>;

@@ -26,7 +26,7 @@ export const UserlandUserSessionsControllerListInput =
 export interface UserlandUserSessionsControllerListOutput {
   object?: string;
   list_metadata?: { before: string | null; after: string | null };
-  data?: {
+  data?: ReadonlyArray<{
     object: string;
     id: string;
     impersonator?: { email: string; reason: string | null };
@@ -50,7 +50,7 @@ export interface UserlandUserSessionsControllerListOutput {
     ended_at: string | null;
     created_at: string;
     updated_at: string;
-  }[];
+  }>;
 }
 export const UserlandUserSessionsControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

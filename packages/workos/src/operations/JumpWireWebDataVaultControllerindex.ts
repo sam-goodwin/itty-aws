@@ -26,7 +26,7 @@ export const JumpWireWebDataVaultControllerindexInput =
 
 // Output Schema
 export interface JumpWireWebDataVaultControllerindexOutput {
-  data: { id: string; name: string; updated_at?: string | null }[];
+  data: ReadonlyArray<{ id: string; name: string; updated_at?: string | null }>;
   list_metadata: { after?: string | null; before?: string | null };
 }
 export const JumpWireWebDataVaultControllerindexOutput =

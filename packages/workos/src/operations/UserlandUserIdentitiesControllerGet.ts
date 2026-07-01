@@ -15,7 +15,7 @@ export const UserlandUserIdentitiesControllerGetInput =
   ) as unknown as Schema.Codec<UserlandUserIdentitiesControllerGetInput>;
 
 // Output Schema
-export type UserlandUserIdentitiesControllerGetOutput = {
+export type UserlandUserIdentitiesControllerGetOutput = ReadonlyArray<{
   idp_id: string;
   type: string;
   provider:
@@ -33,7 +33,7 @@ export type UserlandUserIdentitiesControllerGetOutput = {
     | "VercelMarketplaceOAuth"
     | "VercelOAuth"
     | "XeroOAuth";
-}[];
+}>;
 export const UserlandUserIdentitiesControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({

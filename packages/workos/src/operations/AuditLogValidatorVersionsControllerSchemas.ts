@@ -26,14 +26,17 @@ export const AuditLogValidatorVersionsControllerSchemasInput =
 export interface AuditLogValidatorVersionsControllerSchemasOutput {
   object?: string;
   list_metadata?: { before: string | null; after: string | null };
-  data?: {
+  data?: ReadonlyArray<{
     object?: string;
     version?: number;
     actor?: { metadata: Record<string, unknown> };
-    targets?: { type: string; metadata?: Record<string, unknown> }[];
+    targets?: ReadonlyArray<{
+      type: string;
+      metadata?: Record<string, unknown>;
+    }>;
     metadata?: Record<string, unknown>;
     created_at?: string;
-  }[];
+  }>;
 }
 export const AuditLogValidatorVersionsControllerSchemasOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
