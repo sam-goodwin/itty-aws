@@ -572,7 +572,13 @@ export const makeAPI = <Creds, RequestOptions = never>(
         const outputSchema = (opConfig.outputSchema ?? opConfig.output)!;
         const inputAst = resolveAst(inputSchema.ast);
         const outputAst = resolveAst(outputSchema.ast);
-        const httpTrait = Traits.getHttpTrait(inputAst);
+        // Read trait annotations from the *unresolved* schema ASTs. A trait
+        // applied to an already-suspended schema (e.g. `T.ResponsePath` on a
+        // shared, suspended response struct) lives on the Suspend node itself,
+        // which `resolveAst` descends past — so resolving first would drop it.
+        // `getAnnotation` follows Suspend thunks, so the unresolved ast finds
+        // annotations at any suspend depth.
+        const httpTrait = Traits.getHttpTrait(inputSchema.ast);
         if (!httpTrait) {
           throw new Error("Input schema must have Http trait");
         }
@@ -583,9 +589,9 @@ export const makeAPI = <Creds, RequestOptions = never>(
           outputSchema,
           inputAst,
           outputAst,
-          responsePath: Traits.getResponsePath(outputAst),
-          graphqlOp: Traits.getGraphQLOp(inputAst),
-          noFollowRedirect: Traits.getNoFollowRedirect(inputAst),
+          responsePath: Traits.getResponsePath(outputSchema.ast),
+          graphqlOp: Traits.getGraphQLOp(inputSchema.ast),
+          noFollowRedirect: Traits.getNoFollowRedirect(inputSchema.ast),
           httpTrait,
           method,
           spanName: `${method} ${httpTrait.path}`,
