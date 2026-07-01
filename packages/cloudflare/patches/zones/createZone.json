@@ -1,6 +1,7 @@
 {
   "errors": {
     "ZoneAlreadyExists": [{ "code": 1061 }],
+    "ZoneCreationBlocked": [{ "code": 1052 }],
     "InvalidDomain": [{ "code": 1002 }],
     "DomainNotRegistered": [{ "code": 1099 }],
     "SubdomainNotAllowed": [{ "code": 1116 }]

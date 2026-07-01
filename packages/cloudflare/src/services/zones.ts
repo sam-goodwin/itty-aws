@@ -77,6 +77,14 @@ export class ZoneAlreadyExists extends T.applyErrorMatchers(
   [{ code: 1061 }],
 ) {}
 
+export class ZoneCreationBlocked extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ZoneCreationBlocked>()("ZoneCreationBlocked", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1052 }],
+) {}
+
 export class ZoneHoldNotFound extends T.applyErrorMatchers(
   Schema.TaggedErrorClass<ZoneHoldNotFound>()("ZoneHoldNotFound", {
     code: Schema.Number,
@@ -5881,6 +5889,7 @@ export const CreateZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
 export type CreateZoneError =
   | DefaultErrors
   | ZoneAlreadyExists
+  | ZoneCreationBlocked
   | InvalidDomain
   | DomainNotRegistered
   | SubdomainNotAllowed;
@@ -5895,6 +5904,7 @@ export const createZone: API.OperationMethod<
   output: CreateZoneResponse,
   errors: [
     ZoneAlreadyExists,
+    ZoneCreationBlocked,
     InvalidDomain,
     DomainNotRegistered,
     SubdomainNotAllowed,
